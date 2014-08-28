@@ -1,0 +1,112 @@
+With the commoditization of multi-core processors in clusters, the inter-node parallelism expressed by HPC applications needs to be complemented by a finer-grained parallelism that takes advantage of shared memory at the intra-node level.
+%
+The fine grain parallelism means that we can exhibit new levels of parallelism by parallelizing some operations that are usually done sequentially.
+%
+Usually it consists in parallelizing some algorithms performed inside a MPI process by using several cores of a cluster node.
+%
+Indeed, by taking advantage of the shared memory at the node level, some algorithms are then parallelizable, whereas they could not be efficiently parallelized using the static partitioning of data and communication overhead imposed by a distributed memory framework (e.g., MPI).
+
+
+Some popular shared memory parallel frameworks like Intel TBB~\cite{Intel::TBB},
+Cilk~\cite{cilk} or OpenMP 3.0~\cite{openmp08} propose programming models that
+considerably alleviate the fine grain parallelization in a shared memory environment.
+Those models rely on the use of a scheduler that dispatches the computation tasks
+at runtime on the available cores of a cluster node. The simplest form of fine grain
+parallelism consists in splitting independent works done in a loop among the cores.
+More complex algorithms require to expose the parallelism as an Direct Acyclic Graph (DAG)
+where each node is a task that consists in a group of operations that
+can only be computed once all its predecessor tasks have also been completed.
+With such a computational task graph approach, the work that belongs to the developer
+is to describe the computations as a collection of tasks and to give  the set of
+predecessor and successor tasks for each of them. The runtime scheduler is then
+in charge of launching tasks on the hardware and achieve a good load-balancing.
+
+Nevertheless, these programming models lack some features to handle efficiently
+some important classes of problems.
+Indeed, very often two crucial problems have to be addressed in order to achieve
+an efficient fine grain parallelization:
+\begin{itemize}
+\item The first one is to obtain a correct task grain size for a good parallel
+  efficiency: A too fine parallelism grain leads to bad performances caused by
+  the task management and scheduling overhead, while a too coarse grain does not
+  provide enough parallelism for the hardware capability and causes load balancing issues.
+\item The second problem is to take into account the Non Uniform Memory Accesses (NUMA)
+  that are caused by the time penalty when a core needs to access some data that
+  are not physically located on a memory bank directly linked to its socket.
+  Therefore, the physical location of memory allocation needs to be carefully driven
+  to match the task scheduler policy in order to minimize these time penalties.
+\end{itemize}
+
+In this paper, we present some solutions to address these two problems at the
+level of the programming model.
+Our main motivation is that we want a programming model that adds as few
+programming effort as possible beyond a natural task based parallelization of
+an algorithm (using TBB for example) to obtain a better efficiency by taking
+care of NUMA and task grain size.
+
+%%  To reach this goal, in the first place we have enhanced the C++ programming interface proposed by Intel TBB to
+%%   add some coarsening operators based on the task description of a problem. To that end we have implemented a task aggregation library that does
+%%   the coarsening graph operations using different heuristics that can be selected and combined by the user using a simple string parameter.
+%%  % It is important to note that the default aggregation operator when merging two task consists in sequentially calling the function of each task in the coarse task
+%%  % but a developer can also overload the aggregate operator of the task class to redefine how to merge two tasks; for example instead of calling sequentially each task function
+%% %The coarsen graph obtained can then be used on top of any runtime scheduler: our implementation interface allow to use TBB, OpenMP or our own NUMA-aware scheduler
+%%   %in a seamless manner; we can switch between runtime systems by simply adding a flag at compilation.
+%%   We have interfaced this library with several runtimes (Intel TBB, OpenMP and also our own implementation of a runtime scheduler) that can execute the coarse task graph obtained after this steps.
+%%   The second part of the work was to take care of NUMA effects. Our approach has been to provide some special allocators to the user so that
+
+%To evaluate the benefit of our work we present some experiments on the
+%parallelization of an iterative solver for sparse linear systems. A popular
+%approach to solve large sparse linear systems of equations is a Krylov
+%method (such as GMRES or Conjugate Gradient) preconditioned by an incomplete
+%factorization (see~\cite{Saad96IMSLS}).
+%This is often the most time consuming part of a numerical simulation.
+%The usual way to parallelize this kind of solvers is to use a weaker form of
+%the preconditioner in parallel by preconditioning subdiagonal blocks of the
+%matrix: The subdiagonal blocks are usually obtained thank to a partition of
+%the adjacency graph of the matrix.
+%Outside the preconditioner, the operations required in a Krylov method are
+%vector operations (mostly BLAS1 type like dot products or AXPY) and matrix % CR: CHECK: replace `,' by or
+%vector products. Those operations are naturally dealt with parallel loop
+%splitting  (e.g., {\em parallel for} in OpenMP).
+%In this paper, we have chosen to focus on the fine grain parallelization of
+%the ILU preconditioner.
+%In this case, more levels of parallelism can be obtained because the factorization
+%and triangular solves of a submatrix can be parallelized on several cores.
+%Incomplete factorization and associated triangular solve of a sparse matrix
+%is a problem that is well representative of the difficulty that one can encounter
+%with fine-grain parallelization: The fine grain description of these algorithms
+%is natural. However, in practice a straight task based parallelization using TBB or
+%OpenMP does not deliver good speed-ups because of the very low computational cost of
+%a task and the NUMA effect when accessing the coefficients of the matrix and vector.
+%In the experiment results, we will evaluate our programming model on those algorithms.
+
+%%   In a Krylov method the operation needed are vector operations (dot product, AXPY as define by BLAS1..) and matrix vector multiplications (the matrix
+%%   is usually really sparse). The most complicated part for a fine grain parallelization
+%%   We have specifically studied the parallelization of an incomplete LU factorization () and the triangular solves associated.
+
+%%   LU
+%%   (ILU(k)) factorization. The ILU factorization is a very popular preconditioner for Krylov met
+%%   A very popular approach to solve linear system is a Krylov method like GMRES
+
+%%   To handle the task grain problem our approach is to coarsen the fine-grained parallelism through
+%%   general heuristics of graph coarsening based on the task graph description of the user. The originality
+%%   of our approach is to alleviate the programming task by letting the developer express the natural task decomposition of its problem
+%%   but then propose a simple operator of coarsening that will apply some heuristics to produce a coarsest task graph.
+
+%%   application programmer first expresses the fine parallelism sparse
+%%   linear algebra parallelism in a natural way. Then, our coarsening
+%%   mechanism applies a selectable coarsening scheme to aggregate
+%%   individual tasks as larger task groups, so as to efficiently feed the
+%%   platform computing units.
+
+
+
+%%   Sparse linear solvers are often the main computational bottleneck in numerical simulations; a large class of the iterative method are composed
+%%   of a Krylov method preconditioned by an Incomplete LU (ILU) factorization (see for example).
+
+%% %%   For sparse linear algebra computations, it is common to use domain
+%% %%   decomposition to generate parallelism. In the special case of
+%% %%   iterative methods, however, domain decomposition may impact the
+%% %%   numerical stability and thus the number of steps required for reaching
+%% %%   convergence. Moreover, the natural parallelism at the sparse linear
+%% %%   algebra computation is too fine grained.

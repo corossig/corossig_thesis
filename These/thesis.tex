@@ -1,0 +1,463 @@
+\documentclass[oneside,12t]{classes/Thesis}
+
+\usepackage[utf8]{inputenc}
+\usepackage{ulem}
+\usepackage[english]{babel}
+
+\usepackage{url}
+\graphicspath{{img/}}
+\DeclareGraphicsExtensions{.pdf,.png}
+
+\usepackage{fixltx2e}
+
+
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{caption}
+\usepackage{subfigure}
+
+\title{A task based programming model for the fine-grain parallelization of sparse linear solvers}
+
+
+\authorFirstName{Corentin}
+\authorLastName{Rossignon}
+\authorMail{corentin.rossignon@gmail.com}
+
+\directors{Pascal \textsc{H\'{e}non}, Olivier \textsc{Aumage}, Samuel \textsc{Thibault} and Raymond \textsc{Namyst}}
+
+\laboratory{LaBRI}
+\laboratoryURL{http://www.labri.fr/}
+\university{Université de Bordeaux}
+\universityURL{http://www.univ-bordeaux.fr/}
+
+
+\logo{bordeaux1}
+\degreeDate{??th ???? 201?}
+\degree{Doctor in Computer Science}
+\degreeSpeciality{High Performance Computing}
+
+\metadataSetup
+
+% turn of those nasty overfull and underfull hboxes
+\hbadness=10000
+\hfuzz=50pt
+
+\begin{document}
+
+\dominitoc
+\tikzstyle{decision} = [diamond, draw, fill=blue!20,
+text width=3em, text centered, node distance=2.5cm, inner sep=0pt,font=\scriptsize]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20,
+text width=4em, text centered, rounded corners, minimum height=1em,font=\scriptsize]
+\tikzstyle{line} = [draw, thick, color=black!50,font=\scriptsize]
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=2.5cm,
+minimum height=0.1em,font=\scriptsize]
+
+\maketitle
+
+%set the number of sectioning levels that get number and appear in the contents
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\frontmatter % book mode only
+\pagenumbering{roman}
+%\input{src/acknowledgement}
+%\input{src/abstract_fr}
+%\input{src/abstract_en}
+\tableofcontents
+\mtcaddchapter
+\mainmatter % book mode only
+
+
+
+%=========================================================
+\chapter{Context : Simulate petroleum extraction}
+\minitoc
+\vspace{1cm}
+%=========================================================
+
+%+++++++++++++++++++++++++++++++
+\section{Reservoir simulation}
+%-------------------------------
+\subsection{Overview}
+  \begin{itemize}
+    \item Explain what is a reservoir
+    \item What is it use for ?
+  \end{itemize}
+%-------------------------------
+\subsection{From physics to computation}
+  \begin{itemize}
+    \item Rapid transition between physical model to sparse non-linear system
+    \item Explain newton
+  \end{itemize}
+%+++++++++++++++++++++++++++++++
+
+
+%+++++++++++++++++++++++++++++++
+\section{Linear algebra}
+%-------------------------------
+\subsection{Dense linear algebra}
+  \begin{itemize}
+    \item Well studied in HPC
+    \item Performance don't scale with problem size
+  \end{itemize}
+%-------------------------------
+\subsection{Sparse linear algebra}
+  \begin{itemize}
+    \item Explain format and computation problem (bandwidth, ...)
+    \item Allow to solve large problem
+  \end{itemize}
+%+++++++++++++++++++++++++++++++
+
+
+%+++++++++++++++++++++++++++++++
+\section{Solving large sparse linear system}
+%-------------------------------
+\subsection{GMRES}
+  \begin{itemize}
+    \item Iterative method for general matrix
+    \item Doesn't work well with our matrices
+  \end{itemize}
+%-------------------------------
+\subsection{Preconditioned GMRES}
+  \begin{itemize}
+    \item Need to add a ILU part which is not parallel
+    \item Improve a lot convergence of our matrices
+  \end{itemize}
+%-------------------------------
+\subsection{Domain decomposition}
+  \begin{itemize}
+    \item Can be use to obtain complete parallel part
+    \item Degrade convergence
+  \end{itemize}
+%-------------------------------
+\subsection{Reservoir case studies}
+  \begin{itemize}
+    \item SPE10, often use in reservoir benchmark
+    \item generate
+    \item ordering -> change preconditionner performance
+  \end{itemize}
+%+++++++++++++++++++++++++++++++
+
+
+
+%+++++++++++++++++++++++++++++++
+\section{Computers to target}
+%-------------------------------
+\subsection{SMP}
+  \begin{itemize}
+    \item Memory don't scale with a high number of core
+  \end{itemize}
+%-------------------------------
+\subsection{NUMA}
+  \begin{itemize}
+    \item Memory scale with a high number of core
+    \item Need to add some support in program to obtain performance
+  \end{itemize}
+%-------------------------------
+\subsection{Many-core}
+  \begin{itemize}
+    \item Xeon phi
+    \item GPU ?
+    \item Too many change in program but not always performance (data transfer)
+  \end{itemize}
+%-------------------------------
+\subsection{Our computers}
+\subsubsection{Rostand}
+  \begin{itemize}
+    \item Bi-socket
+    \item NUMA
+    \item 12 Cores
+    \item MPI
+  \end{itemize}
+\subsubsection{Manumanu}
+  \begin{itemize}
+    \item 20 sockets
+    \item NUMA
+    \item Altix UV100
+    \item 160 Cores
+  \end{itemize}
+%+++++++++++++++++++++++++++++++
+
+\input{src/multi_core_parallelism}
+
+
+
+
+%=========================================================
+\chapter{A problem of granularity}
+\minitoc
+\vspace{1cm}
+%=========================================================
+%+++++++++++++++++++++++++++++++
+\section{Parallelize preconditioned GMRES}
+%-------------------------------
+\subsection{GMRES algorithm}
+  \begin{itemize}
+    \item Explain GMRES algorithm
+    \item it is mostly parallel for BLAS1 and BLAS2
+    \item We need to use a preconditionner
+  \end{itemize}
+%-------------------------------
+\subsection{Incomplete LU}
+  \begin{itemize}
+    \item Explain ILU
+    \item It can be parallel...
+    \item ... but a lot of data dependencies
+    \item and small tasks, a granularity problem
+  \end{itemize}
+%-------------------------------
+%+++++++++++++++++++++++++++++++
+
+%+++++++++++++++++++++++++++++++
+\section{Why granularity is so important ?}
+%-------------------------------
+\subsection{Parallelism vs overhead}
+  \begin{itemize}
+    \item Talk about runtime overhead
+    \item Give some result without aggregation
+  \end{itemize}
+%-------------------------------
+\subsection{Current solutions}
+  \begin{itemize}
+    \item X-KAAPI
+    \item SCOOP
+    \item Capsules
+    \item for each explain why they don't fit our problem
+  \end{itemize}
+%+++++++++++++++++++++++++++++++
+
+
+%+++++++++++++++++++++++++++++++
+\section{My solution to our granularity problem}
+%-------------------------------
+\subsection{Taggre : a task aggregator framework}
+%-------------------------------
+\subsection{Aggregate operators}
+  \begin{itemize}
+    \item Put tasks together without making cycle in DAG
+  \end{itemize}
+%-------------------------------
+\subsubsection{Sequential}
+\subsubsection{Front}
+\subsubsection{Depth front}
+\subsubsection{Continuation oriented}
+%-------------------------------
+\subsection{Examples of strategies}
+  \begin{itemize}
+    \item Talk about the 7 dwarfs (\url{http://view.eecs.berkeley.edu/wiki/Dwarf_Mine})
+  \end{itemize}
+%+++++++++++++++++++++++++++++++
+
+
+
+
+%+++++++++++++++++++++++++++++++
+\section{Results}
+%-------------------------------
+\subsection{Factorization and Triangular solve improvement}
+  \begin{itemize}
+    \item Explain why we benchmark this part
+    \item Try a lot of coarse string
+  \end{itemize}
+%-------------------------------
+\subsection{Aggregation overhead}
+  \begin{itemize}
+    \item Explain why it isn't a real problem
+    \item Give some numbers
+  \end{itemize}
+%-------------------------------
+\subsection{Subdomain decomposition}
+  \begin{itemize}
+    \item Explain why it isn't a real problem
+    \item Give some numbers
+    \item Talk about bandwidth
+  \end{itemize}
+%-------------------------------
+\subsection{Discussion}
+  \begin{itemize}
+    \item Compare domain with domain decomposition
+  \end{itemize}
+%+++++++++++++++++++++++++++++++
+
+
+
+
+
+%=========================================================
+\chapter{Memory bandwidth limitation}
+\minitoc
+\vspace{1cm}
+%=========================================================
+%+++++++++++++++++++++++++++++++
+\section{Why my SpMV is so slow ?}
+%-------------------------------
+\subsection{Two times more cores but not two times faster}
+  \begin{itemize}
+    \item Just draw some curves
+  \end{itemize}
+%-------------------------------
+\subsection{Memory explanation}
+  \begin{itemize}
+    \item Define memory penalty
+    \item Talk about bandwidth
+  \end{itemize}
+%+++++++++++++++++++++++++++++++
+
+
+%+++++++++++++++++++++++++++++++
+\section{Current NUMA management}
+%-------------------------------
+\subsection{First touch allocation policy}
+%-------------------------------
+\subsection{Interleaved memory allocation policy}
+%-------------------------------
+\subsection{Next-touch}
+%-------------------------------
+\subsection{Automatic solution}
+%-------------------------------
+\subsection{One MPI per NUMA bank}
+%+++++++++++++++++++++++++++++++
+
+
+%+++++++++++++++++++++++++++++++
+\section{Handle NUMA directly in scheduler}
+%-------------------------------
+\subsection{Status of current scheduler}
+  \begin{itemize}
+    \item PaRSEC : one vp per NUMA
+  \end{itemize}
+%-------------------------------
+\subsection{NATaS : schedule tasks on NUMA}
+  \begin{itemize}
+    \item bind task to a processor
+    \item allow NUMA work-stealing
+    \item bind memory pages
+  \end{itemize}
+%+++++++++++++++++++++++++++++++
+
+
+%+++++++++++++++++++++++++++++++
+\section{Results}
+%-------------------------------
+\subsection{Factorization and Triangular solve}
+  \begin{itemize}
+    \item Support NUMA in tasks
+  \end{itemize}
+%-------------------------------
+\subsection{Sparse matrix vector multiplication}
+  \begin{itemize}
+    \item problem of SpMV
+  \end{itemize}
+%-------------------------------
+\subsection{First touch}
+results
+%-------------------------------
+\subsection{Interleave}
+results
+%-------------------------------
+\subsection{Automatic NUMA balancing}
+  \begin{itemize}
+    \item Results on personal machine
+    \item very recent kernel
+  \end{itemize}
+%-------------------------------
+\subsection{NATaS}
+results
+%-------------------------------
+\subsection{Discussion}
+  \begin{itemize}
+    \item Interleave isn't so bad on bi-socket,...
+    \item NATaS always give best result
+    \item Maybe NATaS isn't the good answer (better scheduler or MPI)
+  \end{itemize}
+%+++++++++++++++++++++++++++++++
+
+
+%=========================================================
+\chapter{The fork and join syndrome}
+\minitoc
+\vspace{1cm}
+%=========================================================
+%+++++++++++++++++++++++++++++++
+%\section{Data dependencies}
+%-------------------------------
+%\subsection{Implicit dependencies}
+%-------------------------------
+%\subsection{Explicit dependencies}
+%+++++++++++++++++++++++++++++++
+
+
+%+++++++++++++++++++++++++++++++
+\section{The fork and join syndrome}
+%-------------------------------
+\subsection{How to see it ?}
+  \begin{itemize}
+    \item Show that we have too much synchronization (Paje trace)
+  \end{itemize}
+%-------------------------------
+\subsection{Domain decomposition and overlap}
+  \begin{itemize}
+    \item Explain what domain decomposition and overlap is
+  \end{itemize}
+%+++++++++++++++++++++++++++++++
+
+
+%+++++++++++++++++++++++++++++++
+\section{Pipeline GMRES steps}
+  \begin{itemize}
+    \item explain the solution to merge graph of task
+  \end{itemize}
+%+++++++++++++++++++++++++++++++
+
+
+%+++++++++++++++++++++++++++++++
+\section{Results}
+%-------------------------------
+\subsection{Without MPI}
+  \begin{itemize}
+    \item Almost no gain because no many sync
+  \end{itemize}
+%-------------------------------
+\subsection{With MPI}
+  \begin{itemize}
+    \item Gain when increase number of MPI process
+  \end{itemize}
+%-------------------------------
+\subsection{Discussion}
+%+++++++++++++++++++++++++++++++
+
+
+
+
+%=========================================================
+\chapter{Conclusions and perspectives}
+\minitoc
+\vspace{1cm}
+%=========================================================
+%+++++++++++++++++++++++++++++++
+\section{Conclusion}
+  \begin{itemize}
+    \item Coarsening allow us to parallelize problems with very small computation per task
+    \item Improve bandwidth thanks to NUMA architecture
+  \end{itemize}
+%+++++++++++++++++++++++++++++++
+
+
+%+++++++++++++++++++++++++++++++
+\section{Perspectives}
+  \begin{itemize}
+    \item Automatic coarse tuning
+  \end{itemize}
+%+++++++++++++++++++++++++++++++
+
+
+
+\backmatter % book mode only
+%\bibliographystyle{alpha}
+%\bibliography{anrt}
+\appendix
+
+\bibliographystyle{plainnat}
+\bibliography{thesis}
+\end{document}

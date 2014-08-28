@@ -1,0 +1,1570 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1091.2499"
+   height="1484.035"
+   id="svg3948"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="Nouveau document 2">
+  <defs
+     id="defs3950">
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend"
+       style="overflow:visible">
+      <path
+         id="path6788"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3665"
+       style="overflow:visible">
+      <path
+         id="path3667"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="749.19638"
+     inkscape:cy="770.83896"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="547"
+     inkscape:window-height="492"
+     inkscape:window-x="3618"
+     inkscape:window-y="1002"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata3953">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(374.19638,180.83392)">
+    <g
+       id="g7842"
+       transform="matrix(1.2499999,0,0,1.2499999,-394.9929,-98.930248)">
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path6011"
+         d="m 78.002921,1117.7052 792.522519,0"
+         style="fill:none;stroke:#000000;stroke-width:0.80000001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text7411"
+         y="1099.4357"
+         x="868.00543"
+         style="font-size:22.39999962px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="1099.4357"
+           x="868.00543"
+           id="tspan7413"
+           sodipodi:role="line">t</tspan></text>
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path7415"
+         d="m 78.366575,1117.8473 0,-75.1726"
+         style="fill:none;stroke:#000000;stroke-width:0.80000001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text7601"
+         y="1038.6655"
+         x="50.283615"
+         style="font-size:22.39999962px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="1038.6655"
+           x="50.283615"
+           id="tspan7603"
+           sodipodi:role="line">%</tspan><tspan
+           id="tspan7605"
+           y="1066.6655"
+           x="50.283615"
+           sodipodi:role="line">CPU</tspan></text>
+      <path
+         sodipodi:nodetypes="cssssssssccccc"
+         inkscape:connector-curvature="0"
+         id="path7685"
+         d="m 84.974405,1115.8721 c 1.158314,-2.1225 2.400878,-5.3912 3.916085,-10.3014 0.756047,-2.4501 1.926947,-6.2423 2.602,-8.4273 1.649593,-5.3393 2.886343,-8.5586 4.720271,-12.287 6.457229,-13.1274 17.171899,-21.689 34.099419,-27.2471 9.95335,-3.2681 21.81111,-5.3134 36.41696,-6.2814 10.24287,-0.6788 31.51409,-0.6203 42.648,0.1174 36.55156,2.4218 59.66209,9.7258 73.58911,23.2576 6.34511,6.1651 10.02644,12.1938 15.1767,24.854 3.83089,9.4169 5.64896,12.8349 8.61899,16.2039 l 1.33937,1.9349 c -74.62422,0 -149.70783,0.042 -224.332047,0.042 l 1.205142,-1.8654 z"
+         style="fill:#ffff00;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-miterlimit:4;stroke-dasharray:none" />
+      <path
+         sodipodi:nodetypes="sscssscccscs"
+         inkscape:connector-curvature="0"
+         id="path7687"
+         d="m 532.95804,1104.0845 c 0.0823,-7.5 0.22045,-23.316 0.3072,-35.147 l 0.15773,-21.5109 8.79571,-0.2583 c 8.4154,-0.2472 91.96448,0.4909 122.25561,0.409 27.61411,-0.075 13.8374,69.9221 21.47745,70.0073 2.51745,0.028 6.41103,-0.099 22.13342,0.1229 1.81471,-17.575 4.27133,-31.6268 4.32689,-29.4322 3.2548,29.2108 0.71797,1.3309 3.29766,29.2732 -2.09636,-0.02 -34.1853,0.172 -86.95545,0.172 l -95.94572,0 z"
+         style="fill:#ff6347;fill-opacity:1;stroke:#000000;stroke-width:0.43175581;stroke-miterlimit:4;stroke-dasharray:none" />
+      <path
+         sodipodi:nodetypes="cssccccssscsscccc"
+         inkscape:connector-curvature="0"
+         id="path7689"
+         d="m 717.05761,1116.0757 c 0.44262,-4.9587 1.04183,-16.0304 1.2627,-23.3313 0.1883,-6.2243 0.19455,-13.2673 0.0236,-26.6167 -0.12785,-9.984 -0.21493,-18.1726 -0.19351,-18.1968 0.10304,-0.1167 15.0627,-0.7528 23.07798,-0.9813 17.0303,-0.4857 28.9117,0.1344 32.10221,1.6755 1.38517,0.6691 4.4778,5.0984 5.99999,8.5933 1.08448,2.4898 1.65616,4.4571 2.23629,7.6954 0.43129,2.4075 0.49311,3.8316 0.64729,14.912 0.12626,9.0739 0.26101,12.9146 0.51967,14.8119 1.04443,7.6606 3.13912,14.4735 6.52118,21.2097 0.41363,0.8239 0.75205,1.5506 0.75205,1.6149 0,0.064 -16.44382,0.1169 -36.54182,0.1169 l -36.54182,0 0.1342,-1.5035 0,0 z"
+         style="fill:#add8e6;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-miterlimit:4;stroke-dasharray:none" />
+      <path
+         style="fill:#90ee90;fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-miterlimit:4;stroke-dasharray:none"
+         d="m 309.45308,1115.9469 c 1.15831,-2.1225 2.40087,-5.3912 3.91608,-10.3014 0.75605,-2.4501 1.92695,-6.2423 2.602,-8.4273 1.64959,-5.3393 2.88634,-8.5586 4.72027,-12.287 6.45723,-13.1274 17.1719,-21.689 34.09942,-27.2471 9.95335,-3.2681 21.81111,-5.3134 36.41696,-6.2814 10.24287,-0.6788 31.51409,-0.6203 42.648,0.1174 36.55156,2.4218 59.66209,9.7258 73.58911,23.2576 6.34511,6.1651 10.02644,12.1938 15.1767,24.854 3.83089,9.4169 5.64896,12.8349 8.61899,16.2039 l 1.33937,1.9349 c -74.62422,0 -149.70783,0.042 -224.33205,0.042 l 1.20515,-1.8654 z"
+         id="path3658"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cssssssssccccc" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:27.99999809px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="73.619987"
+       y="1162.0167"
+       id="text4837"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="73.619987"
+         y="1162.0167"
+         id="tspan4841">MPI_Allreduce</tspan></text>
+    <g
+       transform="matrix(1.2499999,0,0,1.2499999,-384.99302,-190.83392)"
+       id="g4890">
+      <g
+         transform="translate(-7.3626783,0)"
+         id="g7591">
+        <polygon
+           points="8,-371 360,-371 360,-8 8,-8 8,-8 "
+           id="polygon12"
+           style="fill:none;stroke:#000000"
+           transform="translate(268.49999,379.5)" />
+        <text
+           x="452.5"
+           y="23.700012"
+           font-size="14.00"
+           id="text14"
+           style="font-size:14px;text-anchor:middle;font-family:'Times,serif'">TRSV_L</text>
+        <g
+           id="g3996"
+           transform="translate(264.49999,-3.4999999)">
+          <g
+             transform="translate(17.314449,365.46742)"
+             id="node1"
+             class="node">
+            <title
+               id="title3137">TRSV_L 1</title>
+            <ellipse
+               cx="168"
+               cy="-306"
+               rx="50.068401"
+               ry="18"
+               id="ellipse3139"
+               d="m 218.0684,-306 c 0,9.94113 -22.41639,18 -50.0684,18 -27.65201,0 -50.0684,-8.05887 -50.0684,-18 0,-9.94113 22.41639,-18 50.0684,-18 27.65201,0 50.0684,8.05887 50.0684,18 z"
+               sodipodi:cx="168"
+               sodipodi:cy="-306"
+               sodipodi:rx="50.068401"
+               sodipodi:ry="18"
+               style="fill:#ffff00;stroke:#000000" />
+            <text
+               x="168"
+               y="-302.29999"
+               font-size="14.00"
+               id="text3141"
+               style="font-size:14px;text-anchor:middle;font-family:'Times,serif'">TRSV_L 1</text>
+          </g>
+          <g
+             transform="translate(17.314449,365.46742)"
+             id="node2"
+             class="node">
+            <title
+               id="title3144">TRSV_L 2</title>
+            <ellipse
+               cx="109"
+               cy="-234"
+               rx="50.068401"
+               ry="18"
+               id="ellipse3146"
+               d="m 159.0684,-234 c 0,9.94113 -22.41639,18 -50.0684,18 -27.652015,0 -50.068401,-8.05887 -50.068401,-18 0,-9.94113 22.416386,-18 50.068401,-18 27.65201,0 50.0684,8.05887 50.0684,18 z"
+               sodipodi:cx="109"
+               sodipodi:cy="-234"
+               sodipodi:rx="50.068401"
+               sodipodi:ry="18"
+               style="fill:#ffff00;stroke:#000000" />
+            <text
+               x="109"
+               y="-230.3"
+               font-size="14.00"
+               id="text3148"
+               style="font-size:14px;text-anchor:middle;font-family:'Times,serif'">TRSV_L 2</text>
+          </g>
+          <g
+             transform="translate(17.314449,365.46742)"
+             id="edge1"
+             class="edge">
+            <title
+               id="title3151">TRSV_L 1-&gt;TRSV_L 2</title>
+            <path
+               d="m 154.018,-288.411 c -7.348,8.718 -16.491,19.566 -24.614,29.203"
+               id="path3153"
+               inkscape:connector-curvature="0"
+               style="fill:none;stroke:#000000" />
+            <polygon
+               points="122.882,-251.47 126.65,-261.372 132.003,-256.861 132.003,-256.861 "
+               id="polygon3155"
+               style="fill:#000000;stroke:#000000" />
+          </g>
+          <g
+             transform="translate(17.314449,365.46742)"
+             id="node3"
+             class="node">
+            <title
+               id="title3158">TRSV_L 4</title>
+            <ellipse
+               cx="227"
+               cy="-234"
+               rx="50.068401"
+               ry="18"
+               id="ellipse3160"
+               d="m 277.0684,-234 c 0,9.94113 -22.41639,18 -50.0684,18 -27.65201,0 -50.0684,-8.05887 -50.0684,-18 0,-9.94113 22.41639,-18 50.0684,-18 27.65201,0 50.0684,8.05887 50.0684,18 z"
+               sodipodi:cx="227"
+               sodipodi:cy="-234"
+               sodipodi:rx="50.068401"
+               sodipodi:ry="18"
+               style="fill:#ffff00;stroke:#000000" />
+            <text
+               x="227"
+               y="-230.3"
+               font-size="14.00"
+               id="text3162"
+               style="font-size:14px;text-anchor:middle;font-family:'Times,serif'">TRSV_L 4</text>
+          </g>
+          <g
+             transform="translate(17.314449,365.46742)"
+             id="edge2"
+             class="edge">
+            <title
+               id="title3165">TRSV_L 1-&gt;TRSV_L 4</title>
+            <path
+               d="m 181.982,-288.411 c 7.348,8.718 16.491,19.566 24.614,29.203"
+               id="path3167"
+               inkscape:connector-curvature="0"
+               style="fill:none;stroke:#000000" />
+            <polygon
+               points="213.118,-251.47 203.997,-256.861 209.35,-261.372 209.35,-261.372 "
+               id="polygon3169"
+               style="fill:#000000;stroke:#000000" />
+          </g>
+          <g
+             transform="translate(17.314449,365.46742)"
+             id="node4"
+             class="node">
+            <title
+               id="title3172">TRSV_L 3</title>
+            <ellipse
+               cx="50"
+               cy="-162"
+               rx="50.068401"
+               ry="18"
+               id="ellipse3174"
+               d="m 100.0684,-162 c 0,9.94113 -22.416385,18 -50.0684,18 -27.652015,0 -50.06840134,-8.05887 -50.06840134,-18 0,-9.94113 22.41638634,-18 50.06840134,-18 27.652015,0 50.0684,8.05887 50.0684,18 z"
+               sodipodi:cx="50"
+               sodipodi:cy="-162"
+               sodipodi:rx="50.068401"
+               sodipodi:ry="18"
+               style="fill:#ffff00;stroke:#000000" />
+            <text
+               x="50"
+               y="-158.3"
+               font-size="14.00"
+               id="text3176"
+               style="font-size:14px;text-anchor:middle;font-family:'Times,serif'">TRSV_L 3</text>
+          </g>
+          <g
+             transform="translate(17.314449,365.46742)"
+             id="edge3"
+             class="edge">
+            <title
+               id="title3179">TRSV_L 2-&gt;TRSV_L 3</title>
+            <path
+               d="m 95.0178,-216.411 c -7.3477,8.718 -16.4909,19.566 -24.6142,29.203"
+               id="path3181"
+               inkscape:connector-curvature="0"
+               style="fill:none;stroke:#000000" />
+            <polygon
+               points="63.8818,-179.47 67.6504,-189.372 73.0028,-184.861 73.0028,-184.861 "
+               id="polygon3183"
+               style="fill:#000000;stroke:#000000" />
+          </g>
+          <g
+             transform="translate(17.314449,365.46742)"
+             id="node5"
+             class="node">
+            <title
+               id="title3186">TRSV_L 5</title>
+            <ellipse
+               cx="168"
+               cy="-162"
+               rx="50.068401"
+               ry="18"
+               id="ellipse3188"
+               d="m 218.0684,-162 c 0,9.94113 -22.41639,18 -50.0684,18 -27.65201,0 -50.0684,-8.05887 -50.0684,-18 0,-9.94113 22.41639,-18 50.0684,-18 27.65201,0 50.0684,8.05887 50.0684,18 z"
+               sodipodi:cx="168"
+               sodipodi:cy="-162"
+               sodipodi:rx="50.068401"
+               sodipodi:ry="18"
+               style="fill:#ffff00;stroke:#000000" />
+            <text
+               x="168"
+               y="-158.3"
+               font-size="14.00"
+               id="text3190"
+               style="font-size:14px;text-anchor:middle;font-family:'Times,serif'">TRSV_L 5</text>
+          </g>
+          <g
+             transform="translate(17.314449,365.46742)"
+             id="edge4"
+             class="edge">
+            <title
+               id="title3193">TRSV_L 2-&gt;TRSV_L 5</title>
+            <path
+               d="m 122.982,-216.411 c 7.348,8.718 16.491,19.566 24.614,29.203"
+               id="path3195"
+               inkscape:connector-curvature="0"
+               style="fill:none;stroke:#000000" />
+            <polygon
+               points="154.118,-179.47 144.997,-184.861 150.35,-189.372 150.35,-189.372 "
+               id="polygon3197"
+               style="fill:#000000;stroke:#000000" />
+          </g>
+          <g
+             transform="translate(17.314449,365.46742)"
+             id="edge6"
+             class="edge">
+            <title
+               id="title3200">TRSV_L 4-&gt;TRSV_L 5</title>
+            <path
+               d="m 213.018,-216.411 c -7.348,8.718 -16.491,19.566 -24.614,29.203"
+               id="path3202"
+               inkscape:connector-curvature="0"
+               style="fill:none;stroke:#000000" />
+            <polygon
+               points="181.882,-179.47 185.65,-189.372 191.003,-184.861 191.003,-184.861 "
+               id="polygon3204"
+               style="fill:#000000;stroke:#000000" />
+          </g>
+          <g
+             transform="translate(17.314449,365.46742)"
+             id="node7"
+             class="node">
+            <title
+               id="title3207">TRSV_L 7</title>
+            <ellipse
+               cx="286"
+               cy="-162"
+               rx="50.068401"
+               ry="18"
+               id="ellipse3209"
+               d="m 336.0684,-162 c 0,9.94113 -22.41639,18 -50.0684,18 -27.65201,0 -50.0684,-8.05887 -50.0684,-18 0,-9.94113 22.41639,-18 50.0684,-18 27.65201,0 50.0684,8.05887 50.0684,18 z"
+               sodipodi:cx="286"
+               sodipodi:cy="-162"
+               sodipodi:rx="50.068401"
+               sodipodi:ry="18"
+               style="fill:#ffff00;stroke:#000000" />
+            <text
+               x="286"
+               y="-158.3"
+               font-size="14.00"
+               id="text3211"
+               style="font-size:14px;text-anchor:middle;font-family:'Times,serif'">TRSV_L 7</text>
+          </g>
+          <g
+             transform="translate(17.314449,365.46742)"
+             id="edge7"
+             class="edge">
+            <title
+               id="title3214">TRSV_L 4-&gt;TRSV_L 7</title>
+            <path
+               d="m 240.982,-216.411 c 7.348,8.718 16.491,19.566 24.614,29.203"
+               id="path3216"
+               inkscape:connector-curvature="0"
+               style="fill:none;stroke:#000000" />
+            <polygon
+               points="272.118,-179.47 262.997,-184.861 268.35,-189.372 268.35,-189.372 "
+               id="polygon3218"
+               style="fill:#000000;stroke:#000000" />
+          </g>
+          <g
+             transform="translate(17.314449,365.46742)"
+             id="node6"
+             class="node">
+            <title
+               id="title3221">TRSV_L 6</title>
+            <ellipse
+               cx="109"
+               cy="-90"
+               rx="50.068401"
+               ry="18"
+               id="ellipse3223"
+               d="m 159.0684,-90 c 0,9.941125 -22.41639,18 -50.0684,18 -27.652015,0 -50.068401,-8.058875 -50.068401,-18 0,-9.941125 22.416386,-18 50.068401,-18 27.65201,0 50.0684,8.058875 50.0684,18 z"
+               sodipodi:cx="109"
+               sodipodi:cy="-90"
+               sodipodi:rx="50.068401"
+               sodipodi:ry="18"
+               style="fill:#ffff00;stroke:#000000" />
+            <text
+               x="109"
+               y="-86.300003"
+               font-size="14.00"
+               id="text3225"
+               style="font-size:14px;text-anchor:middle;font-family:'Times,serif'">TRSV_L 6</text>
+          </g>
+          <g
+             transform="translate(17.314449,365.46742)"
+             id="edge5"
+             class="edge">
+            <title
+               id="title3228">TRSV_L 3-&gt;TRSV_L 6</title>
+            <path
+               d="m 63.9822,-144.411 c 7.3477,8.718 16.4909,19.566 24.6142,29.203"
+               id="path3230"
+               inkscape:connector-curvature="0"
+               style="fill:none;stroke:#000000" />
+            <polygon
+               points="95.1182,-107.47 85.9972,-112.861 91.3496,-117.372 91.3496,-117.372 "
+               id="polygon3232"
+               style="fill:#000000;stroke:#000000" />
+          </g>
+          <g
+             transform="translate(17.314449,365.46742)"
+             id="edge8"
+             class="edge">
+            <title
+               id="title3235">TRSV_L 5-&gt;TRSV_L 6</title>
+            <path
+               d="m 154.018,-144.411 c -7.348,8.718 -16.491,19.566 -24.614,29.203"
+               id="path3237"
+               inkscape:connector-curvature="0"
+               style="fill:none;stroke:#000000" />
+            <polygon
+               points="122.882,-107.47 126.65,-117.372 132.003,-112.861 132.003,-112.861 "
+               id="polygon3239"
+               style="fill:#000000;stroke:#000000" />
+          </g>
+          <g
+             transform="translate(17.314449,365.46742)"
+             id="node8"
+             class="node">
+            <title
+               id="title3242">TRSV_L 8</title>
+            <ellipse
+               cx="227"
+               cy="-90"
+               rx="50.068401"
+               ry="18"
+               id="ellipse3244"
+               d="m 277.0684,-90 c 0,9.941125 -22.41639,18 -50.0684,18 -27.65201,0 -50.0684,-8.058875 -50.0684,-18 0,-9.941125 22.41639,-18 50.0684,-18 27.65201,0 50.0684,8.058875 50.0684,18 z"
+               sodipodi:cx="227"
+               sodipodi:cy="-90"
+               sodipodi:rx="50.068401"
+               sodipodi:ry="18"
+               style="fill:#ffff00;stroke:#000000" />
+            <text
+               x="227"
+               y="-86.300003"
+               font-size="14.00"
+               id="text3246"
+               style="font-size:14px;text-anchor:middle;font-family:'Times,serif'">TRSV_L 8</text>
+          </g>
+          <g
+             transform="translate(17.314449,365.46742)"
+             id="edge9"
+             class="edge">
+            <title
+               id="title3249">TRSV_L 5-&gt;TRSV_L 8</title>
+            <path
+               d="m 181.982,-144.411 c 7.348,8.718 16.491,19.566 24.614,29.203"
+               id="path3251"
+               inkscape:connector-curvature="0"
+               style="fill:none;stroke:#000000" />
+            <polygon
+               points="213.118,-107.47 203.997,-112.861 209.35,-117.372 209.35,-117.372 "
+               id="polygon3253"
+               style="fill:#000000;stroke:#000000" />
+          </g>
+          <g
+             transform="translate(17.314449,365.46742)"
+             id="node9"
+             class="node">
+            <title
+               id="title3256">TRSV_L 9</title>
+            <ellipse
+               cx="168"
+               cy="-18"
+               rx="50.068401"
+               ry="18"
+               id="ellipse3258"
+               d="m 218.0684,-18 c 0,9.9411255 -22.41639,18 -50.0684,18 -27.65201,0 -50.0684,-8.0588745 -50.0684,-18 0,-9.941125 22.41639,-18 50.0684,-18 27.65201,0 50.0684,8.058875 50.0684,18 z"
+               sodipodi:cx="168"
+               sodipodi:cy="-18"
+               sodipodi:rx="50.068401"
+               sodipodi:ry="18"
+               style="fill:#ffff00;stroke:#000000" />
+            <text
+               x="168"
+               y="-14.3"
+               font-size="14.00"
+               id="text3260"
+               style="font-size:14px;text-anchor:middle;font-family:'Times,serif'">TRSV_L 9</text>
+          </g>
+          <g
+             transform="translate(17.314449,365.46742)"
+             id="edge10"
+             class="edge">
+            <title
+               id="title3263">TRSV_L 6-&gt;TRSV_L 9</title>
+            <path
+               d="m 122.982,-72.411 c 7.348,8.7177 16.491,19.5656 24.614,29.2033"
+               id="path3265"
+               inkscape:connector-curvature="0"
+               style="fill:none;stroke:#000000" />
+            <polygon
+               points="154.118,-35.4699 144.997,-40.8606 150.35,-45.3719 150.35,-45.3719 "
+               id="polygon3267"
+               style="fill:#000000;stroke:#000000" />
+          </g>
+          <g
+             transform="translate(17.314449,365.46742)"
+             id="edge11"
+             class="edge">
+            <title
+               id="title3270">TRSV_L 7-&gt;TRSV_L 8</title>
+            <path
+               d="m 272.018,-144.411 c -7.348,8.718 -16.491,19.566 -24.614,29.203"
+               id="path3272"
+               inkscape:connector-curvature="0"
+               style="fill:none;stroke:#000000" />
+            <polygon
+               points="240.882,-107.47 244.65,-117.372 250.003,-112.861 250.003,-112.861 "
+               id="polygon3274"
+               style="fill:#000000;stroke:#000000" />
+          </g>
+          <g
+             transform="translate(17.314449,365.46742)"
+             id="edge12"
+             class="edge">
+            <title
+               id="title3277">TRSV_L 8-&gt;TRSV_L 9</title>
+            <path
+               d="m 213.018,-72.411 c -7.348,8.7177 -16.491,19.5656 -24.614,29.2033"
+               id="path3279"
+               inkscape:connector-curvature="0"
+               style="fill:none;stroke:#000000" />
+            <polygon
+               points="181.882,-35.4699 185.65,-45.3719 191.003,-40.8606 191.003,-40.8606 "
+               id="polygon3281"
+               style="fill:#000000;stroke:#000000" />
+          </g>
+        </g>
+      </g>
+      <g
+         transform="translate(-7.3626793,1.91638)"
+         id="g7680">
+        <g
+           id="g6382"
+           transform="translate(0,-14.4)">
+          <polygon
+             transform="translate(-93.500009,763.9837)"
+             style="fill:none;stroke:#000000"
+             id="polygon19"
+             points="368,-8 368,-371 724,-371 724,-8 368,-8 " />
+          <text
+             style="font-size:14px;text-anchor:middle;font-family:'Times,serif'"
+             id="text21"
+             font-size="14.00"
+             y="408.18372"
+             x="452.5">TRSV_U</text>
+          <g
+             inkscape:transform-center-y="46.774079"
+             inkscape:transform-center-x="-37.864731"
+             id="g3713"
+             transform="translate(279.20679,420.23299)">
+            <g
+               class="node"
+               id="node1-8"
+               transform="translate(4,328)">
+              <title
+                 id="title3297">TRSV_U 1</title>
+              <ellipse
+                 style="fill:#90ee90;stroke:#000000"
+                 sodipodi:ry="18"
+                 sodipodi:rx="50.542702"
+                 sodipodi:cy="-18"
+                 sodipodi:cx="168"
+                 d="m 218.5427,-18 c 0,9.9411255 -22.62874,18 -50.5427,18 -27.91396,0 -50.5427,-8.0588745 -50.5427,-18 0,-9.941125 22.62874,-18 50.5427,-18 27.91396,0 50.5427,8.058875 50.5427,18 z"
+                 id="ellipse3299"
+                 ry="18"
+                 rx="50.542702"
+                 cy="-18"
+                 cx="168" />
+              <text
+                 style="font-size:14px;text-anchor:middle;font-family:'Times,serif'"
+                 id="text3301"
+                 font-size="14.00"
+                 y="-14.3"
+                 x="168">TRSV_U 1</text>
+            </g>
+            <g
+               class="node"
+               id="node2-8"
+               transform="translate(4,328)">
+              <title
+                 id="title3304">TRSV_U 2</title>
+              <ellipse
+                 style="fill:#90ee90;stroke:#000000"
+                 sodipodi:ry="18"
+                 sodipodi:rx="50.542702"
+                 sodipodi:cy="-90"
+                 sodipodi:cx="109"
+                 d="m 159.5427,-90 c 0,9.941125 -22.62874,18 -50.5427,18 -27.913963,0 -50.542702,-8.058875 -50.542702,-18 0,-9.941125 22.628739,-18 50.542702,-18 27.91396,0 50.5427,8.058875 50.5427,18 z"
+                 id="ellipse3306"
+                 ry="18"
+                 rx="50.542702"
+                 cy="-90"
+                 cx="109" />
+              <text
+                 style="font-size:14px;text-anchor:middle;font-family:'Times,serif'"
+                 id="text3308"
+                 font-size="14.00"
+                 y="-86.300003"
+                 x="109">TRSV_U 2</text>
+            </g>
+            <g
+               class="edge"
+               id="edge1-2"
+               transform="translate(4,328)">
+              <title
+                 id="title3311">TRSV_U 2-&gt;TRSV_U 1</title>
+              <path
+                 style="fill:none;stroke:#000000"
+                 inkscape:connector-curvature="0"
+                 id="path3313"
+                 d="m 122.982,-72.411 c 7.348,8.7177 16.491,19.5656 24.614,29.2033" />
+              <polygon
+                 style="fill:#000000;stroke:#000000"
+                 id="polygon3315"
+                 points="144.997,-40.8606 150.35,-45.3719 150.35,-45.3719 154.118,-35.4699 " />
+            </g>
+            <g
+               class="node"
+               id="node3-4"
+               transform="translate(4,328)">
+              <title
+                 id="title3318">TRSV_U 3</title>
+              <ellipse
+                 style="fill:#90ee90;stroke:#000000"
+                 sodipodi:ry="18"
+                 sodipodi:rx="50.542702"
+                 sodipodi:cy="-162"
+                 sodipodi:cx="50"
+                 d="m 100.5427,-162 c 0,9.94113 -22.628737,18 -50.5427,18 -27.913963,0 -50.54270172,-8.05887 -50.54270172,-18 0,-9.94113 22.62873872,-18 50.54270172,-18 27.913963,0 50.5427,8.05887 50.5427,18 z"
+                 id="ellipse3320"
+                 ry="18"
+                 rx="50.542702"
+                 cy="-162"
+                 cx="50" />
+              <text
+                 style="font-size:14px;text-anchor:middle;font-family:'Times,serif'"
+                 id="text3322"
+                 font-size="14.00"
+                 y="-158.3"
+                 x="50">TRSV_U 3</text>
+            </g>
+            <g
+               class="edge"
+               id="edge2-9"
+               transform="translate(4,328)">
+              <title
+                 id="title3325">TRSV_U 3-&gt;TRSV_U 2</title>
+              <path
+                 style="fill:none;stroke:#000000"
+                 inkscape:connector-curvature="0"
+                 id="path3327"
+                 d="m 63.9822,-144.411 c 7.3477,8.718 16.4909,19.566 24.6142,29.203" />
+              <polygon
+                 style="fill:#000000;stroke:#000000"
+                 id="polygon3329"
+                 points="85.9972,-112.861 91.3496,-117.372 91.3496,-117.372 95.1182,-107.47 " />
+            </g>
+            <g
+               class="node"
+               id="node4-0"
+               transform="translate(4,328)">
+              <title
+                 id="title3332">TRSV_U 4</title>
+              <ellipse
+                 style="fill:#90ee90;stroke:#000000"
+                 sodipodi:ry="18"
+                 sodipodi:rx="50.542702"
+                 sodipodi:cy="-90"
+                 sodipodi:cx="228"
+                 d="m 278.5427,-90 c 0,9.941125 -22.62874,18 -50.5427,18 -27.91396,0 -50.5427,-8.058875 -50.5427,-18 0,-9.941125 22.62874,-18 50.5427,-18 27.91396,0 50.5427,8.058875 50.5427,18 z"
+                 id="ellipse3334"
+                 ry="18"
+                 rx="50.542702"
+                 cy="-90"
+                 cx="228" />
+              <text
+                 style="font-size:14px;text-anchor:middle;font-family:'Times,serif'"
+                 id="text3336"
+                 font-size="14.00"
+                 y="-86.300003"
+                 x="228">TRSV_U 4</text>
+            </g>
+            <g
+               class="edge"
+               id="edge3-7"
+               transform="translate(4,328)">
+              <title
+                 id="title3339">TRSV_U 4-&gt;TRSV_U 1</title>
+              <path
+                 style="fill:none;stroke:#000000"
+                 inkscape:connector-curvature="0"
+                 id="path3341"
+                 d="m 213.781,-72.411 c -7.472,8.7177 -16.771,19.5656 -25.032,29.2033" />
+              <polygon
+                 style="fill:#000000;stroke:#000000"
+                 id="polygon3343"
+                 points="185.968,-45.3403 191.282,-40.7848 191.282,-40.7848 182.117,-35.4699 " />
+            </g>
+            <g
+               class="node"
+               id="node5-0"
+               transform="translate(4,328)">
+              <title
+                 id="title3346">TRSV_U 5</title>
+              <ellipse
+                 style="fill:#90ee90;stroke:#000000"
+                 sodipodi:ry="18"
+                 sodipodi:rx="50.542702"
+                 sodipodi:cy="-162"
+                 sodipodi:cx="169"
+                 d="m 219.5427,-162 c 0,9.94113 -22.62874,18 -50.5427,18 -27.91396,0 -50.5427,-8.05887 -50.5427,-18 0,-9.94113 22.62874,-18 50.5427,-18 27.91396,0 50.5427,8.05887 50.5427,18 z"
+                 id="ellipse3348"
+                 ry="18"
+                 rx="50.542702"
+                 cy="-162"
+                 cx="169" />
+              <text
+                 style="font-size:14px;text-anchor:middle;font-family:'Times,serif'"
+                 id="text3350"
+                 font-size="14.00"
+                 y="-158.3"
+                 x="169">TRSV_U 5</text>
+            </g>
+            <g
+               class="edge"
+               id="edge4-5"
+               transform="translate(4,328)">
+              <title
+                 id="title3353">TRSV_U 5-&gt;TRSV_U 2</title>
+              <path
+                 style="fill:none;stroke:#000000"
+                 inkscape:connector-curvature="0"
+                 id="path3355"
+                 d="m 154.781,-144.411 c -7.472,8.718 -16.771,19.566 -25.032,29.203" />
+              <polygon
+                 style="fill:#000000;stroke:#000000"
+                 id="polygon3357"
+                 points="126.968,-117.34 132.282,-112.785 132.282,-112.785 123.117,-107.47 " />
+            </g>
+            <g
+               class="edge"
+               id="edge5-6"
+               transform="translate(4,328)">
+              <title
+                 id="title3360">TRSV_U 5-&gt;TRSV_U 4</title>
+              <path
+                 style="fill:none;stroke:#000000"
+                 inkscape:connector-curvature="0"
+                 id="path3362"
+                 d="m 182.982,-144.411 c 7.348,8.718 16.491,19.566 24.614,29.203" />
+              <polygon
+                 style="fill:#000000;stroke:#000000"
+                 id="polygon3364"
+                 points="204.997,-112.861 210.35,-117.372 210.35,-117.372 214.118,-107.47 " />
+            </g>
+            <g
+               class="node"
+               id="node6-4"
+               transform="translate(4,328)">
+              <title
+                 id="title3367">TRSV_U 6</title>
+              <ellipse
+                 style="fill:#90ee90;stroke:#000000"
+                 sodipodi:ry="18"
+                 sodipodi:rx="50.542702"
+                 sodipodi:cy="-234"
+                 sodipodi:cx="109"
+                 d="m 159.5427,-234 c 0,9.94113 -22.62874,18 -50.5427,18 -27.913963,0 -50.542702,-8.05887 -50.542702,-18 0,-9.94113 22.628739,-18 50.542702,-18 27.91396,0 50.5427,8.05887 50.5427,18 z"
+                 id="ellipse3369"
+                 ry="18"
+                 rx="50.542702"
+                 cy="-234"
+                 cx="109" />
+              <text
+                 style="font-size:14px;text-anchor:middle;font-family:'Times,serif'"
+                 id="text3371"
+                 font-size="14.00"
+                 y="-230.3"
+                 x="109">TRSV_U 6</text>
+            </g>
+            <g
+               class="edge"
+               id="edge6-5"
+               transform="translate(4,328)">
+              <title
+                 id="title3374">TRSV_U 6-&gt;TRSV_U 3</title>
+              <path
+                 style="fill:none;stroke:#000000"
+                 inkscape:connector-curvature="0"
+                 id="path3376"
+                 d="m 95.0178,-216.411 c -7.3477,8.718 -16.4909,19.566 -24.6142,29.203" />
+              <polygon
+                 style="fill:#000000;stroke:#000000"
+                 id="polygon3378"
+                 points="67.6504,-189.372 73.0028,-184.861 73.0028,-184.861 63.8818,-179.47 " />
+            </g>
+            <g
+               class="edge"
+               id="edge7-6"
+               transform="translate(4,328)">
+              <title
+                 id="title3381">TRSV_U 6-&gt;TRSV_U 5</title>
+              <path
+                 style="fill:none;stroke:#000000"
+                 inkscape:connector-curvature="0"
+                 id="path3383"
+                 d="m 123.219,-216.411 c 7.472,8.718 16.771,19.566 25.032,29.203" />
+              <polygon
+                 style="fill:#000000;stroke:#000000"
+                 id="polygon3385"
+                 points="145.718,-184.785 151.032,-189.34 151.032,-189.34 154.883,-179.47 " />
+            </g>
+            <g
+               class="node"
+               id="node7-1"
+               transform="translate(4,328)">
+              <title
+                 id="title3388">TRSV_U 7</title>
+              <ellipse
+                 style="fill:#90ee90;stroke:#000000"
+                 sodipodi:ry="18"
+                 sodipodi:rx="50.542702"
+                 sodipodi:cy="-162"
+                 sodipodi:cx="288"
+                 d="m 338.5427,-162 c 0,9.94113 -22.62874,18 -50.5427,18 -27.91396,0 -50.5427,-8.05887 -50.5427,-18 0,-9.94113 22.62874,-18 50.5427,-18 27.91396,0 50.5427,8.05887 50.5427,18 z"
+                 id="ellipse3390"
+                 ry="18"
+                 rx="50.542702"
+                 cy="-162"
+                 cx="288" />
+              <text
+                 style="font-size:14px;text-anchor:middle;font-family:'Times,serif'"
+                 id="text3392"
+                 font-size="14.00"
+                 y="-158.3"
+                 x="288">TRSV_U 7</text>
+            </g>
+            <g
+               class="edge"
+               id="edge8-3"
+               transform="translate(4,328)">
+              <title
+                 id="title3395">TRSV_U 7-&gt;TRSV_U 4</title>
+              <path
+                 style="fill:none;stroke:#000000"
+                 inkscape:connector-curvature="0"
+                 id="path3397"
+                 d="m 273.781,-144.411 c -7.472,8.718 -16.771,19.566 -25.032,29.203" />
+              <polygon
+                 style="fill:#000000;stroke:#000000"
+                 id="polygon3399"
+                 points="245.968,-117.34 251.282,-112.785 251.282,-112.785 242.117,-107.47 " />
+            </g>
+            <g
+               class="node"
+               id="node8-0"
+               transform="translate(4,328)">
+              <title
+                 id="title3402">TRSV_U 8</title>
+              <ellipse
+                 style="fill:#90ee90;stroke:#000000"
+                 sodipodi:ry="18"
+                 sodipodi:rx="50.542702"
+                 sodipodi:cy="-234"
+                 sodipodi:cx="228"
+                 d="m 278.5427,-234 c 0,9.94113 -22.62874,18 -50.5427,18 -27.91396,0 -50.5427,-8.05887 -50.5427,-18 0,-9.94113 22.62874,-18 50.5427,-18 27.91396,0 50.5427,8.05887 50.5427,18 z"
+                 id="ellipse3404"
+                 ry="18"
+                 rx="50.542702"
+                 cy="-234"
+                 cx="228" />
+              <text
+                 style="font-size:14px;text-anchor:middle;font-family:'Times,serif'"
+                 id="text3406"
+                 font-size="14.00"
+                 y="-230.3"
+                 x="228">TRSV_U 8</text>
+            </g>
+            <g
+               class="edge"
+               id="edge9-0"
+               transform="translate(4,328)">
+              <title
+                 id="title3409">TRSV_U 8-&gt;TRSV_U 5</title>
+              <path
+                 style="fill:none;stroke:#000000"
+                 inkscape:connector-curvature="0"
+                 id="path3411"
+                 d="m 214.018,-216.411 c -7.348,8.718 -16.491,19.566 -24.614,29.203" />
+              <polygon
+                 style="fill:#000000;stroke:#000000"
+                 id="polygon3413"
+                 points="186.65,-189.372 192.003,-184.861 192.003,-184.861 182.882,-179.47 " />
+            </g>
+            <g
+               class="edge"
+               id="edge10-5"
+               transform="translate(4,328)">
+              <title
+                 id="title3416">TRSV_U 8-&gt;TRSV_U 7</title>
+              <path
+                 style="fill:none;stroke:#000000"
+                 inkscape:connector-curvature="0"
+                 id="path3418"
+                 d="m 242.219,-216.411 c 7.472,8.718 16.771,19.566 25.032,29.203" />
+              <polygon
+                 style="fill:#000000;stroke:#000000"
+                 id="polygon3420"
+                 points="264.718,-184.785 270.032,-189.34 270.032,-189.34 273.883,-179.47 " />
+            </g>
+            <g
+               class="node"
+               id="node9-8"
+               transform="translate(4,328)">
+              <title
+                 id="title3423">TRSV_U 9</title>
+              <ellipse
+                 style="fill:#90ee90;stroke:#000000"
+                 sodipodi:ry="18"
+                 sodipodi:rx="50.542702"
+                 sodipodi:cy="-306"
+                 sodipodi:cx="168"
+                 d="m 218.5427,-306 c 0,9.94113 -22.62874,18 -50.5427,18 -27.91396,0 -50.5427,-8.05887 -50.5427,-18 0,-9.94113 22.62874,-18 50.5427,-18 27.91396,0 50.5427,8.05887 50.5427,18 z"
+                 id="ellipse3425"
+                 ry="18"
+                 rx="50.542702"
+                 cy="-306"
+                 cx="168" />
+              <text
+                 style="font-size:14px;text-anchor:middle;font-family:'Times,serif'"
+                 id="text3427"
+                 font-size="14.00"
+                 y="-302.29999"
+                 x="168">TRSV_U 9</text>
+            </g>
+            <g
+               class="edge"
+               id="edge11-3"
+               transform="translate(4,328)">
+              <title
+                 id="title3430">TRSV_U 9-&gt;TRSV_U 6</title>
+              <path
+                 style="fill:none;stroke:#000000"
+                 inkscape:connector-curvature="0"
+                 id="path3432"
+                 d="m 154.018,-288.411 c -7.348,8.718 -16.491,19.566 -24.614,29.203" />
+              <polygon
+                 style="fill:#000000;stroke:#000000"
+                 id="polygon3434"
+                 points="126.65,-261.372 132.003,-256.861 132.003,-256.861 122.882,-251.47 " />
+            </g>
+            <g
+               class="edge"
+               id="edge12-4"
+               transform="translate(4,328)">
+              <title
+                 id="title3437">TRSV_U 9-&gt;TRSV_U 8</title>
+              <path
+                 style="fill:none;stroke:#000000"
+                 inkscape:connector-curvature="0"
+                 id="path3439"
+                 d="m 182.219,-288.411 c 7.472,8.718 16.771,19.566 25.032,29.203" />
+              <polygon
+                 style="fill:#000000;stroke:#000000"
+                 id="polygon3441"
+                 points="204.718,-256.785 210.032,-261.34 210.032,-261.34 213.883,-251.47 " />
+            </g>
+          </g>
+        </g>
+      </g>
+      <g
+         transform="translate(7.234165,10.033911)"
+         id="g7770">
+        <polygon
+           points="732,-371 1620,-371 1620,-296 732,-296 732,-296 "
+           id="polygon26"
+           style="fill:none;stroke:#000000;stroke-width:1.14284754;stroke-miterlimit:4;stroke-dasharray:none"
+           transform="matrix(0.76436407,0,0,1.0016666,-460.989,1144.3862)" />
+        <text
+           x="437.4964"
+           y="788.0304"
+           font-size="14.00"
+           id="text28"
+           style="font-size:14px;text-anchor:middle;font-family:'Times,serif'">SpMV</text>
+        <g
+           class="node"
+           id="node1-1"
+           transform="translate(106.18574,837.96638)">
+          <title
+             id="title3061">SpMV 1</title>
+          <ellipse
+             d="M 79.9464,-18 C 79.9464,-8.0588745 62.061787,0 40,0 17.938213,0 0.05360031,-8.0588745 0.05360031,-18 0.05360031,-27.941125 17.938213,-36 40,-36 c 22.061787,0 39.9464,8.058875 39.9464,18 z"
+             id="ellipse3063"
+             ry="18"
+             rx="39.9464"
+             cy="-18"
+             cx="40"
+             sodipodi:cx="40"
+             sodipodi:cy="-18"
+             sodipodi:rx="39.9464"
+             sodipodi:ry="18"
+             style="fill:#ff6347;stroke:#000000" />
+          <text
+             id="text3065"
+             font-size="14.00"
+             y="-14.3"
+             x="40"
+             style="font-size:14px;text-anchor:middle;font-family:'Times,serif'">SpMV 1</text>
+        </g>
+        <g
+           class="node"
+           id="node2-82"
+           transform="translate(104.21656,837.96638)">
+          <title
+             id="title3068">SpMV 2</title>
+          <ellipse
+             d="m 178.9464,-18 c 0,9.9411255 -17.88461,18 -39.9464,18 -22.06179,0 -39.9464,-8.0588745 -39.9464,-18 0,-9.941125 17.88461,-18 39.9464,-18 22.06179,0 39.9464,8.058875 39.9464,18 z"
+             id="ellipse3070"
+             ry="18"
+             rx="39.9464"
+             cy="-18"
+             cx="139"
+             sodipodi:cx="139"
+             sodipodi:cy="-18"
+             sodipodi:rx="39.9464"
+             sodipodi:ry="18"
+             style="fill:#ff6347;stroke:#000000" />
+          <text
+             id="text3072"
+             font-size="14.00"
+             y="-14.3"
+             x="139"
+             style="font-size:14px;text-anchor:middle;font-family:'Times,serif'">SpMV 2</text>
+        </g>
+        <g
+           class="node"
+           id="node3-7"
+           transform="translate(102.24737,837.96638)">
+          <title
+             id="title3075">SpMV 3</title>
+          <ellipse
+             d="m 277.9464,-18 c 0,9.9411255 -17.88461,18 -39.9464,18 -22.06179,0 -39.9464,-8.0588745 -39.9464,-18 0,-9.941125 17.88461,-18 39.9464,-18 22.06179,0 39.9464,8.058875 39.9464,18 z"
+             id="ellipse3077"
+             ry="18"
+             rx="39.9464"
+             cy="-18"
+             cx="238"
+             sodipodi:cx="238"
+             sodipodi:cy="-18"
+             sodipodi:rx="39.9464"
+             sodipodi:ry="18"
+             style="fill:#ff6347;stroke:#000000" />
+          <text
+             id="text3079"
+             font-size="14.00"
+             y="-14.3"
+             x="238"
+             style="font-size:14px;text-anchor:middle;font-family:'Times,serif'">SpMV 3</text>
+        </g>
+        <g
+           class="node"
+           id="node4-4"
+           transform="translate(100.27819,837.96638)">
+          <title
+             id="title3082">SpMV 4</title>
+          <ellipse
+             d="m 376.9464,-18 c 0,9.9411255 -17.88461,18 -39.9464,18 -22.06179,0 -39.9464,-8.0588745 -39.9464,-18 0,-9.941125 17.88461,-18 39.9464,-18 22.06179,0 39.9464,8.058875 39.9464,18 z"
+             id="ellipse3084"
+             ry="18"
+             rx="39.9464"
+             cy="-18"
+             cx="337"
+             sodipodi:cx="337"
+             sodipodi:cy="-18"
+             sodipodi:rx="39.9464"
+             sodipodi:ry="18"
+             style="fill:#ff6347;stroke:#000000" />
+          <text
+             id="text3086"
+             font-size="14.00"
+             y="-14.3"
+             x="337"
+             style="font-size:14px;text-anchor:middle;font-family:'Times,serif'">SpMV 4</text>
+        </g>
+        <g
+           class="node"
+           id="node5-7"
+           transform="translate(98.308999,837.96638)">
+          <title
+             id="title3089">SpMV 5</title>
+          <ellipse
+             d="m 475.9464,-18 c 0,9.9411255 -17.88461,18 -39.9464,18 -22.06179,0 -39.9464,-8.0588745 -39.9464,-18 0,-9.941125 17.88461,-18 39.9464,-18 22.06179,0 39.9464,8.058875 39.9464,18 z"
+             id="ellipse3091"
+             ry="18"
+             rx="39.9464"
+             cy="-18"
+             cx="436"
+             sodipodi:cx="436"
+             sodipodi:cy="-18"
+             sodipodi:rx="39.9464"
+             sodipodi:ry="18"
+             style="fill:#ff6347;stroke:#000000" />
+          <text
+             id="text3093"
+             font-size="14.00"
+             y="-14.3"
+             x="436"
+             style="font-size:14px;text-anchor:middle;font-family:'Times,serif'">SpMV 5</text>
+        </g>
+        <g
+           class="node"
+           id="node7-7"
+           transform="translate(-2.660213,837.96638)">
+          <title
+             id="title3103">SpMV 7</title>
+          <ellipse
+             d="m 673.9464,-18 c 0,9.9411255 -17.88461,18 -39.9464,18 -22.06179,0 -39.9464,-8.0588745 -39.9464,-18 0,-9.941125 17.88461,-18 39.9464,-18 22.06179,0 39.9464,8.058875 39.9464,18 z"
+             id="ellipse3105"
+             ry="18"
+             rx="39.9464"
+             cy="-18"
+             cx="634"
+             sodipodi:cx="634"
+             sodipodi:cy="-18"
+             sodipodi:rx="39.9464"
+             sodipodi:ry="18"
+             style="fill:#ff6347;stroke:#000000" />
+          <text
+             id="text3107"
+             font-size="14.00"
+             y="-14.3"
+             x="634"
+             style="font-size:14px;text-anchor:middle;font-family:'Times,serif'">SpMV 7</text>
+        </g>
+        <g
+           class="node"
+           id="node9-3"
+           transform="translate(-103.62945,837.96638)">
+          <title
+             id="title3117">SpMV 9</title>
+          <ellipse
+             d="m 871.9464,-18 c 0,9.9411255 -17.88461,18 -39.9464,18 -22.06179,0 -39.9464,-8.0588745 -39.9464,-18 0,-9.941125 17.88461,-18 39.9464,-18 22.06179,0 39.9464,8.058875 39.9464,18 z"
+             id="ellipse3119"
+             ry="18"
+             rx="39.9464"
+             cy="-18"
+             cx="832"
+             sodipodi:cx="832"
+             sodipodi:cy="-18"
+             sodipodi:rx="39.9464"
+             sodipodi:ry="18"
+             style="fill:#ff6347;stroke:#000000" />
+          <text
+             id="text3121"
+             font-size="14.00"
+             y="-14.3"
+             x="832"
+             style="font-size:14px;text-anchor:middle;font-family:'Times,serif'">SpMV 9</text>
+        </g>
+      </g>
+      <g
+         transform="translate(-7.3625883,93.041845)"
+         id="g7802">
+        <polygon
+           points="1628,-371 2500,-371 2500,-296 1628,-296 1628,-296 "
+           id="polygon33"
+           style="fill:none;stroke:#000000"
+           transform="translate(-1611.5001,1259.7199)" />
+        <g
+           id="g4754"
+           transform="translate(-1470.2777,778.71705)">
+          <g
+             transform="translate(1493.8555,174.24787)"
+             id="node1-6"
+             class="node">
+            <title
+               id="title10">Ortho 1</title>
+            <ellipse
+               style="fill:#add8e6;stroke:#000000"
+               sodipodi:ry="18"
+               sodipodi:rx="39.469101"
+               sodipodi:cy="-18"
+               sodipodi:cx="39"
+               cx="39"
+               cy="-18"
+               rx="39.469101"
+               ry="18"
+               id="ellipse12"
+               d="M 78.469101,-18 C 78.469101,-8.0588745 60.798183,0 39,0 17.201817,0 -0.46910095,-8.0588745 -0.46910095,-18 c 0,-9.941125 17.67091795,-18 39.46910095,-18 21.798183,0 39.469101,8.058875 39.469101,18 z" />
+            <text
+               style="font-size:14px;text-anchor:middle;font-family:'Times,serif'"
+               x="39"
+               y="-14.3"
+               font-size="14.00"
+               id="text14-0">Ortho 1</text>
+          </g>
+          <g
+             transform="translate(1493.8555,174.24787)"
+             id="node2-7"
+             class="node">
+            <title
+               id="title17">Ortho 2</title>
+            <ellipse
+               style="fill:#add8e6;stroke:#000000"
+               sodipodi:ry="18"
+               sodipodi:rx="39.469101"
+               sodipodi:cy="-18"
+               sodipodi:cx="136"
+               cx="136"
+               cy="-18"
+               rx="39.469101"
+               ry="18"
+               id="ellipse19"
+               d="m 175.4691,-18 c 0,9.9411255 -17.67092,18 -39.4691,18 -21.79818,0 -39.469101,-8.0588745 -39.469101,-18 0,-9.941125 17.670921,-18 39.469101,-18 21.79818,0 39.4691,8.058875 39.4691,18 z" />
+            <text
+               style="font-size:14px;text-anchor:middle;font-family:'Times,serif'"
+               x="136"
+               y="-14.3"
+               font-size="14.00"
+               id="text21-2">Ortho 2</text>
+          </g>
+          <g
+             transform="translate(1493.8555,174.24787)"
+             id="node3-2"
+             class="node">
+            <title
+               id="title24">Ortho 3</title>
+            <ellipse
+               style="fill:#add8e6;stroke:#000000"
+               sodipodi:ry="18"
+               sodipodi:rx="39.469101"
+               sodipodi:cy="-18"
+               sodipodi:cx="233"
+               cx="233"
+               cy="-18"
+               rx="39.469101"
+               ry="18"
+               id="ellipse26"
+               d="m 272.4691,-18 c 0,9.9411255 -17.67092,18 -39.4691,18 -21.79818,0 -39.4691,-8.0588745 -39.4691,-18 0,-9.941125 17.67092,-18 39.4691,-18 21.79818,0 39.4691,8.058875 39.4691,18 z" />
+            <text
+               style="font-size:14px;text-anchor:middle;font-family:'Times,serif'"
+               x="233"
+               y="-14.3"
+               font-size="14.00"
+               id="text28-0">Ortho 3</text>
+          </g>
+          <g
+             transform="translate(1493.8555,174.24787)"
+             id="node4-9"
+             class="node">
+            <title
+               id="title31">Ortho 4</title>
+            <ellipse
+               style="fill:#add8e6;stroke:#000000"
+               sodipodi:ry="18"
+               sodipodi:rx="39.469101"
+               sodipodi:cy="-18"
+               sodipodi:cx="330"
+               cx="330"
+               cy="-18"
+               rx="39.469101"
+               ry="18"
+               id="ellipse33"
+               d="m 369.4691,-18 c 0,9.9411255 -17.67092,18 -39.4691,18 -21.79818,0 -39.4691,-8.0588745 -39.4691,-18 0,-9.941125 17.67092,-18 39.4691,-18 21.79818,0 39.4691,8.058875 39.4691,18 z" />
+            <text
+               style="font-size:14px;text-anchor:middle;font-family:'Times,serif'"
+               x="330"
+               y="-14.3"
+               font-size="14.00"
+               id="text35-2">Ortho 4</text>
+          </g>
+          <g
+             transform="translate(1493.8555,174.24787)"
+             id="node5-5"
+             class="node">
+            <title
+               id="title38">Ortho 5</title>
+            <ellipse
+               style="fill:#add8e6;stroke:#000000"
+               sodipodi:ry="18"
+               sodipodi:rx="39.469101"
+               sodipodi:cy="-18"
+               sodipodi:cx="427"
+               cx="427"
+               cy="-18"
+               rx="39.469101"
+               ry="18"
+               id="ellipse40"
+               d="m 466.4691,-18 c 0,9.9411255 -17.67092,18 -39.4691,18 -21.79818,0 -39.4691,-8.0588745 -39.4691,-18 0,-9.941125 17.67092,-18 39.4691,-18 21.79818,0 39.4691,8.058875 39.4691,18 z" />
+            <text
+               style="font-size:14px;text-anchor:middle;font-family:'Times,serif'"
+               x="427"
+               y="-14.3"
+               font-size="14.00"
+               id="text42">Ortho 5</text>
+          </g>
+          <g
+             transform="translate(1493.8555,174.24787)"
+             id="node6-8"
+             class="node">
+            <title
+               id="title45">Ortho 6</title>
+            <ellipse
+               style="fill:#add8e6;stroke:#000000"
+               sodipodi:ry="18"
+               sodipodi:rx="39.469101"
+               sodipodi:cy="-18"
+               sodipodi:cx="524"
+               cx="524"
+               cy="-18"
+               rx="39.469101"
+               ry="18"
+               id="ellipse47"
+               d="m 563.4691,-18 c 0,9.9411255 -17.67092,18 -39.4691,18 -21.79818,0 -39.4691,-8.0588745 -39.4691,-18 0,-9.941125 17.67092,-18 39.4691,-18 21.79818,0 39.4691,8.058875 39.4691,18 z" />
+            <text
+               style="font-size:14px;text-anchor:middle;font-family:'Times,serif'"
+               x="524"
+               y="-14.3"
+               font-size="14.00"
+               id="text49">Ortho 6</text>
+          </g>
+          <g
+             transform="translate(1493.8555,174.24787)"
+             id="node7-8"
+             class="node">
+            <title
+               id="title52">Ortho 7</title>
+            <ellipse
+               style="fill:#add8e6;stroke:#000000"
+               sodipodi:ry="18"
+               sodipodi:rx="39.469101"
+               sodipodi:cy="-18"
+               sodipodi:cx="621"
+               cx="621"
+               cy="-18"
+               rx="39.469101"
+               ry="18"
+               id="ellipse54"
+               d="m 660.4691,-18 c 0,9.9411255 -17.67092,18 -39.4691,18 -21.79818,0 -39.4691,-8.0588745 -39.4691,-18 0,-9.941125 17.67092,-18 39.4691,-18 21.79818,0 39.4691,8.058875 39.4691,18 z" />
+            <text
+               style="font-size:14px;text-anchor:middle;font-family:'Times,serif'"
+               x="621"
+               y="-14.3"
+               font-size="14.00"
+               id="text56">Ortho 7</text>
+          </g>
+          <g
+             transform="translate(1493.8555,174.24787)"
+             id="node8-04"
+             class="node">
+            <title
+               id="title59">Ortho 8</title>
+            <ellipse
+               style="fill:#add8e6;stroke:#000000"
+               sodipodi:ry="18"
+               sodipodi:rx="39.469101"
+               sodipodi:cy="-18"
+               sodipodi:cx="718"
+               cx="718"
+               cy="-18"
+               rx="39.469101"
+               ry="18"
+               id="ellipse61"
+               d="m 757.4691,-18 c 0,9.9411255 -17.67092,18 -39.4691,18 -21.79818,0 -39.4691,-8.0588745 -39.4691,-18 0,-9.941125 17.67092,-18 39.4691,-18 21.79818,0 39.4691,8.058875 39.4691,18 z" />
+            <text
+               style="font-size:14px;text-anchor:middle;font-family:'Times,serif'"
+               x="718"
+               y="-14.3"
+               font-size="14.00"
+               id="text63">Ortho 8</text>
+          </g>
+          <g
+             transform="translate(1493.8555,174.24787)"
+             id="node9-9"
+             class="node">
+            <title
+               id="title66">Ortho 9</title>
+            <ellipse
+               style="fill:#add8e6;stroke:#000000"
+               sodipodi:ry="18"
+               sodipodi:rx="39.469101"
+               sodipodi:cy="-18"
+               sodipodi:cx="815"
+               cx="815"
+               cy="-18"
+               rx="39.469101"
+               ry="18"
+               id="ellipse68"
+               d="m 854.4691,-18 c 0,9.9411255 -17.67092,18 -39.4691,18 -21.79818,0 -39.4691,-8.0588745 -39.4691,-18 0,-9.941125 17.67092,-18 39.4691,-18 21.79818,0 39.4691,8.058875 39.4691,18 z" />
+            <text
+               style="font-size:14px;text-anchor:middle;font-family:'Times,serif'"
+               x="815"
+               y="-14.3"
+               font-size="14.00"
+               id="text70">Ortho 9</text>
+          </g>
+        </g>
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text4833"
+         y="769.01892"
+         x="345.71542"
+         style="font-size:22.39999962px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="769.01892"
+           x="345.71542"
+           id="tspan4835"
+           sodipodi:role="line">MPI_Send(border)</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text4172"
+         y="883.44562"
+         x="343.92715"
+         style="font-size:22.39999962px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         xml:space="preserve"><tspan
+           y="883.44562"
+           x="343.92715"
+           id="tspan4174"
+           sodipodi:role="line"> MPI_Recv(Border)</tspan></text>
+      <g
+         id="g4876">
+        <g
+           transform="translate(-153.90651,96.759291)"
+           id="g6513">
+          <g
+             transform="translate(16.09773,865.05578)"
+             id="node6-6"
+             class="node">
+            <title
+               id="title3096">SpMV 6</title>
+            <ellipse
+               style="fill:#ff6347;stroke:#000000"
+               sodipodi:ry="18"
+               sodipodi:rx="39.9464"
+               sodipodi:cy="-18"
+               sodipodi:cx="535"
+               cx="535"
+               cy="-18"
+               rx="39.9464"
+               ry="18"
+               id="ellipse3098"
+               d="m 574.9464,-18 c 0,9.9411255 -17.88461,18 -39.9464,18 -22.06179,0 -39.9464,-8.0588745 -39.9464,-18 0,-9.941125 17.88461,-18 39.9464,-18 22.06179,0 39.9464,8.058875 39.9464,18 z" />
+            <text
+               style="font-size:14px;text-anchor:middle;font-family:'Times,serif'"
+               x="535"
+               y="-14.3"
+               font-size="14.00"
+               id="text3100">SpMV 6</text>
+          </g>
+        </g>
+        <g
+           transform="translate(-257.56426,96.759291)"
+           id="g6507">
+          <g
+             transform="translate(16.09773,865.05578)"
+             id="node8-2"
+             class="node">
+            <title
+               id="title3110">SpMV 8</title>
+            <ellipse
+               style="fill:#ff6347;stroke:#000000"
+               sodipodi:ry="18"
+               sodipodi:rx="39.9464"
+               sodipodi:cy="-18"
+               sodipodi:cx="733"
+               cx="733"
+               cy="-18"
+               rx="39.9464"
+               ry="18"
+               id="ellipse3112"
+               d="m 772.9464,-18 c 0,9.9411255 -17.88461,18 -39.9464,18 -22.06179,0 -39.9464,-8.0588745 -39.9464,-18 0,-9.941125 17.88461,-18 39.9464,-18 22.06179,0 39.9464,8.058875 39.9464,18 z" />
+            <text
+               style="font-size:14px;text-anchor:middle;font-family:'Times,serif'"
+               x="733"
+               y="-14.3"
+               font-size="14.00"
+               id="text3114">SpMV 8</text>
+          </g>
+        </g>
+        <polygon
+           points="1620,-296 732,-296 732,-296 732,-371 1620,-371 "
+           id="polygon26-2"
+           style="fill:none;stroke:#000000;stroke-width:2.14195085;stroke-miterlimit:4;stroke-dasharray:none"
+           transform="matrix(0.21642364,0,0,1.0071086,190.62311,1270.8658)" />
+        <text
+           x="448.19547"
+           y="912.06525"
+           font-size="14.00"
+           id="text28-1"
+           style="font-size:14px;text-anchor:middle;font-family:'Times,serif'">SpMV</text>
+      </g>
+    </g>
+  </g>
+</svg>

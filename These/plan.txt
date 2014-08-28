@@ -1,0 +1,90 @@
+Context : Simulate petroleum extraction
+  - Reservoir simulation
+    + Overview
+    + From physics to computation
+
+  - Linear algebra
+    + Dense linear algebra
+    + Sparse linear algebra
+
+  - Solving large sparse linear system
+    + GMRES
+    + Preconditioned GMRES
+    + Domain decomposition
+    + Reservoir case studies
+
+  - Computers to target
+    + SMP
+    + NUMA
+    + Many-core
+    + Our computers
+      % Rostand
+      % Manumanu
+
+  - Multi-core parallelism
+    + Parallel for loop
+    + Task paradigm
+
+
+A problem of granularity
+  - Why granularity is so important ?
+    + Parallelism vs overhead
+    + Current solutions
+
+  - Taggre : my solution to our granularity problem
+    + Aggregate operators
+      % Sequential
+      % Front
+      % Depth front
+      % Continuation oriented
+    + Tuning some examples
+
+  - Results
+    + Factorization and Triangular solve improvement
+    + Aggregation overhead
+    + Subdomain decomposition
+    + Review
+
+
+Taking advantage of NUMA architecture
+  - How NUMA effect can affect efficiency ?
+  
+  - Current NUMA management
+    + First touch allocation policy
+    + Interleaved memory allocation policy
+    + Next-touch
+    + Automatic solution
+    
+  - Handle NUMA directly in scheduler
+    + Status of current scheduler
+    + NATaS : schedule tasks on NUMA
+
+  - Results
+    + Factorization and Triangular solve
+    + Sparse matrix vector multiplication
+    + First touch
+    + Interleave
+    + Automatic NUMA balancing
+    + NATaS
+    + Review
+
+    
+From one node to multiple nodes
+   - Data dependencies
+     + Implicit dependencies
+     + Explicit dependencies
+
+   - Improve CPU usage
+     + Domain decomposition and overlap
+     + Break down the barriers
+   
+   - Results
+     + Without MPI
+     + With MPI
+     + Review
+
+
+Conclusions and perspectives
+  - Conclusion
+
+  - Perspectives

@@ -1,0 +1,148 @@
+\section{How NUMA effect can affect efficiency ?}
+Performance of a computer mostly depends on two things : processors and memories.
+%
+In this chapter, I will focus on the memory problem.
+%
+When a program wants to read memory, it is subjected to a memory penalty.
+%
+This penalty is the sum of two constraints :
+\begin{itemize}
+        \item latency : the time between the ask of a memory of the first byte received;
+        \item bandwith : the maximum of byte per second that can be send/receive
+\end{itemize}
+
+The first approach to connect multiple memories with multiple processors is to use a memory controller (see section~\ref{sec:smp}).
+%
+Processors and memories are connected to the controller by a bus.
+%
+A bus conflict can happen if two processors want to access to the same memory.
+%
+The controller must avoid bus conflicts by ordering the memory accesses.
+%
+It also must keep a low latency access to the memory by all processors.
+%
+But the low latency constrain isn't possible to satisfy when the number of processors is too high.
+%
+One solution could be to distribute memory over all processors.
+
+
+We call this solution NUMA, which is the acronym of Non Uniform Memory Access.
+%
+In this architecture, each processor has a memory bank and a connection with one or more processors (see Fig.~\ref{fig:numa}).
+%
+That means that a processor doesn't have the same memory penalty depending on the physical memory address it accesses.
+%
+This is the NUMA effect.
+
+
+\section{NUMA management}
+
+In a general way, a program allocates memory from a virtual address space split into pages.
+%
+Each pages used by the program is transparently mapped to a physical memory location.
+%
+Thus, some virtual pages can also be moved from one physical location to another one, while the virtual/physical mapping is transparently updated accordingly to the operating system without affecting the execution of user level programs.
+%
+However, the physical location of virtual page may impact the program performance on NUMA architectures, depending on the
+connectivity between the physical memory bank where a page is located and the socket core that is accessing this memory bank.
+%
+The NUMA memory allocation policy is defined by the kernel of the operating system.
+%
+With Linux, at least the following three memory policies are generally available:
+\begin{itemize}
+        \item {\em First Touch}: Memory is allocated on the bank next to the core which accessed the data first.
+                         This is the default policy.
+        \item {\em Bind}: Memory is allocated on a specific bank.
+        \item {\em Interleaved}: Memory allocations are interleaved among
+  all the banks available.
+\end{itemize}
+On Linux, these policies can be set either through the \textit{mbind} system call, or with the {\em numactl} command line tool.
+%
+A new mechanism also come with the version 3.13 of Linux, AutoNUMA.
+%
+This mechanism use page fault trapping which has a non negligible overhead.
+%
+AutoNUMA can only be configured at system level with root rights and for all applications.
+
+
+Other operating system may come with their own specific sets of NUMA memory allocation policies.
+%
+Solaris, for instance, also provides the \textit{next-touch}~\cite{next_touch} policy.
+%
+When this policy is selected, a memory page is moved to the bank close to the core that subsequently accesses it.
+
+%-------------------------------
+\subsection{First touch allocation policy}
+This is the default policy on Linux.
+%
+When a thread wants to access to a not yet mapped memory page, the kernel allocate a new page near to the thread.
+%
+Let's imagine the case that in a program to setup phase which allocate all resources isn't multithreaded.
+%
+All resources are allocated on the same
+
+%-------------------------------
+\subsection{Interleaved memory allocation policy}
+When the interleaved policy is selected, Linux uniformly distributes newly allocated physical pages
+among all available NUMA banks, following a round robin scheme.
+%
+While having very little impact on the applicative code, the interleave policy often shows some
+effectiveness in mitigating NUMA overheads in the general case.
+%
+Compared to a first touch allocation
+In average, the latency doesn't change too much but thease because of pages Because it distributes the required memory bandwidth over the various memory banks.
+%
+Thus, it is usually worthwhile to experiment with it, before investigating the NUMA issue further.
+
+The following tables show the performance results obtained after
+enabling the interleaved memory allocation policy. We first test this
+method using Intel TBB as the low-level runtime under the Taggre layer described in previous section
+(Tables~\ref{tab:full:8:facto:no}~to~\ref{tab:full:8:solve:nested}).
+
+
+
+While the results we obtain show an improved speed-up with TBB and interleaved policy,
+it should be noted that sequential runs with interleaved policy are of
+course worse, because of memory access penalties introduced by NUMA.
+%% Parallel runs however show a better speed-up.
+When comparing
+interleaved page allocation with first-touch allocation, we get
+an average improvement of 3.5\,\% on ILU(k) preconditioner
+and 6.2\,\% on triangular solve with two 4-core sockets.
+
+These improvements could be further enhanced by taking into account the locality of data
+used by tasks within the task scheduler. This is the purpose of the
+following section.
+
+
+%-------------------------------
+\subsection{Next-touch}
+The next-touch policy
+%
+
+
+%-------------------------------
+\subsection{Automatic solution}
+Most frameworks for multi-core platforms don't handle memory locality, some try to improve data locality between tasks by leaving the user with the choice of the next task to schedule (e.g., {\em continuation} in TBB).
+%
+In the case of a task scheduler for heterogeneous platforms, data need to be moved to the target platform.
+Therefore, in this case, the scheduler must know which data are used by each task to move them at the right time.
+%
+Unfortunately none of these schedulers care about NUMA in their scheduling algorithms to reduce the overhead of data movement.
+
+
+The Linux kernel 3.13 add an automatic way to optimize NUMA placement over the execution of the program.
+%
+The idea is simple, regularly virtual pages are unmapped and the next access to these pages determine a better placement.
+%
+A scan rate value can be set with the sysctl interface.
+%
+But this implementation has two major problems.
+%
+First, it can only be enable or disable for the entire system not for a specific program or, better, for a memory range.
+%
+Second, the best scan rate value for a program is almost impossible to find.
+%
+It is a trade-off between the overhead of the page faults and the gain obtain by moving data closer.
+%
+We will compare this solution with the homemade userland solution describe in the next section.
