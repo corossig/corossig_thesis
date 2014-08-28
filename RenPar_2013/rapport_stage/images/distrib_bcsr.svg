@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="700"
+   height="400"
+   id="svg2816"
+   version="1.1"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="bcsr.svg">
+  <defs
+     id="defs2818">
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;">
+      <path
+         id="path3851"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 382.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="990 : 382.5 : 1"
+       inkscape:persp3d-origin="495 : 255 : 1"
+       id="perspective2825" />
+    <inkscape:perspective
+       id="perspective2890"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <sodipodi:namedview
+     inkscape:document-units="in"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.2279853"
+     inkscape:cx="257.6469"
+     inkscape:cy="161.30112"
+     inkscape:current-layer="layer1"
+     id="namedview2820"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="949"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2829"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata2822">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-365)">
+    <g
+       id="g3977"
+       transform="translate(0.23851525,370.1847)">
+      <g
+         id="g3882">
+        <rect
+           y="10"
+           x="260"
+           height="50"
+           width="190"
+           id="rect3764"
+           style="fill:none;stroke:#000000;stroke-width:1.08804691;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+        <rect
+           y="60"
+           x="260"
+           height="50"
+           width="190"
+           id="rect3766"
+           style="fill:none;stroke:#000000;stroke-width:1.08804691;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+        <text
+           xml:space="preserve"
+           style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+           x="290.00391"
+           y="40.648438"
+           id="text3768"><tspan
+             sodipodi:role="line"
+             id="tspan3770"
+             x="290.00391"
+             y="40.648438">T1 + T3 + ... + T31</tspan></text>
+        <text
+           id="text3772"
+           y="90.648438"
+           x="288.95703"
+           style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+           xml:space="preserve"><tspan
+             y="90.648438"
+             x="288.95703"
+             id="tspan3774"
+             sodipodi:role="line">T2 + T4 + ... + T32</tspan></text>
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         x="325.06641"
+         y="130"
+         id="text3800"><tspan
+           sodipodi:role="line"
+           id="tspan3802"
+           x="325.06641"
+           y="130">Résultat</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+       x="572.55292"
+       y="420.27573"
+       id="text3993"><tspan
+         sodipodi:role="line"
+         id="tspan3995"
+         x="572.55292"
+         y="420.27573">1ère itération</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+       x="573.82635"
+       y="463.31641"
+       id="text3997"><tspan
+         sodipodi:role="line"
+         id="tspan3999"
+         x="573.82635"
+         y="463.31641">2ème itération</tspan></text>
+    <path
+       style="fill:#aad400;stroke:#aad400;stroke-width:4.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 501.38869,457.65228 58.4444,0"
+       id="path4001" />
+    <path
+       id="path4003"
+       d="m 501.38869,414.61163 58.4444,0"
+       style="fill:#d4aa00;stroke:#ffcc00;stroke-width:4.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <rect
+       style="fill:none;stroke:#ff5555;stroke-width:10;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect4333"
+       width="56.596771"
+       height="26.873287"
+       x="502.3125"
+       y="482.83051" />
+    <text
+       id="text4335"
+       y="501.93118"
+       x="573.12323"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="501.93118"
+         x="573.12323"
+         id="tspan4337"
+         sodipodi:role="line">Bloc BCSR</tspan></text>
+    <g
+       id="g3813"
+       transform="translate(-8.1434201,-56.59677)">
+      <path
+         id="path3796"
+         d="m 65,445 0,90"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 100,445 0,90"
+         id="path3802" />
+      <path
+         id="path3804"
+         d="m 135,445 0,90"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 170,445 0,90"
+         id="path3806" />
+      <path
+         id="path3811"
+         d="M 30,485.27352 205,485"
+         style="fill:none;stroke:#000000;stroke-width:0.9980523px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <text
+         id="text3654"
+         y="470.10156"
+         x="37.67556"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#d4aa00;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="470.10156"
+           x="37.67556"
+           id="tspan3656"
+           sodipodi:role="line">T1</tspan></text>
+      <text
+         id="text3658"
+         y="513.89246"
+         x="36.628685"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#d4aa00;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="513.89246"
+           x="36.628685"
+           id="tspan3660"
+           sodipodi:role="line">T2</tspan></text>
+      <text
+         id="text3666"
+         y="513.79089"
+         x="102.8502"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#d4aa00;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="513.79089"
+           x="102.8502"
+           id="tspan3668"
+           sodipodi:role="line">T32</tspan></text>
+      <text
+         id="text3670"
+         y="470.10156"
+         x="143.19667"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#88aa00;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="470.10156"
+           x="143.19667"
+           id="tspan3672"
+           sodipodi:role="line">T1</tspan></text>
+      <text
+         id="text3674"
+         y="513.89246"
+         x="142.1498"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#88aa00;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="513.89246"
+           x="142.1498"
+           id="tspan3676"
+           sodipodi:role="line">T2</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         x="75.888855"
+         y="465.15234"
+         id="text3734"><tspan
+           sodipodi:role="line"
+           id="tspan3736"
+           x="75.888855"
+           y="465.15234">...</tspan></text>
+      <text
+         id="text3738"
+         y="508.94324"
+         x="75.888855"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="508.94324"
+           x="75.888855"
+           id="tspan3740"
+           sodipodi:role="line">...</tspan></text>
+      <text
+         id="text3750"
+         y="465.15234"
+         x="181.33546"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="465.15234"
+           x="181.33546"
+           id="tspan3752"
+           sodipodi:role="line">...</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         x="181.33546"
+         y="508.94324"
+         id="text3754"><tspan
+           sodipodi:role="line"
+           id="tspan3756"
+           x="181.33546"
+           y="508.94324">...</tspan></text>
+      <text
+         transform="scale(0.9867517,1.0134262)"
+         id="text3788"
+         y="554.58429"
+         x="75.837929"
+         style="font-size:15.78802681px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="554.58429"
+           x="75.837929"
+           id="tspan3790"
+           sodipodi:role="line">Taille bloc: 2</tspan></text>
+      <rect
+         y="440"
+         x="25"
+         height="95"
+         width="184.96173"
+         id="rect4331"
+         style="fill:none;stroke:#ff5555;stroke-width:9.74909592;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         xml:space="preserve"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#d4aa00;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         x="103.89707"
+         y="470"
+         id="text3798"><tspan
+           sodipodi:role="line"
+           id="tspan3800"
+           x="103.89707"
+           y="470">T31</tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="m 220,45 30,0"
+       id="path3843"
+       transform="translate(0,365)" />
+    <path
+       id="path4293"
+       d="m 220,455 30,0"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="m 515.61089,545 30,0"
+       id="path4295" />
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+       x="573.03729"
+       y="550"
+       id="text4297"><tspan
+         sodipodi:role="line"
+         id="tspan4299"
+         x="573.03729"
+         y="550"
+         style="font-size:16px">Réduction</tspan></text>
+    <g
+       id="g4475">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+         d="m 60,580 0,120"
+         id="path4303" />
+      <path
+         id="path4305"
+         d="m 95,580 0,120"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+         d="m 130,580 0,120"
+         id="path4307" />
+      <path
+         id="path4309"
+         d="m 165,580 0,120"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.9980523px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="M 25,620.27352 200,620"
+         id="path4311" />
+      <text
+         xml:space="preserve"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#d4aa00;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         x="32.67556"
+         y="605.2644"
+         id="text4313"><tspan
+           sodipodi:role="line"
+           id="tspan4315"
+           x="32.67556"
+           y="605.2644">T1</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#d4aa00;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         x="31.628685"
+         y="649.24866"
+         id="text4317"><tspan
+           sodipodi:role="line"
+           id="tspan4319"
+           x="31.628685"
+           y="649.24866">T2</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#d4aa00;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         x="97.850197"
+         y="649.14709"
+         id="text4321"><tspan
+           sodipodi:role="line"
+           id="tspan4323"
+           x="97.850197"
+           y="649.14709">T32</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#88aa00;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         x="103.79072"
+         y="686.33362"
+         id="text4325"><tspan
+           sodipodi:role="line"
+           id="tspan4327"
+           x="103.79072"
+           y="686.33362">T1</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#88aa00;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         x="137.55696"
+         y="605.2644"
+         id="text4329"><tspan
+           sodipodi:role="line"
+           id="tspan4331"
+           x="137.55696"
+           y="605.2644">T2</tspan></text>
+      <text
+         id="text4333"
+         y="600.31519"
+         x="70.888855"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="600.31519"
+           x="70.888855"
+           id="tspan4335"
+           sodipodi:role="line">...</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         x="70.888855"
+         y="644.29944"
+         id="text4337"><tspan
+           sodipodi:role="line"
+           id="tspan4339"
+           x="70.888855"
+           y="644.29944">...</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         x="176.33546"
+         y="600.31519"
+         id="text4341"><tspan
+           sodipodi:role="line"
+           id="tspan4343"
+           x="176.33546"
+           y="600.31519">...</tspan></text>
+      <text
+         id="text4345"
+         y="644.29944"
+         x="176.33546"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="644.29944"
+           x="176.33546"
+           id="tspan4347"
+           sodipodi:role="line">...</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:15.78802681px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         x="70.939835"
+         y="720.32874"
+         id="text4349"
+         transform="scale(0.98675168,1.0134262)"><tspan
+           sodipodi:role="line"
+           id="tspan4351"
+           x="70.939835"
+           y="720.32874">Taille bloc: 3</tspan></text>
+      <rect
+         style="fill:none;stroke:#ff5555;stroke-width:10;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+         id="rect4353"
+         width="184.96173"
+         height="130"
+         x="20"
+         y="575" />
+      <text
+         id="text4355"
+         y="605.16284"
+         x="98.897072"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#d4aa00;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="605.16284"
+           x="98.897072"
+           id="tspan4357"
+           sodipodi:role="line">T31</tspan></text>
+      <path
+         id="path4387"
+         d="m 25,660 175,-0.27352"
+         style="fill:none;stroke:#000000;stroke-width:0.9980523px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <text
+         id="text4389"
+         y="686.23206"
+         x="31.83227"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#d4aa00;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="686.23206"
+           x="31.83227"
+           id="tspan4391"
+           sodipodi:role="line">T3</tspan></text>
+      <text
+         id="text4393"
+         y="681.3844"
+         x="70.278099"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="681.3844"
+           x="70.278099"
+           id="tspan4395"
+           sodipodi:role="line">...</tspan></text>
+      <text
+         id="text4397"
+         y="649.14709"
+         x="136.74261"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#88aa00;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="649.14709"
+           x="136.74261"
+           id="tspan4399"
+           sodipodi:role="line">T3</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#88aa00;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         x="137.14978"
+         y="686.31018"
+         id="text4401"><tspan
+           sodipodi:role="line"
+           id="tspan4403"
+           x="137.14978"
+           y="686.31018">T4</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         x="176.33546"
+         y="681.3844"
+         id="text4405"><tspan
+           sodipodi:role="line"
+           id="tspan4407"
+           x="176.33546"
+           y="681.3844">...</tspan></text>
+    </g>
+    <g
+       id="g4516">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+         d="m 220,600 30,0"
+         id="path4409" />
+      <path
+         id="path4411"
+         d="m 220,640 30,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+         d="m 220,680 30,0"
+         id="path4413" />
+    </g>
+    <g
+       id="g4462">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.97317874;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+         id="rect3760"
+         width="190"
+         height="40"
+         x="260"
+         y="660" />
+      <text
+         id="text3796"
+         y="730"
+         x="320"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="730"
+           x="320"
+           id="tspan3798"
+           sodipodi:role="line">Résultat</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         x="262.375"
+         y="684.16016"
+         id="text2939"><tspan
+           sodipodi:role="line"
+           id="tspan2941"
+           x="262.375"
+           y="684.16016">T1[3] + T2[3] + ... + T32[3]</tspan></text>
+      <rect
+         y="620"
+         x="260"
+         height="40"
+         width="190"
+         id="rect4450"
+         style="fill:none;stroke:#000000;stroke-width:0.97317874;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         id="text4452"
+         y="644.16016"
+         x="262.375"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="644.16016"
+           x="262.375"
+           id="tspan4454"
+           sodipodi:role="line">T1[2] + T2[2] + ... + T32[2]</tspan></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.97317874;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+         id="rect4456"
+         width="190"
+         height="40"
+         x="260"
+         y="580" />
+      <text
+         xml:space="preserve"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         x="262.375"
+         y="604.16016"
+         id="text4458"><tspan
+           sodipodi:role="line"
+           id="tspan4460"
+           x="262.375"
+           y="604.16016">T1[1] + T2[1] + ... + T32[1]</tspan></text>
+    </g>
+  </g>
+</svg>

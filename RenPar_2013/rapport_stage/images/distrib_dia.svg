@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="990"
+   height="380"
+   id="svg2816"
+   version="1.1"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="distrib_dia.svg">
+  <defs
+     id="defs2818">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 382.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="990 : 382.5 : 1"
+       inkscape:persp3d-origin="495 : 255 : 1"
+       id="perspective2825" />
+  </defs>
+  <sodipodi:namedview
+     inkscape:document-units="in"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.28"
+     inkscape:cx="290.95025"
+     inkscape:cy="168.61646"
+     inkscape:current-layer="layer1"
+     id="namedview2820"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1280"
+     inkscape:window-height="949"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3787"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata2822">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-385)">
+    <path
+       id="path3987"
+       d="m 693.97525,437.8645 58.4444,0"
+       style="fill:#ffaaaa;stroke:#ffaaaa;stroke-width:4.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+       x="769.35913"
+       y="442.00513"
+       id="text3989"><tspan
+         sodipodi:role="line"
+         id="tspan3991"
+         x="769.35913"
+         y="442.00513">Diagonales de la matrice (NZ)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+       x="768.78882"
+       y="475.9198"
+       id="text3993"><tspan
+         sodipodi:role="line"
+         id="tspan3995"
+         x="768.78882"
+         y="475.9198">1ère itération</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+       x="770.06226"
+       y="508.78119"
+       id="text3997"><tspan
+         sodipodi:role="line"
+         id="tspan3999"
+         x="770.06226"
+         y="508.78119">2ème itération</tspan></text>
+    <path
+       style="fill:#aad400;stroke:#aad400;stroke-width:4.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 693.97525,503.11711 58.4444,0"
+       id="path4001" />
+    <path
+       id="path4003"
+       d="m 693.97525,470.25573 58.4444,0"
+       style="fill:#d4aa00;stroke:#ffcc00;stroke-width:4.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+       x="588.65649"
+       y="753.48608"
+       id="text4011"><tspan
+         sodipodi:role="line"
+         id="tspan4013"
+         x="588.65649"
+         y="753.48608">Résultat</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+       x="496.875"
+       y="435.86884"
+       id="text2896"><tspan
+         sodipodi:role="line"
+         id="tspan2898"
+         x="496.875"
+         y="435.86884">Warp 1 T1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+       x="494.78125"
+       y="512.7417"
+       id="text2900"><tspan
+         sodipodi:role="line"
+         id="tspan2902"
+         x="494.78125"
+         y="512.7417">Warp 1 T2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+       x="494.66406"
+       y="589.61456"
+       id="text2914"><tspan
+         sodipodi:role="line"
+         x="494.66406"
+         y="589.61456"
+         id="tspan2918">Warp 1 T3</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:4.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect4005"
+       width="77.160782"
+       height="77.160782"
+       x="580.0097"
+       y="393.1283" />
+    <rect
+       y="470.00116"
+       x="580.0097"
+       height="77.160782"
+       width="77.160782"
+       id="rect4007"
+       style="fill:none;stroke:#000000;stroke-width:4.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:4.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect4009"
+       width="77.160782"
+       height="77.160782"
+       x="580.0097"
+       y="546.87402" />
+    <rect
+       y="658.59277"
+       x="580.0097"
+       height="77.160782"
+       width="77.160782"
+       id="rect2922"
+       style="fill:none;stroke:#000000;stroke-width:4.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+       x="496.88281"
+       y="701.21613"
+       id="text2924"><tspan
+         sodipodi:role="line"
+         id="tspan2926"
+         x="496.88281"
+         y="701.21613">Warp x Ty</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+       x="567.34271"
+       y="643.466"
+       id="text3018"><tspan
+         sodipodi:role="line"
+         id="tspan3020"
+         x="567.34271"
+         y="643.466">...</tspan></text>
+    <g
+       id="g2967"
+       transform="translate(0,-25.886175)">
+      <path
+         id="path2827"
+         d="m 85.402975,541.40117 358.427725,0"
+         style="fill:#ffaaaa;stroke:#ffaaaa;stroke-width:4.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <g
+         id="g2947">
+        <rect
+           style="fill:none;stroke:#000000;stroke-width:1.16176391;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect3635"
+           width="112.34863"
+           height="39.794456"
+           x="78.51049"
+           y="482.59964" />
+        <text
+           xml:space="preserve"
+           style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#d4aa00;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+           x="89.313713"
+           y="508.14532"
+           id="text3637"><tspan
+             sodipodi:role="line"
+             id="tspan3639"
+             x="89.313713"
+             y="508.14532">T1 T2 ... T32</tspan></text>
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 170.40058,522.21895 0,13.81984"
+           id="path3668" />
+        <path
+           id="path3670"
+           d="m 98.998068,522.21895 0,13.81984"
+           style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 122.31905,522.21895 0,13.81984"
+           id="path3672" />
+        <text
+           xml:space="preserve"
+           style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+           x="17.114925"
+           y="506.94495"
+           id="text3674"><tspan
+             sodipodi:role="line"
+             id="tspan3676"
+             x="17.114925"
+             y="506.94495">Warp 1</tspan></text>
+        <rect
+           y="482.59964"
+           x="195.77576"
+           height="39.794456"
+           width="112.34863"
+           id="rect3749"
+           style="fill:none;stroke:#000000;stroke-width:1.16176391;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+        <text
+           id="text3751"
+           y="508.14532"
+           x="206.57898"
+           style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#d4aa00;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+           xml:space="preserve"><tspan
+             y="508.14532"
+             x="206.57898"
+             id="tspan3753"
+             sodipodi:role="line">T1 T2 ... T32</tspan></text>
+        <path
+           id="path3755"
+           d="m 287.66583,522.21895 0,13.81984"
+           style="fill:#000000;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        <path
+           style="fill:#000000;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 216.26331,522.21895 0,13.81984"
+           id="path3757" />
+        <path
+           id="path3759"
+           d="m 239.5843,522.21895 0,13.81984"
+           style="fill:#000000;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        <text
+           id="text3783"
+           y="506.94495"
+           x="320.21878"
+           style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+           xml:space="preserve"><tspan
+             y="506.94495"
+             x="320.21878"
+             id="tspan3785"
+             sodipodi:role="line">Warp 2</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+           x="391.52573"
+           y="504.11252"
+           id="text3919"><tspan
+             sodipodi:role="line"
+             id="tspan3921"
+             x="391.52573"
+             y="504.11252">...</tspan></text>
+      </g>
+      <text
+         id="text2897"
+         y="563.9165"
+         x="203.84564"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="563.9165"
+           x="203.84564"
+           id="tspan2899"
+           sodipodi:role="line">Diagonale 0</tspan></text>
+    </g>
+    <rect
+       y="598.36279"
+       x="74.091072"
+       height="39.794456"
+       width="112.34863"
+       id="rect3803"
+       style="fill:none;stroke:#000000;stroke-width:1.16176391;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+    <text
+       id="text3805"
+       y="623.90845"
+       x="84.894295"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#bcd35f;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="623.90845"
+         x="84.894295"
+         id="tspan3807"
+         sodipodi:role="line">T1 T2 ... T32</tspan></text>
+    <path
+       id="path3809"
+       d="m 165.98116,637.98206 0,13.81984"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 94.578651,637.98206 0,13.81984"
+       id="path3811" />
+    <path
+       id="path3813"
+       d="m 117.89963,637.98206 0,13.81984"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <text
+       id="text3815"
+       y="622.70813"
+       x="12.695508"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="622.70813"
+         x="12.695508"
+         id="tspan3817"
+         sodipodi:role="line">Warp 1</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:1.16176391;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect3821"
+       width="112.34863"
+       height="39.794456"
+       x="191.35634"
+       y="598.36279" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#aad400;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+       x="202.15956"
+       y="623.90845"
+       id="text3823"><tspan
+         sodipodi:role="line"
+         id="tspan3825"
+         x="202.15956"
+         y="623.90845">T1 T2 ... T32</tspan></text>
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 283.24641,637.98206 0,13.81984"
+       id="path3827" />
+    <path
+       id="path3829"
+       d="m 211.84389,637.98206 0,13.81984"
+       style="fill:#000000;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 235.16488,637.98206 0,13.81984"
+       id="path3831" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+       x="315.79938"
+       y="622.70813"
+       id="text3833"><tspan
+         sodipodi:role="line"
+         id="tspan3835"
+         x="315.79938"
+         y="622.70813">Warp 2</tspan></text>
+    <path
+       id="path2928"
+       d="m 156.43731,656.55639 287.68258,0"
+       style="fill:#ffaaaa;stroke:#ffaaaa;stroke-width:3.92161775;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <text
+       id="text3004"
+       y="618.54291"
+       x="387.10632"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="618.54291"
+         x="387.10632"
+         id="tspan3006"
+         sodipodi:role="line">...</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+       x="200.47845"
+       y="690.50024"
+       id="text2901"><tspan
+         sodipodi:role="line"
+         id="tspan2903"
+         x="200.47845"
+         y="690.50024">Diagonale -31</tspan></text>
+  </g>
+</svg>

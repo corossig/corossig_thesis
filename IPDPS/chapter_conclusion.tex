@@ -1,0 +1,55 @@
+%\begin{itemize}
+%  \item Result are poor
+%  \item Parallelizing ILU(k) factorization without domain decomposition is hard but have better numerical result
+%  \item Improve aggregate algorithm by taking into account lack of task or excess
+%  \item Add support for non aggragable task (aka. task group)
+%  \item Need of NUMA support in commercial scheduler
+%\end{itemize}
+
+%%   We have shown that with a too fine grain parallezion and some aggregation
+%%   algorithm, we could draw performance from complicated case like ILU(k)
+%%   factorization with an highly connected DAG.
+
+% ST: TODO: pourquoi le paragraphe suivant a-t-il été enlevé ? il est
+% nécessaire pour que la conclusion soit complète.
+
+%% The challenge of parallelizing GMRES with tasks is a huge challenge because of 
+%% the highly connected DAG and the extremely fine grain of the
+%% elementary tasks it generates which can lead to a large scheduling
+%% overhead. Our proposal is to integrate a programmable coarsening stage in the DAG
+%% processing to reduce the pressure on the low-level runtime system.
+%% This programmable stage allows to experiment with multiple coarsening
+%% schemes and even to chain multiple coarsening schemes together.
+
+%% While classical domain decomposition techniques usually lead to better
+%% raw performance results, our DAG-coarsening approach preserves the
+%% natural problem structure and avoids the numerical artifacts incurred
+%% by the extra domain boundaries of domain decomposition techniques.
+%% A better numerical stability may itself allow for faster GMRES
+%% convergence by requiring a lower amount of iterations.
+
+Today, popular frameworks like Intel TBB or OpenMP offer a task based programming
+interface that allows to easily parallelize algorithms in shared memory.
+In this paper, we have presented some improvements to these task-based
+parallelization frameworks in order to cope with the problem of expressing an
+algorithm with a suitable task grain size and with the problem of Non Uniform Memory
+Accesses that degrades performance. In its current prototype state, our framework does not
+fully automate the selection of an optimal grain size. However, it
+significantly helps the programmer by proposing a simple interface to deal with DAG coarsening.
+
+We have shown the benefits of this work on the parallelization of a sparse ILU
+preconditioner which is a challenging application with respect to task grain tuning and NUMA effect
+to an Intel TBB implementation. 
+%% Talk about other application ?
+%
+%We plan to improve our proposal by dynamically taking into account the
+%lack or excess of tasks at run-time, especially during the start-up
+%and ending phases of the DAG execution. 
+To improve even more the NUMA aspects, we are working on improving the task
+scheduler with cache-aware hierarchical scheduling support using a similar
+approach as the one implemented in the Bubblesched thread scheduler~\cite{bubblesched}.
+
+%Our NUMA scheduler is too simple, there are a need of hierarchical
+%scheduler~\cite{bubblesched} which care about NUMA and different level of cache.
+%We have test our application
+%on an hardware with only 2 NUMA node, we plan to test it on more NUMA node.

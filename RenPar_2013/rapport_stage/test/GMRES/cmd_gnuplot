@@ -1,0 +1,12 @@
+set grid
+set auto x
+set yrange [0:0.05]
+set style data histogram
+set style histogram clustered gap 2
+set style fill solid
+set key left
+
+set terminal svg rounded dashed size 1024,480
+set output "GMRES.svg"
+set ylabel "Temps en secondes"
+plot 'G#res.dat.txt' using 2:xtic(1) ti col, '' u 3 ti col, '' u 4 ti col, '' u 5 ti col, '' u 6 ti col, '' u 7 ti col

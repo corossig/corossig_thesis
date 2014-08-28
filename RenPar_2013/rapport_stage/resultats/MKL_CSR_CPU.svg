@@ -1,0 +1,843 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="640"
+   height="480"
+   viewBox="0 0 640 480"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="CSR.svg">
+  <metadata
+     id="metadata350">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1280"
+     inkscape:window-height="949"
+     id="namedview348"
+     showgrid="false"
+     inkscape:zoom="1.3906433"
+     inkscape:cx="244.51136"
+     inkscape:cy="37.260696"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <desc
+     id="desc4">Produced by GNUPLOT 4.4 patchlevel 0 </desc>
+  <defs
+     id="defs6">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 240 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="640 : 240 : 1"
+       inkscape:persp3d-origin="320 : 160 : 1"
+       id="perspective352" />
+    <circle
+       id="gpDot"
+       r="0.5"
+       stroke-width="0.5" />
+    <path
+       id="gpPt0"
+       stroke-width="0.222"
+       stroke="currentColor"
+       d="M-1,0 h2 M0,-1 v2" />
+    <path
+       id="gpPt1"
+       stroke-width="0.222"
+       stroke="currentColor"
+       d="M-1,-1 L1,1 M1,-1 L-1,1" />
+    <path
+       id="gpPt2"
+       stroke-width="0.222"
+       stroke="currentColor"
+       d="M-1,0 L1,0 M0,-1 L0,1 M-1,-1 L1,1 M-1,1 L1,-1" />
+    <rect
+       id="gpPt3"
+       stroke-width="0.222"
+       stroke="currentColor"
+       x="-1"
+       y="-1"
+       width="2"
+       height="2" />
+    <rect
+       id="gpPt4"
+       stroke-width="0.222"
+       stroke="currentColor"
+       fill="currentColor"
+       x="-1"
+       y="-1"
+       width="2"
+       height="2" />
+    <circle
+       id="gpPt5"
+       stroke-width="0.222"
+       stroke="currentColor"
+       cx="0"
+       cy="0"
+       r="1" />
+    <use
+       xlink:href="#gpPt5"
+       id="gpPt6"
+       fill="currentColor"
+       stroke="none" />
+    <path
+       id="gpPt7"
+       stroke-width="0.222"
+       stroke="currentColor"
+       d="M0,-1.33 L-1.33,0.67 L1.33,0.67 z" />
+    <use
+       xlink:href="#gpPt7"
+       id="gpPt8"
+       fill="currentColor"
+       stroke="none" />
+    <use
+       xlink:href="#gpPt7"
+       id="gpPt9"
+       stroke="currentColor"
+       transform="rotate(180)" />
+    <use
+       xlink:href="#gpPt9"
+       id="gpPt10"
+       fill="currentColor"
+       stroke="none" />
+    <use
+       xlink:href="#gpPt3"
+       id="gpPt11"
+       stroke="currentColor"
+       transform="rotate(45)" />
+    <use
+       xlink:href="#gpPt11"
+       id="gpPt12"
+       fill="currentColor"
+       stroke="none" />
+  </defs>
+  <g
+     style="fill:none; color:white; stroke:currentColor; stroke-width:1.00; stroke-linecap:round; stroke-linejoin:round"
+     id="g22" />
+  <g
+     id="g3205">
+    <path
+       d="m 71.9,422.4 9,0 m 538.2,0 -9,0"
+       id="path26"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round" />
+    <g
+       transform="translate(63.6,426.9)"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       id="g28">
+      <text
+         id="text30">0</text>
+    </g>
+    <path
+       d="m 71.9,341.3 9,0 m 538.2,0 -9,0"
+       id="path32"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round" />
+    <g
+       transform="translate(63.6,345.8)"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       id="g34">
+      <text
+         id="text36">2</text>
+    </g>
+    <path
+       d="m 71.9,260.1 9,0 m 538.2,0 -9,0"
+       id="path38"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round" />
+    <g
+       transform="translate(63.6,264.6)"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       id="g40">
+      <text
+         id="text42">4</text>
+    </g>
+    <path
+       d="m 71.9,179 9,0 m 538.2,0 -9,0"
+       id="path44"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round" />
+    <g
+       transform="translate(63.6,183.5)"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       id="g46">
+      <text
+         id="text48">6</text>
+    </g>
+    <path
+       d="m 71.9,97.8 9,0 m 538.2,0 -9,0"
+       id="path50"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round" />
+    <g
+       transform="translate(63.6,102.3)"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       id="g52">
+      <text
+         id="text54">8</text>
+    </g>
+    <path
+       d="m 71.9,16.7 9,0 m 538.2,0 -9,0"
+       id="path56"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round" />
+    <g
+       transform="translate(63.6,21.2)"
+       style="font-size:15px;text-anchor:end;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       id="g58">
+      <text
+         id="text60">10</text>
+    </g>
+    <path
+       d="m 71.9,422.4 0,-9 m 0,-396.7 0,9"
+       id="path62"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round" />
+    <path
+       d="m 150.1,422.4 0,-9 m 0,-396.7 0,9"
+       id="path68"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round" />
+    <path
+       d="m 228.2,422.4 0,-9 m 0,-396.7 0,9"
+       id="path74"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round" />
+    <path
+       d="m 306.4,422.4 0,-9 m 0,-396.7 0,9"
+       id="path80"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round" />
+    <path
+       d="m 384.6,422.4 0,-9 m 0,-396.7 0,9"
+       id="path86"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round" />
+    <path
+       d="m 462.8,422.4 0,-9 m 0,-396.7 0,9"
+       id="path92"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round" />
+    <path
+       d="m 540.9,422.4 0,-9 m 0,-396.7 0,9"
+       id="path98"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round" />
+    <path
+       d="m 619.1,422.4 0,-9 m 0,-396.7 0,9"
+       id="path104"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round" />
+    <path
+       d="m 71.9,16.7 0,405.7 547.2,0 0,-405.7 -547.2,0 z"
+       id="path110"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round" />
+    <g
+       transform="matrix(0,-1,1,0,25.9,219.6)"
+       style="font-size:15px;text-anchor:middle;color:#000000;fill:#000000;stroke:none;font-family:Arial"
+       id="g112">
+      <text
+         id="text114">Puissance en Gflops</text>
+    </g>
+    <a
+       id="a120"
+       xlink:title="Plot #1">
+      <g
+         id="g122"
+         style="fill:none; color:red; stroke:currentColor; stroke-width:1.00; stroke-linecap:round; stroke-linejoin:round">
+        <g
+           id="g124"
+           style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end"
+           transform="translate(552.0,39.2)">
+          <text
+             id="text126">1 Tâche</text>
+        </g>
+        <path
+           id="path128"
+           d="M560.3,34.7 L602.5,34.7 M71.9,403.5 L150.1,389.6 L228.2,387.1 L306.4,380.9 L384.6,392.1 L462.8,385.9    L540.9,382.0 L619.1,378.5 " />
+        <use
+           id="use130"
+           transform="translate(71.9,403.5) scale(4.50)"
+           xlink:href="#gpPt0" />
+        <use
+           id="use132"
+           transform="translate(150.1,389.6) scale(4.50)"
+           xlink:href="#gpPt0" />
+        <use
+           id="use134"
+           transform="translate(228.2,387.1) scale(4.50)"
+           xlink:href="#gpPt0" />
+        <use
+           id="use136"
+           transform="translate(306.4,380.9) scale(4.50)"
+           xlink:href="#gpPt0" />
+        <use
+           id="use138"
+           transform="translate(384.6,392.1) scale(4.50)"
+           xlink:href="#gpPt0" />
+        <use
+           id="use140"
+           transform="translate(462.8,385.9) scale(4.50)"
+           xlink:href="#gpPt0" />
+        <use
+           id="use142"
+           transform="translate(540.9,382.0) scale(4.50)"
+           xlink:href="#gpPt0" />
+        <use
+           id="use144"
+           transform="translate(619.1,378.5) scale(4.50)"
+           xlink:href="#gpPt0" />
+        <use
+           id="use146"
+           transform="translate(581.4,34.7) scale(4.50)"
+           xlink:href="#gpPt0" />
+      </g>
+    </a>
+    <a
+       id="a148"
+       xlink:title="Plot #2">
+      <g
+         id="g150"
+         style="fill:none; color:green; stroke:currentColor; stroke-width:1.00; stroke-linecap:round; stroke-linejoin:round">
+        <g
+           id="g152"
+           style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end"
+           transform="translate(552.0,57.2)">
+          <text
+             id="text154">2 Tâches</text>
+        </g>
+        <path
+           id="path156"
+           d="M560.3,52.7 L602.5,52.7 M71.9,354.6 L150.1,347.2 L228.2,345.0 L306.4,347.6 L384.6,353.3 L462.8,342.5    L540.9,344.8 L619.1,343.2 "
+           stroke-dasharray=" 5,8" />
+        <use
+           id="use158"
+           transform="translate(71.9,354.6) scale(4.50)"
+           xlink:href="#gpPt1" />
+        <use
+           id="use160"
+           transform="translate(150.1,347.2) scale(4.50)"
+           xlink:href="#gpPt1" />
+        <use
+           id="use162"
+           transform="translate(228.2,345.0) scale(4.50)"
+           xlink:href="#gpPt1" />
+        <use
+           id="use164"
+           transform="translate(306.4,347.6) scale(4.50)"
+           xlink:href="#gpPt1" />
+        <use
+           id="use166"
+           transform="translate(384.6,353.3) scale(4.50)"
+           xlink:href="#gpPt1" />
+        <use
+           id="use168"
+           transform="translate(462.8,342.5) scale(4.50)"
+           xlink:href="#gpPt1" />
+        <use
+           id="use170"
+           transform="translate(540.9,344.8) scale(4.50)"
+           xlink:href="#gpPt1" />
+        <use
+           id="use172"
+           transform="translate(619.1,343.2) scale(4.50)"
+           xlink:href="#gpPt1" />
+        <use
+           id="use174"
+           transform="translate(581.4,52.7) scale(4.50)"
+           xlink:href="#gpPt1" />
+      </g>
+    </a>
+    <a
+       id="a176"
+       xlink:title="Plot #3">
+      <g
+         id="g178"
+         style="fill:none; color:blue; stroke:currentColor; stroke-width:1.00; stroke-linecap:round; stroke-linejoin:round">
+        <g
+           id="g180"
+           style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end"
+           transform="translate(552.0,75.2)">
+          <text
+             id="text182">4 Tâches</text>
+        </g>
+        <path
+           id="path184"
+           d="M560.3,70.7 L602.5,70.7 M71.9,282.1 L150.1,305.7 L228.2,303.8 L306.4,305.3 L384.6,303.4 L462.8,301.2    L540.9,294.5 L619.1,304.2 "
+           stroke-dasharray=" 1,4" />
+        <use
+           id="use186"
+           transform="translate(71.9,282.1) scale(4.50)"
+           xlink:href="#gpPt2" />
+        <use
+           id="use188"
+           transform="translate(150.1,305.7) scale(4.50)"
+           xlink:href="#gpPt2" />
+        <use
+           id="use190"
+           transform="translate(228.2,303.8) scale(4.50)"
+           xlink:href="#gpPt2" />
+        <use
+           id="use192"
+           transform="translate(306.4,305.3) scale(4.50)"
+           xlink:href="#gpPt2" />
+        <use
+           id="use194"
+           transform="translate(384.6,303.4) scale(4.50)"
+           xlink:href="#gpPt2" />
+        <use
+           id="use196"
+           transform="translate(462.8,301.2) scale(4.50)"
+           xlink:href="#gpPt2" />
+        <use
+           id="use198"
+           transform="translate(540.9,294.5) scale(4.50)"
+           xlink:href="#gpPt2" />
+        <use
+           id="use200"
+           transform="translate(619.1,304.2) scale(4.50)"
+           xlink:href="#gpPt2" />
+        <use
+           id="use202"
+           transform="translate(581.4,70.7) scale(4.50)"
+           xlink:href="#gpPt2" />
+      </g>
+    </a>
+    <a
+       id="a204"
+       xlink:title="Plot #4">
+      <g
+         id="g206"
+         style="fill:none; color:cyan; stroke:currentColor; stroke-width:1.00; stroke-linecap:round; stroke-linejoin:round">
+        <g
+           id="g208"
+           style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end"
+           transform="translate(552.0,93.2)">
+          <text
+             id="text210">6 Tâches</text>
+        </g>
+        <path
+           id="path212"
+           d="M560.3,88.7 L602.5,88.7 M71.9,237.6 L150.1,251.7 L228.2,272.5 L306.4,287.7 L384.6,263.3 L462.8,276.6    L540.9,271.2 L619.1,268.8 "
+           stroke-dasharray=" 8,4,2,4" />
+        <use
+           id="use214"
+           transform="translate(71.9,237.6) scale(4.50)"
+           xlink:href="#gpPt3" />
+        <use
+           id="use216"
+           transform="translate(150.1,251.7) scale(4.50)"
+           xlink:href="#gpPt3" />
+        <use
+           id="use218"
+           transform="translate(228.2,272.5) scale(4.50)"
+           xlink:href="#gpPt3" />
+        <use
+           id="use220"
+           transform="translate(306.4,287.7) scale(4.50)"
+           xlink:href="#gpPt3" />
+        <use
+           id="use222"
+           transform="translate(384.6,263.3) scale(4.50)"
+           xlink:href="#gpPt3" />
+        <use
+           id="use224"
+           transform="translate(462.8,276.6) scale(4.50)"
+           xlink:href="#gpPt3" />
+        <use
+           id="use226"
+           transform="translate(540.9,271.2) scale(4.50)"
+           xlink:href="#gpPt3" />
+        <use
+           id="use228"
+           transform="translate(619.1,268.8) scale(4.50)"
+           xlink:href="#gpPt3" />
+        <use
+           id="use230"
+           transform="translate(581.4,88.7) scale(4.50)"
+           xlink:href="#gpPt3" />
+      </g>
+    </a>
+    <a
+       id="a232"
+       xlink:title="Plot #5">
+      <g
+         id="g234"
+         style="fill:none; color:#157545; stroke:currentColor; stroke-width:1.00; stroke-linecap:round; stroke-linejoin:round">
+        <g
+           id="g236"
+           style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end"
+           transform="translate(552.0,111.2)">
+          <text
+             id="text238">8 Tâches</text>
+        </g>
+        <path
+           id="path240"
+           d="M560.3,106.7 L602.5,106.7 M71.9,231.7 L150.1,238.6 L228.2,227.9 L306.4,253.8 L384.6,231.8 L462.8,242.4    L540.9,256.7 L619.1,264.5 "
+           stroke-dasharray=" 9,4,1,4,1,4" />
+        <use
+           id="use242"
+           transform="translate(71.9,231.7) scale(4.50)"
+           xlink:href="#gpPt4" />
+        <use
+           id="use244"
+           transform="translate(150.1,238.6) scale(4.50)"
+           xlink:href="#gpPt4" />
+        <use
+           id="use246"
+           transform="translate(228.2,227.9) scale(4.50)"
+           xlink:href="#gpPt4" />
+        <use
+           id="use248"
+           transform="translate(306.4,253.8) scale(4.50)"
+           xlink:href="#gpPt4" />
+        <use
+           id="use250"
+           transform="translate(384.6,231.8) scale(4.50)"
+           xlink:href="#gpPt4" />
+        <use
+           id="use252"
+           transform="translate(462.8,242.4) scale(4.50)"
+           xlink:href="#gpPt4" />
+        <use
+           id="use254"
+           transform="translate(540.9,256.7) scale(4.50)"
+           xlink:href="#gpPt4" />
+        <use
+           id="use256"
+           transform="translate(619.1,264.5) scale(4.50)"
+           xlink:href="#gpPt4" />
+        <use
+           id="use258"
+           transform="translate(581.4,106.7) scale(4.50)"
+           xlink:href="#gpPt4" />
+      </g>
+    </a>
+    <a
+       id="a260"
+       xlink:title="Plot #6">
+      <g
+         id="g262"
+         style="fill:none; color:#000094; stroke:currentColor; stroke-width:1.00; stroke-linecap:round; stroke-linejoin:round">
+        <g
+           id="g264"
+           style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end"
+           transform="translate(552.0,129.2)">
+          <text
+             id="text266">10 Tâches</text>
+        </g>
+        <path
+           id="path268"
+           d="M560.3,124.7 L602.5,124.7 M71.9,253.5 L150.1,250.3 L228.2,250.3 L306.4,241.5 L384.6,255.6 L462.8,251.8    L540.9,247.6 L619.1,240.4 " />
+        <use
+           id="use270"
+           transform="translate(71.9,253.5) scale(4.50)"
+           xlink:href="#gpPt5" />
+        <use
+           id="use272"
+           transform="translate(150.1,250.3) scale(4.50)"
+           xlink:href="#gpPt5" />
+        <use
+           id="use274"
+           transform="translate(228.2,250.3) scale(4.50)"
+           xlink:href="#gpPt5" />
+        <use
+           id="use276"
+           transform="translate(306.4,241.5) scale(4.50)"
+           xlink:href="#gpPt5" />
+        <use
+           id="use278"
+           transform="translate(384.6,255.6) scale(4.50)"
+           xlink:href="#gpPt5" />
+        <use
+           id="use280"
+           transform="translate(462.8,251.8) scale(4.50)"
+           xlink:href="#gpPt5" />
+        <use
+           id="use282"
+           transform="translate(540.9,247.6) scale(4.50)"
+           xlink:href="#gpPt5" />
+        <use
+           id="use284"
+           transform="translate(619.1,240.4) scale(4.50)"
+           xlink:href="#gpPt5" />
+        <use
+           id="use286"
+           transform="translate(581.4,124.7) scale(4.50)"
+           xlink:href="#gpPt5" />
+      </g>
+    </a>
+    <a
+       id="a288"
+       xlink:title="Plot #7">
+      <g
+         id="g290"
+         style="fill:none; color:#FF9900; stroke:currentColor; stroke-width:1.00; stroke-linecap:round; stroke-linejoin:round">
+        <g
+           id="g292"
+           style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end"
+           transform="translate(552.0,147.2)">
+          <text
+             id="text294">12 Tâches</text>
+        </g>
+        <path
+           id="path296"
+           d="M560.3,142.7 L602.5,142.7 M71.9,259.0 L150.1,247.2 L228.2,242.1 L306.4,233.5 L384.6,250.0 L462.8,241.0    L540.9,237.0 L619.1,229.2 "
+           stroke-dasharray=" 5,8" />
+        <use
+           id="use298"
+           transform="translate(71.9,259.0) scale(4.50)"
+           xlink:href="#gpPt6" />
+        <use
+           id="use300"
+           transform="translate(150.1,247.2) scale(4.50)"
+           xlink:href="#gpPt6" />
+        <use
+           id="use302"
+           transform="translate(228.2,242.1) scale(4.50)"
+           xlink:href="#gpPt6" />
+        <use
+           id="use304"
+           transform="translate(306.4,233.5) scale(4.50)"
+           xlink:href="#gpPt6" />
+        <use
+           id="use306"
+           transform="translate(384.6,250.0) scale(4.50)"
+           xlink:href="#gpPt6" />
+        <use
+           id="use308"
+           transform="translate(462.8,241.0) scale(4.50)"
+           xlink:href="#gpPt6" />
+        <use
+           id="use310"
+           transform="translate(540.9,237.0) scale(4.50)"
+           xlink:href="#gpPt6" />
+        <use
+           id="use312"
+           transform="translate(619.1,229.2) scale(4.50)"
+           xlink:href="#gpPt6" />
+        <use
+           id="use314"
+           transform="translate(581.4,142.7) scale(4.50)"
+           xlink:href="#gpPt6" />
+      </g>
+    </a>
+    <a
+       id="a316"
+       xlink:title="Plot #8">
+      <g
+         id="g318"
+         style="fill:none; color:#0099A1; stroke:currentColor; stroke-width:1.00; stroke-linecap:round; stroke-linejoin:round">
+        <g
+           id="g320"
+           style="stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end"
+           transform="translate(552.0,165.2)">
+          <text
+             id="text322">24 Tâches</text>
+        </g>
+        <path
+           id="path324"
+           d="M560.3,160.7 L602.5,160.7 M71.9,295.5 L150.1,248.5 L228.2,238.8 L306.4,237.3 L384.6,254.5 L462.8,235.0    L540.9,240.9 L619.1,231.7 "
+           stroke-dasharray=" 1,4" />
+        <use
+           id="use326"
+           transform="translate(71.9,295.5) scale(4.50)"
+           xlink:href="#gpPt7" />
+        <use
+           id="use328"
+           transform="translate(150.1,248.5) scale(4.50)"
+           xlink:href="#gpPt7" />
+        <use
+           id="use330"
+           transform="translate(228.2,238.8) scale(4.50)"
+           xlink:href="#gpPt7" />
+        <use
+           id="use332"
+           transform="translate(306.4,237.3) scale(4.50)"
+           xlink:href="#gpPt7" />
+        <use
+           id="use334"
+           transform="translate(384.6,254.5) scale(4.50)"
+           xlink:href="#gpPt7" />
+        <use
+           id="use336"
+           transform="translate(462.8,235.0) scale(4.50)"
+           xlink:href="#gpPt7" />
+        <use
+           id="use338"
+           transform="translate(540.9,240.9) scale(4.50)"
+           xlink:href="#gpPt7" />
+        <use
+           id="use340"
+           transform="translate(619.1,231.7) scale(4.50)"
+           xlink:href="#gpPt7" />
+        <use
+           id="use342"
+           transform="translate(581.4,160.7) scale(4.50)"
+           xlink:href="#gpPt7" />
+      </g>
+    </a>
+    <g
+       id="g344"
+       style="fill:none; color:black; stroke:currentColor; stroke-width:1.00; stroke-linecap:round; stroke-linejoin:round">
+      <path
+         id="path346"
+         d="M71.9,16.7 L71.9,422.4 L619.1,422.4 L619.1,16.7 L71.9,16.7 Z " />
+    </g>
+  </g>
+  <text
+     xml:space="preserve"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+     x="74.745766"
+     y="441.27863"
+     id="text3350"><tspan
+       sodipodi:role="line"
+       id="tspan3352"
+       x="74.745766"
+       y="441.27863">0.8 Mnnz</tspan><tspan
+       sodipodi:role="line"
+       x="74.745766"
+       y="458.77863"
+       id="tspan3354">4x4</tspan><tspan
+       sodipodi:role="line"
+       x="74.745766"
+       y="476.27863"
+       id="tspan3356">20^3</tspan></text>
+  <text
+     id="text3358"
+     y="441.27863"
+     x="149.89084"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+     xml:space="preserve"><tspan
+       y="441.27863"
+       x="149.89084"
+       id="tspan3360"
+       sodipodi:role="line">3 Mnnz</tspan><tspan
+       id="tspan3362"
+       y="458.77863"
+       x="149.89084"
+       sodipodi:role="line">8x8</tspan><tspan
+       id="tspan3364"
+       y="476.27863"
+       x="149.89084"
+       sodipodi:role="line">20^3</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+     x="612.05811"
+     y="441.25812"
+     id="text3366"><tspan
+       sodipodi:role="line"
+       id="tspan3368"
+       x="612.05811"
+       y="441.25812">47 Mnnz</tspan><tspan
+       sodipodi:role="line"
+       x="612.05811"
+       y="458.75812"
+       id="tspan3370">16x16</tspan><tspan
+       sodipodi:role="line"
+       x="612.05811"
+       y="476.25812"
+       id="tspan3372">30^3</tspan></text>
+  <text
+     id="text3374"
+     y="441.27863"
+     x="540.52271"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+     xml:space="preserve"><tspan
+       y="441.27863"
+       x="540.52271"
+       id="tspan3376"
+       sodipodi:role="line">15 Mnnz</tspan><tspan
+       id="tspan3378"
+       y="458.77863"
+       x="540.52271"
+       sodipodi:role="line">9x9</tspan><tspan
+       id="tspan3380"
+       y="476.27863"
+       x="540.52271"
+       sodipodi:role="line">30^3</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+     x="461.07727"
+     y="441.27863"
+     id="text3382"><tspan
+       sodipodi:role="line"
+       id="tspan3384"
+       x="461.07727"
+       y="441.27863">12 Mnnz</tspan><tspan
+       sodipodi:role="line"
+       x="461.07727"
+       y="458.77863"
+       id="tspan3386">8x8</tspan><tspan
+       sodipodi:role="line"
+       x="461.07727"
+       y="476.27863"
+       id="tspan3388">30^3</tspan></text>
+  <text
+     id="text3390"
+     y="441.27863"
+     x="383.78915"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+     xml:space="preserve"><tspan
+       y="441.27863"
+       x="383.78915"
+       id="tspan3392"
+       sodipodi:role="line">3 Mnnz</tspan><tspan
+       id="tspan3394"
+       y="458.77863"
+       x="383.78915"
+       sodipodi:role="line">4x4</tspan><tspan
+       id="tspan3396"
+       y="476.27863"
+       x="383.78915"
+       sodipodi:role="line">30^3</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+     x="305.30957"
+     y="441.27863"
+     id="text3398"><tspan
+       sodipodi:role="line"
+       id="tspan3400"
+       x="305.30957"
+       y="441.27863">14 Mnnz</tspan><tspan
+       sodipodi:role="line"
+       x="305.30957"
+       y="458.77863"
+       id="tspan3402">16x16</tspan><tspan
+       sodipodi:role="line"
+       x="305.30957"
+       y="476.27863"
+       id="tspan3404">20^3</tspan></text>
+  <text
+     id="text3406"
+     y="441.25812"
+     x="226.83365"
+     style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Bitstream Vera Sans"
+     xml:space="preserve"><tspan
+       y="441.25812"
+       x="226.83365"
+       id="tspan3408"
+       sodipodi:role="line">4 Mnnz</tspan><tspan
+       id="tspan3410"
+       y="458.75812"
+       x="226.83365"
+       sodipodi:role="line">9x9</tspan><tspan
+       id="tspan3412"
+       y="476.25812"
+       x="226.83365"
+       sodipodi:role="line">20^3</tspan></text>
+</svg>

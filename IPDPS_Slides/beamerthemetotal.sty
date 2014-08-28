@@ -1,0 +1,123 @@
+\mode<presentation>
+%% Disable navigation symbols
+\setbeamertemplate{navigation symbols}
+
+\definecolor{sectionColor}{RGB}{0,102,0}
+\definecolor{leftFootlineColor}{RGB}{0,102,51}
+\definecolor{middleFootlineColor}{RGB}{0,102,102}
+\definecolor{rightFootlineColor}{RGB}{0,102,153}
+\definecolor{authorColor}{RGB}{255,255,255}
+\definecolor{footlineTitleColor}{RGB}{255,255,255}
+\definecolor{instituteColor}{RGB}{255,255,255}
+\definecolor{dateColor}{RGB}{255,255,255}
+\definecolor{pageColor}{RGB}{255,255,255}
+\definecolor{titleColor}{RGB}{255,255,255}
+\definecolor{titleTextColor}{RGB}{0,143,112}
+\definecolor{bodyColor}{RGB}{255,255,255}
+\definecolor{normalTextColor}{RGB}{0,0,0}
+\definecolor{exampleTextColor}{RGB}{51,153,51}
+\definecolor{alertTextColor}{RGB}{204,51,51}
+\definecolor{chipColor}{RGB}{51,102,0}
+\definecolor{chipTextColor}{RGB}{255,255,255}
+\definecolor{normalBlockColor}{RGB}{228,243,243}
+\definecolor{normalTitleBlockColor}{RGB}{75,128,128}
+\definecolor{normalBlockTextColor}{RGB}{0,0,0}
+\definecolor{normalBlockTitleTextColor}{RGB}{255,255,255}
+\definecolor{exampleBlockColor}{RGB}{215,222,0}
+\definecolor{exampleTitleBlockColor}{RGB}{128,132,0}
+\definecolor{exampleBlockTextColor}{RGB}{0,0,0}
+\definecolor{exampleBlockTitleTextColor}{RGB}{255,255,255}
+\definecolor{alertBlockColor}{RGB}{255,153,153}
+\definecolor{alertTitleBlockColor}{RGB}{204,51,51}
+\definecolor{alertBlockTextColor}{RGB}{0,0,0}
+
+
+\definecolor{subsectionColor}{RGB}{0,102,153}
+\definecolor{sectionColor}{RGB}{0,102,0}
+\definecolor{separatorColor}{RGB}{0,122,0}
+
+\definecolor{blackColor}{RGB}{0,0,0}
+\definecolor{whiteColor}{RGB}{255,255,255}
+\definecolor{greyColor}{RGB}{150,150,150}
+
+
+\definecolor{Pantone-185C} {RGB}{255,   0,  51}
+\definecolor{Pantone-138C} {RGB}{255, 133,   0}
+\definecolor{Pantone-185C} {RGB}{  0,  51, 255}
+\definecolor{Pantone-279C} {RGB}{ 77, 179, 255}
+\definecolor{Pantone-5493C}{RGB}{101, 197, 186}
+\definecolor{Pantone-300C} {RGB}{ 36, 138, 255}
+\definecolor{Pantone-3115C}{RGB}{ 92, 255, 227}
+\definecolor{Pantone-272C} {RGB}{ 89, 112, 255}
+\definecolor{Pantone-2603C}{RGB}{ 87,  36, 255}
+\definecolor{Pantone-219C} {RGB}{255,  20, 255}
+\definecolor{Pantone-2415C}{RGB}{171,  23, 255}
+
+\definecolor{Pantone-Cool-Gray-8C}{RGB}{ 77,  77,  77}
+\definecolor{Pantone-Cool-Gray-5C}{RGB}{161, 179, 179}
+
+\definecolor{alertBlockTitleTextColor}{RGB}{255,255,255}
+
+
+\setbeamercolor{section in head/foot}{bg=sectionColor, fg=whiteColor}
+\setbeamercolor{subsection in head/foot}{bg=subsectionColor, fg=whiteColor}
+\setbeamercolor*{block title}{fg=normalBlockTitleTextColor,bg=normalTitleBlockColor}
+\setbeamercolor*{block body}{fg=normalBlockTextColor,bg=normalBlockColor}
+\setbeamercolor*{block title alerted}{fg=alertBlockTitleTextColor,bg=alertTitleBlockColor}
+\setbeamercolor*{block body alerted}{fg=alertBlockTextColor,bg=alertBlockColor}
+\setbeamercolor*{block title example}{fg=exampleBlockTitleTextColor,bg=exampleTitleBlockColor}
+\setbeamercolor*{block body example}{fg=exampleBlockTextColor,bg=exampleBlockColor}
+\setbeamerfont{block title}{size={}}
+\setbeamerfont{frametitle}{shape=\scshape,series=\bfseries}
+\setbeamercolor{titlelike}{fg=titleTextColor,bg=titleColor}
+\setbeamercolor*{normal text}{fg=normalTextColor,bg=bodyColor}
+\setbeamercolor*{example text}{fg=exampleTextColor}
+\setbeamercolor*{alerted text}{fg=alertTextColor}
+\setbeamercolor{item projected}{bg=chipColor,fg=chipTextColor}
+
+
+\setbeamercolor{separation line}{use=structure,bg=separatorColor}
+
+
+\setbeamercolor{left foot}{bg=whiteColor, fg=blackColor}
+\setbeamercolor{right foot}{bg=whiteColor, fg=greyColor}
+
+\defbeamertemplate*{headline}{infolines theme}{
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.5\paperwidth,ht=3ex,right,rightskip=2ex]{section in head/foot}%
+      \vbox to3ex{\vfil\hbox{%
+          \insertsectionhead%
+        }\vfil}%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.5\paperwidth,ht=3ex,left,leftskip=2ex]{subsection in head/foot}%
+      \vbox to3ex{\vfil\hbox{%
+          \insertsubsectionhead
+        }\vfil}%
+  \end{beamercolorbox}}%
+}
+
+\defbeamertemplate*{footline}{infolines theme}
+{
+  \leavevmode%
+  \begin{beamercolorbox}[colsep=0.25pt, wd=0.02\paperwidth]{}\end{beamercolorbox}%
+  \begin{beamercolorbox}[colsep=0.25pt, wd=0.98\paperwidth]{upper separation line foot}\end{beamercolorbox}
+  \hbox{%
+    \begin{beamercolorbox}[wd=.64\paperwidth,ht5ex,left,leftskip=3.5ex]{left foot}%
+      \vbox to5ex{\vfil\hbox{%
+          \insertshorttitle~{\color{greyColor}by}~\insertshortauthor~{\color{greyColor}on}~\insertshortdate{}%
+        }\vfil}%
+    \end{beamercolorbox}%
+    
+    \begin{beamercolorbox}[wd=.23\paperwidth,ht=5ex,right,rightskip=2ex]{right foot}%
+      \vbox to5ex{\vfil\hbox{%
+          \textbf{\insertframenumber{} / \inserttotalframenumber}%
+        }\vfil}%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.10\paperwidth,ht=5ex,right]{right foot}%
+      \vbox to5ex{\vfil\hbox{\includegraphics[height=4.5ex]{TOTAL_SA.pdf}}\vfil}%
+    \end{beamercolorbox}%
+  }
+}
+\mode
+<all>

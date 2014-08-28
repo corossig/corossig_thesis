@@ -1,0 +1,11 @@
+set datafile separator ";"
+set style data linespoints
+set yrange [0:140]
+set xrange [1:50]
+set terminal svg rounded size 640,480
+set output "BCSR_16.svg"
+set ylabel "Puissance en Gflops"
+set xlabel "Dimension de la matrice"
+set key left top
+plot 'res_bcsr' using 1:2 title columnheader(2)
+     

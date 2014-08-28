@@ -1,0 +1,5 @@
+Size	"1 coeur CPU sans ordering"	"1 coeur CPU ordering Rouge-Noir"	"1 coeur CPU sans preconditionneur"	"1 GPU sans ordering"	"1 GPU ordering Rouge-Noir"	"1 GPU sans preconditionneur"
+20_8	0.0068				0.0039					0.0025					0.008			0.0021				0.0014
+20_16	0.014				0.0121					0.0048					0.0072			0.0039				0.0028
+30_8	0.0152				0.0121					0.0053					0.0151			0.0041				0.0036
+30_16	0.0456				0.0458					0.0232					0.0172			0.0060				0.0056

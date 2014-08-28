@@ -1,0 +1,41 @@
+%\begin{itemize}
+%  \item Explain task flow based parallelization
+%  \item Cite some task based software(StarPU \cite{starpu}, TBB \cite{Intel::TBB}, OpenMP 3.0 \cite{openmp08}, Cilk).
+%  \item task size problem
+%  \item no major improvement since Cilk
+%\end{itemize}
+
+The principle of using tasks to express the potential application
+parallelism in an abstract way, independent from available hardware
+resources, was once popularized by tools such as
+Cilk~\cite{cilk}. The widespread availability of multi-core processors
+recently revived the popularity of task scheduling frameworks~\cite{taskscomparison} as
+exemplified by tools such as Intel TBB~\cite{Intel::TBB} and
+OpenMP~3.0's task support~\cite{openmptasks} for regular multi-core platforms,
+or StarSs/OmpSs derivatives~\cite{ompss} as well as StarPU~\cite{starpu} and
+X-Kaapi~\cite{xkaapi} for heterogeneous platforms. 
+
+Most frameworks for multi-core platforms don't handle memory locality, some
+try to improve data locality between tasks by leaving the user with the choice of the next task
+to schedule (e.g., {\em continuation} in TBB). In the case of a task scheduler for
+heterogeneous platforms, data need to be moved to the target platform. Therefore, in this case, the
+scheduler must know which data are used by each task to move them at the right
+time. Unfortunately none of these schedulers care about NUMA in their scheduling algorithms to reduce the overhead 
+of data movement.
+
+Several related works have been conducted in the past to address the
+issue of adapting the task grain size to the amount of available
+computing units. Many related works partially address this
+grain size issue by promoting cache-oblivious techniques for a specific class of
+applications such as recursive, divide-and-conquer
+codes or recursively partitioned loops~\cite{unifieddataflow,Intel::TBB,cilk,xkaapi,taskscomparison}.
+
+Works such as the SCOOPP framework~\cite{scoopp} provides means for the applications to control
+the task grain size. However, the grain size selection issue is still up to
+the application programmer. 
+
+On the theoretical side, general task scheduling has been heavily studied for
+a long time now~\cite{Khan94acomparison,heft}. Works on task grain
+adaptiveness have been scarcer, but do exist. The work presented in this
+paper is built on grain-packing~\cite{GeY96} and task clustering~\cite{triplet}
+past works.
