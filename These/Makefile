@@ -2,16 +2,21 @@ PDFLATEX_OPTIONS=-file-line-error -interaction=nonstopmode --output-directory=ou
 RUBBER_OPTIONS=-d --cache  
 SRC=thesis.tex
 DEST=thesis.pdf
+RUBBER_VERSION := $(shell rubber --version 2>/dev/null)
 
 all: imgs
+ifdef RUBBER_VERSION
 	rubber $(RUBBER_OPTIONS) $(SRC)
 	mv $(DEST) $(DEST).tmp
 	rubber --clean $(SRC)
 	mv $(DEST).tmp $(DEST)
-#	pdflatex $(PDFLATEX_OPTIONS) $(SRC)
-#	bibtex output/thesis || echo "No bib"
-#	pdflatex $(PDFLATEX_OPTIONS) $(SRC)
-#	pdflatex $(PDFLATEX_OPTIONS) $(SRC)
+else
+	pdflatex $(PDFLATEX_OPTIONS) $(SRC)
+	bibtex output/thesis || echo "No bib"
+	pdflatex $(PDFLATEX_OPTIONS) $(SRC)
+	pdflatex $(PDFLATEX_OPTIONS) $(SRC)
+	mv output/$(DEST) $(DEST)
+endif
 
 .PHONY: imgs view
 
