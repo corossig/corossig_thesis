@@ -1,3 +1,13 @@
 *.pdf
 *~
-
+*.cache
+*.aux
+*.bbl
+*.blg
+*.log
+*.maf
+*.mtc
+*.mtc?
+*.out
+*.toc
+*.nlo
