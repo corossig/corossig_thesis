@@ -1,0 +1,32 @@
+%+++++++++++++++++++++++++++++++
+\section{Why my SpMV is so slow ?}
+%-------------------------------
+\subsection{Two times more cores but not two times faster}
+  \begin{itemize}
+    \item Just draw some curves
+  \end{itemize}
+%-------------------------------
+\subsection{Memory explanation}
+To understand previous results we need to study a little bit of computer architecture.
+%
+Performance of a computer mostly depends on two things : processors and memories.
+%
+When a program wants to read memory, it is subjected to a memory penalty.
+%
+This penalty is the sum of two constraints :
+\begin{itemize}
+        \item latency : the time between the ask of a memory of the first byte received;
+        \item bandwith : the maximum of byte per second that can be send/receive
+\end{itemize}
+%
+In a modern computer, there is different type of memories.
+%
+
+
+
+
+  \begin{itemize}
+    \item Define memory penalty
+    \item Talk about bandwidth
+  \end{itemize}
+%+++++++++++++++++++++++++++++++

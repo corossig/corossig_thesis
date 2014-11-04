@@ -289,36 +289,8 @@ minimum height=0.1em,font=\scriptsize]
 \minitoc
 \vspace{1cm}
 %=========================================================
-%+++++++++++++++++++++++++++++++
-\section{Why my SpMV is so slow ?}
-%-------------------------------
-\subsection{Two times more cores but not two times faster}
-  \begin{itemize}
-    \item Just draw some curves
-  \end{itemize}
-%-------------------------------
-\subsection{Memory explanation}
-  \begin{itemize}
-    \item Define memory penalty
-    \item Talk about bandwidth
-  \end{itemize}
-%+++++++++++++++++++++++++++++++
-
-
-%+++++++++++++++++++++++++++++++
-\section{Current NUMA management}
-%-------------------------------
-\subsection{First touch allocation policy}
-%-------------------------------
-\subsection{Interleaved memory allocation policy}
-%-------------------------------
-\subsection{Next-touch}
-%-------------------------------
-\subsection{Automatic solution}
-%-------------------------------
-\subsection{One MPI per NUMA bank}
-%+++++++++++++++++++++++++++++++
-
+\input{src/spmv_slow.tex}
+\input{src/numa_management.tex}
 
 %+++++++++++++++++++++++++++++++
 \section{Handle NUMA directly in scheduler}
