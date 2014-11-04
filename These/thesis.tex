@@ -79,34 +79,18 @@ minimum height=0.1em,font=\scriptsize]
 %+++++++++++++++++++++++++++++++
 \section{Reservoir simulation}
 %-------------------------------
-\subsection{Overview}
-  \begin{itemize}
-    \item Explain what is a reservoir
-    \item What is it use for ?
-  \end{itemize}
+\input{src/rs_overview}
 %-------------------------------
-\subsection{From physics to computation}
-  \begin{itemize}
-    \item Rapid transition between physical model to sparse non-linear system
-    \item Explain newton
-  \end{itemize}
+\input{src/rs_physics_computation}
 %+++++++++++++++++++++++++++++++
 
 
 %+++++++++++++++++++++++++++++++
 \section{Linear algebra}
 %-------------------------------
-\subsection{Dense linear algebra}
-  \begin{itemize}
-    \item Well studied in HPC
-    \item Performance don't scale with problem size
-  \end{itemize}
+\input{src/la_dense}
 %-------------------------------
-\subsection{Sparse linear algebra}
-  \begin{itemize}
-    \item Explain format and computation problem (bandwidth, ...)
-    \item Allow to solve large problem
-  \end{itemize}
+\input{src/la_sparse}
 %+++++++++++++++++++++++++++++++
 
 
@@ -199,13 +183,7 @@ minimum height=0.1em,font=\scriptsize]
     \item We need to use a preconditionner
   \end{itemize}
 %-------------------------------
-\subsection{Incomplete LU}
-  \begin{itemize}
-    \item Explain ILU
-    \item It can be parallel...
-    \item ... but a lot of data dependencies
-    \item and small tasks, a granularity problem
-  \end{itemize}
+\input{src/ilu.tex}
 %-------------------------------
 %+++++++++++++++++++++++++++++++
 

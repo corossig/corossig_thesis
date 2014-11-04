@@ -1,0 +1,48 @@
+\subsection{Incomplete LU}
+LU factorization in dense linear algebra is method to factorize a matrix $A$ into two matrices $L$ and $U$.
+%
+$L$ is a triangular lower matrix, all value under the diagonal are zeros.
+%
+Same thing for $U$, but all zeros are above the diagonal.
+%
+The main interest of this factorization is to solve x in the equation of type $A.x=y$.
+%
+This equation is transform into two equations $L.x_tmp=y$ and $U.x=x_tmp$.
+%
+Solving a system with a triangular matrix is pretty trivial.
+%
+This can be done row by row by starting by the row with only one value.
+%
+Then the row with two values can solve and so on.
+%
+This algorithm is purely sequential but some works exist to make it parallel %TODO ref sur plasma
+
+In sparse linear algebra, we can't do exact LU factorization because it will result two dense matrices $L$ and $U$.
+%
+So we use an alterate form of LU which is ILU (Incomplete LU).
+%
+The ILU algorithm is quite the same as LU but the non-zero patern of the matrix $A$ is the same as non-zero patern of matrices $L$ and $U$.
+%
+The parallelism in ILU naturally exists, some rows can be factorize in parallel.
+%
+To factorize a specific row we need to look at it non-zero pattern.
+%
+The indices of all non-zeros before the diagonal give us the list of rows that need to factorize first. %TODO figure
+%
+The parallelism can be represent under a DAG form. %TODO figure
+
+So, the parallelism in ILU can be represent under a task form.
+%
+Each task represents the factorization of one row... which is quite small.
+%
+In fact, most of task scheduler will take longer to schedule the task than the task takes to factorize a row.
+%
+It's called granularity problem.
+%
+To solve this problem, tasks must become bigger.
+%
+To do that, we can factorize several rows in one task.
+%
+But it is not simple to choice which tasks could be factorized together without impacting result or parallelism.
+%
+A generic method is shown later in the thesis.
