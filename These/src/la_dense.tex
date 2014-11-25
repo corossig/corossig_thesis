@@ -1,8 +1,15 @@
 \subsection{Dense linear algebra}
 
+When we talk about linear algebra, the first thing that comes in mind is a matrix, and often a dense matrix.
+%
+To understand the adjective \textem{dense} we need to know it's opposite \textem{sparse}.
+%
+A sparse matrix is a matrix with a significant part of zero value, it's called sparse because we can only store the non-zero value.
+%
+So, a dense matrix is just a matrix with a majority of zero value.
+
+
 Dense Linear Algebra optimization has been studied for a long time\ref{42}.
 Most common techniques are cache blocking, SIMD vectorization ans prefetch.
 These three techniques are possible because computations of Dense problems
 are regular.
-
-

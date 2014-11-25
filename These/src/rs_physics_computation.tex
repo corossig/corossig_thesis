@@ -1,11 +1,11 @@
 \subsection{From physics to computation}
-To be able to do reservoir simulation, we start with a physicist who model fluid flow inside porous medium.
+To be able to do a reservoir simulation, we start with a physicist who model fluid flow inside porous medium.
 %
-From this model, we can obtain some physical equations.
+Most of models are based on three physical equations, the conservation of mass, ideal gas law and Darcy's law.
 %
 Then we discretize the reservoir into cells and we use a finite difference schema.
 %
-For each cell of the reservoir, we can compute a non-linear equation of each variables (e.g.: pressure, oil saturation)
+For each cell of the reservoir, we can compute a non-linear equation of each primary variables (e.g.: pressure, oil saturation)
 %
 To solve the non-linear systems of equation, we use the Newton–Raphson method.
 %
@@ -14,20 +14,21 @@ This method is iterative, we begins with an initial guess $X_0$ reasonably close
 %   (-_-)   %
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=\textwidth]{newton}
+  \includegraphics[width=0.8\textwidth]{newton}
   \caption{Example of two Newton steps in one dimension space.
-    Each tangent lines correspond to a linear equation to solve.}
-\label{newton}
+    Each tangent lines correspond to a linear equation to solve.
+    We want to find $X_n$ and we start with $X_0$.}
+\label{fig:newton}
 \end{figure}
 
-The example in the figure~\ref{newton} is only in one dimension but it's quite the same approach that can be done when we work with an arbitrary number of dimensions.
+The example in the figure~\ref{fig:newton} is only in one dimension but it's quite the same approach that can be done when we work with an arbitrary number of dimensions.
 %
-Linear equations of reservoir siluation can be represent as large sparse matrices.
+Linear equations of reservoir simulation can be represent as large sparse matrices, in which each row represent all interactions between an element and its direct neighbors.
 %
-Each row represent all interactions between an element and its direct neighbors.
+So in a 3D regular mesh, there can have up to seven interactions per row.
 %
-So in a regular mesh, there can have up to seven small dense block per row.
+Each interaction is represented by a small square matrix of the size of the number of primary variables.
 %
 Sparse linear algebra solvers, like GMRES, are then utilize to solve all linear problems use in the Newton method.
 %
-Let's focus on linear algebra.
+Let's focus on the linear algebra part.
