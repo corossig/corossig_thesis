@@ -1,15 +1,44 @@
 \subsection{Dense linear algebra}
 
-When we talk about linear algebra, the first thing that comes in mind is a matrix, and often a dense matrix.
+Let's take a real life example to see what linear algebra is and how to use it :\\
 %
-To understand the adjective \textem{dense} we need to know it's opposite \textem{sparse}.
+During a party in a bar, I buy a drink to all my friends, I paid 25 dollars for 5 beers and 2 mojitos.
 %
-A sparse matrix is a matrix with a significant part of zero value, it's called sparse because we can only store the non-zero value.
+Later in the party, I meet a girl and I buy one mojito and a beer for 8 dollars.
 %
-So, a dense matrix is just a matrix with a majority of zero value.
+When both glasses are empty, I check my wallets and I have only 7 dollars.
+%
+I can't see the price of the beer on the wall but I want to buy another drink.
+%
+I try to remember how to solve two equations with two unknown variables.
+
+5 * price\_of\_beer + 2 * price\_of\_mojito = 25
+1 * price\_of\_beer + 1 * price\_of\_mojito = 8
+
+This can represent under another form :
+
+5 2   price\_of\_beer   25
+1 1   price\_of\_mojito 8
+
+We have a matrix $A$ multiply a vector $x$ equal a vector $b$.
+%
+By doing the multiplication we obtain exactly the same system of equations as previous.
+%
+So solving a linear problem is often solving a problem of type $A*x=b$, many methods exist for solving this problem (Gaussian elimination, ...)
+%
+In this example I can only buy 2 beer or 1 mojito, but we can replace pricing by physical constant and solve basic physical problems.
 
 
-Dense Linear Algebra optimization has been studied for a long time\ref{42}.
-Most common techniques are cache blocking, SIMD vectorization ans prefetch.
-These three techniques are possible because computations of Dense problems
-are regular.
+Their are two major kind of problem in linear algebra, the dense ones and the sparse ones, this refers to the matrix structure.
+%
+A matrix with a lot of zeros is called sparse, this is because we can only store non zero values.
+%
+At the opposite, dense matrices don't have so much zero values.
+%
+The performance of dense linear algebra kernel is something well studied.
+%
+Due to the regular shape of dense matrices, many computational techniques can be apply, for example the cache blocking technique to improve data locality and reduce cache misses.
+%
+Other techniques also exist, like SIMD vectorization because dense matrices operations often imply to apply the same operation on data which are contiguously store in memory.
+%
+The parallelization of some time consuming kernel is also well studied.

@@ -47,3 +47,12 @@ The choice of the storage format has a lot of impact over the performance of an 
 With most of format, we will have to do at least two memory access to obtain 2D coordo ate of a non zero element whereas in dense algebra it could be calculate from the position in the matrix.
 %
 The sparsity and irregularity of matrices also imply to have unnefficient in memory sparse kernel because of bad cache reuse.
+
+
+Solving sparse linear problems is also different of solving dense linear ones.
+%
+We cannot use direction inversion of the matrix or gaussian elimination because it will result a quasi-dense matrix, which can't be realizable both in term of memory and in term of computation when the matrix dimension is high.
+%
+So different methods have been invented to these problems, most of them are based are iterative methods.
+%
+This mean than we an approximate solution is quite enough to solve our problem
