@@ -1,13 +1,13 @@
 \subsection{Incomplete LU}
-LU factorization in dense linear algebra is method to factorize a matrix $A$ into two matrices $L$ and $U$.
+LU factorization in dense linear algebra is a method to factorize a matrix $A$ into two matrices $L$ and $U$.
 %
-$L$ is a triangular lower matrix, all value under the diagonal are zeros.
+$L$ is a triangular lower matrix, all value above the diagonal are zeros.
 %
-Same thing for $U$, but all zeros are above the diagonal.
+Same thing for $U$, but all zeros are under the diagonal.
 %
 The main interest of this factorization is to solve x in the equation of type $A.x=y$.
 %
-This equation is transform into two equations $L.x_tmp=y$ and $U.x=x_tmp$.
+This equation is transform into two equations $L.x_{tmp}=y$ and $U.x=x_{tmp}$.
 %
 Solving a system with a triangular matrix is pretty trivial.
 %
@@ -45,4 +45,4 @@ To do that, we can factorize several rows in one task.
 %
 But it is not simple to choice which tasks could be factorized together without impacting result or parallelism.
 %
-A generic method is shown later in the thesis.
+A generic method is shown later in this thesis.

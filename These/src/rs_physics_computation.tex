@@ -23,12 +23,12 @@ This method is iterative, we begins with an initial guess $X_0$ reasonably close
 
 The example in the figure~\ref{fig:newton} is only in one dimension but it's quite the same approach that can be done when we work with an arbitrary number of dimensions.
 %
-Linear equations of reservoir simulation can be represent as large sparse matrices, in which each row represent all interactions between an element and its direct neighbors.
+Linear equations of reservoir simulation can be represented as large sparse matrices, in which each row represents all interactions between an element and its direct neighbors.
 %
 So in a 3D regular mesh, there can have up to seven interactions per row.
 %
 Each interaction is represented by a small square matrix of the size of the number of primary variables.
 %
-Sparse linear algebra solvers, like GMRES, are then utilize to solve all linear problems use in the Newton method.
+Sparse linear algebra solvers, like GMRES, are then used to solve all linear problems use in the Newton method.
 %
 Let's focus on the linear algebra part.

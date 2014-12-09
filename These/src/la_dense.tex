@@ -1,44 +1,120 @@
 \subsection{Dense linear algebra}
 
-Let's take a real life example to see what linear algebra is and how to use it :\\
+Let's take a real life example to see what linear algebra is and how to use it.
 %
-During a party in a bar, I buy a drink to all my friends, I paid 25 dollars for 5 beers and 2 mojitos.
+We need to simulate the pressure of the underground which contains three different rocks.
 %
-Later in the party, I meet a girl and I buy one mojito and a beer for 8 dollars.
+Each rock has a density designed by $\rho$ and $rho(z)$ represents the density of the rock at the depth $z$.
 %
-When both glasses are empty, I check my wallets and I have only 7 dollars.
-%
-I can't see the price of the beer on the wall but I want to buy another drink.
-%
-I try to remember how to solve two equations with two unknown variables.
 
-5 * price\_of\_beer + 2 * price\_of\_mojito = 25
-1 * price\_of\_beer + 1 * price\_of\_mojito = 8
+%
+We use the physical equation :
+%
+\begin{equation}
+\frac{\mathrm d P}{\mathrm d z} = \rho(z)g
+\end{equation}
+%
+where $P$ is the pressure, $z$ is the depth and $g$ is the gravitational constant.
+%
+We also have the boundary condition that at ground level 0, the pressure is 1000~hPa :
+%
+\begin{equation}
+P_0 = 1000
+\end{equation}
+%
+If we use a finite difference method at the first order
+%
+\begin{equation}
+\frac{P_i - P_{i-1}}{z_i - z_{i-1}} = \rho(z_i)g
+\end{equation}
+%
+If the distance between the center of all cells is the same, we can call it $\Delta{z}$ and we can replace $z_i - z_{i-1}$ by $\Delta{z}$ and multiply all terms by $\Delta{z}$ :
+%
+\begin{equation}
+\label{eq:system_pressure}
+P_i - P_{i-1} = \rho(z_i)g\Delta{z}
+\end{equation}
+%
+\begin{equation}
+\label{eq:ax_b}
+\begin{bmatrix}
+   1   &    0   &    0   & \cdots & \cdots & \cdots & \cdots &   0    \\
+  -1   &    1   &    0   & \ddots &        &        &        & \vdots \\
+   0   &   -1   &    1   &    0   & \ddots &        &        & \vdots \\
+\vdots & \ddots & \ddots & \ddots & \ddots & \ddots &        & \vdots \\
+\vdots &        & \ddots & \ddots & \ddots & \ddots & \ddots & \vdots \\
+\vdots &        &        & \ddots &   -1   &    1   &    0   &   0    \\
+\vdots &        &        &        & \ddots &   -1   &    1   &   0    \\
+   0   & \cdots & \cdots & \cdots & \cdots &    0   &   -1   &   1    \\
+\end{bmatrix}
+*
+\begin{pmatrix}
+  P_0  \\
+  P_1  \\
+\vdots \\
+\vdots \\
+\vdots \\
+\vdots \\
+P_{i-1} \\
+  p_i  \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+ 1000  \\
+\rho(z_1)g\Delta{z}     \\
+\vdots \\
+\vdots \\
+\vdots \\
+\vdots \\
+\rho(z_{i-1})g\Delta{z} \\
+\rho(z_i)g\Delta{z}    \\
+\end{pmatrix}
+\end{equation}
 
-This can represent under another form :
-
-5 2   price\_of\_beer   25
-1 1   price\_of\_mojito 8
 
 We have a matrix $A$ multiply a vector $x$ equal a vector $b$.
 %
-By doing the multiplication we obtain exactly the same system of equations as previous.
+By doing the multiplication we obtain exactly the system of equations \ref{eq:system_pressure}.
 %
-So solving a linear problem is often solving a problem of type $A*x=b$, many methods exist for solving this problem (Gaussian elimination, ...)
+So solving a linear problem is often solving a problem of type $A*x=b$, many methods exist for solving this problem (Gaussian elimination, ...).
 %
-In this example I can only buy 2 beer or 1 mojito, but we can replace pricing by physical constant and solve basic physical problems.
+In this example, we already have a triangular matrix, so the solution can be found directly by solving each equation one-by-one starting with $P_0 = 1000$.
 
 
-Their are two major kind of problem in linear algebra, the dense ones and the sparse ones, this refers to the matrix structure.
+In computer science, there is a lot of library for doing linear algebra operations.
 %
-A matrix with a lot of zeros is called sparse, this is because we can only store non zero values.
+The most common is BLAS\footnote{Basic Linear Algebra Subprograms} which is a set of linear algebra operations.
 %
-At the opposite, dense matrices don't have so much zero values.
+These operations are classify into 3 categories :
+\begin{itemize}
+  \item Level 1 : it's vectors operations (dot products, addition of two vectors, ...)
+  \item Level 2 : it's matrix-vector operations (multiply a matrix by a vector, solve a system of linear equations whose coefficients are in a triangular matrix, ...)
+  \item Level 3 : it's matrix-matrix operations (multiply a matrix by a matrix, ...)
+\end{itemize}
 %
-The performance of dense linear algebra kernel is something well studied.
+The level of BLAS is linked to the complexity in number of operations.
 %
-Due to the regular shape of dense matrices, many computational techniques can be apply, for example the cache blocking technique to improve data locality and reduce cache misses.
+BLAS of Level 1 are bandwidth limited, there is no data reuse, each data is used only once.
 %
-Other techniques also exist, like SIMD vectorization because dense matrices operations often imply to apply the same operation on data which are contiguously store in memory.
+BLAS of Level 2 can reuse vector data, some optimization can be done here.
 %
-The parallelization of some time consuming kernel is also well studied.
+BLAS of level 3 have a higher complexity and a lot of optimization exists.
+
+Another library for library algebra is LAPACK\footnote{Linear Algebra PACKage}, it's build on top of BLAS.
+%
+Operations done by BLAS and LAPACK are well optimized, they have tilling optimization for cache blocking technique which improve data locality and reduce cache misses.
+%
+They also can use SIMD instructions(SSE, AVX, ...) in modern processor.
+%
+Some GPGPU versions also exist as well as versions for distributed memory.
+%
+Most of these optimizations can be done because the access pattern of BLAS operations are deterministic and some operations can be reorder without changing the final result.
+
+
+Go back to the matrix of eq.~\cite{eq:ax_b}, we can see that this matrix contains a lot of zero values, and these values doesn't have too much impact for the calculation.
+%
+On can differentiate matrices will a lot zero values from matrices with a majority of non-zeros values.
+%
+A matrix can be consider like a sparse matrix when the number of non-zero values is of the order of the matrix dimension.
+%
+Solving a sparse linear system use different methods than a dense linear system.

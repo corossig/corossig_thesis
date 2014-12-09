@@ -97,17 +97,9 @@ minimum height=0.1em,font=\scriptsize]
 %+++++++++++++++++++++++++++++++
 \section{Solving large sparse linear system}
 %-------------------------------
-\subsection{GMRES}
-  \begin{itemize}
-    \item Iterative method for general matrix
-    \item Doesn't work well with our matrices
-  \end{itemize}
+\input{src/solve_gmres}
 %-------------------------------
-\subsection{Preconditioned GMRES}
-  \begin{itemize}
-    \item Need to add a ILU part which is not parallel
-    \item Improve a lot convergence of our matrices
-  \end{itemize}
+\input{src/solve_precond_gmres}
 %-------------------------------
 \subsection{Domain decomposition}
   \begin{itemize}
@@ -163,7 +155,22 @@ minimum height=0.1em,font=\scriptsize]
   \end{itemize}
 %+++++++++++++++++++++++++++++++
 
-\input{src/multi_core_parallelism}
+
+%+++++++++++++++++++++++++++++++
+\section{Multi-core parallelism}
+%-------------------------------
+\input{src/mc_mpi}
+%-------------------------------
+\input{src/mc_parallel_for}
+%-------------------------------
+\input{src/mc_task}
+%-------------------------------
+\input{src/mc_runtime}
+%-------------------------------
+\input{src/mc_timeline}
+%-------------------------------
+\input{src/mc_classification}
+%+++++++++++++++++++++++++++++++
 
 
 
@@ -176,12 +183,7 @@ minimum height=0.1em,font=\scriptsize]
 %+++++++++++++++++++++++++++++++
 \section{Parallelize preconditioned GMRES}
 %-------------------------------
-\subsection{GMRES algorithm}
-  \begin{itemize}
-    \item Explain GMRES algorithm
-    \item it is mostly parallel for BLAS1 and BLAS2
-    \item We need to use a preconditionner
-  \end{itemize}
+\input{src/gmres.tex}
 %-------------------------------
 \input{src/ilu.tex}
 %-------------------------------
@@ -190,19 +192,9 @@ minimum height=0.1em,font=\scriptsize]
 %+++++++++++++++++++++++++++++++
 \section{Why granularity is so important ?}
 %-------------------------------
-\subsection{Parallelism vs overhead}
-  \begin{itemize}
-    \item Talk about runtime overhead
-    \item Give some result without aggregation
-  \end{itemize}
+\input{src/granularity_overhead.tex}
 %-------------------------------
-\subsection{Current solutions}
-  \begin{itemize}
-    \item X-KAAPI
-    \item SCOOP
-    \item Capsules
-    \item for each explain why they don't fit our problem
-  \end{itemize}
+\input{src/granularity_solution.tex}
 %+++++++++++++++++++++++++++++++
 
 

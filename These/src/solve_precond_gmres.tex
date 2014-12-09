@@ -1,0 +1,24 @@
+\subsection{Preconditioned GMRES}
+As matrices used in reservoir simulation are not well conditioned, the GMRES algorithm converge after a lot of iterations.
+%
+In this case, we need to precondition the matrix to make the GMRES converges faster.
+%
+A good preconditioner for our matrices is ILU (incomplete LU factorization).
+%
+LU factorization consists of factorizing a matrix $A$ into two triangular matrices $L$ and $U$.
+%
+Then to solve $Ax=b$ is the same as solving $Ly=b$ and $U.x=y$, which can be do easily because $L$ and $U$ are triangular matrices.
+%
+In case of sparse linear problems, the sparse matrix $A$ become too dense, a lot of zero values become non-zero values and the size to store the matrix in memory become too high.
+%
+To maintain a reasonable among of memory usage, one can only do some part of the factorization, this is called incomplete LU factorization.
+%
+With ILU we will try to obtain a sparse pattern for $L$ and $U$ as close as possible the sparse pattern of $A$.
+
+There are two ways to apply ILU in GMRES :
+\begin{itemize}
+  \item Left preconditioning : $A^{-1}(Ax)=b$
+  \item Right preconditioning : $A(A^{-1}x)=b$
+\end{itemize}
+
+In programming term, this means that the SpMV must be done before or after the TRSV.
