@@ -82,6 +82,8 @@ minimum height=0.1em,font=\scriptsize]
 \input{src/rs_overview}
 %-------------------------------
 \input{src/rs_physics_computation}
+%-------------------------------
+\input{src/rs_simple_example}
 %+++++++++++++++++++++++++++++++
 
 
@@ -97,62 +99,26 @@ minimum height=0.1em,font=\scriptsize]
 %+++++++++++++++++++++++++++++++
 \section{Solving large sparse linear system}
 %-------------------------------
-\input{src/solve_gmres}
-%-------------------------------
 \input{src/solve_precond_gmres}
 %-------------------------------
-\subsection{Domain decomposition}
-  \begin{itemize}
-    \item Can be use to obtain complete parallel part
-    \item Degrade convergence
-  \end{itemize}
+\input{src/solve_domain}
 %-------------------------------
-\subsection{Reservoir case studies}
-  \begin{itemize}
-    \item SPE10, often use in reservoir benchmark
-    \item generate
-    \item ordering -> change preconditionner performance
-  \end{itemize}
+\input{src/solve_cases}
 %+++++++++++++++++++++++++++++++
-
 
 
 %+++++++++++++++++++++++++++++++
 \section{Computers to target}
 %-------------------------------
-\subsection{SMP}
-  \begin{itemize}
-    \item Memory don't scale with a high number of core
-  \end{itemize}
+\input{src/computer_cluster}
 %-------------------------------
-\subsection{NUMA}
-  \begin{itemize}
-    \item Memory scale with a high number of core
-    \item Need to add some support in program to obtain performance
-  \end{itemize}
+\input{src/computer_smp}
 %-------------------------------
-\subsection{Many-core}
-  \begin{itemize}
-    \item Xeon phi
-    \item GPU ?
-    \item Too many change in program but not always performance (data transfer)
-  \end{itemize}
+\input{src/computer_numa}
 %-------------------------------
-\subsection{Our computers}
-\subsubsection{Rostand}
-  \begin{itemize}
-    \item Bi-socket
-    \item NUMA
-    \item 12 Cores
-    \item MPI
-  \end{itemize}
-\subsubsection{Manumanu}
-  \begin{itemize}
-    \item 20 sockets
-    \item NUMA
-    \item Altix UV100
-    \item 160 Cores
-  \end{itemize}
+%\input{src/computer_many_core}
+%-------------------------------
+\input{src/computer_ours}
 %+++++++++++++++++++++++++++++++
 
 
@@ -316,58 +282,58 @@ results
 %+++++++++++++++++++++++++++++++
 
 
-%=========================================================
-\chapter{The fork and join syndrome}
-\minitoc
-\vspace{1cm}
-%=========================================================
-%+++++++++++++++++++++++++++++++
-%\section{Data dependencies}
-%-------------------------------
-%\subsection{Implicit dependencies}
-%-------------------------------
-%\subsection{Explicit dependencies}
-%+++++++++++++++++++++++++++++++
+%% %=========================================================
+%% \chapter{The fork and join syndrome}
+%% \minitoc
+%% \vspace{1cm}
+%% %=========================================================
+%% %+++++++++++++++++++++++++++++++
+%% %\section{Data dependencies}
+%% %-------------------------------
+%% %\subsection{Implicit dependencies}
+%% %-------------------------------
+%% %\subsection{Explicit dependencies}
+%% %+++++++++++++++++++++++++++++++
 
 
-%+++++++++++++++++++++++++++++++
-\section{The fork and join syndrome}
-%-------------------------------
-\subsection{How to see it ?}
-  \begin{itemize}
-    \item Show that we have too much synchronization (Paje trace)
-  \end{itemize}
-%-------------------------------
-\subsection{Domain decomposition and overlap}
-  \begin{itemize}
-    \item Explain what domain decomposition and overlap is
-  \end{itemize}
-%+++++++++++++++++++++++++++++++
+%% %+++++++++++++++++++++++++++++++
+%% \section{The fork and join syndrome}
+%% %-------------------------------
+%% \subsection{How to see it ?}
+%%   \begin{itemize}
+%%     \item Show that we have too much synchronization (Paje trace)
+%%   \end{itemize}
+%% %-------------------------------
+%% \subsection{Domain decomposition and overlap}
+%%   \begin{itemize}
+%%     \item Explain what domain decomposition and overlap is
+%%   \end{itemize}
+%% %+++++++++++++++++++++++++++++++
 
 
-%+++++++++++++++++++++++++++++++
-\section{Pipeline GMRES steps}
-  \begin{itemize}
-    \item explain the solution to merge graph of task
-  \end{itemize}
-%+++++++++++++++++++++++++++++++
+%% %+++++++++++++++++++++++++++++++
+%% \section{Pipeline GMRES steps}
+%%   \begin{itemize}
+%%     \item explain the solution to merge graph of task
+%%   \end{itemize}
+%% %+++++++++++++++++++++++++++++++
 
 
-%+++++++++++++++++++++++++++++++
-\section{Results}
-%-------------------------------
-\subsection{Without MPI}
-  \begin{itemize}
-    \item Almost no gain because no many sync
-  \end{itemize}
-%-------------------------------
-\subsection{With MPI}
-  \begin{itemize}
-    \item Gain when increase number of MPI process
-  \end{itemize}
-%-------------------------------
-\subsection{Discussion}
-%+++++++++++++++++++++++++++++++
+%% %+++++++++++++++++++++++++++++++
+%% \section{Results}
+%% %-------------------------------
+%% \subsection{Without MPI}
+%%   \begin{itemize}
+%%     \item Almost no gain because no many sync
+%%   \end{itemize}
+%% %-------------------------------
+%% \subsection{With MPI}
+%%   \begin{itemize}
+%%     \item Gain when increase number of MPI process
+%%   \end{itemize}
+%% %-------------------------------
+%% \subsection{Discussion}
+%% %+++++++++++++++++++++++++++++++
 
 
 
@@ -397,9 +363,8 @@ results
 
 \backmatter % book mode only
 %\bibliographystyle{alpha}
-%\bibliography{anrt}
 \appendix
 
-\bibliographystyle{plainnat}
+\bibliographystyle{annotate}
 \bibliography{thesis}
 \end{document}

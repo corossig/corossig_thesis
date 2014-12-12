@@ -1,0 +1,8 @@
+\subsection{Domain decomposition}
+Domain decomposition is a method to solve large problem by splitting them into smaller problems.
+%
+This method allow us to parallelize the GMRES when we use a distributed memory paradigm like MPI.
+%
+Each MPI process manages a subset of cells in the reservoir simulation and is able to do MPI communication on border of the domain.
+%
+However, the ILU preconditioner is sensible to the number of domain, the GMRES convergence is degraded when the number of domain is too high.

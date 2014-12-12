@@ -1,91 +1,16 @@
 \subsection{Dense linear algebra}
-
-Let's take a real life example to see what linear algebra is and how to use it.
+Solving a system of linear problem is often solving a problem of type $Ax=b$, where $A$ is a matrix and $b$ and $x$ are vectors.
 %
-We need to simulate the pressure of the underground which contains three different rocks.
+In the previous example, we already have a triangular matrix, so the solution can be found directly by solving each equation one-by-one starting with $P(X_0) = 1000$.
 %
-Each rock has a density designed by $\rho$ and $rho(z)$ represents the density of the rock at the depth $z$.
-%
-
-%
-We use the physical equation :
-%
-\begin{equation}
-\frac{\mathrm d P}{\mathrm d z} = \rho(z)g
-\end{equation}
-%
-where $P$ is the pressure, $z$ is the depth and $g$ is the gravitational constant.
-%
-We also have the boundary condition that at ground level 0, the pressure is 1000~hPa :
-%
-\begin{equation}
-P_0 = 1000
-\end{equation}
-%
-If we use a finite difference method at the first order
-%
-\begin{equation}
-\frac{P_i - P_{i-1}}{z_i - z_{i-1}} = \rho(z_i)g
-\end{equation}
-%
-If the distance between the center of all cells is the same, we can call it $\Delta{z}$ and we can replace $z_i - z_{i-1}$ by $\Delta{z}$ and multiply all terms by $\Delta{z}$ :
-%
-\begin{equation}
-\label{eq:system_pressure}
-P_i - P_{i-1} = \rho(z_i)g\Delta{z}
-\end{equation}
-%
-\begin{equation}
-\label{eq:ax_b}
-\begin{bmatrix}
-   1   &    0   &    0   & \cdots & \cdots & \cdots & \cdots &   0    \\
-  -1   &    1   &    0   & \ddots &        &        &        & \vdots \\
-   0   &   -1   &    1   &    0   & \ddots &        &        & \vdots \\
-\vdots & \ddots & \ddots & \ddots & \ddots & \ddots &        & \vdots \\
-\vdots &        & \ddots & \ddots & \ddots & \ddots & \ddots & \vdots \\
-\vdots &        &        & \ddots &   -1   &    1   &    0   &   0    \\
-\vdots &        &        &        & \ddots &   -1   &    1   &   0    \\
-   0   & \cdots & \cdots & \cdots & \cdots &    0   &   -1   &   1    \\
-\end{bmatrix}
-*
-\begin{pmatrix}
-  P_0  \\
-  P_1  \\
-\vdots \\
-\vdots \\
-\vdots \\
-\vdots \\
-P_{i-1} \\
-  p_i  \\
-\end{pmatrix}
-=
-\begin{pmatrix}
- 1000  \\
-\rho(z_1)g\Delta{z}     \\
-\vdots \\
-\vdots \\
-\vdots \\
-\vdots \\
-\rho(z_{i-1})g\Delta{z} \\
-\rho(z_i)g\Delta{z}    \\
-\end{pmatrix}
-\end{equation}
+But when it's not as easy as above, other methods exist for solving these problems, like Gaussian elimination, elimination of variables or LU decomposition.
 
 
-We have a matrix $A$ multiply a vector $x$ equal a vector $b$.
+In computer science, there is many libraries for linear algebra operations.
 %
-By doing the multiplication we obtain exactly the system of equations \ref{eq:system_pressure}.
+The most common is BLAS\footnote{Basic Linear Algebra Subprograms} which is a set of linear algebra operations on vectors and matrices.
 %
-So solving a linear problem is often solving a problem of type $A*x=b$, many methods exist for solving this problem (Gaussian elimination, ...).
-%
-In this example, we already have a triangular matrix, so the solution can be found directly by solving each equation one-by-one starting with $P_0 = 1000$.
-
-
-In computer science, there is a lot of library for doing linear algebra operations.
-%
-The most common is BLAS\footnote{Basic Linear Algebra Subprograms} which is a set of linear algebra operations.
-%
-These operations are classify into 3 categories :
+These operations are classify into 3 levels :
 \begin{itemize}
   \item Level 1 : it's vectors operations (dot products, addition of two vectors, ...)
   \item Level 2 : it's matrix-vector operations (multiply a matrix by a vector, solve a system of linear equations whose coefficients are in a triangular matrix, ...)
@@ -94,27 +19,27 @@ These operations are classify into 3 categories :
 %
 The level of BLAS is linked to the complexity in number of operations.
 %
-BLAS of Level 1 are bandwidth limited, there is no data reuse, each data is used only once.
+BLAS of level 1 are bandwidth limited, there is no data reuse, each data is used only once.
 %
-BLAS of Level 2 can reuse vector data, some optimization can be done here.
+BLAS of level 2 can reuse vector data, some optimization can be done here.
 %
-BLAS of level 3 have a higher complexity and a lot of optimization exists.
+BLAS of level 3 have a higher complexity and some optimizations exist~\cite{blas3_opt}.
 
-Another library for library algebra is LAPACK\footnote{Linear Algebra PACKage}, it's build on top of BLAS.
+Another library for library algebra is LAPACK\footnote{Linear Algebra PACKage}, it's built on top of BLAS.
 %
-Operations done by BLAS and LAPACK are well optimized, they have tilling optimization for cache blocking technique which improve data locality and reduce cache misses.
+Operations done by BLAS and LAPACK are well optimized, for example some implementations use cache blocking technique which improve data locality and reduce cache misses.
 %
-They also can use SIMD instructions(SSE, AVX, ...) in modern processor.
+Some implementations also use SIMD instructions(SSE, AVX, ...) on modern processor~\cite{intel_mkl}..
 %
-Some GPGPU versions also exist as well as versions for distributed memory.
+GPGPU implementations~\cite{nvidia_cublas} also exist as well as implementations for distributed memory~\cite{dplasma}.
 %
 Most of these optimizations can be done because the access pattern of BLAS operations are deterministic and some operations can be reorder without changing the final result.
 
 
-Go back to the matrix of eq.~\cite{eq:ax_b}, we can see that this matrix contains a lot of zero values, and these values doesn't have too much impact for the calculation.
+Go back to the matrix of eq.~\ref{eq:ax_b}, we can see that this matrix contains a lot of zero values, and these values don't impact on the calculation.
 %
-On can differentiate matrices will a lot zero values from matrices with a majority of non-zeros values.
+One can differentiate matrices will a lot zero values from matrices with a majority of non-zeros values.
 %
-A matrix can be consider like a sparse matrix when the number of non-zero values is of the order of the matrix dimension.
+A matrix can be consider like a sparse matrix when the number of non-zero values is of the order of the dimension of the matrix.
 %
 Solving a sparse linear system use different methods than a dense linear system.

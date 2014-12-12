@@ -1,11 +1,12 @@
 PDFLATEX_OPTIONS=-file-line-error -interaction=nonstopmode --output-directory=output
-RUBBER_OPTIONS=-d --cache  
+RUBBER_OPTIONS=-d
 SRC=thesis.tex
 DEST=thesis.pdf
 RUBBER_VERSION := $(shell rubber --version 2>/dev/null)
 
 all: imgs
 ifdef RUBBER_VERSION
+	touch $(SRC)
 	rubber $(RUBBER_OPTIONS) $(SRC)
 	mv $(DEST) $(DEST).tmp
 	rubber --clean $(SRC)

@@ -1,9 +1,15 @@
 \subsection{Preconditioned GMRES}
+GMRES\footnote{Generalized Minimal RESidual} method is an iterative method used to solve system of linear equation.
+%
+This method can be used with any matrix since the matrix is invertible.
+%
+The GMRES algorithm is composed of some vectors operations and a SpMV\footnote{sparse matrix-vector product}.
+
 As matrices used in reservoir simulation are not well conditioned, the GMRES algorithm converge after a lot of iterations.
 %
 In this case, we need to precondition the matrix to make the GMRES converges faster.
 %
-A good preconditioner for our matrices is ILU (incomplete LU factorization).
+A good preconditioner for our matrices is ILU\footnote{Incomplete LU factorization}.
 %
 LU factorization consists of factorizing a matrix $A$ into two triangular matrices $L$ and $U$.
 %

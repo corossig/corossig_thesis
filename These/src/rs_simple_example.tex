@@ -1,0 +1,85 @@
+\subsection{Simulation of a simple physical example}
+Let's take a simple physical example to see how linear algebra is used in physical simulation.
+%
+We want to simulate the pressure of an oil column.
+%
+The density of the oil is $\rho = 0.9192~kg/m^3$.
+%
+We use the physical equation of the hydrostatic pressure :
+%
+\begin{equation}
+\frac{\mathrm d P}{\mathrm d z} = \rho{}g
+\end{equation}
+%
+where $P$ is the pressure, $z$ is the depth and $g$ is the gravitational acceleration.
+%
+With the Taylor's theorem at first order :
+%
+\begin{equation}
+P(x_0+h) = P(x_0) + h P'(x_0) + o(h)
+\end{equation}
+\begin{equation}
+P'(x_0) = \frac{P(x_0+h) - P(x_0)}{h} + o(h)
+\end{equation}
+%
+We discretize the problem with a finite difference method, each element are separate by a $\Delta{z}$ distance :
+%
+\begin{equation}
+P'(X_i) \approx \frac{P(X_{i}) - P(X_{i-1})}{\Delta{z}}
+\end{equation}
+%
+By using a finite element method on the function $P$ :
+%
+\begin{equation}
+\frac{P(X_{i}) - P(X_{i-1})}{\Delta{z}} \approx \rho{}g
+\end{equation}
+\begin{equation}
+\label{eq:system_pressure}
+P(X_{i}) - P(X_{i-1}) \approx \rho{}g\Delta{z}
+\end{equation}
+We also have the boundary condition that at ground level 0, the pressure is 1000~hPa or $10^5$~Pa:
+%
+\begin{equation}
+P(X_0) = 10^5
+\end{equation}
+%
+We can now write the entire system under a matrix form with $n$ cells :
+%
+\begin{equation}
+\label{eq:ax_b}
+\begin{bmatrix}
+   1   &    0   &    0   & \cdots & \cdots & \cdots & \cdots &   0    \\
+  -1   &    1   &    0   & \ddots &        &        &        & \vdots \\
+   0   &   -1   &    1   &    0   & \ddots &        &        & \vdots \\
+\vdots & \ddots & \ddots & \ddots & \ddots & \ddots &        & \vdots \\
+\vdots &        & \ddots & \ddots & \ddots & \ddots & \ddots & \vdots \\
+\vdots &        &        & \ddots &   -1   &    1   &    0   &   0    \\
+\vdots &        &        &        & \ddots &   -1   &    1   &   0    \\
+   0   & \cdots & \cdots & \cdots & \cdots &    0   &   -1   &   1    \\
+\end{bmatrix}
+*
+\begin{pmatrix}
+  P(X_0)  \\
+  P(X_1)  \\
+\vdots \\
+\vdots \\
+\vdots \\
+\vdots \\
+P(X_{n-1}) \\
+  P(X_n)  \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+ 10^5  \\
+\rho{}g\Delta{z}     \\
+\vdots \\
+\vdots \\
+\vdots \\
+\vdots \\
+\rho{}g\Delta{z} \\
+\rho{}g\Delta{z}    \\
+\end{pmatrix}
+\end{equation}
+By doing the multiplication of each line of $A$ by $x$, we obtain exactly the system of equations \ref{eq:system_pressure}.
+%
+Now, we have a matrix $A$ multiply a vector $x$ equal a vector $b$, it's time to talk about linear algebra.

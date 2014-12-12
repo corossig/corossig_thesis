@@ -3,9 +3,9 @@ To be able to do a reservoir simulation, we start with a physicist who model flu
 %
 Most of models are based on three physical equations, the conservation of mass, ideal gas law and Darcy's law.
 %
-Then we discretize the reservoir into cells and we use a finite difference schema.
+Then we discretize the reservoir into cells with a finite volume schema.
 %
-For each cell of the reservoir, we can compute a non-linear equation of each primary variables (e.g.: pressure, oil saturation)
+For each cell of the reservoir, we can compute a non-linear equation of each primary variables (e.g.: pressure, oil saturation).
 %
 To solve the non-linear systems of equation, we use the Newton–Raphson method.
 %
@@ -30,5 +30,3 @@ So in a 3D regular mesh, there can have up to seven interactions per row.
 Each interaction is represented by a small square matrix of the size of the number of primary variables.
 %
 Sparse linear algebra solvers, like GMRES, are then used to solve all linear problems use in the Newton method.
-%
-Let's focus on the linear algebra part.

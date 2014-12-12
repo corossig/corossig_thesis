@@ -3,7 +3,7 @@ Unlike Dense Linear Algebra, computations of Sparse problems are irregular.
 %
 This is mainly due to the matrix storage format.
 %
-Indeed, to have an efficiently storage, we only store non-zero values of the matrices.
+Indeed, to have an efficiently storage, we only store non-zero values of sparse matrices.
 %
 The non-zero pattern of the matrix is define by the problem we tried to resolve.
 %
@@ -43,7 +43,9 @@ A non negligible part of the memory bandwidth is used only for the 2D coordinate
 %
 The sparsity and irregularity properties of these matrices also imply to have inefficient in memory sparse kernel because of bad cache reuse.
 %
-Most of the optimizations done is dense linear algebra can't be applied to sparse linear algebra because irregularity.
+Most of the optimizations done is dense linear algebra can't be applied to sparse linear algebra because of irregularity in computation and data accesses.
+%
+But in sparse linear algebra, one can solve much more larger problems than in dense linear algebra, this is because dense linear algebra use a lot of memory.
 
 
 Solving sparse linear problems is also different of solving dense linear ones.

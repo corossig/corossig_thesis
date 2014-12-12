@@ -22,6 +22,7 @@
 @Unpublished{HarrisReductionCUDA,
 	author = {Harris, NVIDIA Developer Technology Mark},
 	title = {Optimizing Parallel Reduction in CUDA},
+	year = {2008},
 }
 
 @Book{Saad96IMSLS,
@@ -101,11 +102,6 @@
 	year = {2012},
 }
 
-@Misc{Intel::MKL,
-	Note = {http://developer.intel.com/software/products/mkl/},
-	author = {Intel,},
-	title = {Math Kernel Library},
-}
 
 @Book{Intel::TBB,
 	Address = {Sebastopol, CA, USA},
@@ -126,19 +122,12 @@
 	year = {2012},
 }
 
-@Misc{openmp08,
+@Misc{OpenMP,
 	Month = {May},
 	Url = {http://www.openmp.org/mp-documents/spec30.pdf},
 	author = {{OpenMP Architecture Review Board}},
 	title = {{OpenMP} Application Program Interface Version 3.0},
 	year = {2008},
-}
-
-@Misc{spe10,
-	Url = {http://www.spe.org/web/csp/},
-	author = {{Society of Petroleum Engineers}},
-	title = {{SPE} Comparative Solution Project},
-	year = {2001},
 }
 
 @InProceedings{next_touch,
@@ -167,7 +156,7 @@
 	year = {2012},
 }
 
-@InProceedings{cilk,
+@InProceedings{Cilk,
 	Acmid = {209958},
 	Address = {New York, NY, USA},
 	BookTitle = {Proceedings of the fifth ACM SIGPLAN symposium on Principles and practice of parallel programming},
@@ -344,4 +333,124 @@
  acmid = {355847},
  publisher = {ACM},
  address = {New York, NY, USA},
+}
+
+
+@article{SPE10,
+ author = {Christie, M.A. and Blunt, M.J.},
+ title = {Tenth SPE Comparative Solution Project: A Comparison of Upscaling Techniques},
+ journal = {SPE Reservoir Evaluation \& Engineering},
+ volume = {4},
+ number = {04},
+ month = Aug.,
+ year = {2001},
+ issn = {1094-6470},
+ pages = {308--317},
+ url = {http://dx.doi.org/10.2118/72469-PA},
+ doi = {10.2118/72469-PA},
+ publisher = {SOC PETROLEUM ENG}
+}
+
+
+@inproceedings{blas3_opt,
+ author = {Whaley, R. Clint and Dongarra, Jack J.},
+ title = {Automatically Tuned Linear Algebra Software},
+ booktitle = {Proceedings of the 1998 ACM/IEEE Conference on Supercomputing},
+ series = {SC '98},
+ year = {1998},
+ isbn = {0-89791-984-X},
+ location = {San Jose, CA},
+ pages = {1--27},
+ numpages = {27},
+ url = {http://dl.acm.org/citation.cfm?id=509058.509096},
+ acmid = {509096},
+ publisher = {IEEE Computer Society},
+ address = {Washington, DC, USA},
+ keywords = {BLAS, code generation, high performance, linear algebra, optimization, tuning},
 } 
+
+
+@Manual{nvidia_cublas,
+  Title                    = {{CUBLAS Library User Guide}},
+  Author                   = {nVidia},
+  Edition                  = {v5.0},
+  Month                    = oct,
+  Organization             = {nVidia},
+  Year                     = {2012},
+
+  Citeulike-article-id     = {8694641},
+  Citeulike-linkout-0      = {http://docs.nvidia.com/cublas/index.html},
+  HowPublished             = {http://docs.nvidia.com/cublas/index.html},
+  Keywords                 = {cuda, gpgpu, linear\_algebra, nvidia},
+  Posted-at                = {2011-01-27 02:17:11},
+  Priority                 = {0},
+  Url                      = {http://docs.nvidia.com/cublas/index.html}
+}
+
+@book{intel_mkl,
+    title    = {Intel Math Kernel Library. Reference Manual},
+    publisher= {Intel Corporation},
+    address  = {Santa Clara, USA},
+    note     = {ISBN 630813-054US},
+    year     = {2009},
+}
+
+
+@inproceedings{dplasma,
+author = "Bosilca, G. and Bouteiller, A. and Danalis, A. and Faverge, M. and Haidar, H. and Herault, T. and Kurzak, J. and Langou, J. and Lemarinier, P. and Ltaief, H. and Luszczek, P. and YarKhan, A. and Dongarra, J.",
+title = "Flexible Development of Dense Linear Algebra Algorithms on Massively Parallel Architectures with DPLASMA",
+year = "2011",
+address = "Anchorage, United States",
+booktitle = "Proceedings of the 25th {IEEE} International Symposium on Parallel \& Distributed Processing Workshops and Phd Forum ({IPDPSW'11}), PDSEC 2011",
+institution = "Innovative Computing Laboratory, University of Tennessee",
+journal = "Innovative Computing Laboratory Technical Report",
+month = "mai",
+pages = "1432--1441",
+url = {http://icl.cs.utk.edu/news_pub/submissions/DPLASMA_technical_report.pdf}
+}
+
+@article{PaRSEC,
+  TITLE = {{PaRSEC: A programming paradigm exploiting heterogeneity for enhancing scalability}},
+  AUTHOR = {Bosilca, George and Bouteiller, Aur{\'e}lien and Danalis, Anthony and Faverge, Mathieu and H{\'e}rault, Thomas and Dongarra, Jack},
+  URL = {https://hal.inria.fr/hal-00930217},
+  JOURNAL = {{Computing in Science and Engineering}},
+  PUBLISHER = {{Institute of Electrical and Electronics Engineers (IEEE)}},
+  VOLUME = {15},
+  NUMBER = {6},
+  PAGES = {36-45},
+  YEAR = {2013},
+  MONTH = Nov,
+  DOI = {10.1109/MCSE.2013.98},
+  HAL_ID = {hal-00930217},
+  HAL_VERSION = {v1},
+}
+
+@article{Cilk++,
+author = {Charles E. Leiserson},
+title = {{The Cilk++ concurrency platform}},
+journal = {The Journal of Supercomputing},
+volume = {51},
+year = {2009},
+pages = {522--527},
+issue = {3},
+doi = {10.1145/1629911.1630048},
+masid = {6032411}
+}
+
+@inproceedings {SMPSs,
+	title = {A dependency-aware task-based programming environment for multi-core architectures},
+	year = {2008},
+	note = {pp. 142-151},
+	month = {Sept},
+        year = {2008},
+	publisher = {Proceedings of the 2008 IEEE International Conference on Cluster Computing},
+	author = {Josep M. P{\'e}rez and Rosa M. Badia and Jes{\'u}s Labarta}
+}
+
+@Misc{OpenACC,
+	Month = {May},
+	Url = {http://www.openacc.org/sites/default/files/OpenACC.2.0a_1.pdf},
+	author = {{OpenACC-Standard}},
+	title = {The {OpenACC} Application Programming Interface},
+	year = {2013},
+}
