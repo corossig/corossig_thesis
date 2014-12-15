@@ -1,0 +1,11 @@
+Scheduler overhead :
+ - Create 1 Million empty tasks and measure performance with OpenMP, TBB, StarPU, kaapi
+ - Create 1 Million empty tasks with 2D dependancies and measure performance with OpenMP, TBB, StarPU, kaapi
+ - So the same thing with taggre
+
+Granularity :
+ - Try each algorithm one-by-one
+   - ILU(k) with k = 0,1,2
+ - Use the estimated cost in Taggre and match results
+
+NUMA

@@ -1,5 +1,11 @@
 \subsection{Domain decomposition}
+If we want to use more than one node of a cluster, we have to divide our problem into pieces.
+%
+In reservoir simulation, these pieces are called domains and they represented physical parts of the reservoir.
+%
 Domain decomposition is a method to solve large problem by splitting them into smaller problems.
+%
+But each domains need to communicate part of their computation in order to solve the complete problem.
 %
 This method allow us to parallelize the GMRES when we use a distributed memory paradigm like MPI.
 %

@@ -1,23 +1,5 @@
 \section{Solving the granularity problem}
 
-To solve the granularity problem, several possible approaches exist.
-%
-We could enable task parallelism only when cores are idle.
-%
-For example, X-Kaapi~\cite{xkaapi} uses this approach with its {\em adaptive task model}.
-%
-This is a very good solution with parallel loops or tree task flow.
-%
-However, in the general case, the user needs to define a function that splits the task flow graph into two complete parallel parts, which is not always possible.
-
-
-Another possible approach, as given by Capsules~\cite{capsules}, requires the user to define several grain sizes.
-%
-The runtime then chooses which grain best matches the current situation.
-%
-The application programmer must therefore design his/her application while having these multiple granularity levels in mind, which may prove difficult to realize or express in an abstract way in the code.
-
-
 % % NEED to rewrite
 Our approach is different.
 %
@@ -33,7 +15,7 @@ Indeed, it is often interesting to redefine this operator: For example, instead 
 Several possible aggregate operators are experimented later in this paper.
 %
 Those aggregate operators are called from a dedicated framework called Taggre, which interfaces with existing low-level task
-schedulers. 
+schedulers.
 %
 Taggre expects a fine grain task DAG as input.
 %
