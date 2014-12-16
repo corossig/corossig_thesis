@@ -1,0 +1,10 @@
+\subsection{Aggregate operators}
+We call aggregate operators the different heuristics used by Taggre to coarse a DAG.
+%
+These heuristics focused on keeping the graph acyclic.
+%
+We have design 4 heuristics, each heuristic address a problem and never create cycle.
+%
+To evaluate the benefice of each heuristic, we also have, inside Taggre, a minimal simulator which will estimate the time to schedule the graph.
+%
+This evaluation is essential to measure the remain parallelism in the DAG.
