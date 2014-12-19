@@ -1,0 +1,21 @@
+\subsection{Current solutions}
+The granularity problem of task based programming is a well know problem, it has been studied for a long time.
+%
+Some task based runtimes tried to solve this problem with different approach.
+%
+For example, X-Kaapi~\cite{xkaapi} introduces the concept of splittable task also called {\em adaptive task model}, when a worker switches to the idle state, it emits a steal request to another worker.
+%
+The other workers, in working state, need to check regularly if they receive a steal request.
+%
+Then the work is split into two pieces, the split function needs to be written by the programmer, it's not automatic.
+%
+The split function can be trivial in case of parallel for loop or in case of tree task flow.
+%
+But in general case, it's not always possible to separate a DAG into two totally independent DAG.
+
+
+Another possible approach, as given by Capsules\cite{capsules}, requires the user to define several grain sizes.
+%
+The runtime then chooses which grain best matches the current situation.
+%
+The application programmer must therefore design his/her application while having these multiple granularity levels in mind, which may prove difficult to realize or express in an abstract way in the code.

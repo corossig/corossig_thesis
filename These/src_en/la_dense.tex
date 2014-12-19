@@ -3,12 +3,12 @@ Solving a system of linear problem is often solving a problem of type $Ax=b$, wh
 %
 In the previous example, we already have a triangular matrix, so the solution can be found directly by solving each equation one-by-one starting with $P(X_0) = 1000$.
 %
-But when it's not as easy as above, other methods exist for solving these problems, like Gaussian elimination, elimination of variables or LU decomposition.
+But when it's not as easy as above, other methods exist for solving these problems like Gaussian elimination, elimination of variables or LU decomposition.
 
 
-In computer science, there is many libraries for linear algebra operations.
+In computer science, there is many libraries specialize in linear algebra operations.
 %
-The most common is BLAS\footnote{Basic Linear Algebra Subprograms} which is a set of linear algebra operations on vectors and matrices.
+The most common is BLAS\footnote{Basic Linear Algebra Subprograms} which is a set of linear algebra operations which apply on vectors and matrices.
 %
 These operations are classify into 3 levels :
 \begin{itemize}
@@ -17,11 +17,11 @@ These operations are classify into 3 levels :
   \item Level 3 : it's matrix-matrix operations (multiply a matrix by a matrix, ...)
 \end{itemize}
 %
-The level of BLAS is linked to the complexity in number of operations.
+The level of BLAS is directly linked to the complexity in number of operations.
 %
-BLAS of level 1 are bandwidth limited, there is no data reuse, each data is used only once.
+BLAS of level 1 are memory bandwidth limited, there is no data reuse, each data is used only once, the only possible optimization is memory prefetch.
 %
-BLAS of level 2 can reuse vector data, some optimization can be done here.
+BLAS of level 2 can reuse vector data, some optimizations can be done here like keeping part of the vector in cache.
 %
 BLAS of level 3 have a higher complexity and some optimizations exist~\cite{blas3_opt}.
 
@@ -29,17 +29,17 @@ Another library for library algebra is LAPACK\footnote{Linear Algebra PACKage}, 
 %
 Operations done by BLAS and LAPACK are well optimized, for example some implementations use cache blocking technique which improve data locality and reduce cache misses.
 %
-Some implementations also use SIMD instructions(SSE, AVX, ...) on modern processor~\cite{intel_mkl}..
+Others implementations also use SIMD instructions(SSE, AVX, ...) on modern processor~\cite{intel_mkl}.
 %
 GPGPU implementations~\cite{nvidia_cublas} also exist as well as implementations for distributed memory~\cite{dplasma}.
 %
-Most of these optimizations can be done because the access pattern of BLAS operations are deterministic and some operations can be reorder without changing the final result.
+Most of these optimizations can be done because the memory access pattern of BLAS operations are deterministic and some operations can be reorder without changing the final result.
 
 
-Go back to the matrix of eq.~\ref{eq:ax_b}, we can see that this matrix contains a lot of zero values, and these values don't impact on the calculation.
+Go back to the matrix of eq.~\eqref{eq:ax_b}, we can see that this matrix contains a lot of zero values, and these values don't impact on the calculation.
 %
 One can differentiate matrices will a lot zero values from matrices with a majority of non-zeros values.
 %
 A matrix can be consider like a sparse matrix when the number of non-zero values is of the order of the dimension of the matrix.
 %
-Solving a sparse linear system use different methods than a dense linear system.
+Solving a sparse linear system is different from solving a dense linear system, different methods are used.

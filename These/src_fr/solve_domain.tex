@@ -1,0 +1,18 @@
+\subsection{Décomposition de domaine}
+Si nous souhaitons utiliser plus d'un noeud de calcul de notre grappe de calcul, nous devons diviser notre problème en morceaux.
+%
+Dans la simulation de réservoir, ces morceaux sont appelés domaines et ils représentent des parties physiques du réservoir.
+%
+La décomposition de domaine est une méthode utilisée pour résoudre un problème trop gros en le découpant en problèmes plus petits.
+%
+Mais les problèmes plus petits doivent continuer d'échanger des informations dans le but de résoudre le gros problème.
+%
+Cette méthode nous permet de paralléliser le GMRES quand nous travaillons avec un paradigme de mémoire distribuée comme le passage de messages.
+%
+Nous utilisons MPI\footnote{Message Passing Interface} comme bibliothèque de passage de messages.
+%
+Chaque processus MPI est en charge d'un sous-ensemble de cellules du réservoir et est capable de transmettre des informations aux cellules en bordure de son domaine.
+%
+Cependant, dans le cas du GMRES, le préconditionneur ILU est sensible au nombre de domaines.
+%
+La convergence du GMRES préconditionné par ILU est donc dégradée quand le nombre de domaine devient trop grand.

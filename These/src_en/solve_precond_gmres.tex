@@ -1,11 +1,11 @@
 \subsection{Preconditioned GMRES}
 A popular approach to solve large sparse linear systems of equation is a Krylov method (like GMRES or Conjugate Gradient) preconditioned by an incomplete factorization (see~\cite{Saad96IMSLS}).
 %
-This is often the most time consuming part of a numerical simulation.
+This is often the most time consuming part of a numerical simulation, for example in reservoir simulation it can be up to 80~\% of the simulating time.
 %
 This method can be used with any matrix since the matrix is invertible.
 %
-The GMRES algorithm is mostly composed of some vectors operations and a SpMV\footnote{sparse matrix-vector product}.
+The GMRES algorithm is mostly composed of vectors operations and a SpMV\footnote{sparse matrix-vector product}.
 
 As matrices used in reservoir simulation are not well conditioned, the GMRES algorithm converge after a lot of iterations.
 %

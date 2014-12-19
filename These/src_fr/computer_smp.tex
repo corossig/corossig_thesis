@@ -1,0 +1,22 @@
+\subsection{SMP}
+A l'intérieur de chaque noeud d'une grappe de calcul, on peux trouver plusieurs processeurs.
+%
+Ces processeurs se partagent les ressources disponibles sur la carte mère, cela inclus les entrés/sortis et la mémoire.
+%
+La façon d'inter-connecter tous les processeurs avec la carte mère peut différer entre différente architecture.
+%
+Avec l'architecture SMP, tous les processeurs sont connectés à un bus de données et un arbitre choisis quel processeur peut utiliser le bus à un instant donné (Fig.~\ref{fig:smp}).
+%
+Cette conception ne passe pas à l'échelle au niveau des performances quand le nombre de processeurs grandit.
+%
+La bande passante est partagée par tous les processeurs et l'arbitre du bus devient un goulot d'étranglement.
+%
+Pire, la latence d'un accès mémoire va dépendre de la congestion du bus mémoire.
+
+%   (-_-)   %
+\begin{figure}[!ht]
+        \centering
+        \includegraphics[width=0.8\textwidth]{smp}
+        \caption{Vue d'ensemble d'une architecture à accès mémoire uniforme (SMP)}
+        \label{fig:smp}
+\end{figure}

@@ -26,7 +26,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
      inkscape:cx="157.49876"
-     inkscape:cy="153.87654"
+     inkscape:cy="152.86639"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -518,16 +518,16 @@
     </g>
     <text
        xml:space="preserve"
-       style="font-size:11px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="-86.117409"
+       style="font-size:11px;font-style:normal;font-weight:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-54.932838"
        y="47.338516"
        id="text3297"
        sodipodi:linespacing="125%"
        transform="matrix(0,-1,1,0,0,0)"><tspan
          sodipodi:role="line"
          id="tspan3299"
-         x="-86.117409"
-         y="47.338516">y axis</tspan></text>
+         x="-54.932838"
+         y="47.338516">Axe Y</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text3301"
@@ -538,7 +538,7 @@
          y="381.44644"
          x="17.66964"
          id="tspan3303"
-         sodipodi:role="line">x axis</tspan></text>
+         sodipodi:role="line">Axe Y</tspan></text>
     <g
        id="g3413"
        transform="translate(-73.571429,13.214286)">
@@ -554,7 +554,7 @@
            y="42.138393"
            x="191.07143"
            id="tspan3379"
-           sodipodi:role="line">Tangent line to the curve at the point x=</tspan></text>
+           sodipodi:role="line">Ligne tangente à la courbe au point x =</tspan></text>
       <g
          style="fill:#ff6600"
          transform="translate(227.40824,-41.683039)"
@@ -648,7 +648,7 @@
          y="259.66071"
          x="232.3125"
          id="tspan3437"
-         sodipodi:role="line">Tangent line to the curve at the point x=</tspan></text>
+         sodipodi:role="line">Ligne tangente à la courbe au point x =</tspan></text>
     <g
        id="g3477"
        transform="translate(266.42774,-121.47084)"

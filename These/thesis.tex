@@ -16,14 +16,15 @@
 \usepackage{caption}
 \usepackage{subfigure}
 
-\title{A task based programming model for the fine-grain parallelization of sparse linear solvers}
+\title{Un modèle de programmation à grain fin pour la parallélisation de solveurs linéaire creux}
 
 
 \authorFirstName{Corentin}
 \authorLastName{Rossignon}
 \authorMail{corentin.rossignon@gmail.com}
 
-\directors{Pascal \textsc{H\'{e}non}, Olivier \textsc{Aumage}, Samuel \textsc{Thibault} and Raymond \textsc{Namyst}}
+\directors{Olivier \textsc{Aumage}, Samuel \textsc{Thibault} and Raymond \textsc{Namyst}}
+\responsables{Pascal \textsc{H\'{e}non}}
 
 \laboratory{LaBRI}
 \laboratoryURL{http://www.labri.fr/}
@@ -32,9 +33,9 @@
 
 
 \logo{bordeaux1}
-\degreeDate{??th ???? 201?}
-\degree{Doctor in Computer Science}
-\degreeSpeciality{High Performance Computing}
+\degreeDate{?? ???? 2015}
+\degree{Docteur en Informatique}
+\degreeSpeciality{Calcul haute performance}
 
 \metadataSetup
 
@@ -71,13 +72,13 @@ minimum height=0.1em,font=\scriptsize]
 
 
 %=========================================================
-\chapter{Context : Simulate petroleum extraction}
+\chapter{Contexte : simuler l'extraction du pétrole}
 \minitoc
 \vspace{1cm}
 %=========================================================
 
 %+++++++++++++++++++++++++++++++
-\section{Reservoir simulation}
+\section{La simulation de réservoir}
 %-------------------------------
 \input{src/rs_overview}
 %-------------------------------
@@ -88,7 +89,7 @@ minimum height=0.1em,font=\scriptsize]
 
 
 %+++++++++++++++++++++++++++++++
-\section{Linear algebra}
+\section{Algèbre linéaire}
 %-------------------------------
 \input{src/la_dense}
 %-------------------------------
@@ -97,7 +98,7 @@ minimum height=0.1em,font=\scriptsize]
 
 
 %+++++++++++++++++++++++++++++++
-\section{Solving large sparse linear system}
+\section{Résoudre de grands systèmes linéaire creux}
 %-------------------------------
 \input{src/solve_precond_gmres}
 %-------------------------------
@@ -108,7 +109,7 @@ minimum height=0.1em,font=\scriptsize]
 
 
 %+++++++++++++++++++++++++++++++
-\section{Computers to target}
+\section{Architecture cible}
 %-------------------------------
 \input{src/computer_cluster}
 %-------------------------------
@@ -123,7 +124,7 @@ minimum height=0.1em,font=\scriptsize]
 
 
 %+++++++++++++++++++++++++++++++
-\section{Multi-core parallelism}
+\section{Parallélisme multi-coeur}
 %-------------------------------
 \input{src/mc_mpi}
 %-------------------------------
@@ -142,7 +143,7 @@ minimum height=0.1em,font=\scriptsize]
 
 
 %=========================================================
-\chapter{A problem of granularity}
+\chapter{Un problème de granularité}
 \minitoc
 \vspace{1cm}
 %=========================================================

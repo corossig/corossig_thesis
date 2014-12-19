@@ -50,20 +50,20 @@
      inkscape:pageshadow="2"
      inkscape:zoom="1.2279853"
      inkscape:cx="325.12167"
-     inkscape:cy="222.08162"
+     inkscape:cy="218.82426"
      inkscape:current-layer="layer1"
      id="namedview2387"
      showgrid="false"
      inkscape:window-width="2560"
-     inkscape:window-height="1573"
-     inkscape:window-x="2560"
-     inkscape:window-y="0"
+     inkscape:window-height="1497"
+     inkscape:window-x="0"
+     inkscape:window-y="39"
      units="mm"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-maximized="0" />
+     inkscape:window-maximized="1" />
   <metadata
      id="metadata2389">
     <rdf:RDF>
@@ -98,15 +98,15 @@
        transform="scale(-1,1)" />
     <text
        xml:space="preserve"
-       style="font-size:20.68584060999999963px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
-       x="617.35632"
+       style="font-size:20.68584061px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       x="715.01813"
        y="60.918751"
        id="text3856"
        transform="scale(1.0011786,0.99882279)"><tspan
          sodipodi:role="line"
          id="tspan3858"
-         x="617.35632"
-         y="60.918751">Processor</tspan></text>
+         x="715.01813"
+         y="60.918751">Processeur</tspan></text>
     <rect
        style="opacity:1;fill:#b4e2ae;fill-opacity:1;stroke:none"
        id="rect3860"
@@ -117,15 +117,15 @@
        transform="scale(-1,1)" />
     <text
        xml:space="preserve"
-       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
-       x="684.50665"
+       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;text-anchor:middle;text-align:center"
+       x="707.29309"
        y="106.33333"
        id="text3862"
        transform="scale(0.97447568,1.0261929)"><tspan
          sodipodi:role="line"
          id="tspan3864"
          x="684.50665"
-         y="106.33333">Core</tspan></text>
+         y="106.33333">Cœur</tspan></text>
     <rect
        y="83.102608"
        x="-653.67352"
@@ -137,14 +137,14 @@
     <text
        id="text3868"
        y="106.33333"
-       x="618.61493"
-       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
+       x="641.40137"
+       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;text-anchor:middle;text-align:center"
        xml:space="preserve"
        transform="scale(0.97447568,1.0261929)"><tspan
          y="106.33333"
          x="618.61493"
          id="tspan3870"
-         sodipodi:role="line">Core</tspan></text>
+         sodipodi:role="line">Cœur</tspan></text>
     <rect
        style="opacity:1;fill:#b4e2ae;fill-opacity:1;stroke:none"
        id="rect3872"
@@ -155,15 +155,15 @@
        transform="scale(-1,1)" />
     <text
        xml:space="preserve"
-       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
-       x="618.61493"
+       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;text-anchor:middle;text-align:center"
+       x="641.40137"
        y="150.92169"
        id="text3874"
        transform="scale(0.97447568,1.0261929)"><tspan
          sodipodi:role="line"
          id="tspan3876"
          x="618.61493"
-         y="150.92169">Core</tspan></text>
+         y="150.92169">Cœur</tspan></text>
     <rect
        y="128.85887"
        x="-717.88336"
@@ -175,14 +175,14 @@
     <text
        id="text3880"
        y="150.92169"
-       x="684.50665"
-       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
+       x="707.29309"
+       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;text-anchor:middle;text-align:center"
        xml:space="preserve"
        transform="scale(0.97447568,1.0261929)"><tspan
          y="150.92169"
          x="684.50665"
          id="tspan3882"
-         sodipodi:role="line">Core</tspan></text>
+         sodipodi:role="line">Cœur</tspan></text>
     <rect
        style="opacity:1;fill:#666666;fill-opacity:1;stroke:none"
        id="rect3884"
@@ -193,19 +193,19 @@
        transform="scale(-1,1)" />
     <text
        xml:space="preserve"
-       style="font-size:20.68584060999999963px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
+       style="font-size:20.68584061px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
        x="-106.67632"
        y="749.98376"
        id="text3886"
        transform="matrix(0,-0.99882279,1.0011786,0,0,0)"><tspan
          sodipodi:role="line"
          id="tspan3888"
-         x="-103.38355"
-         y="749.98376">Memory </tspan><tspan
-         sodipodi:role="line"
          x="-106.67632"
+         y="749.98376">Contrôleur</tspan><tspan
+         sodipodi:role="line"
+         x="-103.38356"
          y="775.84106"
-         id="tspan3890">Controler</tspan></text>
+         id="tspan3890">Mémoire </tspan></text>
     <rect
        y="37.346363"
        x="-955.51373"
@@ -266,13 +266,13 @@
        transform="matrix(0,-1,1,0,0,0)"
        id="text3912"
        y="902.28876"
-       x="-159.39998"
-       style="font-size:25.82686423999999903px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
+       x="-108.5155"
+       style="font-size:25.82686424px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
        xml:space="preserve"><tspan
          y="902.28876"
-         x="-159.39998"
+         x="-108.5155"
          id="tspan3914"
-         sodipodi:role="line">Memory</tspan></text>
+         sodipodi:role="line">Mémoire</tspan></text>
     <rect
        transform="scale(-1,1)"
        style="fill:#eeaaff;fill-opacity:1;stroke:none;opacity:1"
@@ -293,13 +293,13 @@
        transform="scale(1.0011786,0.99882279)"
        id="text4068"
        y="357.20261"
-       x="617.35632"
-       style="font-size:20.68584060999999963px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
+       x="715.01813"
+       style="font-size:20.68584061px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
        xml:space="preserve"><tspan
          y="357.20261"
-         x="617.35632"
+         x="715.01813"
          id="tspan4070"
-         sodipodi:role="line">Processor</tspan></text>
+         sodipodi:role="line">Processeur</tspan></text>
     <rect
        transform="scale(-1,1)"
        y="379.03766"
@@ -312,13 +312,13 @@
        transform="scale(0.97447568,1.0261929)"
        id="text4074"
        y="394.71484"
-       x="684.50665"
-       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
+       x="707.29309"
+       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;text-anchor:middle;text-align:center"
        xml:space="preserve"><tspan
          y="394.71484"
          x="684.50665"
          id="tspan4076"
-         sodipodi:role="line">Core</tspan></text>
+         sodipodi:role="line">Cœur</tspan></text>
     <rect
        transform="scale(-1,1)"
        style="opacity:1;fill:#b4e2ae;fill-opacity:1;stroke:none"
@@ -330,14 +330,14 @@
     <text
        transform="scale(0.97447568,1.0261929)"
        xml:space="preserve"
-       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
-       x="618.61493"
+       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;text-anchor:middle;text-align:center"
+       x="641.40137"
        y="394.71484"
        id="text4080"><tspan
          sodipodi:role="line"
          id="tspan4082"
          x="618.61493"
-         y="394.71484">Core</tspan></text>
+         y="394.71484">Cœur</tspan></text>
     <rect
        transform="scale(-1,1)"
        y="424.79391"
@@ -350,13 +350,13 @@
        transform="scale(0.97447568,1.0261929)"
        id="text4086"
        y="439.30319"
-       x="618.61493"
-       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
+       x="641.40137"
+       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;text-anchor:middle;text-align:center"
        xml:space="preserve"><tspan
          y="439.30319"
          x="618.61493"
          id="tspan4088"
-         sodipodi:role="line">Core</tspan></text>
+         sodipodi:role="line">Cœur</tspan></text>
     <rect
        transform="scale(-1,1)"
        style="opacity:1;fill:#b4e2ae;fill-opacity:1;stroke:none"
@@ -368,14 +368,14 @@
     <text
        transform="scale(0.97447568,1.0261929)"
        xml:space="preserve"
-       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
-       x="684.50665"
+       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;text-anchor:middle;text-align:center"
+       x="707.29309"
        y="439.30319"
        id="text4092"><tspan
          sodipodi:role="line"
          id="tspan4094"
          x="684.50665"
-         y="439.30319">Core</tspan></text>
+         y="439.30319">Cœur</tspan></text>
     <rect
        transform="scale(-1,1)"
        y="333.28143"
@@ -389,16 +389,16 @@
        id="text4100"
        y="749.98376"
        x="-402.96017"
-       style="font-size:20.68584060999999963px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
+       style="font-size:20.68584061px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
        xml:space="preserve"><tspan
-         y="749.98376"
-         x="-399.66739"
-         id="tspan4102"
-         sodipodi:role="line">Memory </tspan><tspan
          id="tspan4104"
-         y="775.84106"
+         y="749.98376"
          x="-402.96017"
-         sodipodi:role="line">Controler</tspan></text>
+         sodipodi:role="line">Contrôleur</tspan><tspan
+         y="775.84106"
+         x="-399.66742"
+         sodipodi:role="line"
+         id="tspan3124">Mémoire </tspan></text>
     <rect
        transform="scale(-1,1)"
        style="fill:#b4e2ae;fill-opacity:1;stroke:none;opacity:1"
@@ -457,15 +457,15 @@
        style="fill:#ffd42a;fill-opacity:1;stroke:none;opacity:1" />
     <text
        xml:space="preserve"
-       style="font-size:25.82686423999999903px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
-       x="-455.33502"
+       style="font-size:25.82686424px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       x="-404.45056"
        y="902.28876"
        id="text4122"
        transform="matrix(0,-1,1,0,0,0)"><tspan
          sodipodi:role="line"
          id="tspan4124"
-         x="-455.33502"
-         y="902.28876">Memory</tspan></text>
+         x="-404.45056"
+         y="902.28876">Mémoire</tspan></text>
     <rect
        style="fill:#d38d5f;fill-opacity:1;stroke:none;opacity:1"
        id="rect4194"
@@ -492,12 +492,12 @@
        id="text3727"
        y="60.918758"
        x="299.32977"
-       style="font-size:20.68584060999999963px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
+       style="font-size:20.68584061px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
        xml:space="preserve"><tspan
          y="60.918758"
          x="299.32977"
          id="tspan3729"
-         sodipodi:role="line">Processor</tspan></text>
+         sodipodi:role="line">Processeur</tspan></text>
     <rect
        y="83.102608"
        x="301.71512"
@@ -509,13 +509,13 @@
        transform="scale(0.97447568,1.0261929)"
        id="text3733"
        y="106.33334"
-       x="313.91632"
-       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
+       x="336.70279"
+       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;text-anchor:middle;text-align:center"
        xml:space="preserve"><tspan
          y="106.33334"
          x="313.91632"
          id="tspan3735"
-         sodipodi:role="line">Core</tspan></text>
+         sodipodi:role="line">Cœur</tspan></text>
     <rect
        style="opacity:1;fill:#b4e2ae;fill-opacity:1;stroke:none"
        id="rect3737"
@@ -526,14 +526,14 @@
     <text
        transform="scale(0.97447568,1.0261929)"
        xml:space="preserve"
-       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
-       x="379.80798"
+       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;text-anchor:middle;text-align:center"
+       x="402.59445"
        y="106.33334"
        id="text3739"><tspan
          sodipodi:role="line"
          id="tspan3741"
          x="379.80798"
-         y="106.33334">Core</tspan></text>
+         y="106.33334">Cœur</tspan></text>
     <rect
        y="128.85887"
        x="365.92499"
@@ -545,13 +545,13 @@
        transform="scale(0.97447568,1.0261929)"
        id="text3745"
        y="150.92169"
-       x="379.80798"
-       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
+       x="402.59445"
+       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;text-anchor:middle;text-align:center"
        xml:space="preserve"><tspan
          y="150.92169"
          x="379.80798"
          id="tspan3747"
-         sodipodi:role="line">Core</tspan></text>
+         sodipodi:role="line">Cœur</tspan></text>
     <rect
        style="opacity:1;fill:#b4e2ae;fill-opacity:1;stroke:none"
        id="rect3749"
@@ -562,14 +562,14 @@
     <text
        transform="scale(0.97447568,1.0261929)"
        xml:space="preserve"
-       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
-       x="313.91632"
+       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;text-anchor:middle;text-align:center"
+       x="336.70279"
        y="150.92169"
        id="text3751"><tspan
          sodipodi:role="line"
          id="tspan3753"
          x="313.91632"
-         y="150.92169">Core</tspan></text>
+         y="150.92169">Cœur</tspan></text>
     <rect
        y="37.346367"
        x="235.67073"
@@ -582,16 +582,16 @@
        id="text3757"
        y="257.34433"
        x="-106.67633"
-       style="font-size:20.68584060999999963px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
+       style="font-size:20.68584061px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
        xml:space="preserve"><tspan
          y="257.34433"
-         x="-103.38356"
+         x="-106.67633"
          id="tspan3759"
-         sodipodi:role="line">Memory </tspan><tspan
+         sodipodi:role="line">Contrôleur</tspan><tspan
          id="tspan3761"
          y="283.20163"
          x="-106.67633"
-         sodipodi:role="line">Controler</tspan></text>
+         sodipodi:role="line">Mémoire</tspan></text>
     <rect
        style="fill:#b4e2ae;fill-opacity:1;stroke:none;opacity:1"
        id="rect3763"
@@ -643,15 +643,15 @@
        style="fill:#ffd42a;fill-opacity:1;stroke:none;opacity:1" />
     <text
        xml:space="preserve"
-       style="font-size:25.82686423999999903px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
-       x="-159.39998"
+       style="font-size:25.82686424px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       x="-108.5155"
        y="130.76541"
        id="text3794"
        transform="matrix(0,-1,1,0,0,0)"><tspan
          sodipodi:role="line"
          id="tspan3796"
-         x="-159.39998"
-         y="130.76541">Memory</tspan></text>
+         x="-108.5155"
+         y="130.76541">Mémoire</tspan></text>
     <rect
        y="390.47675"
        x="155.59729"
@@ -668,7 +668,7 @@
        y="333.28143" />
     <text
        xml:space="preserve"
-       style="font-size:20.68584060999999963px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
+       style="font-size:20.68584061px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
        x="299.32977"
        y="357.20261"
        id="text4134"
@@ -676,7 +676,7 @@
          sodipodi:role="line"
          id="tspan4136"
          x="299.32977"
-         y="357.20261">Processor</tspan></text>
+         y="357.20261">Processeur</tspan></text>
     <rect
        style="opacity:1;fill:#b4e2ae;fill-opacity:1;stroke:none"
        id="rect4138"
@@ -686,15 +686,15 @@
        y="379.03766" />
     <text
        xml:space="preserve"
-       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
-       x="313.91632"
+       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;text-anchor:middle;text-align:center"
+       x="336.70279"
        y="394.71484"
        id="text4140"
        transform="scale(0.97447568,1.0261929)"><tspan
          sodipodi:role="line"
          id="tspan4142"
          x="313.91632"
-         y="394.71484">Core</tspan></text>
+         y="394.71484">Cœur</tspan></text>
     <rect
        y="379.03766"
        x="365.92499"
@@ -705,14 +705,14 @@
     <text
        id="text4146"
        y="394.71484"
-       x="379.80798"
-       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
+       x="402.59445"
+       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;text-anchor:middle;text-align:center"
        xml:space="preserve"
        transform="scale(0.97447568,1.0261929)"><tspan
          y="394.71484"
          x="379.80798"
          id="tspan4148"
-         sodipodi:role="line">Core</tspan></text>
+         sodipodi:role="line">Cœur</tspan></text>
     <rect
        style="opacity:1;fill:#b4e2ae;fill-opacity:1;stroke:none"
        id="rect4150"
@@ -722,15 +722,15 @@
        y="424.79391" />
     <text
        xml:space="preserve"
-       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
-       x="379.80798"
+       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;text-anchor:middle;text-align:center"
+       x="402.59445"
        y="439.30319"
        id="text4152"
        transform="scale(0.97447568,1.0261929)"><tspan
          sodipodi:role="line"
          id="tspan4154"
          x="379.80798"
-         y="439.30319">Core</tspan></text>
+         y="439.30319">Cœur</tspan></text>
     <rect
        y="424.79391"
        x="301.71512"
@@ -741,14 +741,14 @@
     <text
        id="text4158"
        y="439.30319"
-       x="313.91632"
-       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
+       x="336.70279"
+       style="font-size:20.64896773999999979px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;text-anchor:middle;text-align:center"
        xml:space="preserve"
        transform="scale(0.97447568,1.0261929)"><tspan
          y="439.30319"
          x="313.91632"
          id="tspan4160"
-         sodipodi:role="line">Core</tspan></text>
+         sodipodi:role="line">Cœur</tspan></text>
     <rect
        style="opacity:1;fill:#666666;fill-opacity:1;stroke:none"
        id="rect4162"
@@ -758,19 +758,19 @@
        y="333.28143" />
     <text
        xml:space="preserve"
-       style="font-size:20.68584060999999963px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
+       style="font-size:20.68584061px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
        x="-402.96017"
        y="257.34433"
        id="text4164"
        transform="matrix(0,-0.9988228,1.0011786,0,0,0)"><tspan
          sodipodi:role="line"
          id="tspan4166"
-         x="-399.66739"
-         y="257.34433">Memory </tspan><tspan
+         x="-402.96017"
+         y="257.34433">Contrôleur</tspan><tspan
          sodipodi:role="line"
          x="-402.96017"
          y="283.20163"
-         id="tspan4168">Controler</tspan></text>
+         id="tspan4168">Mémoire</tspan></text>
     <rect
        y="333.28143"
        x="64.08477"
@@ -824,13 +824,13 @@
        transform="matrix(0,-1,1,0,0,0)"
        id="text4190"
        y="130.76541"
-       x="-455.33502"
-       style="font-size:25.82686423999999903px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
+       x="-404.45056"
+       style="font-size:25.82686424px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
        xml:space="preserve"><tspan
          y="130.76541"
-         x="-455.33502"
+         x="-404.45056"
          id="tspan4192"
-         sodipodi:role="line">Memory</tspan></text>
+         sodipodi:role="line">Mémoire</tspan></text>
     <rect
        y="-589.56189"
        x="-429.38907"
@@ -861,14 +861,14 @@
        inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
-       style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans;opacity:1"
+       style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
        x="745.56842"
        y="214.77219"
        id="text5390"><tspan
          sodipodi:role="line"
          id="tspan5392"
          x="745.56842"
-         y="214.77219">Inter-Processors bus</tspan><tspan
+         y="214.77219">Bus inter-processeurs</tspan><tspan
          sodipodi:role="line"
          x="745.56842"
          y="242.27219"

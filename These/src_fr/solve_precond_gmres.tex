@@ -1,0 +1,36 @@
+\subsection{GMRES préconditionné}
+Une approche souvent utilisée pour résoudre de grands systèmes d'équations linéaire creux consiste à utiliser une méthode de Krylov, comme le GMRES ou le Gradient Conjugué, préconditionnée par une factorisation incomplète (voir~\cite{Saad96IMSLS}).
+%
+Cette partie représente souvent la partie qui consomme le plus de temps dans une simulation numérique, par exemple dans la simulation de réservoir ça peut représenter jusqu'à 80~\% du temps de simulation.
+%
+Cette méthode peut être utilisée avec n'importe quelle matrice du moment que celle-ci soit inversible.
+%
+L'algorithme du GMRES est composé d'opérations sur des vecteurs ainsi que d'un SpMV\footnote{produit matrice-vecteur creux}.
+
+Comme les matrices utilisées dans la simulation de réservoir ne sont pas bien conditionnées, l'algorithme du GMRES converge après beaucoup d'itérations.
+%
+Dans ce cas, nous devons préconditionner la matrice pour faire en sorte que le GMRES converge avec moins d'itérations.
+%
+La factorisation ILU\footnote{Incomplete LU} est un bon préconditionneur pour nos matrices.
+%
+Cette méthode est composée de deux opérations, la première correspond à la {\em factorisation} de la matrice en deux sous matrices et la deuxième correspond à la {\em résolution triangulaire} effectuée avec les deux sous matrices.
+%
+La factorisation LU correspond à la factorisation d'une matrice $A$ en deux matrices triangulaire $L$ et $U$.
+%
+Puis résoudre l'équation $Ax=b$ est équivalent à résoudre $Ly=b$ et $U.x=y$, ces deux résolutions peuvent être faites rapidement parce que les matrices $L$ et $U$ sont triangulaires.
+%
+Dans le cas de problèmes linéaires creux, le résultat de la factorisation exacte de la matrice creuse $A$ ne pourrait plus être considéré comme creux.
+%
+En effet, beaucoup de valeurs nulles deviendraient non nulles et l'espace mémoire nécessaire au stockage de ces valeurs deviendrait gigantesque.
+%
+Pour maintenir un espace mémoire raisonnable, on peux faire seulement une partie de la factorisation et considérer le reste comme négligeable, il s'agit de la factorisation incomplète.
+%
+Dans l'algorithme ILU, on essaie d'obtenir un motif creux pour $L$ et $U$ aussi proche que possible du motif creux de $A$.
+%
+Il y a deux façons équivalentes pour appliquer l'algorithme ILU dans GMRES :
+\begin{itemize}
+  \item le préconditionnement à gauche : $A^{-1}(Ax)=b$;
+  \item le préconditionnement à droite : $A(A^{-1}x)=b$
+\end{itemize}
+%
+%In programming term, this means that the SpMV must be done before or after the TRSV.

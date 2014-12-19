@@ -1,49 +1,61 @@
 \subsection{Simulation of a simple physical example}
-Let's take a simple physical example to see how linear algebra is used in physical simulation.
+Let's take a simple physical example to see how linear algebra can be used in physical simulation.
 %
 We want to simulate the pressure of an oil column.
 %
-The density of the oil is $\rho = 0.9192~kg/m^3$.
+We know that the density of the oil presents in the column is $\rho = 0.9192~kg/m^3$.
 %
-We use the physical equation of the hydrostatic pressure :
+We also know the physical equation of the hydrostatic pressure:
 %
 \begin{equation}
+\label{eq:hydrostatic}
 \frac{\mathrm d P}{\mathrm d z} = \rho{}g
 \end{equation}
 %
 where $P$ is the pressure, $z$ is the depth and $g$ is the gravitational acceleration.
 %
-With the Taylor's theorem at first order :
+By using the Taylor's theorem at first order, we obtain the equation:
 %
 \begin{equation}
-P(x_0+h) = P(x_0) + h P'(x_0) + o(h)
+P(z_0+h) = P(z_0) + h \frac{\mathrm d P}{\mathrm d z} (z_0) + o(h^2)
 \end{equation}
 \begin{equation}
-P'(x_0) = \frac{P(x_0+h) - P(x_0)}{h} + o(h)
+\frac{\mathrm d P}{\mathrm d z} (z_0) = \frac{P(z_0+h) - P(z_0)}{h} + o(h^2)
 \end{equation}
+
+%   (-_-)   %
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.5\textwidth]{rocks}
+  \caption{oil column scheme.}
+  \label{fig:oil_schema}
+\end{figure}
 %
-We discretize the problem with a finite difference method, each element are separate by a $\Delta{z}$ distance :
+We discretize the problem in $n$ cells with a finite difference method (fig.~\ref{fig:oil_schema}): let us consider $Z_i$ the approximation of $z$ on the cell $i$, $i$ going from $0$ to $n-1$.
+%
+Each cells are separate by a distance $h$ called $\Delta{z}$:
 %
 \begin{equation}
-P'(X_i) \approx \frac{P(X_{i}) - P(X_{i-1})}{\Delta{z}}
+\label{eq:taylor_fd}
+\frac{\mathrm d P}{\mathrm d z}(Z_i) \approx \frac{P(Z_{i}) - P(Z_{i-1})}{\Delta{z}}
 \end{equation}
 %
-By using a finite element method on the function $P$ :
+By injecting \eqref{eq:taylor_fd} in \eqref{eq:hydrostatic} leads to:
 %
 \begin{equation}
-\frac{P(X_{i}) - P(X_{i-1})}{\Delta{z}} \approx \rho{}g
+\frac{P(Z_{i}) - P(Z_{i-1})}{\Delta{z}} = \rho{}g
 \end{equation}
 \begin{equation}
 \label{eq:system_pressure}
-P(X_{i}) - P(X_{i-1}) \approx \rho{}g\Delta{z}
+P(Z_{i}) - P(Z_{i-1}) = \rho{}g\Delta{z}
 \end{equation}
 We also have the boundary condition that at ground level 0, the pressure is 1000~hPa or $10^5$~Pa:
 %
 \begin{equation}
-P(X_0) = 10^5
+P(Z_0) = 10^5
 \end{equation}
 %
-We can now write the entire system under a matrix form with $n$ cells :
+We can now write the entire system under a matrix form with $n$ cells:
 %
 \begin{equation}
 \label{eq:ax_b}
@@ -57,16 +69,15 @@ We can now write the entire system under a matrix form with $n$ cells :
 \vdots &        &        &        & \ddots &   -1   &    1   &   0    \\
    0   & \cdots & \cdots & \cdots & \cdots &    0   &   -1   &   1    \\
 \end{bmatrix}
-*
 \begin{pmatrix}
-  P(X_0)  \\
-  P(X_1)  \\
+  P(Z_0)  \\
+  P(Z_1)  \\
 \vdots \\
 \vdots \\
 \vdots \\
 \vdots \\
-P(X_{n-1}) \\
-  P(X_n)  \\
+P(Z_{n-2}) \\
+  P(Z_{n-1})  \\
 \end{pmatrix}
 =
 \begin{pmatrix}
@@ -80,6 +91,6 @@ P(X_{n-1}) \\
 \rho{}g\Delta{z}    \\
 \end{pmatrix}
 \end{equation}
-By doing the multiplication of each line of $A$ by $x$, we obtain exactly the system of equations \ref{eq:system_pressure}.
+By doing the multiplication of each line of $A$ by $x$, we obtain exactly the system of equations \eqref{eq:system_pressure}.
 %
 Now, we have a matrix $A$ multiply a vector $x$ equal a vector $b$, it's time to talk about linear algebra.

@@ -1,5 +1,5 @@
 \subsection{Sparse linear algebra}
-Unlike Dense Linear Algebra, computations of Sparse problems are irregular.
+Unlike dense linear algebra, computations of sparse problems are irregular.
 %
 This is mainly due to the matrix storage format.
 %
@@ -9,13 +9,13 @@ The non-zero pattern of the matrix is define by the problem we tried to resolve.
 %
 Some storage formats are optimized for some class of problem, but there is also very generic format.
 %
-The most generic formats is COO\ref{fig:COO}.
+The most generic formats is COO (fig.~\ref{fig:COO}).
 %
 In COO format, one can store all non-zero values with their 2D coordinates.
 %
-Another well use format is CSR\ref{fig:CSR} (Compress Sparse Row) where all non zeros are sorted by row.
+Another well use format is CSR\footnote{Compress Sparse Row} (fig.~\ref{fig:CSR}) where all non zeros are sorted by row.
 %
-The row id of a non zero value is then obtain thanks an array.
+The row id of a non zero value is then obtain through the array PTR.
 
 \begin{figure}[!ht]
      \begin{center}
@@ -35,23 +35,27 @@ The row id of a non zero value is then obtain thanks an array.
     \label{fig:matrix_storage}
 \end{figure}
 
-The choice of the storage format has a lot of impact over the performance of an application.
+The choice of the storage format has a lot impact over the performance of an application.
 %
 With most of format, we will have to do at least two memory access to obtain 2D coordinate of a non zero value whereas in dense algebra it could be calculate from the position in the matrix.
 %
 A non negligible part of the memory bandwidth is used only for the 2D coordinate.
 %
-The sparsity and irregularity properties of these matrices also imply to have inefficient in memory sparse kernel because of bad cache reuse.
+The sparsity and irregularity properties of these matrices also imply to have inefficient memory use in sparse kernel because of bad cache reuse.
 %
 Most of the optimizations done is dense linear algebra can't be applied to sparse linear algebra because of irregularity in computation and data accesses.
 %
-But in sparse linear algebra, one can solve much more larger problems than in dense linear algebra, this is because dense linear algebra use a lot of memory.
+But in sparse linear algebra, one can solve much more larger problems than in dense linear algebra.
+%
+This is because with equivalent matrix dimension, dense linear algebra used much more memory than sparse linear algebra.
 
 
 Solving sparse linear problems is also different of solving dense linear ones.
 %
 We cannot use direction inversion of the matrix or gaussian elimination because it will result a quasi-dense matrix, which can't be realizable both in term of memory and in term of computation when the matrix dimension is high.
 %
-So different methods have been invented to these problems, most of them are based on iterative methods.
+So different methods have been invented to be able to solve these problems, most of them are based on iterative methods.
 %
-This means that an approximate solution is quite enough to solve our problem.
+We first start with a solution, then these algorithms reduce iteratively the difference between our approximate solution and the real solution.
+%
+At the end, we obtain a good approximate solution which is often quite enough to be consider as the solution of the problem.

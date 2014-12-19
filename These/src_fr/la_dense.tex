@@ -1,0 +1,49 @@
+\subsection{Algèbre linéaire dense}
+Résoudre un système d'équation linéaire équivaut à résoudre un problème du type $Ax=b$ dans lequel $A$ est une matrice, $b$ est un vecteur et $x$ est le vecteur que nous cherchons.
+%
+Dans l'exemple de la simulation de colonne d'huile, nous avons une matrice triangulaire pour $A$, la solution peut donc être trouvée directement en résolvant chaque équation une à une en démarrant par $P(X_0) = 1000$.
+%
+Mais ce n'est pas toujours aussi facile.
+%
+Dans des cas plus difficiles, d'autres méthodes doivent être utilisées comme l'élimination de Gauss-Jordan, l'élimination de variables ou bien la décomposition LU.
+
+
+En informatique, il y a plusieurs bibliothèques spécialisées dans les opérations d'algèbre linéaire.
+%
+La plus connus est BLAS\footnote{Basic Linear Algebra Subprograms}, c'est un ensemble d'opérations d'algèbre linéaire qui s'appliquent sur des vecteurs et des matrices.
+%
+Ces opérations sont classées en 3 niveaux :
+\begin{itemize}
+  \item Niveau 1 : ce sont les opérations sur les vecteurs (produit scalaire, addition de deux vecteurs, ...);
+  \item Niveau 2 : ce sont les opérations matrice-vecteur (multiplier une matrice par un vecteur, résoudre un système d'équations linéaires dans les coefficients sont dans une matrice triangulaire, ...);
+  \item Niveau 3 : ce sont les opérations matrice-matrice (multiplier une matrice par une autre matrice, ...).
+\end{itemize}
+%
+Le niveau des BLAS est directement lié à leurs complexités en nombre d'opérations.
+%
+Les BLAS de niveau 1 sont limités par la bande passante mémoire, il n'y a aucune réutilisation des données.
+%
+Chaque donnée n'est utilisée qu'une seule fois, la seule optimisation possible se fait au niveau du prefetch mémoire.
+%
+Les BLAS de niveau 2 peuvent réutilisés des données du vecteur, des optimisations peuvent être effectuées ici, par exemple il est possible de garder des parties du vecteur en cache.
+%
+Les BLAS de niveau 3 ont une complexité plus grande ce qui permet d'avoir un plus grand nombre d'optimisations~\cite{blas3_opt}.
+
+LAPACK\footnote{Linear Algebra PACKage} est une autre bibliothèque utilisée en algèbre linéaire, elle est construite par dessus BLAS.
+%
+Les opérations faites dans BLAS et LAPACK sont bien optimisées, par exemple certaines implémentations utilisent la structuration en bloc qui permet d'optimiser la localité des données et de réduire les défauts de cache.
+%
+D'autres implémentations utilisent les instructions SIMD(SSE, AVX, ...) des processeurs modernes~\cite{intel_mkl}.
+%
+Des implémentations GPGPU\footnote{Genenal Purpose Graphical Processing Unit}~\cite{nvidia_cublas} existent aussi, de même que des implémentations en mémoire distribuée~\cite{dplasma}.
+%
+La plupart de ces optimisation peuvent exister parce que le motif des accès mémoires des opérations du type BLAS est déterministe et que certaines opérations peuvent être réordonner sans impacter le résultat final.
+
+
+Retournons à la matrice de l'équation~\eqref{eq:ax_b}, nous pouvons voir que cette matrice contient énormément de valeurs nuls et que ces valeurs n'ont aucun impact sur le calcul.
+%
+On peut différencier les matrices avec beaucoup de valeurs nuls, des matrices avec une majorité de valeurs non nuls.
+%
+Une matrice peut être considérer creuse quand son nombre de valeurs non nuls est de l'ordre de la dimension de la matrice.
+%
+Les méthodes utilisées pour résoudre les systèmes linéaire creux sont différentes de celles utilisées pour les systèmes linéaire dense.

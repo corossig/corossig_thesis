@@ -13,8 +13,8 @@
    height="531.78479"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
-   sodipodi:docname="runtime.svg">
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="coarsening.svg">
   <defs
      id="defs4">
     <marker
@@ -461,18 +461,18 @@
      inkscape:pageshadow="2"
      inkscape:zoom="1.164586"
      inkscape:cx="548.24973"
-     inkscape:cy="445.96427"
+     inkscape:cy="305.14169"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g4798"
      showgrid="false"
      fit-margin-top="10"
      fit-margin-left="10"
      fit-margin-bottom="10"
      fit-margin-right="10"
      inkscape:window-width="2560"
-     inkscape:window-height="1495"
+     inkscape:window-height="1497"
      inkscape:window-x="0"
-     inkscape:window-y="37"
+     inkscape:window-y="39"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata7">
@@ -482,7 +482,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -505,13 +505,13 @@
          sodipodi:linespacing="125%"
          id="text2987"
          y="333.12723"
-         x="-15.254768"
-         style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="342.01868"
+         style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;text-anchor:middle;text-align:center"
          xml:space="preserve"><tspan
            y="333.12723"
            x="-15.254768"
            id="tspan2989"
-           sodipodi:role="line">Task Based Runtime - e.g. OpenMP, TBB, StarPU, ...</tspan></text>
+           sodipodi:role="line">Ordonnanceur de tâches - e.g. OpenMP, TBB, StarPU, ...</tspan></text>
     </g>
     <g
        id="g3947"
@@ -527,13 +527,13 @@
          sodipodi:linespacing="125%"
          id="text3943"
          y="114.3725"
-         x="230.9389"
-         style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         x="342.96625"
+         style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;text-anchor:middle;text-align:center"
          xml:space="preserve"><tspan
            y="114.3725"
            x="230.9389"
            id="tspan3945"
-           sodipodi:role="line">Parallel Program</tspan></text>
+           sodipodi:role="line">Programme Parallèle</tspan></text>
     </g>
     <g
        id="g3839"
@@ -552,15 +552,15 @@
          id="g3001">
         <text
            xml:space="preserve"
-           style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-           x="-59.918625"
+           style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;text-anchor:middle;text-align:center"
+           x="-16.202805"
            y="401.28162"
            id="text2993"
            sodipodi:linespacing="125%"><tspan
              sodipodi:role="line"
              id="tspan2995"
              x="-59.918625"
-             y="401.28162">Core 1</tspan></text>
+             y="401.28162">Cœur 1</tspan></text>
       </g>
     </g>
     <g
@@ -582,13 +582,13 @@
            sodipodi:linespacing="125%"
            id="text3851"
            y="401.28162"
-           x="-59.918625"
-           style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           x="-16.31218"
+           style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;text-anchor:middle;text-align:center"
            xml:space="preserve"><tspan
              y="401.28162"
              x="-59.918625"
              id="tspan3853"
-             sodipodi:role="line">Core 2</tspan></text>
+             sodipodi:role="line">Cœur 2</tspan></text>
       </g>
     </g>
     <g
@@ -608,15 +608,15 @@
          id="g3859">
         <text
            xml:space="preserve"
-           style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-           x="-59.918625"
+           style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;text-anchor:middle;text-align:center"
+           x="-16.031906"
            y="401.28162"
            id="text3861"
            sodipodi:linespacing="125%"><tspan
              sodipodi:role="line"
              id="tspan3863"
              x="-59.918625"
-             y="401.28162">Core 3</tspan></text>
+             y="401.28162">Cœur 3</tspan></text>
       </g>
     </g>
     <g
@@ -638,13 +638,13 @@
            sodipodi:linespacing="125%"
            id="text3871"
            y="401.28162"
-           x="-59.918625"
-           style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           x="-14.719406"
+           style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;text-anchor:middle;text-align:center"
            xml:space="preserve"><tspan
              y="401.28162"
              x="-59.918625"
              sodipodi:role="line"
-             id="tspan3875">Core N</tspan></text>
+             id="tspan3875">Cœur N</tspan></text>
       </g>
     </g>
     <text
@@ -1188,14 +1188,18 @@
       <text
          sodipodi:linespacing="125%"
          id="text4794"
-         y="227.59842"
-         x="188.45203"
-         style="font-size:28px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         y="213.59842"
+         x="360.17761"
+         style="font-size:28px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
          xml:space="preserve"><tspan
-           y="227.59842"
-           x="188.45203"
+           y="213.59842"
+           x="360.17761"
            id="tspan4796"
-           sodipodi:role="line">Task coarsening - Taggre</tspan></text>
+           sodipodi:role="line">Grossissement des tâches</tspan><tspan
+           y="248.59842"
+           x="360.17761"
+           sodipodi:role="line"
+           id="tspan3149">- Taggre</tspan></text>
     </g>
   </g>
 </svg>

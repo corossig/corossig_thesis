@@ -6,7 +6,6 @@ RUBBER_VERSION := $(shell rubber --version 2>/dev/null)
 
 all: imgs
 ifdef RUBBER_VERSION
-	touch $(SRC)
 	rubber $(RUBBER_OPTIONS) $(SRC)
 	mv $(DEST) $(DEST).tmp
 	rubber --clean $(SRC)

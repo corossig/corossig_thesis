@@ -1,0 +1,15 @@
+\subsection{Parallel for loop}
+One of simplest way to obtain a multi-threaded program is to share the work done in a computational time consuming loop across all physical cores available.
+%
+This method has been democratize by OpenMP and its famous ``\#pragma omp parallel for'' which is a C compiler directive that do the work for us.
+%
+To be able to use this directive, all iterations of the loop must be independent, in other terms, if we have an infinite number of processor we are able to do all iterations at the same time.
+%
+Performance of this type of parallelization are often quite enough for a lot of software, but sometimes the parallelism can't be express under a parallel loop because of dependencies between data.
+%
+In this case, another type of parallelism must be use.
+
+
+%% TODO
+%% Expliquer que les pragmas se désactivent facilement, il s'agit de parallelism quasi automatique
+%%

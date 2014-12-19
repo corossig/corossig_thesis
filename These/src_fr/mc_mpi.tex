@@ -1,0 +1,10 @@
+\section{Message passing}
+A way to obtain parallelism on a multi-core architecture is to use a message passing paradigm.
+%
+In this paradigm, there is no shared memory between all processes, but each process has its own memory space.
+%
+Exchanges between processes are done by transfer of messages.
+%
+The main advantage of this solution is that with a single program you can hit cluster ant shared memory at once.
+%
+The disadvantage is that some algorithm can't be write with this paradigm or don't offer reasonable performance.

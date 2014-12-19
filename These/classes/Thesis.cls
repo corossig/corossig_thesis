@@ -14,6 +14,7 @@
    \LoadClass[dvips, a4paper]{book}%
 \else%
    \LoadClass[pdftex, a4paper]{book}%
+   \pdfminorversion=4
 \fi%
 \else
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}%
@@ -195,6 +196,7 @@
 \def\authorMail#1{\gdef\@authorMail{#1}}
 
 \def\directors#1{\gdef\@directors{#1}}
+\def\responsables#1{\gdef\@responsables{#1}}
 
 \def\degreeDate#1{\gdef\@degreeDate{#1}}
 
@@ -256,7 +258,7 @@
 
 \vspace{\stretch{1}}
 
-{\LARGE Speciality: \@degreeSpeciality}
+{\LARGE Specialit\'e : \@degreeSpeciality}
 
 % Permet de créer un espace vertical de longueur variable (\stretch) et de "poids" 1
 \vspace{\stretch{2}}
@@ -264,7 +266,7 @@
 
 \vspace{\stretch{2}}
 
-{\large presented by}
+{\large present\'ee par}
 \vspace{\stretch{1}}
 
 \textbf{{\LARGE {\@authorFirstName} \textsc{{\@authorLastName}}}}
@@ -279,11 +281,12 @@
 \hrule
 \vspace{\stretch{1}}
 
-{\Large Directed by \@directors}
+{\Large Dirig\'ee par \@directors}
+{\Large Encadr\'ee par \@responsables}
 
 \vspace{\stretch{5}}
 
-{\Large Defended on {\@degreeDate} with a Jury:}
+{\Large Soutenue le {\@degreeDate} avec pour jury :}
 
 
 \vspace{\stretch{2}}
@@ -291,11 +294,11 @@
 \begin{tabular}{lll}
 M. ???? \textsc{????} & ???? & Co-Director\\
 M. ???? \textsc{????} & ???? & Examiner \\
-M. ???? \textsc{????} & ???? & Reporter  \\
+M. ???? \textsc{????} & ???? & Reporter \\
 M. ???? \textsc{????} & ???? & Reporter \\
 M. ???? \textsc{????} & ???? & Examiner \\
 M. ???? \textsc{????} & ???? & Examiner \\
-M. ???? \textsc{????} & ???? & Director\\
+M. ???? \textsc{????} & ???? & Director \\
 M. ???? \textsc{????} & ???? & Examiner \\
 \end{tabular}
 }
