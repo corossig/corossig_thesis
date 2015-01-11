@@ -1,10 +1,23 @@
-\subsection{Aggregate operators}
-We call aggregate operators the different heuristics used by Taggre to coarse a DAG.
+\subsection{Les opérateurs d'agrégations}
+Nous appelons {\em opérateurs d'agrégations} les différents heuristiques utilisés pas Taggre pour grossir un DAG.
 %
-These heuristics focused on keeping the graph acyclic.
+Ces heuristiques ont pour règle de garder la propriété acyclique du DAG.
 %
-We have design 4 heuristics, each heuristic address a problem and never create cycle.
+4 heuristiques ont été crées, chacune s'occupe d'un problème spécifique et aucune ne peux créer de cycle.
 %
-To evaluate the benefice of each heuristic, we also have, inside Taggre, a minimal simulator which will estimate the time to schedule the graph.
+La création d'un cycle lors qu'une agrégation intervient lorsque l'on crée un groupe de tâche et que dans ce groupe, deux des tâches ont une dépendance indirect symbolisé par un chemin dans le graphe et qu'au moins une des tâches de ce chemin n'appartient pas au groupe.
+
+
+Pour évaluer l'amélioration apportée par chaque heuristique, nous avons intégré dans Taggre un simulateur minimal qui estimera le temps d'ordonnancement du graphe.
 %
-This evaluation is essential to measure the remain parallelism in the DAG.
+Cette estimation est essentiel dans la mesure où elle permet de mesurer le parallélisme restant pouvant être extrait du graphe grossier.
+
+On pourrait se poser la question de l'utilisation d'un partitionneur de graphe comme opérateur d'agrégation.
+%
+En effet, les partitionneurs de graphe essaient créer des groupes de noeud proche spacialement.
+%
+Si nous prenons en copte ce seul paramètre, ils feraient des opérateurs de très bonne qualité.
+%
+Malheureusement, ils travaillent sur des graphes non orientés.
+%
+Le résultat de ces opérateurs serai donc inutilisable vu que le graphe obtenu pourrai être composé de cycles.

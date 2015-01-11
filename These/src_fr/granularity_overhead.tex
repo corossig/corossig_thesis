@@ -1,47 +1,54 @@
-\subsection{Parallelism vs overhead}
-A task-based runtime need to dispatch tasks all over the available computational cores.
+\subsection{Balance parallélisme/surcoût}
+Les runtimes à base de tâches doivent distribuer les tâches à tous les coeurs de calcul disponibles.
 %
-But this action isn't completely free, some operations need to be done by the scheduler and depends on its implementation.
+Mais cette action n'est pas complètement gratuite, certaines opérations sont obligatoire et leurs temps de traitement dépend de leurs implémentations.
 %
-Generally more the runtime is complex, more it will spend time to dispatch tasks.
+Généralement, plus le runtime est complet, plus il doit faire d'opérations et donc plus il prend de temps à distribuer les tâches.
 %
-A very simple runtime could be composed of a shared queue, in which tasks are inserted when a core can execute them.
+L'opération la plus basique, qui est aussi l'opération essentielle au runtime, est la vérification qu'une tâche peut être exécutée et que celle-ci s'exécute une seule et unique fois.
 %
-This queue must be thread safe since every thread will enqueue/dequeue tasks at the same time.
+Une implémentation basique de cette opération peut être composée d'une file partagée par tous les threads dans laquelle les tâches sont enfilées dès qu'un coeur de calcul peut les exécuter.
 %
-Unfortunately, even this type of runtime have an overhead when it enqueue/dequeue a task.
+Il est nécessaire que l'implémentation de cette queue soit réentrante pour garantir la validité des données quand plusieurs threads l'utilisent en même temps.
 %
-This overhead can be negligible if the time spend in the task is much higher than the overhead.
+Malheureusement, même un runtime qui n'éffecturai que cette opération aurai un surcoût temporelle lors de l'insertion/extraction de tâches dans la file.
 %
-But with a fine-grain parallelism, this overhead is far to be considerate as negligible and the programmer needs to deal with it.
+Ce surcoût peut être négligé si le temps passé à exécuter la tâche est bien plus grand que ce surcoût.
 %
-Even a static scheduler has overhead, since all tasks are distributed over all cores, the scheduler needs to check if all dependencies of the task are satisfied.
+Mais avec un parallélise à grain très fin, ce surcoût est loin de pouvoir être considéré comme négligeable et le programmeur doit faire avec.
 %
-This could be do more or less efficiently but in all case we lost the dynamic load balancing aspect of a dynamic scheduler.
+Même les ordonnanceurs statiques ont un surcoût, les tâches sont distribuées à l'avance sur les coeurs mais l'ordonnanceur doit toujours vérifier si toutes les dépendances de la tâche sont satisfaites.
+%
+Cela peut être fait plus ou moins efficacement mais dans tous les cas l'aspect équilibrage de charge dynamique d'un ordonnanceur dynamique.
 
 
-
-Increasing the grain size of tasks in a program is a solution, but it could also reduce the possibilities of parallelism and load balancing provide by the runtime.
+Nous pouvons définir par grain de tâche la durée que met une tâche à être exécuter.
 %
-Parallelism and load balancing are linked, runtime need to have enough parallelism to achieve a good load balancing.
+Un grain fin correspond à une durée d'exécution proche du surcoût de l'ordonannceur alors qu'un grain grossier aura une durée d'exécution nettement supérieure.
 %
-So, most of the time, finding the perfect grain size is painful.
+Augmenter la taille du grain dans le programme est une solution au problème de taille trop fines.
 %
-If the grain size is too big, the runtime cannot fairly balance the computation over all cores of the processor.
+Mais cette solution réduit aussi les possibilités de parallélisme et d'équilibrage de charge fournis par l'ordonnanceur.
 %
-But on the contrary, if the grain size is too small, the overhead of the runtime kills performances.
-
-
-Several related works have been conducted in the past to address the issue of adapting the task grain size to the amount of available computing units.
+Le parallélisme et l'équilibrage de charge sont liés, l'ordonnanceur a besoin d'avoir assez de parallélisme pour fournir un bon équilibrage de charge.
 %
-Many related works partially address this grain size issue by promoting cache-oblivious techniques for a specific class of
-applications such as recursive, divide-and-conquer codes or recursively partitioned loops~\cite{unifieddataflow,Intel::TBB,Cilk,xkaapi,taskscomparison}.
+Donc, la plus part du temps trouver la granularité parfaite est difficile, voire impossible.
 %
-Works such as the SCOOPP framework~\cite{scoopp} provides means for the applications to control the task grain size.
+Si la granularité est trop grossière, l'ordonnanceur ne peut pas distribuer équitablement les calculs sur tous les coeurs.
 %
-However, the grain size selection issue is still up to the application programmer.
+Mais au contraire, si la granularité est trop fine, le surcoût de l'ordonnanceur peut tuer les performances du programme.
 
 
-On the theoretical side, general task scheduling has been heavily studied for a long time now~\cite{Khan94acomparison,heft}.
+Il existe des travaux qui dans le passé se sont intéressés au problème d'adaptation de la granularité au nombre d'unités de calcul disponibles.
 %
-Works on task grain adaptiveness have been scarcer, but do exist.
+Plusieurs de ces travaux donnent des solutions au problème de granularité en utilisant des techniques de réutilisation des caches pour certaines classes de problèmes tel que la récursivité, diviser pour conquérire ou des divisions récursives de boucles~\cite{unifieddataflow,Intel::TBB,Cilk,xkaapi,taskscomparison}.
+%
+Des travaux comme le quadriciel SCOOP~\cite{scoopp} fournissent des outils aux applications pour contrôler la granularité.
+%
+However, le problème de définition de plusieurs granularités doit toujours être géré par le programmeur.
+
+
+Du côté théorique, l'ordonnancement général des tâches a été longuement étudié et ce depuis pas mal d'années~\cite{Khan94acomparison,heft}.
+%
+Les travaux sur l'adaptation de la granularité sont peu nombreux, mais ils existent. 
+%Works on task grain adaptiveness have been scarcer, but do exist.

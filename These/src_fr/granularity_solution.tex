@@ -1,21 +1,21 @@
-\subsection{Current solutions}
-The granularity problem of task based programming is a well know problem, it has been studied for a long time.
+\subsection{Solutions actuelles}
+Le problème de granularité de la programmation à base de tâche est un problème bien connu, il est étudié depuis un long moment.
 %
-Some task based runtimes tried to solve this problem with different approach.
+Certains ordonnanceurs à base de tâche essaient de résoudre ce problème en utilisant différentes approches.
 %
-For example, X-Kaapi~\cite{xkaapi} introduces the concept of splittable task also called {\em adaptive task model}, when a worker switches to the idle state, it emits a steal request to another worker.
+Par exemple, X-Kaapi~\cite{xkaapi} a introduit le concept de tâches divisables aussi appelé {\em adaptive task model}, quand un travailleur passe dans l'état d'attente, il émet une requête de travail à un autre travailleur.
 %
-The other workers, in working state, need to check regularly if they receive a steal request.
+Les autres travailleurs, qui sont dans l'état travail, doivent vérifier régulièrement s'ils ont reçu une requête de vol.
 %
-Then the work is split into two pieces, the split function needs to be written by the programmer, it's not automatic.
+Puis pour traiter cette requête, le travail restant est divisé en deux, la fonction divisant le travail en deux doit être écrite par le programmeur, ce n'est pas automatique.
 %
-The split function can be trivial in case of parallel for loop or in case of tree task flow.
+Cette fonction peut être triviale dans le cas d'une boucle for parallèle ou dans le cas de parallélisme sous la forme d'arbre.
 %
-But in general case, it's not always possible to separate a DAG into two totally independent DAG.
+Mais dans le cas général, il n'est pas toujours possible de diviser un DAG en deux DAG totalement indépendants.
 
 
-Another possible approach, as given by Capsules\cite{capsules}, requires the user to define several grain sizes.
+Une autre approche possible, comme donnée par Capsules\cite{capsules}, requiert que le programmeur définisse plusieurs granularité.
 %
-The runtime then chooses which grain best matches the current situation.
+L'ordonnanceur pourra ensuite choisir la granularité qui s'adapte le mieux à la situation.
 %
-The application programmer must therefore design his/her application while having these multiple granularity levels in mind, which may prove difficult to realize or express in an abstract way in the code.
+Le programmeur doit donc architecturer son application de façon à pouvoir avoir plusieurs granularités, ce qui peut dans certains cas difficile à exprimer de manière abstraite.
