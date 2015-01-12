@@ -17,8 +17,8 @@
    viewBox="0 0 552.50884 334"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.0 r9654"
-   sodipodi:docname="algo_2.svg">
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="algo_D4.svg">
   <metadata
      id="metadata209">
     <rdf:RDF>
@@ -57,7 +57,7 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="2560"
-     inkscape:window-height="1573"
+     inkscape:window-height="1497"
      id="namedview205"
      showgrid="false"
      fit-margin-top="0"
@@ -65,10 +65,10 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:zoom="1.1373494"
-     inkscape:cx="355.50125"
-     inkscape:cy="233.40526"
-     inkscape:window-x="2560"
-     inkscape:window-y="0"
+     inkscape:cx="180.6881"
+     inkscape:cy="229.88832"
+     inkscape:window-x="0"
+     inkscape:window-y="39"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg2" />
   <ellipse
@@ -82,7 +82,7 @@
      sodipodi:cy="-306"
      sodipodi:rx="27"
      sodipodi:ry="18"
-     style="fill:#ffffff;stroke:#000000"
+     style="fill:#ffff00;stroke:#000000"
      transform="translate(4.5,328.5)" />
   <text
      x="139.5"
@@ -101,7 +101,7 @@
      sodipodi:cy="-234"
      sodipodi:rx="27"
      sodipodi:ry="18"
-     style="fill:#ffffff;stroke:#000000"
+     style="fill:#ffff00;stroke:#000000"
      transform="translate(4.5,328.5)" />
   <text
      x="103.5"
@@ -130,7 +130,7 @@
      sodipodi:cy="-234"
      sodipodi:rx="27"
      sodipodi:ry="18"
-     style="fill:#ffffff;stroke:#000000"
+     style="fill:#ffff00;stroke:#000000"
      transform="translate(4.5,328.5)" />
   <text
      x="175.5"
@@ -159,7 +159,7 @@
      sodipodi:cy="-162"
      sodipodi:rx="27"
      sodipodi:ry="18"
-     style="fill:#ffffff;stroke:#000000"
+     style="fill:#ffff00;stroke:#000000"
      transform="translate(4.5,328.5)" />
   <text
      x="139.5"
@@ -188,7 +188,7 @@
      sodipodi:cy="-162"
      sodipodi:rx="27"
      sodipodi:ry="18"
-     style="fill:#000000;stroke:#000000"
+     style="fill:#0000ff;stroke:#000000;fill-opacity:1"
      transform="translate(4.5,328.5)" />
   <text
      x="67.5"
@@ -227,7 +227,7 @@
      sodipodi:cy="-162"
      sodipodi:rx="27"
      sodipodi:ry="18"
-     style="fill:#b3b3b3;stroke:#000000"
+     style="fill:#ff8080;stroke:#000000"
      transform="translate(4.5,328.5)" />
   <text
      x="211.5"
@@ -256,7 +256,7 @@
      sodipodi:cy="-90"
      sodipodi:rx="27"
      sodipodi:ry="18"
-     style="fill:#000000;stroke:#000000"
+     style="fill:#0000ff;stroke:#000000;fill-opacity:1"
      transform="translate(4.5,328.5)" />
   <text
      x="103.5"
@@ -285,7 +285,7 @@
      sodipodi:cy="-90"
      sodipodi:rx="27"
      sodipodi:ry="18"
-     style="fill:#b3b3b3;stroke:#000000"
+     style="fill:#ff8080;stroke:#000000"
      transform="translate(4.5,328.5)" />
   <text
      x="175.5"
@@ -314,7 +314,7 @@
      sodipodi:cy="-90"
      sodipodi:rx="27"
      sodipodi:ry="18"
-     style="fill:#000000;stroke:#000000"
+     style="fill:#0000ff;stroke:#000000;fill-opacity:1"
      transform="translate(4.5,328.5)" />
   <text
      x="31.5"
@@ -353,7 +353,7 @@
      sodipodi:cy="-18"
      sodipodi:rx="27"
      sodipodi:ry="18"
-     style="fill:#000000;stroke:#000000"
+     style="fill:#0000ff;stroke:#000000;fill-opacity:1"
      transform="translate(4.5,328.5)" />
   <text
      x="85.5"
@@ -402,7 +402,7 @@
      sodipodi:cy="-90"
      sodipodi:rx="27"
      sodipodi:ry="18"
-     style="fill:#b3b3b3;stroke:#000000"
+     style="fill:#ff8080;stroke:#000000"
      transform="translate(4.5,328.5)" />
   <text
      x="247.5"
@@ -431,7 +431,7 @@
      sodipodi:cy="-18"
      sodipodi:rx="27"
      sodipodi:ry="18"
-     style="fill:#b3b3b3;stroke:#000000"
+     style="fill:#ff8080;stroke:#000000"
      transform="translate(4.5,328.5)" />
   <text
      x="193.5"
@@ -469,7 +469,7 @@
      sodipodi:cy="-90"
      sodipodi:rx="27"
      sodipodi:ry="18"
-     style="fill:#ffffff;stroke:#000000"
+     style="fill:#ffff00;stroke:#000000"
      d="m 90,-90 c 0,9.941125 -12.088312,18 -27,18 -14.911688,0 -27,-8.058875 -27,-18 0,-9.941125 12.088312,-18 27,-18 14.911688,0 27,8.058875 27,18 z"
      transform="translate(421.00883,220.5)" />
   <text
@@ -488,7 +488,7 @@
      sodipodi:cy="-18"
      sodipodi:rx="27"
      sodipodi:ry="18"
-     style="fill:#000000;stroke:#000000"
+     style="fill:#0000ff;stroke:#000000"
      d="M 54,-18 C 54,-8.0588745 41.911688,0 27,0 12.088312,0 0,-8.0588745 0,-18 c 0,-9.941125 12.088312,-18 27,-18 14.911688,0 27,8.058875 27,18 z"
      transform="translate(421.00883,220.5)" />
   <text
@@ -517,7 +517,7 @@
      sodipodi:cy="-18"
      sodipodi:rx="27"
      sodipodi:ry="18"
-     style="fill:#b3b3b3;stroke:#000000"
+     style="fill:#ff8080;stroke:#000000"
      d="M 126,-18 C 126,-8.0588745 113.91169,0 99,0 84.088312,0 72,-8.0588745 72,-18 c 0,-9.941125 12.088312,-18 27,-18 14.91169,0 27,8.058875 27,18 z"
      transform="translate(421.00883,220.5)" />
   <text

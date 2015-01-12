@@ -17,7 +17,7 @@
    viewBox="0 0 427.34746 262"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.0 r9654"
+   inkscape:version="0.48.5 r10040"
    sodipodi:docname="algo_S.svg">
   <metadata
      id="metadata69">
@@ -83,14 +83,14 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="2560"
-     inkscape:window-height="1573"
+     inkscape:window-height="1497"
      id="namedview65"
      showgrid="false"
      inkscape:zoom="2.0085106"
      inkscape:cx="137.03832"
-     inkscape:cy="151.33771"
-     inkscape:window-x="2560"
-     inkscape:window-y="0"
+     inkscape:cy="150.34195"
+     inkscape:window-x="0"
+     inkscape:window-y="39"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg2" />
   <ellipse
@@ -123,7 +123,7 @@
      sodipodi:cy="-90"
      sodipodi:rx="27"
      sodipodi:ry="18"
-     style="fill:#b3b3b3;stroke:#000000"
+     style="fill:#ffff00;stroke:#000000"
      transform="translate(295.84746,220.5)" />
   <text
      x="322.84747"
@@ -152,7 +152,7 @@
      sodipodi:cy="-90"
      sodipodi:rx="27"
      sodipodi:ry="18"
-     style="fill:#000000;stroke:#000000"
+     style="fill:#0000ff;stroke:#000000"
      transform="translate(295.84746,220.5)" />
   <text
      x="394.84747"
@@ -238,7 +238,7 @@
      sodipodi:cy="-162"
      sodipodi:rx="27"
      sodipodi:ry="18"
-     style="fill:#b3b3b3;stroke:#000000"
+     style="fill:#ffff00;stroke:#000000"
      d="m 54,-162 c 0,9.94113 -12.088312,18 -27,18 -14.911688,0 -27,-8.05887 -27,-18 0,-9.94113 12.088312,-18 27,-18 14.911688,0 27,8.05887 27,18 z"
      transform="translate(4.5,256.5)" />
   <text
@@ -267,7 +267,7 @@
      sodipodi:cy="-162"
      sodipodi:rx="27"
      sodipodi:ry="18"
-     style="fill:#000000;stroke:#000000"
+     style="fill:#0000ff;stroke:#000000"
      d="m 126,-162 c 0,9.94113 -12.08831,18 -27,18 -14.911688,0 -27,-8.05887 -27,-18 0,-9.94113 12.088312,-18 27,-18 14.91169,0 27,8.05887 27,18 z"
      transform="translate(4.5,256.5)" />
   <text
@@ -296,7 +296,7 @@
      sodipodi:cy="-90"
      sodipodi:rx="27"
      sodipodi:ry="18"
-     style="fill:#b3b3b3;stroke:#000000"
+     style="fill:#ffff00;stroke:#000000"
      d="m 54,-90 c 0,9.941125 -12.088312,18 -27,18 -14.911688,0 -27,-8.058875 -27,-18 0,-9.941125 12.088312,-18 27,-18 14.911688,0 27,8.058875 27,18 z"
      transform="translate(4.5,256.5)" />
   <text
@@ -325,7 +325,7 @@
      sodipodi:cy="-90"
      sodipodi:rx="27"
      sodipodi:ry="18"
-     style="fill:#000000;stroke:#000000"
+     style="fill:#0000ff;stroke:#000000"
      d="m 126,-90 c 0,9.941125 -12.08831,18 -27,18 -14.911688,0 -27,-8.058875 -27,-18 0,-9.941125 12.088312,-18 27,-18 14.91169,0 27,8.058875 27,18 z"
      transform="translate(4.5,256.5)" />
   <text
