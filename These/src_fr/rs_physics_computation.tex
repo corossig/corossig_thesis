@@ -1,7 +1,7 @@
 \subsection{De la physique au calcul informatique}
 Pour pouvoir faire une simulation de réservoir, on démarre avec un physicien qui modélise un écoulement de fluide en milieu poreux.
 %
-La plupart de ces modèles sont basés sur trois équations physiques : la conservation de la masse, la loi des gazes parfaits et la loi de Darcy.
+La plupart de ces modèles sont basés sur trois équations physiques : la conservation de la masse, la loi des gaz parfaits et la loi de Darcy.
 %
 Puis le réservoir est discrétisé en cellules en utilisant la méthode des volumes finis.
 %
@@ -9,9 +9,9 @@ Pour chaque cellule du réservoir, nous obtenons une équation non-linéaire par
 %
 Pour résoudre le système d'équations non-linéaires nous utilisons la méthode Newton–Raphson.
 %
-Cette méthode est itérative, nous démarrons avec une valeur initiale $X_0$ suffisamment proche de la solution $X_n$ qui satisfais $F(X_n) = 0$.
+Cette méthode est itérative, nous démarrons avec une valeur initiale $X_0$ suffisamment proche de la solution $X_n$ qui satisfait $F(X_n) = 0$.
 %
-La méthode Newton–Raphson nous garantie que chaque itération nous rapproche du minimum local.
+La méthode Newton–Raphson nous garantit que chaque itération nous rapproche du minimum local.
 
 %   (-_-)   %
 \begin{figure}[!ht]
@@ -23,7 +23,7 @@ La méthode Newton–Raphson nous garantie que chaque itération nous rapproche 
 \label{fig:newton}
 \end{figure}
 
-L'exemple de la figure~\ref{fig:newton} n'est que dans une seule dimension, mais la même approche peut être utilisé quand on travail avec un nombre arbitraire de dimensions.
+L'exemple de la figure~\ref{fig:newton} n'est que dans une seule dimension, mais la même approche peut être utilisée quand on travaille avec un nombre arbitraire de dimensions.
 %
 Les équations linéaires de la simulation de réservoir peuvent être représentées sous la forme d'une matrice creuse très grande.
 %

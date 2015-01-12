@@ -1,5 +1,5 @@
 \subsection{Algèbre linéaire dense}
-Résoudre un système d'équation linéaire équivaut à résoudre un problème du type $Ax=b$ dans lequel $A$ est une matrice, $b$ est un vecteur et $x$ est le vecteur que nous cherchons.
+Résoudre un système d'équations linéaire équivaut à résoudre un problème du type $Ax=b$ dans lequel $A$ est une matrice, $b$ est un vecteur et $x$ est le vecteur que nous cherchons.
 %
 Dans l'exemple de la simulation de colonne d'huile, nous avons une matrice triangulaire pour $A$, la solution peut donc être trouvée directement en résolvant chaque équation une à une en démarrant par $P(X_0) = 1000$.
 %
@@ -25,7 +25,7 @@ Les BLAS de niveau 1 sont limités par la bande passante mémoire, il n'y a aucu
 %
 Chaque donnée n'est utilisée qu'une seule fois, la seule optimisation possible se fait au niveau du prefetch mémoire.
 %
-Les BLAS de niveau 2 peuvent réutilisés des données du vecteur, des optimisations peuvent être effectuées ici, par exemple il est possible de garder des parties du vecteur en cache.
+Les BLAS de niveau 2 peuvent réutiliser des données du vecteur, des optimisations peuvent être effectuées ici, par exemple il est possible de garder des parties du vecteur en cache.
 %
 Les BLAS de niveau 3 ont une complexité plus grande ce qui permet d'avoir un plus grand nombre d'optimisations~\cite{blas3_opt}.
 
@@ -37,13 +37,13 @@ D'autres implémentations utilisent les instructions SIMD(SSE, AVX, ...) des pro
 %
 Des implémentations GPGPU\footnote{Genenal Purpose Graphical Processing Unit}~\cite{nvidia_cublas} existent aussi, de même que des implémentations en mémoire distribuée~\cite{dplasma}.
 %
-La plupart de ces optimisation peuvent exister parce que le motif des accès mémoires des opérations du type BLAS est déterministe et que certaines opérations peuvent être réordonner sans impacter le résultat final.
+La plupart de ces optimisations peuvent exister parce que le motif des accès mémoires des opérations du type BLAS est déterministe et que certaines opérations peuvent être réordonnées sans impacter le résultat final.
 
 
-Retournons à la matrice de l'équation~\eqref{eq:ax_b}, nous pouvons voir que cette matrice contient énormément de valeurs nuls et que ces valeurs n'ont aucun impact sur le calcul.
+Retournons à la matrice de l'équation~\eqref{eq:ax_b}, nous pouvons voir que cette matrice contient énormément de valeurs nulles et que ces valeurs n'ont aucun impact sur le calcul.
 %
-On peut différencier les matrices avec beaucoup de valeurs nuls, des matrices avec une majorité de valeurs non nuls.
+On peut différencier les matrices avec beaucoup de valeurs nulles, des matrices avec une majorité de valeurs non nulles.
 %
-Une matrice peut être considérer creuse quand son nombre de valeurs non nuls est de l'ordre de la dimension de la matrice.
+Une matrice peut être considérer creuse quand son nombre de valeurs non nulles est de l'ordre de la dimension de la matrice.
 %
-Les méthodes utilisées pour résoudre les systèmes linéaire creux sont différentes de celles utilisées pour les systèmes linéaire dense.
+Les méthodes utilisées pour résoudre les systèmes linéaires creux sont différentes de celles utilisées pour les systèmes linéaires denses.

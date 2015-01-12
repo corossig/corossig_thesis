@@ -1,5 +1,5 @@
 \subsection{GMRES préconditionné}
-Une approche souvent utilisée pour résoudre de grands systèmes d'équations linéaire creux consiste à utiliser une méthode de Krylov, comme le GMRES ou le Gradient Conjugué, préconditionnée par une factorisation incomplète (voir~\cite{Saad96IMSLS}).
+Une approche souvent utilisée pour résoudre de grands systèmes d'équations linéaires creux consiste à utiliser une méthode de Krylov, comme le GMRES ou le Gradient Conjugué, préconditionnée par une factorisation incomplète (voir~\cite{Saad96IMSLS}).
 %
 Cette partie représente souvent la partie qui consomme le plus de temps dans une simulation numérique, par exemple dans la simulation de réservoir ça peut représenter jusqu'à 80~\% du temps de simulation.
 %
@@ -15,9 +15,9 @@ La factorisation ILU\footnote{Incomplete LU} est un bon préconditionneur pour n
 %
 Cette méthode est composée de deux opérations, la première correspond à la {\em factorisation} de la matrice en deux sous matrices et la deuxième correspond à la {\em résolution triangulaire} effectuée avec les deux sous matrices.
 %
-La factorisation LU correspond à la factorisation d'une matrice $A$ en deux matrices triangulaire $L$ et $U$.
+La factorisation LU correspond à la factorisation d'une matrice $A$ en deux matrices triangulaires $L$ et $U$.
 %
-Puis résoudre l'équation $Ax=b$ est équivalent à résoudre $Ly=b$ et $U.x=y$, ces deux résolutions peuvent être faites rapidement parce que les matrices $L$ et $U$ sont triangulaires.
+Puisque résoudre l'équation $Ax=b$ est équivalent à résoudre $Ly=b$ et $U.x=y$, ces deux résolutions peuvent être faites rapidement parce que les matrices $L$ et $U$ sont triangulaires.
 %
 Dans le cas de problèmes linéaires creux, le résultat de la factorisation exacte de la matrice creuse $A$ ne pourrait plus être considéré comme creux.
 %
