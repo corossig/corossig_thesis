@@ -35,4 +35,4 @@ Chaque interaction est représentée sous la forme d'une petite matrice dense do
 %
 Par la suite, un solveur de systèmes d'algèbre linéaire creux est utilisé.
 %
-Pour la simulation de réservoir, nous utilisons un GMRES préconditionné parce que nos matrices ne sont pas symétriques.
+Pour la simulation de réservoir, nous utilisons un FGMRES préconditionné parce que nos matrices ne sont pas symétriques et que le préconditionneur classique CPR ne correspond pas à un opérateur linéaire fixe au cours des itérations~\cite{cao2005parallel}.
