@@ -1,9 +1,32 @@
 \subsection{GMRES préconditionné}
-Une approche souvent utilisée pour résoudre de grands systèmes d'équations linéaires creux consiste à utiliser une méthode de Krylov, comme le GMRES ou le Gradient Conjugué, préconditionnée par une factorisation incomplète (voir~\cite{Saad96IMSLS}).
+Une approche souvent utilisée pour résoudre de grands systèmes d'équations linéaires creux consiste à utiliser des méthodes de résolution itérative.
 %
 Cette partie représente souvent la partie qui consomme le plus de temps dans une simulation numérique, par exemple dans la simulation de réservoir ça peut représenter jusqu'à 80~\% du temps de simulation.
 %
-Cette méthode peut être utilisée avec n'importe quelle matrice du moment que celle-ci soit inversible.
+On appel méthode itérative une méthode qui permet de résoudre un problème en partant d'une solution initial $x^0$ et qui à chaque itération donne une nouvelle solution $x^i$.
+%
+Cette nouvelle solution $x^i$ étant plus proche de la solution exacte du problème que la solution précédente $x^{i-1}$.
+%
+La méthode s'arrête lorsque $x^i$ est suffisamment proche de la solution exacte selon un critère entré en paramètre.
+%
+Parmi ces méthodes on peux citer la méthode Jacobi, Gauss-Seidel ou encore SOR, ce sont des méthodes itératives dites stationnaires.
+%
+Mais ces méthodes ne sont pas génériques, leur convergence dépend de certaines propriétés de la matrice.
+%
+Utilisées tel quel, ces méthodes ne convergent pas rapidement dans de nombreux cas concret.
+
+
+La méthode du gradient conjugué est une méthode qui s'applique seulement à des matrices carrées symétriques définies positives.
+%
+Cette méthode permet de converger en au plus $n$ itérations avec $n$ la dimension de la matrice.
+%
+Mais avec un bon préconditionnement, on obtient rapidement une solution très proche de la solution exacte.
+%
+Puis cette méthode a été étendue aux matrices non-symétriques sous le nom du gradient biconjugué.
+%
+Le gradient biconjugué est une méthode par projection dans un espace de Krylov.
+%
+Le GMRES est aussi une méthode de Krylov, elle fonctionne avec n'importe quelle matrice du moment que celle-ci soit inversible (voir~\cite{Saad96IMSLS}).
 %
 L'algorithme du GMRES est composé d'opérations sur des vecteurs ainsi que d'un SpMV\footnote{produit matrice-vecteur creux}.
 
@@ -11,7 +34,13 @@ Comme les matrices utilisées dans la simulation de réservoir ne sont pas bien 
 %
 Dans ce cas, nous devons préconditionner la matrice pour faire en sorte que le GMRES converge avec moins d'itérations.
 %
-La factorisation ILU\footnote{Incomplete LU} est un bon préconditionneur pour nos matrices.
+Il faut choisir une matrice $M^{-1}$ tel que $M^{-1}A$ soit mieux conditionnées que $A$.
+%
+Un cas idéal serait d'avoir $M=A$, dans ce cas là on obtient la matrice identité qui se trouve très bien conditionnée.
+%
+Or, calculer $A^{-1}$ est très coûteux, à la fois en terme de calcul que de mémoire.
+
+La factorisation ILU\footnote{Incomplete LU} est un bon préconditionneur pour nos matrices car il se rapproche de $A^{-1}$.
 %
 Cette méthode est composée de deux opérations, la première correspond à la {\em factorisation} de la matrice en deux sous matrices et la deuxième correspond à la {\em résolution triangulaire} effectuée avec les deux sous matrices.
 %
@@ -29,8 +58,8 @@ Dans l'algorithme ILU, on essaie d'obtenir un motif creux pour $L$ et $U$ aussi 
 %
 Il y a deux façons équivalentes pour appliquer l'algorithme ILU dans GMRES :
 \begin{itemize}
-  \item le préconditionnement à gauche : $A^{-1}(Ax)=b$;
-  \item le préconditionnement à droite : $A(A^{-1}x)=b$
+  \item le préconditionnement à gauche : $M^{-1}(Ax)=b$;
+  \item le préconditionnement à droite : $A(M^{-1}x)=b$
 \end{itemize}
 %
 %In programming term, this means that the SpMV must be done before or after the TRSV.

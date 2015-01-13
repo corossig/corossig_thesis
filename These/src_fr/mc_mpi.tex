@@ -1,10 +1,21 @@
-\section{Message passing}
-A way to obtain parallelism on a multi-core architecture is to use a message passing paradigm.
+\subsection{Passage de messages}
+Certaines machines ne fonctionnent pas avec une mémoire globale, chaque noeud de calcul à une mémoire locale et ne peux pas accéder directement à la mémoire des autres noeuds, ces machines sont dites à mémoire distribuée.
 %
-In this paradigm, there is no shared memory between all processes, but each process has its own memory space.
+Avec le paradigme de passage de messages, chaque processus son propre espace mémoire virtuel et communique avec les autres processus par le biais d'envoi/réception de messages.
 %
-Exchanges between processes are done by transfer of messages.
+Ces communications se font à l'aide d'une interface de programmation.
 %
-The main advantage of this solution is that with a single program you can hit cluster ant shared memory at once.
+L'interface la plus connue et la plus utilisée est MPI\footnote{Message Passing Interface}.
 %
-The disadvantage is that some algorithm can't be write with this paradigm or don't offer reasonable performance.
+Elle permet de faire communiquer deux processus ensemble sans se soucier du réseau utilisé ou même de la différence d'endianness entre deux architectures différentes.
+
+
+L'un des avantages majeur de ce paradigme est qu'il permet d'utiliser un ensemble très varié de machine.
+%
+Il fonctionne aussi en mémoire partagée qu'en mémoire distribuée.
+%
+Par contre, certains algorithmes ne peuvent pas être écrit efficacement avec ce paradigme.
+%
+Dans notre cas, la factorisation d'une matrice creuse se parallélise très mal.
+%
+Nous sommes obligés de modifier de méthodes de factorisation pour être capable d'obtenir de la performance.
