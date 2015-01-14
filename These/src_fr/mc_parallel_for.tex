@@ -1,15 +1,20 @@
-\subsection{Parallel for loop}
-One of simplest way to obtain a multi-threaded program is to share the work done in a computational time consuming loop across all physical cores available.
+\subsection{Parallélisme de boucle}
+Le parallélisme de boucle est un paradigme qui peut être utilisé sur des machines à mémoire partagée.
 %
-This method has been democratize by OpenMP and its famous ``\#pragma omp parallel for'' which is a C compiler directive that do the work for us.
+Il s'agit de traiter en parallèle toutes les itérations d'une boucle en les distribuant équitablement sur tous les coeurs de calcul disponibles.
 %
-To be able to use this directive, all iterations of the loop must be independent, in other terms, if we have an infinite number of processor we are able to do all iterations at the same time.
+Il faut bien sûr que ces itérations soit indépendantes, c'est à dire qu'avec un nombre infini de coeur de calcul, on pourrait traiter une itération par coeur simultanément.
 %
-Performance of this type of parallelization are often quite enough for a lot of software, but sometimes the parallelism can't be express under a parallel loop because of dependencies between data.
+Ce paradigme fonctionne de la manière suivante : un thread est crée par coeur de calcul et chaque thread doit s'occuper de traiter une partie des itérations de la boucle.
 %
-In this case, another type of parallelism must be use.
 
 
-%% TODO
-%% Expliquer que les pragmas se désactivent facilement, il s'agit de parallelism quasi automatique
-%%
+L'interface de programmation qui a le plus démocratisé ce paradigme est OpenMP.
+%
+Cette interface utilise les directives de compilation en C qui ont l'avantage d'être simple à utiliser et elle peuvent se désactiver facilement pour retrouver un code séquentiel.
+%
+En ajoutant la fameuse directive ``\#pragma omp parallel for'' juste au-dessus d'une boucle for, on obtient facilement un programme multi-threadé, la description du parallélisme est très simple.
+%
+Les performances obtenu avec ce paradigme sont souvent suffisantes pour un grand nombre de logiciel et le ratio entre le temps de développement et le gain en temps d'exécution est imbattable.
+%
+Malheureusement, il peux arriver qu'il y est des dépendances de données entre deux itérations, dans ce cas, ce paradigme de parallélisation donnera un résultat faux et il faudra utiliser un autre paradigme.

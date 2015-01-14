@@ -1,37 +1,65 @@
-\subsection{Runtime}
-A runtime is a piece of software used by others software to abstract part of the system.
+Un moteur d'exécution, ou {\em runtime}, est un morceau de logiciel utilisé par d'autres logiciels pour abstraire des parties du système.
 %
-The main idea behind the runtime is {\em build once, run anywhere}.
+L'idée principale d'un runtime est {\em compiler une fois, exécuter partout}.
 %
-There are several type of runtime.
+Les runtime sont présent un peu partout et peuvent avoir différentes fonctions.
 %
-Some high level programming languages use runtime, for example Java has a runtime for garbage collection.
+Certains langages dit de haut niveau utilisent un runtime, par exemple Java a un runtime pour gérer son ramasse-miettes.
 %
-Also some implementations of MPI have a runtime.
+Il y a également des implémentations de MPI qui ont un runtime
 %
-Task based programming also tend to have a runtime.
+Les cadriciels de programmation à base de tâches tendent à utiliser un runtime.
 %
-In the following part, we will focus on runtime support for task based programming.
+Les parties suivantes se concentrerons sur le support des runtimes pour la programmation à base de tâches.
 
 
-
-The main interest of runtime in task based programming is to schedule tasks while respecting strict dependencies order.
-%Le rôle des supports d'exécution pour la programmation en tâches est d'orchestrer la réalisation des tâches en respectant leurs dépendances.
+Les runtimes utilisés pour la programmation à base de tâches doivent en premier lieu être capable d'ordonnancer le traitement des tâches tout en respectant l'ordre des dépendances entre les tâches.
 %
-These runtimes also provide a load balancing over all available hardware ressources (potentially heterogeneous) while keeping data consistency.
-%Ils se chargent de la répartition des tâches sur les ressources matérielles disponibles (potentiellement hétérogènes) tout en assurant la cohérence des données.
+Ces runtime doivent aussi fournir un équilibrage de charge entre toutes les ressources matérielles disponibles (potentiellement hétérogènes) dans le but de minimiser le temps de calcul.
 %
-Some runtime also provide memory transfer between ressources, for example between main memory and a graphical card or just between two processes.
+Certains runtimes s'occupent de transférer des données entre deux ressources potentiellement hétérogènes, comme par exemple entre la mémoire principale et la mémoire d'une carte graphique ou plus simplement entre deux processus.
 %
-These transfers could be implicit, the runtime has data knowledge, or they could be explicit, a special task.
+Ces transferts peuvent être implicite, le runtime a connaissance des données qui sont manipulées, ou ils peuvent être explicite avec l'utilisation d'une tâche spéciale qui s'occupera de faire échange de données.
 
 
-Some runtime use schedule policy (static or dynamic) to improve load balancing.
+Pour améliorer l'équilibrage de charge, les runtimes ont des politiques d'ordonnancement, la plupart de ces politiques sont dynamiques et peuvent s'adapter à la charge courante de la machine.
 %
-But the perfect scheduler doesn't exist maybe will never exist.
+D'autres politiques d'ordonnancement, dîtes statiques, permettent de réduire le coût d'ordonnancement.
 %
-Indeed, finding the best schedule for a set of tasks on a limited number of resources machine is a NP-complete problem\footnote{A problem is NP-complete if the solving time is polynomial compare to input data.}.
+L'ordonnanceur parfait n'existe pas et n'existera sûrement jamais.
 %
-Some heuristic are used to obtain some reasonably good results, for example the greedy algorithm.
+En effet, trouver le meilleur ordonnancement d'un ensemble de tâches avec un nombre limité de ressources de calcul est un problème NP-complet\footnote{Un problème est NP-complet si le temps nécessaire à la résolution du problèmes est polynomial comparé à la taille des données en entrées.}.
 %
-Also, some heuristic needs more information about tasks, like an estimated cost.
+Il existe des heuristiques d'ordonnancement qui donnent de bons résultats dans la majorité des cas, nous pouvons citer l'algorithme HEFT\cite{heft}.
+%
+Si le modèle de programmation le permet, des informations additionnels peuvent être attribuées aux tâches, comme par exemple une estimation du temps de calcul, ces informations sont ensuite utilisées par l'ordonnanceur pour améliorer le placement des tâches.
+
+
+L'apparition des premières machines parallèles à mémoire partagée a conduit à la recherche de nouvelles méthodes pour les programmer.
+%
+Il faut donc distribuer une charge de travail sur plusieurs unités de calcul.
+%
+Malheureusement, il arrive que cette charge de travail de soit pas connu l'avance.
+%
+Une idée est alors apparu pour rendre cette distribution plus flexible : le vol de travail (ou {\em work-stealing} en anglais).
+%
+Dès qu'une ressource de calcul n'as plus de travail, elle essaye de voler du travail à une autre ressource.
+%
+Le langage Cilk~\cite{Cilk}, apparu en 1994 et toujours développé sous le nom Cilk++~\cite{Cilk++}, permet de faire du vol de travail.
+%
+Les tâches sont décrites par le programmeur avec des mots clés additionnels au langage C, par exemple le mot-clé {\em spawn} placé avant l'appel d'une fonction permet à Cilk de comprendre qu'il doit créer une nouvelle tâche et qu'il doit l'ordonnancer.
+%
+Peu de temps après, en 1997, la spécification OpenMP~\cite{OpenMP} sort et se concentre sur le parallélisme de boucle.
+%
+Ce n'est qu'en 2008 que le support des tâches est ajouté à OpenMP dans sa version 3.0.
+
+
+Plus récemment, à la fin des année 2000, la révolution du GPGPU donne lieu à l'apparition de nouveaux runtime.
+%
+Ces runtimes gèrent désormais des ressources hétérogènes avec des espaces d'adressage mémoire différents.
+%
+Ils doivent donc prendre en charge la cohérence mémoire entre les espaces d'adressage.
+%
+Parmi ces runtimes on trouve StarPU~\cite{starpu}, PaRSEC~\cite{PaRSEC}, X-KAAPI~\cite{xkaapi} et OMPSs~\cite{OMPSs}.
+%
+Le parallélisme de boucle sur architectures hétérogène a aussi eu droit à une spécification, il s'agit d'OpenACC~\cite{OpenACC}.
