@@ -11,8 +11,8 @@
 \usepackage{fixltx2e}
 
 
-\usepackage{algorithm}
-\usepackage{algorithmic}
+\usepackage[french,onelanguage,ruled]{algorithm2e}
+%\usepackage{algorithmic}
 \usepackage{caption}
 \usepackage{subfigure}
 
@@ -195,11 +195,7 @@ minimum height=0.1em,font=\scriptsize]
 %+++++++++++++++++++++++++++++++
 \section{Results}
 %-------------------------------
-\subsection{Factorization and Triangular solve improvement}
-  \begin{itemize}
-    \item Explain why we benchmark this part
-    \item Try a lot of coarse string
-  \end{itemize}
+\input{src/taggre_result_facto}
 %-------------------------------
 \subsection{Aggregation overhead}
   \begin{itemize}

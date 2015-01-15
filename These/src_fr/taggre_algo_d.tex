@@ -11,7 +11,34 @@ L'algorithme \ref{algo:algo_D} permet d'implémenter l'opérateur dézoomé tout
 %   (-_-)   %
 \begin{figure}[t!]
   \centering
-  \includegraphics[width=0.7\textwidth]{algo_D4}
+  \includegraphics[width=0.8\textwidth]{algo_D4}
   \caption{Exemple d'utilisation de l'opérateur D avec le paramètre 4. Le nombre total de tâche a bien été divisé par 4.}
   \label{fig:algo_D4}
 \end{figure}
+
+\begin{algorithm}
+  \KwData{$M$, DAG}
+  {\sc Prêt} = liste vide \\
+  mettre les tâches racines de DAG dans {\sc Prêt} \\
+  \While{{\sc Prêt} n'est pas vide} {
+    {\sc Profondeur} = {\sc Prêt} \\
+    {\sc Prêt} = liste vide \\
+    \While{{\sc Profondeur} n'est pas vide} {
+      {\sc Maître} = retirer le premier de {\sc Profondeur} \\
+      {\sc Release} = liste vide \\
+      mettre {\sc Maître} dans {\sc Release} \\
+      {\sc Compteur} = 0 \\
+      \While{{\sc Compteur} $< M$ {\bf et} {\sc Release} n'est pas vide} {
+        {\sc Suivant} = retirer le premier de {\sc Release} \\
+        {\sc Compteur}++\\
+        agréger {\sc Maître} et {\sc Suivant}\\
+        mettre les tâches libérées par {\sc Suivant} dans {\sc Release} \\
+        trier {\sc Release} par nombre de précédence de {\sc Maître} \\
+      }
+      mettre les tâches libérées par {\sc Maître} dans {\sc Profondeur} \\
+    }
+    mettre les tâches libérées par {\sc Profondeur} dans {\sc Prêt}\\
+  }
+  \label{algo:algo_D}
+  \caption{Opérateur dézoomé.}
+\end{algorithm}

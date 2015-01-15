@@ -456,8 +456,8 @@ M. ???? \textsc{????} & ???? & Examinateur \\
 \usepackage{breakurl}
 \fi
 
-\usepackage[chapter]{algorithm}
-\usepackage{algorithmic}
+%\usepackage[chapter]{}
+%\usepackage{algorithmic}
 \usepackage{comment}
 
 \usepackage{minitoc}
