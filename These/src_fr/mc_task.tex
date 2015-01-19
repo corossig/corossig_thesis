@@ -1,16 +1,21 @@
 \subsection{Parallélisme à base de tâches}
+La théorie des graphes est une théorie utilisée en informatique pour résoudre de nombreux problèmes.
+%
+Un graphe est un ensemble de n{\oe}uds et certains de ces n{\oe}uds sont reliés par des arêtes pouvant être orienté.
+%
+Un chemin est un ensemble d'arêtes qui relie deux n{\oe}uds ensemble, un cycle est un chemin qui permet de relier un n{\oe}ud à lui-même.
+%
+Si un graphe orienté ne contient pas de cycle, on dit qu'il est acyclique.
+%
+Pour représenter le parallélisme à base de tâches, nous utilisons des graphes orientés acycliques, ou DAG\footnote{Directed Acyclic Graph}.
+%
+Dans ce modèle, les n{\oe}uds du graphe représentent une action à effectuer et les arêtes représentent l'ordre séquentiel entre deux actions.
+%
+Ainsi, nous pouvons représenter le parallélisme sous une forme abstraite indépendamment des ressources matérielles disponibles.
 
 
-
-
-In computer programming, we can use tasks model to express the potential application parallelism in an abstract way.
+La démocratisation des processeurs multi-coeurs a engendrée l'apparition de cadriciels à base de tâches~\cite{taskscomparison} comme illustré par des outils tel que Intel TBB~\cite{Intel::TBB} et que le support des tâches dans OpenMP~3.0~\cite{openmptasks} pour du parallélisme multi-coeur, ou StarSs/OmpSs~\cite{OMPSs} ainsi que StarPU~\cite{starpu} et X-Kaapi~\cite{xkaapi} pour le support de plateformes hétérogènes.
 %
-It is usually represented under a DAG\footnote{Direct Acyclic Graph} form, nodes are computational part and edges are dependencies between nodes.
+Dans ces modèles, la granularité correspond au nombre d'instructions processeur contenues dans la tâche.
 %
-This model is independent from the available hardware resources and was once popularized by tools such as Cilk~\cite{Cilk} appeared in 1994.
-%
-The widespread availability of multi-core processors recently revived the popularity of task scheduling frameworks~\cite{taskscomparison} as exemplified by tools such as Intel TBB~\cite{Intel::TBB} and OpenMP~3.0's task support~\cite{openmptasks} for regular multi-core platforms, or StarSs/OmpSs derivatives~\cite{OMPSs} as well as StarPU~\cite{starpu} and X-Kaapi~\cite{xkaapi} for heterogeneous platforms.
-%
-In these model, granularity refers to the number of CPU instructions inside a task.
-%
-The tasks grain size depends on the algorithm to parallelize and also of the runtime task scheduler.
+Cette granularité dépend de l'algorithme à paralléliser ainsi que de l'ordonnanceur de tâches.
