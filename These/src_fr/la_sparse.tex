@@ -9,13 +9,13 @@ Le motif des valeurs non nulles de la matrice est définit par le problème que 
 %
 Le format le plus générique pour stocker des matrices creuses s'appelle COO (fig.~\ref{fig:COO}).
 %
-Dans ce format, chaque valeur non nulles est stocké avec ses coordonnées 2D dans la matrice.
+Dans ce format, chaque valeur non nulle est stockée avec ses coordonnées 2D dans la matrice.
 %
-Une autre format, lui aussi générique, est souvent utilisé, il s'agit du format CSR\footnote{Compress Sparse Row} (fig.~\ref{fig:CSR}).
+Un autre format, lui aussi générique, est souvent utilisé, il s'agit du format CSR\footnote{Compress Sparse Row} (fig.~\ref{fig:CSR}).
 %
 Les éléments non nuls sont triés par ligne puis le tableau {\em PTR} du format de stockage nous permet de retrouver la ligne d'un élément.
 %
-D'autre formats moins génériques existent mais nous n'en parlerons pas ici.
+D'autres formats moins génériques existent mais nous n'en parlerons pas ici.
 
 \begin{figure}[!ht]
      \begin{center}
@@ -37,7 +37,7 @@ D'autre formats moins génériques existent mais nous n'en parlerons pas ici.
 
 Le choix du format de stockage va avoir beaucoup d'effet sur les performances d'une application.
 %
-Avec la plupart des format, nous aurons au moins deux accès mémoire pour obtenir les coordonnées 2D d'un coefficient non nul alors qu'avec l'algèbre linéaire dense nous pouvons calculer ces coordonnées à partir de la position dans la matrice.
+Avec la plupart des formats, nous aurons au moins deux accès mémoire pour obtenir les coordonnées 2D d'un coefficient non nul alors qu'avec l'algèbre linéaire dense nous pouvons calculer ces coordonnées à partir de la position dans la matrice.
 %
 Une partie non négligeable de la bande passante mémoire est utilisée juste pour les coordonnées 2D.
 %

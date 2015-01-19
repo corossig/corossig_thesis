@@ -10,16 +10,16 @@ Dans des cas plus difficiles, d'autres méthodes doivent être utilisées comme 
 
 En informatique, il y a plusieurs bibliothèques spécialisées dans les opérations d'algèbre linéaire.
 %
-La plus connus est BLAS\footnote{Basic Linear Algebra Subprograms}, c'est un ensemble d'opérations d'algèbre linéaire qui s'appliquent sur des vecteurs et des matrices.
+La plus connue est BLAS\footnote{Basic Linear Algebra Subprograms}, c'est un ensemble d'opérations d'algèbre linéaire qui s'appliquent sur des vecteurs et des matrices.
 %
 Ces opérations sont classées en 3 niveaux :
 \begin{itemize}
   \item Niveau 1 : ce sont les opérations sur les vecteurs (produit scalaire, addition de deux vecteurs, ...);
-  \item Niveau 2 : ce sont les opérations matrice-vecteur (multiplier une matrice par un vecteur, résoudre un système d'équations linéaires dans les coefficients sont dans une matrice triangulaire, ...);
+  \item Niveau 2 : ce sont les opérations matrice-vecteur (multiplier une matrice par un vecteur, résoudre un système d'équations linéaires dont les coefficients sont dans une matrice triangulaire, ...);
   \item Niveau 3 : ce sont les opérations matrice-matrice (multiplier une matrice par une autre matrice, ...).
 \end{itemize}
 %
-Le niveau des BLAS est directement lié à leurs complexités en nombre d'opérations.
+Le niveau des BLAS est directement lié à leur complexité en nombre d'opérations.
 %
 Les BLAS de niveau 1 sont limités par la bande passante mémoire, il n'y a aucune réutilisation des données.
 %
@@ -44,6 +44,6 @@ Retournons à la matrice de l'équation~\eqref{eq:ax_b}, nous pouvons voir que c
 %
 On peut différencier les matrices avec beaucoup de valeurs nulles, des matrices avec une majorité de valeurs non nulles.
 %
-Une matrice peut être considérer creuse quand son nombre de valeurs non nulles est de l'ordre de la dimension de la matrice.
+Une matrice peut être considérée creuse quand son nombre de valeurs non nulles est de l'ordre de la dimension de la matrice.
 %
 Les méthodes utilisées pour résoudre les systèmes linéaires creux sont différentes de celles utilisées pour les systèmes linéaires denses.

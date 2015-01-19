@@ -1,5 +1,5 @@
 \subsubsection{Front}
-L'opération front, abrégé {\em F} dans Taggre, va limiter le nombre de tâche disponible au même moment dans l'odonnanceur.
+L'opération front, abrégé {\em F} dans Taggre, va limiter le nombre de tâche disponible au même moment dans l'ordonnanceur.
 %
 Un graphe fournissant énormément de parallélisme par rapport au nombre de coeur disponible n'aura pas forcément un meilleur équilibrage de charge par rapport à un graphe offrant moins de parallélisme.
 %
@@ -7,11 +7,11 @@ Donc à part congestionner les structures de données servant à maintenir à jo
 %
 Le parallélisme d'un graphe peut être corréler à sa largeur.
 %
-En effet, avec un nombre illimité de coeur de calcul, on peut exploiter au mieux la même nombre de coeur que la largeur du graphe.
+En effet, avec un nombre illimité de coeur de calcul, on peut exploiter au mieux le même nombre de coeur que la largeur du graphe.
 %
 L'algorithme de l'opérateur F consiste à parcourir le graphe par hauteur et de limiter le nombre de tâches par hauteur à un paramètre donné par le programmeur (Fig.~\ref{fig:algo_F2}).
 %
-Seul les tâches qui ont la même hauteur sont agrégés ensemble, il n'y a donc aucun risque de créer un cycle.
+Seules les tâches qui ont la même hauteur sont agrégées ensemble, il n'y a donc aucun risque de créer un cycle.
 %   (-_-)   %
 \begin{figure}[t!]
   \centering
@@ -19,4 +19,3 @@ Seul les tâches qui ont la même hauteur sont agrégés ensemble, il n'y a donc
   \caption{Exemple d'agrégation avec l'opérateur F et le paramètre 2.}
   \label{fig:algo_F2}
 \end{figure}
-

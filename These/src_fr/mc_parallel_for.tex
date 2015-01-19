@@ -11,10 +11,10 @@ Ce paradigme fonctionne de la manière suivante : un thread est crée par coeur 
 
 L'interface de programmation qui a le plus démocratisé ce paradigme est OpenMP.
 %
-Cette interface utilise les directives de compilation en C qui ont l'avantage d'être simple à utiliser et elle peuvent se désactiver facilement pour retrouver un code séquentiel.
+Cette interface utilise les directives de compilation en C qui ont l'avantage d'être simple à utiliser et elles peuvent se désactiver facilement pour retrouver un code séquentiel.
 %
 En ajoutant la fameuse directive ``\#pragma omp parallel for'' juste au-dessus d'une boucle for, on obtient facilement un programme multi-threadé, la description du parallélisme est très simple.
 %
-Les performances obtenu avec ce paradigme sont souvent suffisantes pour un grand nombre de logiciel et le ratio entre le temps de développement et le gain en temps d'exécution est imbattable.
+Les performances obtenues avec ce paradigme sont souvent suffisantes pour un grand nombre de logiciel et le ratio entre le temps de développement et le gain en temps d'exécution est imbattable.
 %
-Malheureusement, il peux arriver qu'il y est des dépendances de données entre deux itérations, dans ce cas, ce paradigme de parallélisation donnera un résultat faux et il faudra utiliser un autre paradigme.
+Malheureusement, il peut arriver qu'il y ai des dépendances de données entre deux itérations, dans ce cas, ce paradigme de parallélisation donnera un résultat faux et il faudra utiliser un autre paradigme.

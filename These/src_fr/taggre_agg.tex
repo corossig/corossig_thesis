@@ -5,7 +5,7 @@ Ces heuristiques ont pour règle de garder la propriété acyclique du DAG.
 %
 4 heuristiques ont été crées, chacune s'occupe d'un problème spécifique et aucune ne peux créer de cycle.
 %
-La création d'un cycle lors qu'une agrégation intervient lorsque l'on crée un groupe de tâche et que dans ce groupe, deux des tâches ont une dépendance indirect symbolisé par un chemin dans le graphe et qu'au moins une des tâches de ce chemin n'appartient pas au groupe.
+La création d'un cycle lors qu'une agrégation intervient lorsque l'on crée un groupe de tâche et que dans ce groupe, deux des tâches ont une dépendance indirecte symbolisé par un chemin dans le graphe et qu'au moins une des tâches de ce chemin n'appartient pas au groupe.
 
 
 Pour évaluer l'amélioration apportée par chaque heuristique, nous avons intégré dans Taggre un simulateur minimal qui estimera le temps d'ordonnancement du graphe.
@@ -14,10 +14,10 @@ Cette estimation est essentiel dans la mesure où elle permet de mesurer le para
 
 On pourrait se poser la question de l'utilisation d'un partitionneur de graphe comme opérateur d'agrégation.
 %
-En effet, les partitionneurs de graphe essaient créer des groupes de noeud proche spacialement.
+En effet, les partitionneurs de graphe essaient créer des groupes de noeud proche spatialement.
 %
 Si nous prenons en copte ce seul paramètre, ils feraient des opérateurs de très bonne qualité.
 %
 Malheureusement, ils travaillent sur des graphes non orientés.
 %
-Le résultat de ces opérateurs serai donc inutilisable vu que le graphe obtenu pourrai être composé de cycles.
+Le résultat de ces opérateurs serait donc inutilisable vu que le graphe obtenu pourrai être composé de cycles.

@@ -5,7 +5,7 @@ Chaque tâche du DAG représente la factorisation d'une ligne de la matrice.
 %
 Cette granularité est trop fine, mais c'est voulu, elle représente la granularité que nous obtenons en décrivant naturellement le maximum  de parallélisme que nous pouvons exploiter.
 %
-Nous avons factoriser 4 matrices différentes, il y a un cube généré de taille 80 éléments de côté avec des éléments de taille différents (1, 3, 8), il y a aussi la matrice qui représente le cas test SPE10 qui a des éléments de taille 3.
+Nous avons factorisé 4 matrices différentes, il y a un cube généré de taille 80 éléments de côté avec des éléments de taille différents (1, 3, 8), il y a aussi la matrice qui représente le cas test SPE10 qui a des éléments de taille 3.
 %
 Les résultats obtenus avec des cubes générés de tailles différentes sont équivalent au cube de taille 80.
 %
@@ -17,7 +17,7 @@ Dans les autres cas, même en utilisant 4 threads, nous perdons du temps.
 %
 Ici, la taille des éléments va définir le nombre d'opérations faites par ligne de la matrice, donc plus cette taille est grande, plus il y aura de travail à faire.
 %
-Ces résultats confirme notre problème de granularité.
+Ces résultats confirment notre problème de granularité.
 %
 Au final, avec l'utilisation des 12 coeurs de calcul de la machine, nous obtenons des speedup plutôt décevant, par exemple, pour des éléments de taille 3, le code tourne environ 2,5x plus vite que la version séquentielle mais il utilise 12 threads.
 
@@ -51,13 +51,13 @@ Dans le cas où le nombre de variables primaires est élevé, il n'y a pas beauc
 
 Essayons maintenant l'opérateur D avec le paramètre 8.
 %
-Cet opérateur va essayer de créer des groupes de 8 tâches assez proche dans le graphe.
+Cet opérateur va essayer de créer des groupes de 8 tâches assez proches dans le graphe.
 %
-Nous allons donc diviser par 8 le nombre de tâches, ce qui peut paraître peu mais cette valeur a été choisi empiriquement parmi un ensemble de valeur.
+Nous allons donc diviser par 8 le nombre de tâches, ce qui peut paraître peu mais cette valeur a été choisie empiriquement parmi un ensemble de valeur.
 %
 Comparé à l'opérateur F, il y a très peu d'amélioration quand le nombre de variables primaires est faible (Fig.~\ref{fig:res_facto_d8}).
 %
-Par contre, avec 8 variables primaires, on obtient un gain de performance qui est dû à une meilleur utilisation des caches, surtout du cache L2 avec une diminution de 10\% des défauts de cache.
+Par contre, avec 8 variables primaires, on obtient un gain de performance qui est dû à une meilleure utilisation des caches, surtout du cache L2 avec une diminution de 10\% des défauts de cache.
 
 %   (-_-)   %
 \begin{figure}[t!]
@@ -73,11 +73,11 @@ Comme le montre les résultats de la figure~\ref{fig:res_facto_c}, tous les cas 
 %
 Il y a deux grandes améliorations, comme pour tous les opérateurs, il y a une réduction du nombre de tâches, mais dans ce cas la réduction est bien plus importante.
 %
-En effet, avec l'opérateur F, le nombre de tâches était fortement réduit mais les tâches agrégés n'avait pas une bonne réutilisabilité des données en cache.
+En effet, avec l'opérateur F, le nombre de tâches était fortement réduit mais les tâches agrégés n'avaient pas une bonne réutilisabilité des données en cache.
 %
 Au contraire, l'opérateur D ne réduisait que de très peu le donc de tâches mais améliorait la réutilisation des caches.
 %
-L'opérateur C offre le meilleur des deux opérateurs, il produit peu de tâches et en plus ces tâches réutilise correctement les données en cache.
+L'opérateur C offre le meilleur des deux opérateurs, il produit peu de tâches et en plus ces tâches réutilisent correctement les données en cache.
 % L2 stats : F:1.10, D:0.96, C:0.87
 
 
@@ -95,7 +95,7 @@ On observe un très léger gain de performance qu'en on a une seule variable pri
 %
 Malgré ces optimisations, nous n'atteignons pas un speedup parfait, avec au mieux 8,7 de speedup pour 12 coeurs.
 %
-Nous expliquerons ce soucis de performance dans les parties suivantes de la thèse.
+Nous expliquerons ce souci de performance dans les parties suivantes de la thèse.
 
 %   (-_-)   %
 \begin{figure}[t!]
@@ -105,8 +105,32 @@ Nous expliquerons ce soucis de performance dans les parties suivantes de la thè
   \label{fig:res_facto_cd2}
 \end{figure}
 
+Essayons maintenant cette technique sur la partie résolution triangulaire du code.
+%
+Les performances sans agrégations sont bien en dessous de la partie factorisation (Fig.\ref{fig:res_trsv_no_agg}).
+%
+Même en utilisant 12 threads, seule la version avec 8 variables primaires donne de meilleurs résultats que la version séquentielle.
+%
+Encore une fois il s'agit d'un problème de granularité, le graphe à ordonnancer est le même que pour la factorisation mais les tâches sont plus petites.
+%
+Si nous regardons les résultats avec la meilleure agrégation que nous ayons, l'agrégation CD(2), on obtient des résultats légèrement meilleurs mais on n'est encore loin du speedup parfait.
+
+%   (-_-)   %
+\begin{figure}[t!]
+  \centering
+  \includegraphics[width=0.7\textwidth]{res_trsv_no_agg}
+  \caption{Performance de la résolution triangulaire sur 12 coeurs sans utiliser Taggre.}
+  \label{fig:res_trsv_no_agg}
+\end{figure}
 
 
+%   (-_-)   %
+\begin{figure}[t!]
+  \centering
+  \includegraphics[width=0.7\textwidth]{res_trsv_cd2}
+  \caption{Performance de la résolution triangulaire sur 12 coeurs sans utiliser Taggre.}
+  \label{fig:res_trsv_cd2}
+\end{figure}
 
 %% +---------------------------+-------------+-------------+-------------+------------+
 %% |          Metric           |     Sum     |     Max     |     Min     |    Avg     |

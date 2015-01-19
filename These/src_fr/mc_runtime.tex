@@ -1,8 +1,8 @@
 Un moteur d'exécution, ou {\em runtime}, est un morceau de logiciel utilisé par d'autres logiciels pour abstraire des parties du système.
 %
-L'idée principale d'un runtime est {\em compiler une fois, exécuter partout}.
+L'idée principale est {\em compiler une fois, exécuter partout}.
 %
-Les runtime sont présent un peu partout et peuvent avoir différentes fonctions.
+Ils sont présent un peu partout et peuvent avoir différentes fonctions.
 %
 Certains langages dit de haut niveau utilisent un runtime, par exemple Java a un runtime pour gérer son ramasse-miettes.
 %
@@ -10,7 +10,7 @@ Il y a également des implémentations de MPI qui ont un runtime
 %
 Les cadriciels de programmation à base de tâches tendent à utiliser un runtime.
 %
-Les parties suivantes se concentrerons sur le support des runtimes pour la programmation à base de tâches.
+Les parties suivantes se concentreront sur le support des runtimes pour la programmation à base de tâches.
 
 
 Les runtimes utilisés pour la programmation à base de tâches doivent en premier lieu être capable d'ordonnancer le traitement des tâches tout en respectant l'ordre des dépendances entre les tâches.
@@ -19,7 +19,7 @@ Ces runtime doivent aussi fournir un équilibrage de charge entre toutes les res
 %
 Certains runtimes s'occupent de transférer des données entre deux ressources potentiellement hétérogènes, comme par exemple entre la mémoire principale et la mémoire d'une carte graphique ou plus simplement entre deux processus.
 %
-Ces transferts peuvent être implicite, le runtime a connaissance des données qui sont manipulées, ou ils peuvent être explicite avec l'utilisation d'une tâche spéciale qui s'occupera de faire échange de données.
+Ces transferts peuvent être implicites, le runtime a connaissance des données qui sont manipulées, ou ils peuvent être explicites avec l'utilisation d'une tâche spéciale qui s'occupera de faire échange de données.
 
 
 Pour améliorer l'équilibrage de charge, les runtimes ont des politiques d'ordonnancement, la plupart de ces politiques sont dynamiques et peuvent s'adapter à la charge courante de la machine.
@@ -32,7 +32,7 @@ En effet, trouver le meilleur ordonnancement d'un ensemble de tâches avec un no
 %
 Il existe des heuristiques d'ordonnancement qui donnent de bons résultats dans la majorité des cas, nous pouvons citer l'algorithme HEFT\cite{heft}.
 %
-Si le modèle de programmation le permet, des informations additionnels peuvent être attribuées aux tâches, comme par exemple une estimation du temps de calcul, ces informations sont ensuite utilisées par l'ordonnanceur pour améliorer le placement des tâches.
+Si le modèle de programmation le permet, des informations additionnelles peuvent être attribuées aux tâches, comme par exemple une estimation du temps de calcul, ces informations sont ensuite utilisées par l'ordonnanceur pour améliorer le placement des tâches.
 
 
 L'apparition des premières machines parallèles à mémoire partagée a conduit à la recherche de nouvelles méthodes pour les programmer.
@@ -54,7 +54,7 @@ Peu de temps après, en 1997, la spécification OpenMP~\cite{OpenMP} sort et se 
 Ce n'est qu'en 2008 que le support des tâches est ajouté à OpenMP dans sa version 3.0.
 
 
-Plus récemment, à la fin des année 2000, la révolution du GPGPU donne lieu à l'apparition de nouveaux runtime.
+Plus récemment, à la fin des années 2000, la révolution du GPGPU donne lieu à l'apparition de nouveaux runtime.
 %
 Ces runtimes gèrent désormais des ressources hétérogènes avec des espaces d'adressage mémoire différents.
 %

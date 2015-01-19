@@ -1,7 +1,7 @@
 \subsection{Balance parallélisme/surcoût}
 Les runtimes à base de tâches doivent distribuer les tâches à tous les coeurs de calcul disponibles.
 %
-Mais cette action n'est pas complètement gratuite, certaines opérations sont obligatoire et leurs temps de traitement dépend de leurs implémentations.
+Mais cette action n'est pas complètement gratuite, certaines opérations sont obligatoires et leurs temps de traitement dépendent de leurs implémentations.
 %
 Généralement, plus le runtime est complet, plus il doit faire d'opérations et donc plus il prend de temps à distribuer les tâches.
 %
@@ -11,7 +11,7 @@ Une implémentation basique de cette opération peut être composée d'une file 
 %
 Il est nécessaire que l'implémentation de cette queue soit réentrante pour garantir la validité des données quand plusieurs threads l'utilisent en même temps.
 %
-Malheureusement, même un runtime qui n'éffecturai que cette opération aurai un surcoût temporelle lors de l'insertion/extraction de tâches dans la file.
+Malheureusement, même un runtime qui n'effectuerait que cette opération aurai un surcoût temporel lors de l'insertion/extraction de tâches dans la file.
 %
 Ce surcoût peut être négligé si le temps passé à exécuter la tâche est bien plus grand que ce surcoût.
 %
@@ -24,7 +24,7 @@ Cela peut être fait plus ou moins efficacement mais dans tous les cas l'aspect 
 
 Nous pouvons définir par grain de tâche la durée que met une tâche à être exécuter.
 %
-Un grain fin correspond à une durée d'exécution proche du surcoût de l'ordonannceur alors qu'un grain grossier aura une durée d'exécution nettement supérieure.
+Un grain fin correspond à une durée d'exécution proche du surcoût de l'ordonnanceur alors qu'un grain grossier aura une durée d'exécution nettement supérieure.
 %
 Augmenter la taille du grain dans le programme est une solution au problème de taille trop fines.
 %
@@ -41,14 +41,14 @@ Mais au contraire, si la granularité est trop fine, le surcoût de l'ordonnance
 
 Il existe des travaux qui dans le passé se sont intéressés au problème d'adaptation de la granularité au nombre d'unités de calcul disponibles.
 %
-Plusieurs de ces travaux donnent des solutions au problème de granularité en utilisant des techniques de réutilisation des caches pour certaines classes de problèmes tel que la récursivité, diviser pour conquérire ou des divisions récursives de boucles~\cite{unifieddataflow,Intel::TBB,Cilk,xkaapi,taskscomparison}.
+Plusieurs de ces travaux donnent des solutions au problème de granularité en utilisant des techniques de réutilisation des caches pour certaines classes de problèmes tel que la récursivité, diviser pour conquérir ou des divisions récursives de boucles~\cite{unifieddataflow,Intel::TBB,Cilk,xkaapi,taskscomparison}.
 %
-Des travaux comme le quadriciel SCOOP~\cite{scoopp} fournissent des outils aux applications pour contrôler la granularité.
+Des travaux comme le cadriciel SCOOP~\cite{scoopp} fournissent des outils aux applications pour contrôler la granularité.
 %
-However, le problème de définition de plusieurs granularités doit toujours être géré par le programmeur.
+Cependant, le problème de définition de plusieurs granularités doit toujours être géré par le programmeur.
 
 
 Du côté théorique, l'ordonnancement général des tâches a été longuement étudié et ce depuis pas mal d'années~\cite{Khan94acomparison,heft}.
 %
-Les travaux sur l'adaptation de la granularité sont peu nombreux, mais ils existent. 
+Les travaux sur l'adaptation de la granularité sont peu nombreux, mais ils existent.
 %Works on task grain adaptiveness have been scarcer, but do exist.

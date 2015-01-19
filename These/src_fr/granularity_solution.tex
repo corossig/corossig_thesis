@@ -3,7 +3,7 @@ Le problème de granularité de la programmation à base de tâche est un probl�
 %
 Certains ordonnanceurs à base de tâche essaient de résoudre ce problème en utilisant différentes approches.
 %
-Par exemple, X-Kaapi~\cite{xkaapi} a introduit le concept de tâches divisables aussi appelé {\em adaptive task model}, quand un travailleur passe dans l'état d'attente, il émet une requête de travail à un autre travailleur.
+Par exemple, X-Kaapi~\cite{xkaapi} a introduit le concept de tâches divisibles aussi appelé {\em adaptive task model}, quand un travailleur passe dans l'état d'attente, il émet une requête de travail à un autre travailleur.
 %
 Les autres travailleurs, qui sont dans l'état travail, doivent vérifier régulièrement s'ils ont reçu une requête de vol.
 %
@@ -14,7 +14,7 @@ Cette fonction peut être triviale dans le cas d'une boucle for parallèle ou da
 Mais dans le cas général, il n'est pas toujours possible de diviser un DAG en deux DAG totalement indépendants.
 
 
-Une autre approche possible, comme donnée par Capsules\cite{capsules}, requiert que le programmeur définisse plusieurs granularité.
+Une autre approche possible, comme donnée par Capsules\cite{capsules}, requiert que le programmeur définisse plusieurs granularités.
 %
 L'ordonnanceur pourra ensuite choisir la granularité qui s'adapte le mieux à la situation.
 %

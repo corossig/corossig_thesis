@@ -1,4 +1,4 @@
-\subsection{Taggre : un quadriciel pour agréger des tâches}
+\subsection{Taggre : un cadriciel pour agréger des tâches}
 Nous avons pour but de garder la façon naturelle de décrire le parallélisme dans les noyaux d'algèbre linéaire creux.
 %
 Malheureusement, cette granularité est trop fine, l'ordonnanceur de tâche met plus de temps à choisir quelle sera le processeur qui traiteras la tâche que le processeur à traiter la tâche.
@@ -12,7 +12,7 @@ Au final, nous obtenons un graphe composé de moins de tâches, mais il faut fai
 
 En partant de la représentation la plus fine sous forme de DAG du parallélisme, nous avons besoin de calculer un nouveau DAG plus grossier avec moins de tâches.
 %
-La principal difficulté est de garder la propriété {\em acyclique} du graphe, la présence d'un cycle introduirait un inter-bloquage dans l'ordonnancement du graphe (Fig.~\ref{fig:agg_invalid}).
+La principale difficulté est de garder la propriété {\em acyclique} du graphe, la présence d'un cycle introduirait un inter-blocage dans l'ordonnancement du graphe (Fig.~\ref{fig:agg_invalid}).
 %
 L'autre difficulté est de maintenir assez de parallélisme pour pouvoir être capable d'utiliser au mieux les capacités de la machine.
 
@@ -28,7 +28,7 @@ L'autre difficulté est de maintenir assez de parallélisme pour pouvoir être c
           \includegraphics[width=0.4\textwidth]{agg_valid}
         }%
     \end{center}
-    \caption{Exemple de deux agrégations, le résultat de \ref{fig:agg_invalid} ne peut pas être ordonnancer à cause du cycle. Le résultat de \ref{fig:agg_valid} peut être ordonnancer mais il y a aucun parallélisme à exploiter.}
+    \caption{Exemple de deux agrégations, le résultat de \ref{fig:agg_invalid} ne peut pas être ordonnancé à cause du cycle. Le résultat de \ref{fig:agg_valid} peut être ordonnancé mais il y a aucun parallélisme à exploiter.}
     \label{fig:agg_basic}
 \end{figure}
 
