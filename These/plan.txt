@@ -1,60 +1,72 @@
-Context : Simulate petroleum extraction
-  - Reservoir simulation
-    + Overview
-    + From physics to computation
+Contexte : simuler l’extraction du pétrole
+  - La simulation de réservoir
+    + Vue d’ensemble
+    + De la physique au calcul informatique
+    + Simulation d’un exemple physique simple
 
-  - Linear algebra
-    + Dense linear algebra
-    + Sparse linear algebra
+  - Algèbre linéaire
+    + Algèbre linéaire dense
+    + Algèbre linéaire creuse
 
-  - Solving large sparse linear system
-    + GMRES
-    + Preconditioned GMRES
-    + Domain decomposition
-    + Reservoir case studies
+  - Résoudre de grands systèmes linéaires creux
+    + GMRES préconditionné
+    + Décomposition de domaine
+    + Cas d’étude
 
-  - Computers to target
+  - Architecture cible
+    + Grappe de calcul
     + SMP
     + NUMA
-    + Many-core
-    + Our computers
+    + Nos machines
       % Rostand
       % Manumanu
 
-  - Multi-core parallelism
-    + Parallel for loop
-    + Task paradigm
+  - Parallélisme multi-coeur
+    + Passage de messages
+    + Parallélisme de boucle
+    + Parallélisme à base de tâches
+  - Runtime
 
 
-A problem of granularity
-  - Why granularity is so important ?
-    + Parallelism vs overhead
-    + Current solutions
 
-  - Taggre : my solution to our granularity problem
-    + Aggregate operators
-      % Sequential
+Un problème de granularité
+  - Parallélisation de l’algorithme GMRES préconditionné
+    + Partie GMRES
+    + Partie préconditionneur
+
+  - Pourquoi la granularité est si importante?
+    + Balance parallélisme/surcoût
+    + Solutions actuelles
+
+  - Proposition de solution à notre problème de granularité
+    + Taggre : un cadriciel pour agréger des tâches
+    + Les opérateurs d’agrégations
+      % Séquentiel
       % Front
-      % Depth front
-      % Continuation oriented
-    + Tuning some examples
+      % Dézoomé
+      % Cube ou continuation
+    + Examples of strategies
 
-  - Results
-    + Factorization and Triangular solve improvement
-    + Aggregation overhead
+  - Résultats
+    + Amélioration de la factorisation et de la résolution triangulaire
+    + Surcoût d’agrégation
     + Subdomain decomposition
-    + Review
+    + Discussion
 
 
-Taking advantage of NUMA architecture
-  - How NUMA effect can affect efficiency ?
-  
+
+Memory bandwidth limitation
+  - Pourquoi mon SpMV est si lent ?
+    + Deux fois plus de coeurs mais pas deux fois plus rapide
+    + Explication de la mémoire
+
   - Current NUMA management
-    + First touch allocation policy
-    + Interleaved memory allocation policy
+    + First touch
+    + Interleaved memory
     + Next-touch
     + Automatic solution
-    
+    + One MPI per NUMA bank
+
   - Handle NUMA directly in scheduler
     + Status of current scheduler
     + NATaS : schedule tasks on NUMA
@@ -66,25 +78,10 @@ Taking advantage of NUMA architecture
     + Interleave
     + Automatic NUMA balancing
     + NATaS
-    + Review
+    + Discussion
 
-    
-From one node to multiple nodes
-   - Data dependencies
-     + Implicit dependencies
-     + Explicit dependencies
-
-   - Improve CPU usage
-     + Domain decomposition and overlap
-     + Break down the barriers
-   
-   - Results
-     + Without MPI
-     + With MPI
-     + Review
 
 
 Conclusions and perspectives
   - Conclusion
-
   - Perspectives
