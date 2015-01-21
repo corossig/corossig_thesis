@@ -69,7 +69,7 @@ Les problèmes rencontrés pour paralléliser la factorisation incomplète ainsi
 %
 La description à grain fin de ces algorithmes est naturelle, mais en pratique, une simple parallélisation utilisant Intel TBB ou OpenMP ne donnera pas de bonnes performances à cause du faible coût de calcul d'une tâche.
 %
-On appelle ça le problème de granularité.
+On appelle cela le problème de granularité.
 %
 Pour résoudre ce problème, les tâches doivent devenir plus grosses, nous devons factoriser plusieurs lignes à l'intérieur d'une tâche.
 %
