@@ -1,76 +1,78 @@
-\subsection{Incomplete LU}
-LU factorization in dense linear algebra is a method to factorize a matrix $A$ into two matrices $L$ and $U$.
+\subsection{Partie préconditionneur}
+La factorisation LU en algèbre linéaire dense est une méthode pour factoriser une matrice $A$ en deux matrices $L$ et $U$.
 %
-$L$ is a triangular lower matrix, all value above the diagonal are zeros.
+$L$ est une matrice triangulaire inférieure, toutes les valeurs au-dessus de la diagonale sont nulles.
 %
-Same thing for $U$, but all zeros are under the diagonal.
+Symétriquement, toutes les valeurs de $U$ en dessous de la diagonale sont nulles.
 %
-The main interest of this factorization is to solve x in the equation of type $A.x=y$.
+Le principal intérêt ce cette factorisation est de trouver $x$ dans les équations du type $Ax=y$.
 %
-This equation is transform into two equations $L.x_{tmp}=y$ and $U.x=x_{tmp}$.
+Cette équation est transformée en deux équations $L.x_{tmp}=y$ et $U.x=x_{tmp}$.
 %
-Solving a system with a triangular matrix is pretty trivial.
+La méthode utilisée pour résoudre un système composée d'une matrice triangulaire est triviale.
 %
-This can be done row by row by starting by the row with only one value.
+Il suffit de résoudre chaque équation ligne par ligne en commençant par la ligne qui n'as qu'une seule valeur non nulle.
 %
-Then the row with two values can be solved and so on.
+Ensuite il faut résoudre la ligne avec deux valeurs non nulles dont une des inconnues provient de la solution précédente, et ainsi de suite jusqu'à la dernière ligne.
 %
-This algorithm is purely sequential but some works exist to make it parallel~\cite{plasma_lu}.
+Cet algorithme est purement séquentiel mais des travaux existent pour exploiter du parallélisme dans certaines phases de l'algorithme~\cite{plasma_lu}.
 
 
 
-In sparse linear algebra, we can't do exact LU factorization because it will result two dense matrices $L$ and $U$.
+La factorisation LU d'une matrice $A$ creuse donne deux matrices triangulaires denses $L$ et $U$.
 %
-So we use an alterate form of LU which is ILU (Incomplete LU).
+Or, dans le cas où la matrice creuse à factoriser est trop grande, ces deux matrices ne peuvent pas tenir en mémoire.
 %
-The ILU algorithm is quite the same as LU but the non-zero patern of the matrix $A$ is the same as non-zero patern of matrices $L$ and $U$.
+C'est pourquoi en algèbre linéaire creuse, on utilise une version altérée de cette factorisation que l'on appelle factorisation incomplète, ou {\em ILU}\footnote{Incomplete LU}.
 %
-The parallelism in ILU naturally exists, some rows can be factorize in parallel and can be represented as a task graph (Fig.~\ref{fig:example_3_dag}).
+L'algorithme ILU est similaire à l'algorithme LU mais le remplissage est limité par des conditions définies par l'algorithme.
 %
-For example in the factorization a task corresponds to the factorization of a matrix row and the dependencies are directly given by the non-zero pattern of the matrix.
+Le motif des matrices $L$ et $U$ reste similaire au motif de la matrice $A$.
 %
-Indeed, to factorize the row $i$, we need to factorize all the rows $j$ lower than $i$ such that the entry $(i,j)$ is non-zero (Fig.~\ref{fig:example_2_matrix}).
+Il y a du parallélisme dans l'algorithme ILU, certaines lignes peuvent être factorisées en parallèle et ce parallélisme se représente naturellement sous la forme d'un graphe de tâches (Fig.~\ref{fig:example_3_dag}).
 %
-Therefore the DAG description is easily built from the non-zero pattern of the matrix:
+Chaque tâche représente la factorisation d'une ligne de la matrice et les dépendances entre les tâches sont données par le motif de la matrice.
 %
-the task $i$ corresponds to row $i$ of the matrix, the predecessor tasks of task $i$ are given by the column index of non-zero coefficients before the diagonal in row $i$ and successor tasks of task $i$ are given by the row index of non-zero coefficients below the diagonal in the column $i$.
+En effet, pour factoriser la ligne $i$, nous devons factoriser toutes les lignes $j$ inférieures à $i$ tel que l'entrée $(i,j)$ de la matrice soit non nulle (Fig.~\ref{fig:example_2_matrix}).
+%
+Donc, à partir du motif des valeurs non-nulles de la matrice, nous pouvons facilement construire le graphe de tâche:
+%
+la tâche $i$ corresponds à la ligne $i$ de la matrice, la liste des taches prédécesseurs de la tâche $i$ est donnée par l'index de colonne des valeurs non-nulles avant la diagonale dans la ligne $i$ et la liste des taches successeurs de la tâche $i$ est donnée par l'index de ligne des valeurs non-nulles au-dessous de la diagonale de la colonne $i$.
 
 \begin{figure}[!ht]
      \begin{center}
-        \subfigure[Reservoir with 4 cells]{%
+        \subfigure[Un réservoir à 4 cellules]{%
           \label{fig:example_1_res}
           \includegraphics[width=0.32\textwidth]{example_1_res}
         }%
-        \subfigure[Matrix with 4 cells]{%
+        \subfigure[Une matrice avec 4 cellules]{%
           \label{fig:example_2_matrix}
           \includegraphics[width=0.32\textwidth]{example_2_matrix}
         }%
-        \subfigure[DAG with 4 cells]{%
+        \subfigure[Un DAG à 4 cellules]{%
           \label{fig:example_3_dag}
           \includegraphics[width=0.32\textwidth]{example_3_dag}
         }%
     \end{center}
-    \caption{The red elements determine the dependencies in the DAG.}
+    \caption{Trois représentations d'un réservoir. Les éléments en rouge dans la matrice déterminent les dépendances dans le DAG.}
     \label{fig:exemple_3_dag}
 \end{figure}
 
-So, the parallelism in ILU can be represent under a task form.
+En résumé, le parallélisme de l'algorithme ILU peut se représenter sous la forme d'un graphe de tâches.
 %
-Each task represents the factorization of one row... which is quite small.
+Chaque tâche représente la factorisation d'une ligne... ce qui est bien petit.
 %
-In fact, most of task scheduler will take longer to schedule the task than the task takes to factorize a row.
+En fait, la plupart des runtimes mettront plus de temps à ordonnancer la tâche que la tâche mettra à factoriser une ligne.
 
 
-
-Incomplete factorization and associated triangular solve of a sparse matrix is a problem that is well representative of the difficulty that one can encounter with fine-grain parallelization.
+Les problèmes rencontrés pour paralléliser la factorisation incomplète ainsi que les résolutions triangulaires associées d'une matrice creuse sont des problèmes qui représentent bien la difficulté que l'on peut rencontrer avec une parallélisation à grain fin.
 %
-The fine grain description of these algorithms is natural, but in practice, a straightforward task based parallelization using TBB or
-OpenMP does not deliver good speed-ups because of the very low computational cost of a task.
+La description à grain fin de ces algorithmes est naturelle, mais en pratique, une simple parallélisation utilisant Intel TBB ou OpenMP ne donnera pas de bonnes performances à cause du faible coût de calcul d'une tâche.
 %
-It's called granularity problem.
+On appelle ça le problème de granularité.
 %
-To solve this problem, tasks must become bigger, we need to factorize several rows in one task.
+Pour résoudre ce problème, les tâches doivent devenir plus grosses, nous devons factoriser plusieurs lignes à l'intérieur d'une tâche.
 %
-But it is not simple to choice which rows could be factorized together without impacting result or parallelism.
+Mais le choix de ces lignes n'est pas trivial, il faut limiter l'impact sur le parallélisme et ne pas changer le résultat final.
 %
-A generic method has been developed during my thesis and will be explain later in this document.
+Une méthode générique a été développée durant la thèse et sera expliquée plus loin dans ce document.

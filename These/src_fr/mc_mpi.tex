@@ -1,11 +1,11 @@
 \subsection{Passage de messages}
-Certaines machines ne fonctionnent pas avec une mémoire globale, chaque noeud de calcul à une mémoire locale et ne peux pas accéder directement à la mémoire des autres noeuds, ces machines sont dites à mémoire distribuée.
+Certaines machines ne fonctionnent pas avec une mémoire globale, chaque noeud de calcul à une mémoire locale et il ne peux pas accéder directement à la mémoire des autres noeuds distants, ces machines sont dites à mémoire distribuée.
 %
-Avec le paradigme de passage de messages, chaque processus son propre espace mémoire virtuel et communique avec les autres processus par le biais d'envoi/réception de messages.
+Avec le paradigme de passage de messages, chaque processus a son propre espace mémoire virtuel et communique avec les autres processus par le biais d'envoi/réception de messages.
 %
-Ces communications se font à l'aide d'une interface de programmation.
+Ces communications se font à l'aide d'une interface de programmation qui fournit des fonctions permettant l'échange de messages point-à-point.
 %
-L'interface la plus connue et la plus utilisée est MPI\footnote{Message Passing Interface}.
+L'interface la plus connue et la plus utilisée actuellement est MPI\footnote{Message Passing Interface}.
 %
 Elle permet de faire communiquer deux processus ensemble sans se soucier du réseau utilisé ou même de la différence d'endianness entre deux architectures différentes.
 

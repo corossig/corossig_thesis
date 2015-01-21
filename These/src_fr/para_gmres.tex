@@ -1,13 +1,17 @@
-\subsection{Preconditioned GMRES algorithm}
-GMRES is used to solve large sparse linear systems, most of the operations are parallelizable.
+\subsection{Partie GMRES}
+L'algorithme GMRES est utilisé pour résoudre de grands systèmes linéaire creux.
 %
-It is mostly composed of SpMV\footnote{Sparse Matrix Vector multiply} and BLAS1 operations (axpy, dot product...).
+La plupart des opérations sont des opérations de type BLAS1 (axpy, dot product...) et sont facilement parallélisables.
 %
-These operations naturally dealt with parallel loop splitting.
+L'opération la plus coûteuse de l'algorithme du GMRES est le produit matrice vecteur, ou {\em SpMV}\footnote{Sparse Matrix Vector multiply}.
 %
-The major part which is not well parallelizable in preconditioned GMRES is the preconditioner.
+Cette opération peut être parallélisée avec du parallélisme de boucle, les lignes de la matrice peuvent être traitées indépendamment les unes des autres.
 %
-For example, the preconditioner ILU(k) is a sequential preconditioner and we focused on making it more parallel.
+Donc, l'algorithme GMRES se parallélise très bien, mais utilisé tel quel il n'est pas assez performant.
+%
+Il faut donc préconditionner nos matrices mais la partie préconditionneur n'est pas facilement parallélisable.
+%
+Par exemple, le préconditionneur ILU(k) est séquentiel et nous nous concentrerons à le rendre plus parallèle.
 
 
 

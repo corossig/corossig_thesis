@@ -1,17 +1,17 @@
 \subsection{De la physique au calcul informatique}
-Pour pouvoir faire une simulation de réservoir, on démarre avec un physicien qui modélise un écoulement de fluide en milieu poreux.
-% 
+Pour pouvoir faire une simulation de réservoir, tout commence par un physicien qui modélise un écoulement de fluide en milieu poreux.
+%
 La plupart de ces modèles sont basés sur trois équations physiques : la conservation de la masse, la loi des gaz parfaits et la loi de Darcy.
 %
 Puis le réservoir est discrétisé en cellules en utilisant la méthode des volumes finis.
 %
-Pour chaque cellule du réservoir, nous obtenons une équation non-linéaire par variables primaires (e.g. : pression, saturation en huile, ...).
+Pour chaque cellule du réservoir, nous obtenons une équation non-linéaire par variables primaires (ex.: pression, saturation en huile, ...).
 %
 Pour résoudre le système d'équations non-linéaires nous utilisons la méthode Newton–Raphson.
 %
 Cette méthode est itérative, nous démarrons avec une valeur initiale $X_0$ suffisamment proche de la solution $X_n$ qui satisfait $F(X_n) = 0$.
 %
-La méthode Newton–Raphson nous garantit que chaque itération nous rapproche du minimum local.
+La méthode Newton–Raphson nous garantit que chaque itération nous rapproche du minimum local sous condition que la jacobienne soit définie positive.
 
 %   (-_-)   %
 \begin{figure}[!ht]

@@ -1,23 +1,23 @@
 \subsection{Les opérateurs d'agrégations}
-Nous appelons {\em opérateurs d'agrégations} les différents heuristiques utilisés pas Taggre pour grossir un DAG.
+Nous appelons {\em opérateurs d'agrégations} les différentes heuristiques utilisés pas Taggre pour grossir un DAG.
 %
 Ces heuristiques ont pour règle de garder la propriété acyclique du DAG.
 %
-4 heuristiques ont été crées, chacune s'occupe d'un problème spécifique et aucune ne peux créer de cycle.
+Quatre heuristiques ont été crées, chacune s'occupe d'un problème spécifique et aucune ne peux créer de cycle.
 %
 La création d'un cycle lors qu'une agrégation intervient lorsque l'on crée un groupe de tâche et que dans ce groupe, deux des tâches ont une dépendance indirecte symbolisé par un chemin dans le graphe et qu'au moins une des tâches de ce chemin n'appartient pas au groupe.
 
 
 Pour évaluer l'amélioration apportée par chaque heuristique, nous avons intégré dans Taggre un simulateur minimal qui estimera le temps d'ordonnancement du graphe.
 %
-Cette estimation est essentiel dans la mesure où elle permet de mesurer le parallélisme restant pouvant être extrait du graphe grossier.
+Cette estimation est essentielle dans la mesure où elle permet de mesurer le parallélisme restant pouvant être extrait du graphe grossier.
 
 On pourrait se poser la question de l'utilisation d'un partitionneur de graphe comme opérateur d'agrégation.
 %
-En effet, les partitionneurs de graphe essaient créer des groupes de noeud proche spatialement.
+En effet, les partitionneurs de graphe essaient de créer des groupes de noeud proche spatialement.
 %
 Si nous prenons en copte ce seul paramètre, ils feraient des opérateurs de très bonne qualité.
 %
 Malheureusement, ils travaillent sur des graphes non orientés.
 %
-Le résultat de ces opérateurs serait donc inutilisable vu que le graphe obtenu pourrai être composé de cycles.
+Le résultat de ces opérateurs serait donc inutilisable vu que le graphe obtenu pourrait être composé de cycles.
