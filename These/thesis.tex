@@ -35,8 +35,8 @@
 
 \logo{bordeaux1}
 \degreeDate{?? ???? 2015}
-\degree{Docteur en Informatique}
-\degreeSpeciality{Calcul haute performance}
+\degree{Docteur de l'université de Bordeaux}
+\degreeSpeciality{Informatique}
 
 \metadataSetup
 
@@ -141,8 +141,6 @@ minimum height=0.1em,font=\scriptsize]
 \section{Runtime}
 %-------------------------------
 \input{src/mc_runtime}
-%-------------------------------
-%\input{src/mc_timeline}
 %+++++++++++++++++++++++++++++++
 
 
@@ -154,11 +152,11 @@ minimum height=0.1em,font=\scriptsize]
 \vspace{1cm}
 %=========================================================
 %+++++++++++++++++++++++++++++++
-\section{Parallelize preconditioned GMRES}
+\section{Parallélisation de l'algorithme GMRES préconditionné}
 %-------------------------------
-\input{src/gmres.tex}
+\input{src/para_gmres.tex}
 %-------------------------------
-\input{src/ilu.tex}
+\input{src/para_ilu.tex}
 %-------------------------------
 %+++++++++++++++++++++++++++++++
 
@@ -172,7 +170,7 @@ minimum height=0.1em,font=\scriptsize]
 
 
 %+++++++++++++++++++++++++++++++
-\section{Ma solution à notre problème de granularité}
+\section{Proposition de solution à notre problème de granularité}
 %-------------------------------
 \input{src/taggre_taggre.tex}
 %-------------------------------

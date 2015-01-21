@@ -250,21 +250,29 @@
 \renewcommand*{\maketitle}{
 \thispagestyle{empty}
 
+\@logo
 \begin{center}
 
 \vspace{\stretch{2}}
 %Espace vertical variable de poids 2.
 
-{\Huge \textsc{\@degree}}
+{\Huge \textsc{Th\`ese}}
 
 \vspace{\stretch{1}}
 
-{\LARGE Specialit\'e : \@degreeSpeciality}
+pr\'esent\'eée pour obtenir le grade de
+
+\vspace{\stretch{1}}
+
+{\Large \textsc{\@degree}}
+
+\vspace{\stretch{1}}
+
+\'Ecole doctorale de Math\'ematiques et Informatique de Bordeaux
+
+Sp\'ecialit\'e : \@degreeSpeciality
 
 % Permet de créer un espace vertical de longueur variable (\stretch) et de "poids" 1
-\vspace{\stretch{2}}
- {\@logo}
-
 \vspace{\stretch{2}}
 
 {\large present\'ee par}
@@ -288,7 +296,7 @@
 
 {\Large Co-direction : \@codirectors}
 
-{\Large Encadrant dans l'entreprise (Total SA) : \@responsables}}
+{\Large Encadrant dans l'entreprise (Total S.A.) : \@responsables}}
 \end{spacing}
 
 \vspace{\stretch{5}}
