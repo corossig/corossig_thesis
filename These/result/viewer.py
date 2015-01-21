@@ -45,6 +45,7 @@ def get_time(chaine):
 
 def addT(i, i_max, st, all_tests, over):
     liste = selectors[cases_order[i]].getList()
+    over_save = over
     for k in liste:
         if i == 0 :
             st2 = k.replace("(", "a").replace(")","a")
@@ -53,8 +54,10 @@ def addT(i, i_max, st, all_tests, over):
 
         if cases_order[i] == gxaxis:
             over = st
+            if gxaxis == "matrix":
+                over = "M_" + over_save
         else:
-            over = over + "_" + k.replace("(", "a").replace(")","a")
+            over = over_save + "_" + k.replace("(", "a").replace(")","a")
 
         if i+1 >= i_max:
             if all_tests.get(over) == None:
@@ -138,10 +141,11 @@ class MyDynamicMplCanvas(MyMplCanvas):
         else:
             i=0
             for l in x:
-                xx.append(i)
+                xx.append(str(i))
                 i+=1
 
         print("++++++++++++++++++++++++++++++++")
+        sys.stdout.write("\t")
         for k in all_times:
             if not all_times[k] == []:
                 if speedup:
@@ -150,14 +154,17 @@ class MyDynamicMplCanvas(MyMplCanvas):
                     all_times[k][0] = 1
                 sys.stdout.write(str(k) + "\t")
                 self.axes.plot(xx, all_times[k], label=str(k))
+        sys.stdout.write("\n")
 
 
         for i in range(len(xx)):
             sys.stdout.write(xx[i])
             sys.stdout.write("\t")
             for k in all_times:
-                sys.stdout.write(str(all_times[k][i]))
+                sys.stdout.write(str(all_times[k][i])[:15])
                 sys.stdout.write("\t")
+                if len(str(k)) > 15:
+                    sys.stdout.write("\t")
             sys.stdout.write("\n")
 
 
