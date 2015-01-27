@@ -41,23 +41,29 @@
 	<path stroke='black'  d='M96.8,423.2 L108.8,423.2 M666.3,423.2 L654.3,423.2  '/>	<g transform="translate(85.6,429.2)" style="stroke:none; fill:black; font-family:Verdana; font-size:16.00pt; text-anchor:end">
 		<text> 0</text>
 	</g>
-	<path stroke='black'  d='M96.8,356.4 L108.8,356.4 M666.3,356.4 L654.3,356.4  '/>	<g transform="translate(85.6,362.4)" style="stroke:none; fill:black; font-family:Verdana; font-size:16.00pt; text-anchor:end">
+	<path stroke='black'  d='M96.8,373.1 L108.8,373.1 M666.3,373.1 L654.3,373.1  '/>	<g transform="translate(85.6,379.1)" style="stroke:none; fill:black; font-family:Verdana; font-size:16.00pt; text-anchor:end">
 		<text> 0.5</text>
 	</g>
-	<path stroke='black'  d='M96.8,289.6 L108.8,289.6 M666.3,289.6 L654.3,289.6  '/>	<g transform="translate(85.6,295.6)" style="stroke:none; fill:black; font-family:Verdana; font-size:16.00pt; text-anchor:end">
+	<path stroke='black'  d='M96.8,323.0 L108.8,323.0 M666.3,323.0 L654.3,323.0  '/>	<g transform="translate(85.6,329.0)" style="stroke:none; fill:black; font-family:Verdana; font-size:16.00pt; text-anchor:end">
 		<text> 1</text>
 	</g>
-	<path stroke='black'  d='M96.8,222.8 L108.8,222.8 M666.3,222.8 L654.3,222.8  '/>	<g transform="translate(85.6,228.8)" style="stroke:none; fill:black; font-family:Verdana; font-size:16.00pt; text-anchor:end">
+	<path stroke='black'  d='M96.8,272.9 L108.8,272.9 M666.3,272.9 L654.3,272.9  '/>	<g transform="translate(85.6,278.9)" style="stroke:none; fill:black; font-family:Verdana; font-size:16.00pt; text-anchor:end">
 		<text> 1.5</text>
 	</g>
-	<path stroke='black'  d='M96.8,156.1 L108.8,156.1 M666.3,156.1 L654.3,156.1  '/>	<g transform="translate(85.6,162.1)" style="stroke:none; fill:black; font-family:Verdana; font-size:16.00pt; text-anchor:end">
+	<path stroke='black'  d='M96.8,222.8 L108.8,222.8 M666.3,222.8 L654.3,222.8  '/>	<g transform="translate(85.6,228.8)" style="stroke:none; fill:black; font-family:Verdana; font-size:16.00pt; text-anchor:end">
 		<text> 2</text>
 	</g>
-	<path stroke='black'  d='M96.8,89.3 L108.8,89.3 M666.3,89.3 L654.3,89.3  '/>	<g transform="translate(85.6,95.3)" style="stroke:none; fill:black; font-family:Verdana; font-size:16.00pt; text-anchor:end">
+	<path stroke='black'  d='M96.8,172.8 L108.8,172.8 M666.3,172.8 L654.3,172.8  '/>	<g transform="translate(85.6,178.8)" style="stroke:none; fill:black; font-family:Verdana; font-size:16.00pt; text-anchor:end">
 		<text> 2.5</text>
 	</g>
-	<path stroke='black'  d='M96.8,22.5 L108.8,22.5 M666.3,22.5 L654.3,22.5  '/>	<g transform="translate(85.6,28.5)" style="stroke:none; fill:black; font-family:Verdana; font-size:16.00pt; text-anchor:end">
+	<path stroke='black'  d='M96.8,122.7 L108.8,122.7 M666.3,122.7 L654.3,122.7  '/>	<g transform="translate(85.6,128.7)" style="stroke:none; fill:black; font-family:Verdana; font-size:16.00pt; text-anchor:end">
 		<text> 3</text>
+	</g>
+	<path stroke='black'  d='M96.8,72.6 L108.8,72.6 M666.3,72.6 L654.3,72.6  '/>	<g transform="translate(85.6,78.6)" style="stroke:none; fill:black; font-family:Verdana; font-size:16.00pt; text-anchor:end">
+		<text> 3.5</text>
+	</g>
+	<path stroke='black'  d='M96.8,22.5 L108.8,22.5 M666.3,22.5 L654.3,22.5  '/>	<g transform="translate(85.6,28.5)" style="stroke:none; fill:black; font-family:Verdana; font-size:16.00pt; text-anchor:end">
+		<text> 4</text>
 	</g>
 	<path stroke='black'  d='M96.8,423.2 L96.8,411.2 M96.8,22.5 L96.8,34.5  '/>	<g transform="translate(96.8,453.2)" style="stroke:none; fill:black; font-family:Verdana; font-size:16.00pt; text-anchor:middle">
 		<text> 0</text>
@@ -92,11 +98,11 @@
 	<g transform="translate(287.2,52.5)" style="stroke:none; fill:black; font-family:Verdana; font-size:16.00pt; text-anchor:end">
 		<text>SPE10_Npri_3</text>
 	</g>
-	<path  d='M298.4,46.5 L355.2,46.5 M144.3,289.6 L191.7,305.3 L239.2,275.5 L381.6,238.8 L666.3,186.4  '/>	<use xlink:href='#gpPt0' transform='translate(144.3,289.6) scale(6.00)'/>
-	<use xlink:href='#gpPt0' transform='translate(191.7,305.3) scale(6.00)'/>
-	<use xlink:href='#gpPt0' transform='translate(239.2,275.5) scale(6.00)'/>
-	<use xlink:href='#gpPt0' transform='translate(381.6,238.8) scale(6.00)'/>
-	<use xlink:href='#gpPt0' transform='translate(666.3,186.4) scale(6.00)'/>
+	<path  d='M298.4,46.5 L355.2,46.5 M144.3,323.0 L191.7,334.8 L239.2,312.4 L381.6,284.9 L666.3,245.6  '/>	<use xlink:href='#gpPt0' transform='translate(144.3,323.0) scale(6.00)'/>
+	<use xlink:href='#gpPt0' transform='translate(191.7,334.8) scale(6.00)'/>
+	<use xlink:href='#gpPt0' transform='translate(239.2,312.4) scale(6.00)'/>
+	<use xlink:href='#gpPt0' transform='translate(381.6,284.9) scale(6.00)'/>
+	<use xlink:href='#gpPt0' transform='translate(666.3,245.6) scale(6.00)'/>
 	<use xlink:href='#gpPt0' transform='translate(326.8,46.5) scale(6.00)'/>
 </g>
 	</g>
@@ -105,11 +111,11 @@
 	<g transform="translate(287.2,76.5)" style="stroke:none; fill:black; font-family:Verdana; font-size:16.00pt; text-anchor:end">
 		<text>Cube_80_Npri_1</text>
 	</g>
-	<path  d='M298.4,70.5 L355.2,70.5 M144.3,289.6 L191.7,338.7 L239.2,312.2 L381.6,272.4 L666.3,242.0  '/>	<use xlink:href='#gpPt1' transform='translate(144.3,289.6) scale(6.00)'/>
-	<use xlink:href='#gpPt1' transform='translate(191.7,338.7) scale(6.00)'/>
-	<use xlink:href='#gpPt1' transform='translate(239.2,312.2) scale(6.00)'/>
-	<use xlink:href='#gpPt1' transform='translate(381.6,272.4) scale(6.00)'/>
-	<use xlink:href='#gpPt1' transform='translate(666.3,242.0) scale(6.00)'/>
+	<path  d='M298.4,70.5 L355.2,70.5 M144.3,323.0 L191.7,359.8 L239.2,340.0 L381.6,310.1 L666.3,287.3  '/>	<use xlink:href='#gpPt1' transform='translate(144.3,323.0) scale(6.00)'/>
+	<use xlink:href='#gpPt1' transform='translate(191.7,359.8) scale(6.00)'/>
+	<use xlink:href='#gpPt1' transform='translate(239.2,340.0) scale(6.00)'/>
+	<use xlink:href='#gpPt1' transform='translate(381.6,310.1) scale(6.00)'/>
+	<use xlink:href='#gpPt1' transform='translate(666.3,287.3) scale(6.00)'/>
 	<use xlink:href='#gpPt1' transform='translate(326.8,70.5) scale(6.00)'/>
 </g>
 	</g>
@@ -118,11 +124,11 @@
 	<g transform="translate(287.2,100.5)" style="stroke:none; fill:black; font-family:Verdana; font-size:16.00pt; text-anchor:end">
 		<text>Cube_80_Npri_3</text>
 	</g>
-	<path  d='M298.4,94.5 L355.2,94.5 M144.3,289.6 L191.7,284.9 L239.2,256.9 L381.6,230.1 L666.3,176.6  '/>	<use xlink:href='#gpPt2' transform='translate(144.3,289.6) scale(6.00)'/>
-	<use xlink:href='#gpPt2' transform='translate(191.7,284.9) scale(6.00)'/>
-	<use xlink:href='#gpPt2' transform='translate(239.2,256.9) scale(6.00)'/>
-	<use xlink:href='#gpPt2' transform='translate(381.6,230.1) scale(6.00)'/>
-	<use xlink:href='#gpPt2' transform='translate(666.3,176.6) scale(6.00)'/>
+	<path  d='M298.4,94.5 L355.2,94.5 M144.3,323.0 L191.7,319.5 L239.2,298.5 L381.6,278.4 L666.3,238.2  '/>	<use xlink:href='#gpPt2' transform='translate(144.3,323.0) scale(6.00)'/>
+	<use xlink:href='#gpPt2' transform='translate(191.7,319.5) scale(6.00)'/>
+	<use xlink:href='#gpPt2' transform='translate(239.2,298.5) scale(6.00)'/>
+	<use xlink:href='#gpPt2' transform='translate(381.6,278.4) scale(6.00)'/>
+	<use xlink:href='#gpPt2' transform='translate(666.3,238.2) scale(6.00)'/>
 	<use xlink:href='#gpPt2' transform='translate(326.8,94.5) scale(6.00)'/>
 </g>
 	</g>
@@ -131,11 +137,11 @@
 	<g transform="translate(287.2,124.5)" style="stroke:none; fill:black; font-family:Verdana; font-size:16.00pt; text-anchor:end">
 		<text>Cube_80_Npri_8</text>
 	</g>
-	<path  d='M298.4,118.5 L355.2,118.5 M144.3,289.6 L191.7,223.7 L239.2,182.8 L381.6,149.3 L666.3,43.9  '/>	<use xlink:href='#gpPt3' transform='translate(144.3,289.6) scale(6.00)'/>
-	<use xlink:href='#gpPt3' transform='translate(191.7,223.7) scale(6.00)'/>
-	<use xlink:href='#gpPt3' transform='translate(239.2,182.8) scale(6.00)'/>
-	<use xlink:href='#gpPt3' transform='translate(381.6,149.3) scale(6.00)'/>
-	<use xlink:href='#gpPt3' transform='translate(666.3,43.9) scale(6.00)'/>
+	<path  d='M298.4,118.5 L355.2,118.5 M144.3,323.0 L191.7,273.5 L239.2,242.9 L381.6,217.7 L666.3,138.7  '/>	<use xlink:href='#gpPt3' transform='translate(144.3,323.0) scale(6.00)'/>
+	<use xlink:href='#gpPt3' transform='translate(191.7,273.5) scale(6.00)'/>
+	<use xlink:href='#gpPt3' transform='translate(239.2,242.9) scale(6.00)'/>
+	<use xlink:href='#gpPt3' transform='translate(381.6,217.7) scale(6.00)'/>
+	<use xlink:href='#gpPt3' transform='translate(666.3,138.7) scale(6.00)'/>
 	<use xlink:href='#gpPt3' transform='translate(326.8,118.5) scale(6.00)'/>
 </g>
 	</g>

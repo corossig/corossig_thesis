@@ -5,13 +5,13 @@ Mais cette action n'est pas complètement gratuite, certaines opérations sont o
 %
 Généralement, plus le runtime est complet, plus il doit faire d'opérations et donc plus il prend de temps à distribuer les tâches.
 %
-L'opération la plus basique, qui est aussi l'opération essentielle au runtime, est la vérification qu'une tâche peut être exécutée et que celle-ci s'exécute une seule et unique fois.
+L'opération la plus basique, qui est aussi l'opération essentielle au runtime, est la vérification qu'une tâche puisse être exécutée et que celle-ci s'exécute une seule et unique fois.
 %
 Une implémentation basique de cette opération peut être composée d'une file partagée par tous les threads dans laquelle les tâches sont enfilées dès qu'un coeur de calcul peut les exécuter.
 %
-Il est nécessaire que l'implémentation de cette queue soit réentrante pour garantir la validité des données quand plusieurs threads l'utilisent en même temps.
+Il est nécessaire que l'implémentation de cette queue soit thread-safe pour garantir la validité des données quand plusieurs threads l'utilisent en même temps.
 %
-Malheureusement, même un runtime qui n'effectuerait que cette opération aurait un surcoût temporel lors de l'insertion/extraction de tâches dans la file.
+Malheureusement, même un runtime qui n'effectuerait que cette opération aurait un surcoût de calcul lors de l'insertion/extraction de tâches dans la file.
 %
 Ce surcoût peut être négligé si le temps passé à exécuter la tâche est bien plus grand que ce surcoût.
 %
@@ -19,14 +19,14 @@ Mais avec un parallélise à grain très fin, ce surcoût est loin de pouvoir ê
 %
 Même les ordonnanceurs statiques ont un surcoût, les tâches sont distribuées à l'avance sur les coeurs mais l'ordonnanceur doit toujours vérifier si toutes les dépendances de la tâche sont satisfaites.
 %
-Cela peut être fait plus ou moins efficacement mais dans tous les cas l'aspect équilibrage de charge dynamique d'un ordonnanceur dynamique.
+Cela peut être fait plus ou moins efficacement mais dans tous les cas l'aspect équilibrage de charge dynamique d'un ordonnanceur dynamique est perdu.
 
 
 Nous pouvons définir par grain de tâche la durée que met une tâche à être exécuter.
 %
 Un grain fin correspond à une durée d'exécution proche du surcoût de l'ordonnanceur alors qu'un grain grossier aura une durée d'exécution nettement supérieure.
 %
-Augmenter la taille du grain dans le programme est une solution au problème de taille trop fines.
+Augmenter la taille du grain d'un programme est une solution au problème de taille trop fines.
 %
 Mais cette solution réduit aussi les possibilités de parallélisme et d'équilibrage de charge fournis par l'ordonnanceur.
 %
@@ -36,7 +36,7 @@ Donc, la plus part du temps trouver la granularité parfaite est difficile, voir
 %
 Si la granularité est trop grossière, l'ordonnanceur ne peut pas distribuer équitablement les calculs sur tous les coeurs.
 %
-Mais au contraire, si la granularité est trop fine, le surcoût de l'ordonnanceur peut tuer les performances du programme.
+Mais au contraire, si la granularité est trop fine, le surcoût de l'ordonnanceur peut nuire aux performances du programme.
 
 
 Il existe des travaux qui dans le passé se sont intéressés au problème d'adaptation de la granularité au nombre d'unités de calcul disponibles.
@@ -51,4 +51,3 @@ Cependant, le problème de définition de plusieurs granularités doit toujours 
 Du côté théorique, l'ordonnancement général des tâches a été longuement étudié et ce depuis pas mal d'années~\cite{Khan94acomparison,heft}.
 %
 Les travaux sur l'adaptation de la granularité sont peu nombreux, mais ils existent.
-%Works on task grain adaptiveness have been scarcer, but do exist.

@@ -3,6 +3,8 @@ Cet opérateur a été créé pour être une réponse efficace à nos problèmes
 %
 Dans notre cas, le graphe à ordonnancer à exactement la même structure que le réservoir que nous souhaitons modéliser.
 %
+La plupart du temps, ce modèle sera un cube 3D.
+%
 En numérotation naturelle et avec un modèle 3D, une bonne agrégation consiste à agréger toutes les tâches d'un axe qui ont les mêmes coordonnées sur les deux autres axes.
 %
 Ca correspond à {\em aplatir} notre modèle 3D en un modèle 2D.
@@ -16,6 +18,17 @@ Par exemple, un cube de 2 éléments de coté, soit 8 tâches, sera transformé 
   \caption{Exemple d'utilisation de l'opérateur C.}
   \label{fig:algo_C}
 \end{figure}
+
+
+%   (-_-)   %
+\begin{figure}[t!]
+  \centering
+  \includegraphics[width=\textwidth]{cube5_operator_c}
+  \caption{Exemple d'utilisation de l'opérateur C sur un cube 5x5x5.}
+  \label{fig:cube5_algo_C}
+\end{figure}
+
+
 
 Comme pour les autres opérateurs, nous devons vérifier qu'aucun cycle ne sera créé.
 %

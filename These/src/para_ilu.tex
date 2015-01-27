@@ -9,7 +9,7 @@ Le principal intérêt ce cette factorisation est de trouver $x$ dans les équat
 %
 Cette équation est transformée en deux équations $L.x_{tmp}=y$ et $U.x=x_{tmp}$.
 %
-La méthode utilisée pour résoudre un système composée d'une matrice triangulaire est triviale.
+La méthode utilisée pour résoudre les systèmes composés d'une matrice triangulaire est triviale.
 %
 Il suffit de résoudre chaque équation ligne par ligne en commençant par la ligne qui n'as qu'une seule valeur non nulle.
 %
@@ -19,15 +19,19 @@ Cet algorithme est purement séquentiel mais des travaux existent pour exploiter
 
 
 
-La factorisation LU d'une matrice $A$ creuse donne deux matrices triangulaires denses $L$ et $U$.
+En algèbre linéaire creuse, la factorisation LU d'une matrice $A$ creuse donnera deux matrices triangulaires denses $L$ et $U$.
 %
 Or, dans le cas où la matrice creuse à factoriser est trop grande, ces deux matrices ne peuvent pas tenir en mémoire.
 %
-C'est pourquoi en algèbre linéaire creuse, on utilise une version altérée de cette factorisation que l'on appelle factorisation incomplète, ou {\em ILU}\footnote{Incomplete LU}.
+C'est pourquoi en algèbre linéaire creuse, on utilise une version altérée de cette factorisation que l'on appelle factorisation incomplète, ou {\em ILU}\footnote{Incomplete LU}, dont le but est de limiter le remplissage de la matrice.
 %
 L'algorithme ILU est similaire à l'algorithme LU mais le remplissage est limité par des conditions définies par l'algorithme.
 %
-Le motif des matrices $L$ et $U$ reste similaire au motif de la matrice $A$.
+Ces conditions peuvent être de deux formes, soit en limitant le remplissage avec une valeur seuil (ILUT), soit en limitant le niveau d'interaction entre les lignes de la matrices (ILU(k)).
+%
+Dans le cas ILU(k), le paramètre k sert à limiter le niveau d'interaction entre les lignes.
+%
+Avec $k=0$, le motif des matrices $L$ et $U$ reste similaire au motif de la matrice $A$.
 %
 Il y a du parallélisme dans l'algorithme ILU, certaines lignes peuvent être factorisées en parallèle et ce parallélisme se représente naturellement sous la forme d'un graphe de tâches (Fig.~\ref{fig:example_3_dag}).
 %

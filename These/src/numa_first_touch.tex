@@ -1,0 +1,14 @@
+\subsection{First touch}
+La politique d'allocation mémoire par défaut sous Linux s'appelle {\em First Touch}.
+%
+La traduction littéral serait {\em première toucher}, ce nom se réfère au fait qu'avec cette allocation le noyau associe une nouvelle page physique à une page virtuelle qu'à partir de la première utilisation de cette page.
+%
+La page physique sera choisi avec comme priorité de prendre une page dans la mémoire la plus proche du thread qui souhaite utiliser cette page.
+%
+L'idée derrière cette allocation n'est pas mauvaise, dans le cas d'un processus mono-thread, la localité mémoire sera toujours optimal.
+%
+Dans le cas d'un processus multi-threads, si les threads allouent eux-même leurs mémoires et ne font quasiment aucun partage entre eux, cette allocation fonctionne toujours.
+%
+Mais tous les programmes ne sont pas écrits pour fonctionner de cette façon.
+%
+Imaginons un programme qui soit écrit pour avoir une phase d'initialisation séquentielle, avec toutes les allocations dont il aura besoin dans cette phase, alors toute la mémoire physique sera allouée sur un seul banc NUMA.

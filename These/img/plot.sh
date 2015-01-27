@@ -12,7 +12,10 @@ do
                 YRANGE=10
                 ;;
             *_trsv_*)
-                YRANGE=3
+                YRANGE=4
+		;;
+            *_spmv_*)
+                YRANGE=5
                 ;;
         esac
         

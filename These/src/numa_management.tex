@@ -1,85 +1,44 @@
-%+++++++++++++++++++++++++++++++
-\section{Current NUMA management}
-In a general way, a program allocates memory from a virtual address space split into pages.
+De manière générale, quand un programme alloue de la mémoire, il reçoit un pointeur sur de la mémoire virtuelle.
 %
-Each pages used by the program is transparently mapped by the Operating System to a physical memory location.
+Cette mémoire virtuelle est unique à chaque processus et est partagée entre les threads.
 %
-Thus, some virtual pages can also be moved from one physical location to another one, while the virtual/physical mapping is transparently updated accordingly to the Operating System without affecting the execution of user level programs.
+La relation entre la mémoire virtuelle et la mémoire physique est faite par le système d'exploitation.
 %
-However, the physical location of virtual page may impact the program performance on NUMA architectures, depending on the connectivity between the physical memory bank where a page is located and the socket core that is accessing this memory bank.
+Il est en charge de la bonne gestion de la mémoire physique.
 %
-The NUMA memory allocation policy is defined by the kernel of the Operating System.
+Lorsqu'un processus accède à de la mémoire virtuelle qui n'as pas encore été mappée à de la mémoire physique, une faute de page est générée, on appelle ça toucher une page.
 %
-With Linux, at least the following three memory policies are generally available:
+Cette faute est traitée par le système d'exploitation, il s'occupera de trouver une page mémoire libre dans la mémoire physique et il la fera correspondre à une adresse virtuelle.
+%
+Lors des accès mémoire du processus, la translation de l'adresse virtuelle vers l'adresse physique est faite par un des composant du processeur, l'unité de gestion mémoire ou MMU\footnote{Memory Management Unit}.
+%
+De cette façon, le processus ne voit que l'espace d'adressage virtuelle et ne connaît rien de l'espace d'adressage physique.
+%
+Le système d'exploitation peut donc changer l'emplacement physique d'une page sans affecter le fonctionnement du processus, c'est totalement transparent.
+%
+Toutefois, l'emplacement physique d'une page virtuelle peut impacter les performance du processus sur les architectures NUMA.
+%
+Cet impact dépendra des connexions entre le banc mémoire physique où se situe la page et le coeur de calcul qui fait tourner le processus.
+
+
+Sur une machine NUMA, lorsqu'une faute de page arrive, le système d'exploitation doit choisir sur quel banc NUMA il placera la page.
+%
+Avec Linux, il y a au moins trois politiques d'allocations de disponibles :
 \begin{itemize}
-        \item {\em First Touch}: Memory is allocated on the bank next to the core which accessed the data first.
-                         This is the default policy.
-        \item {\em Bind}: Memory is allocated on a specific bank.
-        \item {\em Interleaved}: Memory allocations are interleaved among all the banks available.
+        \item {\em First Touch}: La mémoire est allouée sur le banc NUMA du coeur de calcul qui y accède en premier.
+                         Il s'agit de la politique par défaut.
+        \item {\em Bind}: La mémoire est allouée sur banc NUMA spécifié en paramètre.
+        \item {\em Interleaved}: Les allocations mémoire sont entrelacées parmi tous les bancs NUMA disponibles.
 \end{itemize}
-On Linux, these policies can be set either through the \textit{mbind} system call, or with the {\em numactl} command line tool.
+Sur Linux, ces politiques peuvent être choisies avec l'appel système {\em mbind}, ou avec l'outil en ligne de commande {\em numactl}.
 %
-A new mechanism also come with the version 3.13 of Linux, AutoNUMA.
+La version 3.13 de Linux apporte un nouveau mécanisme de gestion de la mémoire sur les machine NUMA, il s'agit d'AutoNUMA.
 %
-This mechanism use page fault trapping which has a non negligible overhead.
-%
-AutoNUMA can only be configured at system level with root privilege and for all applications.
+Ce mécanisme a pour but d'optimiser le placement des pages NUMA tout long de l'exécution d'un processus (Voir section~\ref{sec:autonuma}).
 
 
-Other operating system may come with their own specific sets of NUMA memory allocation policies.
+D'autres système d'exploitation peuvent avoir leurs propres ensembles de politiques d'allocations NUMA.
 %
-Solaris, for instance, also provides the \textit{next-touch}~\cite{next_touch} policy.
+Solaris, par exemple, fournit aussi la politique {\em next-touch}~\cite{next_touch}.
 %
-When this policy is selected, a memory page is moved to the bank close to the core that subsequently accesses it.
-
-
-%-------------------------------
-\subsection{First touch}
-This is the default policy on Linux.
-%
-When a thread wants to access to a not yet mapped virtual memory page, the kernel allocate a new physical page near to the thread.
-%
-The idea behind this policy isn't bad, a memory page is often use by one thread.
-%
-So when a thread touch a page for the first time, it may continue to work with this page and this page must be close to the thread.
-%
-But some threaded program doesn't work in that way.
-%
-Let's imagine the case that in a program the setup phase which allocate all pages isn't multithreaded.
-%
-In that case, all pages are allocated on the same NUMA node, close to the thread which have done the setup.
-
-
-%-------------------------------
-\subsection{Interleaved memory}
-When the interleaved policy is selected, the kernel uniformly distributes newly allocated physical pages among all available NUMA banks, following a round robin scheme.
-%
-While having very little impact on the applicative code, the interleave policy often shows some effectiveness in mitigating NUMA overheads in the general case.
-%
-In average, the latency doesn't change too much but thease because of pages Because it distributes the required memory bandwidth over the various memory banks.
-%
-Thus, it is usually worthwhile to experiment with it, before investigating the NUMA issue further.
-
-
-While the results we obtain show an improved speed-up with TBB and interleaved policy,
-it should be noted that sequential runs with interleaved policy are of
-course worse, because of memory access penalties introduced by NUMA.
-%% Parallel runs however show a better speed-up.
-When comparing
-interleaved page allocation with first-touch allocation, we get
-an average improvement of 3.5\,\% on ILU(k) preconditioner
-and 6.2\,\% on triangular solve with two 4-core sockets.
-
-These improvements could be further enhanced by taking into account the locality of data
-used by tasks within the task scheduler. This is the purpose of the
-following section.
-
-
-
-%-------------------------------
-\subsection{Next-touch}
-%-------------------------------
-\subsection{Automatic solution}
-%-------------------------------
-\subsection{One MPI per NUMA bank}
-%+++++++++++++++++++++++++++++++
+Avec cette politique, les pages mémoires physique seront déplacées près du prochain coeur de calcul qui y accédera (Voir section~\ref{sec:next_touch}).

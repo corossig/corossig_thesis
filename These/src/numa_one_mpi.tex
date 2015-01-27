@@ -1,0 +1,8 @@
+\subsection{Un processus MPI par banc NUMA}
+Une bonne façon de traiter les effets NUMA est de la cacher.
+%
+En utilisant un processus MPI par banc NUMA et une politique d'allocation first touch ou bind, on se retrouve toujours avec des accès mémoires du banc mémoire le plus proche.
+%
+Mais la problématique reste similaire à la problématique du choix entre la parallélisation en mémoire distribuée et la parallélisation en mémoire partagée, ce n'est pas toujours possible ou performant.
+%
+Dans le cas où les algorithmes en mémoire distribuée ne passent pas à l'échelle, il est nécessaire de noter que l'utilisation de cette solution multipliera par le nombre de bancs NUMA le nombre de processus MPI.

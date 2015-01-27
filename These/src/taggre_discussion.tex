@@ -1,0 +1,20 @@
+\subsection{Discussion}
+Même si un algorithme peut exposer du parallélisme naturellement, il n'est pas toujours possible de l'exploiter correctement.
+%
+Soit parce qu'il n'y a pas assez de parallélisme pour obtenir un bon équilibrage de charge, soit parce que la granularité du problème n'est pas suffisamment grosse pour négliger les surcoûts liés aux runtimes.
+%
+Notre proposition permet de manière quasiment transparente d'apporter une solution au problème de la granularité.
+%
+Mais cette solution n'est pas parfaite, le choix des opérateurs d'agrégation n'est pas automatique et un mauvais choix pourrait être contre performant.
+%
+Le temps d'application des opérateurs sur le graphe de tâche est aussi un problème, il faut réutiliser le nouveau graphe grossier un certains nombre de fois avant de pouvoir considérer cette étape comme négligeable.
+%
+Dans le cas où le graphe changerait souvent au cours de l'exécution, cette approche ne fonctionne plus, il faut changer d'algorithme.
+%
+Une fois les bons opérateurs trouvés, on peux commencer à avoir des résultats proche d'optimal.
+%
+C'est le cas pour notre problème mais il reste encore une petite différence à rattraper.
+%
+Cette différence est dû aux effets NUMA, certains accès mémoire auront une latence plus grande que les autres.
+%
+Il faut donc optimiser le placement des données, le chapitre suivant se concentrera sur l'optimisation des placement mémoire sur machine NUMA.

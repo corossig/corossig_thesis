@@ -199,10 +199,7 @@ minimum height=0.1em,font=\scriptsize]
 %-------------------------------
 \input{src/taggre_subdomain}
 %-------------------------------
-\subsection{Discussion}
-  \begin{itemize}
-    \item Compare domain with domain decomposition
-  \end{itemize}
+\input{src/taggre_discussion}
 %+++++++++++++++++++++++++++++++
 
 
@@ -210,12 +207,36 @@ minimum height=0.1em,font=\scriptsize]
 
 
 %=========================================================
-\chapter{Memory bandwidth limitation}
+\chapter{Limitation de bande passante mémoire}
 \minitoc
 \vspace{1cm}
 %=========================================================
-\input{src/spmv_slow.tex}
-\input{src/numa_management.tex}
+
+%+++++++++++++++++++++++++++++++
+\section{Pourquoi mon SpMV est si lent ?}
+%-------------------------------
+\input{src/spmv_slow}
+%-------------------------------
+\input{src/spmv_slow_exp}
+%+++++++++++++++++++++++++++++++
+
+
+%+++++++++++++++++++++++++++++++
+\section{Gestion actuelle des machines NUMA}
+\input{src/numa_management}
+%-------------------------------
+\input{src/numa_first_touch}
+%-------------------------------
+\input{src/numa_interleaved}
+%-------------------------------
+\input{src/numa_next_touch}
+%-------------------------------
+\input{src/numa_auto_numa}
+%-------------------------------
+\input{src/numa_one_mpi}
+%+++++++++++++++++++++++++++++++
+
+
 
 %+++++++++++++++++++++++++++++++
 \section{Handle NUMA directly in scheduler}
