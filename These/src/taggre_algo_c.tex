@@ -43,3 +43,30 @@ Ajoutons un prédicat à l'algorithme : pour pouvoir utiliser cet algorithme, il
 Ce prédicat nous permet de s'assurer qu'aucun cycle ne sera créé.
 %
 En effet, pour créer un cycle avec cet algorithme, il faudrait
+
+
+\begin{algorithm}
+  \KwData{DAG}
+  {\sc Pas} = Infini \\
+  \For{chaque tâche {\sc T1} de DAG} {
+    \For{chaque successeurs {\sc T2} de {\sc T1}} {
+      \If{indice de {\sc T2} $<=$ indice de {\sc T1}} {
+        \Return agrégation impossible
+      }
+
+      \If{indice de {\sc T2} - indice de {\sc T1} $<$ {\sc Pas}} {
+        {\sc Pas} = indice de {\sc T2} - indice de {\sc T1}
+      }
+    }
+  }
+
+  \For{chaque tâche {\sc T1} de DAG} {
+    \For{chaque successeurs {\sc T2} de {\sc T1}} {
+      \If{indice de {\sc T2} == indice de {\sc T1} + {\sc Pas}} {
+        agréger {\sc T1} et {\sc T2}
+      }
+    }
+  }
+  \caption{Algorithme de l'opérateur continuation.}
+  \label{algo:algo_C}
+\end{algorithm}

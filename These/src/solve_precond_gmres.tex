@@ -40,26 +40,46 @@ Un cas idéal serait d'avoir $M=A$, dans ce cas là on obtient la matrice identi
 %
 Or, calculer $A^{-1}$ est très coûteux, à la fois en terme de calcul que de mémoire.
 
-La factorisation ILU\footnote{Incomplete LU} est un bon préconditionneur pour nos matrices car il se rapproche de $A^{-1}$.
+
+La factorisation LU correspond à la factorisation d'une matrice $A$ en deux matrices triangulaires $L$ et $U$ tel que $L.U=A$.
 %
-Cette méthode est composée de deux opérations, la première correspond à la {\em factorisation} de la matrice en deux sous matrices et la deuxième correspond à la {\em résolution triangulaire} effectuée avec les deux sous matrices.
+Grâce à cette factorisation, résoudre l'équation $Ax=b$ est équivalent à résoudre successivement les équations $Ly=b$ et $U.x=y$.
 %
-La factorisation LU correspond à la factorisation d'une matrice $A$ en deux matrices triangulaires $L$ et $U$.
+Ces deux équations peuvent être résolues facilement parce que les matrices $L$ et $U$ sont triangulaires.
+
+
+Dans le cas de problèmes linéaires creux, le résultat de la factorisation LU exacte de la matrice creuse $A$ ne pourrait plus être considéré comme creux.
 %
-Puisque résoudre l'équation $Ax=b$ est équivalent à résoudre $Ly=b$ et $U.x=y$, ces deux résolutions peuvent être faites rapidement parce que les matrices $L$ et $U$ sont triangulaires.
+En effet, au cours de la factorisation, de nombreux termes de remplissage apparaîtrons et l'espace mémoire nécessaire au stockage de ces nouveaux termes deviendrait gigantesque.
 %
-Dans le cas de problèmes linéaires creux, le résultat de la factorisation exacte de la matrice creuse $A$ ne pourrait plus être considéré comme creux.
+C'est pourquoi nous utilisons la factorisation ILU\footnote{Incomplete LU}, une approximation de la factorisation LU qui se trouve être aussi un bon préconditionneur pour nos matrices.
 %
-En effet, beaucoup de valeurs nulles deviendraient non nulles et l'espace mémoire nécessaire au stockage de ces valeurs deviendrait gigantesque.
+Cette méthode est composée de deux opérations, la première correspond à la {\em factorisation} de la matrice en deux sous matrices, elle est faite juste avant le GMRES.
 %
-Pour maintenir un espace mémoire raisonnable, on peut faire seulement une partie de la factorisation et considérer le reste comme négligeable, il s'agit de la factorisation incomplète.
+La deuxième correspond à la {\em résolution triangulaire} effectuée avec les deux sous matrices, elle est effectué à chaque itération du GMRES.
 %
-Dans l'algorithme ILU, on essaie d'obtenir un motif creux pour $L$ et $U$ aussi proche que possible du motif creux de $A$.
-%
-Il y a deux façons équivalentes pour appliquer l'algorithme ILU dans GMRES :
+Pour maintenir un espace mémoire raisonnable, on peut choisir de limiter le niveau de remplissage, deux solutions existent :
 \begin{itemize}
-  \item le préconditionnement à gauche : $M^{-1}(Ax)=b$;
-  \item le préconditionnement à droite : $A(M^{-1}x)=b$
+  \item Soit en fixant une valeur seuil à partir de laquelle le remplissage est accepté, il s'agit de l'algorithme ILUt;
+%
+  \item Soit en choisissant un niveau d'interaction maximal entre les lignes de la matrice, il s'agit de l'algorithme ILU(k) (Fig.~\ref{fig:ilu0}).
 \end{itemize}
 %
-%In programming term, this means that the SpMV must be done before or after the TRSV.
+Dans l'algorithme ILU, nous obtiendrons un motif creux pour $L$ et $U$ aussi proche que possible du motif creux de $A$.
+%
+Il y a deux façons équivalentes pour appliquer un préconditionnement ILU, symbolisé par une matrice $M^{-1}$, dans GMRES :
+\begin{itemize}
+  \item le préconditionnement à gauche : $M^{-1}(Ax)=b$;
+  \item le préconditionnement à droite : $A(M^{-1}x)=b$.
+\end{itemize}
+%
+Le sens d'application n'aura pas d'effet sur le résultat mais pourra exposer plus de parallélisme suivant la méthode de parallélisation choisi.
+
+
+%   (-_-)   %
+\begin{figure}[t!]
+  \centering
+  \includegraphics[width=\textwidth]{ilu0}
+  \caption{Exemple de motif obtenu par une factorisation ILU(0).}
+  \label{fig:ilu0}
+\end{figure}

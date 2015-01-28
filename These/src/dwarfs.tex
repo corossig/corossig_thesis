@@ -1,0 +1,82 @@
+\subsection{Exemples de stratégies}
+\url{http://view.eecs.berkeley.edu/wiki/Dwarf_Mine}
+
+Le choix des opérateurs dans Taggre se fait à l'appréciation du programmeur.
+%
+Les 13 nains de Berkeley est une méthode de classification des problèmes suivant leurs motifs de calculs et de communication.
+%
+On peut essayer de voir si Taggre peut répondre aux 13 problèmes et si c'est le cas quelle est la stratégie d'agrégation à utiliser.
+
+\subsubsection{Algèbre linéaire dense}
+
+
+\subsubsection{Algèbre linéaire creuse}
+Taggre a été conçu pour répondre aux problème de l'algèbre linéaire creuse.
+%
+Les techniques d'agrégations dépendront du problème à résoudre.
+%
+Dans notre cas, nous avons des modèles 3D, nous allons donc utiliser l'opérateur C.
+%
+Si le graphe n'est toujours pas assez grossier, nous pouvons ajouter l'opérateur D avec un paramètre assez petit.
+%
+Dans d'autre cas, il est nécessaire d'analyser le graphe mais généralement l'opérateur D avec un paramètre assez gros fonctionne.
+
+
+
+\subsubsection{Méthodes spectrales}
+Les méthodes spectrales sont composées de plusieurs paliers, les tâches d'un même palier sont indépendantes.
+%
+Les dépendances entre les paliers sont croisées.
+%
+L'opérateur F avec comme paramètre 2 à 3 fois le nombre de threads devrait limité le parallélisme sans toutefois trop impacter l'équilibra
+ge de charge.
+
+
+
+\subsubsection{Méthodes N-Body}
+Ici, il s'agit de simuler un ensemble de particules qui se déplacent.
+%
+Il n'y a pas de graphe statique de tâches, Taggre n'est pas efficace pour ce genre de méthodes.
+
+
+
+\subsubsection{Grilles structurées}
+Le problème de parallélisation des problèmes avec des grilles structurées peut se résoudre avec du parallélisme de boucle.
+%
+\'A chaque itération, chaque cellule est mise à jour en fonction des cellules adjacentes.
+%
+Si nous souhaitons utiliser Taggre, nous pouvons utiliser l'opérateur F pour grossir le grain de calcul.
+
+
+\subsubsection{Grilles non-structurées}
+Les solutions à ce problème sont les mêmes que pour les grilles structurées.
+%
+Il vaut mieux utiliser du parallélisme de boucle avec un ordonnanceur dynamique pour avec un bon équilibrage de charge.
+%
+Avec Taggre, il faut définir le poids de chaque tâche et utiliser l'opérateur F qui formera des tâches plus grossières de même poids.
+
+
+\subsubsection{MapReduce}
+Les problèmes de type MapReduce se parallélisent très bien à condition que la fonction de distribution soit correcte.
+%
+Il n'y a donc aucun intérêt à utiliser Taggre.
+
+
+
+\subsubsection{Logique combinatoire}
+Le parallélisme est vraiment trop fin, Taggre ne peut rien faire.
+
+
+\subsubsection{Graph Traversal}
+Il n'a pas de graphe de tâches.
+
+
+\subsubsection{Dynamic Programming}
+Le problème se présente sous la forme d'un arbre ???
+%
+Il faut donc utiliser l'opérateur F suivi de l'opérateur S.
+
+
+\subsubsection{Backtrack and Branch-and-Bound}
+\subsubsection{Graphical Models}
+\subsubsection{Finite State Machines}
