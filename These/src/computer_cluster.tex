@@ -1,12 +1,20 @@
-\subsection{Grappe de calcul}
-Pour être capable de simuler de grands problèmes physiques, nous avons besoin de beaucoup de puissance de calcul.
+\subsection{Grappe de serveurs}
+Au final, il est possible de connecter plusieurs ordinateurs entre eux pour obtenir une machine encore plus puissante.
 %
-Cette puissance se mesure en FLOPS\footnote{FLoating-point Operations Per Second}, il s'agit du nombre d'opérations par seconde qu'un ordinateur peut effectuer sur des nombres à virgules flottantes.
+Chaque ordinateur est appelé noeud de calcul, il a sa propre mémoire, fait tourner son propre système d'exploitation et peut être considéré comme une machine isolée.
 %
-Depuis déjà quelque temps ces simulations sont faites sur des grappes de calcul.
+Les noeuds sont reliés entre eux par un réseau à faible latence/haut débit, tel que Infiniband ou Myrinet.
 %
-Les grappes de calcul sont composées de noeuds, similaires aux ordinateurs de bureau, connectés par un réseau à faible latence/haut débit.
+Le principal avantage de cette solution est le passage à l'échelle.
 %
-Chaque noeud a sa propre mémoire, fait tourner son propre système d'exploitation et peut être considéré comme une machine isolée.
+Il est possible de construire des machines de très grandes tailles et très puissantes.
+
+
+
+Parmi les 500 machines les plus puissantes au monde au moment de l'écriture de cette thèse, 429 sont des grappes de serveurs.
 %
-La principale difficulté pour écrire des programmes pour les grappes de calcul vient de la mémoire distribuée. TODO continue
+La machine la plus puissante est la {\em TIANHE-2} avec une puissance crête d'environ 55~PFLOPS.
+%
+Mais le problème, c'est que ces machines ne sont pas vraiment faciles à programmer.
+%
+Il faut prendre en compte que la mémoire n'est pas globale, chaque noeud ne voit que sa mémoire locale.

@@ -16,7 +16,7 @@ De cette façon, le processus ne voit que l'espace d'adressage virtuelle et ne c
 %
 Le système d'exploitation peut donc changer l'emplacement physique d'une page sans affecter le fonctionnement du processus, c'est totalement transparent.
 %
-Toutefois, l'emplacement physique d'une page virtuelle peut impacter les performance du processus sur les architectures NUMA.
+Toutefois, l'emplacement physique d'une page virtuelle peut impacter les performances du processus sur les architectures NUMA.
 %
 Cet impact dépendra des connexions entre le banc mémoire physique où se situe la page et le coeur de calcul qui fait tourner le processus.
 
@@ -32,12 +32,12 @@ Avec Linux, il y a au moins trois politiques d'allocations de disponibles :
 \end{itemize}
 Sur Linux, ces politiques peuvent être choisies avec l'appel système {\em mbind}, ou avec l'outil en ligne de commande {\em numactl}.
 %
-La version 3.13 de Linux apporte un nouveau mécanisme de gestion de la mémoire sur les machine NUMA, il s'agit d'AutoNUMA.
+La version 3.13 de Linux apporte un nouveau mécanisme de gestion de la mémoire sur les machines NUMA, il s'agit d'AutoNUMA.
 %
 Ce mécanisme a pour but d'optimiser le placement des pages NUMA tout long de l'exécution d'un processus (Voir section~\ref{sec:autonuma}).
 
 
-D'autres système d'exploitation peuvent avoir leurs propres ensembles de politiques d'allocations NUMA.
+D'autres systèmes d'exploitation peuvent avoir leurs propres ensembles de politiques d'allocations NUMA.
 %
 Solaris, par exemple, fournit aussi la politique {\em next-touch}~\cite{next_touch}.
 %

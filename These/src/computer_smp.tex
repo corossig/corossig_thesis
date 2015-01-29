@@ -1,5 +1,5 @@
 \subsection{SMP}
-A l'intérieur de chaque noeud d'une grappe de calcul, on peut trouver plusieurs processeurs.
+Pour encore gagner de la puissance, nous pouvons connecter plusieurs processeurs ensemble.
 %
 Ces processeurs se partagent les ressources disponibles sur la carte mère, cela inclut les entrées/sorties et la mémoire.
 %
@@ -12,6 +12,8 @@ Cette conception ne passe pas à l'échelle au niveau des performances quand le 
 La bande passante est partagée par tous les processeurs et l'arbitre du bus devient un goulot d'étranglement.
 %
 Pire, la latence d'un accès mémoire va dépendre de la congestion du bus mémoire.
+%
+L'utilisation de 4 processeurs comme décrit précédemment donne une puissance de calcul de 256~GLOPS.
 
 %   (-_-)   %
 \begin{figure}[!ht]

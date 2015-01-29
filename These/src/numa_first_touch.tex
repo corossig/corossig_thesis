@@ -5,9 +5,9 @@ La traduction littéral serait {\em première toucher}, ce nom se réfère au fa
 %
 La page physique sera choisi avec comme priorité de prendre une page dans la mémoire la plus proche du thread qui souhaite utiliser cette page.
 %
-L'idée derrière cette allocation n'est pas mauvaise, dans le cas d'un processus mono-thread, la localité mémoire sera toujours optimal.
+L'idée derrière cette allocation n'est pas mauvaise, dans le cas d'un processus mono-thread, la localité mémoire sera toujours optimale.
 %
-Dans le cas d'un processus multi-threads, si les threads allouent eux-même leurs mémoires et ne font quasiment aucun partage entre eux, cette allocation fonctionne toujours.
+Dans le cas d'un processus multi-threads, si les threads allouent eux-mêmes leurs mémoires et ne font quasiment aucun partage entre eux, cette allocation fonctionne toujours.
 %
 Mais tous les programmes ne sont pas écrits pour fonctionner de cette façon.
 %

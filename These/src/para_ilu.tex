@@ -5,13 +5,13 @@ $L$ est une matrice triangulaire inférieure, toutes les valeurs au-dessus de la
 %
 Symétriquement, toutes les valeurs de $U$ en dessous de la diagonale sont nulles.
 %
-Le principal intérêt ce cette factorisation est de trouver $x$ dans les équations du type $Ax=y$.
+Le principal intérêt de cette factorisation est de trouver $x$ dans les équations du type $Ax=y$.
 %
 Cette équation est transformée en deux équations $L.x_{tmp}=y$ et $U.x=x_{tmp}$.
 %
 La méthode utilisée pour résoudre les systèmes composés d'une matrice triangulaire est triviale.
 %
-Il suffit de résoudre chaque équation ligne par ligne en commençant par la ligne qui n'as qu'une seule valeur non nulle.
+Il suffit de résoudre chaque équation ligne par ligne en commençant par la ligne qui n'a qu'une seule valeur non nulle.
 %
 Ensuite il faut résoudre la ligne avec deux valeurs non nulles dont une des inconnues provient de la solution précédente, et ainsi de suite jusqu'à la dernière ligne.
 %

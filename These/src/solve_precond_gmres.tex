@@ -50,13 +50,13 @@ Ces deux équations peuvent être résolues facilement parce que les matrices $L
 
 Dans le cas de problèmes linéaires creux, le résultat de la factorisation LU exacte de la matrice creuse $A$ ne pourrait plus être considéré comme creux.
 %
-En effet, au cours de la factorisation, de nombreux termes de remplissage apparaîtrons et l'espace mémoire nécessaire au stockage de ces nouveaux termes deviendrait gigantesque.
+En effet, au cours de la factorisation, de nombreux termes de remplissage apparaîtront et l'espace mémoire nécessaire au stockage de ces nouveaux termes deviendrait gigantesque.
 %
 C'est pourquoi nous utilisons la factorisation ILU\footnote{Incomplete LU}, une approximation de la factorisation LU qui se trouve être aussi un bon préconditionneur pour nos matrices.
 %
 Cette méthode est composée de deux opérations, la première correspond à la {\em factorisation} de la matrice en deux sous matrices, elle est faite juste avant le GMRES.
 %
-La deuxième correspond à la {\em résolution triangulaire} effectuée avec les deux sous matrices, elle est effectué à chaque itération du GMRES.
+La deuxième correspond à la {\em résolution triangulaire} effectuée avec les deux sous matrices, elle est effectuée à chaque itération du GMRES.
 %
 Pour maintenir un espace mémoire raisonnable, on peut choisir de limiter le niveau de remplissage, deux solutions existent :
 \begin{itemize}

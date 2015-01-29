@@ -1,5 +1,5 @@
 \subsection{Partie GMRES}
-L'algorithme GMRES est utilisé pour résoudre de grands systèmes linéaire creux.
+L'algorithme GMRES est utilisé pour résoudre de grands systèmes linéaires creux.
 %
 La plupart des opérations sont des opérations de type BLAS1 (axpy, dot product...) et sont facilement parallélisables.
 %
@@ -10,7 +10,7 @@ Cette opération peut être parallélisée avec du parallélisme de boucle, les 
 
 Donc en général, l'algorithme GMRES se parallélise très bien, mais utilisé tel quel il n'est pas assez performant.
 %
-Il est nécessaire de préconditionner les matrices pour obtenir de bonne performances.
+Il est nécessaire de préconditionner les matrices pour obtenir de bonnes performances.
 %
 Mais la partie préconditionneur n'est pas facilement parallélisable.
 %

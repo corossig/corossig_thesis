@@ -8,6 +8,9 @@
 \graphicspath{{img/}}
 \DeclareGraphicsExtensions{.pdf,.png}
 
+\usepackage[T1]{fontenc}
+\usepackage{pslatex}
+
 \usepackage{fixltx2e}
 
 
@@ -110,13 +113,17 @@ minimum height=0.1em,font=\scriptsize]
 
 
 %+++++++++++++++++++++++++++++++
-\section{Architecture cible}
+\section{\'Evolution des architecture}
 %-------------------------------
-\input{src/computer_cluster}
+\input{src/computer_monocore}
+%-------------------------------
+\input{src/computer_multicore}
 %-------------------------------
 \input{src/computer_smp}
 %-------------------------------
 \input{src/computer_numa}
+%-------------------------------
+\input{src/computer_cluster}
 %-------------------------------
 %\input{src/computer_many_core}
 %-------------------------------

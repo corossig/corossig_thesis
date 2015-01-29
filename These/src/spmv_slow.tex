@@ -3,13 +3,13 @@ Comme dit dans le chapitre précédent, l'algorithme du GMRES se parallélise bi
 %
 L'opération la plus coûteuse est le produit d'une matrice par un vecteur (SpMV).
 %
-Notre implémenetation du SpMV est optimisé pour prendre en compte la structure bloc des entrées de la matrice quand le nombre de variables primaires est supérieure à 1.
+Notre implémentation du SpMV est optimisée pour prendre en compte la structure bloc des entrées de la matrice quand le nombre de variables primaires est supérieur à 1.
 %
 Dans ce cas, nous pouvons réutiliser des données en cache.
 %
 Malgré ces optimisations, le SpMV est toujours limité par la bande passante mémoire.
 %
-Les courbes de scalabilité du SpMV nous montre que le gain de performance n'est linéaire avec le nombre de coeurs.
+Les courbes de scalabilité du SpMV nous montrent que le gain de performance n'est linéaire avec le nombre de coeurs.
 %
 Le constat est même pire que ça, on arrive difficilement à un speedup de 2 sur 12 coeurs lorsqu'on utilise une seule variable primaire.
 %

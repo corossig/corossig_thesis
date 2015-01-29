@@ -1,5 +1,5 @@
 \subsection{Décomposition de domaine}
-Lorsque le problème a résoudre devient trop gros pour être traité sur une seule machine, il est nécessaire d'adapter la méthode de résolution du problème.
+Lorsque le problème à résoudre devient trop gros pour être traité sur une seule machine, il est nécessaire d'adapter la méthode de résolution du problème.
 %
 Dans le cas du GMRES, nous pouvons utiliser la décomposition de domaine comme préconditionneur parallèle.
 %
@@ -14,13 +14,13 @@ Donc si nous partitionnons le graphe de connexions entre les cellules, chaque un
 %
 Nous obtenons donc un préconditionneur totalement parallèle et un bon équilibrage de charge aussi bien en terme de volume de donnée que de volume de calcul.
 %
-Les autres opérations du GMRES peuvent aussi être faites en parallèle moyennant des opérations de synchronisations coûteuses tel que des réductions à la fin de chaque opération.
+Les autres opérations du GMRES peuvent aussi être faites en parallèle moyennant des opérations de synchronisations coûteuses telles que des réductions à la fin de chaque opération.
 
 %   (-_-)   %
 \begin{figure}[t!]
   \centering
   \includegraphics[width=\textwidth]{domain}
-  \caption{Décomposition de domaine d'un réservoir à 24 cellules. Il y a deux partitions, chaque partition pouvant être traiter en parallèle.}
+  \caption{Décomposition de domaine d'un réservoir à 24 cellules. Il y a deux partitions, chaque partition pouvant être traité en parallèle.}
   \label{fig:domain}
 \end{figure}
 
