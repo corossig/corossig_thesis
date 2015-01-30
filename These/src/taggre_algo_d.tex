@@ -1,13 +1,21 @@
 \subsubsection{Dézoomé}
-Je pense qu'il s'agit de l'opérateur le plus intéressant parce qu'il permet d'effectuer des agrégations assez génériques et souvent efficace.
+Je pense qu'il s'agit de l'opérateur le plus intéressant parce qu'il permet d'effectuer des agrégations assez génériques et souvent efficaces.
 %
 Abrégé {\em D} dans Taggre, cet opérateur essaye de créer des groupes de tâches proche spatialement, un peu à la manière d'un partitionneur de graphe.
 %
-Le nom {\em dézoomé} provient du fait que la structure globale du graphe n'a pas beaucoup changée pendant l'agrégation mais que le nombre de tâches a lui considérablement diminué.
+Le nom {\em dézoomé} provient du fait que la structure globale du graphe ne change pas beaucoup pendant l'agrégation même si le nombre de tâches a lui considérablement diminué.
 %
 Dans les meilleurs cas le nombre de tâches peut être divisé par le paramètre donné par le programmeur (Fig.~\ref{fig:algo_D4}).
-%
+
+
 L'algorithme \ref{algo:algo_D} permet d'implémenter l'opérateur dézoomé tout en assurant l'absence de création de cycle.
+%
+L'algorithme va simuler l'exécution des tâches et n'agrégera des tâches ensemble qui si le simulateur peut l'ordonnancer.
+%
+Les tâches ainsi agrégées sont ensuite simulées pour fournir de nouvelles tâches à agréger.
+
+
+
 %   (-_-)   %
 \begin{figure}[t!]
   \centering

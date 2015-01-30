@@ -5,21 +5,33 @@ Chaque tâche du DAG représente la factorisation d'une ligne de la matrice.
 %
 Cette granularité est trop fine, mais c'est voulu, elle représente la granularité que nous obtenons en décrivant naturellement le maximum  de parallélisme que nous pouvons exploiter.
 %
-Nous avons factorisé 4 matrices différentes, il y a un cube généré de taille 80 éléments de côté avec des éléments de taille différents (1, 3, 8), il y a aussi la matrice qui représente le cas test SPE10 qui a des éléments de taille 3.
+Nous avons choisi de simuler deux réservoir, un cube généré de taille 80 cellules de côté et le réservoir SPE10.
 %
-Les résultats obtenus avec des cubes générés de tailles différentes sont équivalent au cube de taille 80.
+Dans le cas du cube, il est possible de choisir le nombre de variables primaires utilisées dans le calcul.
 %
-Comme le montre la figure~\ref{fig:res_facto_no_agg}, la taille des éléments a une importance considérable sur les performances que nous obtenons.
+Pour rappel, le nombre de variables primaires correspond au nombre de composants simuler.
 %
-L'utilisation de 2 threads n'est viable que dans le cas où les éléments ont une taille de 8.
+Chaque entrée non-nulle de la matrice correspond à l'interaction entre 2 cellules et sera composé d'une petite matrice dense $Npri*Npri$ avec $Npri$ le nombre de variables primaires.
+%
+Nous avons choisi de simuler le cube avec 1 variable primaire, 3 variables primaires (modèle {\em black-oil}) et 8 variables primaires (modèle {\em compositionnel}).
+%
+Pour le réservoir SPE10, c'est un cas à 3 variables primaires.
+%
+Au final nous avons donc 4 matrices différentes.
+%
+Nous ne faisons pas varier la taille du cube car les résultats obtenus avec des cubes générés de tailles raisonnablement différentes sont équivalents.
+%
+Comme le montre la figure~\ref{fig:res_facto_no_agg}, le nombre de variables primaires a une importance considérable sur les performances que nous obtenons.
+%
+L'utilisation de 2 threads n'est viable que dans le cas où nous utilisons 8 variables primaires.
 %
 Dans les autres cas, même en utilisant 4 threads, nous perdons du temps.
 %
-Ici, la taille des éléments va définir le nombre d'opérations faites par ligne de la matrice, donc plus cette taille est grande, plus il y aura de travail à faire.
+Ici, le nombre de variables primaires va définir le nombre d'opérations faites par ligne de la matrice, donc plus ce nombre est grand, plus il y aura de travail à faire.
 %
 Ces résultats confirment notre problème de granularité.
 %
-Au final, avec l'utilisation des 12 coeurs de calcul de la machine, nous obtenons des speedup plutôt décevant, par exemple, pour des éléments de taille 3, le code tourne environ 2,5x plus vite que la version séquentielle mais il utilise 12 threads.
+Au final, avec l'utilisation des 12 coeurs de calcul de la machine, nous obtenons des speedup plutôt décevant, par exemple, pour les cas à 3 variables primaires, le code tourne environ 2,5x plus vite que la version séquentielle mais il utilise 12 threads.
 
 
 %   (-_-)   %
@@ -128,7 +140,7 @@ Si nous regardons les résultats avec la meilleure agrégation que nous ayons, l
 \begin{figure}[t!]
   \centering
   \includegraphics[width=0.7\textwidth]{res_trsv_cd2}
-  \caption{Performance de la résolution triangulaire sur 12 coeurs sans utiliser Taggre.}
+  \caption{Performance de la résolution triangulaire sur 12 coeurs avec Taggre CD(2).}
   \label{fig:res_trsv_cd2}
 \end{figure}
 

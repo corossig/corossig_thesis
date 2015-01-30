@@ -1,9 +1,11 @@
 \subsection{Solutions actuelles}
-Le problème de granularité de la programmation à base de tâche est un problème bien connu, il est étudié depuis un long moment.
+Le problème de granularité de la programmation à base de tâche est un problème bien connu et est étudié depuis un long moment.
 %
 Certains ordonnanceurs à base de tâche essaient de résoudre ce problème en utilisant différentes approches.
 %
-Par exemple, X-Kaapi~\cite{xkaapi} a introduit le concept de tâches divisibles aussi appelé {\em adaptive task model}, quand un travailleur passe dans l'état d'attente, il émet une requête de travail à un autre travailleur.
+Par exemple, X-Kaapi~\cite{xkaapi} a introduit le concept de tâches divisibles aussi appelé {\em adaptive task model} et fonctionne de la manière suivante :
+%
+quand un travailleur passe dans l'état d'attente, il émet une requête de travail à un autre travailleur.
 %
 Les autres travailleurs, qui sont dans l'état travail, doivent vérifier régulièrement s'ils ont reçu une requête de vol.
 %

@@ -3,13 +3,13 @@ La factorisation LU en algèbre linéaire dense est une méthode pour factoriser
 %
 $L$ est une matrice triangulaire inférieure, toutes les valeurs au-dessus de la diagonale sont nulles.
 %
-Symétriquement, toutes les valeurs de $U$ en dessous de la diagonale sont nulles.
+Symétriquement, $U$ est une matrice triangulaire supérieure, toutes les valeurs de $U$ en dessous de la diagonale sont nulles.
 %
 Le principal intérêt de cette factorisation est de trouver $x$ dans les équations du type $Ax=y$.
 %
 Cette équation est transformée en deux équations $L.x_{tmp}=y$ et $U.x=x_{tmp}$.
 %
-La méthode utilisée pour résoudre les systèmes composés d'une matrice triangulaire est triviale.
+La méthode utilisée pour résoudre les systèmes composés de matrices triangulaires est triviale.
 %
 Il suffit de résoudre chaque équation ligne par ligne en commençant par la ligne qui n'a qu'une seule valeur non nulle.
 %
@@ -21,7 +21,7 @@ Cet algorithme est purement séquentiel mais des travaux existent pour exploiter
 
 En algèbre linéaire creuse, la factorisation LU d'une matrice $A$ creuse donnera deux matrices triangulaires denses $L$ et $U$.
 %
-Or, dans le cas où la matrice creuse à factoriser est trop grande, ces deux matrices ne peuvent pas tenir en mémoire.
+Or, dans le cas d'une matrice d'ordre élevé ($>$ 100 000), ces deux matrices ne peuvent pas tenir en mémoire.
 %
 C'est pourquoi en algèbre linéaire creuse, on utilise une version altérée de cette factorisation que l'on appelle factorisation incomplète, ou {\em ILU}\footnote{Incomplete LU}, dont le but est de limiter le remplissage de la matrice.
 %
@@ -35,7 +35,7 @@ Avec $k=0$, le motif des matrices $L$ et $U$ reste similaire au motif de la matr
 %
 Il y a du parallélisme dans l'algorithme ILU, certaines lignes peuvent être factorisées en parallèle et ce parallélisme se représente naturellement sous la forme d'un graphe de tâches (Fig.~\ref{fig:example_3_dag}).
 %
-Chaque tâche représente la factorisation d'une ligne de la matrice et les dépendances entre les tâches sont données par le motif de la matrice.
+Chaque tâche représentant la factorisation d'une ligne de la matrice et les dépendances entre les tâches sont données par le motif de la matrice.
 %
 En effet, pour factoriser la ligne $i$, nous devons factoriser toutes les lignes $j$ inférieures à $i$ tel que l'entrée $(i,j)$ de la matrice soit non nulle (Fig.~\ref{fig:example_2_matrix}).
 %
@@ -58,18 +58,18 @@ la tâche $i$ corresponds à la ligne $i$ de la matrice, la liste des taches pr�
           \includegraphics[width=0.32\textwidth]{example_3_dag}
         }%
     \end{center}
-    \caption{Trois représentations d'un réservoir. Les éléments en rouge dans la matrice déterminent les dépendances dans le DAG.}
+    \caption{Trois représentations d'un réservoir. Les éléments en rouge dans la matrice déterminent les dépendances dans le graphe de tâches.}
     \label{fig:exemple_3_dag}
 \end{figure}
 
 En résumé, le parallélisme de l'algorithme ILU peut se représenter sous la forme d'un graphe de tâches.
 %
-Chaque tâche représente la factorisation d'une ligne... ce qui est bien petit.
+Chaque tâche représentant la factorisation d'une ligne... ce qui est bien petit.
 %
 En fait, la plupart des runtimes mettront plus de temps à ordonnancer la tâche que la tâche mettra à factoriser une ligne.
 
 
-Les problèmes rencontrés pour paralléliser la factorisation incomplète ainsi que les résolutions triangulaires associées d'une matrice creuse sont des problèmes qui représentent bien la difficulté que l'on peut rencontrer avec une parallélisation à grain fin.
+Les problèmes rencontrés pour paralléliser la factorisation incomplète d'une matrice creuse, ainsi que les résolutions triangulaires associées, sont des problèmes qui représentent bien la difficulté que l'on peut rencontrer avec une parallélisation à grain fin.
 %
 La description à grain fin de ces algorithmes est naturelle, mais en pratique, une simple parallélisation utilisant Intel TBB ou OpenMP ne donnera pas de bonnes performances à cause du faible coût de calcul d'une tâche.
 %

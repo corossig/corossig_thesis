@@ -13,11 +13,11 @@ Plus un graphe est large, plus il offrira de parallélisme.
 %
 En effet, avec un nombre illimité de coeur de calcul, on peut exploiter au mieux le même nombre de coeur que la largeur du graphe.
 %
-Le cas idéal serait donc un graphe d'une tâche de hauteur avec un nombre conséquent de tâche à la même hauteur.
+Le cas idéal serait donc un graphe d'une tâche de hauteur proche de 1 avec un nombre conséquent de tâches à la même hauteur.
 %
 Ce cas ressemble fortement au parallélisme de boucle.
 %
-Le nombre de tâches du graphe est aussi une propriété à prendre en compte, l'ordonnanceur doit pouvoir stocker toutes les tâches dans des structures de données.
+Le nombre de tâches du graphe est aussi une propriété à prendre en compte, l'ordonnanceur doit avoir des structures de données efficaces capable stocker toutes les tâches.
 
 
 
@@ -31,9 +31,9 @@ Mais il faut faire attention à ne pas trop le réduire.
 %
 C'est pourquoi l'opérateur F prend en paramètre la largeur du graphe souhaitée.
 %
-L'algorithme de l'opérateur F consiste à parcourir le graphe par hauteur et de limiter le nombre de tâches par hauteur à un paramètre donné par le programmeur (Algo.~\ref{algo:algo_F}).
+L'algorithme de l'opérateur F consiste à faire un parcourt du graphe en hauteur et à limiter le nombre de tâches par hauteur, cette limite est donnée en paramètre par le programmeur (Algo.~\ref{algo:algo_F}).
 %
-Seules les tâches qui ont la même hauteur sont agrégées ensemble, il n'y a donc aucun risque de création de cycle (Fig.~\ref{fig:algo_F2}).
+Les tâches agrégées ensemble ont la même hauteur, il ne peut donc pas exister de chemin entre elles, il n'y a donc aucun risque de création de cycle (Fig.~\ref{fig:algo_F2}).
 
 
 %   (-_-)   %
@@ -45,17 +45,13 @@ Seules les tâches qui ont la même hauteur sont agrégées ensemble, il n'y a d
 \end{figure}
 
 \begin{algorithm}
-  \KwData{$M$, DAG}
+  \KwData{$MAX$, DAG}
   {\sc Suivant} = liste vide \\
   mettre les tâches racines de DAG dans {\sc Suivant} \\
   \While{{\sc Suivant} n'est pas vide} {
     {\sc Prêt} = {\sc Suivant} \\
     {\sc Suivant} = liste vide \\
-    {\sc Moyenne} = 0 \\
-    \For{chaque tâche {\sc T} de {\sc Prêt}} {
-      {\sc Moyenne } += taille de {\sc T}
-    }
-    {\sc Moyenne} /= taille de {\sc Prêt} \\
+    {\sc Moyenne} = taille de {\sc Prêt} / $MAX$ \\
 
     \While{{\sc Prêt} n'est pas vide} {
       mettre les successeurs des {\sc Moyenne} premières tâches dans {\sc Suivant} \\

@@ -7,17 +7,9 @@ La plupart du temps, ce modèle sera un cube 3D.
 %
 En numérotation naturelle et avec un modèle 3D, une bonne agrégation consiste à agréger toutes les tâches d'un axe qui ont les mêmes coordonnées sur les deux autres axes.
 %
-Ca correspond à {\em aplatir} notre modèle 3D en un modèle 2D.
+Ca correspond à {\em aplatir} notre modèle 3D en un modèle 2D (Fig.~\ref{fig:cube5_algo_C}).
 %
-Par exemple, un cube de 2 éléments de coté, soit 8 tâches, sera transformé en un carré de 2 éléments de coté, soit 4 tâches.
-
-%   (-_-)   %
-\begin{figure}[t!]
-  \centering
-  \includegraphics[width=0.8\textwidth]{algo_3}
-  \caption{Exemple d'utilisation de l'opérateur C.}
-  \label{fig:algo_C}
-\end{figure}
+Par exemple, un cube de 5 éléments de coté, soit 125 tâches, sera transformé en un carré de 5 éléments de coté, soit 25 tâches.
 
 
 %   (-_-)   %
@@ -29,20 +21,32 @@ Par exemple, un cube de 2 éléments de coté, soit 8 tâches, sera transformé 
 \end{figure}
 
 
+%   (-_-)   %
+\begin{figure}[t!]
+  \centering
+  \includegraphics[width=0.8\textwidth]{algo_3}
+  \caption{Exemple d'utilisation de l'opérateur C.}
+  \label{fig:algo_C}
+\end{figure}
+
 
 Comme pour les autres opérateurs, nous devons vérifier qu'aucun cycle ne sera créé.
 %
-Pour fonctionner, cet opérateur a besoin que le programmeur attribut un nombre unique à chaque tâche.
+Pour fonctionner, cet opérateur a besoin que le programmeur attribut un nombre unique à chaque tâche et ainsi avoir un ordre strict sur les tâches.
 %
 Dans notre cas on va utiliser la numérotation naturelle.
 %
 Puis l'opérateur agrégera ensemble les tâches ayant des nombres qui se suivent ainsi qu'une dépendance entre les tâches.
 
-Ajoutons un prédicat à l'algorithme : pour pouvoir utiliser cet algorithme, il faut absolument que pour chaque tâche $i$, le nombre associé à la tâche $i$ soit strictement inférieur aux nombres associés aux successeurs de la tâche $i$.
+Ajoutons un prédicat à l'algorithme : pour pouvoir utiliser cet algorithme, il faut absolument que pour chaque tâche $i$, l'indice associé à la tâche $i$ soit strictement inférieur aux indices associés aux successeurs de la tâche $i$.
 %
 Ce prédicat nous permet de s'assurer qu'aucun cycle ne sera créé.
 %
-En effet, pour créer un cycle avec cet algorithme, il faudrait
+En effet, pour créer un cycle avec cet algorithme, il faudrait qu'il existe un chemin entre deux tâches agrégées qui passe par une autre tâche non agrégée.
+%
+Or, pour agréger une tâche avec une autre, il faut que la différence de leurs indices soit exactement la différence minimale possible dans le graphe.
+%
+Donc, en prenant en compte le prédicat, si nous agrégeons une tâche T1 avec son successeur T2, il ne peut pas exister de chemin en T1 et T2 passant par une autre tâche.
 
 
 \begin{algorithm}

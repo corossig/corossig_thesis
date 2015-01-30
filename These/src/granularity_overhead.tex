@@ -13,7 +13,7 @@ Il est nécessaire que l'implémentation de cette queue soit thread-safe pour ga
 %
 Malheureusement, même un runtime qui n'effectuerait que cette opération aurait un surcoût de calcul lors de l'insertion/extraction de tâches dans la file.
 %
-Ce surcoût peut être négligé si le temps passé à exécuter la tâche est bien plus grand que ce surcoût.
+Ce surcoût peut être négligé si le temps passé à exécuter la tâche est bien plus grand que le temps à ordonnancer la tâche.
 %
 Mais avec un parallélise à grain très fin, ce surcoût est loin de pouvoir être considéré comme négligeable et le programmeur doit faire avec.
 %
