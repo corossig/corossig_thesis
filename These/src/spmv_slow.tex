@@ -1,5 +1,5 @@
 \subsection{Deux fois plus de coeurs mais pas deux fois plus rapide}
-Comme dit dans le chapitre précédent, l'algorithme du GMRES se parallélise bien parce qu'il est essentiellement composé d'opérations sur les vecteurs.
+Comme dit dans le chapitre précédent, l'algorithme du GMRES se parallélise bien parce qu'il est essentiellement composé d'opérations sur des vecteurs.
 %
 L'opération la plus coûteuse est le produit d'une matrice par un vecteur (SpMV).
 %
@@ -14,3 +14,5 @@ Les courbes de scalabilité du SpMV nous montrent que le gain de performance n'e
 Le constat est même pire que ça, on arrive difficilement à un speedup de 2 sur 12 coeurs lorsqu'on utilise une seule variable primaire.
 %
 Si on regarde les compteurs matériels, on s'aperçoit que la moitié de la bande passante de chaque banc NUMA est utilisée par des accès distant.
+%
+Donc environ la moitié des accès mémoires sont faits une plus grande latence.

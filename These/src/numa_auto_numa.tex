@@ -1,7 +1,36 @@
 \subsection{AutoNUMA}
 \label{sec:autonuma}
-
-
-This mechanism use page fault trapping which has a non negligible overhead.
+Linux n'a pas adopté la politique d'allocation Next touch.
 %
-AutoNUMA can only be configured at system level with root privilege and for all applications.
+\`A la place, les développeurs de Linux ont choisi d'implémenter un autre mécanisme pour améliorer la localité NUMA : {\em AutoNUMA}.
+%
+Ce mécanisme va scanner périodiquement une portion de la mémoire d'un processus, et de la même façon que la politique next touch, le prochain accès à une page de cette portion entraînera un déplacement de la page.
+%
+Pour détecter l'accès à une page, le noyau utilise la MMU.
+%
+Il supprime la relation adresse virtuelle vers adresse physique de la MMU et peut ainsi recevoir un signal lors du prochain accès.
+%
+Ce mécanisme à un surcoût, c'est pourquoi il n'est pas appliqué sur toute la mémoire d'un coup.
+%
+Le noyau donne la possibilité de modifier plusieurs paramètres de ce mécanisme, mais ces paramètres sont globaux.
+%
+Parmi ces paramètres, il y a {\em scan\_delay} et {\em scan\_size}.
+%
+Tous les ``scan\_delay'', les ``scan\_size'' pages suivantes sont traitées.
+%
+Une fois arrivé au bout de l'espace d'adressage, le scanner recommence au début de l'espace d'adressage.
+%
+La variable scan\_delay change de valeur en fonction du nombre de pages déplacées.
+%
+Elle diminue quand il y a beaucoup de fautes NUMA et augmente quand les pages sont bien placées.
+%
+Ainsi, une application dont les threads accèdent toujours à la même mémoire aura automatiquement un bon placement mémoire.
+
+
+Ce mécanisme comporte plusieurs défauts.
+%
+Sa configuration est globale au système, on ne peux pas l'activer que pour un processus particulier.
+%
+Les paramètres ne peuvent être défini que par l'administrateur de la machine.
+%
+Le mécanisme s'applique sur toute la mémoire, même les zones mémoires peu utilisées.

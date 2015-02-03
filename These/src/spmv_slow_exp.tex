@@ -21,7 +21,7 @@ Si nous regardons la structure mémoire de deux bancs NUMA de la figure~\ref{fig
 %
 Pour obtenir limiter le plus possible les pénalités mémoires, il est nécessaire que tous les coeurs de calcul utilisent la mémoire qui est la plus proche.
 %
-Si un coeur du banc NUMA gauche doit accéder à la mémoire du banc NUMA droit, il aura une plus grande pénalité mémoire que
+Par exemple, sur une machine à deux bancs NUMA, les accès à la mémoire du banc NUMA 2 depuis les coeurs du banc NUMA 1 coûterons plus chère que les accès à la mémoire du banc NUMA 1.
 
 %   (-_-)   %
 \begin{figure}[t!]
@@ -36,5 +36,7 @@ Un autre problème se situe au niveau de la bande passante.
 La bande passante totale de la machine est distribuée entre chaque banc NUMA.
 %
 Pour exploiter efficacement la totalité de la bande passante, il faut répartir les données que l'on va utiliser sur tous les bancs mémoires.
+%
+Des interfaces de programmation existent pour connaître et améliorer la localité des données.
 %
 Il ne suffit pas de faire une répartition équitable, il faut aussi au moment de l'accès au données que tous les coeurs de calcul accède à des données différentes qui doivent se situer dans la mémoire qui leurs est la plus proche.

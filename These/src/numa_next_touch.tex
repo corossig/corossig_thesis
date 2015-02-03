@@ -1,2 +1,13 @@
 \subsection{Next touch}
 \label{sec:next_touch}
+L'idée du First touch n'est pas mauvaise, mais elle impose une phase d'initialisation parallèle.
+%
+Au lieu de récrire toute l'initialisation d'un programme, il pourrait être intéressant d'utiliser les phases de calculs pour distribuer la mémoire sur tous les bancs NUMA.
+%
+C'est l'idée qui se cache derrière la politique d'allocation {\em Next touch}.
+%
+Le programmeur choisit un ensemble de pages mémoires qu'il pense mal placées et définit une politique d'allocation next touch sur ces pages.
+%
+Lors du prochain accès mémoire à l'une de ces pages, le noyau s'occupera, si besoin, de déplacer la page mémoire vers le banc NUMA le plus proche.
+%
+Ainsi nous pouvons obtenir une amélioration de la localité mémoire sans avoir à récrire certaines parties du code.

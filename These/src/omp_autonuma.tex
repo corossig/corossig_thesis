@@ -1,0 +1,11 @@
+\subsection{\'Equilibrage automatique NUMA}
+Les noyaux Linux récents proposent un équilibrage de charge automatique des pages mémoires.
+%
+Malheureusement, nous ne pouvons pas utiliser les grappes de serveurs à notre disposition pour tester cette fonctionnalité.
+%
+La version de Linux n'est pas assez récente, la fonctionnalité autoNUMA n'est apparue que dans la version 3.13.
+%
+\`A la place, nous allons utiliser une machine de bureau contenant deux processeurs Intel Xeon X5660, chaque banc NUMA dispose de 6 coeurs de calculs et de 24~Go de mémoire vive.
+%
+La version de Linux utilisée est la 3.18.
+%

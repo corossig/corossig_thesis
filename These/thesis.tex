@@ -243,19 +243,11 @@ minimum height=0.1em,font=\scriptsize]
 
 
 %+++++++++++++++++++++++++++++++
-\section{Handle NUMA directly in scheduler}
+\section{Gérer le NUMA directement dans l'ordonnanceur}
 %-------------------------------
-\subsection{Status of current scheduler}
-  \begin{itemize}
-    \item PaRSEC : one vp per NUMA
-  \end{itemize}
+\input{src/sched_numa_current}
 %-------------------------------
-\subsection{NATaS : schedule tasks on NUMA}
-  \begin{itemize}
-    \item bind task to a processor
-    \item allow NUMA work-stealing
-    \item bind memory pages
-  \end{itemize}
+\input{src/sched_numa_natas}
 %+++++++++++++++++++++++++++++++
 
 
@@ -278,11 +270,7 @@ results
 \subsection{Interleave}
 results
 %-------------------------------
-\subsection{Automatic NUMA balancing}
-  \begin{itemize}
-    \item Results on personal machine
-    \item very recent kernel
-  \end{itemize}
+\input{src/omp_autonuma}
 %-------------------------------
 \subsection{NATaS}
 results

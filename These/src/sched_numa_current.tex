@@ -1,0 +1,22 @@
+\subsection{Statuts des ordonnanceurs actuels}
+L'ordonnanceur de tâches a suffisamment d'information pour avoir une bonne gestion de la mémoire.
+%
+Certains ordonnanceurs ont un contrôle totale de la mémoire utilisée par les tâches,
+
+
+
+
+Parsec de son côté est l'un des seuls ordonnanceurs à offrir un support des architectures NUMA.
+%
+Par contre son support ressemble plus à la solution mémoire distribuée.
+%
+En effet, le support du NUMA est fait avec les structures Virtual Process (vp) de PaRSEC, ce qui peut correspondre à avoir un processus MPI par banc NUMA.
+%
+Mais ce n'est pas si grave, le vol de tâche entre vp existe.
+%
+Il conserve donc l'aspect équilibrage de charge des solutions multithreadé.
+%
+Par contre, cette solution ne convient toujours pas à résoudre notre problème, nous essayons d'avoir le moins possible de parallélisme en mémoire distribuée.
+
+
+Il existe aussi des tentatives d'ajout du support de la localité des données à OpenMP (ForestGOMP).
