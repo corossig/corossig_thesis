@@ -227,17 +227,17 @@ minimum height=0.1em,font=\scriptsize]
 
 %+++++++++++++++++++++++++++++++
 \section{Gestion actuelle des machines NUMA}
-\input{src/numa_management}
+\input{src/alloc_numa_management}
 %-------------------------------
-\input{src/numa_first_touch}
+\input{src/alloc_first_touch}
 %-------------------------------
-\input{src/numa_interleaved}
+\input{src/alloc_interleaved}
 %-------------------------------
-\input{src/numa_next_touch}
+\input{src/alloc_next_touch}
 %-------------------------------
-\input{src/numa_auto_numa}
+\input{src/alloc_auto_numa}
 %-------------------------------
-\input{src/numa_one_mpi}
+\input{src/alloc_one_mpi}
 %+++++++++++++++++++++++++++++++
 
 
@@ -270,10 +270,9 @@ results
 \subsection{Interleave}
 results
 %-------------------------------
-\input{src/omp_autonuma}
+\input{src/numa_res_autonuma}
 %-------------------------------
-\subsection{NATaS}
-results
+\input{src/numa_res_natas}
 %-------------------------------
 \subsection{Discussion}
   \begin{itemize}
