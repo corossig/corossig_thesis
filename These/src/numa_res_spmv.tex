@@ -1,0 +1,22 @@
+\subsection{Multiplication matrice vecteur creuse}
+La multiplication du matrice creuse par un vecteur est une opération dont le ratio nombre d'opérations par le nombre d'octet lus est petit.
+%
+Dans le cas d'une matrice scalaire, ce ratio vaut environ $1/10$ en double précision.
+%
+Pour chaque valeur non-nulles de la matrice, il faut lire cette valeur, l'indice de la colonne et la valeur contenue dans le vecteur à l'indice de la colonne.
+%
+Il faut ensuite multiplier les deux valeurs ensemble et l'ajouter à un accumulateur, ce qui fait 2 opérations pour 20 octets lus.
+%
+Si nous utilisons trois variables primaires, chaque entrée de la matrice est un bloc 3 par 3.
+%
+Nous devons donc lire ce bloc (9*8 Octets), lire l'indice de colonne (4 Octets) et finalement lire 3 valeurs dans le vecteur (3*8 Octets).
+%
+Pour chaque valeurs du bloc nous avons 2 opérations à faire (2*9), nous avons donc un ratio de $18/100$ soit environ $1/5,5$.
+%
+Avec huit variables primaires, le ratio est environ de $1/4,5$.
+
+
+
+Le roofline model nous montre que nous sommes vraiment limité par la bande passante.
+%
+On peux aussi voir

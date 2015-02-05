@@ -259,10 +259,7 @@ minimum height=0.1em,font=\scriptsize]
     \item Support NUMA in tasks
   \end{itemize}
 %-------------------------------
-\subsection{Sparse matrix vector multiplication}
-  \begin{itemize}
-    \item problem of SpMV
-  \end{itemize}
+\input{src/numa_res_spmv}
 %-------------------------------
 \subsection{First touch}
 results
@@ -274,12 +271,7 @@ results
 %-------------------------------
 \input{src/numa_res_natas}
 %-------------------------------
-\subsection{Discussion}
-  \begin{itemize}
-    \item Interleave isn't so bad on bi-socket,...
-    \item NATaS always give best result
-    \item Maybe NATaS isn't the good answer (better scheduler or MPI)
-  \end{itemize}
+\input{src/natas_discussion}
 %+++++++++++++++++++++++++++++++
 
 

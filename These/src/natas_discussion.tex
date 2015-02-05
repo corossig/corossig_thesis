@@ -1,0 +1,33 @@
+\subsection{Discussion}
+Les effets NUMA sont vraiment important dans le cas d'une application limitée par la bande passante mémoire.
+%
+Une mauvaise distribution des pages mémoires peut conduire à une sous exploitation de la bande passante.
+%
+La politique d'allocation interleaved limite ce problème, on est sûr que tous les liens mémoires sont utilisés mais on n'a aucun contrôle sur l'amélioration de la localité des accès mémoire.
+%
+Malgré cela, on obtient un gain important de performance.
+%
+Les politiques d'allocation du type next-touch et autoNUMA résolvent une bonne partie du problème, la localité mémoire est améliorée.
+
+
+
+La gestion des affinités NUMA directement dans l'ordonnanceur de tâches, nous permet de mieux répartir la charge mémoire.
+%
+La localité mémoire en devient optimal et une bonne distribution des tâches donnent de très bonnes performances.
+%
+L'utilisation d'un seul banc NUMA nous montre que l'ordonannceur NATaS est moins bon que l'ordonnanceur Intel OpenMP.
+%
+Les gains que nous observons avec l'utilisation de plusieurs bancs NUMA sont bien dûs à une amélioration de la localité mémoire.
+
+
+Malgré les bonnes performances que nous offrent NATaS, on pourrait se demander s'il s'agit de la meilleur solution.
+%
+En effet, le placement des tâches n'est pas optimal, de même que l'équilibrage de charge.
+%
+Avec les algorithmes actuels, il est impossible de supprimer complètement les accès distants, nous ne pouvons que les limiter.
+%
+Seul la solution utilisant un processus MPI par noeud NUMA permettrait de supprimer les accès distants.
+%
+Mais cette suppression se ferai au prix d'un algorithme moins efficace.
+%
+Donc une meilleure solution pourrait être d'améliorer les ordonnanceurs existants en leurs ajoutant une fonctionnalité NUMA aware.
