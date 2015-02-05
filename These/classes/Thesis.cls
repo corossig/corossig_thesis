@@ -260,7 +260,7 @@
 
 \vspace{\stretch{1}}
 
-pr\'esent\'eée pour obtenir le grade de
+pr\'esent\'ee pour obtenir le grade de
 
 \vspace{\stretch{1}}
 
