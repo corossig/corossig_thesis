@@ -5,11 +5,11 @@ Chaque tâche du DAG représente la factorisation d'une ligne de la matrice.
 %
 Cette granularité est trop fine, mais c'est voulu, elle représente la granularité que nous obtenons en décrivant naturellement le maximum  de parallélisme que nous pouvons exploiter.
 %
-Nous avons choisi de simuler deux réservoir, un cube généré de taille 80 cellules de côté et le réservoir SPE10.
+Nous avons choisi de simuler deux réservoirs, un cube généré de taille 80 cellules de côté et le réservoir SPE10.
 %
 Dans le cas du cube, il est possible de choisir le nombre de variables primaires utilisées dans le calcul.
 %
-Pour rappel, le nombre de variables primaires correspond au nombre de composants simuler.
+Pour rappel, le nombre de variables primaires correspond au nombre de composants simulés.
 %
 Chaque entrée non-nulle de la matrice correspond à l'interaction entre 2 cellules et sera composé d'une petite matrice dense $Npri*Npri$ avec $Npri$ le nombre de variables primaires.
 %
@@ -31,7 +31,7 @@ Ici, le nombre de variables primaires va définir le nombre d'opérations faites
 %
 Ces résultats confirment notre problème de granularité.
 %
-Au final, avec l'utilisation des 12 coeurs de calcul de la machine, nous obtenons des speedup plutôt décevant, par exemple, pour les cas à 3 variables primaires, le code tourne environ 2,5x plus vite que la version séquentielle mais il utilise 12 threads.
+Au final, avec l'utilisation des 12 coeurs de calcul de la machine, nous obtenons des accélérations plutôt décevant, par exemple, pour les cas à 3 variables primaires, le code tourne environ 2,5x plus vite que la version séquentielle mais il utilise 12 threads.
 
 
 %   (-_-)   %
@@ -44,7 +44,7 @@ Au final, avec l'utilisation des 12 coeurs de calcul de la machine, nous obtenon
 
 Dans un premier temps, nous allons applique l'opérateur F avec le paramètre 36.
 %
-Cet opérateur va donc limiter la largeur du graphe pour qu'il y est au plus 36 tâches par hauteur du graphe.
+Cet opérateur va donc limiter la largeur du graphe pour qu'il y ait au plus 36 tâches par hauteur du graphe.
 %
 Nous réduisons donc le parallélisme mais nous réduisons aussi le nombre de tâches, on divise par 62 le nombre de tâches pour un cube de 80 de côté.
 %
@@ -65,7 +65,9 @@ Essayons maintenant l'opérateur D avec le paramètre 8.
 %
 Cet opérateur va essayer de créer des groupes de 8 tâches assez proches dans le graphe.
 %
-Nous allons donc diviser par 8 le nombre de tâches, ce qui peut paraître peu mais cette valeur a été choisie empiriquement parmi un ensemble de valeur.
+Nous allons donc diviser par 8 le nombre de tâches, ce qui peut paraître peu mais cette valeur a été choisie empiriquement parmi un ensemble de valeurs.
+%
+Les autres valeurs donnent des résultats légèrement moins bons, par exemple le paramètre 4 offre une accélération de 3,35, 3,55 pour le paramètre 12 et 3,72 pour le paramètre 8.
 %
 Comparé à l'opérateur F, il y a très peu d'amélioration quand le nombre de variables primaires est faible (Fig.~\ref{fig:res_facto_d8}).
 %
@@ -87,7 +89,7 @@ Il y a deux grandes améliorations, comme pour tous les opérateurs, il y a une 
 %
 En effet, avec l'opérateur F, le nombre de tâches était fortement réduit mais les tâches agrégés n'avaient pas une bonne réutilisabilité des données en cache.
 %
-Au contraire, l'opérateur D ne réduisait que de très peu le donc de tâches mais améliorait la réutilisation des caches.
+Au contraire, l'opérateur D ne réduisait que de très peu le nombre de tâches mais améliorait la réutilisation des caches.
 %
 L'opérateur C offre le meilleur des deux opérateurs, il produit peu de tâches et en plus ces tâches réutilisent correctement les données en cache.
 % L2 stats : F:1.10, D:0.96, C:0.87
@@ -103,9 +105,9 @@ L'opérateur C offre le meilleur des deux opérateurs, il produit peu de tâches
 
 Il est aussi possible de combiner plusieurs opérateurs, sur la figure~\ref{fig:res_facto_cd2} nous avons combiné l'opérateur C avec l'opérateur D(2).
 %
-On observe un très léger gain de performance qu'en on a une seule variable primaire, mais dans les autres cas on observe le contraire.
+On observe un très léger gain de performance quand on a une seule variable primaire, mais dans les autres cas on observe le contraire.
 %
-Malgré ces optimisations, nous n'atteignons pas un speedup parfait, avec au mieux 8,7 de speedup pour 12 coeurs.
+Malgré ces optimisations, nous n'atteignons pas une accélération parfaite, avec au mieux une accélération de 8,7 pour 12 coeurs.
 %
 Nous expliquerons ce souci de performance dans les parties suivantes de la thèse.
 
@@ -125,7 +127,7 @@ Même en utilisant 12 threads, seule la version avec 8 variables primaires donne
 %
 Encore une fois il s'agit d'un problème de granularité, le graphe à ordonnancer est le même que pour la factorisation mais les tâches sont plus petites.
 %
-Si nous regardons les résultats avec la meilleure agrégation que nous ayons, l'agrégation CD(2), on obtient des résultats légèrement meilleurs mais on n'est encore loin du speedup parfait.
+Si nous regardons les résultats avec la meilleure agrégation que nous ayons, l'agrégation CD(2), on obtient des résultats légèrement meilleurs mais on n'est encore loin de l'accélération parfaite.
 
 %   (-_-)   %
 \begin{figure}[t!]

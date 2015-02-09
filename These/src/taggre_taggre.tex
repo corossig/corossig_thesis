@@ -1,7 +1,7 @@
 \subsection{Taggre : un cadriciel pour agréger des tâches}
 Nous avons pour but de garder la façon naturelle de décrire le parallélisme dans les noyaux d'algèbre linéaire creuse.
 %
-Malheureusement, cette granularité est trop fine, l'ordonnanceur de tâche met plus de temps à choisir quelle sera le processeur qui traitera la tâche que le processeur à traiter la tâche.
+Malheureusement, cette granularité est trop fine, l'ordonnanceur de tâches met plus de temps à choisir quel sera le processeur qui traitera la tâche que le processeur à traiter la tâche.
 %
 Pour obtenir des performances raisonnables, nous devons augmenter la granularité de la description du problème.
 %
@@ -34,7 +34,7 @@ L'autre difficulté est de maintenir assez de parallélisme pour pouvoir être c
 
 En premier lieu, nous avons développé une nouvelle interface de programmation basée sur celle de Intel TBB.
 %
-Cette interface nous permet de décrire un graphe de tâche complet et d'utiliser plusieurs ordonnanceurs pour ordonnancer le graphe (Fig~\ref{fig:runtime}).
+Cette interface nous permet de décrire un graphe de tâche complet et d'utiliser plusieurs ordonnanceurs pour ordonnancer le graphe.
 %
 Avec cette interface, nous pouvons faire des modifications sur le graphe et le rendre plus grossier.
 %
@@ -43,14 +43,6 @@ Nous avons appelé cette interface Taggre.
 Grâce à l'utilisation d'heuristiques décrites plus loin dans la thèse, un programme parallèle peut continuer de décrire son parallélisme de façon naturelle, sans se soucier de la granularité.
 %
 Taggre s'occupera ensuite de faire le travail nécessaire pour rendre ce graphe assez grossier pour qu'un ordonnanceur puisse l'ordonnancer efficacement (Fig.~\ref{fig:coarsening}).
-
-%   (-_-)   %
-\begin{figure}[t!]
-  \centering
-  \includegraphics[width=0.8\textwidth]{runtime}
-  \caption{Le programme parallèle fournit un graphe de tâches à l'ordonnanceur de tâches. Les tâches sont ensuite distribuées sur les coeurs de calcul disponibles.}
-  \label{fig:runtime}
-\end{figure}
 
 %   (-_-)   %
 \begin{figure}[t!]

@@ -1,5 +1,5 @@
 \subsubsection{Front}
-Un peu plus intéressant que l'opérateur S, l'opérateur front, abrégé {\em F} dans Taggre, va limiter le nombre de tâche disponible au même moment dans l'ordonnanceur.
+Un peu plus intéressant que l'opérateur S, l'opérateur front, abrégé {\em F} dans Taggre, va limiter le nombre de tâches disponibles au même moment dans l'ordonnanceur.
 %
 Pour cela, il va travailler à diminuer la largeur du graphe.
 %
@@ -11,9 +11,9 @@ La largeur du graphe donnera un indice sur le parallélisme exploitable.
 %
 Plus un graphe est large, plus il offrira de parallélisme.
 %
-En effet, avec un nombre illimité de coeur de calcul, on peut exploiter au mieux le même nombre de coeur que la largeur du graphe.
+En effet, avec un nombre illimité de coeurs de calcul, on peut exploiter au mieux le même nombre de coeurs que la largeur du graphe.
 %
-Le cas idéal serait donc un graphe d'une tâche de hauteur proche de 1 avec un nombre conséquent de tâches à la même hauteur.
+Le cas idéal serait donc un graphe de hauteur proche de 1 avec un nombre conséquent de tâches à la même hauteur.
 %
 Ce cas ressemble fortement au parallélisme de boucle.
 %
@@ -21,9 +21,9 @@ Le nombre de tâches du graphe est aussi une propriété à prendre en compte, l
 
 
 
-Un graphe fournissant énormément de parallélisme par rapport au nombre de coeur disponible n'aura pas forcément un meilleur équilibrage de charge par rapport à un graphe offrant moins de parallélisme.
+Un graphe fournissant énormément de parallélisme par rapport au nombre de coeurs disponibles n'aura pas forcément un meilleur équilibrage de charge par rapport à un graphe offrant moins de parallélisme.
 %
-D'autre part, trop de parallélisme peut conduire à la congestion des structures de données servant à maintenir à jour les tâches prêtes à être ordonnancer.
+D'autre part, trop de parallélisme peut conduire à la congestion des structures de données servant à maintenir à jour les tâches prêtes à être ordonnancées.
 %
 En réduisant la largeur du graphe, on peut ainsi réduire le parallélisme.
 %

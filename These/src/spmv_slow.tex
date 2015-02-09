@@ -11,7 +11,7 @@ Malgré ces optimisations, le SpMV est toujours limité par la bande passante m�
 %
 Les courbes de scalabilité du SpMV nous montrent que le gain de performance n'est linéaire avec le nombre de coeurs.
 %
-Le constat est même pire que ça, on arrive difficilement à un speedup de 2 sur 12 coeurs lorsqu'on utilise une seule variable primaire.
+Le constat est même pire que ça, on arrive difficilement à une accélération de 2 sur 12 coeurs lorsqu'on utilise une seule variable primaire.
 %
 Si on regarde les compteurs matériels, on s'aperçoit que la moitié de la bande passante de chaque banc NUMA est utilisée par des accès distant.
 %

@@ -15,7 +15,7 @@ Il suffit de résoudre chaque équation ligne par ligne en commençant par la li
 %
 Ensuite il faut résoudre la ligne avec deux valeurs non nulles dont une des inconnues provient de la solution précédente, et ainsi de suite jusqu'à la dernière ligne.
 %
-Cet algorithme est purement séquentiel mais des travaux existent pour exploiter du parallélisme dans certaines phases de l'algorithme~\cite{plasma_lu}.
+Il existe du parallélisme à exploiter dans cet algorithme, à chaque fois qu'une inconnue est trouvée, on peux la retirer de chacune des lignes restantes à traiter~\cite{plasma_lu}.
 
 
 
@@ -33,7 +33,7 @@ Dans le cas ILU(k), le paramètre k sert à limiter le niveau d'interaction entr
 %
 Avec $k=0$, le motif des matrices $L$ et $U$ reste similaire au motif de la matrice $A$.
 %
-Il y a du parallélisme dans l'algorithme ILU, certaines lignes peuvent être factorisées en parallèle et ce parallélisme se représente naturellement sous la forme d'un graphe de tâches (Fig.~\ref{fig:example_3_dag}).
+Le parallélisme exploitable dans l'algorithme ILU est différent de celui exploitable dans l'algorithme LU, il offre la possibilité de factoriser certaines lignes en parallèle et ce parallélisme se représente naturellement sous la forme d'un graphe de tâches (Fig.~\ref{fig:example_3_dag}).
 %
 Chaque tâche représentant la factorisation d'une ligne de la matrice et les dépendances entre les tâches sont données par le motif de la matrice.
 %
@@ -41,7 +41,7 @@ En effet, pour factoriser la ligne $i$, nous devons factoriser toutes les lignes
 %
 Donc, à partir du motif des valeurs non-nulles de la matrice, nous pouvons facilement construire le graphe de tâche:
 %
-la tâche $i$ corresponds à la ligne $i$ de la matrice, la liste des taches prédécesseurs de la tâche $i$ est donnée par l'index de colonne des valeurs non-nulles avant la diagonale dans la ligne $i$ et la liste des taches successeurs de la tâche $i$ est donnée par l'index de ligne des valeurs non-nulles au-dessous de la diagonale de la colonne $i$.
+la tâche $i$ corresponds à la ligne $i$ de la matrice, la liste des taches prédécesseurs de la tâche $i$ est donnée par l'index de colonne des valeurs non-nulles avant la diagonale dans la ligne $i$ et la liste des tâches successeurs de la tâche $i$ est donnée par l'index de ligne des valeurs non-nulles au-dessous de la diagonale de la colonne $i$ (Algo~\ref{algo:ilu0}).
 
 \begin{figure}[!ht]
      \begin{center}
@@ -62,6 +62,21 @@ la tâche $i$ corresponds à la ligne $i$ de la matrice, la liste des taches pr�
     \label{fig:exemple_3_dag}
 \end{figure}
 
+\begin{algorithm}
+  \KwData{$M$ : matrice de dimension $n$}
+  \For{$i = 2$ {\bf à} $n$} {
+    \For{$k = 1$ {\bf à} $i - 1$ {\bf et} $M_{ik} != 0$} {
+      $M_{ik} = M_{ik} / M_{kk}$ \\
+      \For{$j = k + 1$ {\bf à} $n$ {\bf et} $M_{ij} != 0$} {
+        $M_{ij} = M_{ij} - M_{ik}M_{kj}$ \\
+      }
+    }
+  }
+  \caption{Factorisation ILU(0) sur place.}
+  \label{algo:ilu0}
+\end{algorithm}
+
+
 En résumé, le parallélisme de l'algorithme ILU peut se représenter sous la forme d'un graphe de tâches.
 %
 Chaque tâche représentant la factorisation d'une ligne... ce qui est bien petit.
@@ -80,3 +95,20 @@ Pour résoudre ce problème, les tâches doivent devenir plus grosses, nous devo
 Mais le choix de ces lignes n'est pas trivial, il faut limiter l'impact sur le parallélisme et ne pas changer le résultat final.
 %
 Une méthode générique a été développée durant la thèse et sera expliquée plus loin dans ce document.
+
+
+Il existe des travaux de recherche dont le but est aussi d'exploiter le parallélisme de l'algorithme ILU.
+%
+En réordonannt les inconnues de la matrice, on peux modifier le graphe de tâches.
+%
+Un réordonnancement rouge-noir permet de factoriser parallèlement la moitié des lignes de la matrice dans un premier temps, puis la seconde moitié des lignes dans un second temps.
+%
+Cette technique offre énormément de parallélisme mais aura un impact négatif sur la convergence\cite{red_black_ilu}.
+%
+Plus récemment, une autre méthode a été développée permettant de factoriser tous les éléments de la matrice en parallèle.
+%
+L'opération de factorisation parallèle est appelé {\em sweep} et est effectuée plusieurs fois\cite{chow2014fine}.
+%
+En moyenne 3 sweeps suffisent à obtenir un résultat proche de la factorisation incomplète.
+%
+La convergence n'est donc que faiblement dégradée, mais il faut prendre en compte que 3 sweeps ont été nécessaires et il a donc fallu faire 3 fois plus d'opérations qu'une factorisation ILU.

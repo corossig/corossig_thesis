@@ -21,7 +21,7 @@ do
         
         gnuplot -p << EOF
 set xlabel "Nombre de threads"
-set ylabel "Speedup"
+set ylabel "Accélération"
 set key left top noreverse width 2
 set yrange [0:$YRANGE]
 set terminal svg size 700,500 fname 'Verdana' fsize 16

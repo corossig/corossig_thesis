@@ -1,7 +1,9 @@
 \subsubsection{Dézoomé}
-Je pense qu'il s'agit de l'opérateur le plus intéressant parce qu'il permet d'effectuer des agrégations assez génériques et souvent efficaces.
+L'opérateur dézoomé est l'opérateur le plus intéressant de Taggre, il permet d'effectuer des agrégations assez génériques et souvent efficaces.
 %
-Abrégé {\em D} dans Taggre, cet opérateur essaye de créer des groupes de tâches proche spatialement, un peu à la manière d'un partitionneur de graphe.
+En effet, cet opérateur va travailler à diminuer à la fois la largeur et la hauteur du graphe.
+%
+Abrégé {\em D} dans Taggre, cet opérateur essaye de créer des agrégats de tâches proche spatialement, un peu à la manière d'un partitionneur de graphe.
 %
 Le nom {\em dézoomé} provient du fait que la structure globale du graphe ne change pas beaucoup pendant l'agrégation même si le nombre de tâches a lui considérablement diminué.
 %
@@ -25,7 +27,7 @@ Les tâches ainsi agrégées sont ensuite simulées pour fournir de nouvelles t�
 \end{figure}
 
 \begin{algorithm}
-  \KwData{$M$, DAG}
+  \KwData{DAG, $M$ : le nombre de tâches dans un agrégat}
   {\sc Prêt} = liste vide \\
   mettre les tâches racines de DAG dans {\sc Prêt} \\
   \While{{\sc Prêt} n'est pas vide} {
@@ -33,15 +35,15 @@ Les tâches ainsi agrégées sont ensuite simulées pour fournir de nouvelles t�
     {\sc Prêt} = liste vide \\
     \While{{\sc Profondeur} n'est pas vide} {
       {\sc Maître} = retirer le premier de {\sc Profondeur} \\
-      {\sc Release} = liste vide \\
-      mettre {\sc Maître} dans {\sc Release} \\
+      {\sc Libérer} = liste vide \\
+      mettre {\sc Maître} dans {\sc Libérer} \\
       {\sc Compteur} = 0 \\
-      \While{{\sc Compteur} $< M$ {\bf et} {\sc Release} n'est pas vide} {
-        {\sc Suivant} = retirer le premier de {\sc Release} \\
+      \While{{\sc Compteur} $< M$ {\bf et} {\sc Libérer} n'est pas vide} {
+        {\sc Suivant} = retirer le premier de {\sc Libérer} \\
         {\sc Compteur}++\\
         agréger {\sc Maître} et {\sc Suivant}\\
-        mettre les tâches libérées par {\sc Suivant} dans {\sc Release} \\
-        trier {\sc Release} par nombre de précédence de {\sc Maître} \\
+        mettre les tâches libérées par {\sc Suivant} dans {\sc Libérer} \\
+        trier {\sc Libérer} par nombre de précédence de {\sc Maître} \\
       }
       mettre les tâches libérées par {\sc Maître} dans {\sc Profondeur} \\
     }

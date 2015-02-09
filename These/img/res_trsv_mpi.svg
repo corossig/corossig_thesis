@@ -87,7 +87,7 @@
 		<text> 12</text>
 	</g>
 	<path stroke='black'  d='M96.8,22.5 L96.8,423.2 L666.3,423.2 L666.3,22.5 L96.8,22.5 Z  '/>	<g transform="translate(23.6,222.9) rotate(270)" style="stroke:none; fill:black; font-family:Verdana; font-size:16.00pt; text-anchor:middle">
-		<text>Speedup</text>
+		<text>Accélération</text>
 	</g>
 	<g transform="translate(381.5,489.2)" style="stroke:none; fill:black; font-family:Verdana; font-size:16.00pt; text-anchor:middle">
 		<text>Nombre de threads</text>

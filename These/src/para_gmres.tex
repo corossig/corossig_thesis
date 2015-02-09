@@ -10,15 +10,15 @@ Cette opération peut être parallélisée avec du parallélisme de boucle, les 
 
 Donc en général, l'algorithme GMRES se parallélise très bien.
 %
-Mais nous ne pouvons pas l'utilise tel quel, nos matrices ne sont pas assez bien conditionnée.
+Mais nous ne pouvons pas l'utiliser tel quel, nos matrices ne sont pas assez bien conditionnées.
 %
 Il est nécessaire de préconditionner nos matrices pour obtenir de bonnes performances.
 %
 Par contre, la partie préconditionneur n'est pas toujours facilement parallélisable.
 %
-Par exemple, le préconditionneur ILU(k), que nous allons utiliser, est un algorithme séquentiel.
+Par exemple, le préconditionneur ILU(k), que nous allons utiliser, est un algorithme comportant peu de parallélisme.
 %
-Ce chapitre sera consacré à rendre cet algorithme plus parallèle.
+Ce chapitre sera consacré à exploiter un maximum de parallélisme de cet algorithme.
 
 
 

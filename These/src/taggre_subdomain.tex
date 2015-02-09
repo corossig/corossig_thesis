@@ -13,13 +13,13 @@ Le nouveau préconditionneur sera toujours une factorisation ILU mais seulement 
 %
 Ici le parallélisme est idéal, chaque processus pourra exécuter une factorisation ILU parallèlement aux autres processus.
 %
-Malgré ce parallélisme, nous n'obtenons pas un speed parfait (Fig.~\ref{fig:res_facto_mpi}).
-%
-L'explication se situe au niveau de la mémoire, on est limité par la bande passante.
+Malgré ce parallélisme, nous n'obtenons pas une accélération parfaite (Fig.~\ref{fig:res_facto_mpi}).
 %
 C'est un problème récurrent quand on fait de l'algèbre linéaire.
 %
-Si on compare les speedups obtenus avec ceux obtenues avec l'agrégation de tâche on peut voir des résultats légèrement meilleurs mais il ne faut pas oublier que le résultat numérique est moins bon et ce dernier critère est très dur à évaluer.
+Si on compare les accélérations obtenues avec celles obtenues avec l'agrégation de tâches on peut voir des résultats légèrement meilleurs mais il ne faut pas oublier que le résultat numérique est moins bon et ce dernier critère est très dur à évaluer.
+%
+En effet, un résultat numérique moins bon peut engendrer plus d'itérations dans le solveur linéaire et donc consommer plus de temps.
 
 
 %   (-_-)   %
@@ -47,8 +47,9 @@ Dans le cas des processus MPI, chaque processus a son propre espace mémoire et 
 %
 Mais dans le cas des threads, l'espace mémoire est partagée entre deux bancs mémoires et si les accès mémoires ne sont pas optimisés, il y aura des transferts entre les bancs NUMA.
 %
-Ces transferts auront pour effet d'augmenter la latence des accès mémoires et de réduire le CPI\footnote{Clock Per Instruction}, ici on a un CPI de 0.75 pour la version MPI contre 1.08 pour la version threadé.
-
+Ces transferts auront pour effet d'augmenter la latence des accès mémoires et de réduire le CPI\footnote{Clock Per Instruction}, ici on a un CPI de 0,75 pour la version MPI contre 1,08 pour la version threadé.
+%
+L'explication de la différence de performance entre ces deux versions se situe au niveau de la mémoire, on est limité par la bande passante.
 
 %% +-----------------------------+----------+----------+MPI12
 %% |           Metric            |  core 0  |  core 6  |
