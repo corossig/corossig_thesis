@@ -7,10 +7,35 @@ Dans notre cas l'agrégation est faite au début du programme et reste valide ta
 %
 Le temps passé à appliquer les opérateurs d'agrégation va dépendre du nombre de tâche, des opérateurs et de l'ordre des opérateurs.
 %
-L'opérateur C mettra 90~$\mu{s}$ a traiter une tâche, l'opérateur F 120~$\mu{s}$ et l'opérateur D 192~$\mu{s}$.
+L'opérateur C mettra 150~$\mu{s}$ a traiter une tâche, l'opérateur F mettra 190~$\mu{s}$ et l'opérateur D mettra 250~$\mu{s}$.
 %
-Par exemple pour la matrice SPE10 il faut 0,88~s pour appliquer l'opérateur C, 1,81~s pour appliquer l'opérateur D(2) et 1,24s pour appliquer CD(2).
+Par exemple pour la matrice SPE10 il faut 1,67~s pour appliquer l'opérateur C, 2,94~s pour appliquer l'opérateur D(8) et 2.19s pour appliquer CD(2).
 %
-Toujours pour le cas SPE10, il devient rentable d'utiliser Taggre à partir d'environ 7 factorisations ou 7 résolutions triangulaires.
+Toujours pour le cas SPE10, il devient rentable d'utiliser Taggre à partir d'environ 8 factorisations ou 10 résolutions triangulaires (Tab.~\ref{tab:gain_agg}).
 %
-Les 7 résolutions triangulaires peuvent être faites dans une résolution du GMRES.
+Les 10 résolutions triangulaires peuvent être faites dans une résolution du GMRES.
+
+%   (-_-)   %
+\begin{center}
+  \begin{tabular}{ | r | c || c | c | c | }
+    \hline
+    Matrice & Agrégation & Temps agrégation & Gain factorisation & Gain résolution \\
+    \hline
+    \hline
+    SPE10   &      C     & 1,67110          & 0,1885655          & 0,17194333 \\
+    \hline
+    SPE10   &    D(8)    & 2,94082          & 0,0879175          & 0,12452641 \\
+    \hline
+    SPE10   &    CD(2)   & 2,19753          & 0,1897719          & 0.17330341 \\
+    \hline
+    \hline
+    Cube 100&      C     & 1,49823          & 0,1671247          & 0,16391555 \\
+    \hline
+    Cube 100&    D(8)    & 2,52494          & 0,0956862          & 0,13212555 \\
+    \hline
+    Cube 100&    CD(2)   & 2,52494          & 0,1679397          & 0,16501345 \\
+    \hline
+  \end{tabular}
+  \captionof{table}{Temps d'application des opérateurs d'agrégation et les gains de temps obtenus sur les opérations d'algèbre linéaire.}
+  \label{tab:gain_agg}
+\end{center}
