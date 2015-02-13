@@ -8,6 +8,16 @@ Pour obtenir des performances raisonnables, nous devons augmenter la granularit�
 Pour cela, nous proposons de créer des groupes de tâches, de considérer chaque groupe comme une seule tâche et d'ordonnancer tous ces groupes en tant que graphe de tâches pour ainsi réduire le surcoût lié à l'ordonnanceur.
 %
 Au final, nous obtenons un graphe composé de moins de tâches, mais il faut faire attention à ne pas trop réduire le parallélisme fourni par le graphe.
+%
+Nous connaissons déjà une solution efficace capable de répondre à une partie du problème.
+%
+Dans le cas d'un cube 3D avec une numérotation naturelle, nous pouvons changer la granularité en factorisant des groupes de lignes correspondant à un avec du cube.
+%
+Malheureusement, cette méthode ne fonctionne qu'avec une seule numérotation et nous devons connaître la taille du cube.
+%
+Nous avons donc cherché une méthode générique.
+
+
 
 
 En partant de la représentation la plus fine sous forme de DAG du parallélisme, nous avons besoin de calculer un nouveau DAG plus grossier avec moins de tâches.
@@ -32,7 +42,7 @@ L'autre difficulté est de maintenir assez de parallélisme pour pouvoir être c
     \label{fig:agg_basic}
 \end{figure}
 
-En premier lieu, nous avons développé une nouvelle interface de programmation basée sur celle de Intel TBB.
+En premier lieu, nous avons développé une nouvelle interface de programmation en C++ basée sur celle de Intel TBB.
 %
 Cette interface nous permet de décrire un graphe de tâche complet et d'utiliser plusieurs ordonnanceurs pour ordonnancer le graphe.
 %
@@ -51,3 +61,19 @@ Taggre s'occupera ensuite de faire le travail nécessaire pour rendre ce graphe 
   \caption{Le programme parallèle fournit un graphe de tâches à Taggre. Taggre modifie le graphe. Taggre fournit le graphe à l'ordonnanceur. Le processus d'agrégation est totalement transparent pour l'ordonnanceur.}
   \label{fig:coarsening}
 \end{figure}
+
+
+\begin{lstlisting}
+/* Creer un objet graphe */
+Schema schema;
+
+/* Creer les noeuds du graphe */
+vector<int> mes_taches;
+for (int i = 0; i < nombres_de_lignes; i++)
+  mes_taches.push_back(schema.new_task(1, i));
+
+/* Definir les aretes du graphe */
+for (int i = 0; i < nb_rows; i++)
+ for (int j = 0; j < diag[i]; j++)
+  schema.declare_dependency(my_tasks[j],my_tasks[i])
+ \end{lstlisting}

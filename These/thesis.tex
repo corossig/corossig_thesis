@@ -19,6 +19,39 @@
 \usepackage{caption}
 \usepackage{subfigure}
 
+\usepackage{color}
+\usepackage{listings}
+
+\definecolor{cppred}{rgb}{0.6,0,0} % for strings
+\definecolor{cppgreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{cpppurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{cppblue}{rgb}{0.25,0.35,0.75} % javadoc
+
+\lstset{
+  language=C++,
+  numbers=left,
+  numberstyle=\footnotesize,
+  stepnumber=1,
+  backgroundcolor=\color{white},
+  identifierstyle=\color{cpppurple},
+  keywordstyle=\bfseries,
+  stringstyle=\color{cppred},
+  commentstyle=\color{cppgreen},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  frame=single,
+  tabsize=2,
+  captionpos=b,
+  breaklines=true,
+  breakatwhitespace=false,
+  escapeinside={\%*}{*)}
+}
+
+
+
+
+
 \title{Un modèle de programmation à grain fin pour la parallélisation de solveurs linéaire creux}
 
 

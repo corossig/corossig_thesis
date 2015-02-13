@@ -3,6 +3,10 @@ Le parallélisme dans la partie solveur linéaire du code peut être obtenu de d
 %
 Jusqu'à maintenant, nous avons étudié le parallélisme avec des paradigmes de parallélisation en mémoire partagée, mais on peut aussi utiliser une parallélisation par passage de messages.
 %
+En pratique, nous allons utiliser les deux types de parallélisme pour exploiter au mieux les grappes de serveurs.
+%
+Mais on pourrait imaginer n'utiliser que le paradigme par passage de messages.
+%
 Dans ce cas, on change le préconditionneur et donc le résultat.
 %
 On va utiliser la décomposition de domaine pour distribuer le travail entre les différents processus.

@@ -99,9 +99,9 @@ Une méthode générique a été développée durant la thèse et sera expliqué
 
 Il existe des travaux de recherche dont le but est aussi d'exploiter le parallélisme de l'algorithme ILU.
 %
-En réordonannt les inconnues de la matrice, on peux modifier le graphe de tâches.
+En changeant la numérotation des cellules, on peux modifier la structure de la matrice ce qui aura pour effet de changer la factorisation.
 %
-Un réordonnancement rouge-noir permet de factoriser parallèlement la moitié des lignes de la matrice dans un premier temps, puis la seconde moitié des lignes dans un second temps.
+Une renumérotation rouge-noir permet de factoriser parallèlement la moitié des lignes de la matrice dans un premier temps, puis la seconde moitié des lignes dans un second temps.
 %
 Cette technique offre énormément de parallélisme mais aura un impact négatif sur la convergence\cite{red_black_ilu}.
 %
@@ -112,3 +112,19 @@ L'opération de factorisation parallèle est appelé {\em sweep} et est effectu�
 En moyenne 3 sweeps suffisent à obtenir un résultat proche de la factorisation incomplète.
 %
 La convergence n'est donc que faiblement dégradée, mais il faut prendre en compte que 3 sweeps ont été nécessaires et il a donc fallu faire 3 fois plus d'opérations qu'une factorisation ILU.
+
+%   (-_-)   %
+\begin{figure}[!ht]
+     \begin{center}
+        \subfigure[Exemple de graphe de tâche obtenu avec une numérotation naturelle.]{%
+          \label{fig:DAG_natural}
+          \includegraphics[width=0.33\textwidth]{DAG_natural}
+        }%
+        \subfigure[Exemple de graphe de tâche obtenu avec une numérotation rouge-noire.]{%
+          \label{fig:DAG_redblack}
+          \includegraphics[width=0.66\textwidth]{DAG_redblack}
+        }%
+    \end{center}
+    \caption{Différence de parallélisme en fonction de la numérotation choisie.}
+    \label{fig:DAG_ordering}
+\end{figure}
