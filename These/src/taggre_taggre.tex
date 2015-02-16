@@ -42,7 +42,9 @@ L'autre difficulté est de maintenir assez de parallélisme pour pouvoir être c
     \label{fig:agg_basic}
 \end{figure}
 
-En premier lieu, nous avons développé une nouvelle interface de programmation en C++ basée sur celle de Intel TBB.
+En premier lieu, nous avons développé une nouvelle interface de programmation en C++, nous avons repris de Intel TBB le concept d'un objet {\em Tâche} contenant la fonction à exécuter.
+%
+\`A cela, nous avons ajouter la description des dépendances dans cet objet.
 %
 Cette interface nous permet de décrire un graphe de tâche complet et d'utiliser plusieurs ordonnanceurs pour ordonnancer le graphe.
 %
@@ -63,17 +65,4 @@ Taggre s'occupera ensuite de faire le travail nécessaire pour rendre ce graphe 
 \end{figure}
 
 
-\begin{lstlisting}
-/* Creer un objet graphe */
-Schema schema;
-
-/* Creer les noeuds du graphe */
-vector<int> mes_taches;
-for (int i = 0; i < nombres_de_lignes; i++)
-  mes_taches.push_back(schema.new_task(1, i));
-
-/* Definir les aretes du graphe */
-for (int i = 0; i < nb_rows; i++)
- for (int j = 0; j < diag[i]; j++)
-  schema.declare_dependency(my_tasks[j],my_tasks[i])
- \end{lstlisting}
+\lstinputlisting[inputencoding=utf8/latin1]{src/taggre.cpp}

@@ -101,17 +101,17 @@ Il existe des travaux de recherche dont le but est aussi d'exploiter le parallé
 %
 En changeant la numérotation des cellules, on peux modifier la structure de la matrice ce qui aura pour effet de changer la factorisation.
 %
-Une renumérotation rouge-noir permet de factoriser parallèlement la moitié des lignes de la matrice dans un premier temps, puis la seconde moitié des lignes dans un second temps.
+Une renumérotation rouge-noire permet de factoriser parallèlement la moitié des lignes de la matrice dans un premier temps, puis la seconde moitié des lignes dans un second temps.
 %
 Cette technique offre énormément de parallélisme mais aura un impact négatif sur la convergence\cite{red_black_ilu}.
 %
-Plus récemment, une autre méthode a été développée permettant de factoriser tous les éléments de la matrice en parallèle.
+Plus récemment, une autre méthode a été développée permettant de factoriser tous les éléments de la matrice en parallèle tout en gardant une numérotation naturelle.
 %
-L'opération de factorisation parallèle est appelé {\em sweep} et est effectuée plusieurs fois\cite{chow2014fine}.
+L'opération de factorisation parallèle est appelé {\em sweep} et doit être effectuée plusieurs fois\cite{chow2014fine}.
 %
 En moyenne 3 sweeps suffisent à obtenir un résultat proche de la factorisation incomplète.
 %
-La convergence n'est donc que faiblement dégradée, mais il faut prendre en compte que 3 sweeps ont été nécessaires et il a donc fallu faire 3 fois plus d'opérations qu'une factorisation ILU.
+La convergence n'est donc que faiblement dégradée, mais il faut prendre en compte que 3 sweeps ont été nécessaires et il a donc fallu faire 3 fois plus d'opérations qu'une factorisation ILU classique.
 
 %   (-_-)   %
 \begin{figure}[!ht]
