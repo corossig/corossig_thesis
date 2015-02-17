@@ -8,9 +8,26 @@ Quatre heuristiques ont été créées, chaque opérateur s'occupe de résoudre 
 La création d'un cycle lors d'une agrégation intervient lorsque l'on crée un groupe de tâche dans lequel deux des tâches ont une dépendance indirecte, symbolisé par un chemin dans le graphe, et qu'au moins une des tâches de ce chemin n'appartient pas au groupe.
 
 
-%Pour évaluer l'amélioration apportée par chaque heuristique, nous avons intégré dans Taggre un simulateur minimal qui estimera le temps d'ordonnancement du graphe.
-% Les résultats du simulateur minimal ne sont pas bons
-%Cette estimation est essentielle dans la mesure où elle permet de mesurer le parallélisme restant pouvant être extrait du graphe grossier.
+Pour évaluer l'amélioration apportée par chaque heuristique, nous avons intégré dans Taggre un simulateur minimal qui estimera le temps d'ordonnancement du graphe.
+%
+Cette estimation est essentielle dans la mesure où elle permet de mesurer le parallélisme restant pouvant être extrait du graphe grossier.
+%
+Pour modéliser le plus fidèlement possible les améliorations de performances liées à l'agrégation, nous prenons en compte deux paramètres.
+%
+Le premier paramètre est le surcoût lié à l'ordonnancement de la tâche.
+%
+Le deuxième paramètre correspond à l'amélioration des effets cache, il s'agit du temps gagné lorsque deux lignes consécutives de la matrice sont factorisées dans la même tâche.
+%
+Ces deux paramètres seront choisis parmi un ensemble de valeur de façon à corroborer les temps obtenues.
+%
+Dans le cas avec 3 variables primaires, les paramètres valent respectivement 30 et 0,7.
+%
+Ça signifie que l'ordonnanceur met 30 fois plus de temps à ordonnancer une tâche que la tâche ne met à factoriser une ligne.
+%
+Ça signifie aussi que lors de la factorisation de deux lignes consécutives, la factorisation de la deuxième ligne sera 30\% plus rapide.
+%
+Mais avec 8 variables primaires, ces valeurs deviennent différentes. {\em (METTRE VALEUR ICI)}%TODO
+
 
 On pourrait se poser la question de l'utilisation d'un partitionneur de graphe comme opérateur d'agrégation.
 %

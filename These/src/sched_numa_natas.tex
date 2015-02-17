@@ -32,17 +32,18 @@ Il permet de faire différents types d'allocations tel que :
 \begin{itemize}
   \item distribuer régulièrement la mémoire;
   \item entrelacer les pages mémoires;
-  \item bind memory pages.
+  \item spécifier l'emplacement mémoire.
 \end{itemize}
 %
-Ces allocations font miroir au différent type d'ordonnancements.
+Ces allocations font miroir au différent type d'ordonnancements (first touch, interleave and bind).
 %
 Dans le cas d'un parallélisme de boucle avec un distribution statique, on distribuera la mémoire régulièrement.
 %
 Dans le cas d'un graphe de tâche, le programmeur donnera la position souhaitée des tâches.
 %
-Il lui suffira de simuler l'exécution du code, de désactiver le vol de tâches et d'appeler la fonction de migration des pages dans chaque tâche.
-
+Pour cela, il lui suffira de simuler l'exécution du code, de désactiver le vol de tâches et d'appeler la fonction d'allocation ou de migration des pages dans chaque tâche.
+%
+Nous obtiendrons ainsi une mémoire équitablement distribuée et des accès mémoire optimisés.
 
 
 NATaS s'interface avec Taggre pour améliorer les performances sur des machines NUMA.

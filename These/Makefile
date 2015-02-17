@@ -21,7 +21,11 @@ endif
 .PHONY: imgs view
 
 imgs:
-	cd img && ./svg2pdf.sh
+	@echo "Update images"
+	@cd img && ./svg2pdf.sh
+	@cd ..
+	@cd resultat_rostand && ./plot.sh && ../img/svg2pdf.sh
+	@cd ..
 
 view:
 	evince $(DEST)
