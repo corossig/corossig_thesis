@@ -1,0 +1,10 @@
+\subsection{Factorisation et résolution triangulaire}
+La factorisation ainsi que la résolution triangulaire utilisent le même graphe de tâches.
+%
+Les pages mémoires utilisées composants la matrice sont distribuée en respectant l'affinité mémoire des tâches associées.
+%
+Cette affinité est fournit par Taggre et correspond à une distribution à peu près équitable des pages mémoires au fil du déroulement du graphe.
+%
+Malheureusement, nous ne pouvons pas distribuer toutes les pages de manières optimal car il arrive que certaines pages soit utilisées par plusieurs tâches ayant des affinités mémoires différentes.
+%
+Dans un tel cas, nous choisissons de placer la page mémoire sur le banc NUMA ayant le plus de tâches.
