@@ -22,7 +22,7 @@ Nous avons donc cherché une méthode générique.
 
 En partant de la représentation la plus fine sous forme de DAG du parallélisme, nous avons besoin de calculer un nouveau DAG plus grossier avec moins de tâches.
 %
-La principale difficulté est de garder la propriété {\em acyclique} du graphe, la présence d'un cycle introduirait un inter-blocage dans l'ordonnancement du graphe (Fig.~\ref{fig:agg_invalid}).
+La principale difficulté est de garder la propriété {\em acyclique} du graphe, car la présence d'un cycle introduirait un inter-blocage dans l'ordonnancement du graphe (Fig.~\ref{fig:agg_invalid}).
 %
 L'autre difficulté est de maintenir assez de parallélisme pour pouvoir être capable d'utiliser au mieux les capacités de la machine.
 

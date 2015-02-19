@@ -55,8 +55,11 @@ Les tâches agrégées ensemble ont la même hauteur, il ne peut donc pas existe
 
     \While{{\sc Prêt} n'est pas vide} {
       mettre les successeurs des {\sc Moyenne} premières tâches dans {\sc Suivant} \\
-      agréger les {\sc Moyenne} premières tâches de {\sc Prêt} \\
-      retirer les {\sc Moyenne} premières tâches de {\sc Prêt}
+      {\sc T1} = retirer le premier de {\sc Prêt} \\
+      \For{{\sc $i$} allant de 0 à {\sc Moyenne}} {
+        {\sc T2} = retirer le premier de {\sc Prêt} \\
+        {\sc T1} devient {\sc T1} union {\sc T2}
+      }
     }
   }
   \caption{Algorithme de l'opérateur front.}

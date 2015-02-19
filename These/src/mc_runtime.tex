@@ -6,7 +6,7 @@ Ils sont présent un peu partout et peuvent avoir différentes fonctions.
 %
 Certains langages dits de haut niveau utilisent un runtime, par exemple Java a un runtime pour gérer son ramasse-miettes.
 %
-Toutes les implémentations de MPI qui ont un runtime.
+Toutes les implémentations de MPI ont un runtime.
 %
 Les cadriciels de programmation à base de tâches tendent à utiliser un runtime.
 %
@@ -19,7 +19,7 @@ Ces runtime doivent aussi fournir un équilibrage de charge entre toutes les res
 %
 Certains runtimes s'occupent de transférer des données entre deux ressources potentiellement hétérogènes, comme par exemple entre la mémoire principale et la mémoire d'une carte graphique ou plus simplement entre deux processus.
 %
-Ces transferts peuvent être implicites, le runtime a connaissance des données qui sont manipulées, ou ils peuvent être explicites avec l'utilisation d'une tâche spéciale qui s'occupera de faire échange de données.
+Ces transferts peuvent être implicites, le runtime a connaissance des données qui sont manipulées, ou ils peuvent être explicites avec l'utilisation d'une tâche spéciale qui s'occupera de faire les échanges de données.
 
 %   (-_-)   %
 \begin{figure}[t!]
@@ -36,7 +36,7 @@ D'autres politiques d'ordonnancement, dîtes statiques, permettent de réduire l
 %
 L'ordonnanceur parfait n'existe pas et n'existera sûrement jamais.
 %
-En effet, trouver le meilleur ordonnancement d'un ensemble de tâches avec un nombre limité de ressources de calcul est un problème NP-complet\footnote{Un problème est NP-complet si le temps nécessaire à la résolution du problèmes est polynomial comparé à la taille des données en entrées.}.
+En effet, trouver le meilleur ordonnancement d'un ensemble de tâches avec un nombre limité de ressources de calcul est un problème NP-complet\footnote{Un problème est NP-complet si le temps nécessaire à la résolution du problèmes est polynomial comparé à la taille des données en entrées et que ce problème soit aussi difficile que tous les autres problèmes NP-complets.}.
 %
 Il existe des heuristiques d'ordonnancement qui donnent de bons résultats dans la majorité des cas, nous pouvons citer l'algorithme HEFT\cite{heft}.
 %
@@ -57,7 +57,14 @@ Le langage Cilk~\cite{Cilk}, apparu en 1994 et toujours développé sous le nom 
 %
 Les tâches sont décrites par le programmeur avec des mots clés additionnels au langage C, par exemple le mot-clé {\em spawn} placé avant l'appel d'une fonction permet à Cilk de comprendre qu'il doit créer une nouvelle tâche et qu'il doit l'ordonnancer.
 %
-Peu de temps après, en 1997, la spécification OpenMP~\cite{OpenMP} sort et se concentre sur le parallélisme de boucle.
+Ces tâches sont empilées sur une pile spécifique à chaque thread.
+%
+Le vol de tâche se fait par le biais de cette pile de tâches.
+
+
+Peu de temps après, en 1997, une interface de programmation parallèle voit le jour, il s'agit d'OpenMP~\cite{OpenMP}.
+%
+Les premières versions d'OpenMP se concentrent sur le parallélisme de boucle.
 %
 Ce n'est qu'en 2008 que le support des tâches est ajouté à OpenMP dans sa version 3.0.
 

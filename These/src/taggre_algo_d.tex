@@ -12,7 +12,8 @@ Dans les meilleurs cas le nombre de tâches peut être divisé par le paramètre
 
 L'algorithme \ref{algo:algo_D} permet d'implémenter l'opérateur dézoomé tout en assurant l'absence de création de cycle.
 %
-L'algorithme va simuler l'exécution des tâches et n'agrégera des tâches ensemble qui si le simulateur peut l'ordonnancer.
+
+L'algorithme va simuler l'exécution des tâches et n'agrégera des tâches ensemble que si le simulateur peut l'ordonnancer.
 %
 Les tâches ainsi agrégées sont ensuite simulées pour fournir de nouvelles tâches à agréger.
 
@@ -41,7 +42,7 @@ Les tâches ainsi agrégées sont ensuite simulées pour fournir de nouvelles t�
       \While{{\sc Compteur} $< M$ {\bf et} {\sc Libérer} n'est pas vide} {
         {\sc Suivant} = retirer le premier de {\sc Libérer} \\
         {\sc Compteur}++\\
-        agréger {\sc Maître} et {\sc Suivant}\\
+        {\sc Maître} devient {\sc Maître} union {\sc Suivant}\\
         mettre les tâches libérées par {\sc Suivant} dans {\sc Libérer} \\
         trier {\sc Libérer} par nombre de précédence de {\sc Maître} \\
       }

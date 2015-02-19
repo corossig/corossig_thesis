@@ -1,4 +1,4 @@
-thread	Cube_100_Npri_1	Cube_100_Npri_3	Cube_100_Npri_8
+thread	Cube\_100\_Npri\_1	Cube\_100\_Npri\_3	Cube\_100\_Npri\_8
 1	1		1		1
 2	1.5490196078	1.6086956522	1.601532567
 3	1.6344827586	1.85		2.0490196078

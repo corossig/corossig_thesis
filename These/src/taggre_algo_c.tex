@@ -7,7 +7,7 @@ La plupart du temps, ce modèle sera un cube 3D.
 %
 En numérotation naturelle et avec un modèle 3D, une bonne agrégation consiste à agréger toutes les tâches d'un axe qui ont les mêmes coordonnées sur les deux autres axes.
 %
-Ca correspond à {\em aplatir} notre modèle 3D en un modèle 2D (Fig.~\ref{fig:cube5_algo_C}).
+Cela correspond à {\em aplatir} notre modèle 3D en un modèle 2D (Fig.~\ref{fig:cube5_algo_C}).
 %
 Par exemple, un cube de 5 éléments de coté, soit 125 tâches, sera transformé en un carré de 5 éléments de coté, soit 25 tâches.
 
@@ -34,9 +34,12 @@ Comme pour les autres opérateurs, nous devons vérifier qu'aucun cycle ne sera 
 %
 Pour fonctionner, cet opérateur a besoin que le programmeur attribue un nombre unique à chaque tâche et ainsi avoir un ordre strict sur les tâches.
 %
-Dans notre cas on va utiliser la numérotation naturelle.
+Dans notre cas on va utiliser la numérotation naturelle des cellules.
 %
 Puis l'opérateur agrégera ensemble les tâches ayant des nombres qui se suivent ainsi qu'une dépendance entre les tâches.
+%
+Par exemple sur la figure \ref{fig:algo_C} les tâches 2 et 3 ont des nombres consécutifs mais n'ont pas de dépendance entre elles, elles ne seront donc pas agrégées ensemble.
+
 
 Ajoutons un prédicat à l'algorithme : pour pouvoir utiliser cet algorithme, il faut absolument que pour chaque tâche $i$, l'indice associé à la tâche $i$ soit strictement inférieur aux indices associés aux successeurs de la tâche $i$.
 %
@@ -67,7 +70,7 @@ Donc, en prenant en compte le prédicat, si nous agrégeons une tâche T1 avec s
   \For{chaque tâche {\sc T1} de DAG} {
     \For{chaque successeurs {\sc T2} de {\sc T1}} {
       \If{indice de {\sc T2} == indice de {\sc T1} + {\sc Pas}} {
-        agréger {\sc T1} et {\sc T2}
+        {\sc T1} devient {\sc T1} union {\sc T2}
       }
     }
   }

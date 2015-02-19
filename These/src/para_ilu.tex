@@ -3,7 +3,7 @@ La factorisation LU en algèbre linéaire dense est une méthode pour factoriser
 %
 $L$ est une matrice triangulaire inférieure, toutes les valeurs au-dessus de la diagonale sont nulles.
 %
-Symétriquement, $U$ est une matrice triangulaire supérieure, toutes les valeurs de $U$ en dessous de la diagonale sont nulles.
+Symétriquement, $U$ est une matrice triangulaire supérieure, toutes les valeurs de $U$ en-dessous de la diagonale sont nulles.
 %
 Le principal intérêt de cette factorisation est de trouver $x$ dans les équations du type $Ax=y$.
 %
@@ -27,7 +27,7 @@ C'est pourquoi en algèbre linéaire creuse, on utilise une version altérée de
 %
 L'algorithme ILU est similaire à l'algorithme LU mais le remplissage est limité par des conditions définies par l'algorithme.
 %
-Ces conditions peuvent être de deux formes, soit en limitant le remplissage avec une valeur seuil (ILUT), soit en limitant le niveau d'interaction entre les lignes de la matrices (ILU(k)).
+Ces conditions peuvent être de deux formes : soit en limitant le remplissage avec une valeur seuil (ILUT), soit en limitant le niveau d'interaction entre les lignes de la matrices (ILU(k)).
 %
 Dans le cas ILU(k), le paramètre k sert à limiter le niveau d'interaction entre les lignes.
 %
@@ -35,13 +35,13 @@ Avec $k=0$, le motif des matrices $L$ et $U$ reste similaire au motif de la matr
 %
 Le parallélisme exploitable dans l'algorithme ILU est différent de celui exploitable dans l'algorithme LU, il offre la possibilité de factoriser certaines lignes en parallèle et ce parallélisme se représente naturellement sous la forme d'un graphe de tâches (Fig.~\ref{fig:example_3_dag}).
 %
-Chaque tâche représentant la factorisation d'une ligne de la matrice et les dépendances entre les tâches sont données par le motif de la matrice.
+Chaque tâche représentent la factorisation d'une ligne de la matrice et les dépendances entre les tâches sont données par le motif de la matrice.
 %
 En effet, pour factoriser la ligne $i$, nous devons factoriser toutes les lignes $j$ inférieures à $i$ tel que l'entrée $(i,j)$ de la matrice soit non nulle (Fig.~\ref{fig:example_2_matrix}).
 %
 Donc, à partir du motif des valeurs non-nulles de la matrice, nous pouvons facilement construire le graphe de tâche:
 %
-la tâche $i$ corresponds à la ligne $i$ de la matrice, la liste des taches prédécesseurs de la tâche $i$ est donnée par l'index de colonne des valeurs non-nulles avant la diagonale dans la ligne $i$ et la liste des tâches successeurs de la tâche $i$ est donnée par l'index de ligne des valeurs non-nulles au-dessous de la diagonale de la colonne $i$ (Algo~\ref{algo:ilu0}).
+la tâche $i$ corresponds à la ligne $i$ de la matrice, la liste des tâches prédécesseurs de la tâche $i$ est donnée par l'index de colonne des valeurs non-nulles avant la diagonale dans la ligne $i$ et la liste des tâches successeurs de la tâche $i$ est donnée par l'index de ligne des valeurs non-nulles au-dessous de la diagonale de la colonne $i$ (Algo~\ref{algo:ilu0}).
 
 \begin{figure}[!ht]
      \begin{center}

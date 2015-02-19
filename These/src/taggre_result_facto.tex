@@ -1,5 +1,5 @@
 \subsection{Amélioration de la factorisation et de la résolution triangulaire}
-Dans un premier temps, nous allons nous consacrer sur l'amélioration de la parallélisation de la factorisation ILU(k).
+Dans un premier temps, nous allons nous consacrer à l'amélioration de la parallélisation de la factorisation ILU(k).
 %
 Chaque tâche du DAG représente la factorisation d'une ligne de la matrice.
 %
@@ -11,7 +11,7 @@ Dans le cas du cube, il est possible de choisir le nombre de variables primaires
 %
 Pour rappel, le nombre de variables primaires correspond au nombre de composants simulés.
 %
-Chaque entrée non-nulle de la matrice correspond à l'interaction entre 2 cellules et sera composé d'une petite matrice dense $Npri*Npri$ avec $Npri$ le nombre de variables primaires.
+Chaque entrée non-nulle de la matrice correspond à l'interaction entre 2 cellules et sera composée d'une petite matrice dense $Npri*Npri$ avec $Npri$ le nombre de variables primaires.
 %
 Nous avons choisi de simuler le cube avec 1 variable primaire, 3 variables primaires (modèle {\em black-oil}) et 8 variables primaires (modèle {\em compositionnel}).
 %
@@ -20,8 +20,13 @@ Pour le réservoir SPE10, c'est un cas à 3 variables primaires.
 Au final nous avons donc 4 matrices différentes.
 %
 Nous ne faisons pas varier la taille du cube car les résultats obtenus avec des cubes générés de tailles raisonnablement différentes sont équivalents.
+
+
+Nous avons utilisé OpenMP pour tester la parallélisation à grain fin sans agrégation.
 %
-Comme le montre la figure~\ref{fig:res_facto_no_agg}, le nombre de variables primaires a une importance considérable sur les performances que nous obtenons.
+OpenMP n'ayant pas de gestion de dépendances entre les tâches, nous utiliserons un système de décrémentation atomique.
+%
+Comme le montre les résultats de la figure~\ref{fig:res_facto_no_agg}, le nombre de variables primaires a une importance considérable sur les performances que nous obtenons.
 %
 L'utilisation de 2 threads n'est viable que dans le cas où nous utilisons 8 variables primaires.
 %
@@ -42,15 +47,21 @@ Au final, avec l'utilisation des 12 coeurs de calcul de la machine, nous obtenon
   \label{fig:res_facto_no_agg}
 \end{figure}
 
-Dans un premier temps, nous allons applique l'opérateur F avec le paramètre 36.
+Dans un premier temps, nous allons appliquer l'opérateur F avec le paramètre 36.
 %
 Cet opérateur va donc limiter la largeur du graphe pour qu'il y ait au plus 36 tâches par hauteur du graphe.
 %
 Nous réduisons donc le parallélisme mais nous réduisons aussi le nombre de tâches, on divise par 62 le nombre de tâches pour un cube de 80 de côté.
 %
-La figure~\ref{fig:res_facto_f36} nous montre une amélioration du temps de factorisation quand le nombre de variables primaires est faible, le surcoût d'ordonnancement de la tâche est du même ordre de grandeur que le temps de calcul de la tâche.
+La figure~\ref{fig:res_facto_f36} nous montre une amélioration du temps de factorisation quand le nombre de variables primaires est faible.
 %
-Dans le cas où le nombre de variables primaires est élevé, il n'y a pas beaucoup d'amélioration.
+Cela vient du fait que le surcoût d'ordonnancement de la tâche est du même ordre de grandeur que le temps de calcul de la tâche.
+%
+Avec 3 variables primaires, la factorisation est 30~\% plus rapide.
+%
+Avec 1 variable primaire, le temps de factorisation est divisé par 2.
+%
+Dans le cas où le nombre de variables primaires est élevé, il n'y a pas beaucoup d'amélioration (6~\%).
 
 
 %   (-_-)   %
@@ -81,17 +92,21 @@ Par contre, avec 8 variables primaires, on obtient un gain de performance qui es
   \label{fig:res_facto_d8}
 \end{figure}
 
-Les deux précèdent opérateurs donnent déjà des résultats, mais le meilleur opérateur pour nos matrices reste l'opérateur C.
+Les deux précédents opérateurs donnent déjà des résultats, mais le meilleur opérateur pour nos matrices reste l'opérateur C.
 %
 Comme le montre les résultats de la figure~\ref{fig:res_facto_c}, tous les cas tests sont améliorés.
 %
-Il y a deux grandes améliorations, comme pour tous les opérateurs, il y a une réduction du nombre de tâches, mais dans ce cas la réduction est bien plus importante.
+Il y a deux grandes améliorations : la réduction du nombre de tâches et une meilleure réutilisation des caches.
 %
-En effet, avec l'opérateur F, le nombre de tâches était fortement réduit mais les tâches agrégés n'avaient pas une bonne réutilisabilité des données en cache.
+Comme pour tous les opérateurs, il y a une réduction du nombre de tâches, mais dans ce cas la réduction est bien plus importante.
+%
+Par contre, l'amélioration des effets caches est bien meilleure que dans les autres opérateurs.
+%
+Cette amélioration est inexistante dans le cas de l'opérateur F, les tâches agrégées n'avaient pas une bonne réutilisabilité des données en cache.
 %
 Au contraire, l'opérateur D ne réduisait que de très peu le nombre de tâches mais améliorait la réutilisation des caches.
 %
-L'opérateur C offre le meilleur des deux opérateurs, il produit peu de tâches et en plus ces tâches réutilisent correctement les données en cache.
+L'opérateur C offre donc le meilleur des deux opérateurs, il produit peu de tâches et en plus ces tâches réutilisent correctement les données en cache.
 % L2 stats : F:1.10, D:0.96, C:0.87
 
 
