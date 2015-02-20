@@ -1,4 +1,4 @@
-thread	Cube\_100\_Npri\_1	Cube\_100\_Npri\_3	Cube\_100\_Npri\_8
+thread	"Cube 100 Npri 1"	"Cube 100 Npri 3"	"Cube 100 Npri 8"
 1	1		1		1
 2	1.59010245	1.63902474	1.56250584
 3	1.80073397	1.85460405	1.99900528

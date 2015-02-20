@@ -24,8 +24,11 @@ imgs:
 	@echo "Update images"
 	@cd img && ./svg2pdf.sh
 	@cd ..
-	@cd resultat_rostand && ./plot.sh && ../img/svg2pdf.sh
+	@cd resultat_rostand  && ./plot.sh && ../img/svg2pdf.sh
 	@cd ..
+	@cd resultat_manumanu && ./plot.sh && ../img/svg2pdf.sh
+	@cd ..
+
 
 view:
 	evince $(DEST)
