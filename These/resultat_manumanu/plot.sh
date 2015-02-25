@@ -15,7 +15,7 @@ do
                 YRANGE=4
 		;;
             *_spmv_mpi_*)
-                YRANGE=38
+                YRANGE=120
                 ;;
             *_spmv_*)
                 YRANGE=10
