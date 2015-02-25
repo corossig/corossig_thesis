@@ -9,10 +9,18 @@ Dans ce cas, nous pouvons réutiliser des données en cache.
 %
 Malgré ces optimisations, le SpMV est toujours limité par la bande passante mémoire.
 %
-Les courbes de scalabilité du SpMV nous montrent que le gain de performance n'est pas linéaire avec le nombre de coeurs.
+Les courbes d'accélération du SpMV nous montrent que le gain de performance n'est pas linéaire avec le nombre de coeurs (Fig.~\ref{fig:res_spmv_omp_rostand})..
 %
 Le constat est même pire que ça, on arrive difficilement à une accélération de 2 sur 12 coeurs lorsqu'on utilise une seule variable primaire.
 %
 Si l'on regarde les compteurs matériels, on s'aperçoit que la moitié de la bande passante de chaque banc NUMA est utilisée par des accès distant.
 %
 Donc environ la moitié des accès mémoires sont faits une plus grande latence.
+
+%   (-_-)   %
+\begin{figure}[t!]
+  \centering
+  \includegraphics[width=0.7\textwidth]{res_spmv_omp}
+  \caption{Accélération du produit matrice vecteur creux sur Rostand en mémoire partagée.}
+  \label{fig:res_spmv_omp_rostand}
+\end{figure}

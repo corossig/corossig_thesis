@@ -1,11 +1,13 @@
 \subsection{Interleave}
 Pour diminuer les effets NUMA, nous pouvons utiliser la politique d'allocation interleave.
 %
-Cette politique va distribuer équitablement les pages mémoires sur les différents bancs NUMA.
+Cette politique va distribuer uniformément les pages mémoires sur les différents bancs NUMA.
 %
 Nous allons donc augmenter la bande passante mémoire en ne modifiant que légèrement la latence mémoire moyenne.
 %
-Sur Rostand, nous obtenons un gain de performance mais toujours pas les même performances qu'en mémoire partagée.
+Sur Rostand, nous obtenons un gain de performance d'environ 20~\% mais les performances sont toujours en dessous des performances obtenues en mémoire partagée.
+
+
 %% TODO résultat manumanu
 
 
@@ -16,3 +18,8 @@ Sur Rostand, nous obtenons un gain de performance mais toujours pas les même pe
   \caption{Accélération du produit matrice vecteur creux sur Rostand en mémoire partagée avec une politique d'allocation interleave}
   \label{fig:res_spmv_interleave_rostand}
 \end{figure}
+
+
+Concernant la partie préconditionneur, l'activation de l'allocation interleave permet de gagner XX~\% de performance.
+%
+Regarder les compteurs matérielles.
