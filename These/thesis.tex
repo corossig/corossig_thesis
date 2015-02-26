@@ -5,7 +5,7 @@
 \usepackage[english]{babel}
 
 \usepackage{url}
-\graphicspath{{img/},{resultat_rostand/},{resultat_manumanu/}}
+\graphicspath{{img/},{resultat_rostand/},{resultat_manumanu/},{resultat_frep/}}
 \DeclareGraphicsExtensions{.pdf,.png}
 
 \usepackage[T1]{fontenc}
@@ -21,6 +21,9 @@
 
 \usepackage{color}
 \usepackage{listingsutf8}
+
+\def\registered{{\ooalign{\hfil\raise .00ex\hbox{\scriptsize R}\hfil\crcr\mathhexbox20D}}}
+\def\tm{\leavevmode\hbox{$\rm {}^{TM}$}}
 
 %listings}
 
@@ -292,10 +295,6 @@ minimum height=0.1em,font=\scriptsize]
 \input{src/numa_res_spmv}
 %-------------------------------
 \input{src/numa_res_facto}
-%-------------------------------
-\input{src/numa_res_interleave}
-%-------------------------------
-\input{src/numa_res_autonuma}
 %-------------------------------
 \input{src/numa_res_natas}
 %-------------------------------

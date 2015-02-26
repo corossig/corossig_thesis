@@ -28,6 +28,8 @@ imgs:
 	@cd ..
 	@cd resultat_manumanu && ./plot.sh && ../img/svg2pdf.sh
 	@cd ..
+	@cd resultat_frep && ./plot.sh && ../img/svg2pdf.sh
+	@cd ..
 
 
 view:
