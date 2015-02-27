@@ -1,22 +1,22 @@
 \subsection{NATaS : ordonnancer des tâches sur une machine NUMA}
-Ne trouvant pas de solution adaptée à notre besoin, nous avons créer notre propre ordonnanceur de tâches.
+Ne trouvant pas de solution adaptée à notre besoin, nous avons créé notre propre ordonnanceur de tâches.
 %
 Nous l'avons appelé NATaS, il s'agit de l'acronyme {\em Numa Aware Task Scheduler}.
 %
 Celui-ci est très basique, il ne prend en compte que l'affinité mémoire des tâches, la gestion des dépendances est laissée à Taggre, tout comme avec les ordonnanceurs OpenMP et TBB.
 %
-Pour ordonnancer les tâches avec la meilleurs affinité mémoire possible, nous utilisons un conteneur de tâches thread-safe par banc NUMA.
+Pour ordonnancer les tâches avec la meilleure affinité mémoire possible, nous utilisons un conteneur de tâches thread-safe par banc NUMA.
 %
 Ce container permet à plusieurs threads d'insérer/retirer des tâches en limitant la contention.
 %
-Le vol de tâche entre conteneur a aussi été implémenter, il existe une option par tâche pour autoriser ou non le vol de tâche.
+Le vol de tâche entre conteneur a aussi été implémenté, il existe une option par tâche pour autoriser ou non le vol de tâche.
 %
 Dans le cas du parallélisme de boucle, une option permettant de donner une tâche spécifiquement à un thread a été implémentée.
 
 
 Contrairement à la plupart des autres ordonnanceurs de tâches, nous n'utilisons pas un conteneur de tâches par thread mais un conteneur par banc NUMA.
 %
-Nous avons donc plus de contention sur cette structure et une queue basique ne serai pas assez efficace.
+Nous avons donc plus de contention sur cette structure et une queue basique ne serait pas assez efficace.
 %
 \`A la place, nous utilisons un conteneur sans verrou, entièrement construit autour de l'instruction compare-and-swap.
 %
@@ -37,7 +37,7 @@ Il permet de faire différents types d'allocations tel que :
 %
 Ces allocations font miroir au différent type d'ordonnancements (first touch, interleave and bind).
 %
-Dans le cas d'un parallélisme de boucle avec un distribution statique, on distribuera la mémoire régulièrement.
+Dans le cas d'un parallélisme de boucle avec une distribution statique, on distribuera la mémoire régulièrement.
 %
 Dans le cas d'un graphe de tâche, le programmeur donnera la position souhaitée des tâches.
 %

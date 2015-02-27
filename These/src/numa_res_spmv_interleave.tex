@@ -5,7 +5,7 @@ Cette politique va distribuer uniformément les pages mémoires sur les différe
 %
 Nous allons donc augmenter la bande passante mémoire en ne modifiant que la latence mémoire moyenne.
 %
-Sur Rostand, nous obtenons un gain de performance d'environ 20~\% mais les performances sont toujours en dessous des performances obtenues en mémoire partagée (fig.~\ref{fig:res_spmv_interleave_rostand}).
+Sur Rostand, nous obtenons un gain de performance d'environ 20~\% mais les performances sont toujours en dessous des performances obtenues en mémoire partagée (Fig.~\ref{fig:res_spmv_interleave_rostand}).
 
 %   (-_-)   %
 \begin{figure}[t!]
@@ -15,7 +15,7 @@ Sur Rostand, nous obtenons un gain de performance d'environ 20~\% mais les perfo
   \label{fig:res_spmv_interleave_rostand}
 \end{figure}
 
-Sur Manumanu, on obtient de bons résultats jusqu'à 16 coeurs (fig.~\ref{fig:res_spmv_interleave_manumanu}).
+Sur Manumanu, on obtient de bons résultats jusqu'à 16 coeurs (Fig.~\ref{fig:res_spmv_interleave_manumanu}).
 %
 Au delà, nous commençons à utiliser le SGI$^\registered$ NUMAlink$^{\rm TM}$\cite{numalink} et les temps de latence des accès mémoire augmentent.
 %

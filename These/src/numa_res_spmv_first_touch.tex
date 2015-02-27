@@ -7,7 +7,7 @@ Sur la machine Rostand, nous obtenons difficilement une accélération de 2,5 su
 %
 Cette accélération descend à 1,9 en ayant 1 variable primaire, toujours sur 12 coeurs de calcul.
 %
-Ces résultats sont a comparer avec ceux obtenues en mémoire distribuée.
+Ces résultats sont à comparer avec ceux obtenues en mémoire distribuée.
 %
 Nous n'obtenons que 65~\% de la puissance maximale que nous devrions avoir.
 %
@@ -26,7 +26,7 @@ Le SpMV étant limité par la bande passante mémoire, l'utilisation d'un seul b
 
 Sur la machine Manumanu, ces effets sont amplifiés (Fig.~\ref{fig:res_spmv_omp_manumanu}).
 %
-Nous obtenons les meilleurs performances en utilisant 8 coeurs avec une accélération de 5-6.
+Nous obtenons les meilleures performances en utilisant 8 coeurs avec une accélération de 5-6.
 %
 Utiliser plus de 8 coeurs pour effectuer le SpMV fait perdre du temps, les données étant toute sur le premier banc NUMA, nous utilisons uniquement la bande passante de ce banc avec des latences d'accès plus ou moins longues.
 %

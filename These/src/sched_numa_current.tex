@@ -1,7 +1,7 @@
 \subsection{Statuts des ordonnanceurs actuels}
 L'ordonnanceur de tâches a suffisamment d'information pour avoir une bonne gestion de la mémoire.
 %
-Certains ordonnanceurs ont un contrôle totale de la mémoire utilisée par les tâches,
+Certains ordonnanceurs ont un contrôle total de la mémoire utilisée par les tâches,
 
 
 
@@ -14,9 +14,9 @@ En effet, le support du NUMA est fait avec les structures Virtual Process (vp) d
 %
 Mais ce n'est pas si grave, le vol de tâche entre vp existe.
 %
-Il conserve donc l'aspect équilibrage de charge des solutions multithreadé.
+Il conserve donc l'aspect équilibrage de charge des solutions multithreadées.
 %
 Par contre, cette solution ne convient toujours pas à résoudre notre problème, nous essayons d'avoir le moins possible de parallélisme en mémoire distribuée.
 
 
-Il existe aussi des tentatives d'ajout du support de la localité des données à OpenMP (ForestGOMP).
+Il existe aussi des tentatives d'ajout du support de la localité des données à OpenMP (ForestGOMP~\cite{Bro10Thesis}).

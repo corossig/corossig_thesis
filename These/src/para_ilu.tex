@@ -15,7 +15,7 @@ Il suffit de résoudre chaque équation ligne par ligne en commençant par la li
 %
 Ensuite il faut résoudre la ligne avec deux valeurs non nulles dont une des inconnues provient de la solution précédente, et ainsi de suite jusqu'à la dernière ligne.
 %
-Il existe du parallélisme à exploiter dans cet algorithme, à chaque fois qu'une inconnue est trouvée, on peux la retirer de chacune des lignes restantes à traiter~\cite{plasma_lu}.
+Il existe du parallélisme à exploiter dans cet algorithme, à chaque fois qu'une inconnue est trouvée, on peut la retirer de chacune des lignes restantes à traiter~\cite{plasma_lu}.
 
 
 
@@ -35,7 +35,7 @@ Avec $k=0$, le motif des matrices $L$ et $U$ reste similaire au motif de la matr
 %
 Le parallélisme exploitable dans l'algorithme ILU est différent de celui exploitable dans l'algorithme LU, il offre la possibilité de factoriser certaines lignes en parallèle et ce parallélisme se représente naturellement sous la forme d'un graphe de tâches (Fig.~\ref{fig:example_3_dag}).
 %
-Chaque tâche représentent la factorisation d'une ligne de la matrice et les dépendances entre les tâches sont données par le motif de la matrice.
+Chaque tâche représente la factorisation d'une ligne de la matrice et les dépendances entre les tâches sont données par le motif de la matrice.
 %
 En effet, pour factoriser la ligne $i$, nous devons factoriser toutes les lignes $j$ inférieures à $i$ tel que l'entrée $(i,j)$ de la matrice soit non nulle (Fig.~\ref{fig:example_2_matrix}).
 %
@@ -99,7 +99,7 @@ Une méthode générique a été développée durant la thèse et sera expliqué
 
 Il existe des travaux de recherche dont le but est aussi d'exploiter le parallélisme de l'algorithme ILU.
 %
-En changeant la numérotation des cellules, on peux modifier la structure de la matrice ce qui aura pour effet de changer la factorisation.
+En changeant la numérotation des cellules, on peut modifier la structure de la matrice ce qui aura pour effet de changer la factorisation.
 %
 Une renumérotation rouge-noire permet de factoriser parallèlement la moitié des lignes de la matrice dans un premier temps, puis la seconde moitié des lignes dans un second temps.
 %

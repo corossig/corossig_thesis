@@ -11,9 +11,9 @@ Or, cette bande passante mémoire est partagée entre les coeurs d'un même banc
 %
 L'accélération obtenue sera donc limité par la bande passante mémoire.
 %
-Sur la machine rostand, la bande passante mémoire limite grandement cette accélération (fig.~\ref{fig:res_spmv_mpi_rostand}).
+Sur la machine Rostand, la bande passante mémoire limite grandement cette accélération (Fig.~\ref{fig:res_spmv_mpi_rostand}).
 %
-Avec un cas à 8 variables primaires, nous obtenons une accélération maximal de 3,8.
+Avec un cas à 8 variables primaires, nous obtenons une accélération maximale de 3,8.
 %
 La capacité de calcul mesuré avec 12 coeurs est de 4,96~GFlops, cela correspond à la prédiction du roofline model.
 
@@ -32,11 +32,11 @@ Sur Manumanu, nous avons beaucoup plus de banc NUMA, ce qui signifie que nous au
 %
 Nous pouvons donc espérer avoir de meilleurs résultats que sur Rostand.
 %
-Il faut aussi prendre en compte une bande passante mémoire plus élevée sur les banc NUMA de Manumanu que sur ceux de Rostand.
+Il faut aussi prendre en compte une bande passante mémoire plus élevée sur les bancs NUMA de Manumanu que sur ceux de Rostand.
 %
 Les processus MPI sont alloués en mode compact, c'est à dire qu'ils sont distribués de façon à utiliser un minimum de noeuds NUMA.
 %
-Sur 1 banc NUMA, nous avons une accélération de 5 avec 8 variables primaires (fig~\ref{fig:res_spmv_mpi_manumanu}).
+Sur 1 banc NUMA, nous avons une accélération de 5 avec 8 variables primaires (Fig.~\ref{fig:res_spmv_mpi_manumanu}).
 %
 Cette accélération monte à 110 avec l'utilisation des 20 bancs NUMA et des 160 coeurs.
 

@@ -12,7 +12,7 @@ import pickle
 
 # 30_1_0_3_Da2a_Fa6a_6
 cases = {
-    "matrix"  : ["100", "30"],
+    "matrix"  : ["100", "30", "80"],
     "npri"    : ["1", "3", "8"],
     "lfill"   : ["0"],
     "taggre3" : ["", "3"],
@@ -162,7 +162,6 @@ class MyDynamicMplCanvas(MyMplCanvas):
         for i in range(len(xx)):
             sys.stdout.write(xx[i])
             sys.stdout.write("\t")
-            print(all_times)
             for k in all_times:
                 try :
                     sys.stdout.write(str(all_times[k][i])[:15])

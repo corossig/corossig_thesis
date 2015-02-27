@@ -7,11 +7,11 @@ En effet, pour avoir un stockage efficace, seul les coefficients non nuls de la 
 %
 Le motif des valeurs non nulles de la matrice est définit par le problème que nous souhaitons résoudre.
 %
-Le format le plus générique pour stocker des matrices creuses s'appelle COO\footnote{COOrdinate list} (fig.~\ref{fig:COO}).
+Le format le plus générique pour stocker des matrices creuses s'appelle COO\footnote{COOrdinate list} (Fig.~\ref{fig:COO}).
 %
 Dans ce format, chaque valeur non nulle est stockée avec ses coordonnées 2D dans la matrice.
 %
-Un autre format, lui aussi générique, est souvent utilisé, il s'agit du format CSR\footnote{Compress Sparse Row} (fig.~\ref{fig:CSR}).
+Un autre format, lui aussi générique, est souvent utilisé, il s'agit du format CSR\footnote{Compress Sparse Row} (Fig.~\ref{fig:CSR}).
 %
 Les éléments non nuls sont triés par ligne puis le tableau {\em PTR} du format de stockage nous permet de retrouver la ligne d'un élément.
 %

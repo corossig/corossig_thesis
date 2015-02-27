@@ -5,15 +5,19 @@ Les pages mémoires utilisées composants la matrice sont distribuée en respect
 %
 Cette affinité est fournit par Taggre et correspond à une distribution à peu près équitable des pages mémoires au fil du déroulement du graphe.
 %
-Malheureusement, nous ne pouvons pas distribuer toutes les pages de manières optimal car il arrive que certaines pages soit utilisées par plusieurs tâches ayant des affinités mémoires différentes.
+Malheureusement, nous ne pouvons pas distribuer toutes les pages de manière optimale car il arrive que certaines pages soient utilisées par plusieurs tâches ayant des affinités mémoires différentes.
 %
 Dans un tel cas, nous choisissons de placer la page mémoire sur le banc NUMA ayant le plus de tâches.
 
 
-
-
-\subsubsection{First touch}
-Les résultats de la factorisation et de la résolution triangulaire avec une allocation first touch sont exposés dans le chapitre précèdent.
-%
-Les résultats ne sont pas aussi bons que ceux que nous pourrions obtenir avec une meilleure gestion de la mémoire.
-%
+% -------------------------------
+%\input{src/numa_res_facto_mpi}
+% -------------------------------
+\input{src/numa_res_facto_first_touch}
+% -------------------------------
+%\input{src/numa_res_facto_interleave}
+%-------------------------------
+%\input{src/numa_res_facto_natas}
+%-------------------------------
+%\input{src/numa_res_facto_autonuma}
+% -------------------------------

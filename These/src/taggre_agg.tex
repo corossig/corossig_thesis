@@ -3,7 +3,7 @@ Nous appelons {\em opérateurs d'agrégations} les différentes heuristiques uti
 %
 Ces heuristiques ont pour règle de garder la propriété acyclique du graphe de tâches.
 %
-Quatre heuristiques ont été créées, chaque opérateur s'occupe de résoudre un problème spécifique et aucun d'entre eux ne peux créer de cycle.
+Quatre heuristiques ont été créées, chaque opérateur s'occupe de résoudre un problème spécifique et aucun d'entre eux ne peut créer de cycle.
 %
 La création d'un cycle lors d'une agrégation intervient lorsque l'on crée un groupe de tâche dans lequel deux des tâches ont une dépendance indirecte, symbolisé par un chemin dans le graphe, et qu'au moins une des tâches de ce chemin n'appartient pas au groupe.
 
@@ -18,7 +18,7 @@ Le premier paramètre est le surcoût lié à l'ordonnancement de la tâche.
 %
 Le deuxième paramètre correspond à l'amélioration des effets cache, il s'agit du temps gagné lorsque deux lignes consécutives de la matrice sont factorisées dans la même tâche.
 %
-Ces deux paramètres seront choisis parmi un ensemble de valeur de façon à corroborer les temps obtenues.
+Ces deux paramètres seront choisis parmi un ensemble de valeur de façon à corroborer les temps obtenus.
 %
 Dans le cas avec 3 variables primaires, les paramètres valent respectivement 30 et 0,7.
 %

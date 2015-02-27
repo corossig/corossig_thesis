@@ -9,7 +9,7 @@ La version de Linux disponible sur ces machines n'est pas assez récente, la fon
 %
 La version de Linux utilisée est la 3.18.
 %
-Cette méthode ne fonctionne que lorsque le programme est exécuter suffisamment longtemps pour avoir le temps d'analyser toute la mémoire utilisée.
+Cette méthode ne fonctionne que lorsque le programme est exécuté suffisamment longtemps pour avoir le temps d'analyser toute la mémoire utilisée.
 %
 Nous allons donc faire varier le nombre de SpMV pour faire varier le temps d'exécution du programme et laisser au noyau assez de temps pour déplacer les pages.
 
@@ -23,13 +23,13 @@ Nous allons donc faire varier le nombre de SpMV pour faire varier le temps d'ex�
 \end{figure}
 
 
-Avec un nombre de répétitions faibles, AutoNUMA donne les mêmes performances que l'allocation first touch (fig.~\ref{fig:res_spmv_frep}).
+Avec un nombre de répétitions faibles, AutoNUMA donne les mêmes performances que l'allocation first touch (Fig.~\ref{fig:res_spmv_frep}).
 %
 Au bout de 8 répétitions, soit environ 1,36 secondes, nous commençons à voir une amélioration des performances.
 %
 Vers 384 répétitions, soit environ 1 minute, nous obtenons la performance crête d'AutoNUMA qui correspond aussi à la performance obtenue avec l'allocation interleave.
 %
-Il est nécessaire de rappeler que l'allocation interleave donnait de bonne performances avec l'utilisation de 2 bancs NUMA.
+Il est nécessaire de rappeler que l'allocation interleave donnait de bonnes performances avec l'utilisation de 2 bancs NUMA.
 %
 Mais sur Manumanu, en utilisant plus de 2 bancs NUMA, les performances ne sont pas bonnes.
 %

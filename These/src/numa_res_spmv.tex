@@ -11,7 +11,7 @@ Si nous utilisons trois variables primaires, chaque entrée de la matrice est un
 %
 Nous devons donc lire ce bloc (9*8 Octets), lire l'indice de colonne (4 Octets) et finalement lire 3 valeurs dans le vecteur (3*8 Octets).
 %
-Pour chaque valeurs du bloc nous avons 2 opérations à faire (2*9), nous avons donc un ratio de $18/100$ soit environ $1/5,5$.
+Pour chaque valeur du bloc nous avons 2 opérations à faire (2*9), nous avons donc un ratio de $18/100$ soit environ $1/5,5$.
 %
 Avec huit variables primaires, le ratio monte à environ de $1/4,5$.
 
@@ -20,7 +20,7 @@ Le {\em roofline model} est un modèle de performance permettant de connaître l
 %
 Ce modèle se construit de la façon suivante, dans un premier temps nous allons mesurer la bande passante maximale de la machine.
 %
-Pour cela nous avons utiliser le benchmark STREAM, sur Rostand, nous obtenons une bande passante de 21~Go/s.
+Pour cela nous avons utilisé le benchmark STREAM, sur Rostand, nous obtenons une bande passante de 21~Go/s.
 %
 Puis, dans un second temps, nous allons calculer la capacité de calcul maximale de la machine.
 %
@@ -31,15 +31,15 @@ Chaque noeud de Rostand étant composé de 12 coeurs cadencés à 2,80~GHz et de
 
 Une fois le roofline model construit, nous pouvons donc placer le produit matrice vecteur creux.
 %
-Les performances du SpMV dépend du nombre de variables primaires, nous avons donc placer sur le roofline model trois SpMV en fonction du nombre de variable primaire utilisées.
+Les performances du SpMV dépendent du nombre de variables primaires, nous avons donc placé sur le roofline model trois SpMV en fonction du nombre de variable primaire utilisées.
 %
-Ces trois points nous indique que les performances du SpMV seront limitées par la bande passante mémoire.
+Ces trois points nous indiquent que les performances du SpMV seront limitées par la bande passante mémoire.
 
 %   (-_-)   %
 \begin{figure}[t!]
   \centering
   \includegraphics[width=0.8\textwidth]{roofline_rostand}
-  \caption{Roofline model de Rostand. avec les différents produit matrice vecteur creux.}
+  \caption{Roofline model de Rostand avec les différents produit matrice vecteur creux.}
   \label{fig:roofline_rostand}
 \end{figure}
 

@@ -162,7 +162,6 @@ class MyDynamicMplCanvas(MyMplCanvas):
         for i in range(len(xx)):
             sys.stdout.write(xx[i])
             sys.stdout.write("\t")
-            print(all_times)
             for k in all_times:
                 try :
                     sys.stdout.write(str(all_times[k][i])[:15])
