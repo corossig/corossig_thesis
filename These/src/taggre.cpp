@@ -26,7 +26,7 @@ schema.run();
 
 /* Ou utiliser une fonction pour traiter chaque tâche */
 /* Cette méthode permet de réutiliser le graphe dans différentes parties du code */
-schame.run_function([&](Task *t)
+schema.run_function([&](Task *t)
                     {
                         compute((my_task_class*)t);
                     });

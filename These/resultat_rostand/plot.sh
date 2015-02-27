@@ -9,7 +9,7 @@ do
         YRANGE=12
         case "$i" in
             *_facto_*)
-                YRANGE=10
+                YRANGE=12
                 ;;
             *_trsv_*)
                 YRANGE=4
