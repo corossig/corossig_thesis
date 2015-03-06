@@ -20,8 +20,24 @@ Par contre, nous n'obtenons que 70~\% avec 1 variable primaire.
 \end{figure}
 
 
+Malheureusement, sur la machine Manumanu, malgré un placement optimal des pages mémoires, NATaS ne fait pas aussi bien que MPI (Fig.~\ref{fig:res_spmv_nas_manumanu}).
+%
+Cela provient en grande partie de l'architecture logicielle de NATaS.
+%
+Nous effectuons trop d'accès à un ensemble de variables partagées par tous les threads.
+%
+Pour améliorer considérablement les performances, il faudrait construire un ordonnanceur utilisant moins de variables partagées.
+%
+Mais ce type d'ordonnanceur est dur à écrire, nos machines de calculs étant essentiellement composées de 2 bancs NUMA, il n'y a aucune volonté de notre côté pour écrire cet ordonnanceur.
+%
+L'utilisation de 2 bancs NUMA nous donne une accélération de 10, tout comme la version en mémoire distribuée.
+%
+Au delà de 2 bancs NUMA, les performances sont légèrement meilleures que la version OpenMP, atteignant une accélération de 40.
 
-Sur plusieurs bancs NUMA, NATaS offre des meilleures performances que l'ordonnanceur OpenMP même avec l'allocation mémoire interleaved.
-%
-{\em Croiser les doigts pour que ca fonctionne et donner résultat manumanu}
-%
+%   (-_-)   %
+\begin{figure}[t!]
+  \centering
+  \includegraphics[width=0.7\textwidth]{res_spmv_nas_manu}
+  \caption{Accélération du produit matrice vecteur creux sur Manumanu en mémoire partagée avec NATaS.}
+  \label{fig:res_spmv_nas_manumanu}
+\end{figure}

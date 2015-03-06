@@ -8,17 +8,20 @@ do
         NB_COL=$(head -n 3 "${i}" | tail -n 1 | wc -w)
         YRANGE=12
         case "$i" in
+            *_mpi_*)
+                YRANGE=120
+		;;
             *_facto_*)
                 YRANGE=15
                 ;;
             *_trsv_*)
-                YRANGE=4
+                YRANGE=10
 		;;
-            *_spmv_mpi_*)
-                YRANGE=120
+            *_spmv_nas_*)
+                YRANGE=60
                 ;;
             *_spmv_*)
-                YRANGE=10
+                YRANGE=14
                 ;;
         esac
         

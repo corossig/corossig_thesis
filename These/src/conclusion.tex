@@ -1,0 +1,32 @@
+\section{Conclusion}
+La parallélisation de la factorisation ILU(k) s'exprime facilement sous la forme d'un graphe de tâches mais la granularité des tâches ne permet pas d'obtenir de bonnes performances.
+%
+Pour pouvoir modifier facilement cette granularité, nous avons élaboré un nouveau cadriciel.
+%
+Ce cadriciel prend en entrée un graphe de tâches à grain très fin et utilise des algorithmes pour créer des nouveaux groupes de tâches.
+%
+Pour cela, il utilise des opérateurs d'agrégations que nous avons défini dans le chapitre 2.
+%
+Chaque opérateur aura un objectif d'optimisation du graphe particulier.
+%
+En combinant ces opérateurs, nous pouvons obtenir un graphe à grain grossier.
+%
+Ce graphe pourra être ensuite utilisé par un ordonnanceur de tâches.
+
+
+Cette méthode d'agrégation de tâches est générique.
+%
+Dans le cadre de cette thèse, nous l'avons appliqué à la factorisation ILU(k) ainsi qu'aux résolutions triangulaires associées.
+%
+Mais cette méthode pourrait aussi s'appliquer à d'autres noyaux d'algèbre linéaire creuse ainsi qu'à d'autre genre de problème représentant le parallélisme sous la forme d'un graphe de tâche.
+
+
+L'architecture de type NUMA des machines que nous utilisons, nous a conduit à créer un nouvel ordonnanceur prenant en compte la localité mémoire des tâches de calcul.
+%
+Nos algorithmes étant limités par la bande passante mémoire, l'amélioration de la localité mémoire a conduit à une amélioration directe des performances.
+%
+Malheureusement, cet ordonnanceur a été développé avec pour objectif de fonctionner sur des machines avec 2 bancs NUMA.
+%
+L'utilisation d'une machine ayant plus de bancs NUMA a montré les limites de cet ordonnanceur.
+%
+Malgré ces limites, les résultats obtenues reste meilleurs que ceux obtenus avec un ordonnanceur classique.

@@ -1,7 +1,7 @@
 \subsection{Taggre : un cadriciel pour agréger des tâches}
 Nous avons pour but de garder la façon naturelle de décrire le parallélisme dans les noyaux d'algèbre linéaire creuse.
 %
-Malheureusement, cette granularité est trop fine, l'ordonnanceur de tâches met plus de temps à choisir quel sera le processeur qui traitera la tâche que le processeur à traiter la tâche.
+Malheureusement, cette granularité est trop fine, l'ordonnanceur de tâches met plus de temps à choisir quel sera le processeur qui traitera la tâche que le processeur met à traiter la tâche.
 %
 Pour obtenir des performances raisonnables, nous devons augmenter la granularité de la description du problème.
 %
@@ -9,14 +9,13 @@ Pour cela, nous proposons de créer des groupes de tâches, de considérer chaqu
 %
 Au final, nous obtenons un graphe composé de moins de tâches, mais il faut faire attention à ne pas trop réduire le parallélisme fourni par le graphe.
 %
-Nous connaissons déjà une solution efficace capable de répondre à une partie du problème.
+Pour un graphe issue de la simulation de réservoir, nous connaissons déjà une solution efficace capable de répondre à une partie du problème.
 %
-Dans le cas d'un cube 3D avec une numérotation naturelle, nous pouvons changer la granularité en factorisant des groupes de lignes correspondant à un avec du cube.
+Dans le cas d'un cube 3D avec une numérotation naturelle, nous pouvons changer la granularité en factorisant des groupes de lignes correspondant à une arête du cube.
 %
-Malheureusement, cette méthode ne fonctionne qu'avec une seule numérotation et nous devons connaître la taille du cube.
+Malheureusement, cette méthode ne fonctionne qu'avec une seule numérotation et nous impose de connaître la taille du cube.
 %
-Nous avons donc cherché une méthode générique.
-
+Nous avons donc cherché une méthode pouvant s'appliquer à n'importe quel DAG.
 
 
 
@@ -42,11 +41,11 @@ L'autre difficulté est de maintenir assez de parallélisme pour pouvoir être c
     \label{fig:agg_basic}
 \end{figure}
 
-En premier lieu, nous avons développé une nouvelle interface de programmation en C++, nous avons repris de Intel TBB le concept d'un objet {\em Tâche} contenant la fonction à exécuter.
+En premier lieu, nous avons développé une nouvelle interface de programmation en C++, cette interface reprend de Intel TBB le concept d'un objet {\em Tâche} contenant la fonction à exécuter.
 %
 \`A cela, nous avons ajouté la description des dépendances dans cet objet.
 %
-Cette interface nous permet de décrire un graphe de tâche complet et d'utiliser plusieurs ordonnanceurs pour ordonnancer le graphe.
+Cette interface nous permet de décrire un graphe de tâche complet et de choisir parmi plusieurs ordonnanceurs celui qui ordonnancera le graphe.
 %
 Avec cette interface, nous pouvons faire des modifications sur le graphe et le rendre plus grossier.
 %

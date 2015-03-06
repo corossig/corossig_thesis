@@ -14,7 +14,7 @@
 \usepackage{fixltx2e}
 
 
-\usepackage[french,onelanguage,ruled]{algorithm2e}
+\usepackage[french,onelanguage,ruled,linesnumbered]{algorithm2e}
 %\usepackage{algorithmic}
 \usepackage{caption}
 \usepackage{subfigure}
@@ -226,7 +226,7 @@ minimum height=0.1em,font=\scriptsize]
 \input{src/taggre_algo_d}
 \input{src/taggre_algo_c}
 %-------------------------------
-\input{src/dwarfs}
+% \input{src/dwarfs}
 %+++++++++++++++++++++++++++++++
 
 
@@ -362,14 +362,7 @@ minimum height=0.1em,font=\scriptsize]
 \vspace{1cm}
 %=========================================================
 %+++++++++++++++++++++++++++++++
-\section{Conclusion}
-  \begin{itemize}
-    \item Coarsening allow us to parallelize problems with very small computation per task
-    \item Improve bandwidth thanks to NUMA architecture
-  \end{itemize}
-%+++++++++++++++++++++++++++++++
-
-
+\input{src/conclusion}
 %+++++++++++++++++++++++++++++++
 \section{Perspectives}
   \begin{itemize}

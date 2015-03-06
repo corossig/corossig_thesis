@@ -21,7 +21,7 @@ Il existe du parallélisme à exploiter dans cet algorithme, à chaque fois qu'u
 
 En algèbre linéaire creuse, la factorisation LU d'une matrice $A$ creuse donnera deux matrices triangulaires denses $L$ et $U$.
 %
-Or, dans le cas d'une matrice d'ordre élevé ($>$ 100 000), ces deux matrices ne peuvent pas tenir en mémoire.
+Or, dans le cas d'une matrice d'ordre élevé ($>$ 100 000), si l'on souhaite effectuer la factorisation exacte, ces deux matrices ne peuvent pas tenir en mémoire.
 %
 C'est pourquoi en algèbre linéaire creuse, on utilise une version altérée de cette factorisation que l'on appelle factorisation incomplète, ou {\em ILU}\footnote{Incomplete LU}, dont le but est de limiter le remplissage de la matrice.
 %
@@ -31,17 +31,20 @@ Ces conditions peuvent être de deux formes : soit en limitant le remplissage av
 %
 Dans le cas ILU(k), le paramètre k sert à limiter le niveau d'interaction entre les lignes.
 %
-Avec $k=0$, le motif des matrices $L$ et $U$ reste similaire au motif de la matrice $A$.
-%
+Avec $k=0$, le motif des matrices $L$ et $U$ reste similaire au motif de la matrice $A$ (Algo~\ref{algo:ilu0}).
+
+
 Le parallélisme exploitable dans l'algorithme ILU est différent de celui exploitable dans l'algorithme LU, il offre la possibilité de factoriser certaines lignes en parallèle et ce parallélisme se représente naturellement sous la forme d'un graphe de tâches (Fig.~\ref{fig:example_3_dag}).
 %
 Chaque tâche représente la factorisation d'une ligne de la matrice et les dépendances entre les tâches sont données par le motif de la matrice.
 %
-En effet, pour factoriser la ligne $i$, nous devons factoriser toutes les lignes $j$ inférieures à $i$ tel que l'entrée $(i,j)$ de la matrice soit non nulle (Fig.~\ref{fig:example_2_matrix}).
+En effet, pour factoriser la ligne $i$, nous devons factoriser toutes les lignes $j$ inférieures à $i$ tel que l'entrée $(i,j)$ de la matrice soit non nulle.
+%
+Cette dépendance de donnée provient de la ligne~\ref{algo:ilu0:dep} de l'algorithme~\ref{algo:ilu0}.
 %
 Donc, à partir du motif des valeurs non-nulles de la matrice, nous pouvons facilement construire le graphe de tâche:
 %
-la tâche $i$ corresponds à la ligne $i$ de la matrice, la liste des tâches prédécesseurs de la tâche $i$ est donnée par l'index de colonne des valeurs non-nulles avant la diagonale dans la ligne $i$ et la liste des tâches successeurs de la tâche $i$ est donnée par l'index de ligne des valeurs non-nulles au-dessous de la diagonale de la colonne $i$ (Algo~\ref{algo:ilu0}).
+la tâche $i$ corresponds à la ligne $i$ de la matrice (ligne \ref{algo:ilu0:task_begin} à \ref{algo:ilu0:task_end} de l'algorithme~\ref{algo:ilu0}), la liste des tâches prédécesseurs de la tâche $i$ est donnée par l'index de colonne des valeurs non-nulles avant la diagonale dans la ligne $i$ (ligne~\ref{algo:ilu0:dep}) et la liste des tâches successeurs de la tâche $i$ est donnée par l'index de ligne des valeurs non-nulles au-dessous de la diagonale de la colonne $i$ (Fig.~\ref{fig:example_2_matrix}).
 
 \begin{figure}[!ht]
      \begin{center}
@@ -65,12 +68,12 @@ la tâche $i$ corresponds à la ligne $i$ de la matrice, la liste des tâches pr
 \begin{algorithm}
   \KwData{$M$ : matrice de dimension $n$}
   \For{$i = 2$ {\bf à} $n$} {
-    \For{$k = 1$ {\bf à} $i - 1$ {\bf et} $M_{ik} != 0$} {
-      $M_{ik} = M_{ik} / M_{kk}$ \\
+    \For{$k = 1$ {\bf à} $i - 1$ {\bf et} $M_{ik} != 0$} { \label{algo:ilu0:task_begin}
+      $M_{ik} = M_{ik} / M_{kk}$ \label{algo:ilu0:dep}\\
       \For{$j = k + 1$ {\bf à} $n$ {\bf et} $M_{ij} != 0$} {
         $M_{ij} = M_{ij} - M_{ik}M_{kj}$ \\
       }
-    }
+    } \label{algo:ilu0:task_end}
   }
   \caption{Factorisation ILU(0) sur place.}
   \label{algo:ilu0}
@@ -95,6 +98,32 @@ Pour résoudre ce problème, les tâches doivent devenir plus grosses, nous devo
 Mais le choix de ces lignes n'est pas trivial, il faut limiter l'impact sur le parallélisme et ne pas changer le résultat final.
 %
 Une méthode générique a été développée durant la thèse et sera expliquée plus loin dans ce document.
+%
+De plus, l'ordre de factorisation des lignes de la matrice aura une influence sur les performances.
+%
+En fonction du nombre de variables primaires, nous avons entre 31~\% et 450~\% de temps de factorisation en plus (Tab.~\ref{tab:facto_order}).
+%
+Il est donc primordial d'agréger des tâches qui factorisent des lignes consécutives de la matrice.
+
+%   (-_-)   %
+\begin{center}
+  \begin{tabular}{|r|c|c|c|}
+    \hline
+    Nombre de variables primaire & Temps avec un parcourt & Temps avec un parcourt & Pourcentage de temps\\
+    & linéaire des indices (s) & non linéaire des indices (s) & en plus \\
+    \hline
+    1 & 0.16 & 0.88 & 450~\% \\
+    \hline
+    3 & 0.43 & 1.43 & 230~\% \\
+    \hline
+    8 & 3.95 & 5.18 & 24~\% \\
+    \hline
+  \end{tabular}
+  \captionof{table}{Différence de temps d'une factorisation d'une matrice de 1 million de lignes en fonction de la méthode de parcours des indices de lignes.}
+  \label{tab:facto_order}
+\end{center}
+
+
 
 
 Il existe des travaux de recherche dont le but est aussi d'exploiter le parallélisme de l'algorithme ILU.
@@ -125,6 +154,6 @@ La convergence n'est donc que faiblement dégradée, mais il faut prendre en com
           \includegraphics[width=0.66\textwidth]{DAG_redblack}
         }%
     \end{center}
-    \caption{Différence de parallélisme en fonction de la numérotation choisie.}
+    \caption{Différence de parallélisme en fonction de la numérotation choisie. La figure \ref{fig:matrix_ordering} représente les matrices associées.}
     \label{fig:DAG_ordering}
 \end{figure}

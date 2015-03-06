@@ -5,9 +5,11 @@ Une mauvaise distribution des pages mémoires peut conduire à une sous exploita
 %
 La politique d'allocation interleaved limite ce problème, on est sûr que tous les liens mémoires sont utilisés mais on n'a aucun contrôle sur l'amélioration de la localité des accès mémoire.
 %
-Malgré cela, on obtient un gain important de performance.
+Malgré cela, on obtient un gain important de performance dans certains cas tels que le produit matrice vecteur creux et la résolution triangulaire.
 %
-Les politiques d'allocation du type next-touch et autoNUMA résolvent une bonne partie du problème, la localité mémoire est améliorée.
+Les politiques d'allocations du type next-touch et autoNUMA résolvent une bonne partie du problème en améliorant la localité mémoire.
+%
+Mais ces politiques ne nous permettent pas d'avoir un contrôle fin de l'accès aux données d'un thread.
 
 
 
@@ -16,6 +18,10 @@ La gestion des affinités NUMA directement dans l'ordonnanceur de tâches, nous 
 La localité mémoire en devient optimale et une bonne distribution des tâches donnent de très bonnes performances.
 %
 L'utilisation d'un seul banc NUMA nous montre que l'ordonnanceur NATaS est moins bon que l'ordonnanceur Intel OpenMP.
+%
+Sur un nombre important de banc NUMA, NATaS ne passe pas à l'échelle.
+%
+Cet ordonnanceur a été écrit spécifiquement pour des machines à 2 bancs NUMA.
 %
 Les gains que nous observons avec l'utilisation de plusieurs bancs NUMA sont bien dus à une amélioration de la localité mémoire.
 
