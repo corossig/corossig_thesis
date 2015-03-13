@@ -22,17 +22,27 @@ Par contre, nous n'obtenons que 70~\% avec 1 variable primaire.
 
 Malheureusement, sur la machine Manumanu, malgré un placement optimal des pages mémoires, NATaS ne fait pas aussi bien que MPI (Fig.~\ref{fig:res_spmv_nas_manumanu}).
 %
-Cela provient en grande partie de l'architecture logicielle de NATaS.
+Les compteurs matérielles nous indiquent qu'un nombre non négligeable d'accès à une mémoire distante sont faits.
+%
+Or, nous avons vérifié l'emplacement physique des pages mémoires de la matrices ainsi que celles des vecteurs et celles-ci sont bien placées.
+%
+Les accès à la mémoire distante proviennent donc de l'ordonnanceur de tâches.
+%
+C'est en grande partie de l'architecture logicielle de NATaS qui en sont la cause.
 %
 Nous effectuons trop d'accès à un ensemble de variables partagées par tous les threads.
 %
+Par exemple, nous avons un compteur de tâches en cours qui nous permet de savoir si
+%
+Le vol de travail est aussi consommateur d'accès mémoire distant, actuellement, chaque thread va chercher dans les structures des autres bancs NUMA s'il peut voler une tâche.
+%
 Pour améliorer considérablement les performances, il faudrait construire un ordonnanceur utilisant moins de variables partagées.
 %
-Mais ce type d'ordonnanceur est dur à écrire, nos machines de calculs étant essentiellement composées de 2 bancs NUMA, il n'y a aucune volonté de notre côté pour écrire cet ordonnanceur.
+Mais ce type d'ordonnanceur est dur à écrire, nos machines de calculs étant essentiellement composées de 2 bancs NUMA, il n'y a aucune volonté de notre côté pour écrire ce type d'ordonnanceur.
 %
-L'utilisation de 2 bancs NUMA nous donne une accélération de 10, tout comme la version en mémoire distribuée.
+L'utilisation de 2 bancs NUMA sur Manumanu nous donne une accélération de 10, tout comme la version en mémoire distribuée.
 %
-Au delà de 2 bancs NUMA, les performances sont légèrement meilleures que la version OpenMP, atteignant une accélération de 40.
+Au delà de 2 bancs NUMA, les performances sont légèrement meilleures que la version OpenMP, atteignant une accélération de 32.
 
 %   (-_-)   %
 \begin{figure}[t!]

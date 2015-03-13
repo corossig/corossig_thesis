@@ -1,4 +1,15 @@
 \subsubsection{Cube ou continuation}
+L'opérateur C présente des limites quand à son utilisation, dans le cas d'un graphe structuré à $n$ dimensions, il supprimera une dimension.
+%
+Or, si nous avons un graphe à 2 dimensions, il supprimera la dimension qui permet d'avoir du parallélisme.
+%
+Son avantage étant d'optimiser les effets caches à l'intérieur d'une tâche grossière.
+%
+Pour garder cette avantage, nous avons repris l'algorithme de l'opérateur C et nous avons ajouté un paramètre pour limiter la taille des tâches.
+%
+
+
+
 Cet opérateur a été créé pour être une réponse efficace à nos problèmes.
 %
 Dans notre cas, le graphe à ordonnancer à exactement la même structure que le réservoir que nous souhaitons modéliser.

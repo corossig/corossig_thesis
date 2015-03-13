@@ -37,3 +37,40 @@ Seule la solution utilisant un processus MPI par noeud NUMA permettrait de suppr
 Mais cette suppression se ferait au prix d'un algorithme moins efficace.
 %
 Donc une meilleure solution pourrait être d'améliorer les ordonnanceurs existants en leurs ajoutant une meilleure prise en charge des architectures NUMA.
+
+
+%   (-_-)   %
+\begin{center}
+  \begin{tabular}{|r|r|c|c|c|}
+    \hline
+       & & Cube 100 & Cube 100 & Cube 100 \\
+       & & Npri 1   & Npri 3   & Npri 8 \\
+    \hline
+&        First Touch &	1.91 &	2.18 &	2.49 \\
+SpMV &   Interleave  &	2.42 &	2.70 &	3.00 \\
+&        NATaS       &	2.08 &	3.08 &	3.80 \\
+&        MPI         &	2.89 &	3.29 &	3.81 \\
+    \hline
+&        First Touch &	5.73 &	6.14 &	8.49 \\
+Facto &  Interleave  &	5.50 &	5.62 &	7.51 \\
+&        NATaS       &	6.14 &	7.54 &	10.56 \\
+&        MPI         &	5.84 &	7.53 &	9.65 \\
+    \hline
+&        First Touch &	1.36 &	1.85 &	2.84 \\
+TRSV &   Interleave  &	1.84 &	2.18 &	2.83 \\
+&        NATaS       &	1.82 &	2.49 &	3.48 \\
+&        MPI         &	2.51 &	2.56 &	3.51 \\
+    \hline
+  \end{tabular}
+  \captionof{table}{Accélérations obtenues en fonction de la politique d'allocation mémoire. La version MPI ne fait pas exactement le même calcul, elle permet juste d'obtenir une indication sur l'accélération maximale que nous pouvons atteindre.}
+  \label{tab:rostand_sum}
+\end{center}
+
+
+Sur une machine avec beaucoup de bancs NUMA, l'ordonnanceur NATaS ne passe pas à l'échelle.
+%
+Sa structure interne n'est pas assez distribuée, l'utilisation de compteurs globaux de tâches est loin d'être optimal.
+%
+Malgré une implémentation sous optimale, NATaS offre de meilleurs performances que les ordonnanceurs habituels.
+%
+Il est donc essentiel d'optimiser les accès mémoires des applications limitées par la bande passante mémoire sur le machine NUMA.

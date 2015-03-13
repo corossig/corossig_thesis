@@ -1,20 +1,27 @@
-\subsection{Exemples de stratégies}
-\url{http://view.eecs.berkeley.edu/wiki/Dwarf_Mine}
-
+\subsection{Les 13 Dwarfs de berkeley}
 Le choix des opérateurs dans Taggre se fait à l'appréciation du programmeur.
 %
-La collection des {\em 13 nains de Berkeley} est une méthode de classification des problèmes suivant leurs motifs de calculs et de communication.
+La collection des {\em 13 nains de Berkeley}\cite{dwarfs} est une méthode de classification des problèmes en fonction de leurs motifs de calculs et de communications.
 %
 Il est intéressant de voir si Taggre peut répondre aux 13 problèmes et si c'est le cas quelle serait la stratégie d'agrégation à utiliser.
-
-
-
-\subsubsection{}
-Dans le cas d'un graphe étant plus large que haut, nous pouvons utiliser l'opérateur F.
 %
-Celui-ci nous permettra de diminuer le nombre de tâche en diminuant le parallélisme.
+Malheureusement, tous les problèmes ne se prêtent pas à cet exercice.
 %
-Ce genre de graphe peuvent être utilisés dans les méthodes spectrales.
+Nous avons donc choisi quelques graphes qui peuvent représenter un problème spécifique.
+
+
+\subsubsection{Méthodes spectrales}
+Dans le cas des méthodes spectrales, le graphe représentant le parallélisme est plus large que haut.
+%
+Le motif du graphe est en papillon, nous avons donc beaucoup de connexion entre chaque hauteur du graphe, l'opérateur F pourras s'occuper de regrouper les tâches d'un même niveau ensemble.
+%
+Celui-ci nous permettra de diminuer le nombre de tâche en diminuant le parallélisme (Fig.\ref{fig:dwarf_spec}).
+%
+Pour évaluer le gain lié à l'agrégation, nous allons utiliser le simulateur de Taggre avec les paramètres 0,9 pour les effets caches et 5 pour le coût d'ordonnancement.
+%
+La hauteur du graphe sera le logarithme en base 2 du nombre de tâches par niveau.
+%
+La table~\ref{tab:spectral}
 
 
 %   (-_-)   %
@@ -25,6 +32,38 @@ Ce genre de graphe peuvent être utilisés dans les méthodes spectrales.
   \label{fig:dwarf_spec}
 \end{figure}
 
+%   (-_-)   %
+\begin{center}
+  \begin{tabular}{|l|c|c|c|c|c|c|c|c|}
+    \hline
+   Nombre de tâches &  \multicolumn{8}{c|}{Types d'agrégations}\\
+   par niveau & \O & F(6) & F(12) & F(24) & D(8) & D(16) & D(32) & D(64) \\
+    \hline
+   32768 & 262146 & 108246 & 51714 & 39487 & 70425 & 55788 & 40980 & 46409 \\
+   1024  & 1690 & 2162 & 937 & 903 & 1035 & 965 & 899 & 1033 \\
+    \hline
+  \end{tabular}
+  \captionof{table}{Résultats du simulateur d'exécution de tâches sur un graphe typique des méthodes spectrales.}
+  \label{tab:spectral}
+\end{center}
 
+%% RES 15 niveau
+%% 0    262146
+%% F 12 51714.9
+%% F 24 39487.8
+%% F 6  108246
+%% D 8  70425
+%% D 16 55788.5
+%% D 32 40980
+%% D 64 46409.6
 
+%% RES 10 niveau
+%% 0    1690
+%% F 12 937
+%% F 24 903
+%% F 6  2162
+%% D 8  1035
+%% D 16 965
+%% D 32 899
+%% D 64 1033
 \subsubsection{Les arbres}

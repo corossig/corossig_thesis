@@ -10,15 +10,27 @@ do
         case "$i" in
             *_spmv_*)
                 YRANGE=0.3
+                LOGSCALE="set logscale x 2"
+                XLABEL='set xlabel "Nombre de répétitions"'
+                ;;
+            *_trsv_*)
+                YRANGE=8
+                LOGSCALE=""
+                XLABEL='set xlabel "Nombre de répétitions du GMRES"'
+                ;;
+            *_facto_*)
+                YRANGE=1
+                LOGSCALE=""
+                XLABEL='set xlabel "Nombre de répétitions du GMRES"'
                 ;;
         esac
         
         gnuplot -p << EOF
-set xlabel "Nombre de répétitions"
-set ylabel "Temps d'exécution"
+$XLABEL
+set ylabel "Temps d'exécution moyen"
 set key left top noreverse
 set yrange [0:$YRANGE]
-set logscale x 2
+$LOGSCALE
 set terminal svg size 700,500 fname 'Verdana' fsize 16
 set output "$dest"
 plot for [i=2:${NB_COL}] "${i}" u 1:i title column(i) w lp

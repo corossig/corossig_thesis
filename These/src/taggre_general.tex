@@ -1,0 +1,15 @@
+Taggre a été conçu pour être utilisé sur des graphes de tâches quelconques.
+%
+Pour évaluer l'amélioration apportée par chaque heuristique, nous avons intégré dans Taggre un simulateur minimal qui estimera le temps d'ordonnancement du graphe.
+%
+Cette estimation est essentielle dans la mesure où elle permet de mesurer le parallélisme restant pouvant être extrait du graphe grossier.
+%
+Pour modéliser le plus fidèlement possible les améliorations de performances liées à l'agrégation, nous prenons en compte deux paramètres.
+%
+Le premier paramètre est le surcoût lié à l'ordonnancement de la tâche.
+%
+Le deuxième paramètre correspond à l'amélioration des effets cache, dans notre cas il s'agit du temps gagné lorsque deux lignes consécutives de la matrice sont factorisées dans la même tâche.
+%
+Ces deux paramètres sont dépendants du problème traité.
+%
+Dans les différents cas tests que nous essayerons, nous fixerons arbitrairement ces valeurs pour essayer différentes agrégations.

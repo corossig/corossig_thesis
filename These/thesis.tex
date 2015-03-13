@@ -2,7 +2,6 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{ulem}
-\usepackage[english]{babel}
 
 \usepackage{url}
 \graphicspath{{img/},{resultat_rostand/},{resultat_manumanu/},{resultat_frep/}}
@@ -225,8 +224,22 @@ minimum height=0.1em,font=\scriptsize]
 \input{src/taggre_algo_f}
 \input{src/taggre_algo_d}
 \input{src/taggre_algo_c}
+\input{src/taggre_algo_z}
 %-------------------------------
-% \input{src/dwarfs}
+
+
+%+++++++++++++++++++++++++++++++
+\section{Application de Taggre dans un cadre général}
+%-------------------------------
+\input{src/taggre_general}
+%-------------------------------
+\input{src/simulator}
+%-------------------------------
+\input{src/dwarfs}
+%-------------------------------
+\input{src/florida}
+%-------------------------------
+\input{src/iluk_ordering}
 %+++++++++++++++++++++++++++++++
 
 
@@ -357,17 +370,14 @@ minimum height=0.1em,font=\scriptsize]
 
 
 %=========================================================
-\chapter{Conclusions and perspectives}
+\chapter{Conclusions et perspectives}
 \minitoc
 \vspace{1cm}
 %=========================================================
 %+++++++++++++++++++++++++++++++
 \input{src/conclusion}
 %+++++++++++++++++++++++++++++++
-\section{Perspectives}
-  \begin{itemize}
-    \item Automatic coarse tuning
-  \end{itemize}
+\input{src/perspectives}
 %+++++++++++++++++++++++++++++++
 
 

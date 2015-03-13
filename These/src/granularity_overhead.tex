@@ -7,32 +7,32 @@ Généralement, plus le runtime est complet, plus il doit faire d'opérations et
 %
 L'opération la plus basique, qui est aussi l'opération essentielle au runtime, est la vérification qu'une tâche puisse être exécutée et que celle-ci s'exécute une seule et unique fois.
 %
-Une implémentation basique de cette opération peut être composée d'une file partagée par tous les threads dans laquelle les tâches sont enfilées dès qu'un coeur de calcul peut les exécuter.
+Une implémentation basique de cette opération peut être composée d'une file partagée par tous les coeurs de calcul dans laquelle les tâches sont enfilées dès qu'un coeur de calcul peut les exécuter.
 %
-Il est nécessaire que l'implémentation de cette queue soit thread-safe pour garantir la validité des données quand plusieurs threads l'utilisent en même temps.
+Il est nécessaire que l'implémentation de cette queue soit {\em thread-safe} pour garantir la validité des données quand plusieurs threads l'utilisent en même temps.
 %
 Malheureusement, même un runtime qui n'effectuerait que cette opération aurait un surcoût de calcul lors de l'insertion/extraction de tâches dans la file.
 %
-Ce surcoût peut être négligé si le temps passé à exécuter la tâche est bien plus grand que le temps à ordonnancer la tâche.
+Ce surcoût peut être négligé si le temps passé à exécuter la tâche est bien plus grand que le temps passé à ordonnancer la tâche.
 %
 Mais avec un parallélise à grain très fin, ce surcoût est loin de pouvoir être considéré comme négligeable et le programmeur doit faire avec.
 %
 Même les ordonnanceurs statiques ont un surcoût, les tâches sont distribuées à l'avance sur les coeurs mais l'ordonnanceur doit toujours vérifier si toutes les dépendances de la tâche sont satisfaites.
 %
-Cela peut être fait plus ou moins efficacement mais dans tous les cas l'aspect équilibrage de charge dynamique d'un ordonnanceur dynamique est perdu.
+Cela peut être fait plus ou moins efficacement mais dans tous les cas l'aspect équilibrage de charge dynamique d'un ordonnanceur dynamique est perdu\cite{static_sched}.
 
 
 Nous pouvons définir par grain de tâche la durée que met une tâche à être exécutée.
 %
 Un grain fin correspond à une durée d'exécution proche du surcoût de l'ordonnanceur alors qu'un grain grossier aura une durée d'exécution nettement supérieure.
 %
-Augmenter la taille du grain d'un programme est une solution au problème de taille trop fines.
+Augmenter la taille du grain d'un programme est une solution au problème de tâches trop fines.
 %
 Mais cette solution réduit aussi les possibilités de parallélisme et d'équilibrage de charge fournis par l'ordonnanceur.
 %
 Le parallélisme et l'équilibrage de charge sont liés, l'ordonnanceur a besoin d'avoir assez de parallélisme pour fournir un bon équilibrage de charge.
 %
-Donc, la plus part du temps trouver la granularité parfaite est difficile, voire impossible.
+Donc, trouver la granularité parfaite est souvent très difficile, voire impossible.
 %
 Si la granularité est trop grossière, l'ordonnanceur ne peut pas distribuer équitablement les calculs sur tous les coeurs.
 %
@@ -41,7 +41,7 @@ Mais au contraire, si la granularité est trop fine, le surcoût de l'ordonnance
 
 Il existe des travaux qui dans le passé se sont intéressés au problème d'adaptation de la granularité au nombre d'unités de calcul disponibles.
 %
-Plusieurs de ces travaux donnent des solutions au problème de granularité en utilisant des techniques de réutilisation des caches pour certaines classes de problèmes tel que la récursivité, diviser pour régner ou des divisions récursives de boucles~\cite{unifieddataflow,Intel::TBB,Cilk,xkaapi,taskscomparison}.
+Plusieurs de ces travaux donnent des solutions au problème de granularité en utilisant des techniques de réutilisation des caches pour certaines classes de problèmes tel que la récursivité, diviser pour régner ou des divisions récursives de boucles~\cite{unifieddataflow,Intel_TBB,Cilk,xkaapi,taskscomparison}.
 %
 Des travaux comme le cadriciel SCOOP~\cite{scoopp} fournissent des outils aux applications pour contrôler la granularité.
 %

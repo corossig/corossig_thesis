@@ -15,7 +15,7 @@ Chaque entrée non-nulle de la matrice correspond à l'interaction entre 2 cellu
 %
 Nous avons choisi de simuler le cube avec 1 variable primaire, 3 variables primaires (modèle {\em black-oil}) et 8 variables primaires (modèle {\em compositionnel}).
 %
-Pour le réservoir SPE10, c'est un cas à 3 variables primaires.
+Pour le réservoir SPE10, c'est un cas {\em black-oil} à 3 variables primaires.
 %
 Au final nous avons donc 4 matrices différentes.
 %
@@ -36,7 +36,7 @@ Ici, le nombre de variables primaires va définir le nombre d'opérations faites
 %
 Ces résultats confirment notre problème de granularité.
 %
-Au final, avec l'utilisation des 12 coeurs de calcul de la machine, nous obtenons des accélérations plutôt décevant, par exemple, pour les cas à 3 variables primaires, le code tourne environ 2,5x plus vite que la version séquentielle mais il utilise 12 threads.
+Au final, avec l'utilisation des 12 coeurs de calcul de la machine, nous obtenons des accélérations plutôt décevant, par exemple, pour les cas à 3 variables primaires, le code tourne environ 2,5 fois plus vite que la version séquentielle mais il utilise 12 fois plus de puissance de calcul.
 
 
 %   (-_-)   %
@@ -78,7 +78,7 @@ Cet opérateur va essayer de créer des groupes de 8 tâches assez proches dans 
 %
 Nous allons donc diviser par 8 le nombre de tâches, ce qui peut paraître peu mais cette valeur a été choisie empiriquement parmi un ensemble de valeurs.
 %
-Les autres valeurs donnent des résultats légèrement moins bons, par exemple le paramètre 4 offre une accélération de 3,35, 3,55 pour le paramètre 12 et 3,72 pour le paramètre 8.
+Les autres valeurs donnent des résultats légèrement moins bons, par exemple le paramètre 4 offre une accélération de 3,35, tandis que le paramètre 12 offre 3,55 et finalement le paramètre 8 offre une accélération de 3,72.
 %
 Comparé à l'opérateur F, il y a très peu d'amélioration quand le nombre de variables primaires est faible (Fig.~\ref{fig:res_facto_d8}).
 %
@@ -92,7 +92,7 @@ Par contre, avec 8 variables primaires, on obtient un gain de performance qui es
   \label{fig:res_facto_d8}
 \end{figure}
 
-Les deux précédents opérateurs donnent déjà des résultats, mais le meilleur opérateur pour nos matrices reste l'opérateur C.
+Les deux précédents opérateurs donnent déjà des résultats, mais nous savons que le meilleur opérateur pour nos matrices reste l'opérateur C.
 %
 Comme le montre les résultats de la figure~\ref{fig:res_facto_c}, tous les cas tests sont améliorés.
 %
@@ -124,7 +124,7 @@ On observe un très léger gain de performance quand on a une seule variable pri
 %
 Malgré ces optimisations, nous n'atteignons pas une accélération parfaite, avec au mieux une accélération de 8,7 pour 12 coeurs.
 %
-Nous expliquerons ce souci de performance dans les parties suivantes de la thèse.
+Ce souci de performance est lié à l'architecture mémoire de la machine, nous donnerons plus d'explication dans la partie suivante de la thèse.
 
 %   (-_-)   %
 \begin{figure}[t!]

@@ -1,14 +1,14 @@
 \subsection{Partie GMRES}
 L'algorithme GMRES est utilisé pour résoudre de grands systèmes linéaires creux.
 %
-La plupart des opérations sont des opérations de type BLAS1 (axpy, dot product...) et sont facilement parallélisables.
+La plupart des opérations sont des opérations de type BLAS1 (axpy, dot product...) et sont facilement parallélisables\cite{para_blas}.
 %
-L'opération la plus coûteuse de l'algorithme du GMRES est le produit matrice vecteur, ou {\em SpMV}\footnote{Sparse Matrix Vector multiply}.
+L'opération la plus coûteuse de l'algorithme du GMRES non préconditionné est le produit matrice vecteur, ou {\em SpMV}\footnote{Sparse Matrix Vector multiply}.
 %
-Cette opération peut être parallélisée avec du parallélisme de boucle, les lignes de la matrice peuvent être traitées indépendamment les unes des autres.
+Cette opération peut être parallélisée avec du parallélisme de boucle, les lignes de la matrice peuvent être traitées indépendamment les unes des autres\cite{para_spmv}.
 
 
-Donc en général, l'algorithme GMRES se parallélise très bien.
+Donc de manière générale, l'algorithme du GMRES se parallélise très bien.
 %
 Mais nous ne pouvons pas l'utiliser tel quel, nos matrices ne sont pas assez bien conditionnées.
 %
@@ -18,13 +18,13 @@ Par contre, la partie préconditionneur n'est pas toujours facilement paralléli
 %
 Par exemple, le préconditionneur ILU(k), que nous allons utiliser, est un algorithme dont le parallélisme dépend de la structure de la matrice.
 %
-Cette structure dépend du problème traité ainsi que de la numérotation des cellules (Fig.~\ref{fig:matrix_ordering}).
+Cette structure dépend elle-même du problème traité ainsi que de la numérotation des cellules (Fig.~\ref{fig:matrix_ordering}).
 %
 Dans le cas d'une numérotation naturelle, le parallélisme est difficile à exploiter.
 %
-Par contre, une numérotation rouge-noire expose un parallélisme de boucle, mais fournit un moins bon préconditionnement\cite{red_black_ilu2}.
+Par contre, une numérotation rouge-noire expose un parallélisme de boucle, plus facile à paralléliser mais fournit un moins bon préconditionnement\cite{red_black_ilu2}.
 %
-Ce chapitre sera consacré à exploiter un maximum de parallélisme de l'algorithme ILU(k) en gardant une numérotation naturelle.
+Dans le but de garder un bon préconditionnement, ce chapitre sera consacré à exploiter un maximum de parallélisme de l'algorithme ILU(k) tout en gardant une numérotation naturelle.
 
 %   (-_-)   %
 \begin{figure}[!ht]

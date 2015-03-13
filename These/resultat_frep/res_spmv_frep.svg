@@ -125,7 +125,7 @@
 	<path stroke='black'  d='M108.0,22.5 L108.0,423.2 L666.3,423.2 L666.3,22.5 L108.0,22.5 Z  '/></g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 	<g transform="translate(23.6,222.9) rotate(270)" stroke="none" fill="black" font-family="Verdana" font-size="16.00"  text-anchor="middle">
-		<text><tspan font-family="Verdana" >Temps d'exécution</tspan></text>
+		<text><tspan font-family="Verdana" >Temps d'exécution moyen</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">

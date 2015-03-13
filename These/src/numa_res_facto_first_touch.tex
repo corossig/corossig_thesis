@@ -8,22 +8,20 @@ Pour rappel, nous obtenions au mieux une accélération de 8,7 sur coeurs pour l
 
 Sur la machine Manumanu, nous obtenons le même type d'accélération que pour le SpMV.
 %
-Tant que nous utilisons moins de 2 bancs NUMA, nous obtenons une accélération de 10 pour la factorisation (Fig.~\ref{fig:res_facto_ft_manumanu}) et une accélération de 6,2 pour la résolution triangulaire.
+Tant que nous utilisons moins de 2 bancs NUMA, nous obtenons une accélération de 10 pour la factorisation (Fig.~\ref{fig:res_facto_ft_manumanu}) et une accélération de 6,2 pour la résolution triangulaire (Fig.~\ref{fig:res_trsv_ft_manumanu}).
 
 
 %   (-_-)   %
-\begin{figure}[t!]
-  \centering
-  \includegraphics[width=0.7\textwidth]{res_facto_ft_manu}
-  \caption{Performance de la factorisation sur Manumanu en utilisant une politique d'allocation first touch.}
-  \label{fig:res_facto_ft_manumanu}
-\end{figure}
-
-
-%   (-_-)   %
-\begin{figure}[t!]
-  \centering
-  \includegraphics[width=0.7\textwidth]{res_trsv_ft_manu}
-  \caption{Performance de la résolution triangulaire sur Manumanu en utilisant une politique d'allocation first touch.}
-  \label{fig:res_trsv_ft_manumanu}
+\begin{figure}[!ht]
+     \begin{center}
+        \subfigure[Factorisation ILU(0).]{%
+          \label{fig:res_facto_ft_manumanu}
+          \includegraphics[width=0.49\textwidth]{res_facto_ft_manu}
+        }%
+        \subfigure[Résolution triangulaire]{%
+          \label{fig:res_trsv_ft_manumanu}
+          \includegraphics[width=0.49\textwidth]{res_trsv_ft_manu}
+        }%
+    \end{center}
+    \caption{Performances sur Manumanu en utilisant une politique d'allocation first touch.}
 \end{figure}

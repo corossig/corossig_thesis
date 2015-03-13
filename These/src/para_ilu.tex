@@ -5,9 +5,9 @@ $L$ est une matrice triangulaire inférieure, toutes les valeurs au-dessus de la
 %
 Symétriquement, $U$ est une matrice triangulaire supérieure, toutes les valeurs de $U$ en-dessous de la diagonale sont nulles.
 %
-Le principal intérêt de cette factorisation est de trouver $x$ dans les équations du type $Ax=y$.
+Le principal intérêt de cette factorisation est de trouver facilement $x$ dans les équations du type $Ax=y$.
 %
-Cette équation est transformée en deux équations $L.x_{tmp}=y$ et $U.x=x_{tmp}$.
+Dans le cas où $A=L.U$, le système d'équations $Ax=y$ est transformée en deux systèmes d'équations $L.x_{tmp}=y$ et $U.x=x_{tmp}$.
 %
 La méthode utilisée pour résoudre les systèmes composés de matrices triangulaires est triviale.
 %
@@ -19,15 +19,17 @@ Il existe du parallélisme à exploiter dans cet algorithme, à chaque fois qu'u
 
 
 
-En algèbre linéaire creuse, la factorisation LU d'une matrice $A$ creuse donnera deux matrices triangulaires denses $L$ et $U$.
+En algèbre linéaire creuse, la transformation des éléments nuls de la matrice creuse en éléments non nuls est appelée remplissage.
 %
-Or, dans le cas d'une matrice d'ordre élevé ($>$ 100 000), si l'on souhaite effectuer la factorisation exacte, ces deux matrices ne peuvent pas tenir en mémoire.
+La factorisation LU d'une matrice $A$ creuse donnera deux matrices triangulaires denses $L$ et $U$.
+%
+Or, si l'on souhaite effectuer la factorisation exacte dans le cas d'une matrice d'ordre élevé ($>$ 100 000), ces deux matrices ne peuvent pas tenir en mémoire.
 %
 C'est pourquoi en algèbre linéaire creuse, on utilise une version altérée de cette factorisation que l'on appelle factorisation incomplète, ou {\em ILU}\footnote{Incomplete LU}, dont le but est de limiter le remplissage de la matrice.
 %
 L'algorithme ILU est similaire à l'algorithme LU mais le remplissage est limité par des conditions définies par l'algorithme.
 %
-Ces conditions peuvent être de deux formes : soit en limitant le remplissage avec une valeur seuil (ILUT), soit en limitant le niveau d'interaction entre les lignes de la matrices (ILU(k)).
+Ces conditions peuvent être de deux formes : soit en limitant le remplissage avec une valeur seuil (ILUT\cite{saad1994ilut}), soit en limitant le niveau d'interaction entre les lignes de la matrices (ILU(k)).
 %
 Dans le cas ILU(k), le paramètre k sert à limiter le niveau d'interaction entre les lignes.
 %
@@ -89,7 +91,7 @@ En fait, la plupart des runtimes mettront plus de temps à ordonnancer la tâche
 
 Les problèmes rencontrés pour paralléliser la factorisation incomplète d'une matrice creuse, ainsi que les résolutions triangulaires associées, sont des problèmes qui représentent bien la difficulté que l'on peut rencontrer avec une parallélisation à grain fin.
 %
-La description à grain fin de ces algorithmes est naturelle, mais en pratique, une simple parallélisation utilisant Intel TBB ou OpenMP ne donnera pas de bonnes performances à cause du faible coût de calcul d'une tâche.
+La description à grain fin de ces algorithmes est naturelle, mais en pratique, une simple parallélisation utilisant des ordonnanceurs répandus, tels que Intel TBB ou OpenMP, ne donnera pas de bonnes performances à cause du faible coût de calcul d'une tâche.
 %
 On appelle cela le problème de granularité.
 %
@@ -101,7 +103,9 @@ Une méthode générique a été développée durant la thèse et sera expliqué
 %
 De plus, l'ordre de factorisation des lignes de la matrice aura une influence sur les performances.
 %
-En fonction du nombre de variables primaires, nous avons entre 31~\% et 450~\% de temps de factorisation en plus (Tab.~\ref{tab:facto_order}).
+En fonction du nombre de variables primaires, nous avons entre 24~\% et 450~\% de temps de factorisation en plus par rapport au temps de factorisation optimal (Tab.~\ref{tab:facto_order}).
+%
+La factorisation des lignes de la matrice avec un parcourt linéaire des indices donne les meilleurs performances.
 %
 Il est donc primordial d'agréger des tâches qui factorisent des lignes consécutives de la matrice.
 

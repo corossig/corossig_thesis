@@ -35,7 +35,7 @@
 %\usepackage{graphicx}
 \usepackage{fancyhdr}
 \usepackage{eucal}
-\usepackage[english]{babel}
+\usepackage[frenchb]{babel}
 \usepackage[usenames, dvipsnames]{color}
 \usepackage[perpage]{footmisc}
 \usepackage[square, sort, comma, numbers]{natbib}
@@ -468,7 +468,7 @@ M. ???? \textsc{????} & ???? & Examinateur \\
 %\usepackage{algorithmic}
 \usepackage{comment}
 
-\usepackage{minitoc}
+\usepackage[french]{minitoc}
 \setcounter{minitocdepth}{2}
 
 
