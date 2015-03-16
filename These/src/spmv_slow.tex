@@ -1,4 +1,4 @@
-\subsection{Deux fois plus de coeurs mais pas deux fois plus rapide}
+\subsection{Passage à l'échelle}
 Comme dit dans le chapitre précédent, l'algorithme du GMRES se parallélise bien parce qu'il est essentiellement composé d'opérations sur des vecteurs.
 %
 L'opération la plus coûteuse est le produit d'une matrice par un vecteur (SpMV).
@@ -18,7 +18,7 @@ Si l'on regarde les compteurs matériels, on s'aperçoit que la moitié de la ba
 Donc environ la moitié des accès mémoires sont faits une plus grande latence.
 
 %   (-_-)   %
-\begin{figure}[t!]
+\begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{res_spmv_omp}
   \caption{Accélération du produit matrice vecteur creux sur Rostand en mémoire partagée.}

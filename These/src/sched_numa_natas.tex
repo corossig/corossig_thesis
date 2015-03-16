@@ -20,7 +20,7 @@ Nous avons donc plus de contention sur cette structure et une queue basique ne s
 %
 \`A la place, nous utilisons un conteneur sans verrou, entièrement construit autour de l'instruction compare-and-swap.
 %
-
+Nous limitons donc les processeurs capable de faire fonctionner NATaS à ceux ayant l'instruction compare-and-swap.
 %
 Cette structure ne nous permet pas d'obtenir les mêmes performances que l'utilisation d'une queue par thread, mais elle a l'avantage de mieux fonctionner pour l'équilibrage de charge à l'intérieur d'un banc NUMA.
 
@@ -63,7 +63,7 @@ Le but étant d'avoir à hauteur fixée, un nombre égale de tâche par banc NUM
 
 
 %   (-_-)   %
-\begin{figure}[t!]
+\begin{figure}
   \centering
   \includegraphics[width=\textwidth]{numa_distrib_example}
   \caption{Exemple de l'algorithme de distribution des tâches en action, la couleur des tâches détermine leurs affinités NUMA. Les tâches en blanches ne sont pas encore traitées.}

@@ -10,6 +10,7 @@ Chaque noeud est lui-même composé de 2 bancs NUMA avec un processeur Intel Xeo
 %
 Les processeurs ont 6 coeurs, soit un total de 12 coeurs par noeud de calcul et 7680 coeurs pour l'ensemble de la grappe.
 
+
 %   (-_-)   %
 \begin{figure}[!ht]
         \centering
@@ -34,7 +35,7 @@ Cette machine est vraiment intéressante pour évaluer les effets NUMA.
 %   (-_-)   %
 \begin{figure}[!ht]
      \begin{center}
-        \subfigure[Matrice des distances entre chaque banc NUMA. Résultat obtenu avec la commande ``numactl --hardware''.]{%
+        \subfigure[Matrice des distances entre chaque banc NUMA. Les valeurs n'ont pas d'unités et sont fournies par le constructeur. Résultat obtenu avec la commande ``numactl --hardware''.]{%
           \label{fig:manumanu_distances}
           \includegraphics[width=0.49\textwidth]{manumanu_distance}
         }%

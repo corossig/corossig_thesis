@@ -8,7 +8,7 @@ Nous allons donc augmenter la bande passante mémoire en ne modifiant que la lat
 Sur Rostand, nous obtenons un gain de performance d'environ 20~\% mais les performances sont toujours en dessous des performances obtenues en mémoire partagée (Fig.~\ref{fig:res_spmv_interleave_rostand}).
 
 %   (-_-)   %
-\begin{figure}[t!]
+\begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{res_spmv_interleave}
   \caption{Accélération du produit matrice vecteur creux sur Rostand en mémoire partagée avec une politique d'allocation interleave.}
@@ -26,7 +26,7 @@ Au final, les résultats de l'allocation interleave sur Manumanu sont proches de
 Ce n'est donc pas la bonne solution pour exploiter les performances de cette machine.
 
 %   (-_-)   %
-\begin{figure}[t!]
+\begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{res_spmv_interleave_manu}
   \caption{Accélération du produit matrice vecteur creux sur Manumanu en mémoire partagée avec une politique d'allocation interleave.}

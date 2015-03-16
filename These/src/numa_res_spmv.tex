@@ -26,7 +26,9 @@ Puis, dans un second temps, nous allons calculer la capacité de calcul maximale
 %
 Pour calculer cette capacité, il faut multiplier le nombre de coeur de calcul par le nombre maximal d'opérations faites dans une instruction et multiplier le tout pas la fréquence d'horloge.
 %
-Chaque noeud de Rostand étant composé de 12 coeurs cadencés à 2,80~GHz et de l'instruction SSE~4.2 permettant d'effectuer 4 opérations flottantes à la fois, ce qui donne 134,4~GFlops.
+Chaque noeud de Rostand étant composé de 12 coeurs cadencés à 2,80~GHz et du jeu d'instructions SSE~4.2 permettant d'effectuer 4 opérations flottantes en simple précision à la fois, ce qui donne 134,4~GFlops.
+%
+Le nombre d'opérations simultanées en double précision est divisé par 2, donc on peux avoir au maximum 67,2~GFlops et si nous n'utilisons pas le jeu d'instructions vectorielles, nous pouvons obtenir au maximum 33,6~GFlops (Fig.~\ref{fig:roofline_rostand}).
 
 
 Une fois le roofline model construit, nous pouvons donc placer le produit matrice vecteur creux.
@@ -34,9 +36,13 @@ Une fois le roofline model construit, nous pouvons donc placer le produit matric
 Les performances du SpMV dépendent du nombre de variables primaires, nous avons donc placé sur le roofline model trois SpMV en fonction du nombre de variable primaire utilisées.
 %
 Ces trois points nous indiquent que les performances du SpMV seront limitées par la bande passante mémoire.
+%
+L'utilisation du jeu d'instructions vectorielles aura donc très peu d'impact sur nos performances.
+%
+Nous devons nous concentrer sur les accès mémoires et surtout dans notre cas, sur les effets NUMA.
 
 %   (-_-)   %
-\begin{figure}[t!]
+\begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{roofline_rostand}
   \caption{Roofline model de Rostand avec les différents produit matrice vecteur creux.}

@@ -14,8 +14,24 @@ L'un des avantages majeur de ce paradigme est qu'il permet d'utiliser un ensembl
 %
 Il fonctionne aussi en mémoire partagée qu'en mémoire distribuée.
 %
-Par contre, certains algorithmes ne peuvent pas être écrits efficacement avec ce paradigme.
+Son utilisation en mémoire partagée permet de n'utiliser qu'un seul type de parallélisme dans un programme.
 %
-Dans notre cas, la factorisation d'une matrice creuse se parallélise très mal.
+Un programme pure MPI peut donc utiliser tous les coeurs d'un noeud de calcul avec le même code source qui permet d'utiliser des grappes de serveurs.
 %
-Nous sommes obligés de modifier les méthodes de factorisation pour être capable d'obtenir de la performance.
+Mais il ne s'agit pas toujours de l'implémentation la plus efficace pour paralléliser un code, il est souvent plus performant d'utiliser une parallélisation hybride MPI+Threads\cite{mpi_openmp}.
+%
+De plus, certains algorithmes ne peuvent pas être écrits efficacement avec ce paradigme.
+%
+Par exemple, dans notre cas la factorisation d'une matrice creuse se parallélise très mal.
+%
+Nous ne pouvons pas extraire du parallélisme qu'entre les factorisations des lignes de la matrices.
+%
+Or ce niveau de granularité du calcul ne donne pas de bonnes performances avec un paradigme par passage de messages.
+%
+Nous sommes donc obligés de modifier les méthodes de factorisation pour être capable d'obtenir de la performance.
+%
+La décomposition en sous-domaines des cellules du réservoir permet d'effectuer en parallèle une factorisation sur chaque domaine.
+%
+C'est donc cette méthode qui est utilisée pour une parallélisation par passage de messages.
+%
+Cette méthode a l'inconvénient d'ignorer de nombreuses connexions entre les cellules du réservoir fournis donc un résultat de moins bonne qualité qu'une méthode sans décomposition de domaine.

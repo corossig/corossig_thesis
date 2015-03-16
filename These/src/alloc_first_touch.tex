@@ -5,10 +5,36 @@ La traduction littéral serait le {\em premier toucher}, ce nom se réfère au f
 %
 La page physique sera choisi avec comme priorité de prendre une page dans la mémoire la plus proche du thread qui souhaite utiliser cette page.
 %
-L'idée derrière cette allocation n'est pas mauvaise, dans le cas d'un processus mono-thread, la localité mémoire sera toujours optimale.
+L'idée derrière cette allocation n'est pas mauvaise, dans le cas d'un processus mono-thread dont l'affinité processeur est fixée à un banc mémoire, la localité mémoire sera toujours optimale.
 %
-Dans le cas d'un processus multi-threads, si les threads allouent eux-mêmes leurs mémoires et ne font quasiment aucun partage entre eux, cette allocation fonctionne toujours.
+Dans le cas d'un processus multi-threads dont les threads ont une affinité fixe, s'ils allouent eux-mêmes leurs mémoires et ne font quasiment aucun partage entre eux, cette allocation fonctionne toujours.
 %
 Mais tous les programmes ne sont pas écrits pour fonctionner de cette façon.
 %
 Imaginons un programme qui soit écrit pour avoir une phase d'initialisation séquentielle, avec toutes les allocations dont il aura besoin dans cette phase, alors toute la mémoire physique sera allouée sur un seul banc NUMA.
+%
+Il existe d'autres cas où ce type d'allocation ne permet pas d'obtenir le maximum de bande passante mémoire de la machine.
+%
+Par exemple dans le cas d'une application multi-processus dont tous les processus ont une affinité processeur identique et fixée à un seul banc NUMA.
+%
+Seulement une partie de la bande passante mémoire sera utilisée.
+%
+Il y a aussi le cas où les processus ont une affinité processeur leurs permettant d'utiliser n'importe quel coeur de la machine.
+%
+L'allocation des pages mémoires peut se faire sur un banc NUMA, puis le noyau décide de changer le processus de banc NUMA, et tous les calculs sont faits avec une mauvaise localité mémoire.
+%
+De plus, si le thread de calcul change souvent de coeur de calcul, l'utilisation des caches de faibles niveaux (L1 et L2) ne sera pas optimal.
+%
+Il est donc important de toujours fixer l'affinité processeur d'un thread à un coeur de calcul.
+%
+Dans notre programme, l'initialisation des données est séquentielle, donc avec une politique d'allocation first touch, toutes les données se retrouvent sur un seul banc NUMA.
+%
+Nous avons donc plusieurs choix pour distribuer les données :
+\begin{itemize}
+  \item soit nous réécrivons la partie initialisation pour qu'elle soit faite en parallèle;
+  \item soit nous essayons une autre politique d'allocation qui correspond mieux à notre problème.
+\end{itemize}
+%
+La première solution est compliquée à mettre en oeuvre et pourrait introduire de nouveaux bogues dans le code.
+%
+La deuxième solution nécessite moins de changement, nous avons donc essayé cette solution.

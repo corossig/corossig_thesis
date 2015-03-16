@@ -1,4 +1,4 @@
-\subsection{Explication de la mémoire}
+\subsection{Limitations mémoires}
 Pour comprendre les résultats précédents nous devons étudier brièvement l'architecture des ordinateurs.
 %
 Les performances d'un ordinateur dépendent essentiellement de deux choses : le processeur et la mémoire.
@@ -19,12 +19,12 @@ Ensuite, il y a la mémoire RAM avec une latence de quelques centaines de cycles
 %
 Si nous regardons la structure mémoire de deux bancs NUMA de la figure~\ref{fig:numa_architecture}, on s'aperçoit que la distance physique des coeurs de calcul et de la mémoire est liée à la latence des accès mémoires.
 %
-Pour obtenir limiter le plus possible les pénalités mémoires, il est nécessaire que tous les coeurs de calcul utilisent la mémoire qui est la plus proche.
+Pour limiter le plus possible les pénalités mémoires, il est nécessaire que tous les coeurs de calcul utilisent la mémoire qui est la plus proche.
 %
 Par exemple, sur une machine à deux bancs NUMA, les accès à la mémoire du banc NUMA 2 depuis les coeurs du banc NUMA 1 coûterons plus chère que les accès à la mémoire du banc NUMA 1.
 
 %   (-_-)   %
-\begin{figure}[t!]
+\begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{numa_architecture}
   \caption{Exemple d'une architecture NUMA à deux processeurs.}

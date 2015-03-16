@@ -5,8 +5,11 @@ Il s'agit de traiter en parallèle toutes les itérations d'une boucle en les di
 %
 Il faut bien sûr que ces itérations soit indépendantes, c'est à dire qu'avec un nombre infini de coeur de calcul, on pourrait traiter une itération par coeur simultanément.
 %
-Ce paradigme fonctionne de la manière suivante : un thread est crée par coeur de calcul et chaque thread doit s'occuper de traiter une partie des itérations de la boucle.
+Ce paradigme fonctionne de la manière suivante : un thread est créé par coeur de calcul et chaque thread doit s'occuper de traiter une partie des itérations de la boucle.
 %
+Puis tous les threads se synchronisent sur une barrière implicite à la fin de la boucle.
+%
+Cette méthode est méthode est aussi appelé {\em fork and join}.
 
 
 L'interface de programmation qui a le plus démocratisé ce paradigme est OpenMP.
@@ -18,3 +21,13 @@ En ajoutant la fameuse directive ``\#pragma omp parallel for'' juste au-dessus d
 Les performances obtenues avec ce paradigme sont souvent suffisantes pour un grand nombre de logiciel et le ratio entre le temps de développement et le gain en temps d'exécution est imbattable.
 %
 Malheureusement, il peut arriver qu'il y ait des dépendances de données entre deux itérations, dans ce cas, ce paradigme de parallélisation donnera un résultat faux et il faudra utiliser un autre paradigme.
+%
+C'est ce qui arrive dans le cas d'une factorisation ILU.
+%
+La version séquentielle du code est composée d'une boucle sur les lignes de la matrice et chaque itération factorise une ligne dans l'ordre ascendant.
+%
+Mais ces itérations ne sont pas indépendantes, il est nécessaire de factoriser certaines lignes avant d'autres.
+%
+Par contre, le produit matrice vecteur creux utilisé dans l'algorithme GMRES est composé d'une boucle sur les lignes de la matrice et toutes les itérations sont indépendantes.
+%
+Nous utiliserons donc du parallélisme de boucle dans ce cas-là.

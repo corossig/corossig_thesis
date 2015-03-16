@@ -12,7 +12,7 @@ do
                 YRANGE=120
 		;;
             *_facto_*)
-                YRANGE=15
+                YRANGE=17
                 ;;
             *_trsv_*)
                 YRANGE=10
@@ -28,7 +28,7 @@ do
         gnuplot -p << EOF
 set xlabel "Nombre de threads"
 set ylabel "Accélération"
-set key left top noreverse
+set key right top noreverse
 set yrange [0:$YRANGE]
 set terminal svg size 700,500 fname 'Verdana' fsize 16
 set output "$dest"

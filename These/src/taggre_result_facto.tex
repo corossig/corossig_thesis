@@ -40,7 +40,7 @@ Au final, avec l'utilisation des 12 coeurs de calcul de la machine, nous obtenon
 
 
 %   (-_-)   %
-\begin{figure}[t!]
+\begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{res_facto_no_agg}
   \caption{Performance de la factorisation sur 12 coeurs sans utiliser Taggre.}
@@ -65,7 +65,7 @@ Dans le cas où le nombre de variables primaires est élevé, il n'y a pas beauc
 
 
 %   (-_-)   %
-\begin{figure}[t!]
+\begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{res_facto_f36}
   \caption{Performance de la factorisation sur 12 coeurs avec Taggre F(36).}
@@ -85,7 +85,7 @@ Comparé à l'opérateur F, il y a très peu d'amélioration quand le nombre de 
 Par contre, avec 8 variables primaires, on obtient un gain de performance qui est dû à une meilleure utilisation des caches, surtout du cache L2 avec une diminution de 10\% des défauts de cache.
 
 %   (-_-)   %
-\begin{figure}[t!]
+\begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{res_facto_d8}
   \caption{Performance de la factorisation sur 12 coeurs avec Taggre D(8).}
@@ -111,7 +111,7 @@ L'opérateur C offre donc le meilleur des deux opérateurs, il produit peu de t�
 
 
 %   (-_-)   %
-\begin{figure}[t!]
+\begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{res_facto_c}
   \caption{Performance de la factorisation sur 12 coeurs avec Taggre C.}
@@ -127,7 +127,7 @@ Malgré ces optimisations, nous n'atteignons pas une accélération parfaite, av
 Ce souci de performance est lié à l'architecture mémoire de la machine, nous donnerons plus d'explication dans la partie suivante de la thèse.
 
 %   (-_-)   %
-\begin{figure}[t!]
+\begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{res_facto_cd2}
   \caption{Performance de la factorisation sur 12 coeurs avec Taggre CD(2).}
@@ -145,7 +145,7 @@ Encore une fois il s'agit d'un problème de granularité, le graphe à ordonnanc
 Si nous regardons les résultats avec la meilleure agrégation que nous ayons, l'agrégation CD(2), on obtient des résultats légèrement meilleurs mais on n'est encore loin de l'accélération parfaite.
 
 %   (-_-)   %
-\begin{figure}[t!]
+\begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{res_trsv_no_agg}
   \caption{Performance de la résolution triangulaire sur 12 coeurs sans utiliser Taggre.}
@@ -154,7 +154,7 @@ Si nous regardons les résultats avec la meilleure agrégation que nous ayons, l
 
 
 %   (-_-)   %
-\begin{figure}[t!]
+\begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{res_trsv_cd2}
   \caption{Performance de la résolution triangulaire sur 12 coeurs avec Taggre CD(2).}

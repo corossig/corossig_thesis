@@ -13,3 +13,9 @@ Dans l'idéal, le processeur utilisant un pipeline d'instruction pourra exécute
 Par la suite, les processeurs ont gagnés des instructions permettant d'effectuer une même opération sur des données différentes, aussi appelées instructions SIMD dans la taxonomie de Flynn.
 %
 Ces processeurs dits vectoriel peuvent donc avoir une puissance de calcul supérieur, si une instruction est capable d'effectuer 4 opérations à la fois et qu'il tourne à 4~GHz, alors il aura une puissance de calcul de 16~GFLOPS.
+%
+Il s'agit ici d'une puissance théorique, tous les codes de calculs n'ont pas la possibilité d'exploiter les instructions vectorielles.
+%
+Ces instructions sont souvent utilisées dans les noyaux de calculs d'algèbre linéaire dense.
+%
+En simulation de réservoir, nous utilisons ces noyaux de calculs sur les blocs de nos matrices.

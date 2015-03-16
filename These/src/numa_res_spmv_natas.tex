@@ -12,7 +12,7 @@ Pour 3 variables primaires, nous obtenons 95~\% des performances de la version e
 Par contre, nous n'obtenons que 70~\% avec 1 variable primaire.
 
 %   (-_-)   %
-\begin{figure}[t!]
+\begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{res_spmv_nas}
   \caption{Accélération du produit matrice vecteur creux sur Rostand en mémoire partagée avec NATaS.}
@@ -45,7 +45,7 @@ L'utilisation de 2 bancs NUMA sur Manumanu nous donne une accélération de 10, 
 Au delà de 2 bancs NUMA, les performances sont légèrement meilleures que la version OpenMP, atteignant une accélération de 32.
 
 %   (-_-)   %
-\begin{figure}[t!]
+\begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{res_spmv_nas_manu}
   \caption{Accélération du produit matrice vecteur creux sur Manumanu en mémoire partagée avec NATaS.}

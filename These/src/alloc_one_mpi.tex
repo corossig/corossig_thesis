@@ -6,3 +6,7 @@ En utilisant un processus MPI par banc NUMA et une politique d'allocation first 
 Mais la problématique reste similaire à la problématique du choix entre la parallélisation en mémoire distribuée et la parallélisation en mémoire partagée, ce n'est pas toujours possible ou performant.
 %
 Dans le cas où les algorithmes en mémoire distribuée ne passent pas à l'échelle, il est nécessaire de noter que l'utilisation de cette solution multipliera par le nombre de bancs NUMA le nombre de processus MPI.
+%
+Notre application utilise déjà du parallélisme en mémoire distribuée, il n'y aura donc pas de modification à effectuer pour cette solution.
+%
+Par contre, les algorithmes que nous utilisons donnent de meilleurs résultats avec peu de processus MPI, nous cherchons donc à limiter le nombre de processus MPI.
