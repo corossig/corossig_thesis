@@ -48,7 +48,7 @@ Donc, à partir du motif des valeurs non-nulles de la matrice, nous pouvons faci
 %
 la tâche $i$ corresponds à la ligne $i$ de la matrice (ligne \ref{algo:ilu0:task_begin} à \ref{algo:ilu0:task_end} de l'algorithme~\ref{algo:ilu0}), la liste des tâches prédécesseurs de la tâche $i$ est donnée par l'index de colonne des valeurs non-nulles avant la diagonale dans la ligne $i$ (ligne~\ref{algo:ilu0:dep}) et la liste des tâches successeurs de la tâche $i$ est donnée par l'index de ligne des valeurs non-nulles au-dessous de la diagonale de la colonne $i$ (Fig.~\ref{fig:example_2_matrix}).
 
-\begin{figure}[!ht]
+\begin{figure}[!h]
      \begin{center}
         \subfigure[Un réservoir à 4 cellules]{%
           \label{fig:example_1_res}
@@ -147,7 +147,7 @@ En moyenne 3 sweeps suffisent à obtenir un résultat proche de la factorisation
 La convergence n'est donc que faiblement dégradée, mais il faut prendre en compte que 3 sweeps ont été nécessaires et il a donc fallu faire 3 fois plus d'opérations qu'une factorisation ILU classique.
 
 %   (-_-)   %
-\begin{figure}[!ht]
+\begin{figure}[!h]
      \begin{center}
         \subfigure[Exemple de graphe de tâche obtenu avec une numérotation naturelle.]{%
           \label{fig:DAG_natural}
