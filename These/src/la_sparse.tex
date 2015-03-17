@@ -50,6 +50,26 @@ Mais l'algèbre linéaire creuse nous permet de résoudre des problèmes bien pl
 Ceci est dû au fait qu'avec une taille de matrice équivalente, l'algèbre linéaire creuse utilise vraiment moins de mémoire que l'algèbre linéaire dense.
 
 
+Pour la simulation de réservoir, chaque entrée de nos matrices est composée d'un petit petit bloc dense dont la taille dépend du nombre de variables primaires utilisées par la simulation.
+%
+Ces blocs permettent d'obtenir une meilleure réusabilité des caches lors des opérations élémentaires.
+%
+Pour prendre en compte ces blocs et ainsi optimiser nos calculs, nous utilisons une version modifiée du CSR, le Block CSR ou BCSR.
+%
+La différence avec le format CSR provient du tableau servant stockant les valeurs non nulles de la matrice.
+%
+Au lieu de stocker des scalaires, nous stockons des blocs denses.
+%
+Ces blocs sont eux-mêmes stockés au format {\em column major}, ce qui signifie qu'en mémoire deux éléments consécutifs appartiennent à la même colonne.
+%
+Exception faite du dernier élément de la colonne dont l'élément consécutif est le premier élément de la colonne suivante.
+%
+Nous avons effectué une comparaison des différents formats de stockage des matrices appliqué au réservoir dans le cadre de l'utilisation d'un GPU, les résultats sont disponibles dans l'article~\cite{Renpar}.
+%
+Le format BCSR est un bon compromis entre flexibilité et performance.
+
+
+
 Résoudre des problèmes linéaires creux est aussi très différent de résoudre des problèmes denses.
 %
 Nous ne pouvons pas utiliser une inversion directe de matrice, ou la technique de l'élimination de Gauss parce que nous obtiendrions une matrice quasi-dense.

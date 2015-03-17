@@ -62,7 +62,7 @@ Cette machine est vraiment intéressante pour évaluer les effets NUMA.
           \label{fig:manumanu_distances}
           \includegraphics[width=0.59\textwidth]{manumanu_distance}
         }%
-        \subfigure[Topologie déduite de la matrice des distances. Chaque noeud représente un ensemble de deux bancs NUMA.]{%
+        \subfigure[Topologie déduite de la matrice des distances. Chaque noeud représente un groupe de deux bancs NUMA.]{%
           \label{fig:manumanu_topo}
           \includegraphics[width=0.39\textwidth]{manumanu_topologie}
         }%
@@ -79,4 +79,4 @@ Ce regroupement permet de limiter la distance maximal entre deux banc NUMA, il y
 %
 Les temps de latence entre deux bancs NUMA d'un même groupe n'est supérieur que de 17\% par rapport à un accès local.
 %
-Par contre, les temps de latence entre deux groupes sont entre 3 et 4 fois plus long qu'un accès local.
+Par contre, les temps de latence entre deux groupes sont entre 3 et 4 fois plus long qu'un temps de latence local.

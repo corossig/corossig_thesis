@@ -61,19 +61,30 @@ La deuxième correspond à la {\em résolution triangulaire} effectuée avec les
 Pour maintenir un espace mémoire raisonnable, on peut choisir de limiter le niveau de remplissage, deux solutions existent :
 \begin{itemize}
   \item Soit en fixant une valeur seuil à partir de laquelle le remplissage est accepté, il s'agit de l'algorithme ILUt;
-%
   \item Soit en choisissant un niveau d'interaction maximal entre les lignes de la matrice, il s'agit de l'algorithme ILU(k) (Fig.~\ref{fig:ilu0}).
 \end{itemize}
 %
-Dans l'algorithme ILU, nous obtiendrons un motif creux pour $L$ et $U$ aussi proche que possible du motif creux de $A$.
+L'algorithme ILUt a l'inconvénient d'avoir un motif de remplissage qui dépend des coefficients de la matrice.
 %
-Il y a deux façons équivalentes pour appliquer un préconditionnement ILU, symbolisé par une matrice $M^{-1}$, dans GMRES :
-\begin{itemize}
-  \item le préconditionnement à gauche : $M^{-1}(Ax)=b$;
-  \item le préconditionnement à droite : $A(M^{-1}x)=b$.
-\end{itemize}
+Nous ne pouvons donc pas prévoir à l'avance l'espace nécessaire au stockage des matrices L et U.
 %
-Le sens d'application n'aura pas d'effet sur le résultat mais pourra exposer plus de parallélisme suivant la méthode de parallélisation choisi.
+Par contre, l'algorithme ILU(k) permet de connaître en avance le motif de remplissage de la matrice.
+%
+Il est donc possible de connaître la structure des matrices L et U à l'avance.
+%
+Pour la simulation de réservoir, nous utilisons l'algorithme ILU(k).
+
+
+
+%% Dans l'algorithme ILU, nous obtiendrons un motif creux pour $L$ et $U$ aussi proche que possible du motif creux de $A$.
+%% %
+%% Il y a deux façons équivalentes pour appliquer un préconditionnement ILU, symbolisé par une matrice $M^{-1}$, dans GMRES :
+%% \begin{itemize}
+%%   \item le préconditionnement à gauche : $M^{-1}(Ax)=b$;
+%%   \item le préconditionnement à droite : $A(M^{-1}x)=b$.
+%% \end{itemize}
+%% %
+%% Le sens d'application n'aura pas d'effet sur le résultat mais pourra exposer plus de parallélisme suivant la méthode de parallélisation choisi.
 
 
 %   (-_-)   %

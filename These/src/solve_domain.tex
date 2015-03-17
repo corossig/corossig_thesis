@@ -30,4 +30,12 @@ Malheureusement, plus il y a d'interactions ignorées, moins le préconditionneu
 %
 Formulé différemment, le nombre de domaines aura un impact la convergence du GMRES.
 %
-C'est pourquoi nous allons essayer de réduire au minimum le nombre de domaines.
+Cet impact n'est pas facilement prédictible et dépendra du problème étudié.
+%
+Il est donc quasiment impossible de connaître le nombre de domaine optimal pour avoir un bon rapport parallélisme sur nombre d'itérations du GMRES.
+%
+C'est pourquoi nous allons essayer de réduire au minimum le nombre de domaines pour toujours obtenir les meilleurs performances.
+%
+Pour cela, nous allons devoir utiliser une autre forme de parallélisme qui s'appliquera à l'intérieur d'un domaine.
+%
+Nous allons essayer de paralléliser les différentes étapes du GMRES sans affecter la convergence.
