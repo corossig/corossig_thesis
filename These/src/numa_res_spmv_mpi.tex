@@ -1,10 +1,45 @@
 \subsubsection{Mémoire distribuée}
-Le produit matrice vecteur creux, que nous abrégerons SpMV pour le reste des résultats, est un algorithme qui se parallélise très bien en mémoire partagée.
+Pour paralléliser un produit matrice vecteur creux en mémoire distribuée, il faut tout d'abord distribuer la matrice sur tous les processus.
 %
-Nous pouvons donc estimer que la performance atteinte en mémoire distribuée est une borne maximale à atteindre en mémoire partagée.
+Chaque processus devra s'occuper d'un ensemble de lignes de la matrice.
+%
+Cette répartition sera statique et les indices des lignes seront les mêmes pour la distribution des vecteurs (Fig.~\ref{fig:spmv_mpi}).
+%
+Nous pouvons voir que certaines éléments du vecteur $x$ doivent être partagées.
+%
+Pour cela, l'algorithme démarrera par une phase de communication de ces éléments.
+%
+Puis chaque processus pourra effectuer la multiplication de ces lignes de matrice et stocker le résultat dans un vecteur $y$ local.
+
+%   (-_-)   %
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{spmv_mpi}
+  \caption{Distribution des données utilisées par le produit matrice vecteur creux.}
+  \label{fig:spmv_mpi}
+\end{figure}
+
+Hormis la phase de communication au début de l'algorithme, le SpMV se parallélise très bien en mémoire distribuée.
+%
+Cette phase de communication peut être, dans certains cas, recouverte par du calcul.
+%
+Il suffit de multiplier en premier les lignes de la matrice qui ne dépendent pas des éléments distants.
+%
+Puis une fois les éléments reçus, il est possible de multiplier les lignes restantes.
+
+
+
+La performance atteinte en mémoire distribuée correspondent à la performance crête du SpMV.
 %
 En effet, de par sa nature distribuée, les pénalités mémoires NUMA sont minimales.
 %
+Chaque processus allouera la mémoire dont il a besoin sur son propre banc NUMA et si celui-ci n'est pas déplacé, tous ces accès mémoires seront optimaux.
+%
+Nous pouvons donc estimer cette performance sera la borne maximale à atteindre lorsque l'on travaillera en mémoire partagée.
+
+
+
+
 Le roofline model prédit un algorithme limité en performance par la bande passante mémoire.
 %
 Or, cette bande passante mémoire est partagée entre les coeurs d'un même banc NUMA.

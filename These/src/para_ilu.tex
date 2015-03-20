@@ -27,6 +27,8 @@ Or, si l'on souhaite effectuer la factorisation exacte dans le cas d'une matrice
 %
 C'est pourquoi en algèbre linéaire creuse, on utilise une version altérée de cette factorisation que l'on appelle factorisation incomplète, ou {\em ILU}\footnote{Incomplete LU}, dont le but est de limiter le remplissage de la matrice.
 %
+En contrepartie, le résultat de la factorisation obtenu est approximatif et fournit un moins bon préconditionneur pour GMRES.
+%
 L'algorithme ILU est similaire à l'algorithme LU mais le remplissage est limité par des conditions définies par l'algorithme.
 %
 Ces conditions peuvent être de deux formes : soit en limitant le remplissage avec une valeur seuil (ILUT\cite{saad1994ilut}), soit en limitant le niveau d'interaction entre les lignes de la matrices (ILU(k)).
@@ -34,6 +36,11 @@ Ces conditions peuvent être de deux formes : soit en limitant le remplissage av
 Dans le cas ILU(k), le paramètre k sert à limiter le niveau d'interaction entre les lignes.
 %
 Avec $k=0$, le motif des matrices $L$ et $U$ reste similaire au motif de la matrice $A$ (Algo~\ref{algo:ilu0}).
+%
+En augmentant la valeur de $k$, on augmente aussi le nombre d'interactions entre les celulles.
+
+
+
 
 
 Le parallélisme exploitable dans l'algorithme ILU est différent de celui exploitable dans l'algorithme LU, il offre la possibilité de factoriser certaines lignes en parallèle et ce parallélisme se représente naturellement sous la forme d'un graphe de tâches (Fig.~\ref{fig:example_3_dag}).

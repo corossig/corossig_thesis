@@ -22,6 +22,7 @@ Au final nous avons donc 4 matrices différentes.
 Nous ne faisons pas varier la taille du cube car les résultats obtenus avec des cubes générés de tailles raisonnablement différentes sont équivalents.
 
 
+\subsubsection{Sans agrégation}
 Nous avons utilisé OpenMP pour tester la parallélisation à grain fin sans agrégation.
 %
 OpenMP n'ayant pas de gestion de dépendances entre les tâches, nous utiliserons un système de décrémentation atomique.
@@ -40,18 +41,24 @@ Au final, avec l'utilisation des 12 coeurs de calcul de la machine, nous obtenon
 
 
 %   (-_-)   %
-\begin{figure}
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{res_facto_no_agg}
   \caption{Performance de la factorisation sur 12 coeurs sans utiliser Taggre.}
   \label{fig:res_facto_no_agg}
 \end{figure}
 
+
+
+
+\subsubsection{Avec l'opérateur F}
 Dans un premier temps, nous allons appliquer l'opérateur F avec le paramètre 36.
 %
 Cet opérateur va donc limiter la largeur du graphe pour qu'il y ait au plus 36 tâches par hauteur du graphe.
 %
-Nous réduisons donc le parallélisme mais nous réduisons aussi le nombre de tâches, on divise par 62 le nombre de tâches pour un cube de 80 de côté.
+Nous réduisons donc le parallélisme mais nous réduisons aussi le nombre de tâches, on divise par 62 le nombre de tâches pour un cube de 80 de côté, nous passons de 512000 tâches à 8223 tâches.
+%
+Pour le cas SPE10, le nombre de tâches passe de 1094435 à 12912 soit 84 fois moins de tâches.
 %
 La figure~\ref{fig:res_facto_f36} nous montre une amélioration du temps de factorisation quand le nombre de variables primaires est faible.
 %
@@ -62,21 +69,30 @@ Avec 3 variables primaires, la factorisation est 30~\% plus rapide.
 Avec 1 variable primaire, le temps de factorisation est divisé par 2.
 %
 Dans le cas où le nombre de variables primaires est élevé, il n'y a pas beaucoup d'amélioration (6~\%).
+%
+Ici, cet opérateur ne permet pas d'optimiser les accès mémoire cache, seul le surcoût d'ordonnancement est réduit.
 
 
 %   (-_-)   %
-\begin{figure}
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{res_facto_f36}
   \caption{Performance de la factorisation sur 12 coeurs avec Taggre F(36).}
   \label{fig:res_facto_f36}
 \end{figure}
 
+
+
+
+
+\subsubsection{Avec l'opérateur D}
 Essayons maintenant l'opérateur D avec le paramètre 8.
 %
 Cet opérateur va essayer de créer des groupes de 8 tâches assez proches dans le graphe.
 %
-Nous allons donc diviser par 8 le nombre de tâches, ce qui peut paraître peu mais cette valeur a été choisie empiriquement parmi un ensemble de valeurs.
+Nous allons donc diviser par 8 le nombre de tâches, passant ainsi de 512000 tâches à 64000 tâches.
+%
+Ce qui peut paraître peu mais cette valeur a été choisie empiriquement parmi un ensemble de valeurs.
 %
 Les autres valeurs donnent des résultats légèrement moins bons, par exemple le paramètre 4 offre une accélération de 3,35, tandis que le paramètre 12 offre 3,55 et finalement le paramètre 8 offre une accélération de 3,72.
 %
@@ -85,18 +101,27 @@ Comparé à l'opérateur F, il y a très peu d'amélioration quand le nombre de 
 Par contre, avec 8 variables primaires, on obtient un gain de performance qui est dû à une meilleure utilisation des caches, surtout du cache L2 avec une diminution de 10\% des défauts de cache.
 
 %   (-_-)   %
-\begin{figure}
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{res_facto_d8}
   \caption{Performance de la factorisation sur 12 coeurs avec Taggre D(8).}
   \label{fig:res_facto_d8}
 \end{figure}
 
-Les deux précédents opérateurs donnent déjà des résultats, mais nous savons que le meilleur opérateur pour nos matrices reste l'opérateur C.
+
+
+
+
+\subsubsection{Avec l'opérateur C}
+Les deux précédents opérateurs donnent déjà des résultats, mais nous pensons que le meilleur opérateur pour nos matrices reste l'opérateur C.
+%
+Il a l'avantage de réduire grandement le nombre de tâche comme l'opérateur F et il forme des groupes de tâches permettant une meilleure réusabilité des données en cache.
+%
+Par contre, il se pourrait que le parallélisme en pâtisse.
 %
 Comme le montre les résultats de la figure~\ref{fig:res_facto_c}, tous les cas tests sont améliorés.
 %
-Il y a deux grandes améliorations : la réduction du nombre de tâches et une meilleure réutilisation des caches.
+Il y a bien deux grandes améliorations : la réduction du nombre de tâches et une meilleure réutilisation des caches.
 %
 Comme pour tous les opérateurs, il y a une réduction du nombre de tâches, mais dans ce cas la réduction est bien plus importante.
 %
@@ -111,13 +136,15 @@ L'opérateur C offre donc le meilleur des deux opérateurs, il produit peu de t�
 
 
 %   (-_-)   %
-\begin{figure}
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{res_facto_c}
   \caption{Performance de la factorisation sur 12 coeurs avec Taggre C.}
   \label{fig:res_facto_c}
 \end{figure}
 
+
+\subsubsection{Avec plusieurs opérateurs}
 Il est aussi possible de combiner plusieurs opérateurs, sur la figure~\ref{fig:res_facto_cd2} nous avons combiné l'opérateur C avec l'opérateur D(2).
 %
 On observe un très léger gain de performance quand on a une seule variable primaire, mais dans les autres cas on observe le contraire.
@@ -127,13 +154,35 @@ Malgré ces optimisations, nous n'atteignons pas une accélération parfaite, av
 Ce souci de performance est lié à l'architecture mémoire de la machine, nous donnerons plus d'explication dans la partie suivante de la thèse.
 
 %   (-_-)   %
-\begin{figure}
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{res_facto_cd2}
   \caption{Performance de la factorisation sur 12 coeurs avec Taggre CD(2).}
   \label{fig:res_facto_cd2}
 \end{figure}
 
+\subsubsection{En résumé}
+
+
+%   (-_-)   %
+\begin{center}
+  \begin{tabular}{|r|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    Type de  &  \multicolumn{5}{c|}{Accélération}  &  \multicolumn{5}{c|}{Nombre de tâches} \\
+    matrice  &  \O & F(36) & D(8) & C & CD(2)  &  \O & F(36) & D(8) & C & CD(2)\\
+    \hline
+    Cube 80 Npri 1 & 1,75 & 3,39 & 3.46 & 5.65 & 5.73 & 512000  & 8223  & 64000  & 6400  & 3200 \\
+    Cube 80 Npri 3 & 2,44 & 3,46 & 3.72 & 6.07 & 6.14 & 512000  & 8223  & 64000  & 6400  & 3200 \\
+    Cube 80 Npri 8 & 5,83 & 6,17 & 7.02 & 8.58 & 8.48 & 512000  & 8223  & 64000  & 6400  & 3200 \\
+    SPE10 Npri 3   & 2,32 & 3,52 & 3.30 & 6.65 & 6.73 & 1094435 & 12912 & 136938 & 36336 & 18373 \\
+    \hline
+  \end{tabular}
+  \captionof{table}{Récapitulatif des résultats de la factorisation suivant les opérateurs appliqués.}
+  \label{tab:facto_res}
+\end{center}
+
+
+\subsubsection{Résultats de la résolution triangulaire}
 Essayons maintenant cette technique sur la partie résolution triangulaire du code.
 %
 Les performances sans agrégations sont bien en dessous de la partie factorisation (Fig.~\ref{fig:res_trsv_no_agg}).
@@ -141,11 +190,10 @@ Les performances sans agrégations sont bien en dessous de la partie factorisati
 Même en utilisant 12 threads, seule la version avec 8 variables primaires donne de meilleurs résultats que la version séquentielle.
 %
 Encore une fois il s'agit d'un problème de granularité, le graphe à ordonnancer est le même que pour la factorisation mais les tâches sont plus petites.
-%
-Si nous regardons les résultats avec la meilleure agrégation que nous ayons, l'agrégation CD(2), on obtient des résultats légèrement meilleurs mais on n'est encore loin de l'accélération parfaite.
+
 
 %   (-_-)   %
-\begin{figure}
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{res_trsv_no_agg}
   \caption{Performance de la résolution triangulaire sur 12 coeurs sans utiliser Taggre.}
@@ -153,13 +201,21 @@ Si nous regardons les résultats avec la meilleure agrégation que nous ayons, l
 \end{figure}
 
 
+Si nous regardons les résultats avec la meilleure agrégation que nous ayons, l'agrégation CD(2), on obtient des résultats légèrement meilleurs mais on n'est encore loin de l'accélération parfaite (Fig.~\ref{fig:res_trsv_cd2}).
+%
+On arrive ici au limite de notre méthode, la granularité n'est pas encore suffisante pour permettre d'obtenir de très bonnes performances.
+%
+Mais si nous augmentons encore la granularité, il n'y aura plus assez de parallélisme pour avoir un bon équilibrage de charge et le temps final sera supérieur.
+
+
 %   (-_-)   %
-\begin{figure}
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{res_trsv_cd2}
   \caption{Performance de la résolution triangulaire sur 12 coeurs avec Taggre CD(2).}
   \label{fig:res_trsv_cd2}
 \end{figure}
+
 
 %% +---------------------------+-------------+-------------+-------------+------------+
 %% |          Metric           |     Sum     |     Max     |     Min     |    Avg     |

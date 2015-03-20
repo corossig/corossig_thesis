@@ -5,7 +5,14 @@ La plupart des opérations sont des opérations de type BLAS1 (axpy, dot product
 %
 L'opération la plus coûteuse de l'algorithme du GMRES non préconditionné est le produit matrice vecteur, ou {\em SpMV}\footnote{Sparse Matrix Vector multiply}.
 %
-Cette opération peut être parallélisée avec du parallélisme de boucle, les lignes de la matrice peuvent être traitées indépendamment les unes des autres\cite{para_spmv}.
+Chaque ligne de la matrice peut être traitée indépendamment les unes des autres.
+%
+Parmi les choix de parallélisation que nous avons à notre disposition, nous allons choisir du parallélisme de boucle\cite{para_spmv}.
+%
+En effet, il permet d'utiliser une granularité adaptative contrairement au parallélisme à base de tâches qui impose le choix d'une granularité.
+%
+Il permet aussi d'avoir un bon équilibrage de charge avec possibilité de vol de travail là où un paradigme par passage de messages impose un découpage fixe de la charge de travail.
+
 
 
 Donc de manière générale, l'algorithme du GMRES se parallélise très bien.
@@ -22,7 +29,31 @@ Cette structure dépend elle-même du problème traité ainsi que de la numérot
 %
 Dans le cas d'une numérotation naturelle, le parallélisme est difficile à exploiter.
 %
-Par contre, une numérotation rouge-noire expose un parallélisme de boucle, plus facile à paralléliser mais fournit un moins bon préconditionnement\cite{red_black_ilu2}.
+Nous sommes obligés d'utiliser du parallélisme à base de tâches, potentiellement moins performant que du parallélisme de boucle.
+%
+En changeant la numérotation des cellules, nous pouvons changer le graphe de tâches.
+%
+Par exemple, lorsque nous factorisons une matrice nous devons procéder ligne par ligne.
+%
+Les dépendances de factorisation entre les lignes de la matrice ne vont donc que dans un sens, de la plus petite vers la plus grande.
+%
+Une numérotation rouge-noire consiste à colorier le graphe représentant notre réservoir de façon à n'avoir aucune connexion entre deux cellules d'une même couleur.
+%
+Dans le cas d'un maillage 2D structuré, nous pouvons colorier facilement le graphe en parcourant les cellules une à une.
+%
+La numérotation se fait ensuite en numérotant successivement toutes les cellules d'une même couleur puis en numérotant toutes les cellules de l'autre couleur avec des nombres strictement supérieurs à ceux de la première couleur.
+%
+Par exemple sur la figure~\ref{fig:matrix_redblack_reservoir}, les cellules 1 à 8 sont rouges et les cellules 9 à 16 sont noires.
+%
+Les dépendances iront toujours des cellules rouges vers les cellules noires.
+%
+Nous pouvons donc dans un premier temps factoriser toutes les lignes de la matrices qui correspondent aux cellules rouges.
+%
+Puis dans un second temps, nous pouvons factoriser les autres lignes, celles qui correspondent aux cellules noires.
+%
+Nous avons donc un parallélisme de boucle, souvent plus efficace qu'un parallélisme à base de graphe de tâches.
+%
+Mais qui dans ce cas-là fournit un moins bon préconditionnement\cite{red_black_ilu2}.
 %
 Dans le but de garder un bon préconditionnement, ce chapitre sera consacré à exploiter un maximum de parallélisme de l'algorithme ILU(k) tout en gardant une numérotation naturelle.
 

@@ -5,8 +5,37 @@ Soit parce qu'il n'y a pas assez de parallélisme pour obtenir un bon équilibra
 %
 Notre proposition permet de manière quasiment transparente d'apporter une solution au problème de la granularité.
 %
-Mais cette solution n'est pas parfaite, le choix des opérateurs d'agrégation n'est pas automatique et un mauvais choix pourrait être contre performant.
+Mais cette solution n'est pas parfaite, le choix des opérateurs d'agrégation est laissé au programmeur.
 %
+Ce choix se fait suivant trois différents critères :
+\begin{itemize}
+  \item la forme du graphe de tâches;
+  \item le rapport entre surcoût d'ordonnancement et coût de la tâche;
+  \item l'amélioration des effets cache suivant l'ordre d'ordonnancement des tâches.
+\end{itemize}
+%
+Un graphe plus large que haut permettra de sacrifier un peu de parallélisme pour grossir le grain de calcul.
+%
+Au contraire, un graphe pas assez large n'offrira pas la possibilité d'augmenter le grain de calcul.
+%
+Si le surcoût d'ordonnancement est supérieur au coût d'exécution d'une tâche alors réduire le nombre de tâche augmenteras presque systématiquement les performances du programme.
+%
+Si l'ordre d'ordonnancement des tâches n'a que très peu d'effet, l'opérateur F reste le meilleur candidat.
+%
+Dans le cas contraire, les opérateurs C et D sont à privilégier.
+
+
+
+L'utilisation du simulateur de tâches pourrait être étendu pour permettre de choisir automatiquement les bons opérateurs avec les bons paramètres.
+%
+Mais l'espace des possibilités à tester est considérable, le temps nécessaire à tester toutes les possibilités serait trop grand.
+%
+Par contre, nous pouvons imaginer un heuristique qui en fonction des propriétés du graphe, de la granularité du calcul et des effets cache liés à l'ordre d'ordonnancement des tâches propose un opérateur à appliquer.
+%
+Le simulateur pourras ensuite tester cette possibilité et donner une estimation du gain théorique.
+
+
+
 Le temps d'application des opérateurs sur le graphe de tâche est aussi un problème, il faut réutiliser le nouveau graphe grossier un certains nombre de fois avant de pouvoir considérer cette étape comme négligeable.
 %
 Dans le cas où le graphe changerait souvent au cours de l'exécution, cette approche ne fonctionne plus, il faut changer d'algorithme.

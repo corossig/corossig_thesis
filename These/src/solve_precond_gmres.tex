@@ -63,16 +63,67 @@ Pour maintenir un espace mémoire raisonnable, on peut choisir de limiter le niv
   \item Soit en fixant une valeur seuil à partir de laquelle le remplissage est accepté, il s'agit de l'algorithme ILUt;
   \item Soit en choisissant un niveau d'interaction maximal entre les lignes de la matrice, il s'agit de l'algorithme ILU(k) (Fig.~\ref{fig:ilu0}).
 \end{itemize}
-%
+
+
+%   (-_-)   %
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=\textwidth]{ilu0}
+  \caption{Exemple de motif obtenu par une factorisation ILU(0).}
+  \label{fig:ilu0}
+\end{figure}
+
+
+
 L'algorithme ILUt a l'inconvénient d'avoir un motif de remplissage qui dépend des coefficients de la matrice.
 %
 Nous ne pouvons donc pas prévoir à l'avance l'espace nécessaire au stockage des matrices L et U.
 %
-Par contre, l'algorithme ILU(k) permet de connaître en avance le motif de remplissage de la matrice.
+Par contre, l'algorithme ILU(k) permet de connaître en avance le motif de remplissage de la matrice (Fig.~\ref{fig:iluk_filling}).
 %
 Il est donc possible de connaître la structure des matrices L et U à l'avance.
 %
 Pour la simulation de réservoir, nous utilisons l'algorithme ILU(k).
+
+
+%   (-_-)   %
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=\textwidth]{iluk_filling}
+  \caption{Remplissage d'une matrice lors d'une factorisation ILU(k). Avec $k=3$ nous obtenons une matrice dense. Le niveau 2 n'est pas représenté pour ne pas surcharger la figure.}
+  \label{fig:iluk_filling}
+\end{figure}
+
+
+
+\begin{algorithm}
+  \KwData{$m$ : Le nombre maximum d'itérations du GMRES}
+  $M =$ Factorisation\_ILU($A$) \\
+  $r_0 := b - Ax_0$ \\
+  $\beta := ||r_0||_2$ \\
+  $v_1 := r_0/\beta$ \\
+  Define the $(m + 1)$x$m$ matrix $\overset{-}{H}_m = \{h_{ij}\}_{1 \leq i \leq m+1, 1 \leq j \leq m}$.  \\
+  $\overset{-}{H}_m = 0$ \\
+  \For{$j=1$ to $m$} {
+    \tikz[baseline]{\node[fill=yellow!20,anchor=base]{$temp :=$ Résolution\_Triangulaire($M, v_j$)};} \\
+    \tikz[baseline]{\node[fill=red!20,anchor=base]{$w_j := A * temp$};}\\
+    \For{\tikz[baseline]{\node[fill=blue!20,anchor=base]{$i=1$ {\bf à} $j$};}} {
+      \tikz[baseline]{\node[fill=blue!20,anchor=base]{$h_{ij} := (w_j, v_i)$};} \\
+      \tikz[baseline]{\node[fill=blue!20,anchor=base]{$w_j := w_j - h_{ij}v_i$};} \\
+    }
+    $h_{j+1,j} := ||w_j||_2$ \\
+    \If{$h_{j+1,j} = 0$} {
+      $m := j$ \\
+      \textbf{break} \\
+    }
+    $v_{j+1} := w_j/h_{j+1,j}$ \\
+  }
+  Compute $y_m$ the minimizer of $||\beta{}e_1 - \overset{-}{H}_my||_2$ and $x_m := x_0 + V_my_m$
+  \caption{GMRES avec une orthogonalisation Householder}
+\end{algorithm}
+
+
+
 
 
 
@@ -85,12 +136,3 @@ Pour la simulation de réservoir, nous utilisons l'algorithme ILU(k).
 %% \end{itemize}
 %% %
 %% Le sens d'application n'aura pas d'effet sur le résultat mais pourra exposer plus de parallélisme suivant la méthode de parallélisation choisi.
-
-
-%   (-_-)   %
-\begin{figure}
-  \centering
-  \includegraphics[width=\textwidth]{ilu0}
-  \caption{Exemple de motif obtenu par une factorisation ILU(0).}
-  \label{fig:ilu0}
-\end{figure}

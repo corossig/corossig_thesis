@@ -11,6 +11,7 @@ ifdef RUBBER_VERSION
 	rubber --clean $(SRC)
 	mv $(DEST).tmp $(DEST)
 else
+	mkdir -p output
 	pdflatex $(PDFLATEX_OPTIONS) $(SRC)
 	bibtex output/thesis || echo "No bib"
 	pdflatex $(PDFLATEX_OPTIONS) $(SRC)

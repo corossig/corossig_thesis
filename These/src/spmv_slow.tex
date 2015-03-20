@@ -5,22 +5,101 @@ L'opération la plus coûteuse est le produit d'une matrice par un vecteur (SpMV
 %
 Notre implémentation du SpMV est optimisée pour prendre en compte la structure bloc des entrées de la matrice quand le nombre de variables primaires est supérieur à 1.
 %
-Dans ce cas, nous pouvons réutiliser des données en cache.
+Nos matrices sont stockées au format BCSR, les éléments contenus dans les petits bloc denses sont contiguës en mémoire.
 %
-Malgré ces optimisations, le SpMV est toujours limité par la bande passante mémoire.
+Cela nous permet d'optimiser les effets caches et nous pouvons aussi utiliser le jeu d'instructions vectorielles de nos processeurs.
+
+
+
+Malgré les optimisations des effets caches, le SpMV est toujours limité par la bande passante mémoire.
 %
 Les courbes d'accélération du SpMV nous montrent que le gain de performance n'est pas linéaire avec le nombre de coeurs (Fig.~\ref{fig:res_spmv_omp_rostand})..
 %
 Le constat est même pire que ça, on arrive difficilement à une accélération de 2 sur 12 coeurs lorsqu'on utilise une seule variable primaire.
-%
-Si l'on regarde les compteurs matériels, on s'aperçoit que la moitié de la bande passante de chaque banc NUMA est utilisée par des accès distant.
-%
-Donc environ la moitié des accès mémoires sont faits une plus grande latence.
 
 %   (-_-)   %
-\begin{figure}
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{res_spmv_omp}
   \caption{Accélération du produit matrice vecteur creux sur Rostand en mémoire partagée.}
   \label{fig:res_spmv_omp_rostand}
 \end{figure}
+
+
+Pour comprendre ce qui se passe, nous allons utiliser les compteurs matérielles de la machine.
+%
+Ces compteurs sont intégrés au processeur et on y accède via des registres spéciaux seulement disponibles en {\em Ring 0}.
+%
+De nombreux logiciels proposent une interface d'accès à ces compteurs mais certains nécessitent le chargement d'un module noyau.
+
+
+Linux propose un outils d'analyse de performance natif nommé {\em perf}.
+%
+Cet outils se présente sous la forme d'un exécutable qui se lance juste avant notre programme.
+%
+Nous devons choisir nous même les compteurs qui nous intéresse.
+%
+Malheureusement la version du noyau Linux installé sur nos machines ne nous permet d'accéder à tous les compteurs.
+
+
+
+PAPI\footnote{Performance Application Programming Interface} est une interface de programmation qui fournit une abstraction pour l'accès aux compteurs matérielles.
+%
+Cette bibliothèque utilise l'interface perfmon sous Linux, elle utilise donc le même module noyau que perf.
+%
+En plus de facilité l'accès aux compteurs, elle propose comme fonctionnalité de simuler des accumulateurs de compteurs.
+%
+Mais la documentation de cette bibliothèque n'est pas assez claire pour nous.
+
+
+
+Intel propose aussi un outils d'analyse de performances, il s'agit de Intel VTune.
+%
+Cet outils est hautement configurable avec des profils prédéfini.
+%
+L'exécution du code échantillonnée avec les valeurs des compteurs matériels associés à chaque échantillon.
+%
+Cet outils est très complet mais requiert l'achat d'une licence d'utilisation ainsi que l'ajout d'un module noyau.
+%
+Nous n'avons donc pas pu utiliser cet outils.
+
+
+
+Nous avons préféré utiliser Likwid, un outils d'analyse de performance léger.
+%
+Le principal avantage de Likwid est qu'il contient des profils déjà configurés.
+%
+Par exemple, le profil {\em MEM} nous donneras directement les mesures de bande passante mémoire local et distante.
+%
+Il y a aussi la possibilité d'interagir avec Likwid depuis le code d'une application pour ne mesurer qu'une portion du code.
+%
+Nous utiliserons cette fonctionnalité pour ne mesurer que la routine qui nous intéresse.
+
+
+Pour mesurer les effets NUMA sur le SpMV, nous effectuons 100 SpMV et mesurer le nombre d'accès mémoire.
+%
+Si l'on regarde les compteurs matériels (Table~\ref{tab:numa_spmv}), on s'aperçoit que la moitié de la bande passante en lecture de chaque banc NUMA est utilisée par des accès distant.
+%
+Donc environ la moitié des lectures mémoires sont faits avec une plus grande latence.
+%
+Nous pouvons aussi remarquer un déséquilibre de charge.
+%
+Le thread responsable de l'initialisation du code s'est exécuter sur le banc NUMA 1.
+%
+Les pages mémoires servant à stocker la matrice étaient donc quasiment toutes sur ce banc NUMA.
+
+
+
+%   (-_-)   %
+\begin{center}
+  \begin{tabular}{|r|c|c|c|c|}
+    \hline
+                & Lecture locale & Lecture distante & \'Ecriture locale & \'Ecriture distante \\
+    \hline
+    Banc NUMA 0 & 8,68E+07  &  9,18E+07  &  6,24E+07  &  2,29E+07 \\
+    Banc NUMA 1 & 4,08E+09  &  2,60E+09  &  2,68E+08  &  5,64E+07 \\
+    \hline
+  \end{tabular}
+  \captionof{table}{Nombre d'accès mémoire effectués lors de 100 produits matrice vecteur creux.}
+  \label{tab:numa_spmv}
+\end{center}

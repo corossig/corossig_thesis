@@ -65,3 +65,23 @@ Taggre s'occupera ensuite de faire le travail nécessaire pour rendre ce graphe 
 
 
 \lstinputlisting[inputencoding=utf8/latin1,frame=single,float=t]{src/taggre.cpp}
+
+Dans un premier temps, le programmeur crée les noeuds du graphe, ces noeuds correspondent aux tâches fines du problème.
+%
+Pour chaque noeud créer, le programmeur reçoit un identifiant de noeud.
+%
+Puis le programmeur déclare les arêtes du graphe en utilisant les identifiants des noeuds.
+%
+Maintenant que le graphe de tâches fines est connu, Taggre peut travailler à grossir le grain.
+%
+La méthode {\em coarse} effectueras le travail avec les paramètres que nous expliqueront plus loin dans le manuscrit.
+%
+Nous avons donc un nouveau graphe composé de tâches grossières, mais ces tâches n'ont toujours pas de code à exécuter.
+%
+Pour définir le code à exécuter, le programmeur doit appeler la méthode {\em setup} avec comme paramètre une fonction qui créera les tâches grossières.
+%
+Cette fonction connaîtra les tâches fines associées à la tâche grossière et pourras ainsi optimiser le code en fonction du nombre et des types de tâches agrégées.
+%
+Finalement, le programmeur exécutera toutes les tâches du graphe avec la méthode {\em run}.
+%
+Il a aussi la possibilité d'utiliser une fonction générique avec la méthode {\em run\_function}.

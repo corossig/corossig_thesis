@@ -9,7 +9,7 @@ On peut reconnaître un groupe de deux tâches séquentielles par le fait qu'une
 
 
 %   (-_-)   %
-\begin{figure}
+\begin{figure}[!h]
   \centering
   \includegraphics[width=0.6\textwidth]{algo_S}
   \caption{Exemple d'agrégation par l'opérateur séquentiel.}
@@ -32,3 +32,11 @@ On peut reconnaître un groupe de deux tâches séquentielles par le fait qu'une
   \caption{Algorithme de l'opérateur séquentiel.}
   \label{algo:algo_S}
 \end{algorithm}
+
+L'opérateur S ne détruit pas de parallélisme et peu potentiellement réduire le nombre de tâches.
+%
+En partant de ce postulat, on pourrait penser appliquer cet opérateur systématiquement après chaque agrégation.
+%
+Mais il faut garder en tête que créer des tâches de granularité trop différentes peut impacter les politiques d'ordonnancement de tâches.
+%
+Certains ordonnanceurs pourraient utiliser ces tâches en temps que tâches {\em tampons} pour les parties du graphe où il manque du parallélisme.
