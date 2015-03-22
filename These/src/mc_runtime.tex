@@ -69,12 +69,82 @@ Les premières versions d'OpenMP se concentrent sur le parallélisme de boucle.
 Ce n'est qu'en 2008 que le support des tâches est ajouté à OpenMP dans sa version 3.0.
 
 
+
 Plus récemment, à la fin des années 2000, la révolution du GPGPU donne lieu à l'apparition de nouveaux runtime.
 %
+Les premieres méthodes permettant d'utiliser un GPU pour du calcul étaient rudimentaires.
+%
+Il s'agisait de détourner l'utilisation des shaders programmables des interfaces de programmation graphiques comme par exemple OpenGL.
+%
+Puis des langages spécifiques on vus le jour, parmis ceux ci, le plus populaire sont CUDA et OpenCL.
+%
+CUDA est développé par NVidia et ne permet de programmer que des GPU NVidia.
+%
+OpenCL est une spécification du Khronos Group est a pour but de fournir une interface de programmation standard pour programmer toutes sortes d'accélérateurs.
+%
+Ces accélélérateurs peuvent être des GPUs mais de manière générale il s'agit de processeur différent du processeur central.
+
+
+
+
+StarPU~\cite{starpu}, développé à Inria permet de d'écrire du code à la fois pour le CPU et le GPU.
+%
+Les morceaux de codes spécifique à une architecture sont appelés codelet.
+%
+Puis les stratégies d'ordonnancement intégrées à StarPU choisiront le processeur qui permettra d'obtenir le meilleir temps de calcul.
+%
+Ce choix prend aussi en compte le temps de transfert mémoire entre la mémoire centrale et la mémoire du GPU.
+%
+Pour avoir une gestion efficace de ces transfers mémoires, StarPU implémente un gestionnaire mémoire.
+%
+Ce gestionnaire est capable d'effectuer des transferts entre toutes les zones mémoires de la machine (mémoire centrale, mémoire GPU, disques, ...) et de maintenir la cohérence des données.
+%
+Par exemple, si une donnée A est en mémoire centrale et qu'une codelet doit l'utiliser sur le GPU, il y aura d'abord une copie A vers la mémoire du GPU.
+%
+Ensuite tant que cette donnée n'est accédée qu'en lecture, il y aura deux copies valides, une en mémoire centrale et une en mémoire GPU.
+%
+Dès qu'une codelet accède à la donnée en écriture, toutes les autres copies sont invalidées et un transfert mémoire sera nécessaire pour les mettre à jour.
+
+
+PaRSEC~\cite{PaRSEC} est un runtime développé à l'ICL.
+%
+Le parallélisme dans PaRSEC doit être décrit dans un langage spécifique, le JDF.
+%
+L'ensemble des tâches du programme est décrit dans ce langage et ce n'est que la distribution des données en mémoire distribuée qui détermineras le processus qui exécuteras la tâche.
+%
+PaRSEC s'occupe automatiquement des communications entre processus permettant de maintenir une cohérence entre les données.
+%
+L'inconvenient majeur de ce runtime est son manque de flexibilité.
+%
+Le format JDF ne permet de créer dynamiquement de nouvelle tâche.
+
+
+
+HMPP~\cite{OpenACC} est un runtime adressant le problème de la programmation hybride CPU/GPU.
+%
+Il s'utilise avec des annotations de code à la manière d'OpenMP.
+%
+Puis le code annoté est ensuite transformé par un compilateur source-to-source vers un autre langage spécifique à l'architecture cible, comme le CUDA par exemple.
+%
+Les transferts mémoires entre la mémoire centrale et la mémoire du GPU sont soit implicite au moment de l'appel de la codelet mais cette méthode ne permet de recouvrir la communication par du cacul.
+%
+Soit explicite avec l'ajout d'annotation, il est donc à la charge du programmeur de choisir le bon moment pour transférer les données.
+
+
+
+OpenACC est un standard de programmation développé par un consortium de société dans le but de simplifier la programmation parallèle hybride CPU/GPU.
+%
+Les spécificités de ce standard ressemble en de nombreux points à HMPP (annotations, gestion mémoire, ...).
+%
+Son principal avantage est qu'il est soutenu par plusieurs sociétés là où HMPP n'a plus personne.
+%
+OpenMP ajoute dans version 4 le support de la programmation hybride, son fonctionnement est identique à OpenACC, seuls les mot-clés changent.
+
+
+
 Ces runtimes gèrent désormais des ressources hétérogènes avec des espaces d'adressage mémoire différents.
 %
 Ils doivent donc prendre en charge la cohérence mémoire entre les espaces d'adressage.
 %
-Parmi ces runtimes on trouve StarPU~\cite{starpu}, PaRSEC~\cite{PaRSEC}, X-KAAPI~\cite{xkaapi} et OMPSs~\cite{OMPSs}.
-%
-Le parallélisme de boucle sur architectures hétérogène a aussi eu droit à une spécification, il s'agit d'OpenACC~\cite{OpenACC}.
+Parmi ces runtimes on trouve X-KAAPI~\cite{xkaapi} et OMPSs~\cite{OMPSs}.
+
