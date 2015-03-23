@@ -1,12 +1,5 @@
 \subsection{Décomposition de domaine}
 Lorsque le problème à résoudre devient trop gros pour être traité sur une seule machine, il est nécessaire d'adapter la méthode de résolution du problème.
-%
-Dans le cas du GMRES, nous pouvons utiliser la décomposition de domaine comme préconditionneur parallèle.
-%
-La décomposition de domaine nous permet de répartir les données sur les différentes unités de calcul.
-%
-Le découpage en domaines se fera à l'aide d'un logiciel de partitionnement, tel que Scotch ou Metis, avec pour objectif un bon équilibrage de charge et une interaction minime entre les domaines.
-
 
 Pour la simulation de réservoir, les coefficients de la matrice représentent les interactions entre les cellules du réservoir.
 %

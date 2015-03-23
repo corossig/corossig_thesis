@@ -1,11 +1,11 @@
-\documentclass[oneside,12t]{classes/Thesis}
+\documentclass[twoside,12t]{classes/Thesis}
 
 \usepackage[utf8]{inputenc}
 \usepackage{ulem}
 
 \usepackage{url}
 \graphicspath{{img/},{resultat_rostand/},{resultat_manumanu/},{resultat_frep/}}
-\DeclareGraphicsExtensions{.pdf,.png}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
 \usepackage[T1]{fontenc}
 \usepackage{pslatex}
@@ -113,7 +113,7 @@ minimum height=0.1em,font=\scriptsize]
 
 
 %=========================================================
-\chapter{Contexte : simuler l'extraction du pétrole}
+\chapter{Contexte : Parallélisation des noyaux de calcul d'algèbre linéaire creuse}
 \minitoc
 \vspace{1cm}
 %=========================================================
@@ -141,16 +141,22 @@ minimum height=0.1em,font=\scriptsize]
 %+++++++++++++++++++++++++++++++
 \section{Résoudre de grands systèmes linéaires creux}
 %-------------------------------
-\input{src/solve_precond_gmres}
+\input{src/solve_direct}
 %-------------------------------
-\input{src/solve_domain}
+\input{src/solve_iterative}
+%-------------------------------
+\input{src/solve_jacobi}
+%-------------------------------
+%\input{src/solve_precond_gmres}
+%-------------------------------
+%\input{src/solve_domain}
 %-------------------------------
 \input{src/solve_cases}
 %+++++++++++++++++++++++++++++++
 
 
 %+++++++++++++++++++++++++++++++
-\section{\'Evolution des architecture}
+\section{\'Evolution des architectures}
 %-------------------------------
 \input{src/computer_monocore}
 %-------------------------------
@@ -185,6 +191,7 @@ minimum height=0.1em,font=\scriptsize]
 \section{Runtime}
 %-------------------------------
 \input{src/mc_runtime}
+\input{src/mc_sched}
 %+++++++++++++++++++++++++++++++
 
 
@@ -222,9 +229,9 @@ minimum height=0.1em,font=\scriptsize]
 %-------------------------------
 \input{src/taggre_algo_s}
 \input{src/taggre_algo_f}
-\input{src/taggre_algo_d}
 \input{src/taggre_algo_c}
-%\input{src/taggre_algo_z}
+\input{src/taggre_algo_g}
+\input{src/taggre_algo_d}
 %-------------------------------
 
 

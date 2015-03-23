@@ -1,0 +1,20 @@
+\section{Politiques d'ordonnancement}
+La politique d'ordonnancement aura un impact conséquent sur les performances d'un code.
+%
+Chaque politique aura un surcoût différent en fonction de sa complexité algorithmique ainsi que des paramètres qu'il prend en compte.
+
+
+Un ordonnanceur type tourniquet distribueras les tâches de manière uniforme sur les différents coeurs de calcul.
+%
+La complexité algorithmique est donc minimal, mais aucune métrique n'est pris en charge.
+%
+Nous aurons donc un ordonnancement rapide avec un surcoût faible mais de très mauvaise qualité.
+
+
+Parmi les ordonnanceurs très simple, nous pouvons aussi parler de la queue partagée.
+%
+Tous les threads partagent une queue contenant les tâches pouvant être exécutées.
+%
+L'équilibrage sera de meilleur qualité
+%
+Ce type d'ordonnancement impose une implémentation de la queue thread-safe

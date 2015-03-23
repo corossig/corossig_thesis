@@ -1,3 +1,4 @@
+\subsection{Vue d'ensemble}
 Un moteur d'exécution, ou {\em runtime}, est un morceau de logiciel utilisé par d'autres logiciels pour abstraire des parties du système.
 %
 L'idée principale est {\em compiler une fois, exécuter partout}.
@@ -72,30 +73,30 @@ Ce n'est qu'en 2008 que le support des tâches est ajouté à OpenMP dans sa ver
 
 Plus récemment, à la fin des années 2000, la révolution du GPGPU donne lieu à l'apparition de nouveaux runtime.
 %
-Les premieres méthodes permettant d'utiliser un GPU pour du calcul étaient rudimentaires.
+Les premières méthodes permettant d'utiliser un GPU pour du calcul étaient rudimentaires.
 %
-Il s'agisait de détourner l'utilisation des shaders programmables des interfaces de programmation graphiques comme par exemple OpenGL.
+Il s'agissait de détourner l'utilisation des shaders programmables des interfaces de programmation graphiques comme par exemple OpenGL.
 %
-Puis des langages spécifiques on vus le jour, parmis ceux ci, le plus populaire sont CUDA et OpenCL.
+Puis des langages spécifiques on vus le jour, parmi ceux ci, le plus populaire sont CUDA et OpenCL.
 %
 CUDA est développé par NVidia et ne permet de programmer que des GPU NVidia.
 %
 OpenCL est une spécification du Khronos Group est a pour but de fournir une interface de programmation standard pour programmer toutes sortes d'accélérateurs.
 %
-Ces accélélérateurs peuvent être des GPUs mais de manière générale il s'agit de processeur différent du processeur central.
+Ces accélérateurs peuvent être des GPUs mais de manière générale il s'agit de co-processeur déporté.
 
 
 
 
-StarPU~\cite{starpu}, développé à Inria permet de d'écrire du code à la fois pour le CPU et le GPU.
+StarPU~\cite{starpu}, développé à Inria permet de d'écrire plusieurs versions d'une routine à la fois pour le CPU et le GPU.
 %
-Les morceaux de codes spécifique à une architecture sont appelés codelet.
+Ces morceaux de codes spécifiques à une architecture sont appelés {\em codelet}.
 %
-Puis les stratégies d'ordonnancement intégrées à StarPU choisiront le processeur qui permettra d'obtenir le meilleir temps de calcul.
+Puis les stratégies d'ordonnancement intégrées à StarPU choisiront la codelet qui permettra d'obtenir le meilleur temps de calcul.
 %
 Ce choix prend aussi en compte le temps de transfert mémoire entre la mémoire centrale et la mémoire du GPU.
 %
-Pour avoir une gestion efficace de ces transfers mémoires, StarPU implémente un gestionnaire mémoire.
+Pour avoir une gestion efficace de ces transferts mémoires, StarPU implémente un gestionnaire mémoire.
 %
 Ce gestionnaire est capable d'effectuer des transferts entre toutes les zones mémoires de la machine (mémoire centrale, mémoire GPU, disques, ...) et de maintenir la cohérence des données.
 %
@@ -104,9 +105,28 @@ Par exemple, si une donnée A est en mémoire centrale et qu'une codelet doit l'
 Ensuite tant que cette donnée n'est accédée qu'en lecture, il y aura deux copies valides, une en mémoire centrale et une en mémoire GPU.
 %
 Dès qu'une codelet accède à la donnée en écriture, toutes les autres copies sont invalidées et un transfert mémoire sera nécessaire pour les mettre à jour.
+%
+StarPU intègre aussi plusieurs politiques d'ordonnancement
+%
+L'équipe de développement met aussi en avant la possibilité d'écrire son propre ordonnanceur et de l'intégrer à StarPU.
 
 
-PaRSEC~\cite{PaRSEC} est un runtime développé à l'ICL.
+
+
+OmpSs~\cite{OMPSs} est un runtime qui permet tout comme StarPU d'écrire du code à la fois pour le CPU et pour le GPU puis de laisser le runtime choisir parmi toutes les versions d'une fonction.
+%
+La différence entre ces deux runtimes provient surtout de la description du parallélisme.
+%
+OmpSs propose un approche à base d'annotation de code en étendant la spécification OpenMP version 3.
+%
+Cette extension permet au mot clé {\em task} d'être accompagné d'informations complémentaires sur l'utilisation des paramètres en entrée.
+%
+Le programmeur doit toujours écrire le code spécifique à chaque architecture précédé d'informations concernant la fonction implémentée ainsi que l'architecture cible.
+
+
+
+
+PaRSEC~\cite{PaRSEC} est un runtime développé à l'ICL permettant de travailler directement en mémoire distribuée.
 %
 Le parallélisme dans PaRSEC doit être décrit dans un langage spécifique, le JDF.
 %
@@ -120,19 +140,19 @@ Le format JDF ne permet de créer dynamiquement de nouvelle tâche.
 
 
 
-HMPP~\cite{OpenACC} est un runtime adressant le problème de la programmation hybride CPU/GPU.
+HMPP~\cite{hmpp} est un runtime adressant le problème de la programmation hybride CPU/GPU.
 %
 Il s'utilise avec des annotations de code à la manière d'OpenMP.
 %
 Puis le code annoté est ensuite transformé par un compilateur source-to-source vers un autre langage spécifique à l'architecture cible, comme le CUDA par exemple.
 %
-Les transferts mémoires entre la mémoire centrale et la mémoire du GPU sont soit implicite au moment de l'appel de la codelet mais cette méthode ne permet de recouvrir la communication par du cacul.
+Les transferts mémoires entre la mémoire centrale et la mémoire du GPU sont soit implicite au moment de l'appel de la codelet mais cette méthode ne permet de recouvrir la communication par du calcul.
 %
 Soit explicite avec l'ajout d'annotation, il est donc à la charge du programmeur de choisir le bon moment pour transférer les données.
 
 
 
-OpenACC est un standard de programmation développé par un consortium de société dans le but de simplifier la programmation parallèle hybride CPU/GPU.
+OpenACC~\cite{OpenACC} est un standard de programmation développé par un consortium de société dans le but de simplifier la programmation parallèle hybride CPU/GPU.
 %
 Les spécificités de ce standard ressemble en de nombreux points à HMPP (annotations, gestion mémoire, ...).
 %
@@ -142,9 +162,6 @@ OpenMP ajoute dans version 4 le support de la programmation hybride, son fonctio
 
 
 
-Ces runtimes gèrent désormais des ressources hétérogènes avec des espaces d'adressage mémoire différents.
-%
-Ils doivent donc prendre en charge la cohérence mémoire entre les espaces d'adressage.
-%
-Parmi ces runtimes on trouve X-KAAPI~\cite{xkaapi} et OMPSs~\cite{OMPSs}.
 
+
+Parmi ces runtimes on trouve X-KAAPI~\cite{xkaapi}.

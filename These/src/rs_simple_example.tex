@@ -1,7 +1,7 @@
 \subsection{Simulation d'un exemple physique simple}
 Prenons un exemple physique simple pour avoir une idée de comment l'algèbre linéaire peut être utilisée dans une simulation.
 %
-Disons que nous souhaitons simuler une colonne remplie d'huile.
+Nous souhaitons simuler une colonne remplie d'huile.
 %
 Nous connaissons la densité de l'huile contenue dans la colonne : $\rho = 0.9192~kg/m^3$.
 %
@@ -93,4 +93,4 @@ P(Z_{n-2}) \\
 \end{equation}
 En multipliant de chaque ligne de $A$ par $x$, nous obtenons exactement le système d'équations \eqref{eq:system_pressure}.
 %
-Maintenant que nous avons une matrice $A$ multipliée par un vecteur $x$ égale à un vecteur $b$, il est temps de parler d'algèbre linéaire.
+Ce système d'équation dont la forme générale est $A.x=b$ (où $A$ est une matrice inversible, $b$ un vecteur donné et $x$ le vecteur des inconnues que l'on cherche à déterminer), est la partie critique en temps CPU dans beaucoup de code de simulation numérique.

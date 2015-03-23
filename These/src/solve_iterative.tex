@@ -1,0 +1,187 @@
+\subsection{Méthode itérative}
+Une autre approche souvent utilisée pour résoudre de grands systèmes d'équations linéaires creux consiste à utiliser des méthodes de résolution itérative~\cite{Saad96IMSLS}.
+%
+On appel méthode itérative une méthode qui permet de résoudre un problème en partant d'une solution initial $x^0$ et qui à chaque itération donne une nouvelle solution $x^i$.
+%
+Cette nouvelle solution $x^i$ étant plus proche de la solution exacte du problème que la solution précédente $x^{i-1}$.
+%
+La méthode s'arrête lorsque $x^i$ est suffisamment proche de la solution exacte selon un critère entré en paramètre.
+%
+Parmi ces méthodes on peut citer la méthode Jacobi, Gauss-Seidel ou encore SOR, ce sont des méthodes itératives dites stationnaires.
+%
+Mais ces méthodes ne sont pas génériques, leur convergence dépend de certaines propriétés de la matrice.
+%
+Utilisées tel quel, ces méthodes ne convergent pas rapidement dans de nombreux cas concret.
+
+
+
+
+La méthode du gradient conjugué est une méthode qui s'applique seulement à des matrices carrées symétriques définies positives.
+%
+Cette méthode permet de converger en au plus $n$ itérations avec $n$ la dimension de la matrice.
+%
+Mais avec un bon préconditionnement, on obtient rapidement une solution très proche de la solution exacte.
+%
+Puis cette méthode a été étendue aux matrices non-symétriques sous le nom du gradient biconjugué.
+%
+Le gradient biconjugué est une méthode par projection dans un espace de Krylov.
+%
+Le GMRES est aussi une méthode de Krylov, elle fonctionne avec n'importe quelle matrice qui est inversible.
+%
+Chaque itération du GMRES (Algo.~\ref{algo:gmres}) est composé d'un produit matrice vecteur creux (SpMV\footnote{Sparse Matrix Vector multiply}) ainsi que plusieurs produits scalaires (DOT).
+
+
+\begin{algorithm}
+  \KwData{$m$ : Le nombre maximum d'itérations du GMRES}
+  $r_0 := b - Ax_0$ \\
+  $\beta := ||r_0||_2$ \\
+  $v_1 := r_0/\beta$ \\
+  Définir la $(m + 1)$x$m$ matrice $\overset{-}{H}_m = \{h_{ij}\}_{1 \leq i \leq m+1, 1 \leq j \leq m}$.  \\
+  $\overset{-}{H}_m = 0$ \\
+  \For{$j=1$ to $m$} {
+    \tikz[baseline]{\node[fill=red!20,anchor=base]{$w_j := A * b$};}\\
+    \For{\tikz[baseline]{\node[fill=blue!20,anchor=base]{$i=1$ {\bf à} $j$};}} {
+      \tikz[baseline]{\node[fill=blue!20,anchor=base]{$h_{ij} := (w_j, v_i)$};} \\
+      \tikz[baseline]{\node[fill=blue!20,anchor=base]{$w_j := w_j - h_{ij}v_i$};} \\
+    }
+    $h_{j+1,j} := ||w_j||_2$ \\
+    \If{$h_{j+1,j} = 0$} {
+      $m := j$ \\
+      \textbf{break} \\
+    }
+    $v_{j+1} := w_j/h_{j+1,j}$ \\
+  }
+  Calculer $y_m$ le minimiseur de $||\beta{}e_1 - \overset{-}{H}_my||_2$ et $x_m := x_0 + V_my_m$
+  \caption{GMRES avec une orthogonalisation Householder}
+  \label{algo:gmres}
+\end{algorithm}
+
+
+La convergence (i.e. nombre d'itération pour atteindre une précision donnée) des méthodes itératives dépend du nombre de conditionnement de la matrice $||A||_p.||A^{-1}||_p$ où $||A||_p$ est une norme multiplicative.
+%
+Plus ce nombre est grand, plus le nombre d'itérations est grand.
+%
+Comme les matrices utilisées dans la simulation de réservoir ne sont pas bien conditionnées, l'algorithme du GMRES converge après beaucoup d'itérations.
+%
+Dans ce cas, nous pouvons préconditionner la matrice pour faire en sorte que le GMRES converge avec moins d'itérations.
+%
+Il faut choisir une matrice $M^{-1}$ tel que $M^{-1}A$ soit mieux conditionnées que $A$ (i.e. $||M^{-1}A||_p.||A^{-1}M||_p < ||A||_p.||A^{-1}||_p$).
+%
+Un cas idéal serait d'avoir $M=A$, dans ce cas là on obtient la matrice identité qui se trouve très bien conditionnée.
+%
+Or, calculer $A^{-1}$ est très coûteux, à la fois en terme de calcul que de mémoire.
+
+
+La factorisation directe LU peut être considéré comme une très bon préconditionneur.
+%
+En effet, il est équivalent
+Dans le cas de problèmes linéaires creux,
+%
+Par contre, le résultat de la factorisation LU exacte de la matrice creuse $A$ ne pourrait plus être considéré comme creux.
+%
+En effet, au cours de la factorisation, de nombreux termes de remplissage apparaîtront et l'espace mémoire nécessaire au stockage de ces nouveaux termes deviendrait gigantesque.
+%
+Mais nous ne sommes pas obligé de connaître parfaitement $A^{-1}$ pour obtenir un bon préconditionnement.
+%
+C'est pourquoi nous utilisons la factorisation ILU\footnote{Incomplete LU}, une approximation de la factorisation LU qui se trouve être aussi un bon préconditionneur pour nos matrices.
+%
+Cette méthode est composée de deux opérations, la première correspond à la {\em factorisation} de la matrice en deux sous matrices, elle est faite juste avant le GMRES.
+%
+La deuxième correspond à la {\em résolution triangulaire} effectuée avec les deux sous matrices, elle est effectuée à chaque itération du GMRES.
+%
+Pour maintenir un espace mémoire raisonnable, on peut choisir de limiter le niveau de remplissage, deux solutions existent :
+\begin{itemize}
+  \item Soit en fixant une valeur seuil à partir de laquelle le remplissage est accepté, il s'agit de l'algorithme ILUt;
+  \item Soit en choisissant un niveau d'interaction maximal entre les lignes de la matrice, il s'agit de l'algorithme ILU(k) (Fig.~\ref{fig:iluk_filling}).
+\end{itemize}
+
+%   (-_-)   %
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=\textwidth]{iluk_filling}
+  \caption{Remplissage d'une matrice lors d'une factorisation ILU(k). Avec $k=3$ nous obtenons une matrice dense. Le niveau 2 n'est pas représenté pour ne pas surcharger la figure.}
+  \label{fig:iluk_filling}
+\end{figure}
+
+
+La factorisation ILU(k) peut être faite en deux étapes :
+\begin{itemize}
+  \item une factorisation symbolique pour connaître le motif de non-zéros de la matrice;
+  \item puis la factorisation réelle en utilisant ce motif.
+\end{itemize}
+%
+
+
+
+%   (-_-)   %
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=\textwidth]{ilu0}
+  \caption{Exemple de motif obtenu par une factorisation ILU(0).}
+  \label{fig:ilu0}
+\end{figure}
+
+
+
+
+\begin{algorithm}
+  \KwData{$A$ : La matrice a factoriser.\\
+    $k$ : le niveau maximal de remplissage.}
+  \For{chaque entrée $A_{ij}$ de $A$} {
+    \If{$A_{ij} == 0$} { lev($A_{ij}$) := 0 }
+    \If{$A_{ij} != 0$} { lev($A_{ij}$) := k+1 }
+  }
+  \For{$k=1$ {\bf à} $n-1$} {
+    \For{$i=k+1$ {\bf à} $n$} {
+      \If{lev($A_{ik}$) <= $k$} {
+        \For{$j=k+1$ {\bf à} $n$} {
+          lev($A_{ij}$) = min(lev($A_{ij}$), lev($A_{ik}$)+lev($A_{kj}$)+1) \\
+          \If{lev($A_{ij}$) <= $k$} {
+            on ajoute $A_{ij}$ au motif de non-zéro de la matrice.\\
+          }
+        }
+      }
+    }
+  }
+  \caption{Factorisation symbolique ILU(k)}
+  \label{algo:iluk_symbolic}
+\end{algorithm}
+
+L'algorithme ILUt a l'inconvénient d'avoir un motif de remplissage qui dépend des coefficients de la matrice.
+%
+Nous ne pouvons donc pas prévoir à l'avance l'espace nécessaire au stockage des matrices L et U.
+%
+Par contre, l'algorithme ILU(k) permet de connaître en avance le motif de remplissage de la matrice (Fig.~\ref{fig:iluk_filling}).
+%
+Il est donc possible de connaître la structure des matrices L et U à l'avance.
+%
+Pour la simulation de réservoir, nous utilisons l'algorithme ILU(k).
+%
+L'algorithme~\ref{algo:gmres_precond} représente un GMRES préconditionné avec une méthode ILU.
+
+\begin{algorithm}
+  \KwData{$m$ : Le nombre maximum d'itérations du GMRES}
+  \tikz[baseline]{\node[fill=red!20,anchor=base]{$M =$ Factorisation\_ILU($A$)};} \\
+  $r_0 := b - Ax_0$ \\
+  $\beta := ||r_0||_2$ \\
+  $v_1 := r_0/\beta$ \\
+  Define the $(m + 1)$x$m$ matrix $\overset{-}{H}_m = \{h_{ij}\}_{1 \leq i \leq m+1, 1 \leq j \leq m}$.  \\
+  $\overset{-}{H}_m = 0$ \\
+  \For{$j=1$ {\bf à} $m$} {
+    \tikz[baseline]{\node[fill=yellow!20,anchor=base]{$temp :=$ Résolution\_Triangulaire($M, v_j$)};} \\
+    $w_j := A * temp$\\
+    \For{$i=1$ {\bf à} $j$} {
+      $h_{ij} := (w_j, v_i)$ \\
+      $w_j := w_j - h_{ij}v_i$ \\
+    }
+    $h_{j+1,j} := ||w_j||_2$ \\
+    \If{$h_{j+1,j} = 0$} {
+      $m := j$ \\
+      \textbf{break} \\
+    }
+    $v_{j+1} := w_j/h_{j+1,j}$ \\
+  }
+  Compute $y_m$ the minimizer of $||\beta{}e_1 - \overset{-}{H}_my||_2$ and $x_m := x_0 + V_my_m$
+  \caption{GMRES avec une orthogonalisation Householder}
+  \label{algo:gmres_precond}
+\end{algorithm}

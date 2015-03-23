@@ -1,0 +1,42 @@
+\subsubsection{Généralisé}
+Les opérateurs F et C s'occupent chacun d'un des problèmes que l'on souhaite résoudre avec Taggre.
+%
+Mais nous pouvons essayer de généraliser leurs propriétés dans un seul opérateur.
+%
+Ainsi, nous avons construit l'opérateur G.
+
+\begin{algorithm}
+  \KwData{DAG, $M$ : le nombre de tâches dans un agrégat}
+  {\sc Prêt} = liste vide \\
+  mettre les tâches racines de DAG dans {\sc Prêt} \\
+  \While{{\sc Prêt} n'est pas vide} {
+    {\sc Profondeur} = {\sc Prêt} \\
+    {\sc Prêt} = liste vide \\
+    \While{{\sc Profondeur} n'est pas vide} {
+      {\sc Maître} = retirer le premier de {\sc Profondeur} \\
+      {\sc Libérer} = liste vide \\
+      mettre {\sc Maître} dans {\sc Libérer} \\
+      {\sc Compteur} = 0 \\
+      \While{{\sc Compteur} $< M$ {\bf et} {\sc Libérer} n'est pas vide} {
+        {\sc Suivant} = retirer le premier de {\sc Libérer} \\
+        {\sc Compteur}++\\
+        {\sc Maître} devient {\sc Maître} union {\sc Suivant}\\
+        mettre les tâches libérées par {\sc Suivant} dans {\sc Libérer} \\
+        appliquer une fonction de tri sur {\sc Libérer} \\
+      }
+      mettre les tâches libérées par {\sc Maître} dans {\sc Profondeur} \\
+    }
+    mettre les tâches libérées par {\sc Profondeur} dans {\sc Prêt}\\
+  }
+  \caption{Algorithme de l'opérateur généralisé.}
+  \label{algo:algo_G}
+\end{algorithm}
+
+
+La fonction de tri permettra de favoriser une type de tâche par rapport aux autres.
+%
+Par exemple, pour simuler l'opérateur C on choisira une fonction qui triera par ordre décroissant de hauteur dans le graphe.
+%
+Pour simuler l'opérateur F on choisira la fonction inverse.
+%
+Si nous souhaitons un compromis entre ces deux opérateurs nous devons écrire une nouvelle fonction de tri.
