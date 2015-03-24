@@ -27,7 +27,7 @@ Or, si l'on souhaite effectuer la factorisation exacte dans le cas d'une matrice
 %
 C'est pourquoi en algèbre linéaire creuse, on utilise une version altérée de cette factorisation que l'on appelle factorisation incomplète, ou {\em ILU}\footnote{Incomplete LU}, dont le but est de limiter le remplissage de la matrice.
 %
-En contrepartie, le résultat de la factorisation obtenu est approximatif et fournit un moins bon préconditionneur pour GMRES.
+En contrepartie, le résultat de la factorisation obtenu est approximatif et fournit donc un moins bon préconditionneur pour GMRES.
 %
 L'algorithme ILU est similaire à l'algorithme LU mais le remplissage est limité par des conditions définies par l'algorithme.
 %
@@ -37,13 +37,13 @@ Dans le cas ILU(k), le paramètre k sert à limiter le niveau d'interaction entr
 %
 Avec $k=0$, le motif des matrices $L$ et $U$ reste similaire au motif de la matrice $A$ (Algo~\ref{algo:ilu0}).
 %
-En augmentant la valeur de $k$, on augmente aussi le nombre d'interactions entre les celulles.
+En augmentant la valeur de $k$, on augmente aussi le nombre d'interactions entre les cellules.
 
 
 
 
 
-Le parallélisme exploitable dans l'algorithme ILU est différent de celui exploitable dans l'algorithme LU, il offre la possibilité de factoriser certaines lignes en parallèle et ce parallélisme se représente naturellement sous la forme d'un graphe de tâches (Fig.~\ref{fig:example_3_dag}).
+L'algorithme ILU offre la possibilité de factoriser certaines lignes en parallèle et ce parallélisme se représente naturellement sous la forme d'un graphe de tâches (Fig.~\ref{fig:example_3_dag}).
 %
 Chaque tâche représente la factorisation d'une ligne de la matrice et les dépendances entre les tâches sont données par le motif de la matrice.
 %
@@ -51,24 +51,28 @@ En effet, pour factoriser la ligne $i$, nous devons factoriser toutes les lignes
 %
 Cette dépendance de donnée provient de la ligne~\ref{algo:ilu0:dep} de l'algorithme~\ref{algo:ilu0}.
 %
+C'est cette dépendance qui nous empêche que d'utiliser du parallélisme de boucle pour paralléliser la méthode ILU.
+%
 Donc, à partir du motif des valeurs non-nulles de la matrice, nous pouvons facilement construire le graphe de tâche:
 %
 la tâche $i$ corresponds à la ligne $i$ de la matrice (ligne \ref{algo:ilu0:task_begin} à \ref{algo:ilu0:task_end} de l'algorithme~\ref{algo:ilu0}), la liste des tâches prédécesseurs de la tâche $i$ est donnée par l'index de colonne des valeurs non-nulles avant la diagonale dans la ligne $i$ (ligne~\ref{algo:ilu0:dep}) et la liste des tâches successeurs de la tâche $i$ est donnée par l'index de ligne des valeurs non-nulles au-dessous de la diagonale de la colonne $i$ (Fig.~\ref{fig:example_2_matrix}).
 
 \begin{figure}[!h]
      \begin{center}
-        \subfigure[Un réservoir à 4 cellules]{%
+        \subfigure[Un réservoir à 4 cellules]{
           \label{fig:example_1_res}
-          \includegraphics[width=0.32\textwidth]{example_1_res}
-        }%
-        \subfigure[Une matrice avec 4 cellules]{%
+          \includegraphics[width=0.30\textwidth]{example_1_res}
+        }
+        ~
+        \subfigure[Une matrice avec 4 cellules]{
           \label{fig:example_2_matrix}
-          \includegraphics[width=0.32\textwidth]{example_2_matrix}
-        }%
-        \subfigure[Un DAG à 4 cellules]{%
+          \includegraphics[width=0.30\textwidth]{example_2_matrix}
+        }
+        ~
+        \subfigure[Un DAG à 4 cellules]{
           \label{fig:example_3_dag}
-          \includegraphics[width=0.32\textwidth]{example_3_dag}
-        }%
+          \includegraphics[width=0.30\textwidth]{example_3_dag}
+        }
     \end{center}
     \caption{Trois représentations d'un réservoir. Les éléments en rouge dans la matrice déterminent les dépendances dans le graphe de tâches.}
     \label{fig:exemple_3_dag}
@@ -100,14 +104,28 @@ Les problèmes rencontrés pour paralléliser la factorisation incomplète d'une
 %
 La description à grain fin de ces algorithmes est naturelle, mais en pratique, une simple parallélisation utilisant des ordonnanceurs répandus, tels que Intel TBB ou OpenMP, ne donnera pas de bonnes performances à cause du faible coût de calcul d'une tâche.
 %
+Chaque ordonnanceur aura son propre algorithme de distribution des tâches qui prendra différents paramètres en compte.
+%
+Mais l'évaluation de cet algorithme coûte du temps et si ce temps est du même ordre de grandeur (ou plus grand) que le temps de calcul d'une tâche, l'ordonnanceur sera perçu comme une charge non désirée.
+%
 On appelle cela le problème de granularité.
 %
-Pour résoudre ce problème, les tâches doivent devenir plus grosses, nous devons factoriser plusieurs lignes à l'intérieur d'une tâche.
+Un ordonnanceur mettra de l'ordre de la centaine de nanosecondes à ordonnancer une tâche.
+%
+Pour que ce temps devienne négligeable, il faudrait que ce ne temps ne représente pas plus de 0,1~\% du temps de calcul d'une tâche.
+%
+Les tâches doivent donc durer de l'ordre de la centaine de microseconde.
+%
+Mais pour atteindre cette durée, les tâches doivent devenir plus grosses, nous devons factoriser plusieurs lignes à l'intérieur d'une tâche.
 %
 Mais le choix de ces lignes n'est pas trivial, il faut limiter l'impact sur le parallélisme et ne pas changer le résultat final.
 %
-Une méthode générique a été développée durant la thèse et sera expliquée plus loin dans ce document.
+Si trop de lignes à factoriser se retrouve dans une seule tâche, de nombreuses tâches devrons attendre que cette tâche finisse avec de pouvoir être exécuter même si les lignes dont elles dépendent sont déjà factorisées, nous avons donc détruit du parallélisme.
 %
+Une méthode générique a été développée durant la thèse pour choisir efficacement ces lignes et sera expliquée plus loin dans ce document.
+
+
+
 De plus, l'ordre de factorisation des lignes de la matrice aura une influence sur les performances.
 %
 En fonction du nombre de variables primaires, nous avons entre 24~\% et 450~\% de temps de factorisation en plus par rapport au temps de factorisation optimal (Tab.~\ref{tab:facto_order}).
@@ -137,7 +155,7 @@ Il est donc primordial d'agréger des tâches qui factorisent des lignes conséc
 
 
 
-Il existe des travaux de recherche dont le but est aussi d'exploiter le parallélisme de l'algorithme ILU.
+Il existe des travaux de recherche dont le but est aussi d'exploiter le parallélisme de l'algorithme ILU :
 %
 En changeant la numérotation des cellules, on peut modifier la structure de la matrice ce qui aura pour effet de changer la factorisation.
 %

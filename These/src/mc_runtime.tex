@@ -60,37 +60,58 @@ Les tâches sont décrites par le programmeur avec des mots clés additionnels a
 %
 Ces tâches sont empilées sur une pile spécifique à chaque thread.
 %
-Le vol de tâche se fait par le biais de cette pile de tâches.
+Le vol de tâche se fait par le biais de cette pile de tâches (Fig.~\ref{fig:task_steal}).
+
+%   (-_-)   %
+\begin{figure}[t!]
+  \centering
+  \includegraphics[width=\textwidth]{task_steal}
+  \caption{Vol de tâche du thread 2 dans la pile du thread 1.}
+  \label{fig:task_steal}
+\end{figure}
+
+
 
 
 Peu de temps après, en 1997, une interface de programmation parallèle voit le jour, il s'agit d'OpenMP~\cite{OpenMP}.
 %
 Les premières versions d'OpenMP se concentrent sur le parallélisme de boucle.
 %
+En ajoutant des annotations autour d'une boucle for, les itérations de la boucle seront distribuées sur les coeurs de calcul.
+%
+Il existe aussi des annotations permettant d'effectuer des réductions à la fin de la boucle.
+%
 Ce n'est qu'en 2008 que le support des tâches est ajouté à OpenMP dans sa version 3.0.
+%
+Le programmeur peut créer des tâches parallèles mais il n'y a aucun moyen de spécifier les dépendances entre les tâches.
+%
+Les graphes de tâches ne peuvent donc pas être directement utilisés dans OpenMP.
+%
+OpenMP est donc un runtime très complet pour faire du parallélisme de boucle mais son modèle de tâches se rapproche du modèle de Cilk.
 
 
 
-Plus récemment, à la fin des années 2000, la révolution du GPGPU donne lieu à l'apparition de nouveaux runtime.
+
+Plus récemment, à la fin des années 2000, la révolution du GPGPU donne lieu à l'apparition de nouveaux runtimes.
 %
 Les premières méthodes permettant d'utiliser un GPU pour du calcul étaient rudimentaires.
 %
 Il s'agissait de détourner l'utilisation des shaders programmables des interfaces de programmation graphiques comme par exemple OpenGL.
 %
-Puis des langages spécifiques on vus le jour, parmi ceux ci, le plus populaire sont CUDA et OpenCL.
+Puis des langages spécifiques ont vus le jour, parmi ceux ci, les plus populaires sont CUDA et OpenCL.
 %
 CUDA est développé par NVidia et ne permet de programmer que des GPU NVidia.
 %
-OpenCL est une spécification du Khronos Group est a pour but de fournir une interface de programmation standard pour programmer toutes sortes d'accélérateurs.
+OpenCL est une spécification du Khronos Group et a pour but de fournir une interface de programmation standard pour programmer toutes sortes d'accélérateurs.
 %
-Ces accélérateurs peuvent être des GPUs mais de manière générale il s'agit de co-processeur déporté.
+Ces accélérateurs peuvent être des GPUs mais de manière générale il s'agit de co-processeurs déportés.
 
 
 
 
 StarPU~\cite{starpu}, développé à Inria permet de d'écrire plusieurs versions d'une routine à la fois pour le CPU et le GPU.
 %
-Ces morceaux de codes spécifiques à une architecture sont appelés {\em codelet}.
+Ces morceaux de codes spécifiques à une architecture sont appelés {\em codelets}.
 %
 Puis les stratégies d'ordonnancement intégrées à StarPU choisiront la codelet qui permettra d'obtenir le meilleur temps de calcul.
 %
@@ -106,10 +127,12 @@ Ensuite tant que cette donnée n'est accédée qu'en lecture, il y aura deux cop
 %
 Dès qu'une codelet accède à la donnée en écriture, toutes les autres copies sont invalidées et un transfert mémoire sera nécessaire pour les mettre à jour.
 %
-StarPU intègre aussi plusieurs politiques d'ordonnancement
+StarPU intègre aussi plusieurs politiques d'ordonnancement permettant d'adapter à plusieurs code de calcul.
 %
 L'équipe de développement met aussi en avant la possibilité d'écrire son propre ordonnanceur et de l'intégrer à StarPU.
 
+
+X-KAAPI~\cite{xkaapi} est aussi développé à Inria.
 
 
 
@@ -121,9 +144,33 @@ OmpSs propose un approche à base d'annotation de code en étendant la spécific
 %
 Cette extension permet au mot clé {\em task} d'être accompagné d'informations complémentaires sur l'utilisation des paramètres en entrée.
 %
-Le programmeur doit toujours écrire le code spécifique à chaque architecture précédé d'informations concernant la fonction implémentée ainsi que l'architecture cible.
+OmpSs pourra ensuite déduire les dépendances entre les tâches depuis les informations sur les paramètres en entrée.
+%
+Il n'y a pas non plus d'écriture automatisée de code, le programmeur doit toujours écrire le code spécifique à chaque architecture précédé d'informations concernant la fonction implémentée ainsi que l'architecture cible.
 
 
+HMPP~\cite{hmpp} est un runtime, développé par CAPS, adressant le problème de la programmation hybride CPU/GPU.
+%
+Il s'utilise avec des annotations de code de la même manière qu'OpenMP et qu'OmpSs.
+%
+Puis le code annoté est ensuite transformé par un compilateur source-to-source vers un autre langage spécifique à l'architecture cible, comme le CUDA par exemple.
+%
+Les transferts mémoires entre la mémoire centrale et la mémoire du GPU peuvent être fait de deux façons :
+\begin{itemize}
+  \item implicitement au moment de l'appel de la codelet mais cette méthode ne permet de recouvrir la communication par du calcul;
+  \item explicitement avec l'ajout d'annotation, il est donc à la charge du programmeur de choisir le bon moment pour transférer les données.
+\end{itemize}
+%
+
+
+
+OpenACC~\cite{OpenACC} est un standard de programmation développé par un consortium de société dans le but de simplifier la programmation parallèle hybride CPU/GPU.
+%
+Les spécificités de ce standard ressemble en de nombreux points à HMPP (annotations, gestion mémoire, ...).
+%
+Son principal avantage est qu'il est soutenu par plusieurs sociétés là où HMPP n'est plus supporté.
+%
+OpenMP ajoute dans version 4 le support de la programmation hybride, son fonctionnement est identique à OpenACC, seuls les mot-clés changent.
 
 
 PaRSEC~\cite{PaRSEC} est un runtime développé à l'ICL permettant de travailler directement en mémoire distribuée.
@@ -137,31 +184,3 @@ PaRSEC s'occupe automatiquement des communications entre processus permettant de
 L'inconvenient majeur de ce runtime est son manque de flexibilité.
 %
 Le format JDF ne permet de créer dynamiquement de nouvelle tâche.
-
-
-
-HMPP~\cite{hmpp} est un runtime adressant le problème de la programmation hybride CPU/GPU.
-%
-Il s'utilise avec des annotations de code à la manière d'OpenMP.
-%
-Puis le code annoté est ensuite transformé par un compilateur source-to-source vers un autre langage spécifique à l'architecture cible, comme le CUDA par exemple.
-%
-Les transferts mémoires entre la mémoire centrale et la mémoire du GPU sont soit implicite au moment de l'appel de la codelet mais cette méthode ne permet de recouvrir la communication par du calcul.
-%
-Soit explicite avec l'ajout d'annotation, il est donc à la charge du programmeur de choisir le bon moment pour transférer les données.
-
-
-
-OpenACC~\cite{OpenACC} est un standard de programmation développé par un consortium de société dans le but de simplifier la programmation parallèle hybride CPU/GPU.
-%
-Les spécificités de ce standard ressemble en de nombreux points à HMPP (annotations, gestion mémoire, ...).
-%
-Son principal avantage est qu'il est soutenu par plusieurs sociétés là où HMPP n'a plus personne.
-%
-OpenMP ajoute dans version 4 le support de la programmation hybride, son fonctionnement est identique à OpenACC, seuls les mot-clés changent.
-
-
-
-
-
-Parmi ces runtimes on trouve X-KAAPI~\cite{xkaapi}.

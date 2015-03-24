@@ -27,15 +27,15 @@ L'autre difficulté est de maintenir assez de parallélisme pour pouvoir être c
 
 \begin{figure}[!h]
      \begin{center}
-        \subfigure[Agrégation invalide]{%
+        \subfigure[Agrégation invalide]{
           \label{fig:agg_invalid}
           \includegraphics[width=0.4\textwidth]{agg_invalid}
-        }%
-        \hspace{0.15\textwidth}%
-        \subfigure[Agrégation valide]{%
+        }
+        ~
+        \subfigure[Agrégation valide]{
           \label{fig:agg_valid}
           \includegraphics[width=0.4\textwidth]{agg_valid}
-        }%
+        }
     \end{center}
     \caption{Exemple de deux agrégations, le résultat de \ref{fig:agg_invalid} ne peut pas être ordonnancé à cause du cycle. Le résultat de \ref{fig:agg_valid} peut être ordonnancé mais il n'y a aucun parallélisme à exploiter.}
     \label{fig:agg_basic}

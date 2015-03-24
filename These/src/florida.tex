@@ -1,4 +1,52 @@
 \subsubsection{Collection de matrices creuses de l'université de Floride}
 La collection de matrices creuses de l'université de Floride est un ensemble de matrice provenant de diverses simulations.
 %
-Parmis
+Parmi toutes ces matrices, nous en avons choisi quatre ayant des motifs différents de ceux que nous pouvons retrouver en simulation de réservoir.
+%
+Nous ne nous intéressons pas aux propriétés physiques de ces simulations mais seulement aux connexions des noeuds du graphe.
+%
+C'est pourquoi nous allons choisir des paramètres arbitraires par rapport aux poids des tâches.
+
+
+\begin{figure}[!h]
+     \begin{center}
+        \subfigure[Pajek/EPA]{
+          \label{fig:florida_epa}
+          \includegraphics[width=0.45\textwidth]{florida_epa}
+        } %
+        ~
+        \subfigure[SNAP/roadNet-PA]{
+          \label{fig:florida_roadNet}
+          \includegraphics[width=0.45\textwidth]{florida_roadNet}
+        }
+
+        \subfigure[Gleich/wb-cs-stanford]{
+          \label{fig:florida_wbcs}
+          \includegraphics[width=0.45\textwidth]{florida_wbcs}
+        }
+        ~
+        \subfigure[Williams/webbase-1M]{
+          \label{fig:florida_webbase}
+          \includegraphics[width=0.45\textwidth]{florida_webbase}
+        }
+    \end{center}
+    \caption{Représentation du graphe de connexions des quatre matrices choisies.}
+    \label{fig:florida}
+\end{figure}
+
+%   (-_-)   %
+\begin{center}
+  \begin{tabular}{|r|c|c|c|}
+    \hline
+    Nom de la & Nombre de       & Nombre de & Description\\
+    matrice   & lignes/colonnes & non-zéros &  \\
+    \hline
+    Pajek/EPA             & 4~772     & 8~965     & \\
+    SNAP/roadNet-PA       & 1~090~920 & 3~083~796 & \\
+    Gleich/wb-cs-stanford & 9~914     & 36~854    & \\
+    Williams/webbase-1M   & 1~000~005 & 3~105~536 & \\
+    \hline
+  \end{tabular}
+  \captionof{table}{Descriptions des matrices utilisées.}
+  \label{tab:florida}
+\end{center}
