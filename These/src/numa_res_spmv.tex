@@ -41,6 +41,13 @@ L'utilisation du jeu d'instructions vectorielles aura donc très peu d'impact su
 %
 Nous devons nous concentrer sur les accès mémoires et surtout dans notre cas, sur les effets NUMA.
 
+
+Le SpMV présente du parallélisme de boucle sur les lignes de la matrice.
+%
+Nous pouvons multiplier indépendamment chaque ligne de la matrice par un vecteur et stocker directement le résultat dans un autre vecteur.
+
+
+
 %   (-_-)   %
 \begin{figure}
   \centering

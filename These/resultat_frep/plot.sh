@@ -27,7 +27,7 @@ do
         
         gnuplot -p << EOF
 $XLABEL
-set ylabel "Temps d'exécution moyen"
+set ylabel "Temps d'exécution moyen (s)"
 set key left top noreverse
 set yrange [0:$YRANGE]
 $LOGSCALE

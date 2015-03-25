@@ -30,7 +30,9 @@ Nous obtenons les meilleures performances en utilisant 8 coeurs avec une accél�
 %
 Utiliser plus de 8 coeurs pour effectuer le SpMV fait perdre du temps, les données étant toute sur le premier banc NUMA, nous utilisons uniquement la bande passante de ce banc avec des latences d'accès plus ou moins longues.
 %
-Les résultats en mémoire distribuée sont meilleurs, en optimisant les accès mémoire de la version en mémoire partagée, nous pouvons donc espérer avoir ce même type d'accélération.
+Les résultats en mémoire distribuée sont meilleurs.
+%
+Pour obtenir les mêmes performances qu'en mémoire distribuée, nous devons optimiser les accès mémoire.
 
 
 %   (-_-)   %

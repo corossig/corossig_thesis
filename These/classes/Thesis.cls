@@ -7,22 +7,28 @@
 \DeclareOption{book}{\CU@bookmodetrue}
 \ProcessOptions\relax%
 
+\def\@@ptsize{12pt}
+\DeclareOption{10pt}{\def\@@ptsize{10pt}}
+\DeclareOption{11pt}{\def\@@ptsize{11pt}}
+\DeclareOption{12pt}{\def\@@ptsize{12pt}}
+
+
 \ifCU@bookmode
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}%
 \ProcessOptions\relax%
 \ifx\pdfoutput\undefined%
-   \LoadClass[dvips, a4paper]{book}%
+   \LoadClass[dvips, a4paper, \@@ptsize]{book}%
 \else%
-   \LoadClass[pdftex, a4paper]{book}%
+   \LoadClass[pdftex, a4paper, \@@ptsize]{book}%
    \pdfminorversion=4
 \fi%
 \else
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}%
 \ProcessOptions\relax%
 \ifx\pdfoutput\undefined%
-  \LoadClass[dvips, a4paper]{report}%
+  \LoadClass[dvips, a4paper, \@@ptsize]{report}%
 \else%
-   \LoadClass[pdftex, a4paper]{report}%
+   \LoadClass[pdftex, a4paper, \@@ptsize]{report}%
 \fi%
 %\renewcommand{\refname}{References}%
 \fi

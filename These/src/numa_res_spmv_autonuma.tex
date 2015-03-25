@@ -8,8 +8,13 @@ La version de Linux disponible sur ces machines n'est pas assez récente, la fon
 \`A la place, nous allons utiliser une machine de bureau contenant deux processeurs Intel Xeon X5660, chaque banc NUMA dispose de 6 coeurs de calculs et de 24~Go de mémoire vive.
 %
 La version de Linux utilisée est la 3.18.
-%
+
+
 Cette méthode ne fonctionne que lorsque le programme est exécuté suffisamment longtemps pour avoir le temps d'analyser toute la mémoire utilisée.
+%
+Nous allons chercher l'accélération maximale que nous pouvons atteindre avec cette solution.
+%
+Il ne nous est donc pas utile de faire varier le nombre de coeurs de calcul, nous utiliserons les 12 coeurs de calcul de la machine.
 %
 Nous allons donc faire varier le nombre de SpMV pour faire varier le temps d'exécution du programme et laisser au noyau assez de temps pour déplacer les pages.
 
@@ -18,7 +23,7 @@ Nous allons donc faire varier le nombre de SpMV pour faire varier le temps d'ex�
 \begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{res_spmv_frep}
-  \caption{Temps d'un produit matrice vecteur creux sur Linux 3.18 en mémoire partagée.}
+  \caption{Temps d'un produit matrice vecteur creux sur Linux 3.18 en mémoire partagée avec 12 coeurs. Nous utilisons une matrice représentant un cube 100 avec 8 variables primaires.}
   \label{fig:res_spmv_frep}
 \end{figure}
 

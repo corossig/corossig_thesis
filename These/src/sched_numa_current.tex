@@ -4,8 +4,39 @@ La gestion du placement des pages mémoires n'est pas utile si le code qui utili
 Dans le cas de la programmation par tâche, chaque tâche doit connaître le banc NUMA qui lui est le plus favorable.
 %
 Cette information pourra être ensuite donnée à l'ordonnanceur de tâches qui s'occupera de placer correctement la tâche.
+
+
+
+
+ForestGOMP\cite{Bro10Thesis} est le résultat d'un travail de recherche autour du support des machines à mémoires hiérarchiques dans OpenMP.
 %
-Actuellement, certains ordonnanceurs ont un contrôle total de la mémoire utilisée par les tâches, ils pourraient donc optimiser l'affinité NUMA des programmes, mais ils sont très peu à le faire.
+Il utilise le parallélisme de boucle imbriqué pour adresser les différents niveaux hiérarchiques de la machine.
+%
+La bibliothèque de threads Marcel\cite{marcel} est utilisée pour la création de thread en espace utilisateur.
+%
+Dans une première boucle for sur le nombre de noeuds NUMA, le programmeur déclare les données auxquelles il va accéder.
+%
+Dans une deuxième boucle for imbriquée, le programmeur effectue les calculs.
+%
+L'utilisation de threads en espace utilisateur permet de créer un grand nombre de threads sans trop impacter la performance.
+%
+En créant un nombre conséquent de threads, nous pouvons obtenir un bon équilibrage de charge.
+%
+Cet équilibrage de charge sera possible grâce à l'utilisation de BubbleSched\cite{bubblesched} qui permet de créer des bulles de threads pour pouvoir déplacer un ensemble de threads sur un nouveau coeur de calcul d'un coup.
+%
+Lorsque le travail vient à manquer, c'est à dire qu'il n'y a plus assez de bulles pour occuper tous les coeurs de calcul, on peux exploser une bulle qui se transformera en plusieurs bulles jusqu'à atteindre la granularité d'un thread.
+%
+Les informations mémoires étant associées aux bulles, il est possible de choisir la meilleur bulle à éclater, celle qui nous fournira les meilleurs accès mémoire.
+%
+La gestion des allocation mémoires de ForestGOMP repose sur MaMI\footnote{Marcel Memory Allocator}, une bibliothèque écrite spécialement pour exploiter les machines NUMA dans Marcel.
+%
+MaMI implémente la politique d'allocation next touch et permet aussi la migration explicite des données.
+%
+ForestGOMP se base donc sur le principe que le programmeur est le mieux placé pour connaître l'utilisation mémoire de son programme.
+%
+Ces travaux montrent qu'une meilleure gestion des allocations mémoire, même manuelle, permet de gagner en performance.
+
+
 
 
 PaRSEC est un cadriciel de parallélisation par tâche qui fonctionne aussi en mémoire distribuée.
@@ -23,6 +54,38 @@ Il conserve donc l'aspect équilibrage de charge des solutions multithreadées.
 Par contre, cette solution ne convient toujours pas à résoudre notre problème, nous essayons d'avoir le moins possible de parallélisme en mémoire distribuée.
 
 
-Il existe aussi de nombreuses tentatives d'ajout du support de la localité des données à OpenMP\cite{openmp_numa}.
+
+MAi\footnote{Memory Affinity Interface}\cite{mai} fournit une interface de placement des données.
 %
-Parmi celles-ci, il y a ForestGOMP\cite{Bro10Thesis} qui propose de répartir la mémoire dès l'allocation et de placer les threads au plus près de la mémoire.
+Par rapport à MaMI, MAi implémente des
+%
+Mais MAi ne fournit pas d'ordonnanceur de tâches, il faut donc compter sur un
+
+
+
+
+D'autres tentatives d'extension de la spécification OpenMP existe.
+%
+L'article~\cite{openmp_numa} présente l'ajout de trois nouvelles directives pour OpenMP.
+%
+La première directive se concentre sur la migration des données lors du prochain accès à ces données, il s'agît d'une implémentation de la politique d'allocation next touch.
+%
+La deuxième directive concerne la distribution des pages d'une zone mémoire.
+%
+Cette distribution peut être faite par bloc, entrelacé sur différents bancs NUMA dans plusieurs dimensions.
+%
+La troisième directive permet de prévenir l'ordonnanceur que la distribution des itérations d'une boucle doit tenir compte des allocations NUMA.
+%
+Les performances obtenues sur une factorisation LU dense sont encourageant, une accélération quasi parfaite jusqu'à 16 processeurs là où une version OpenMP classique est deux fois moins performante.
+%
+Ces travaux nous prouvent qu'une gestion fine des allocations NUMA couplée à un ordonnanceur prenant en compte les affinités mémoires permet d'exploiter efficacement une machine NUMA.
+%
+Malheureusement, seul le parallélisme de boucle est traitée, il n'y a pas gestion du parallélisme à base de graphe de tâches.
+
+
+
+Des runtimes comme StarPU ou OmpSs demandent au programmeur de décrire les données utilisées par les tâches de calcul.
+%
+Cette information est ensuite utilisée pour effectuer des transferts vers d'autres types de mémoires.
+%
+Il est regrettable qu'aucun de ces runtimes n'utilisent cette information pour optimiser les accès mémoire sur des machines NUMA.

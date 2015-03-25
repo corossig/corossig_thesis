@@ -1,9 +1,11 @@
 \subsubsection{NATaS}
-Pour paralléliser le SpMV, nous utilisons du parallélisme de boucle.
+NATaS distribue les pages mémoires utilisées par la matrice en mode bloc de lignes.
 %
-Notre ordonnanceur NUMA, NATaS, prend en charge ce type de parallélisme.
+Nous divisons le nombre de lignes par le nombre de bancs NUMA pour obtenir la taille d'un bloc.
 %
-En plus d'optimiser le placement des pages, il répartira la charge de travail en prenant en compte la localité mémoire.
+Puis chaque bloc est alloué sur un banc NUMA différent.
+%
+En plus d'optimiser le placement des pages, NATaS répartira la charge de travail en prenant en compte la localité mémoire.
 %
 Sur le cas à 8 variables primaires, nous obtenons les mêmes performances qu'en mémoire distribuée (Fig.~\ref{fig:res_spmv_nas}).
 %
@@ -32,9 +34,11 @@ C'est en grande partie de l'architecture logicielle de NATaS qui en sont la caus
 %
 Nous effectuons trop d'accès à un ensemble de variables partagées par tous les threads.
 %
-Par exemple, nous avons un compteur de tâches en cours qui nous permet de savoir si
+Par exemple, nous avons un compteur de tâches en cours qui nous permet de savoir s'il existe encore des tâches pouvant être volées ou débloquées.
 %
-Le vol de travail est aussi consommateur d'accès mémoire distant, actuellement, chaque thread va chercher dans les structures des autres bancs NUMA s'il peut voler une tâche.
+Le vol de travail est aussi consommateur d'accès mémoire distant.
+%
+Actuellement, lorsqu'un thread tombe à court de tâche, il parcourt les structures servant à maintenir la liste des tâches disponibles sur les autres bancs NUMA.
 %
 Pour améliorer considérablement les performances, il faudrait construire un ordonnanceur utilisant moins de variables partagées.
 %
