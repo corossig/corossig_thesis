@@ -7,22 +7,15 @@ Puis chaque bloc est alloué sur un banc NUMA différent.
 %
 En plus d'optimiser le placement des pages, NATaS répartira la charge de travail en prenant en compte la localité mémoire.
 %
-Sur le cas à 8 variables primaires, nous obtenons les mêmes performances qu'en mémoire distribuée (Fig.~\ref{fig:res_spmv_nas}).
+Sur le cas à 8 variables primaires, nous obtenons les mêmes performances qu'en mémoire distribuée (Fig.~\ref{fig:res_spmv_nas_rostand}).
 %
 Pour 3 variables primaires, nous obtenons 95~\% des performances de la version en mémoire distribuée.
 %
 Par contre, nous n'obtenons que 70~\% avec 1 variable primaire.
 
-%   (-_-)   %
-\begin{figure}
-  \centering
-  \includegraphics[width=0.7\textwidth]{res_spmv_nas}
-  \caption{Accélération du produit matrice vecteur creux sur Rostand en mémoire partagée avec NATaS.}
-  \label{fig:res_spmv_nas}
-\end{figure}
 
 
-Malheureusement, sur la machine Manumanu, malgré un placement optimal des pages mémoires, NATaS ne fait pas aussi bien que MPI (Fig.~\ref{fig:res_spmv_nas_manumanu}).
+Malheureusement, sur la machine Manumanu, malgré un placement optimal des pages mémoires, NATaS ne fait pas aussi bien que MPI (Fig.~\ref{fig:res_spmv_nas_manu}).
 %
 Les compteurs matérielles nous indiquent qu'un nombre non négligeable d'accès à une mémoire distante sont faits.
 %
@@ -47,11 +40,3 @@ Mais ce type d'ordonnanceur est dur à écrire, nos machines de calculs étant e
 L'utilisation de 2 bancs NUMA sur Manumanu nous donne une accélération de 10, tout comme la version en mémoire distribuée.
 %
 Au delà de 2 bancs NUMA, les performances sont légèrement meilleures que la version OpenMP, atteignant une accélération de 32.
-
-%   (-_-)   %
-\begin{figure}
-  \centering
-  \includegraphics[width=0.7\textwidth]{res_spmv_nas_manu}
-  \caption{Accélération du produit matrice vecteur creux sur Manumanu en mémoire partagée avec NATaS.}
-  \label{fig:res_spmv_nas_manumanu}
-\end{figure}

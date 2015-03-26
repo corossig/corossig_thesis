@@ -53,15 +53,6 @@ Avec un cas à 8 variables primaires, nous obtenons une accélération maximale 
 La capacité de calcul mesuré avec 12 coeurs est de 4,96~GFlops, cela correspond à la prédiction du roofline model.
 
 
-%   (-_-)   %
-\begin{figure}
-  \centering
-  \includegraphics[width=0.7\textwidth]{res_spmv_mpi}
-  \caption{Accélération du produit matrice vecteur creux sur Rostand en mémoire distribuée.}
-  \label{fig:res_spmv_mpi_rostand}
-\end{figure}
-
-
 
 Sur Manumanu, nous avons beaucoup plus de banc NUMA, ce qui signifie que nous aurons plus de bande passante mémoire à notre disposition.
 %
@@ -73,7 +64,7 @@ Nous avons choisi d'allouer les processus MPI en mode compact, c'est à dire qu'
 %
 Nous pourrons ainsi voir les différents paliers tous les 8 coeurs qui correspondent à l'ajout de bande passante mémoire d'un nouveau processeur.
 %
-Ces paliers sont difficilement visibles sur la courbe des résultats (Fig.~\ref{fig:res_spmv_mpi_manumanu}).
+Ces paliers sont difficilement visibles sur la courbe des résultats (Fig.~\ref{fig:res_spmv_mpi_manu}).
 %
 Mais les valeurs numériques sont plus expressives, par exemple avec 1 variable primaire, l'accélération sur 7 et 8 coeurs est la même (4,72), l'utilisation d'un neuvième coeur la fait augmenter (5,34).
 %
@@ -84,12 +75,3 @@ Cette accélération monte à 110 avec l'utilisation des 20 bancs NUMA et des 16
 Les performances par banc NUMA sont meilleurs que sur Rostand.
 %
 Le passage à l'échelle entre 1 banc NUMA et 20 bancs NUMA est quasiment parfait.
-
-
-%   (-_-)   %
-\begin{figure}
-  \centering
-  \includegraphics[width=0.7\textwidth]{res_spmv_mpi_manu}
-  \caption{Accélération du produit matrice vecteur creux sur Manumanu en mémoire distribuée.}
-  \label{fig:res_spmv_mpi_manumanu}
-\end{figure}

@@ -36,15 +36,15 @@ C'est pourquoi nous allons choisir des paramètres arbitraires par rapport aux p
 
 %   (-_-)   %
 \begin{center}
-  \begin{tabular}{|r|c|c|c|}
+  \begin{tabular}{|r|c|c|c|c|}
     \hline
-    Nom de la & Nombre de       & Nombre de & Description\\
-    matrice   & lignes/colonnes & non-zéros &  \\
+    Nom de la & Nombre de       & Nombre de & Paramètre des & Paramètre de\\
+    matrice   & lignes/colonnes & non-zéros & effets cache  & granularité \\
     \hline
-    Pajek/EPA             & 4~772     & 8~965     & \\
-    SNAP/roadNet-PA       & 1~090~920 & 3~083~796 & \\
-    Gleich/wb-cs-stanford & 9~914     & 36~854    & \\
-    Williams/webbase-1M   & 1~000~005 & 3~105~536 & \\
+    Pajek/EPA             & 4~772     & 8~965     & 0,95 & 0,02\\
+    SNAP/roadNet-PA       & 1~090~920 & 3~083~796 & 0,70 & 1\\
+    Gleich/wb-cs-stanford & 9~914     & 36~854    & 0,50 & 0,001\\
+    Williams/webbase-1M   & 1~000~005 & 3~105~536 & 0,98 & 0,5\\
     \hline
   \end{tabular}
   \captionof{table}{Descriptions des matrices utilisées.}

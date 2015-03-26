@@ -4,17 +4,42 @@ La politique d'ordonnancement aura un impact conséquent sur les performances d'
 Chaque politique aura un surcoût différent en fonction de sa complexité algorithmique ainsi que des paramètres qu'il prend en compte.
 
 
-Un ordonnanceur type tourniquet distribueras les tâches de manière uniforme sur les différents coeurs de calcul.
+Un ordonnanceur type tourniquet distribuera les tâches de manière uniforme sur les différents coeurs de calcul.
 %
 La complexité algorithmique est donc minimal, mais aucune métrique n'est pris en charge.
 %
-Nous aurons donc un ordonnancement rapide avec un surcoût faible mais de très mauvaise qualité.
+Nous aurons donc un ordonnancement rapide avec un surcoût très faible mais de très mauvaise qualité.
 
 
-Parmi les ordonnanceurs très simple, nous pouvons aussi parler de la queue partagée.
+Parmi les ordonnanceurs simples, nous pouvons aussi parler de la queue partagée.
 %
 Tous les threads partagent une queue contenant les tâches pouvant être exécutées.
 %
-L'équilibrage sera de meilleur qualité
+L'équilibrage de charge se fera façon automatique, tant que la queue n'est pas vide il reste du travail à effectuer.
 %
-Ce type d'ordonnancement impose une implémentation de la queue thread-safe
+Ce type d'ordonnancement impose une implémentation de la queue {\em thread-safe}, c'est à dire qui garanti les opérations d'ajout et de suppression de tâches dans la queue même lorsque plusieurs threads y accèdent simultanément.
+%
+Cette implémentation aura aussi des conséquences sur le surcoût d'ordonnancement des tâches.
+%
+Une implémentation à verrou aura un plus gros surcoût qu'une implémentation à base d'instructions atomiques.
+%
+Ce type d'ordonnancement ne garantie pas un bon équilibrage de charge.
+%
+Plusieurs cas peuvent conduire à un déséquilibre de charge :
+\begin{itemize}
+  \item si les dernières tâches à ordonnancer ont des coûts très différents;
+  \item si une tâche qui débloque beaucoup de parallélisme est exécutée très tard.
+\end{itemize}
+
+
+L'algorithme d'ordonnancement HEFT est un algorithme performant et à faible complexité\cite{heft2}.
+%
+Il s'agit d'un algorithme glouton, il va essayer de toujours occuper tous les coeurs de calcul.
+%
+Le graphe de tâche est parcouru en hauteur et les tâches sont distribuer les unes à la suite des autres.
+%
+Pour chaque tâche un temps de terminaison est estimé pour chaque thread, le thread qui aura le temps de terminaison le plus court sera en charge d'exécuter la tâche.
+%
+Il existe des cas où cet algorithme où cet algorithme n'effectue le meilleur ordonnancement possible.
+%
+Comme par exemple lorsqu'une tâche qui en débloque beaucoup d'autre est exécuté en dernière.

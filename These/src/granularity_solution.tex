@@ -1,7 +1,50 @@
 \subsection{Solutions actuelles}
-Le problème de granularité de la programmation à base de tâche est un problème bien connu et est étudié depuis un long moment.
+Lorsque l'on parle de problème de granularité, on peut penser dans un premier temps aux problèmes rencontrés avec du parallélisme de boucle.
 %
-Certains ordonnanceurs à base de tâche essaient de résoudre ce problème en utilisant différentes approches.
+Chaque itérations de la boucle étant indépendante des autres, on pourrait vouloir les ordonnancer indépendamment.
+%
+Mais avec cette technique, nous ajoutons un surcoût à chaque itérations.
+%
+Si le coût d'une itération est trop petit par rapport à ce surcoût, cette solution n'est pas performante.
+%
+Donc pour réduire ce surcoût, on pourrait regrouper des itérations ensemble et distribuer ces paquets d'itérations aux coeurs de calcul.
+%
+En créant 1 paquet par coeur de calcul, nous avons le surcoût minimal qui permet d'utiliser tous les coeurs de calcul.
+%
+Malheureusement, si la taille des paquets n'est pas exactement identique, ou si les itérations n'ont pas le même coût, voir même qu'un thread n'est pas pu être exécuté en même temps que les autres, le temps de calcul n'est pas minimal.
+%
+Il s'agit du problème d'équilibre de charge, pour obtenir un temps de calcul minimal, il faut que tous les coeurs de calcul aient travaillés pendant la même période.
+%
+Pour compenser, nous créons des paquets d'itérations plus petit pour permettre de mieux équilibrer la charge entre les différents coeurs de calcul.
+
+
+OpenMP propose plusieurs stratégies pour construire et distribuer ces paquets d'itérations.
+%
+La stratégie {\em static} va couper l'espace d'itération en paquets de taille fixe et les distribueras statiquement sur tous les coeurs de calcul.
+%
+La stratégie {\em dynamic} découpera aussi les paquets en avance mais aura une distribution dynamique, les threads demanderont un nouveau paquet après en avoir terminé un.
+%
+La stratégie {\em guided} découpera des paquets de différentes tailles et les distribuera dynamiquement en commençant par les plus gros.
+%
+Ces stratégies permettent d'adapter l'ordonnanceur au type de problème à paralléliser.
+%
+Nous pouvons voir que pour chaque stratégie nous avons utilisé la notion de paquet d'itérations pour diminuer le surcoût de l'ordonnanceur.
+%
+Dans le cas d'un parallélisme de boucle la création de paquet est simple.
+%
+Mais dans le cas de parallélisme à base de graphe de tâche, les paquets sont plus dur à construire.
+
+
+
+Certains programme peuvent être écrit de façon à pouvoir choisir facilement une granularité de tâche.
+%
+Dans ces cas là, il suffit de faire varier tous les paramètres de granularité jusqu'à obtenir les paramètres optimaux.
+%
+Il s'agit de techniques dites {\em autotuning} et ne peuvent s'appliquer qu'à un petit ensemble de problème.
+
+
+
+Certains ordonnanceurs à base de tâche essaient de résoudre le problème de granularité en utilisant des approches différentes.
 %
 Par exemple, X-Kaapi~\cite{xkaapi} a introduit le concept de tâches divisibles aussi appelé {\em adaptive task model} et fonctionne de la manière suivante :
 %
@@ -11,9 +54,10 @@ Les autres travailleurs, qui sont dans l'état travail, doivent vérifier régul
 %
 Puis pour traiter cette requête, le travail restant est divisé en deux, la fonction divisant le travail en deux doit être écrite par le programmeur, ce n'est pas automatique.
 %
-Cette fonction peut être triviale dans le cas d'une boucle for parallèle ou dans le cas de parallélisme sous la forme d'arbre.
+Cette fonction peut être triviale dans le cas de parallélisme de boucle ou dans le cas de parallélisme sous la forme d'arbre.
 %
-Mais dans le cas général, il n'est pas toujours possible de diviser un DAG en deux DAG totalement indépendants.
+Mais dans le cas d'un graphe quelconque, il n'est pas toujours possible de diviser un graphe en deux graphes totalement indépendants.
+
 
 
 Une autre approche possible, comme donnée par Capsules\cite{capsules}, requiert que le programmeur définisse plusieurs granularités.
@@ -21,3 +65,18 @@ Une autre approche possible, comme donnée par Capsules\cite{capsules}, requiert
 L'ordonnanceur pourra ensuite choisir la granularité qui s'adapte le mieux à la situation.
 %
 Le programmeur doit donc architecturer son application de façon à pouvoir avoir plusieurs granularités, ce qui peut dans certains cas être difficile à exprimer de manière abstraite.
+
+
+Pour grossir le grain d'un graphe, on peut aussi regrouper les tâches ensemble et les ordonnancer en une fois.
+%
+Le regroupement de tâches dans un graphe a aussi été étudié.
+%
+Les auteurs de l'article~\cite{clustering_task} propose de créer des groupes de tâches qui seront ensuite ordonnancées sur le même processeur.
+%
+Les groupes sont formés de la manière suivante : au début chaque tâche appartient à un groupe.
+%
+Deux groupes sont rassemblés ensemble si leur union diminue le temps parallèle estimé.
+%
+Mais ce type de regroupement est fait pour optimiser l'ordonnancement d'un graphe de tâche sur des machines distribuée.
+%
+Les tâches fines continuent d'avoir des dépendances entre elles.

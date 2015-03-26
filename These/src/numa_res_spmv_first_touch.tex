@@ -3,7 +3,7 @@ Nous allons maintenant nous concentrer sur la parallélisation du SpMV en mémoi
 %
 La mémoire est allouée sur un seul banc NUMA et le travail est partagée par une directive {\em \#pragma omp parallel for}.
 %
-Sur la machine Rostand, nous obtenons difficilement une accélération de 2,5 sur 12 coeurs en ayant 8 variables primaires (Fig.~\ref{fig:res_spmv_omp_rostand}).
+Sur la machine Rostand, nous obtenons difficilement une accélération de 2,5 sur 12 coeurs en ayant 8 variables primaires (Fig.~\ref{fig:res_spmv_ft_rostand}).
 %
 Cette accélération descend à 1,9 en ayant 1 variable primaire, toujours sur 12 coeurs de calcul.
 %
@@ -13,18 +13,7 @@ Nous n'obtenons que 65~\% de la puissance maximale que nous devrions avoir.
 %
 Le SpMV étant limité par la bande passante mémoire, l'utilisation d'un seul banc NUMA pour les accès mémoire ne nous permet pas d'exploiter toute la puissance de la machine.
 
-
-%   (-_-)   %
-\begin{figure}
-  \centering
-  \includegraphics[width=0.7\textwidth]{res_spmv_omp}
-  \caption{Accélération du produit matrice vecteur creux sur Rostand en mémoire partagée.}
-  \label{fig:res_spmv_omp_rostand}
-\end{figure}
-
-
-
-Sur la machine Manumanu, ces effets sont amplifiés (Fig.~\ref{fig:res_spmv_omp_manumanu}).
+Sur la machine Manumanu, ces effets sont amplifiés (Fig.~\ref{fig:res_spmv_ft_manu}).
 %
 Nous obtenons les meilleures performances en utilisant 8 coeurs avec une accélération de 5-6.
 %
@@ -33,12 +22,3 @@ Utiliser plus de 8 coeurs pour effectuer le SpMV fait perdre du temps, les donn�
 Les résultats en mémoire distribuée sont meilleurs.
 %
 Pour obtenir les mêmes performances qu'en mémoire distribuée, nous devons optimiser les accès mémoire.
-
-
-%   (-_-)   %
-\begin{figure}
-  \centering
-  \includegraphics[width=0.7\textwidth]{res_spmv_omp_manu}
-  \caption{Accélération du produit matrice vecteur creux sur Manumanu en mémoire partagée.}
-  \label{fig:res_spmv_omp_manumanu}
-\end{figure}

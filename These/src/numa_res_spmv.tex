@@ -66,5 +66,68 @@ Nous pouvons multiplier indépendamment chaque ligne de la matrice par un vecteu
 %-------------------------------
 \input{src/numa_res_spmv_natas}
 %-------------------------------
+
+
+
+
+%%%%%%%%%%%%%%%%
+% SpMV
+%%%%%%%%%%%%%%%%
+
+%   (-_-)   %
+\begin{figure}[!h]
+     \begin{center}
+        \subfigure[First touch.]{
+          \label{fig:res_spmv_ft_rostand}
+          \includegraphics[width=0.48\textwidth]{res_spmv_omp}
+        }
+        \subfigure[Interleave.]{
+          \label{fig:res_spmv_inter_rostand}
+          \includegraphics[width=0.48\textwidth]{res_spmv_interleave}
+        }
+
+        \subfigure[NATaS.]{
+          \label{fig:res_spmv_nas_rostand}
+          \includegraphics[width=0.48\textwidth]{res_spmv_nas}
+        }
+        \subfigure[MPI.]{
+          \label{fig:res_spmv_mpi_rostand}
+          \includegraphics[width=0.48\textwidth]{res_spmv_mpi}
+        }
+    \end{center}
+    \caption{Performances du produit matrice vecteur creux sur Rostand.}
+\end{figure}
+
+
+
+%   (-_-)   %
+\begin{figure}[!h]
+     \begin{center}
+        \subfigure[First touch.]{
+          \label{fig:res_spmv_ft_manu}
+          \includegraphics[width=0.48\textwidth]{res_spmv_omp_manu}
+        }
+        \subfigure[Interleave.]{
+          \label{fig:res_spmv_inter_manu}
+          \includegraphics[width=0.48\textwidth]{res_spmv_interleave_manu}
+        }
+
+        \subfigure[NATaS.]{
+          \label{fig:res_spmv_nas_manu}
+          \includegraphics[width=0.48\textwidth]{res_spmv_nas_manu}
+        }
+        \subfigure[MPI.]{
+          \label{fig:res_spmv_mpi_manu}
+          \includegraphics[width=0.48\textwidth]{res_spmv_mpi_manu}
+        }
+    \end{center}
+    \caption{Performances du produit matrice vecteur creux sur Manumanu.}
+\end{figure}
+
+
+
+
+
+%-------------------------------
 \input{src/numa_res_spmv_autonuma}
 % -------------------------------

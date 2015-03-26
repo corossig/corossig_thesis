@@ -7,8 +7,10 @@ do
     then
         NB_COL=$(head -n 3 "${i}" | tail -n 1 | wc -w)
         YRANGE=12
+        KEY="right"
         case "$i" in
             *_mpi_*)
+                KEY="left"
                 YRANGE=120
 		;;
             *_facto_*)
@@ -28,7 +30,7 @@ do
         gnuplot -p << EOF
 set xlabel "Nombre de threads"
 set ylabel "Accélération"
-set key right top noreverse
+set key $KEY top noreverse
 set yrange [0:$YRANGE]
 set terminal svg size 700,500 fname 'Verdana' fsize 16
 set output "$dest"
