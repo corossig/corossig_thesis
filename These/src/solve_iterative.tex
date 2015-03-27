@@ -32,6 +32,8 @@ Chaque itération du GMRES (Algo.~\ref{algo:gmres}) est composé d'un produit ma
 
 
 \begin{algorithm}
+  \caption{GMRES avec une orthogonalisation Householder, nous avons surligné le produit matrice-vecteur creux ainsi que les produits scalaires.}
+  \label{algo:gmres}
   \KwData{$m$ : Le nombre maximum d'itérations du GMRES}
   $r_0 := b - Ax_0$ \\
   $\beta := ||r_0||_2$ \\
@@ -52,8 +54,6 @@ Chaque itération du GMRES (Algo.~\ref{algo:gmres}) est composé d'un produit ma
     $v_{j+1} := w_j/h_{j+1,j}$ \\
   }
   Calculer $y_m$ le minimiseur de $||\beta{}e_1 - \overset{-}{H}_my||_2$ et $x_m := x_0 + V_my_m$
-  \caption{GMRES avec une orthogonalisation Householder}
-  \label{algo:gmres}
 \end{algorithm}
 
 
@@ -74,8 +74,7 @@ Or, calculer $A^{-1}$ est très coûteux, à la fois en terme de calcul que de m
 
 La factorisation directe LU peut être considéré comme une très bon préconditionneur.
 %
-En effet, il est équivalent
-Dans le cas de problèmes linéaires creux,
+En multipliant chaque membre de l'équation par $A^{-1}$ qui correspond à une résolution triangulaire avec $L$ et $U$, nous obtenons l'équation $A^{-1}Ax=A^{-1}b$ qui est équivalent à $x=A^{-1}b$.
 %
 Par contre, le résultat de la factorisation LU exacte de la matrice creuse $A$ ne pourrait plus être considéré comme creux.
 %
@@ -92,7 +91,7 @@ La deuxième correspond à la {\em résolution triangulaire} effectuée avec les
 Pour maintenir un espace mémoire raisonnable, on peut choisir de limiter le niveau de remplissage, deux solutions existent :
 \begin{itemize}
   \item Soit en fixant une valeur seuil à partir de laquelle le remplissage est accepté, il s'agit de l'algorithme ILUt;
-  \item Soit en choisissant un niveau d'interaction maximal entre les lignes de la matrice, il s'agit de l'algorithme ILU(k) (Fig.~\ref{fig:iluk_filling}).
+  \item Soit en choisissant un niveau d'interaction maximal entre les lignes de la matrice, il s'agit de l'algorithme ILU(k).
 \end{itemize}
 
 %   (-_-)   %
@@ -110,14 +109,22 @@ La factorisation ILU(k) peut être faite en deux étapes :
   \item puis la factorisation réelle en utilisant ce motif.
 \end{itemize}
 %
-
+La factorisation symbolique va utiliser le graphe d'adjacence de la matrice.
+%
+Pour chaque ligne $i$ de la matrice, si un élément non-nul est présent dans la colonne $j$, alors il y a une relation de niveau 0 entre les éléments $i$ et $j$.
+%
+Les relations de niveau $n$ sont construites à partir des relations de niveau $n-1$.
+%
+Pour chaque élément $i$, les relations de niveau $n$ correspondent aux relations de niveau 0 ses relations $n-1$.
+%
+Par exemple, sur la figure~\ref{fig:iluk_filling}, ``1'' a une relation de niveau 1 avec ``3'' donc ``1'' aura une relation de niveau 2 avec ``4'' car ``3'' a une relation de niveau 0 avec ``4''.
 
 
 %   (-_-)   %
 \begin{figure}[!h]
   \centering
   \includegraphics[width=\textwidth]{ilu0}
-  \caption{Exemple de motif obtenu par une factorisation ILU(0).}
+  \caption{Exemple de motif obtenu par une factorisation ILU(0), il n'y a pas de remplissage.}
   \label{fig:ilu0}
 \end{figure}
 
@@ -160,12 +167,14 @@ Pour la simulation de réservoir, nous utilisons l'algorithme ILU(k).
 L'algorithme~\ref{algo:gmres_precond} représente un GMRES préconditionné avec une méthode ILU.
 
 \begin{algorithm}
+  \caption{GMRES préconditionné par une méthode ILU. Les parties surlignées correspondent au préconditionnement.}
+  \label{algo:gmres_precond}
   \KwData{$m$ : Le nombre maximum d'itérations du GMRES}
   \tikz[baseline]{\node[fill=red!20,anchor=base]{$M =$ Factorisation\_ILU($A$)};} \\
   $r_0 := b - Ax_0$ \\
   $\beta := ||r_0||_2$ \\
   $v_1 := r_0/\beta$ \\
-  Define the $(m + 1)$x$m$ matrix $\overset{-}{H}_m = \{h_{ij}\}_{1 \leq i \leq m+1, 1 \leq j \leq m}$.  \\
+  Définir la $(m + 1)$x$m$ matrice $\overset{-}{H}_m = \{h_{ij}\}_{1 \leq i \leq m+1, 1 \leq j \leq m}$.  \\
   $\overset{-}{H}_m = 0$ \\
   \For{$j=1$ {\bf à} $m$} {
     \tikz[baseline]{\node[fill=yellow!20,anchor=base]{$temp :=$ Résolution\_Triangulaire($M, v_j$)};} \\
@@ -181,7 +190,5 @@ L'algorithme~\ref{algo:gmres_precond} représente un GMRES préconditionné avec
     }
     $v_{j+1} := w_j/h_{j+1,j}$ \\
   }
-  Compute $y_m$ the minimizer of $||\beta{}e_1 - \overset{-}{H}_my||_2$ and $x_m := x_0 + V_my_m$
-  \caption{GMRES avec une orthogonalisation Householder}
-  \label{algo:gmres_precond}
+  Calculer $y_m$ le minimiseur de $||\beta{}e_1 - \overset{-}{H}_my||_2$ et $x_m := x_0 + V_my_m$
 \end{algorithm}

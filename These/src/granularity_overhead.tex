@@ -3,7 +3,9 @@ Les runtimes à base de tâches doivent distribuer les tâches à tous les coeur
 %
 Mais cette action n'est pas complètement gratuite, certaines opérations sont obligatoires et leurs temps de traitement dépendent de leurs implémentations.
 %
-Généralement, plus le runtime est complet, plus il doit faire d'opérations et donc plus il prend de temps à distribuer les tâches.
+Par exemple, un runtime peut intégrer un modèle de performance avec une gestion des priorités de tâches, ces deux fonctionnalités auront un coût sur le temps d'ordonnancement d'une tache.
+%
+Généralement, plus le runtime est complexe, plus il doit faire d'opérations et donc plus il prend de temps à distribuer les tâches.
 %
 L'opération la plus basique, qui est aussi l'opération essentielle au runtime, est la vérification qu'une tâche puisse être exécutée et que celle-ci s'exécute une seule et unique fois.
 %

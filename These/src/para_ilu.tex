@@ -95,9 +95,9 @@ la tâche $i$ corresponds à la ligne $i$ de la matrice (ligne \ref{algo:ilu0:ta
 
 En résumé, le parallélisme de l'algorithme ILU peut se représenter sous la forme d'un graphe de tâches.
 %
-Chaque tâche représentant la factorisation d'une ligne... ce qui est bien petit.
+Chaque tâche représentant la factorisation d'une ligne... ce qui représente peu de calculs.
 %
-En fait, la plupart des runtimes mettront plus de temps à ordonnancer la tâche que la tâche mettra à factoriser une ligne.
+En fait, la plupart des runtimes mettront plus de temps à ordonnancer la tâche que la tâche mettra à s'exécuter.
 
 
 Les problèmes rencontrés pour paralléliser la factorisation incomplète d'une matrice creuse, ainsi que les résolutions triangulaires associées, sont des problèmes qui représentent bien la difficulté que l'on peut rencontrer avec une parallélisation à grain fin.
@@ -122,7 +122,7 @@ Mais le choix de ces lignes n'est pas trivial, il faut limiter l'impact sur le p
 %
 Si trop de lignes à factoriser se retrouve dans une seule tâche, de nombreuses tâches devrons attendre que cette tâche finisse avec de pouvoir être exécuter même si les lignes dont elles dépendent sont déjà factorisées, nous avons donc détruit du parallélisme.
 %
-Une méthode générique a été développée durant la thèse pour choisir efficacement ces lignes et sera expliquée plus loin dans ce document.
+Un intergiciel a été développé dans cette thèse pour résoudre ce problème de manière transparente pour le programmeur.
 
 
 
@@ -132,7 +132,12 @@ En fonction du nombre de variables primaires, nous avons entre 24~\% et 450~\% d
 %
 La factorisation des lignes de la matrice avec un parcourt linéaire des indices donne les meilleurs performances.
 %
+Les lignes consécutives de la matrice correspondent la plupart du temps à des cellules proches qui auront donc des interactions entres elles.
+%
+La factorisation d'une ligne utilisera donc souvent une partie du résultat de la factorisation de la ligne précédente, ce résultat ayant de grande chance d'être encore en mémoire cache.
+%
 Il est donc primordial d'agréger des tâches qui factorisent des lignes consécutives de la matrice.
+
 
 %   (-_-)   %
 \begin{center}
@@ -170,6 +175,9 @@ L'opération de factorisation parallèle est appelé {\em sweep} et doit être e
 En moyenne 3 sweeps suffisent à obtenir un résultat proche de la factorisation incomplète.
 %
 La convergence n'est donc que faiblement dégradée, mais il faut prendre en compte que 3 sweeps ont été nécessaires et il a donc fallu faire 3 fois plus d'opérations qu'une factorisation ILU classique.
+%
+Dans notre cas, nous nous intéressons à des renumérotation qui favorise le regroupement des tâches mais ne changent pas le résultat numérique.
+
 
 %   (-_-)   %
 \begin{figure}[!h]

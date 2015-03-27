@@ -15,6 +15,8 @@ Un autre format, lui aussi générique, est souvent utilisé, il s'agit du forma
 %
 Les éléments non nuls sont triés par ligne puis le tableau {\em PTR} du format de stockage nous permet de retrouver la ligne d'un élément.
 %
+Ce tableau peut être vu comme une compression du tableau indiçant les lignes de la matrice.
+%
 D'autres formats moins génériques existent mais nous n'en parlerons pas ici.
 
 \begin{figure}[!h]
@@ -39,7 +41,7 @@ Le choix du format de stockage va avoir beaucoup d'effet sur les performances d'
 %
 Avec la plupart des formats, nous aurons au moins deux accès mémoire pour obtenir les coordonnées 2D d'un coefficient non nul alors qu'avec l'algèbre linéaire dense nous pouvons calculer ces coordonnées à partir de la position dans la matrice.
 %
-Une partie non négligeable de la bande passante mémoire est utilisée juste pour les coordonnées 2D.
+Une partie non négligeable de la bande passante mémoire est utilisée juste pour la lecture des coordonnées 2D.
 %
 Les propriétés creuse et irrégulière de ces matrices impliquent aussi une mauvaise efficacité mémoire des noyaux d'algèbre linéaire creux à cause d'une mauvaise réutilisation du cache.
 %
@@ -51,6 +53,8 @@ Ceci est dû au fait qu'avec une taille de matrice équivalente, l'algèbre lin�
 
 
 Pour la simulation de réservoir, chaque entrée de nos matrices est composée d'un petit petit bloc dense dont la taille dépend du nombre de variables primaires utilisées par la simulation.
+%
+Nous reviendrons sur la définition de ces variables primaires plus loin dans ce document.
 %
 Ces blocs permettent d'obtenir une meilleure réusabilité des caches lors des opérations élémentaires.
 %

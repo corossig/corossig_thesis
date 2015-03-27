@@ -9,26 +9,11 @@ Nous obtenons donc un préconditionneur totalement parallèle et un bon équilib
 %
 Les autres opérations du GMRES peuvent aussi être faites en parallèle moyennant des opérations de synchronisations coûteuses telles que des réductions à la fin de chaque opération.
 
-%   (-_-)   %
-\begin{figure}
-  \centering
-  \includegraphics[width=\textwidth]{domain}
-  \caption{Décomposition de domaine d'un réservoir à 24 cellules. Il y a deux partitions, chaque partition pouvant être traité en parallèle.}
-  \label{fig:domain}
-\end{figure}
+
+
 
 En utilisant la méthode de Schwarz additive, ce préconditionneur est totalement parallèle et il ignore les interactions inter-domaines.
 %
 Malheureusement, plus il y a d'interactions ignorées, moins le préconditionneur est efficace.
 %
 Formulé différemment, le nombre de domaines aura un impact la convergence du GMRES.
-%
-Cet impact n'est pas facilement prédictible et dépendra du problème étudié.
-%
-Il est donc quasiment impossible de connaître le nombre de domaine optimal pour avoir un bon rapport parallélisme sur nombre d'itérations du GMRES.
-%
-C'est pourquoi nous allons essayer de réduire au minimum le nombre de domaines pour toujours obtenir les meilleurs performances.
-%
-Pour cela, nous allons devoir utiliser une autre forme de parallélisme qui s'appliquera à l'intérieur d'un domaine.
-%
-Nous allons essayer de paralléliser les différentes étapes du GMRES sans affecter la convergence.

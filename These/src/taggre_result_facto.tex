@@ -3,7 +3,7 @@ Dans un premier temps, nous allons nous consacrer à l'amélioration de la paral
 %
 Chaque tâche du DAG représente la factorisation d'une ligne de la matrice.
 %
-Cette granularité est trop fine, mais c'est voulu, elle représente la granularité que nous obtenons en décrivant naturellement le maximum  de parallélisme que nous pouvons exploiter.
+Cette granularité est trop fine, mais c'est voulu, elle représente la granularité que nous obtenons en décrivant naturellement l'algorithme de la factorisation.
 %
 Nous avons choisi de simuler deux réservoirs, un cube généré de taille 80 cellules de côté et le réservoir SPE10.
 %
@@ -55,6 +55,8 @@ Au final, avec l'utilisation des 12 coeurs de calcul de la machine, nous obtenon
 Dans un premier temps, nous allons appliquer l'opérateur F avec le paramètre 36.
 %
 Cet opérateur va donc limiter la largeur du graphe pour qu'il y ait au plus 36 tâches par hauteur du graphe.
+%
+Nous aurons donc 3 fois plus de tâches que de coeurs de calcul, cela permet de diminuer fortement le nombre de tâches tout en gardant assez de parallélisme pour avoir un bon équilibrage de charge.
 %
 Nous réduisons donc le parallélisme mais nous réduisons aussi le nombre de tâches, on divise par 62 le nombre de tâches pour un cube de 80 de côté, nous passons de 512000 tâches à 8223 tâches.
 %
@@ -171,10 +173,10 @@ Ce souci de performance est lié à l'architecture mémoire de la machine, nous 
     Type de  &  \multicolumn{5}{c|}{Accélération}  &  \multicolumn{5}{c|}{Nombre de tâches} \\
     matrice  &  \O & F(36) & D(8) & C & CD(2)  &  \O & F(36) & D(8) & C & CD(2)\\
     \hline
-    Cube 80 Npri 1 & 1,75 & 3,39 & 3.46 & 5.65 & 5.73 & 512000  & 8223  & 64000  & 6400  & 3200 \\
-    Cube 80 Npri 3 & 2,44 & 3,46 & 3.72 & 6.07 & 6.14 & 512000  & 8223  & 64000  & 6400  & 3200 \\
-    Cube 80 Npri 8 & 5,83 & 6,17 & 7.02 & 8.58 & 8.48 & 512000  & 8223  & 64000  & 6400  & 3200 \\
-    SPE10 Npri 3   & 2,32 & 3,52 & 3.30 & 6.65 & 6.73 & 1094435 & 12912 & 136938 & 36336 & 18373 \\
+    Cube 80 Npri 1 & 1,75 & 3,39 & 3.46 & 5.65 & 5.73 & 512000  & 8232  & 64000  & 6400  & 3200 \\
+    Cube 80 Npri 3 & 2,44 & 3,46 & 3.72 & 6.07 & 6.14 & 512000  & 8232  & 64000  & 6400  & 3200 \\
+    Cube 80 Npri 8 & 5,83 & 6,17 & 7.02 & 8.58 & 8.48 & 512000  & 8232  & 64000  & 6400  & 3200 \\
+    SPE10 Npri 3   & 2,32 & 3,52 & 3.30 & 6.65 & 6.73 & 1094421 & 12896 & 136887 & 36281 & 18181 \\
     \hline
   \end{tabular}
   \captionof{table}{Récapitulatif des résultats de la factorisation suivant les opérateurs appliqués.}

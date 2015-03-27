@@ -311,16 +311,17 @@ Sp\'ecialit\'e : \@degreeSpeciality
 
 
 \vspace{\stretch{2}}
-{\Large
+{\large
 \begin{tabular}{lll}
-M. ???? \textsc{????} & ???? & Directeur \\
-M. ???? \textsc{????} & ???? & Co-Directeur \\
-M. ???? \textsc{????} & ???? & Co-Directeur \\
-M. ???? \textsc{????} & ???? & Rapporteur \\
-M. ???? \textsc{????} & ???? & Rapporteur \\
-M. ???? \textsc{????} & ???? & Examinateur \\
-M. ???? \textsc{????} & ???? & Examinateur \\
-M. ???? \textsc{????} & ???? & Examinateur \\
+M. Raymond \textsc{NAMYST} & Professeur des universit\'es, LaBRI Bordeaux & Directeur \\
+M. Olivier \textsc{AUMAGE} & Ma\^itre de conf\'erences, LaBRI Bordeaux & Co-Directeur \\
+M. Samuel \textsc{THIBAULT} & Ma\^itre de conf\'erences, LaBRI Bordeaux & Co-Directeur \\
+M. Pascal \textsc{H\'ENON} & Chercheur, Total Pau & Co-Directeur \\
+M. Jean-Fran\c{c}ois \textsc{M\'EHAUT} & Professeur des universit\'es, LIG Grenoble & Rapporteur \\
+M. Jean-Yves \textsc{L'EXCELLENT} & Professeur des universit\'es, LIP Lyon & Rapporteur \\
+M. Fran\c{c}ois \textsc{BODIN} & Professeur des universit\'es, Irisa Rennes & Examinateur \\
+M. George \textsc{BOSILCA} & Directeur de recherche, ICL Knoxville (USA) & Examinateur \\
+M. Mathieu \textsc{FAVERGE} & Ma\^itre de conf\'erences, LaBRI Bordeaux & Examinateur \\
 \end{tabular}
 }
 
@@ -393,6 +394,7 @@ M. ???? \textsc{????} & ???? & Examinateur \\
 \setlength{\topmargin}{-1.5cm}
 \setlength{\textheight}{25.5cm}
 \setlength{\footskip}{0.9cm}
+%\setlength{\parskip}{0.3cm}
 
 \usepackage{titlesec}
 \makeatletter

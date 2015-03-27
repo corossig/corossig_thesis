@@ -1,29 +1,25 @@
 \subsection{Décomposition en sous-domaines}
-Le parallélisme dans la partie solveur linéaire du code peut être obtenu de deux façons différentes.
+Afin d'obtenir une évaluation de la borne maximale de l'accélération possible d'obtenir sur un hardware donné, nous proposons de comparer l'accélération obtenue par une méthode de jacobi par bloc.
 %
-Jusqu'à maintenant, nous avons étudié le parallélisme avec des paradigmes de parallélisation en mémoire partagée, mais on peut aussi utiliser une parallélisation par passage de messages.
+Dans cette méthode nous considérons le cas où chaque coeur effectue la factorisation ILU d'un sous bloc diagonal de la matrice.
 %
-En pratique, nous allons utiliser les deux types de parallélisme pour exploiter au mieux les grappes de serveurs.
+Cette méthode de préconditionnement induit une factorisation et une résolution triangulaire totalement indépendante sur chaque coeur.
 %
-Mais on pourrait imaginer n'utiliser que le paradigme par passage de messages.
+Elle n'est évidemment pas équivalente numériquement à effectuer une factorisation ILU de toute la matrice.
 %
-Dans ce cas, on change le préconditionneur et donc le résultat.
+Plus on utilise de coeur, plus ce préconditionneur est inefficace numériquement\cite{domain_decomp}.
 %
-On va utiliser la décomposition de domaine pour distribuer le travail entre les différents processus.
+Mais l'intérêt cette évaluation est que l'accélération obtenue donne une borne supérieure de l'accélération de la factorisation ILU sur la matrice complète.
 %
-Chaque processus traitera un domaine qui correspond à un sous-ensemble des cellules du réservoir.
+Cette borne existe puisque individuellement chaque coeur utilise une factorisation dont la bande passante mémoire est approximativement égal à celle de l'algorithme ILU globale.
 %
-Le nouveau préconditionneur sera toujours une factorisation ILU mais seulement sur les sous ensemble de cellules.
-%
-Ici le parallélisme est idéal, chaque processus pourra exécuter une factorisation ILU parallèlement aux autres processus.
-%
-Malgré ce parallélisme, nous n'obtenons pas une accélération parfaite (Fig.~\ref{fig:res_facto_mpi}).
+Malgré un parallélisme idéal, nous n'obtenons pas une accélération parfaite (Fig.~\ref{fig:res_facto_mpi}).
 %
 C'est un problème que l'on rencontre souvent dans les codes d'algèbre linéaire creuse.
 %
-Si l'on compare les accélérations obtenues avec celles obtenues avec l'agrégation de tâches on peut voir des résultats légèrement meilleurs mais il ne faut pas oublier que le résultat numérique est moins bon et ce dernier critère est très dur à évaluer.
+Si l'on compare les accélérations obtenues avec celles obtenues avec l'agrégation de tâches on peut voir des résultats légèrement meilleurs pour la méthode jacobi par bloc.
 %
-En effet, un résultat numérique moins bon peut engendrer plus d'itérations dans le solveur linéaire et donc consommer plus de temps.
+Notre solution d'agrégation n'est pas optimale mais cette différence d'accélération n'est pas seulement due à la granularité du calcul.
 
 
 %   (-_-)   %
@@ -43,15 +39,17 @@ En effet, un résultat numérique moins bon peut engendrer plus d'itérations da
 \end{figure}
 
 
-La bande passante est au mieux de 16~Go/s, avec les threads nous utilisons 12~Go/s de bande passante locale dont 5~Go/s de bande passante distante.
+Il est nécessaire de regarder du côté de la bande passante mémoire pour trouver des explications.
+%
+La bande passante utilisée par la méthode jacobi par bloc est au mieux de 16~Go/s, avec les threads nous utilisons 12~Go/s de bande passante locale dont 5~Go/s de bande passante distante.
 %
 Cette bande passante distante est le résultat des effets NUMA.
 %
-Dans le cas des processus MPI, chaque processus a son propre espace mémoire et la localité des données est assurée.
+Dans le cas des processus MPI utilisée par la méthode jacobi par bloc, chaque processus a son propre espace mémoire et la localité des données est assurée sous réserve d'un placement statique et optimal des processus.
 %
 Mais dans le cas des threads, l'espace mémoire est partagé entre deux bancs mémoires et si les accès mémoires ne sont pas optimisés, il y aura des transferts entre les bancs NUMA.
 %
-Ces transferts auront pour effet d'augmenter la latence des accès mémoires et de réduire le CPI\footnote{Clock Per Instruction}, ici on a un CPI de 0,75 pour la version MPI contre 1,08 pour la version threadée.
+Ces transferts auront pour effet d'augmenter la latence des accès mémoires et de réduire le nombre de cycles d'horloge par instruction (CPI\footnote{Clock Per Instruction}), ici on a un CPI de 0,75 pour la version MPI contre 1,08 pour la version threadée.
 %
 L'explication de la différence de performance entre ces deux versions se situe au niveau de la mémoire, on est limité par la bande passante.
 
