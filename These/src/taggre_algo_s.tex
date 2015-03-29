@@ -7,7 +7,6 @@ En agrégeant ces tâches ensemble, on ne perd pas de parallélisme et on écono
 %
 On peut reconnaître un groupe de deux tâches séquentielles par le fait qu'une des tâches n'a qu'un seul successeur et l'autre tâche n'a qu'un seul prédécesseur (Fig.~\ref{fig:algo_S}, Algo.~\ref{algo:algo_S}).
 
-
 %   (-_-)   %
 \begin{figure}[!h]
   \centering
@@ -15,7 +14,6 @@ On peut reconnaître un groupe de deux tâches séquentielles par le fait qu'une
   \caption{Exemple d'agrégation par l'opérateur séquentiel.}
   \label{fig:algo_S}
 \end{figure}
-
 \begin{algorithm}
   \KwData{DAG}
   {\sc Taches} = liste vide \\
@@ -32,7 +30,6 @@ On peut reconnaître un groupe de deux tâches séquentielles par le fait qu'une
   \caption{Algorithme de l'opérateur séquentiel.}
   \label{algo:algo_S}
 \end{algorithm}
-
 L'opérateur S ne détruit pas de parallélisme et peu potentiellement réduire le nombre de tâches.
 %
 En partant de ce postulat, on pourrait penser appliquer cet opérateur systématiquement après chaque agrégation.

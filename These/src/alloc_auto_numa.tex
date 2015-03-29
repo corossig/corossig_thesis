@@ -24,7 +24,6 @@ Elle diminue quand il y a beaucoup de fautes NUMA et augmente quand les pages so
 %
 Ainsi, une application dont les threads accèdent toujours à la même mémoire aura automatiquement un bon placement mémoire.
 
-
 Ce mécanisme comporte plusieurs défauts.
 %
 Sa configuration est globale au système, on ne peut pas l'activer que pour un processus particulier.
@@ -35,5 +34,4 @@ Le mécanisme s'applique sur toute la mémoire, même les zones mémoires peu ut
 %
 Dans le cas de notre application, cette politique permet d'améliorer la localité mémoire sans changer une ligne de code.
 %
-Mais le surcout lié à l'analyse du placement des pages mémoires peut devenir problématique.
-
+Mais le surcoût lié à l'analyse du placement des pages mémoires peut devenir problématique.

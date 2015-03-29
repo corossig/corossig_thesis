@@ -17,14 +17,11 @@ Malheureusement, cette méthode ne fonctionne qu'avec une seule numérotation et
 %
 Nous avons donc cherché une méthode pouvant s'appliquer à n'importe quel DAG.
 
-
-
 En partant de la représentation la plus fine sous forme de DAG du parallélisme, nous avons besoin de calculer un nouveau DAG plus grossier avec moins de tâches.
 %
 La principale difficulté est de garder la propriété {\em acyclique} du graphe, car la présence d'un cycle introduirait un inter-blocage dans l'ordonnancement du graphe (Fig.~\ref{fig:agg_invalid}).
 %
 L'autre difficulté est de maintenir assez de parallélisme pour pouvoir être capable d'utiliser au mieux les capacités de la machine.
-
 \begin{figure}[!h]
      \begin{center}
         \subfigure[Agrégation invalide]{
@@ -37,10 +34,9 @@ L'autre difficulté est de maintenir assez de parallélisme pour pouvoir être c
           \includegraphics[width=0.4\textwidth]{agg_valid}
         }
     \end{center}
-    \caption{Exemple de deux agrégations, le résultat de \ref{fig:agg_invalid} ne peut pas être ordonnancé à cause du cycle. Le résultat de \ref{fig:agg_valid} peut être ordonnancé mais il n'y a aucun parallélisme à exploiter.}
+    \caption{Exemple de deux agrégations, le résultat de \ref{fig:agg_invalid} ne peut pas être ordonnancé à cause du cycle. Le résultat de \ref{fig:agg_valid} peut être ordonnancé, mais il n'y a aucun parallélisme à exploiter.}
     \label{fig:agg_basic}
 \end{figure}
-
 En premier lieu, nous avons développé une nouvelle interface de programmation en C++, cette interface reprend de Intel TBB le concept d'un objet {\em Tâche} contenant la fonction à exécuter.
 %
 \`A cela, nous avons ajouté la description des dépendances dans cet objet.
@@ -54,7 +50,6 @@ Nous avons appelé cette interface Taggre.
 Grâce à l'utilisation d'heuristiques décrites plus loin dans la thèse, un programme parallèle peut continuer de décrire son parallélisme de façon naturelle, sans se soucier de la granularité.
 %
 Taggre s'occupera ensuite de faire le travail nécessaire pour rendre ce graphe assez grossier pour qu'un ordonnanceur puisse l'ordonnancer efficacement (Fig.~\ref{fig:coarsening}).
-
 %   (-_-)   %
 \begin{figure}
   \centering
@@ -63,9 +58,7 @@ Taggre s'occupera ensuite de faire le travail nécessaire pour rendre ce graphe 
   \label{fig:coarsening}
 \end{figure}
 
-
 \lstinputlisting[inputencoding=utf8/latin1,frame=single,float=t]{src/taggre.cpp}
-
 Dans un premier temps, le programmeur crée les noeuds du graphe, ces noeuds correspondent aux tâches fines du problème.
 %
 Pour chaque noeud créer, le programmeur reçoit un identifiant de noeud.
@@ -74,13 +67,13 @@ Puis le programmeur déclare les arêtes du graphe en utilisant les identifiants
 %
 Maintenant que le graphe de tâches fines est connu, Taggre peut travailler à grossir le grain.
 %
-La méthode {\em coarse} effectueras le travail avec les paramètres que nous expliqueront plus loin dans le manuscrit.
+La méthode {\em coarse} effectuera le travail avec les paramètres que nous expliquerons plus loin dans le manuscrit.
 %
 Nous avons donc un nouveau graphe composé de tâches grossières, mais ces tâches n'ont toujours pas de code à exécuter.
 %
 Pour définir le code à exécuter, le programmeur doit appeler la méthode {\em setup} avec comme paramètre une fonction qui créera les tâches grossières.
 %
-Cette fonction connaîtra les tâches fines associées à la tâche grossière et pourras ainsi optimiser le code en fonction du nombre et des types de tâches agrégées.
+Cette fonction connaîtra les tâches fines associées à la tâche grossière et pourra ainsi optimiser le code en fonction du nombre et des types de tâches agrégées.
 %
 Finalement, le programmeur exécutera toutes les tâches du graphe avec la méthode {\em run}.
 %

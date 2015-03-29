@@ -9,7 +9,6 @@ La version de Linux disponible sur ces machines n'est pas assez récente, la fon
 %
 La version de Linux utilisée est la 3.18.
 
-
 Cette méthode ne fonctionne que lorsque le programme est exécuté suffisamment longtemps pour avoir le temps d'analyser toute la mémoire utilisée.
 %
 Nous allons chercher l'accélération maximale que nous pouvons atteindre avec cette solution.
@@ -18,7 +17,6 @@ Il ne nous est donc pas utile de faire varier le nombre de coeurs de calcul, nou
 %
 Nous allons donc faire varier le nombre de SpMV pour faire varier le temps d'exécution du programme et laisser au noyau assez de temps pour déplacer les pages.
 
-
 %   (-_-)   %
 \begin{figure}
   \centering
@@ -26,7 +24,6 @@ Nous allons donc faire varier le nombre de SpMV pour faire varier le temps d'ex�
   \caption{Temps d'un produit matrice vecteur creux sur Linux 3.18 en mémoire partagée avec 12 coeurs. Nous utilisons une matrice représentant un cube 100 avec 8 variables primaires.}
   \label{fig:res_spmv_frep}
 \end{figure}
-
 
 Avec un nombre de répétitions faibles, AutoNUMA donne les mêmes performances que l'allocation first touch (Fig.~\ref{fig:res_spmv_frep}).
 %
@@ -38,4 +35,4 @@ Il est nécessaire de rappeler que l'allocation interleave donnait de bonnes per
 %
 Mais sur Manumanu, en utilisant plus de 2 bancs NUMA, les performances ne sont pas bonnes.
 %
-Il serait intéressant de tester la méthode AutoNUMA sur Manumanu mais nous ne pouvons malheureusement pas changer le noyau utilisé.
+Il serait intéressant de tester la méthode AutoNUMA sur Manumanu, mais nous ne pouvons malheureusement pas changer le noyau utilisé.

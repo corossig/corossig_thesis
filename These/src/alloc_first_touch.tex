@@ -27,7 +27,7 @@ De plus, si le thread de calcul change souvent de coeur de calcul, l'utilisation
 %
 Il est donc important de toujours fixer l'affinité processeur d'un thread à un coeur de calcul.
 %
-Dans notre programme, l'initialisation des données est séquentielle, donc avec une politique d'allocation first touch, toutes les données se retrouvent sur un seul banc NUMA.
+Dans notre programme, l'initialisation des données est séquentielle. Donc avec une politique d'allocation first touch, toutes les données se retrouvent sur un seul banc NUMA.
 %
 Nous avons donc plusieurs choix pour distribuer les données :
 \begin{itemize}

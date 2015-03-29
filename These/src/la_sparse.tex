@@ -3,9 +3,9 @@
 %
 C'est en partie dû à la façon de stocker la matrice creuse.
 %
-En effet, pour avoir un stockage efficace, seul les coefficients non nuls de la matrice creuse sont stockés.
+En effet, pour avoir un stockage efficace, seuls les coefficients non nuls de la matrice creuse sont stockés.
 %
-Le motif des valeurs non nulles de la matrice est définit par le problème que nous souhaitons résoudre.
+Le motif des valeurs non nulles de la matrice est défini par le problème que nous souhaitons résoudre.
 %
 Le format le plus générique pour stocker des matrices creuses s'appelle COO\footnote{COOrdinate list} (Fig.~\ref{fig:COO}).
 %
@@ -17,8 +17,7 @@ Les éléments non nuls sont triés par ligne puis le tableau {\em PTR} du forma
 %
 Ce tableau peut être vu comme une compression du tableau indiçant les lignes de la matrice.
 %
-D'autres formats moins génériques existent mais nous n'en parlerons pas ici.
-
+D'autres formats moins génériques existent, mais nous n'en parlerons pas ici.
 \begin{figure}[!h]
      \begin{center}
         \subfigure[Exemple de matrice creuse]{%
@@ -33,10 +32,9 @@ D'autres formats moins génériques existent mais nous n'en parlerons pas ici.
             \includegraphics[width=0.35\textwidth]{CSR}
         }%
     \end{center}
-    \caption{Comparaison entre les formats de stockage de matrices creuses COO and CSR.}
+    \caption{Comparaison entre les formats de stockage de matrices creuses COO et CSR.}
     \label{fig:matrix_storage}
 \end{figure}
-
 Le choix du format de stockage va avoir beaucoup d'effet sur les performances d'une application.
 %
 Avec la plupart des formats, nous aurons au moins deux accès mémoire pour obtenir les coordonnées 2D d'un coefficient non nul alors qu'avec l'algèbre linéaire dense nous pouvons calculer ces coordonnées à partir de la position dans la matrice.
@@ -50,7 +48,6 @@ La plupart des optimisations faites en algèbre linéaire dense ne peuvent pas �
 Mais l'algèbre linéaire creuse nous permet de résoudre des problèmes bien plus grands que ceux qui utilisent l'algèbre linéaire dense.
 %
 Ceci est dû au fait qu'avec une taille de matrice équivalente, l'algèbre linéaire creuse utilise vraiment moins de mémoire que l'algèbre linéaire dense.
-
 
 Pour la simulation de réservoir, chaque entrée de nos matrices est composée d'un petit petit bloc dense dont la taille dépend du nombre de variables primaires utilisées par la simulation.
 %
@@ -72,8 +69,6 @@ Nous avons effectué une comparaison des différents formats de stockage des mat
 %
 Le format BCSR est un bon compromis entre flexibilité et performance.
 
-
-
 Résoudre des problèmes linéaires creux est aussi très différent de résoudre des problèmes denses.
 %
 Nous ne pouvons pas utiliser une inversion directe de matrice, ou la technique de l'élimination de Gauss parce que nous obtiendrions une matrice quasi-dense.
@@ -84,4 +79,4 @@ Donc des méthodes différentes ont été inventées pour être capable de réso
 %
 Nous démarrons donc avec une solution, ensuite ces méthodes réduisent itérativement la différence entre notre solution approximée et la solution réelle.
 %
-\`{A} la fin, nous obtenons une bonne approximation de la solution, ce qui est souvent suffisant pour être considérée comme la solution au problème.
+\`{A} la fin, nous obtenons une bonne approximation de la solution, ce qui est souvent suffisant pour être considéré comme la solution au problème.

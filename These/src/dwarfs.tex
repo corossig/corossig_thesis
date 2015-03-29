@@ -9,20 +9,18 @@ Malheureusement, tous les problèmes ne se prêtent pas à cet exercice.
 %
 Nous avons donc choisi quelques graphes qui peuvent représenter un problème spécifique.
 
-
 \subsubsection{Méthodes spectrales}
 Dans le cas des méthodes spectrales, le graphe représentant le parallélisme est plus large que haut.
 %
-Le motif du graphe est en papillon, nous avons donc beaucoup de connexion entre chaque hauteur du graphe, l'opérateur F pourras s'occuper de regrouper les tâches d'un même niveau ensemble.
+Le motif du graphe est en papillon, nous avons donc beaucoup de connexion entre chaque hauteur du graphe, l'opérateur F pourra s'occuper de regrouper les tâches d'un même niveau ensemble.
 %
-Celui-ci nous permettra de diminuer le nombre de tâche en diminuant le parallélisme (Fig.\ref{fig:dwarf_spec}).
+Celui-ci nous permettra de diminuer le nombre de tâches en diminuant le parallélisme (Fig.\ref{fig:dwarf_spec}).
 %
 Pour évaluer le gain lié à l'agrégation, nous allons utiliser le simulateur de Taggre avec les paramètres 0,9 pour les effets caches et 5 pour le coût d'ordonnancement.
 %
 La hauteur du graphe sera le logarithme en base 2 du nombre de tâches par niveau.
 %
 La table~\ref{tab:spectral}
-
 
 %   (-_-)   %
 \begin{figure}
@@ -31,7 +29,6 @@ La table~\ref{tab:spectral}
   \caption{Exemple d'agrégation sur un graphe de méthode spectrale.}
   \label{fig:dwarf_spec}
 \end{figure}
-
 %   (-_-)   %
 \begin{center}
   \begin{tabular}{|l|c|c|c|c|c|c|c|c|}
@@ -46,7 +43,6 @@ La table~\ref{tab:spectral}
   \captionof{table}{Résultats du simulateur d'exécution de tâches sur un graphe typique des méthodes spectrales.}
   \label{tab:spectral}
 \end{center}
-
 %% RES 15 niveau
 %% 0    262146
 %% F 12 51714.9
@@ -56,7 +52,6 @@ La table~\ref{tab:spectral}
 %% D 16 55788.5
 %% D 32 40980
 %% D 64 46409.6
-
 %% RES 10 niveau
 %% 0    1690
 %% F 12 937

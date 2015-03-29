@@ -8,7 +8,6 @@ La factorisation LU correspond à la factorisation d'une matrice $A$ en deux mat
 Grâce à cette factorisation, résoudre l'équation $Ax=b$ est équivalent à résoudre successivement les équations $Ly=b$ et $Ux=y$.
 %
 Ces deux équations peuvent être résolues facilement parce que les matrices $L$ et $U$ sont triangulaires (Algo.~\ref{algo:trsv}).
-
 %   (-_-)   %
 \begin{figure}[!h]
   \centering
@@ -16,7 +15,6 @@ Ces deux équations peuvent être résolues facilement parce que les matrices $L
   \caption{Exemple d'égalité entre une matrice $A$ et le produit de deux matrices triangulaire $L$ et $U$.}
   \label{fig:lu_3}
 \end{figure}
-
 \begin{algorithm}
   \caption{Résolutions triangulaires}
   \label{algo:trsv}
@@ -41,17 +39,15 @@ Ces deux équations peuvent être résolues facilement parce que les matrices $L
     $x_i := (y_i-sum)/U_{ii}$ \\
   }
 \end{algorithm}
-
 L'algorithme~\ref{algo:lu} représente la construction des matrices triangulaires $L$ et $U$ à partir de $A$.
 %
-Par contre, cet méthode présente un problème de remplissage c'est à dire que des éléments nuls deviennent non-nuls.
+Par contre, cette méthode présente un problème de remplissage c'est-à-dire que des éléments nuls deviennent non-nuls.
 %
 Les matrices $L$ et $U$ contiennent beaucoup plus d'éléments non-nuls que la matrice $A$.
 %
 Cette augmentation du nombre d'éléments peut conduire à ne plus pouvoir stocker les matrices $L$ et $U$ à cause du manque d'espace mémoire.
 %
 Il existe des techniques de renumérotations permettant de limiter le remplissage des matrices\cite{faverge_thesis}.
-
 
 \begin{algorithm}
   \caption{Factorisation LU sur place.}
@@ -67,7 +63,6 @@ Il existe des techniques de renumérotations permettant de limiter le remplissag
     }
   }
 \end{algorithm}
-
 
 %   (-_-)   %
 \begin{figure}[!h]
@@ -86,10 +81,9 @@ Il existe des techniques de renumérotations permettant de limiter le remplissag
     \label{fig:lu_example}
 \end{figure}
 
-
 Les méthodes directes ont l'avantage de fournir une solution exacte au problème $Ax=b$.
 %
-Par contre, ces méthodes sont coûteuse aussi bien en mémoire qu'en calcul.
+Par contre, ces méthodes sont coûteuses aussi bien en mémoire qu'en calcul.
 %
 Pour un cas 3D à $n$ inconnues, nous aurons un stockage en O($n^{3/2}$) et une complexité en nombre d'opérations en O($n^2$).
 %

@@ -3,29 +3,25 @@ L'opérateur dézoomé est une spécification de l'algorithme G, il permet d'eff
 %
 En effet, la fonction de tri de cet opérateur va travailler à diminuer à la fois la largeur et la hauteur du graphe.
 %
-Abrégé {\em D} dans Taggre, cet opérateur essaye de créer des agrégats de tâches proche spatialement, un peu à la manière d'un partitionneur de graphe.
+Abrégé {\em D} dans Taggre, cet opérateur essaye de créer des agrégats de tâches proches spatialement, un peu à la manière d'un partitionneur de graphe.
 %
 Le nom {\em dézoomé} provient du fait que la structure globale du graphe ne change pas beaucoup pendant l'agrégation même si le nombre de tâches a lui considérablement diminué.
 %
-Dans les meilleurs cas le nombre de tâches peut être divisé par le paramètre donné par le programmeur (Fig.~\ref{fig:algo_D4}).
+Dans les meilleurs cas, le nombre de tâches peut être divisé par le paramètre donné par le programmeur (Fig.~\ref{fig:algo_D4}).
 
-
-L'algorithme~\ref{algo:algo_D}, directement repris de l'opérateur G, permet d'implémenter l'opérateur dézoomé tout en assurant l'absence de création de cycle.
+L'algorithme~\ref{algo:algo_D}, directement repris de l'opérateur G, permet d'implémenter l'opérateur dézoomé tout en assurant l'absence de création de cycles.
 %
 L'algorithme va simuler l'exécution des tâches et n'agrégera des tâches ensemble que si le simulateur peut l'ordonnancer.
 %
 Les tâches ainsi agrégées sont ensuite simulées pour fournir de nouvelles tâches à agréger.
 
-
-
 %   (-_-)   %
 \begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{algo_D4}
-  \caption{Exemple d'utilisation de l'opérateur D avec le paramètre 4. Le nombre total de tâche a bien été divisé par 4.}
+  \caption{Exemple d'utilisation de l'opérateur D avec le paramètre 4. Le nombre total de tâches a bien été divisé par 4.}
   \label{fig:algo_D4}
 \end{figure}
-
 \begin{algorithm}
   \KwData{DAG, $M$ : le nombre de tâches dans un agrégat}
   {\sc Prêt} = liste vide \\

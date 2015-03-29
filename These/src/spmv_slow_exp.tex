@@ -1,5 +1,5 @@
 \subsection{Limitations mémoires}
-Pour comprendre les résultats précédents nous devons étudier brièvement l'architecture des ordinateurs.
+Pour comprendre les résultats précédents, nous devons étudier brièvement l'architecture des ordinateurs.
 %
 Les performances d'un ordinateur dépendent essentiellement de deux choses : le processeur et la mémoire.
 %
@@ -8,21 +8,20 @@ Quand un programme souhaite lire une donnée en mémoire, il subit une pénalit�
 Cette pénalité est la somme de deux contraintes :
 \begin{itemize}
         \item la latence : la différence de temps entre la demande d'accès à la mémoire et la réception du premier octet;
-        \item la bande passante : le nombre maximum d'octet par seconde que le bus peut envoyer/recevoir
+        \item la bande passante : le nombre maximum d'octets par seconde que le bus peut envoyer/recevoir
 \end{itemize}
 %
 De nos jours, les ordinateurs ont différents types de mémoires.
 %
-Il y a la mémoire cache, très proche des unités de calcul, elle a une faible latence (quelques cycles) mais sa taille est limité à quelques Mo.
+Il y a la mémoire cache, très proche des unités de calcul, elle a une faible latence (quelques cycles), mais sa taille est limitée à quelques Mo.
 %
-Ensuite, il y a la mémoire RAM avec une latence de quelques centaines de cycles mais avec une taille de plusieurs Go.
+Ensuite, il y a la mémoire RAM avec une latence de quelques centaines de cycles, mais avec une taille de plusieurs Go.
 %
 Si nous regardons la structure mémoire de deux bancs NUMA de la figure~\ref{fig:numa_architecture}, on s'aperçoit que la distance physique des coeurs de calcul et de la mémoire est liée à la latence des accès mémoires.
 %
 Pour limiter le plus possible les pénalités mémoires, il est nécessaire que tous les coeurs de calcul utilisent la mémoire qui est la plus proche.
 %
-Par exemple, sur une machine à deux bancs NUMA, les accès à la mémoire du banc NUMA 1 depuis les coeurs du banc NUMA 0 coûterons plus chère que les accès à la mémoire du banc NUMA 0.
-
+Par exemple, sur une machine à deux bancs NUMA, les accès à la mémoire du banc NUMA 1 depuis les coeurs du banc NUMA 0 coûteront plus cher que les accès à la mémoire du banc NUMA 0.
 %   (-_-)   %
 \begin{figure}
   \centering
@@ -30,7 +29,6 @@ Par exemple, sur une machine à deux bancs NUMA, les accès à la mémoire du ba
   \caption{Exemple d'une architecture NUMA à deux processeurs.}
   \label{fig:numa_architecture}
 \end{figure}
-
 Un autre problème se situe au niveau de la bande passante.
 %
 La bande passante totale de la machine est distribuée entre chaque banc NUMA.
@@ -39,4 +37,4 @@ Pour exploiter efficacement la totalité de la bande passante, il faut répartir
 %
 Des interfaces de programmation existent pour connaître et améliorer la localité des données.
 %
-Il ne suffit pas de faire une répartition équitable, il faut aussi au moment de l'accès au données que tous les coeurs de calcul accède à des données différentes qui doivent se situer dans la mémoire qui leur est la plus proche.
+Il ne suffit pas de faire une répartition équitable, il faut aussi au moment de l'accès aux données que tous les coeurs de calcul accèdent à des données différentes qui doivent se situer dans la mémoire qui leur est la plus proche.

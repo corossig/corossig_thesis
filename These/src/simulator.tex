@@ -1,7 +1,7 @@
 \subsection{\'Evaluation du simulateur de tâches}
 Le simulateur que nous utilisons va simuler l'exécution des tâches en prenant comme temps d'exécution le poids des tâches.
 %
-Chaque coeur est simulé avec une structure contenant la tâche en cours d'exécution et l'heure a laquelle la tâche sera fini d'être exécutée.
+Chaque coeur est simulé avec une structure contenant la tâche en cours d'exécution et l'heure a laquelle la tâche sera finie d'être exécutée.
 %
 Nous utilisons un algorithme glouton d'ordonnancement, le coeur ayant l'heure de terminaison la plus petite libère les dépendances de sa tâche en cours et prend la première tâche disponible dans la file des tâches disponibles.
 %
@@ -9,13 +9,11 @@ Si la file est vide, on passe à l'heure de terminaison suivante.
 %
 Le poids d'une tâche grossière dépend des tâches fines qui la compose.
 %
-Si l'exécution de deux tâches fines est soumis a une amélioration des effets caches, alors le poids de la deuxième tâche sera multiplié par un coefficient symbolisant les améliorations des effets caches.
+Si l'exécution de deux tâches fines est soumise à une amélioration des effets caches, alors le poids de la deuxième tâche sera multiplié par un coefficient symbolisant les améliorations des effets caches.
 %
 L'heure suivante de terminaison de la tâche sera calculée de la façon suivante : $H = H + T_{ordonnancement} + P_{tache\_grossiere}$
 
-
-
-Dans un but de valider les prochains résultats, il est important de tester la validité des résultats fourni par notre simulateur de tâches sur des problèmes dont on connaît les paramètres ainsi que le temps d'exécution obtenues avec diverses agrégation.
+Dans un but de valider les prochains résultats, il est important de tester la validité des résultats fournis par notre simulateur de tâches sur des problèmes dont on connaît les paramètres ainsi que le temps d'exécution obtenu avec diverses agrégations.
 %
 Dans le cas d'une factorisation d'un cube avec 3 variables primaires, les paramètres valent 1,5 pour le surcoût d'ordonnancement d'une tâche et 0,7 pour le gain lié aux effets caches.
 %

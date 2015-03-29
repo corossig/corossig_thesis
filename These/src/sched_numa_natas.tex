@@ -1,5 +1,5 @@
 \subsection{NATaS : ordonnancer des tâches sur une machine NUMA}
-Aucune des solutions proposés dans la section précédente ne correspondait à notre besoin, nous avons créé notre propre ordonnanceur de tâches.
+Aucune des solutions proposées dans la section précédente ne correspondait à notre besoin, nous avons créé notre propre ordonnanceur de tâches.
 %
 Nous l'avons appelé NATaS, il s'agit de l'acronyme {\em Numa Aware Task Scheduler}.
 %
@@ -9,26 +9,23 @@ Pour ordonnancer les tâches avec la meilleure affinité mémoire possible, nous
 %
 Ce container permet à plusieurs threads d'insérer/retirer des tâches en limitant la contention.
 %
-Le vol de tâche entre conteneur a aussi été implémenté, il existe une option par tâche pour autoriser ou non le vol de tâche.
+Le vol de tâche entre conteneurs a aussi été implémenté, il existe une option par tâche pour autoriser ou non le vol de tâche.
 %
 Dans le cas du parallélisme de boucle, une option permettant de donner une tâche spécifiquement à un thread a été implémentée.
 
-
-Contrairement à la plupart des autres ordonnanceurs de tâches, nous n'utilisons pas un conteneur de tâches par thread mais un conteneur par banc NUMA.
+Contrairement à la plupart des autres ordonnanceurs de tâches, nous n'utilisons pas un conteneur de tâches par thread, mais un conteneur par banc NUMA.
 %
 Nous avons donc plus de contention sur cette structure et une queue basique ne serait pas assez efficace.
 %
 \`A la place, nous utilisons un conteneur sans verrou, entièrement construit autour de l'instruction compare-and-swap.
 %
-Nous limitons donc les processeurs capable de faire fonctionner NATaS à ceux ayant l'instruction compare-and-swap.
+Nous limitons donc les processeurs capables de faire fonctionner NATaS à ceux ayant l'instruction compare-and-swap.
 %
 Cette structure ne nous permet pas d'obtenir les mêmes performances que l'utilisation d'une queue par thread, mais elle a l'avantage de mieux fonctionner pour l'équilibrage de charge à l'intérieur d'un banc NUMA.
 
-
-
-NATaS fourni aussi une api permettant de gérer les allocations mémoires et leurs placements.
+NATaS fournit aussi une api permettant de gérer les allocations mémoires et leurs placements.
 %
-Il permet de faire différents types d'allocations tel que :
+Il permet de faire différents types d'allocations tels que :
 \begin{itemize}
   \item distribuer régulièrement la mémoire;
   \item entrelacer les pages mémoires;
@@ -45,7 +42,6 @@ Pour cela, il lui suffira de simuler l'exécution du code, de désactiver le vol
 %
 Nous obtiendrons ainsi une mémoire équitablement distribuée et des accès mémoire optimisés.
 
-
 NATaS s'interface avec Taggre pour améliorer les performances sur des machines NUMA.
 %
 La connaissance complète du graphe de tâche permet des améliorations notables sur la distribution mémoire.
@@ -58,9 +54,7 @@ Dans un premier temps, on va équilibrer la distribution des tâches sur les ban
 %
 Cette affinité sera choisie en fonction de la hauteur de la tâche dans le graphe et des affinités NUMA de ses prédécesseurs.
 %
-Le but étant d'avoir à hauteur fixée, un nombre égale de tâche par banc NUMA tout en minimisant les accès en lecture distant.
-
-
+Le but étant d'avoir à hauteur fixée, un nombre égale de tâche par banc NUMA tout en minimisant les accès en lecture distante.
 
 %   (-_-)   %
 \begin{figure}[!h]

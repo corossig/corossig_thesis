@@ -5,18 +5,15 @@ L'opération la plus coûteuse est le produit d'une matrice par un vecteur (SpMV
 %
 Notre implémentation du SpMV est optimisée pour prendre en compte la structure bloc des entrées de la matrice quand le nombre de variables primaires est supérieur à 1.
 %
-Nos matrices sont stockées au format BCSR, les éléments contenus dans les petits bloc denses sont contiguës en mémoire.
+Nos matrices sont stockées au format BCSR, les éléments contenus dans les petits blocs denses sont contigus en mémoire.
 %
 Cela nous permet d'optimiser les effets caches et nous pouvons aussi utiliser le jeu d'instructions vectorielles de nos processeurs.
 
-
-
 Malgré les optimisations des effets caches, le SpMV est toujours limité par la bande passante mémoire.
 %
-Les courbes d'accélération du SpMV nous montrent que le gain de performance n'est pas linéaire avec le nombre de coeurs (Fig.~\ref{fig:res_spmv_omp_rostand})..
+Les courbes d'accélération du SpMV nous montrent que le gain de performance n'est pas linéaire avec le nombre de coeurs (Fig.~\ref{fig:res_spmv_omp_rostand}).
 %
 Le constat est même pire que ça, on arrive difficilement à une accélération de 2 sur 12 coeurs lorsqu'on utilise une seule variable primaire.
-
 %   (-_-)   %
 \begin{figure}[!h]
   \centering
@@ -25,70 +22,59 @@ Le constat est même pire que ça, on arrive difficilement à une accélération
   \label{fig:res_spmv_omp_rostand}
 \end{figure}
 
-
-Pour comprendre ce qui se passe, nous allons utiliser les compteurs matérielles de la machine.
+Pour comprendre ce qui se passe, nous allons utiliser les compteurs matériels de la machine.
 %
 Ces compteurs sont intégrés au processeur et on y accède via des registres spéciaux seulement disponibles en {\em Ring 0}.
 %
-De nombreux logiciels proposent une interface d'accès à ces compteurs mais certains nécessitent le chargement d'un module noyau.
+De nombreux logiciels proposent une interface d'accès à ces compteurs, mais certains nécessitent le chargement d'un module noyau.
 
-
-Linux propose un outils d'analyse de performance natif nommé {\em perf}.
+Linux propose un outil d'analyse de performance natif nommé {\em perf}.
 %
-Cet outils se présente sous la forme d'un exécutable qui se lance juste avant notre programme.
+Cet outil se présente sous la forme d'un exécutable qui se lance juste avant notre programme.
 %
-Nous devons choisir nous même les compteurs qui nous intéresse.
+Nous devons choisir nous même les compteurs qui nous intéressent.
 %
-Malheureusement la version du noyau Linux installé sur nos machines ne nous permet d'accéder à tous les compteurs.
+Malheureusement, la version du noyau Linux installé sur nos machines ne nous permet pas d'accéder à tous les compteurs.
 
-
-
-PAPI\footnote{Performance Application Programming Interface} est une interface de programmation qui fournit une abstraction pour l'accès aux compteurs matérielles.
+PAPI\footnote{Performance Application Programming Interface} est une interface de programmation qui fournit une abstraction pour l'accès aux compteurs matériels.
 %
 Cette bibliothèque utilise l'interface perfmon sous Linux, elle utilise donc le même module noyau que perf.
 %
-En plus de facilité l'accès aux compteurs, elle propose comme fonctionnalité de simuler des accumulateurs de compteurs.
+En plus de faciliter l'accès aux compteurs, elle propose comme fonctionnalité de simuler des accumulateurs de compteurs.
 %
 Mais la documentation de cette bibliothèque n'est pas assez claire pour nous.
 
-
-
-Intel propose aussi un outils d'analyse de performances, il s'agit de Intel VTune.
+Intel propose aussi un outil d'analyse de performances, il s'agit de Intel VTune.
 %
-Cet outils est hautement configurable avec des profils prédéfini.
+Cet outil est hautement configurable avec des profils prédéfinis.
 %
 L'exécution du code échantillonnée avec les valeurs des compteurs matériels associés à chaque échantillon.
 %
-Cet outils est très complet mais requiert l'achat d'une licence d'utilisation ainsi que l'ajout d'un module noyau.
+Cet outil est très complet, mais requiert l'achat d'une licence d'utilisation ainsi que l'ajout d'un module noyau.
 %
-Nous n'avons donc pas pu utiliser cet outils.
+Nous n'avons donc pas pu utiliser cet outil.
 
-
-
-Nous avons préféré utiliser Likwid, un outils d'analyse de performance léger.
+Nous avons préféré utiliser Likwid, un outil d'analyse de performance léger.
 %
 Le principal avantage de Likwid est qu'il contient des profils déjà configurés.
 %
-Par exemple, le profil {\em MEM} nous donneras directement les mesures de bande passante mémoire local et distante.
+Par exemple, le profil {\em MEM} nous donnera directement les mesures de bande passante mémoire locale et distante.
 %
 Il y a aussi la possibilité d'interagir avec Likwid depuis le code d'une application pour ne mesurer qu'une portion du code.
 %
 Nous utiliserons cette fonctionnalité pour ne mesurer que la routine qui nous intéresse.
 
-
 Pour mesurer les effets NUMA sur le SpMV, nous effectuons 100 SpMV et mesurer le nombre d'accès mémoire.
 %
-Si l'on regarde les compteurs matériels (Table~\ref{tab:numa_spmv}), on s'aperçoit que la moitié de la bande passante en lecture de chaque banc NUMA est utilisée par des accès distant.
+Si l'on regarde les compteurs matériels (Table~\ref{tab:numa_spmv}), on s'aperçoit que la moitié de la bande passante en lecture de chaque banc NUMA est utilisée par des accès distants.
 %
-Donc environ la moitié des lectures mémoires sont faits avec une plus grande latence.
+Donc environ la moitié des lectures mémoires sont faites avec une plus grande latence.
 %
 Nous pouvons aussi remarquer un déséquilibre de charge.
 %
-Le thread responsable de l'initialisation du code s'est exécuter sur le banc NUMA 1.
+Le thread responsable de l'initialisation du code s'est exécuté sur le banc NUMA 1.
 %
 Les pages mémoires servant à stocker la matrice étaient donc quasiment toutes sur ce banc NUMA.
-
-
 
 %   (-_-)   %
 \begin{center}

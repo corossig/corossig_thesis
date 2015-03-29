@@ -19,15 +19,14 @@ Pour le réservoir SPE10, c'est un cas {\em black-oil} à 3 variables primaires.
 %
 Au final nous avons donc 4 matrices différentes.
 %
-Nous ne faisons pas varier la taille du cube car les résultats obtenus avec des cubes générés de tailles raisonnablement différentes sont équivalents.
-
+Nous ne faisons pas varier la taille du cube, car les résultats obtenus avec des cubes générés de tailles raisonnablement différentes sont équivalents.
 
 \subsubsection{Sans agrégation}
 Nous avons utilisé OpenMP pour tester la parallélisation à grain fin sans agrégation.
 %
 OpenMP n'ayant pas de gestion de dépendances entre les tâches, nous utiliserons un système de décrémentation atomique.
 %
-Comme le montre les résultats de la figure~\ref{fig:res_facto_no_agg}, le nombre de variables primaires a une importance considérable sur les performances que nous obtenons.
+Comme le montrent les résultats de la figure~\ref{fig:res_facto_no_agg}, le nombre de variables primaires a une importance considérable sur les performances que nous obtenons.
 %
 L'utilisation de 2 threads n'est viable que dans le cas où nous utilisons 8 variables primaires.
 %
@@ -37,8 +36,7 @@ Ici, le nombre de variables primaires va définir le nombre d'opérations faites
 %
 Ces résultats confirment notre problème de granularité.
 %
-Au final, avec l'utilisation des 12 coeurs de calcul de la machine, nous obtenons des accélérations plutôt décevant, par exemple, pour les cas à 3 variables primaires, le code tourne environ 2,5 fois plus vite que la version séquentielle mais il utilise 12 fois plus de puissance de calcul.
-
+Au final, avec l'utilisation des 12 coeurs de calcul de la machine, nous obtenons des accélérations plutôt décevantes, par exemple, pour les cas à 3 variables primaires, le code tourne environ 2,5 fois plus vite que la version séquentielle, mais il utilise 12 fois plus de puissance de calcul.
 
 %   (-_-)   %
 \begin{figure}[!h]
@@ -49,8 +47,6 @@ Au final, avec l'utilisation des 12 coeurs de calcul de la machine, nous obtenon
 \end{figure}
 
 
-
-
 \subsubsection{Avec l'opérateur F}
 Dans un premier temps, nous allons appliquer l'opérateur F avec le paramètre 36.
 %
@@ -58,7 +54,7 @@ Cet opérateur va donc limiter la largeur du graphe pour qu'il y ait au plus 36 
 %
 Nous aurons donc 3 fois plus de tâches que de coeurs de calcul, cela permet de diminuer fortement le nombre de tâches tout en gardant assez de parallélisme pour avoir un bon équilibrage de charge.
 %
-Nous réduisons donc le parallélisme mais nous réduisons aussi le nombre de tâches, on divise par 62 le nombre de tâches pour un cube de 80 de côté, nous passons de 512000 tâches à 8232 tâches.
+Nous réduisons donc le parallélisme, mais nous réduisons aussi le nombre de tâches, on divise par 62 le nombre de tâches pour un cube de 80 de côté, nous passons de 512000 tâches à 8232 tâches.
 %
 Pour le cas SPE10, le nombre de tâches passe de 1094421 à 12896 soit 84 fois moins de tâches.
 %
@@ -72,8 +68,7 @@ Avec 1 variable primaire, le temps de factorisation est divisé par 2.
 %
 Dans le cas où le nombre de variables primaires est élevé, il n'y a pas beaucoup d'amélioration (6~\%).
 %
-Ici, cet opérateur ne permet pas d'optimiser les accès mémoire cache, seul le surcoût d'ordonnancement est réduit.
-
+Ici, cet opérateur ne permet pas d'optimiser les accès mémoires caches, seul le surcoût d'ordonnancement est réduit.
 
 %   (-_-)   %
 \begin{figure}[!h]
@@ -82,9 +77,6 @@ Ici, cet opérateur ne permet pas d'optimiser les accès mémoire cache, seul le
   \caption{Performance de la factorisation sur 12 coeurs avec Taggre F(36).}
   \label{fig:res_facto_f36}
 \end{figure}
-
-
-
 
 
 \subsubsection{Avec l'opérateur D}
@@ -101,7 +93,6 @@ Les autres valeurs donnent des résultats légèrement moins bons, par exemple l
 Comparé à l'opérateur F, il y a très peu d'amélioration quand le nombre de variables primaires est faible (Fig.~\ref{fig:res_facto_d8}).
 %
 Par contre, avec 8 variables primaires, on obtient un gain de performance qui est dû à une meilleure utilisation des caches, surtout du cache L2 avec une diminution de 10\% des défauts de cache.
-
 %   (-_-)   %
 \begin{figure}[!h]
   \centering
@@ -111,13 +102,10 @@ Par contre, avec 8 variables primaires, on obtient un gain de performance qui es
 \end{figure}
 
 
-
-
-
 \subsubsection{Avec l'opérateur C}
 Les deux précédents opérateurs donnent déjà des résultats, mais nous pensons que le meilleur opérateur pour nos matrices reste l'opérateur C.
 %
-Il a l'avantage de réduire grandement le nombre de tâche comme l'opérateur F et il forme des groupes de tâches permettant une meilleure réusabilité des données en cache.
+Il a l'avantage de réduire grandement le nombre de tâches comme l'opérateur F et il forme des groupes de tâches permettant une meilleure réusabilité des données en cache.
 %
 Par contre, il se pourrait que le parallélisme en pâtisse.
 %
@@ -131,11 +119,10 @@ Par contre, l'amélioration des effets caches est bien meilleure que dans les au
 %
 Cette amélioration est inexistante dans le cas de l'opérateur F, les tâches agrégées n'avaient pas une bonne réutilisabilité des données en cache.
 %
-Au contraire, l'opérateur D ne réduisait que de très peu le nombre de tâches mais améliorait la réutilisation des caches.
+Au contraire, l'opérateur D ne réduisait que de très peu le nombre de tâches, mais améliorait la réutilisation des caches.
 %
 L'opérateur C offre donc le meilleur des deux opérateurs, il produit peu de tâches et en plus ces tâches réutilisent correctement les données en cache.
 % L2 stats : F:1.10, D:0.96, C:0.87
-
 
 %   (-_-)   %
 \begin{figure}[!h]
@@ -145,7 +132,6 @@ L'opérateur C offre donc le meilleur des deux opérateurs, il produit peu de t�
   \label{fig:res_facto_c}
 \end{figure}
 
-
 \subsubsection{Avec plusieurs opérateurs}
 Il est aussi possible de combiner plusieurs opérateurs, sur la figure~\ref{fig:res_facto_cd2} nous avons combiné l'opérateur C avec l'opérateur D(2).
 %
@@ -154,7 +140,6 @@ On observe un très léger gain de performance quand on a une seule variable pri
 Malgré ces optimisations, nous n'atteignons pas une accélération parfaite, avec au mieux une accélération de 8,7 pour 12 coeurs.
 %
 Ce souci de performance est lié à l'architecture mémoire de la machine, nous donnerons plus d'explication dans la partie suivante de la thèse.
-
 %   (-_-)   %
 \begin{figure}[!h]
   \centering
@@ -162,9 +147,7 @@ Ce souci de performance est lié à l'architecture mémoire de la machine, nous 
   \caption{Performance de la factorisation sur 12 coeurs avec Taggre CD(2).}
   \label{fig:res_facto_cd2}
 \end{figure}
-
 \subsubsection{En résumé}
-
 
 %   (-_-)   %
 \begin{center}
@@ -183,16 +166,14 @@ Ce souci de performance est lié à l'architecture mémoire de la machine, nous 
   \label{tab:facto_res}
 \end{center}
 
-
 \subsubsection{Résultats de la résolution triangulaire}
 Essayons maintenant cette technique sur la partie résolution triangulaire du code.
 %
-Les performances sans agrégations sont bien en dessous de la partie factorisation (Fig.~\ref{fig:res_trsv_no_agg}).
+Les performances sans agrégation sont bien en dessous de la partie factorisation (Fig.~\ref{fig:res_trsv_no_agg}).
 %
 Même en utilisant 12 threads, seule la version avec 8 variables primaires donne de meilleurs résultats que la version séquentielle.
 %
-Encore une fois il s'agit d'un problème de granularité, le graphe à ordonnancer est le même que pour la factorisation mais les tâches sont plus petites.
-
+Encore une fois, il s'agit d'un problème de granularité, le graphe à ordonnancer est le même que pour la factorisation, mais les tâches sont plus petites.
 
 %   (-_-)   %
 \begin{figure}[!h]
@@ -202,13 +183,11 @@ Encore une fois il s'agit d'un problème de granularité, le graphe à ordonnanc
   \label{fig:res_trsv_no_agg}
 \end{figure}
 
-
-Si nous regardons les résultats avec la meilleure agrégation que nous ayons, l'agrégation CD(2), on obtient des résultats légèrement meilleurs mais on n'est encore loin de l'accélération parfaite (Fig.~\ref{fig:res_trsv_cd2}).
+Si nous regardons les résultats avec la meilleure agrégation que nous ayons, l'agrégation CD(2), on obtient des résultats légèrement meilleurs, mais on n'est encore loin de l'accélération parfaite (Fig.~\ref{fig:res_trsv_cd2}).
 %
-On arrive ici au limite de notre méthode, la granularité n'est pas encore suffisante pour permettre d'obtenir de très bonnes performances.
+On arrive ici aux limites de notre méthode, la granularité n'est pas encore suffisante pour permettre d'obtenir de très bonnes performances.
 %
 Mais si nous augmentons encore la granularité, il n'y aura plus assez de parallélisme pour avoir un bon équilibrage de charge et le temps final sera supérieur.
-
 
 %   (-_-)   %
 \begin{figure}[!h]
@@ -217,7 +196,6 @@ Mais si nous augmentons encore la granularité, il n'y aura plus assez de parall
   \caption{Performance de la résolution triangulaire sur 12 coeurs avec Taggre CD(2).}
   \label{fig:res_trsv_cd2}
 \end{figure}
-
 
 %% +---------------------------+-------------+-------------+-------------+------------+
 %% |          Metric           |     Sum     |     Max     |     Min     |    Avg     |
@@ -249,8 +227,6 @@ Mais si nous augmentons encore la granularité, il n'y aura plus assez de parall
 %% |  Data cache misses STAT   | 3.85951e+10 | 3.43628e+09 | 3.14135e+09 | 3.21626e+09 |
 %% | Data cache miss rate STAT |  0.0919074  | 0.00789712  | 0.00762214  | 0.00765895  |
 %% +---------------------------+-------------+-------------+-------------+-------------+
-
-
 
 
 %% +---------------------------+----------+-----------+-----------+-----------+
@@ -287,7 +263,6 @@ Mais si nous augmentons encore la granularité, il n'y aura plus assez de parall
 %% |    L2 miss ratio STAT     | 10.4823  |  0.87775  |  0.86843  | 0.873526  |
 %% +---------------------------+----------+-----------+-----------+-----------+
 
-
 %% +---------------------------+----------+-----------+---------+------------+
 %% |          Metric           |   Sum    |    Max    |   Min   |    Avg     |
 %% +---------------------------+----------+-----------+---------+------------+
@@ -322,8 +297,6 @@ Mais si nous augmentons encore la granularité, il n'y aura plus assez de parall
 %% |    L3 miss ratio STAT     |  1.10147  |  0.55564  |    0     | 0.0917888  |
 %% +---------------------------+-----------+-----------+----------+------------+
 
-
-
 %% +---------------------------------+------------+-------------+-------------+-------------+
 %% |             Metric              |    Sum     |     Max     |     Min     |     Avg     |
 %% +---------------------------------+------------+-------------+-------------+-------------+
@@ -336,7 +309,6 @@ Mais si nous augmentons encore la granularité, il n'y aura plus assez de parall
 %% | Branch misprediction ratio STAT | 0.0684119  | 0.00618842  | 0.00543805  | 0.00570099  |
 %% |  Instructions per branch STAT   |  159.109   |   13.3968   |   12.6562   |   13.2591   |
 %% +---------------------------------+------------+-------------+-------------+-------------+
-
 %% +---------------------------------+------------+-------------+-------------+-------------+
 %% |             Metric              |    Sum     |     Max     |     Min     |     Avg     |
 %% +---------------------------------+------------+-------------+-------------+-------------+
@@ -349,9 +321,6 @@ Mais si nous augmentons encore la granularité, il n'y aura plus assez de parall
 %% | Branch misprediction ratio STAT | 0.0683374  | 0.00613752  | 0.00536154  | 0.00569478  |
 %% |  Instructions per branch STAT   |  160.529   |   13.5767   |   13.1338   |   13.3774   |
 %% +---------------------------------+------------+-------------+-------------+-------------+
-
-
-
 
 
 

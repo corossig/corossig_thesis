@@ -1,9 +1,9 @@
 \subsection{Multiplication matrice vecteur creuse}
-La multiplication du matrice creuse par un vecteur est une opération dont le ratio nombre d'opérations par le nombre d'octet lus est petit.
+La multiplication d'une matrice creuse par un vecteur est une opération dont le ratio nombre d'opérations par le nombre d'octets lus est petit.
 %
 Dans le cas d'une matrice scalaire, ce ratio vaut environ $1/10$ en double précision.
 %
-Pour chaque valeur non-nulles de la matrice, il faut lire cette valeur, l'indice de la colonne et la valeur contenue dans le vecteur à l'indice de la colonne.
+Pour chaque valeur non-nulle de la matrice, il faut lire cette valeur, l'indice de la colonne et la valeur contenue dans le vecteur à l'indice de la colonne.
 %
 Il faut ensuite multiplier les deux valeurs ensemble et l'ajouter à un accumulateur, ce qui fait en double précision 2 opérations pour 20 octets lus.
 %
@@ -15,7 +15,6 @@ Pour chaque valeur du bloc nous avons 2 opérations à faire (2*9), nous avons d
 %
 Avec huit variables primaires, le ratio monte à environ de $1/4,5$.
 
-
 Le {\em roofline model} est un modèle de performance permettant de connaître la puissance de calcul maximale pouvant être atteinte par un algorithme sur une machine.
 %
 Ce modèle se construit de la façon suivante, dans un premier temps nous allons mesurer la bande passante maximale de la machine.
@@ -24,16 +23,15 @@ Pour cela nous avons utilisé le benchmark STREAM, sur Rostand, nous obtenons un
 %
 Puis, dans un second temps, nous allons calculer la capacité de calcul maximale de la machine.
 %
-Pour calculer cette capacité, il faut multiplier le nombre de coeur de calcul par le nombre maximal d'opérations faites dans une instruction et multiplier le tout pas la fréquence d'horloge.
+Pour calculer cette capacité, il faut multiplier le nombre de coeurs de calcul par le nombre maximal d'opérations faites dans une instruction et multiplier le tout pas la fréquence d'horloge.
 %
 Chaque noeud de Rostand étant composé de 12 coeurs cadencés à 2,80~GHz et du jeu d'instructions SSE~4.2 permettant d'effectuer 4 opérations flottantes en simple précision à la fois, ce qui donne 134,4~GFlops.
 %
-Le nombre d'opérations simultanées en double précision est divisé par 2, donc on peux avoir au maximum 67,2~GFlops et si nous n'utilisons pas le jeu d'instructions vectorielles, nous pouvons obtenir au maximum 33,6~GFlops (Fig.~\ref{fig:roofline_rostand}).
-
+Le nombre d'opérations simultanées en double précision est divisé par 2, donc on peut avoir au maximum 67,2~GFlops et si nous n'utilisons pas le jeu d'instructions vectorielles, nous pouvons obtenir au maximum 33,6~GFlops (Fig.~\ref{fig:roofline_rostand}).
 
 Une fois le roofline model construit, nous pouvons donc placer le produit matrice vecteur creux.
 %
-Les performances du SpMV dépendent du nombre de variables primaires, nous avons donc placé sur le roofline model trois SpMV en fonction du nombre de variable primaire utilisées.
+Les performances du SpMV dépendent du nombre de variables primaires, nous avons donc placé sur le roofline model trois SpMV en fonction du nombre de variables primaire utilisées.
 %
 Ces trois points nous indiquent que les performances du SpMV seront limitées par la bande passante mémoire.
 %
@@ -41,12 +39,9 @@ L'utilisation du jeu d'instructions vectorielles aura donc très peu d'impact su
 %
 Nous devons nous concentrer sur les accès mémoires et surtout dans notre cas, sur les effets NUMA.
 
-
 Le SpMV présente du parallélisme de boucle sur les lignes de la matrice.
 %
 Nous pouvons multiplier indépendamment chaque ligne de la matrice par un vecteur et stocker directement le résultat dans un autre vecteur.
-
-
 
 %   (-_-)   %
 \begin{figure}
@@ -55,7 +50,6 @@ Nous pouvons multiplier indépendamment chaque ligne de la matrice par un vecteu
   \caption{Roofline model de Rostand avec les différents produit matrice vecteur creux.}
   \label{fig:roofline_rostand}
 \end{figure}
-
 
 % -------------------------------
 \input{src/numa_res_spmv_mpi}
@@ -68,12 +62,9 @@ Nous pouvons multiplier indépendamment chaque ligne de la matrice par un vecteu
 %-------------------------------
 
 
-
-
 %%%%%%%%%%%%%%%%
 % SpMV
 %%%%%%%%%%%%%%%%
-
 %   (-_-)   %
 \begin{figure}[!h]
      \begin{center}
@@ -85,7 +76,6 @@ Nous pouvons multiplier indépendamment chaque ligne de la matrice par un vecteu
           \label{fig:res_spmv_inter_rostand}
           \includegraphics[width=0.48\textwidth]{res_spmv_interleave}
         }
-
         \subfigure[NATaS.]{
           \label{fig:res_spmv_nas_rostand}
           \includegraphics[width=0.48\textwidth]{res_spmv_nas}
@@ -98,8 +88,6 @@ Nous pouvons multiplier indépendamment chaque ligne de la matrice par un vecteu
     \caption{Performances du produit matrice vecteur creux sur Rostand.}
 \end{figure}
 
-
-
 %   (-_-)   %
 \begin{figure}[!h]
      \begin{center}
@@ -111,7 +99,6 @@ Nous pouvons multiplier indépendamment chaque ligne de la matrice par un vecteu
           \label{fig:res_spmv_inter_manu}
           \includegraphics[width=0.48\textwidth]{res_spmv_interleave_manu}
         }
-
         \subfigure[NATaS.]{
           \label{fig:res_spmv_nas_manu}
           \includegraphics[width=0.48\textwidth]{res_spmv_nas_manu}
@@ -123,9 +110,6 @@ Nous pouvons multiplier indépendamment chaque ligne de la matrice par un vecteu
     \end{center}
     \caption{Performances du produit matrice vecteur creux sur Manumanu.}
 \end{figure}
-
-
-
 
 
 %-------------------------------

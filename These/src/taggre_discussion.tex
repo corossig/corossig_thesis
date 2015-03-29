@@ -3,7 +3,7 @@ Même si un algorithme peut exposer du parallélisme naturellement, il n'est pas
 %
 Soit parce qu'il n'y a pas assez de parallélisme pour obtenir un bon équilibrage de charge, soit parce que la granularité du problème n'est pas suffisamment grosse pour négliger les surcoûts liés aux runtimes.
 %
-Notre proposition permet de manière quasiment transparente d'apporter une solution au problème de la granularité.
+Notre proposition permet de manière presque transparente d'apporter une solution au problème de la granularité.
 %
 Mais cette solution n'est pas parfaite, le choix des opérateurs d'agrégation est laissé au programmeur.
 %
@@ -18,31 +18,27 @@ Un graphe plus large que haut permettra de sacrifier un peu de parallélisme pou
 %
 Au contraire, un graphe pas assez large n'offrira pas la possibilité d'augmenter le grain de calcul.
 %
-Si le surcoût d'ordonnancement est supérieur au coût d'exécution d'une tâche alors réduire le nombre de tâche augmenteras presque systématiquement les performances du programme.
+Si le surcoût d'ordonnancement est supérieur au coût d'exécution d'une tâche alors réduire le nombre de tâches augmentera presque systématiquement les performances du programme.
 %
 Si l'ordre d'ordonnancement des tâches n'a que très peu d'effet, l'opérateur F reste le meilleur candidat.
 %
 Dans le cas contraire, les opérateurs C et D sont à privilégier.
 
-
-
-L'utilisation du simulateur de tâches pourrait être étendu pour permettre de choisir automatiquement les bons opérateurs avec les bons paramètres.
+L'utilisation du simulateur de tâches pourrait être étendue pour permettre de choisir automatiquement les bons opérateurs avec les bons paramètres.
 %
 Mais l'espace des possibilités à tester est considérable, le temps nécessaire à tester toutes les possibilités serait trop grand.
 %
-Par contre, nous pouvons imaginer un heuristique qui en fonction des propriétés du graphe, de la granularité du calcul et des effets cache liés à l'ordre d'ordonnancement des tâches propose un opérateur à appliquer.
+Par contre, nous pouvons imaginer une heuristique qui en fonction des propriétés du graphe, de la granularité du calcul et des effets cache liés à l'ordre d'ordonnancement des tâches propose un opérateur à appliquer.
 %
-Le simulateur pourras ensuite tester cette possibilité et donner une estimation du gain théorique.
+Le simulateur pourra ensuite tester cette possibilité et donner une estimation du gain théorique.
 
-
-
-Le temps d'application des opérateurs sur le graphe de tâche est aussi un problème, il faut réutiliser le nouveau graphe grossier un certains nombre de fois avant de pouvoir considérer cette étape comme négligeable.
+Le temps d'application des opérateurs sur le graphe de tâche est aussi un problème, il faut réutiliser le nouveau graphe grossier un certain nombre de fois avant de pouvoir considérer cette étape comme négligeable.
 %
 Dans le cas où le graphe changerait souvent au cours de l'exécution, cette approche ne fonctionne plus, il faut changer d'algorithme.
 %
 Une fois les bons opérateurs trouvés, on peut commencer à avoir des résultats proches de l'optimal.
 %
-C'est le cas pour notre problème mais il reste encore une différence de performance à rattraper.
+C'est le cas pour notre problème, mais il reste encore une différence de performance à rattraper.
 %
 Cette différence est due aux effets NUMA, certains accès mémoire auront une latence plus grande que les autres.
 %

@@ -3,23 +3,19 @@ La factorisation ainsi que la résolution triangulaire utilisent le même graphe
 %
 Les pages mémoires utilisées composants la matrice sont distribuée en respectant l'affinité mémoire des tâches associées.
 %
-Cette affinité est fournit par Taggre et correspond à une distribution à peu près équitable des pages mémoires au fil du déroulement du graphe.
+Cette affinité est fournie par Taggre et correspond à une distribution à peu près équitable des pages mémoires au fil du déroulement du graphe.
 %
-Malheureusement, nous ne pouvons pas distribuer toutes les pages de manière optimale car il arrive que certaines pages soient utilisées par plusieurs tâches ayant des affinités mémoires différentes.
+Malheureusement, nous ne pouvons pas distribuer toutes les pages de manière optimale, car il arrive que certaines pages soient utilisées par plusieurs tâches ayant des affinités mémoires différentes.
 %
 Dans un tel cas, nous choisissons de placer la page mémoire sur le banc NUMA ayant le plus de tâches.
-
 
 % -------------------------------
 \input{src/numa_res_facto_explain}
 % -------------------------------
 
-
-
 %%%%%%%%%%%%%%%%
 % Facto
 %%%%%%%%%%%%%%%%
-
 %   (-_-)   %
 \begin{figure}[!h]
      \begin{center}
@@ -31,7 +27,6 @@ Dans un tel cas, nous choisissons de placer la page mémoire sur le banc NUMA ay
           \label{fig:res_facto_inter_rostand}
           \includegraphics[width=0.48\textwidth]{res_facto_interleave}
         }
-
         \subfigure[NATaS.]{
           \label{fig:res_facto_nas_rostand}
           \includegraphics[width=0.48\textwidth]{res_facto_nas}
@@ -44,8 +39,6 @@ Dans un tel cas, nous choisissons de placer la page mémoire sur le banc NUMA ay
     \caption{Performances de la factorisation ILU(0) sur Rostand.}
 \end{figure}
 
-
-
 %   (-_-)   %
 \begin{figure}[!h]
      \begin{center}
@@ -57,7 +50,6 @@ Dans un tel cas, nous choisissons de placer la page mémoire sur le banc NUMA ay
           \label{fig:res_facto_inter_manu}
           \includegraphics[width=0.48\textwidth]{res_facto_inter_manu}
         }
-
         \subfigure[NATaS.]{
           \label{fig:res_facto_nas_manu}
           \includegraphics[width=0.48\textwidth]{res_facto_nas_manu}
@@ -70,11 +62,9 @@ Dans un tel cas, nous choisissons de placer la page mémoire sur le banc NUMA ay
     \caption{Performances de la factorisation ILU(0) sur Manumanu.}
 \end{figure}
 
-
 %%%%%%%%%%%%%%%%
 % TRSV
 %%%%%%%%%%%%%%%%
-
 
 %   (-_-)   %
 \begin{figure}[!h]
@@ -87,7 +77,6 @@ Dans un tel cas, nous choisissons de placer la page mémoire sur le banc NUMA ay
           \label{fig:res_trsv_inter_rostand}
           \includegraphics[width=0.48\textwidth]{res_trsv_interleave}
         }
-
         \subfigure[NATaS.]{
           \label{fig:res_trsv_nas_rostand}
           \includegraphics[width=0.48\textwidth]{res_trsv_nas}
@@ -100,8 +89,6 @@ Dans un tel cas, nous choisissons de placer la page mémoire sur le banc NUMA ay
     \caption{Performances de la résolution triangulaire sur Rostand.}
 \end{figure}
 
-
-
 %   (-_-)   %
 \begin{figure}[!h]
      \begin{center}
@@ -113,7 +100,6 @@ Dans un tel cas, nous choisissons de placer la page mémoire sur le banc NUMA ay
           \label{fig:res_trsv_inter_manu}
           \includegraphics[width=0.48\textwidth]{res_trsv_inter_manu}
         }
-
         \subfigure[NATaS.]{
           \label{fig:res_trsv_nas_manu}
           \includegraphics[width=0.48\textwidth]{res_trsv_nas_manu}
@@ -125,8 +111,6 @@ Dans un tel cas, nous choisissons de placer la page mémoire sur le banc NUMA ay
     \end{center}
     \caption{Performances de la résolution triangulaire sur Manumanu.}
 \end{figure}
-
-
 
 %-------------------------------
 \input{src/numa_res_facto_autonuma}

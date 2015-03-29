@@ -7,17 +7,15 @@ Symétriquement, $U$ est une matrice triangulaire supérieure, toutes les valeur
 %
 Le principal intérêt de cette factorisation est de trouver facilement $x$ dans les équations du type $Ax=y$.
 %
-Dans le cas où $A=L.U$, le système d'équations $Ax=y$ est transformée en deux systèmes d'équations $L.x_{tmp}=y$ et $U.x=x_{tmp}$.
+Dans le cas où $A=L.U$, le système d'équations $Ax=y$ est transformé en deux systèmes d'équations $L.x_{tmp}=y$ et $U.x=x_{tmp}$.
 %
 La méthode utilisée pour résoudre les systèmes composés de matrices triangulaires est triviale.
 %
 Il suffit de résoudre chaque équation ligne par ligne en commençant par la ligne qui n'a qu'une seule valeur non nulle.
 %
-Ensuite il faut résoudre la ligne avec deux valeurs non nulles dont une des inconnues provient de la solution précédente, et ainsi de suite jusqu'à la dernière ligne.
+Ensuite, il faut résoudre la ligne avec deux valeurs non nulles dont une des inconnues provient de la solution précédente, et ainsi de suite jusqu'à la dernière ligne.
 %
 Il existe du parallélisme à exploiter dans cet algorithme, à chaque fois qu'une inconnue est trouvée, on peut la retirer de chacune des lignes restantes à traiter~\cite{plasma_lu}.
-
-
 
 En algèbre linéaire creuse, la transformation des éléments nuls de la matrice creuse en éléments non nuls est appelée remplissage.
 %
@@ -29,9 +27,9 @@ C'est pourquoi en algèbre linéaire creuse, on utilise une version altérée de
 %
 En contrepartie, le résultat de la factorisation obtenu est approximatif et fournit donc un moins bon préconditionneur pour GMRES.
 %
-L'algorithme ILU est similaire à l'algorithme LU mais le remplissage est limité par des conditions définies par l'algorithme.
+L'algorithme ILU est similaire à l'algorithme LU, mais le remplissage est limité par des conditions définies par l'algorithme.
 %
-Ces conditions peuvent être de deux formes : soit en limitant le remplissage avec une valeur seuil (ILUT\cite{saad1994ilut}), soit en limitant le niveau d'interaction entre les lignes de la matrices (ILU(k)).
+Ces conditions peuvent être de deux formes : soit en limitant le remplissage avec une valeur seuil (ILUT\cite{saad1994ilut}), soit en limitant le niveau d'interaction entre les lignes de la matrice (ILU(k)).
 %
 Dans le cas ILU(k), le paramètre k sert à limiter le niveau d'interaction entre les lignes.
 %
@@ -40,14 +38,11 @@ Avec $k=0$, le motif des matrices $L$ et $U$ reste similaire au motif de la matr
 En augmentant la valeur de $k$, on augmente aussi le nombre d'interactions entre les cellules.
 
 
-
-
-
 L'algorithme ILU offre la possibilité de factoriser certaines lignes en parallèle et ce parallélisme se représente naturellement sous la forme d'un graphe de tâches (Fig.~\ref{fig:example_3_dag}).
 %
 Chaque tâche représente la factorisation d'une ligne de la matrice et les dépendances entre les tâches sont données par le motif de la matrice.
 %
-En effet, pour factoriser la ligne $i$, nous devons factoriser toutes les lignes $j$ inférieures à $i$ tel que l'entrée $(i,j)$ de la matrice soit non nulle.
+En effet, pour factoriser la ligne $i$, nous devons factoriser toutes les lignes $j$ inférieures à $i$ tel que l'entrée $(i,j)$ de la matrice soit non-nulle.
 %
 Cette dépendance de donnée provient de la ligne~\ref{algo:ilu0:dep} de l'algorithme~\ref{algo:ilu0}.
 %
@@ -56,7 +51,6 @@ C'est cette dépendance qui nous empêche que d'utiliser du parallélisme de bou
 Donc, à partir du motif des valeurs non-nulles de la matrice, nous pouvons facilement construire le graphe de tâche:
 %
 la tâche $i$ corresponds à la ligne $i$ de la matrice (ligne \ref{algo:ilu0:task_begin} à \ref{algo:ilu0:task_end} de l'algorithme~\ref{algo:ilu0}), la liste des tâches prédécesseurs de la tâche $i$ est donnée par l'index de colonne des valeurs non-nulles avant la diagonale dans la ligne $i$ (ligne~\ref{algo:ilu0:dep}) et la liste des tâches successeurs de la tâche $i$ est donnée par l'index de ligne des valeurs non-nulles au-dessous de la diagonale de la colonne $i$ (Fig.~\ref{fig:example_2_matrix}).
-
 \begin{figure}[!h]
      \begin{center}
         \subfigure[Un réservoir à 4 cellules]{
@@ -77,7 +71,6 @@ la tâche $i$ corresponds à la ligne $i$ de la matrice (ligne \ref{algo:ilu0:ta
     \caption{Trois représentations d'un réservoir. Les éléments en rouge dans la matrice déterminent les dépendances dans le graphe de tâches.}
     \label{fig:exemple_3_dag}
 \end{figure}
-
 \begin{algorithm}
   \KwData{$M$ : matrice de dimension $n$}
   \For{$i = 2$ {\bf à} $n$} {
@@ -92,13 +85,11 @@ la tâche $i$ corresponds à la ligne $i$ de la matrice (ligne \ref{algo:ilu0:ta
   \label{algo:ilu0}
 \end{algorithm}
 
-
 En résumé, le parallélisme de l'algorithme ILU peut se représenter sous la forme d'un graphe de tâches.
 %
 Chaque tâche représentant la factorisation d'une ligne... ce qui représente peu de calculs.
 %
 En fait, la plupart des runtimes mettront plus de temps à ordonnancer la tâche que la tâche mettra à s'exécuter.
-
 
 Les problèmes rencontrés pour paralléliser la factorisation incomplète d'une matrice creuse, ainsi que les résolutions triangulaires associées, sont des problèmes qui représentent bien la difficulté que l'on peut rencontrer avec une parallélisation à grain fin.
 %
@@ -120,24 +111,21 @@ Mais pour atteindre cette durée, les tâches doivent devenir plus grosses, nous
 %
 Mais le choix de ces lignes n'est pas trivial, il faut limiter l'impact sur le parallélisme et ne pas changer le résultat final.
 %
-Si trop de lignes à factoriser se retrouve dans une seule tâche, de nombreuses tâches devrons attendre que cette tâche finisse avec de pouvoir être exécuter même si les lignes dont elles dépendent sont déjà factorisées, nous avons donc détruit du parallélisme.
+Si trop de lignes à factoriser se retrouvent dans une seule tâche, de nombreuses tâches devront attendre que cette tâche finisse avant de pouvoir être exécutée même si les lignes dont elles dépendent sont déjà factorisées, nous avons donc détruit du parallélisme.
 %
 Un intergiciel a été développé dans cette thèse pour résoudre ce problème de manière transparente pour le programmeur.
-
-
 
 De plus, l'ordre de factorisation des lignes de la matrice aura une influence sur les performances.
 %
 En fonction du nombre de variables primaires, nous avons entre 24~\% et 450~\% de temps de factorisation en plus par rapport au temps de factorisation optimal (Tab.~\ref{tab:facto_order}).
 %
-La factorisation des lignes de la matrice avec un parcourt linéaire des indices donne les meilleurs performances.
+La factorisation des lignes de la matrice avec un parcourt linéaire des indices donne les meilleures performances.
 %
-Les lignes consécutives de la matrice correspondent la plupart du temps à des cellules proches qui auront donc des interactions entres elles.
+Les lignes consécutives de la matrice correspondent la plupart du temps à des cellules proches qui auront donc des interactions entre elles.
 %
-La factorisation d'une ligne utilisera donc souvent une partie du résultat de la factorisation de la ligne précédente, ce résultat ayant de grande chance d'être encore en mémoire cache.
+La factorisation d'une ligne utilisera donc souvent une partie du résultat de la factorisation de la ligne précédente, ce résultat ayant de grandes chances d'être encore en mémoire cache.
 %
 Il est donc primordial d'agréger des tâches qui factorisent des lignes consécutives de la matrice.
-
 
 %   (-_-)   %
 \begin{center}
@@ -158,26 +146,23 @@ Il est donc primordial d'agréger des tâches qui factorisent des lignes conséc
 \end{center}
 
 
-
-
 Il existe des travaux de recherche dont le but est aussi d'exploiter le parallélisme de l'algorithme ILU :
 %
 En changeant la numérotation des cellules, on peut modifier la structure de la matrice ce qui aura pour effet de changer la factorisation.
 %
-Une renumérotation rouge-noire permet de factoriser parallèlement la moitié des lignes de la matrice dans un premier temps, puis la seconde moitié des lignes dans un second temps.
+Une renumérotation rouge-noir permet de factoriser parallèlement la moitié des lignes de la matrice dans un premier temps, puis la seconde moitié des lignes dans un second temps.
 %
-Cette technique offre énormément de parallélisme mais aura un impact négatif sur la convergence\cite{red_black_ilu}.
+Cette technique offre énormément de parallélisme, mais aura un impact négatif sur la convergence\cite{red_black_ilu}.
 %
 Plus récemment, une autre méthode a été développée permettant de factoriser tous les éléments de la matrice en parallèle tout en gardant une numérotation naturelle.
 %
-L'opération de factorisation parallèle est appelé {\em sweep} et doit être effectuée plusieurs fois\cite{chow2014fine}.
+L'opération de factorisation parallèle est appelée {\em sweep} et doit être effectuée plusieurs fois\cite{chow2014fine}.
 %
-En moyenne 3 sweeps suffisent à obtenir un résultat proche de la factorisation incomplète.
+En moyenne, 3 sweeps suffisent à obtenir un résultat proche de la factorisation incomplète.
 %
 La convergence n'est donc que faiblement dégradée, mais il faut prendre en compte que 3 sweeps ont été nécessaires et il a donc fallu faire 3 fois plus d'opérations qu'une factorisation ILU classique.
 %
-Dans notre cas, nous nous intéressons à des renumérotation qui favorise le regroupement des tâches mais ne changent pas le résultat numérique.
-
+Dans notre cas, nous nous intéressons à des renumérotations qui favorisent le regroupement des tâches, mais ne changent pas le résultat numérique.
 
 %   (-_-)   %
 \begin{figure}[!h]
@@ -186,7 +171,7 @@ Dans notre cas, nous nous intéressons à des renumérotation qui favorise le re
           \label{fig:DAG_natural}
           \includegraphics[width=0.33\textwidth]{DAG_natural}
         }%
-        \subfigure[Exemple de graphe de tâche obtenu avec une numérotation rouge-noire.]{%
+        \subfigure[Exemple de graphe de tâche obtenu avec une numérotation rouge-noir.]{%
           \label{fig:DAG_redblack}
           \includegraphics[width=0.66\textwidth]{DAG_redblack}
         }%

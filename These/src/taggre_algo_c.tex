@@ -9,8 +9,7 @@ En numérotation naturelle et avec un modèle 3D, une bonne agrégation consiste
 %
 Cela correspond à {\em aplatir} notre modèle 3D en un modèle 2D (Fig.~\ref{fig:cube5_algo_C}).
 %
-Par exemple, un cube de 5 éléments de coté, soit 125 tâches, sera transformé en un carré de 5 éléments de coté, soit 25 tâches.
-
+Par exemple, un cube de 5 éléments de côté, soit 125 tâches, sera transformé en un carré de 5 éléments de côté, soit 25 tâches.
 
 %   (-_-)   %
 \begin{figure}
@@ -20,7 +19,6 @@ Par exemple, un cube de 5 éléments de coté, soit 125 tâches, sera transform�
   \label{fig:cube5_algo_C}
 \end{figure}
 
-
 %   (-_-)   %
 \begin{figure}
   \centering
@@ -29,22 +27,19 @@ Par exemple, un cube de 5 éléments de coté, soit 125 tâches, sera transform�
   \label{fig:algo_C}
 \end{figure}
 
-
 L'opérateur C pourra être utilisé pour privilégier les effets caches liés à l'exécution de deux tâches utilisant des données mémoires proches.
 %
 Le programmeur doit fournir les informations permettant de connaître les tâches pouvant bénéficier de ce type d'optimisation.
 %
-Pour répondre à notre problème, nous avons décidé que deux tâches ayant un indice consécutif seront plus efficace si elles sont exécutées l'une après l'autre.
+Pour répondre à notre problème, nous avons décidé que deux tâches ayant un indice consécutif seront plus efficaces si elles sont exécutées l'une après l'autre.
 %
 Pour fonctionner, cet opérateur a besoin que le programmeur attribue un indice unique à chaque tâche et ainsi avoir un ordre strict sur les tâches.
 %
-Dans notre cas on va utiliser la numérotation naturelle des cellules.
+Dans notre cas, on va utiliser la numérotation naturelle des cellules.
 %
 Puis l'opérateur agrégera ensemble les tâches ayant des nombres qui se suivent ainsi qu'une dépendance entre les tâches.
 %
-Par exemple sur la figure \ref{fig:algo_C} les tâches 2 et 3 ont des nombres consécutifs mais n'ont pas de dépendance entre elles, elles ne seront donc pas agrégées ensemble.
-
-
+Par exemple sur la figure \ref{fig:algo_C} les tâches 2 et 3 ont des nombres consécutifs, mais n'ont pas de dépendance entre elles, elles ne seront donc pas agrégées ensemble.
 
 Comme pour les autres opérateurs, nous devons vérifier qu'aucun cycle ne sera créé.
 %
@@ -60,24 +55,21 @@ Or, pour agréger une tâche avec une autre, il faut que la différence de leurs
 %
 Donc, en prenant en compte le prédicat, si nous agrégeons une tâche T1 avec son successeur T2, il ne peut pas exister de chemin en T1 et T2 passant par une autre tâche.
 
-
 \begin{algorithm}
   \KwData{DAG}
   {\sc Pas} = Infini \\
   \For{chaque tâche {\sc T1} de DAG} {
-    \For{chaque successeurs {\sc T2} de {\sc T1}} {
+    \For{chaque successeur {\sc T2} de {\sc T1}} {
       \If{indice de {\sc T2} $<=$ indice de {\sc T1}} {
         \Return agrégation impossible
       }
-
       \If{indice de {\sc T2} - indice de {\sc T1} $<$ {\sc Pas}} {
         {\sc Pas} = indice de {\sc T2} - indice de {\sc T1}
       }
     }
   }
-
   \For{chaque tâche {\sc T1} de DAG} {
-    \For{chaque successeurs {\sc T2} de {\sc T1}} {
+    \For{chaque successeur {\sc T2} de {\sc T1}} {
       \If{indice de {\sc T2} == indice de {\sc T1} + {\sc Pas}} {
         {\sc T1} devient {\sc T1} union {\sc T2}
       }
@@ -86,7 +78,6 @@ Donc, en prenant en compte le prédicat, si nous agrégeons une tâche T1 avec s
   \caption{Algorithme de l'opérateur continuation.}
   \label{algo:algo_C}
 \end{algorithm}
-
 %% Dans le cas d'un graphe représentant un cube 3D, cet opérateur fonctionne très bien.
 %% %
 %% Par contre, dans le cas d'un graphe représentant un carré, il est nécessaire de modifier cette algorithme pour limiter la taille des agrégats tout en optimisant

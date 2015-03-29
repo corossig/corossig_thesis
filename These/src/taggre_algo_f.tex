@@ -5,7 +5,7 @@ Pour cela, il va travailler à diminuer la largeur du graphe.
 %
 Certaines propriétés du graphe peuvent être corrélées aux résultats de l'ordonnanceur.
 %
-Par exemple, la hauteur d'un graphe correspondra au temps minimum qu'il faudra pour traiter tout le graphe si nous avons un nombre infini d'unité de calcul.
+Par exemple, la hauteur d'un graphe correspondra au temps minimum qu'il faudra pour traiter tout le graphe si nous avons un nombre infini d'unités de calcul.
 %
 La largeur du graphe donnera un indice sur le parallélisme exploitable.
 %
@@ -19,8 +19,6 @@ Ce cas ressemble fortement au parallélisme de boucle.
 %
 Le nombre de tâches du graphe est aussi une propriété à prendre en compte, l'ordonnanceur doit avoir des structures de données efficaces capables de stocker toutes les tâches.
 
-
-
 Un graphe fournissant énormément de parallélisme par rapport au nombre de coeurs disponibles n'aura pas forcément un meilleur équilibrage de charge par rapport à un graphe offrant un peu moins de parallélisme.
 %
 D'autre part, trop de parallélisme peut conduire à la congestion des structures de données servant à maintenir à jour les tâches prêtes à être ordonnancées.
@@ -33,8 +31,7 @@ C'est pourquoi l'opérateur F prend en paramètre la largeur du graphe souhaité
 %
 L'algorithme de l'opérateur F consiste à faire un parcourt du graphe en hauteur et à limiter le nombre de tâches par hauteur, cette limite est donnée en paramètre par le programmeur (Algo.~\ref{algo:algo_F}).
 %
-Les tâches agrégées ensemble ont la même hauteur, il ne peut donc pas exister de chemin entre elles, il n'y a donc aucun risque de création de cycle (Fig.~\ref{fig:algo_F2}).
-
+Les tâches agrégées ensemble ont la même hauteur, il ne peut donc pas exister de chemin entre elles, il n'y a donc aucun risque de création de cycles (Fig.~\ref{fig:algo_F2}).
 
 %   (-_-)   %
 \begin{figure}
@@ -43,7 +40,6 @@ Les tâches agrégées ensemble ont la même hauteur, il ne peut donc pas existe
   \caption{Exemple d'agrégation avec l'opérateur F et le paramètre 2.}
   \label{fig:algo_F2}
 \end{figure}
-
 \begin{algorithm}
   \KwData{$MAX$, DAG}
   {\sc Suivant} = liste vide \\
@@ -52,7 +48,6 @@ Les tâches agrégées ensemble ont la même hauteur, il ne peut donc pas existe
     {\sc Prêt} = {\sc Suivant} \\
     {\sc Suivant} = liste vide \\
     {\sc Moyenne} = taille de {\sc Prêt} / $MAX$ \\
-
     \While{{\sc Prêt} n'est pas vide} {
       mettre les successeurs des {\sc Moyenne} premières tâches dans {\sc Suivant} \\
       {\sc T1} = retirer le premier de {\sc Prêt} \\

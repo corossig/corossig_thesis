@@ -1,7 +1,6 @@
 \subsection{Nos machines}
 Dans le but d'étudier différents problèmes liés à la programmation par tâche, nous avons sélectionné deux machines avec des architectures différentes.
 
-
 \subsubsection{Rostand}
 Rostand est une grappe de serveurs appartenant à la compagnie Total S.A..
 %
@@ -11,7 +10,6 @@ Chaque noeud est lui-même composé de 2 bancs NUMA avec un processeur Intel Xeo
 %
 Les processeurs ont 6 coeurs, soit un total de 12 coeurs par noeud de calcul et 7680 coeurs pour l'ensemble de la grappe.
 
-
 %   (-_-)   %
 \begin{figure}[!h]
         \centering
@@ -19,11 +17,9 @@ Les processeurs ont 6 coeurs, soit un total de 12 coeurs par noeud de calcul et 
         \caption{Topologie d'un noeud de calcul de Rostand. Le schéma a été obtenu avec le logiciel hwloc.}
         \label{fig:rostand}
 \end{figure}
-
 Avec cette machine, nous allons pouvoir tester deux paradigmes de programmation parallèle.
 %
-Dans un premier temps nous utiliserons du parallélisme intra-noeud puis nous verrons le parallélisme inter-noeud.
-
+Dans un premier temps, nous utiliserons du parallélisme intra-noeud puis nous verrons le parallélisme inter-noeud.
 
 La matrice des distances (Fig.~\ref{fig:rostand_distance}) nous indique la distance entre deux bancs NUMA donnée par le constructeur de la machine.
 %
@@ -37,7 +33,6 @@ Pour cela, nous avons utilisé l'outil {\em lmbench} couplé à {\em numactl} po
 %
 Nous savons donc qu'un accès à un banc NUMA distant a un temps de latence 57~\% plus grand qu'un accès au banc NUMA local.
 
-
 %   (-_-)   %
 \begin{figure}[!h]
         \centering
@@ -45,7 +40,6 @@ Nous savons donc qu'un accès à un banc NUMA distant a un temps de latence 57~\
         \caption{Matrice des distances entre chaque banc NUMA de Rostand.}
         \label{fig:rostand_distance}
 \end{figure}
-
 \subsubsection{Manumanu}
 Manumanu est une machine Altix UV100, cet ordinateur est composé de 20 bancs NUMA.
 %
@@ -54,7 +48,6 @@ Chaque banc NUMA est composé d'un processeur Intel Xeon E7-8837 ainsi que de 32
 Les processeurs ont chacun 8 coeurs de calcul, pour un total de 160 coeurs et 640~Go de mémoire partagée.
 %
 Cette machine est donc intéressante pour évaluer les effets NUMA.
-
 %   (-_-)   %
 \begin{figure}[!h]
      \begin{center}
@@ -70,13 +63,12 @@ Cette machine est donc intéressante pour évaluer les effets NUMA.
     \caption{Architecture de Manumanu.}
     \label{fig:manumanu}
 \end{figure}
-
 \`{A} partir de la matrice des distances (Fig.~\ref{fig:manumanu_distances}), nous pouvons déduire la topologie de la machine.
 %
 Les bancs NUMA sont regroupés deux par deux et chaque groupe est connecté à trois autres groupes.
 %
-Ce regroupement permet de limiter la distance maximal entre deux banc NUMA, il y aura au maximum 3 sauts.
+Ce regroupement permet de limiter la distance maximale entre deux bancs NUMA, il y aura au maximum 3 sauts.
 %
-Les temps de latence entre deux bancs NUMA d'un même groupe n'est supérieur que de 17\% par rapport à un accès local.
+Le temps de latence entre deux bancs NUMA d'un même groupe n'est supérieur que de 17\% par rapport à un accès local.
 %
-Par contre, les temps de latence entre deux groupes sont entre 3 et 4 fois plus long qu'un temps de latence local.
+Par contre, les temps de latence entre deux groupes sont entre 3 et 4 fois plus longs qu'un temps de latence local.

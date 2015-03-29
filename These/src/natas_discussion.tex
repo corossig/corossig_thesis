@@ -1,9 +1,9 @@
 \subsection{Discussion}
 Les effets NUMA sont vraiment importants dans le cas d'une application limitée par la bande passante mémoire.
 %
-Une mauvaise distribution des pages mémoires peut conduire à une sous exploitation de la bande passante.
+Une mauvaise distribution des pages mémoires peut conduire à une sous-exploitation de la bande passante.
 %
-La politique d'allocation interleaved limite ce problème, on est sûr que tous les liens mémoires sont utilisés mais on n'a aucun contrôle sur l'amélioration de la localité des accès mémoire.
+La politique d'allocation interleaved limite ce problème, on est sûr que tous les liens mémoires sont utilisés, mais on n'a aucun contrôle sur l'amélioration de la localité des accès mémoire.
 %
 Malgré cela, on obtient un gain important de performance dans certains cas tels que le produit matrice vecteur creux et la résolution triangulaire.
 %
@@ -11,22 +11,19 @@ Les politiques d'allocations du type next-touch et autoNUMA résolvent une bonne
 %
 Mais ces politiques ne nous permettent pas d'avoir un contrôle fin de l'accès aux données d'un thread.
 
-
-
 La gestion des affinités NUMA directement dans l'ordonnanceur de tâches, nous permet de mieux répartir la charge mémoire.
 %
-La localité mémoire en devient optimale et une bonne distribution des tâches donnent de très bonnes performances.
+La localité mémoire en devient optimale et une bonne distribution des tâches donne de très bonnes performances.
 %
 L'utilisation d'un seul banc NUMA nous montre que l'ordonnanceur NATaS est moins bon que l'ordonnanceur Intel OpenMP.
 %
-Sur un nombre important de banc NUMA, NATaS ne passe pas à l'échelle.
+Sur un nombre important de bancs NUMA, NATaS ne passe pas à l'échelle.
 %
 Cet ordonnanceur a été écrit spécifiquement pour des machines à 2 bancs NUMA.
 %
 Les gains que nous observons avec l'utilisation de plusieurs bancs NUMA sont bien dus à une amélioration de la localité mémoire.
 
-
-Malgré les bonnes performances que nous offrent NATaS, on pourrait se demander s'il s'agit de la meilleure solution.
+Malgré les bonnes performances que nous offre NATaS, on pourrait se demander s'il s'agit de la meilleure solution.
 %
 En effet, le placement des tâches n'est pas optimal, de même que l'équilibrage de charge.
 %
@@ -36,8 +33,7 @@ Seule la solution utilisant un processus MPI par noeud NUMA permettrait de suppr
 %
 Mais cette suppression se ferait au prix d'un algorithme moins efficace.
 %
-Donc une meilleure solution pourrait être d'améliorer les ordonnanceurs existants en leurs ajoutant une meilleure prise en charge des architectures NUMA.
-
+Donc une meilleure solution pourrait être d'améliorer les ordonnanceurs existants en leur ajoutant une meilleure prise en charge des architectures NUMA.
 
 %   (-_-)   %
 \begin{center}
@@ -46,31 +42,30 @@ Donc une meilleure solution pourrait être d'améliorer les ordonnanceurs exista
        & & Cube 100 & Cube 100 & Cube 100 \\
        & & Npri 1   & Npri 3   & Npri 8 \\
     \hline
-&        First Touch &	1.91 &	2.18 &	2.49 \\
-SpMV &   Interleave  &	2.42 &	2.70 &	3.00 \\
-&        NATaS       &	2.08 &	3.08 &	3.80 \\
-&        MPI         &	2.89 &	3.29 &	3.81 \\
+&        First Touch & 1.91 & 2.18 & 2.49 \\
+SpMV &   Interleave  & 2.42 & 2.70 & 3.00 \\
+&        NATaS       & 2.08 & 3.08 & 3.80 \\
+&        MPI         & 2.89 & 3.29 & 3.81 \\
     \hline
-&        First Touch &	5.97 &	6.39 &	8.64 \\
-Facto &  Interleave  &	5.50 &	5.62 &	7.51 \\
-&        NATaS       &	6.14 &	7.54 &	10.56 \\
-&        MPI         &	6.37 &	7.58 &	9.92 \\
+&        First Touch & 5.97 & 6.39 & 8.64 \\
+Facto &  Interleave  & 5.50 & 5.62 & 7.51 \\
+&        NATaS       & 6.14 & 7.54 & 10.56 \\
+&        MPI         & 6.37 & 7.58 & 9.92 \\
     \hline
-&        First Touch &	1.69 &	2.12 &	2.71 \\
-TRSV &   Interleave  &	1.84 &	2.18 &	2.83 \\
-&        NATaS       &	1.82 &	2.49 &	3.48 \\
-&        MPI         &	3.21 &	3.26 &	3.70 \\
+&        First Touch & 1.69 & 2.12 & 2.71 \\
+TRSV &   Interleave  & 1.84 & 2.18 & 2.83 \\
+&        NATaS       & 1.82 & 2.49 & 3.48 \\
+&        MPI         & 3.21 & 3.26 & 3.70 \\
     \hline
   \end{tabular}
   \captionof{table}{Accélérations obtenues en fonction de la politique d'allocation mémoire. La version MPI ne fait pas exactement le même calcul, elle permet juste d'obtenir une indication sur l'accélération maximale que nous pouvons atteindre.}
   \label{tab:rostand_sum}
 \end{center}
 
-
 Sur une machine avec beaucoup de bancs NUMA, l'ordonnanceur NATaS ne passe pas à l'échelle.
 %
 Sa structure interne n'est pas assez distribuée, l'utilisation de compteurs globaux de tâches est loin d'être optimal.
 %
-Malgré une implémentation sous optimale, NATaS offre de meilleurs performances que les ordonnanceurs habituels.
+Malgré une implémentation sous-optimale, NATaS offre de meilleures performances que les ordonnanceurs habituels.
 %
-Il est donc essentiel d'optimiser les accès mémoires des applications limitées par la bande passante mémoire sur le machine NUMA.
+Il est donc essentiel d'optimiser les accès mémoires des applications limitées par la bande passante mémoire sur la machine NUMA.

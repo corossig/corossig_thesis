@@ -14,13 +14,11 @@ Pour 3 variables primaires, nous obtenons 95~\% des performances de la version e
 Par contre, nous n'obtenons que 70~\% avec 1 variable primaire.
 
 
-
-
 Malheureusement, sur la machine Manumanu, malgré un placement optimal des pages mémoires, NATaS ne fait pas aussi bien que MPI (Fig.~\ref{fig:res_spmv_nas_manu}).
 %
-Les compteurs matérielles nous indiquent qu'un nombre non négligeable d'accès à une mémoire distante sont faits.
+Les compteurs matériels nous indiquent qu'un nombre non négligeable d'accès à une mémoire distante sont faits.
 %
-Or, nous avons vérifié l'emplacement physique des pages mémoires de la matrices ainsi que celles des vecteurs et celles-ci sont bien placées.
+Or, nous avons vérifié l'emplacement physique des pages mémoires de la matrice ainsi que celles des vecteurs et celles-ci sont bien placées.
 %
 Les accès à la mémoire distante proviennent donc de l'ordonnanceur de tâches.
 %
@@ -40,4 +38,4 @@ Mais ce type d'ordonnanceur est dur à écrire, nos machines de calculs étant e
 %
 L'utilisation de 2 bancs NUMA sur Manumanu nous donne une accélération de 10, tout comme la version en mémoire distribuée.
 %
-Au delà de 2 bancs NUMA, les performances sont légèrement meilleures que la version OpenMP, atteignant une accélération de 32.
+Au-delà de 2 bancs NUMA, les performances sont légèrement meilleures que la version OpenMP, atteignant une accélération de 32.

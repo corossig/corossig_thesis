@@ -1,7 +1,7 @@
 \subsection{Méthode itérative}
 Une autre approche souvent utilisée pour résoudre de grands systèmes d'équations linéaires creux consiste à utiliser des méthodes de résolution itérative~\cite{Saad96IMSLS}.
 %
-On appel méthode itérative une méthode qui permet de résoudre un problème en partant d'une solution initial $x^0$ et qui à chaque itération donne une nouvelle solution $x^i$.
+On appelle méthode itérative une méthode qui permet de résoudre un problème en partant d'une solution initial $x^0$ et qui à chaque itération donne une nouvelle solution $x^i$.
 %
 Cette nouvelle solution $x^i$ étant plus proche de la solution exacte du problème que la solution précédente $x^{i-1}$.
 %
@@ -11,9 +11,7 @@ Parmi ces méthodes on peut citer la méthode Jacobi, Gauss-Seidel ou encore SOR
 %
 Mais ces méthodes ne sont pas génériques, leur convergence dépend de certaines propriétés de la matrice.
 %
-Utilisées tel quel, ces méthodes ne convergent pas rapidement dans de nombreux cas concret.
-
-
+Utilisées telles quelles, ces méthodes ne convergent pas rapidement dans de nombreux cas concrets.
 
 
 La méthode du gradient conjugué est une méthode qui s'applique seulement à des matrices carrées symétriques définies positives.
@@ -29,7 +27,6 @@ Le gradient biconjugué est une méthode par projection dans un espace de Krylov
 Le GMRES est aussi une méthode de Krylov, elle fonctionne avec n'importe quelle matrice qui est inversible.
 %
 Chaque itération du GMRES (Algo.~\ref{algo:gmres}) est composé d'un produit matrice vecteur creux (SpMV\footnote{Sparse Matrix Vector multiply}) ainsi que plusieurs produits scalaires (DOT).
-
 
 \begin{algorithm}
   \caption{GMRES avec une orthogonalisation Householder, nous avons surligné le produit matrice-vecteur creux ainsi que les produits scalaires.}
@@ -56,7 +53,6 @@ Chaque itération du GMRES (Algo.~\ref{algo:gmres}) est composé d'un produit ma
   Calculer $y_m$ le minimiseur de $||\beta{}e_1 - \overset{-}{H}_my||_2$ et $x_m := x_0 + V_my_m$
 \end{algorithm}
 
-
 La convergence (i.e. nombre d'itération pour atteindre une précision donnée) des méthodes itératives dépend du nombre de conditionnement de la matrice $||A||_p.||A^{-1}||_p$ où $||A||_p$ est une norme multiplicative.
 %
 Plus ce nombre est grand, plus le nombre d'itérations est grand.
@@ -71,16 +67,15 @@ Un cas idéal serait d'avoir $M=A$, dans ce cas là on obtient la matrice identi
 %
 Or, calculer $A^{-1}$ est très coûteux, à la fois en terme de calcul que de mémoire.
 
-
-La factorisation directe LU peut être considéré comme une très bon préconditionneur.
+La factorisation directe LU peut être considérée comme un très bon préconditionneur.
 %
-En multipliant chaque membre de l'équation par $A^{-1}$ qui correspond à une résolution triangulaire avec $L$ et $U$, nous obtenons l'équation $A^{-1}Ax=A^{-1}b$ qui est équivalent à $x=A^{-1}b$.
+En multipliant chaque membre de l'équation par $A^{-1}$ qui correspond à une résolution triangulaire avec $L$ et $U$, nous obtenons l'équation $A^{-1}Ax=A^{-1}b$ qui est équivalente à $x=A^{-1}b$.
 %
 Par contre, le résultat de la factorisation LU exacte de la matrice creuse $A$ ne pourrait plus être considéré comme creux.
 %
 En effet, au cours de la factorisation, de nombreux termes de remplissage apparaîtront et l'espace mémoire nécessaire au stockage de ces nouveaux termes deviendrait gigantesque.
 %
-Mais nous ne sommes pas obligé de connaître parfaitement $A^{-1}$ pour obtenir un bon préconditionnement.
+Mais nous ne sommes pas obligés de connaître parfaitement $A^{-1}$ pour obtenir un bon préconditionnement.
 %
 C'est pourquoi nous utilisons la factorisation ILU\footnote{Incomplete LU}, une approximation de la factorisation LU qui se trouve être aussi un bon préconditionneur pour nos matrices.
 %
@@ -93,7 +88,6 @@ Pour maintenir un espace mémoire raisonnable, on peut choisir de limiter le niv
   \item Soit en fixant une valeur seuil à partir de laquelle le remplissage est accepté, il s'agit de l'algorithme ILUt;
   \item Soit en choisissant un niveau d'interaction maximal entre les lignes de la matrice, il s'agit de l'algorithme ILU(k).
 \end{itemize}
-
 %   (-_-)   %
 \begin{figure}[!h]
   \centering
@@ -101,7 +95,6 @@ Pour maintenir un espace mémoire raisonnable, on peut choisir de limiter le niv
   \caption{Remplissage d'une matrice lors d'une factorisation ILU(k). Avec $k=3$ nous obtenons une matrice dense. Le niveau 2 n'est pas représenté pour ne pas surcharger la figure.}
   \label{fig:iluk_filling}
 \end{figure}
-
 
 La factorisation ILU(k) peut être faite en deux étapes :
 \begin{itemize}
@@ -117,8 +110,7 @@ Les relations de niveau $n$ sont construites à partir des relations de niveau $
 %
 Pour chaque élément $i$, les relations de niveau $n$ correspondent aux relations de niveau 0 ses relations $n-1$.
 %
-Par exemple, sur la figure~\ref{fig:iluk_filling}, ``1'' a une relation de niveau 1 avec ``3'' donc ``1'' aura une relation de niveau 2 avec ``4'' car ``3'' a une relation de niveau 0 avec ``4''.
-
+Par exemple, sur la figure~\ref{fig:iluk_filling}, ``1'' a une relation de niveau 1 avec ``3'' donc ``1'' aura une relation de niveau 2 avec ``4',' car ``3'' a une relation de niveau 0 avec ``4''.
 
 %   (-_-)   %
 \begin{figure}[!h]
@@ -129,10 +121,8 @@ Par exemple, sur la figure~\ref{fig:iluk_filling}, ``1'' a une relation de nivea
 \end{figure}
 
 
-
-
 \begin{algorithm}
-  \KwData{$A$ : La matrice a factoriser.\\
+  \KwData{$A$ : La matrice à factoriser.\\
     $k$ : le niveau maximal de remplissage.}
   \For{chaque entrée $A_{ij}$ de $A$} {
     \If{$A_{ij} == 0$} { lev($A_{ij}$) := 0 }
@@ -153,7 +143,6 @@ Par exemple, sur la figure~\ref{fig:iluk_filling}, ``1'' a une relation de nivea
   \caption{Factorisation symbolique ILU(k)}
   \label{algo:iluk_symbolic}
 \end{algorithm}
-
 L'algorithme ILUt a l'inconvénient d'avoir un motif de remplissage qui dépend des coefficients de la matrice.
 %
 Nous ne pouvons donc pas prévoir à l'avance l'espace nécessaire au stockage des matrices L et U.
@@ -165,7 +154,6 @@ Il est donc possible de connaître la structure des matrices L et U à l'avance.
 Pour la simulation de réservoir, nous utilisons l'algorithme ILU(k).
 %
 L'algorithme~\ref{algo:gmres_precond} représente un GMRES préconditionné avec une méthode ILU.
-
 \begin{algorithm}
   \caption{GMRES préconditionné par une méthode ILU. Les parties surlignées correspondent au préconditionnement.}
   \label{algo:gmres_precond}

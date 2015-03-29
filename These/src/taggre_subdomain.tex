@@ -1,7 +1,7 @@
 \subsection{Méthode de Jacobi par blocs}
-Afin d'obtenir une évaluation de la borne maximale de l'accélération possible d'obtenir sur une machine donnée, nous proposons de connaître l'accélération obtenue par une méthode de jacobi par bloc et de la comparer à notre solution.
+Afin d'obtenir une évaluation de la borne maximale de l'accélération possible d'obtenir sur une machine donnée, nous proposons de connaître l'accélération obtenue par une méthode de Jacobi par bloc et de la comparer à notre solution.
 %
-Dans cette méthode nous considérons le cas où chaque coeur effectue la factorisation ILU d'un sous bloc diagonal de la matrice.
+Dans cette méthode, nous considérons le cas où chaque coeur effectue la factorisation ILU d'un sous bloc diagonal de la matrice.
 %
 Cette méthode de préconditionnement induit une factorisation et une résolution triangulaire totalement indépendante sur chaque coeur.
 %
@@ -11,16 +11,15 @@ Plus on utilise de coeur, plus ce préconditionneur est inefficace numériquemen
 %
 Mais l'intérêt cette évaluation est que l'accélération obtenue donne une borne supérieure de l'accélération de la factorisation ILU sur la matrice complète.
 %
-Cette borne existe puisque individuellement chaque coeur utilise une factorisation dont la bande passante mémoire est approximativement égal à celle de l'algorithme ILU globale.
+Cette borne existe puisqu’individuellement chaque coeur utilise une factorisation dont la bande passante mémoire est approximativement égale à celle de l'algorithme ILU globale.
 %
 Malgré un parallélisme idéal, nous n'obtenons pas une accélération parfaite (Fig.~\ref{fig:res_facto_mpi}).
 %
 C'est un problème que l'on rencontre souvent dans les codes d'algèbre linéaire creuse.
 %
-Si l'on compare les accélérations obtenues avec celles obtenues avec l'agrégation de tâches on peut voir des résultats légèrement meilleurs pour la méthode Jacobi par blocs.
+Si l'on compare les accélérations obtenues avec celles obtenues avec l'agrégation de tâches, on peut voir des résultats légèrement meilleurs pour la méthode Jacobi par blocs.
 %
-Notre solution d'agrégation n'est pas optimale mais cette différence d'accélération n'est pas seulement due à la granularité du calcul.
-
+Notre solution d'agrégation n'est pas optimale, mais cette différence d'accélération n'est pas seulement due à la granularité du calcul.
 
 %   (-_-)   %
 \begin{figure}
@@ -29,7 +28,6 @@ Notre solution d'agrégation n'est pas optimale mais cette différence d'accél�
   \caption{Performance de la factorisation sur 12 coeurs en utilisant la décomposition de domaine.}
   \label{fig:res_facto_mpi}
 \end{figure}
-
 %   (-_-)   %
 \begin{figure}
   \centering
@@ -38,10 +36,9 @@ Notre solution d'agrégation n'est pas optimale mais cette différence d'accél�
   \label{fig:res_trsv_mpi}
 \end{figure}
 
-
 Il est nécessaire de regarder du côté de la bande passante mémoire pour trouver des explications.
 %
-La bande passante utilisée par la méthode jacobi par bloc est au mieux de 16~Go/s, avec les threads nous utilisons 12~Go/s de bande passante locale dont 5~Go/s de bande passante distante.
+La bande passante utilisée par la méthode Jacobi par bloc est au mieux de 16~Go/s, avec les threads nous utilisons 12~Go/s de bande passante locale dont 5~Go/s de bande passante distante.
 %
 Cette bande passante distante est le résultat des effets NUMA.
 %
@@ -52,7 +49,6 @@ Mais dans le cas des threads, l'espace mémoire est partagé entre deux bancs m�
 Ces transferts auront pour effet d'augmenter la latence des accès mémoires et de réduire le nombre de cycles d'horloge par instruction (CPI\footnote{Clock Per Instruction}), ici on a un CPI de 0,75 pour la version MPI contre 1,08 pour la version threadée.
 %
 L'explication de la différence de performance entre ces deux versions se situe au niveau de la mémoire, on est limité par la bande passante.
-
 %% +-----------------------------+----------+----------+MPI12
 %% |           Metric            |  core 0  |  core 6  |
 %% +-----------------------------+----------+----------+
@@ -67,7 +63,6 @@ L'explication de la différence de performance entre ces deux versions se situe 
 %% |    Remote BW [MBytes/s]     | 11.2482  | 24.9089  |
 %% +-----------------------------+----------+----------+
 
-
 %% +-----------------------------+----------+----------+MPI6(2*3)
 %% |           Metric            |  core 0  |  core 6  |
 %% +-----------------------------+----------+----------+
@@ -81,7 +76,6 @@ L'explication de la différence de performance entre ces deux versions se situe 
 %% | Remote Write BW [MBytes/s]  | 0.532458 | 1.44266  |
 %% |    Remote BW [MBytes/s]     | 7.05638  | 33.4051  |
 %% +-----------------------------+----------+----------+
-
 %% +-----------------------------+----------+----------+MPI6(1*6)
 %% |           Metric            |  core 0  |  core 6  |
 %% +-----------------------------+----------+----------+
@@ -96,7 +90,6 @@ L'explication de la différence de performance entre ces deux versions se situe 
 %% |    Remote BW [MBytes/s]     |  6.2931  | 2.07845  |
 %% +-----------------------------+----------+----------+
 
-
 %% +-----------------------------+---------+---------+THREAD_NO_AGG
 %% |           Metric            | core 0  | core 6  |
 %% +-----------------------------+---------+---------+
@@ -110,7 +103,6 @@ L'explication de la différence de performance entre ces deux versions se situe 
 %% | Remote Write BW [MBytes/s]  | 170.677 | 112.472 |
 %% |    Remote BW [MBytes/s]     | 2090.45 | 1454.3  |
 %% +-----------------------------+---------+---------+
-
 
 %% +-----------------------------+---------+---------+THREAD_AGG_3
 %% |           Metric            | core 0  | core 6  |

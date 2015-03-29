@@ -7,19 +7,17 @@ Ces tâches sont le plus souvent dépendantes les unes des autres, le résultat 
 %
 Dans ce cas, $T2$ dépend de $T1$, $T2$ est donc un successeur de $T1$ et $T1$ est un prédécesseur de $T2$.
 %
-Une tâche ayant des prédécesseurs ne pourras commencer son calcul que lorsque toutes les taches prédécesseurs ont complètement terminées leurs calculs.
+Une tâche ayant des prédécesseurs ne pourra commencer son calcul que lorsque toutes les taches prédécesseurs ont complètement terminées leurs calculs.
 %
-Une fois toute ces dépendances explicités, nous obtenons un graphe de tâches.
+Une fois toutes ces dépendances explicitées, nous obtenons un graphe de tâches.
 %
 Ce graphe doit être direct et acyclique.
 %
-La propriété directe donneras l'ordre d'exécution des tâches.
+La propriété directe donnera l'ordre d'exécution des tâches.
 %
 La propriété acyclique est nécessaire pour éviter des inter-blocages, si une tâche $T1$ dépend d'une tâche $T2$ alors indirectement elle dépend aussi des tâches dont $T2$ dépend.
 %
 Or, dans un cycle, cela signifie que $T1$ dépendra indirectement de $T1$.
-
-
 
 Pour représenter le parallélisme à base de tâches, nous utilisons des graphes orientés acycliques, ou DAG\footnote{Directed Acyclic Graph}.
 %
@@ -29,8 +27,6 @@ Ainsi, nous pouvons représenter le parallélisme sous une forme abstraite indé
 %
 Cette méthode de parallélisation a été appliquée à de nombreux travaux et permet ainsi de paralléliser efficacement des codes de calcul~\cite{BBAC2014,LSAT2013,LY2012,ABGL2013}.
 
-
-
 Les tâches de calcul peuvent être vues comme des fonctions avec des données en entrées et des données en sortie.
 %
 Le processus de distribution des tâches sur les différents coeurs de calcul est appelé ordonnancement.
@@ -39,11 +35,9 @@ Le degré de division du problème initial en tâche est appelé granularité.
 %
 Le rapport entre le coût d'ordonnancement d'une tâche et le temps de calcul de la tâche définira si nous avons une granularité fine ou grossière.
 %
-La démocratisation des processeurs multi-coeurs a engendrée l'apparition de cadriciels à base de tâches~\cite{taskscomparison} qui intègre un moteur d'exécution capable d'abstraire la machine.
-
- comme illustré par des outils tel que Intel TBB~\cite{Intel_TBB}
-
+La démocratisation des processeurs multi-coeurs a engendré l'apparition de cadriciels à base de tâches~\cite{taskscomparison} qui intègre un moteur d'exécution capable d'abstraire la machine.
+ comme illustré par des outils tels que Intel TBB~\cite{Intel_TBB}
 %
-Dans ces modèles, la granularité correspond au nombre d'instructions processeur contenues dans la tâche.
+Dans ces modèles, la granularité correspond au nombre d'instructions processeur contenu dans la tâche.
 %
 Cette granularité dépend de l'algorithme à paralléliser ainsi que de l'ordonnanceur de tâches.

@@ -4,8 +4,6 @@ Not all runtimes are equal, we can try to classify all these runtime by function
 We can consider three form of parallelism expression : loop parallelism, PTG and insert task paradigm.
 %
 
-
-
 %% The first table~\ref{tab:runtime_family} summarizes capabilities of a set of runtime, a {\it ++} entry means that the capacity is often put forward in publication, a single {\it +} means that the runtime has the functionality but it is not a major advantage of the runtime.
 %% %
 %% The second table~\ref{tab:runtime_archi} summarizes target architecture of the same set of runtime.
@@ -14,11 +12,9 @@ We can consider three form of parallelism expression : loop parallelism, PTG and
 %% An implicit method when the runtime has a memory manager and can do automatic transfer.
 %% Or an explicit method often describe as user task, some runtime, like StarPU, support asynchronous transfer, without this support the explicit method is less efficient.
 
-
 %% We can also try to differentiate other differences, like the use of an API ({\it Application Programming Interface}) or the use of a source-to-source compiler.
 %% %
 %% Data management is also important in a runtime to optimize data transfer between CPU and GPU, or between two CPUs.
-
 %% \Beginommen{table}[h!]
 %% \centering
 %% \begin{tabular}{c|ccc}
@@ -42,7 +38,6 @@ We can consider three form of parallelism expression : loop parallelism, PTG and
 %% \caption{Classification of runtime by capabilities}
 %% \label{tab:runtime_family}
 %% \end{table}
-
 %% \begin{table}[h!]
 %% \centering
 %% \begin{tabular}{c|ccc}

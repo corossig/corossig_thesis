@@ -1,11 +1,9 @@
 \subsubsection{Mémoire distribuée}
-En mémoire distribuée, nous n'effectuons pas les mêmes calculs qu'en mémoire partagée, mais les accélérations obtenues nous donnerons une approximation des performances que nous pourrons obtenir.
+En mémoire distribuée, nous n'effectuons pas les mêmes calculs qu'en mémoire partagée, mais les accélérations obtenues nous donneront une approximation des performances que nous pourrons obtenir.
 %
 Sur la machine Rostand, la factorisation atteint une accélération de 11,8 et la résolution triangulaire une accélération de 3,5.
 %
 Sur la machine Manumanu, cette accélération monte à 93 pour la factorisation (Fig.~\ref{fig:res_facto_mpi_manu}) et à 73 pour la résolution triangulaire (Fig.~\ref{fig:res_trsv_mpi_manu}).
-
-
 
 \subsubsection{First touch}
 Les résultats de la factorisation et de la résolution triangulaire avec une allocation first touch sur la machine  sont exposés dans le chapitre précèdent.
@@ -14,11 +12,9 @@ Les résultats ne sont pas aussi bons que ceux que nous pourrions obtenir avec u
 %
 Pour rappel, nous obtenions au mieux une accélération de 8,7 sur coeurs pour la factorisation et une accélération de 2,8 pour la résolution triangulaire.
 
-
 Sur la machine Manumanu, nous obtenons le même type d'accélération que pour le SpMV.
 %
 Tant que nous utilisons moins de 2 bancs NUMA, nous obtenons une accélération de 10 pour la factorisation (Fig.~\ref{fig:res_facto_ft_manu}) et une accélération de 6,2 pour la résolution triangulaire (Fig.~\ref{fig:res_trsv_ft_manu}).
-
 
 \subsubsection{Interleave}
 Pour essayer de diminuer les effets NUMA, nous activons la politique d'allocation mémoire interleave.
@@ -29,22 +25,18 @@ Sur Rostand, la factorisation donne des résultats légèrement moins bons qu'av
 %
 Par contre, nous obtenons une amélioration entre 3~\% et 30~\% de la résolution triangulaire pour un nombre faible de variables primaires (Fig.~\ref{fig:res_trsv_inter_rostand}).
 
-
-
 Sur Manumanu, la factorisation se comporte de la même façon que sur Rostand (Fig.~\ref{fig:res_facto_inter_manu}).
 %
 De même, l'accélération maximale de la résolution triangulaire est meilleure avec une politique d'allocation interleave (Fig.~\ref{fig:res_trsv_inter_manu}).
 
 
-
-
 \subsubsection{NATaS}
 \`A la différence des autres ordonnanceurs, NATaS va tenir compte de l'affinité NUMA des tâches.
 %
-Cette affinité a été définit par Taggre de tel sorte à équilibrer la charge sur les différents bancs NUMA.
+Cette affinité a été définie par Taggre de telle sorte à équilibrer la charge sur les différents bancs NUMA.
 %
-NATaS offre de meilleurs performances sur Rostand par rapport à la politique d'allocation interleave.
+NATaS offre de meilleures performances sur Rostand par rapport à la politique d'allocation interleave.
 %
 La factorisation est 40\% plus rapide avec 8 variables primaires et la résolution triangulaire est 23\% plus rapide.
 %
-Avec 1 variable primaire nous n'obtenons pas de gain sur la résolution triangulaire.
+Avec 1 variable primaire, nous n'obtenons pas de gain sur la résolution triangulaire.

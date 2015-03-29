@@ -7,18 +7,17 @@ Ainsi, nous avons construit l'opérateur G.
 %
 Son but est privilégier une direction d'agrégation par la hauteur et la largeur.
 %
-Si seul la largeur est privilégiée, nous nous rapprochons de l'opérateur F.
+Si seule la largeur est privilégiée, nous nous rapprochons de l'opérateur F.
 %
-Mais ces deux algorithmes ne sont pas équivalent, la taille des tâches de l'opérateur F n'est pas fixe, elle dépend du nombre de tâches à une hauteur donnée alors que l'opérateur G crée des tâches de taille fixe.
+Mais ces deux algorithmes ne sont pas équivalents, la taille des tâches de l'opérateur F n'est pas fixe, elle dépend du nombre de tâches à une hauteur donnée alors que l'opérateur G crée des tâches de taille fixe.
 %
-En privilégiant les tâches de type continuation nous retrouvons l'opérateur C.
+En privilégiant les tâches de type continuation, nous retrouvons l'opérateur C.
 %
 Cette priviligation se fait à l'aide de la fonction de tri dans l'algorithme~\ref{algo:algo_G}.
 %
 Malheureusement cette fonction de tri n'est pas facilement définissable.
 %
 Nous n'avons donc pas implémenté directement cet algorithme.
-
 
 \begin{algorithm}
   \caption{Algorithme de l'opérateur généralisé.}

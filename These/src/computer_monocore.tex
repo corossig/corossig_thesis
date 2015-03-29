@@ -1,14 +1,13 @@
 \subsection{Processeurs monocoeur}
-Pour être capable de simuler de grands problèmes physiques, nous avons besoin de beaucoup de puissance de calcul.
+Pour être capables de simuler de grands problèmes physiques, nous avons besoin de beaucoup de puissance de calcul.
 %
 Cette puissance se mesure en FLOPS\footnote{FLoating-point Operations Per Second}, il s'agit du nombre d'opérations par seconde qu'un ordinateur peut effectuer sur des nombres à virgules flottantes.
 %
 Même les processeurs monocoeur peuvent faire des opérations en parallèle.
 %
-Le parallélisme au niveau instruction en est un bon exemple, les pipelines d'instructions permettent de paralléliser les différentes étapes liées au traitement d'une exécution.
+Le parallélisme au niveau des instructions en est un bon exemple, les pipelines d'instructions permettent de paralléliser les différentes étapes liées au traitement d'une exécution.
 %
 Dans l'idéal, le processeur utilisant un pipeline d'instruction pourra exécuter une opération par cycle, donc un processeur à 4~GHz aura une puissance de calcul de 4~GFLOPS si les opérations flottantes sont faites en 1 cycle.
-
 
 Par la suite, les processeurs ont gagné des instructions permettant d'effectuer une même opération sur des données différentes, aussi appelées instructions SIMD dans la taxonomie de Flynn.
 %

@@ -5,7 +5,7 @@ Il est nécessaire de savoir à partir de quel moment le surcoût d'agrégation 
 %
 Dans notre cas l'agrégation est faite au début du programme et reste valide tant que la structure du réservoir ne change pas.
 %
-Le temps passé à appliquer les opérateurs d'agrégation va dépendre du nombre de tâche, des opérateurs et de l'ordre des opérateurs.
+Le temps passé à appliquer les opérateurs d'agrégation va dépendre du nombre de tâches, des opérateurs et de l'ordre des opérateurs.
 %
 L'opérateur C mettra 150~$\mu{s}$ à traiter une tâche, l'opérateur F mettra 190~$\mu{s}$ et l'opérateur D mettra 250~$\mu{s}$.
 %
@@ -14,7 +14,6 @@ Par exemple pour la matrice SPE10 il faut 1,67~s pour appliquer l'opérateur C, 
 Toujours pour le cas SPE10, il devient rentable d'utiliser Taggre à partir d'environ 8 factorisations ou 10 résolutions triangulaires (Tab.~\ref{tab:gain_agg}).
 %
 Les 10 résolutions triangulaires peuvent être faites dans une résolution du GMRES.
-
 %   (-_-)   %
 \begin{center}
   \begin{tabular}{ | r | c || c | c | c | }
