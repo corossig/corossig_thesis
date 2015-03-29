@@ -7,7 +7,27 @@ Il est intéressant de voir si Taggre peut répondre aux 13 problèmes et si c'e
 %
 Malheureusement, tous les problèmes ne se prêtent pas à cet exercice.
 %
-Nous avons donc choisi quelques graphes qui peuvent représenter un problème spécifique.
+Certaines classes de problèmes ne peuvent pas se paralléliser avec du parallélisme à base de graphes de tâches
+(N-Body Methods, MapReduce, Graph Traversal, Dynamic Programming, Backtrack and Branch-and-Bound, Graphical Models and Finite State Machines)
+%
+Les problèmes rencontrés en algèbre linéaire dense sont souvent réguliers et le programmeur peut facilement choisir une granularité.
+%
+La classe de problème {\em structured grids} peuvent être paralléliser avec du parallélisme à base de graphe de tâches, mais il ne s'agit pas du meilleur paradigme de parallélisation pour cette classe.
+%
+La même réflexion peut être faite pour la classe de problème {\em unstructured grids}.
+
+
+La classe de problème {\em combinational logic} s'apparente à du parallélisme d'instructions.
+%
+Cette granularité est trop faible pour être traitée par un ordonnanceur logiciel.
+
+Il ne reste donc plus que deux classes de problème pouvant utiliser Taggre, l'algèbre linéaire creuse et les méthodes spectrales.
+%
+L'algèbre linéaire creuse comporte un ensemble très vaste d'algorithmes qui ne se parallélisent pas tus de la même manière.
+%
+Dans ce manuscrit, nous étudierons la parallélisation du produit matrice vecteur creux et de la factorisation ILU.
+
+
 
 \subsubsection{Méthodes spectrales}
 Dans le cas des méthodes spectrales, le graphe représentant le parallélisme est plus large que haut.
@@ -61,4 +81,4 @@ La table~\ref{tab:spectral}
 %% D 16 965
 %% D 32 899
 %% D 64 1033
-\subsubsection{Les arbres}
+%\subsubsection{Les arbres}
