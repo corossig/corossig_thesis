@@ -21,7 +21,7 @@ Si nous regardons la structure mémoire de deux bancs NUMA de la figure~\ref{fig
 %
 Pour limiter le plus possible les pénalités mémoires, il est nécessaire que tous les coeurs de calcul utilisent la mémoire qui est la plus proche.
 %
-Par exemple, sur une machine à deux bancs NUMA, les accès à la mémoire du banc NUMA 2 depuis les coeurs du banc NUMA 1 coûterons plus chère que les accès à la mémoire du banc NUMA 1.
+Par exemple, sur une machine à deux bancs NUMA, les accès à la mémoire du banc NUMA 1 depuis les coeurs du banc NUMA 0 coûterons plus chère que les accès à la mémoire du banc NUMA 0.
 
 %   (-_-)   %
 \begin{figure}

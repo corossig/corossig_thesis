@@ -1,16 +1,14 @@
 \subsection{AutoNUMA}
 \label{sec:autonuma}
 Linux n'a pas adopté la politique d'allocation Next touch.
-%
 \`A la place, les développeurs de Linux ont choisi d'implémenter un autre mécanisme pour améliorer la localité NUMA : {\em AutoNUMA}.
-%
-Ce mécanisme va scanner périodiquement une portion de la mémoire d'un processus, et de la même façon que la politique next touch, le prochain accès à une page de cette portion entraînera un déplacement de la page.
+Ce mécanisme va scanner périodiquement une portion de la mémoire d'un processus, et de la même façon que la politique next touch, le prochain accès à une page de cette portion entrainera un déplacement de la page.
 %
 Pour détecter l'accès à une page, le noyau utilise la MMU.
 %
 Il supprime la relation adresse virtuelle vers adresse physique de la MMU et peut ainsi recevoir un signal lors du prochain accès.
 %
-Ce mécanisme à un surcoût, c'est pourquoi il n'est pas appliqué sur toute la mémoire d'un coup.
+Ce mécanisme à un surcout, c'est pourquoi il n'est pas appliqué sur toute la mémoire d'un coup.
 %
 Le noyau donne la possibilité de modifier plusieurs paramètres de ce mécanisme, mais ces paramètres sont globaux.
 %
@@ -37,4 +35,5 @@ Le mécanisme s'applique sur toute la mémoire, même les zones mémoires peu ut
 %
 Dans le cas de notre application, cette politique permet d'améliorer la localité mémoire sans changer une ligne de code.
 %
-Mais le surcoût lié à l'analyse du placement des pages mémoires peut devenir problématique.
+Mais le surcout lié à l'analyse du placement des pages mémoires peut devenir problématique.
+

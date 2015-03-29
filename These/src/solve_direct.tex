@@ -68,13 +68,24 @@ Il existe des techniques de renumérotations permettant de limiter le remplissag
   }
 \end{algorithm}
 
+
 %   (-_-)   %
 \begin{figure}[!h]
-  \centering
-  \includegraphics[width=\textwidth]{lu_example}
-  \caption{Exemple de factorisation LU d'une matrice creuse avec remplissage.}
-  \label{fig:lu_example}
+     \begin{center}
+        \subfigure[Matrice originale, nombre de non-zéros : 5104.]{
+          \label{fig:lu_example_1}
+          \includegraphics[width=0.48\textwidth]{lu_example_1}
+        }
+        ~
+        \subfigure[Matrice factorisée, nombre de non-zéros : 58202.]{
+          \label{fig:lu_example_2}
+          \includegraphics[width=0.48\textwidth]{lu_example_2}
+        }
+    \end{center}
+    \caption{Exemple de factorisation LU d'une matrice creuse avec remplissage.}
+    \label{fig:lu_example}
 \end{figure}
+
 
 Les méthodes directes ont l'avantage de fournir une solution exacte au problème $Ax=b$.
 %

@@ -57,9 +57,9 @@ Par contre, cette solution ne convient toujours pas à résoudre notre problème
 
 MAi\footnote{Memory Affinity Interface}\cite{mai} fournit une interface de placement des données.
 %
-Par rapport à MaMI, MAi implémente des
+Par rapport à MaMI, MAi implémente des stratégies génériques d'allocations des pages mémoires.
 %
-Mais MAi ne fournit pas d'ordonnanceur de tâches, il faut donc compter sur un
+Mais MAi ne fournit pas d'ordonnanceur de tâches, nous ne pourrons donc pas exécuter les tâches sur les noeuds de calcul où la mémoire est allouée.
 
 
 

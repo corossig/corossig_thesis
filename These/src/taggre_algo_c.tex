@@ -30,9 +30,13 @@ Par exemple, un cube de 5 éléments de coté, soit 125 tâches, sera transform�
 \end{figure}
 
 
-Comme pour les autres opérateurs, nous devons vérifier qu'aucun cycle ne sera créé.
+L'opérateur C pourra être utilisé pour privilégier les effets caches liés à l'exécution de deux tâches utilisant des données mémoires proches.
 %
-Pour fonctionner, cet opérateur a besoin que le programmeur attribue un nombre unique à chaque tâche et ainsi avoir un ordre strict sur les tâches.
+Le programmeur doit fournir les informations permettant de connaître les tâches pouvant bénéficier de ce type d'optimisation.
+%
+Pour répondre à notre problème, nous avons décidé que deux tâches ayant un indice consécutif seront plus efficace si elles sont exécutées l'une après l'autre.
+%
+Pour fonctionner, cet opérateur a besoin que le programmeur attribue un indice unique à chaque tâche et ainsi avoir un ordre strict sur les tâches.
 %
 Dans notre cas on va utiliser la numérotation naturelle des cellules.
 %
@@ -41,6 +45,9 @@ Puis l'opérateur agrégera ensemble les tâches ayant des nombres qui se suiven
 Par exemple sur la figure \ref{fig:algo_C} les tâches 2 et 3 ont des nombres consécutifs mais n'ont pas de dépendance entre elles, elles ne seront donc pas agrégées ensemble.
 
 
+
+Comme pour les autres opérateurs, nous devons vérifier qu'aucun cycle ne sera créé.
+%
 Ajoutons un prédicat à l'algorithme : pour pouvoir utiliser cet algorithme, il faut absolument que pour chaque tâche $i$, l'indice associé à la tâche $i$ soit strictement inférieur aux indices associés aux successeurs de la tâche $i$.
 %
 Dans le cas d'une factorisation ILU, ce prédicat est toujours vérifié.

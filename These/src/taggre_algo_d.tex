@@ -1,7 +1,7 @@
 \subsubsection{Dézoomé}
-L'opérateur dézoomé est un peu plus élaboré que les opérateurs précédents, il permet d'effectuer des agrégations assez génériques et souvent efficaces.
+L'opérateur dézoomé est une spécification de l'algorithme G, il permet d'effectuer des agrégations assez génériques et souvent efficaces.
 %
-En effet, cet opérateur va travailler à diminuer à la fois la largeur et la hauteur du graphe.
+En effet, la fonction de tri de cet opérateur va travailler à diminuer à la fois la largeur et la hauteur du graphe.
 %
 Abrégé {\em D} dans Taggre, cet opérateur essaye de créer des agrégats de tâches proche spatialement, un peu à la manière d'un partitionneur de graphe.
 %
@@ -10,7 +10,7 @@ Le nom {\em dézoomé} provient du fait que la structure globale du graphe ne ch
 Dans les meilleurs cas le nombre de tâches peut être divisé par le paramètre donné par le programmeur (Fig.~\ref{fig:algo_D4}).
 
 
-L'algorithme \ref{algo:algo_D} permet d'implémenter l'opérateur dézoomé tout en assurant l'absence de création de cycle.
+L'algorithme~\ref{algo:algo_D}, directement repris de l'opérateur G, permet d'implémenter l'opérateur dézoomé tout en assurant l'absence de création de cycle.
 %
 L'algorithme va simuler l'exécution des tâches et n'agrégera des tâches ensemble que si le simulateur peut l'ordonnancer.
 %

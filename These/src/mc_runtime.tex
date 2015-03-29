@@ -81,13 +81,22 @@ En ajoutant des annotations autour d'une boucle for, les itérations de la boucl
 %
 Il existe aussi des annotations permettant d'effectuer des réductions à la fin de la boucle.
 %
-Ce n'est qu'en 2008 que le support des tâches est ajouté à OpenMP dans sa version 3.0.
+Ce n'est qu'en 2008 que le support des tâches est ajouté à OpenMP dans sa version 3.0~\cite{openmptasks}.
 %
 Le programmeur peut créer des tâches parallèles mais il n'y a aucun moyen de spécifier les dépendances entre les tâches.
 %
 Les graphes de tâches ne peuvent donc pas être directement utilisés dans OpenMP.
 %
 OpenMP est donc un runtime très complet pour faire du parallélisme de boucle mais son modèle de tâches se rapproche du modèle de Cilk.
+
+
+Intel TBB~\cite{Intel_TBB}, dont le développement a démarré en 2006, permet aussi de faire du parallélisme à base de tâches.
+%
+La gestion des dépendances entre les tâches est à la charge du programmeur mais TBB fournit les méthodes nécessaires telles que l'incrémentation et la décrémentation atomique du compteur de référence d'une tâche.
+%
+Le modèle d'abstraction du matérielle dans TBB ne permet pas de connaître le nombre de threads utilisés.
+%
+Ce choix est fait parce que pour Intel le programmeur n'a pas a se soucier des problèmes d'ordonnancement.
 
 
 
@@ -105,7 +114,6 @@ CUDA est développé par NVidia et ne permet de programmer que des GPU NVidia.
 OpenCL est une spécification du Khronos Group et a pour but de fournir une interface de programmation standard pour programmer toutes sortes d'accélérateurs.
 %
 Ces accélérateurs peuvent être des GPUs mais de manière générale il s'agit de co-processeurs déportés.
-
 
 
 
@@ -132,11 +140,27 @@ StarPU intègre aussi plusieurs politiques d'ordonnancement permettant d'adapter
 L'équipe de développement met aussi en avant la possibilité d'écrire son propre ordonnanceur et de l'intégrer à StarPU.
 
 
-X-KAAPI~\cite{xkaapi} est aussi développé à Inria.
+X-KAAPI~\cite{xkaapi} est aussi développé à Inria et permet de programmer des applications qui auront du code qui sera exécuté à la fois sur CPU et sur GPU.
+%
+Il se différencie de StarPU par son système de vol de tâches dynamique.
+%
+X-KAAPI va partitionné le graphe de tâches et distribuer les partitions aux threads.
+%
+Chaque thread a ainsi une première approximation de l'ordonnancement du graphe.
+%
+Le surcoût de gestion des dépendances est ainsi limité aux frontières entre les partitions.
+%
+Lors de l'exécution du code, si un thread se retrouve à court de tâches, il va essayer d'en voler à un autre thread que l'on appellera {\em victime}.
+%
+Mais il ne va pas la voler complètement, il la laisse dans la pile de la victime en ajoutant comme information que la tâche a été volée.
+%
+Ainsi lorsque la victime découvrira qu'une tâche a été volée, elle devra vérifier les dépendances de cette tâche.
+%
+Ce système permet de réduire le surcoût d'ordonnancement, avec un bon partitionnement, le vol de tâche est plus rare et beaucoup de temps a été économisé sur la gestion des dépendances.
 
 
 
-OmpSs~\cite{OMPSs} est un runtime qui permet tout comme StarPU d'écrire du code à la fois pour le CPU et pour le GPU puis de laisser le runtime choisir parmi toutes les versions d'une fonction.
+OmpSs~\cite{OMPSs} est un runtime qui permet, tout comme StarPU et X-KAAPI, d'écrire du code à la fois pour le CPU et pour le GPU puis de laisser le runtime choisir parmi toutes les versions d'une fonction.
 %
 La différence entre ces deux runtimes provient surtout de la description du parallélisme.
 %

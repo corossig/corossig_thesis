@@ -1,6 +1,6 @@
 De manière générale, quand un programme alloue de la mémoire, il reçoit un pointeur sur de la mémoire virtuelle.
 %
-Cette mémoire virtuelle est unique à chaque processus et est partagée entre les threads.
+Cette mémoire virtuelle est unique à chaque processus et est partagée entre les threads d'un même processus.
 %
 La relation entre la mémoire virtuelle et la mémoire physique est faite par le système d'exploitation.
 %
@@ -10,11 +10,11 @@ Lorsqu'un processus accède à de la mémoire virtuelle qui n'as pas encore ét�
 %
 Cette faute est traitée par le système d'exploitation, il s'occupera de trouver une page mémoire libre dans la mémoire physique et il la fera correspondre à une adresse virtuelle.
 %
-Lors des accès mémoire du processus, la traduction de l'adresse virtuelle vers l'adresse physique est faite par un des composant du processeur, l'unité de gestion mémoire ou MMU\footnote{Memory Management Unit}.
+Lors des accès mémoire du processus, la traduction de l'adresse virtuelle vers l'adresse physique est faite par un des composants du processeur, l'unité de gestion mémoire ou MMU\footnote{Memory Management Unit}.
 %
 De cette façon, le processus ne voit que l'espace d'adressage virtuelle et ne connaît rien de l'espace d'adressage physique.
 %
-Le système d'exploitation peut donc changer l'emplacement physique d'une page sans affecter le fonctionnement du processus, c'est totalement transparent.
+Le système d'exploitation peut donc changer l'emplacement physique d'une page sans affecter le fonctionnement du processus de manière totalement transparent.
 %
 Toutefois, l'emplacement physique d'une page virtuelle peut impacter les performances du processus sur les architectures NUMA.
 %

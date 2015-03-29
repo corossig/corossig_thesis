@@ -1,5 +1,5 @@
-\subsection{Décomposition en sous-domaines}
-Afin d'obtenir une évaluation de la borne maximale de l'accélération possible d'obtenir sur un hardware donné, nous proposons de comparer l'accélération obtenue par une méthode de jacobi par bloc.
+\subsection{Méthode de Jacobi par blocs}
+Afin d'obtenir une évaluation de la borne maximale de l'accélération possible d'obtenir sur une machine donnée, nous proposons de connaître l'accélération obtenue par une méthode de jacobi par bloc et de la comparer à notre solution.
 %
 Dans cette méthode nous considérons le cas où chaque coeur effectue la factorisation ILU d'un sous bloc diagonal de la matrice.
 %
@@ -17,7 +17,7 @@ Malgré un parallélisme idéal, nous n'obtenons pas une accélération parfaite
 %
 C'est un problème que l'on rencontre souvent dans les codes d'algèbre linéaire creuse.
 %
-Si l'on compare les accélérations obtenues avec celles obtenues avec l'agrégation de tâches on peut voir des résultats légèrement meilleurs pour la méthode jacobi par bloc.
+Si l'on compare les accélérations obtenues avec celles obtenues avec l'agrégation de tâches on peut voir des résultats légèrement meilleurs pour la méthode Jacobi par blocs.
 %
 Notre solution d'agrégation n'est pas optimale mais cette différence d'accélération n'est pas seulement due à la granularité du calcul.
 
@@ -45,7 +45,7 @@ La bande passante utilisée par la méthode jacobi par bloc est au mieux de 16~G
 %
 Cette bande passante distante est le résultat des effets NUMA.
 %
-Dans le cas des processus MPI utilisée par la méthode jacobi par bloc, chaque processus a son propre espace mémoire et la localité des données est assurée sous réserve d'un placement statique et optimal des processus.
+Dans le cas des processus MPI utilisée par la méthode Jacobi par blocs, chaque processus a son propre espace mémoire et la localité des données est assurée sous réserve d'un placement statique et optimal des processus.
 %
 Mais dans le cas des threads, l'espace mémoire est partagé entre deux bancs mémoires et si les accès mémoires ne sont pas optimisés, il y aura des transferts entre les bancs NUMA.
 %

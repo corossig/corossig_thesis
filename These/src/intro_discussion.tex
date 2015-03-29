@@ -1,34 +1,36 @@
-Les méthodes de parallélisation actuels peuvent s'appliquer à des noyaux d'algèbre linaire creuse.
+La simulation numérique est une opération essentielle dans beaucoup d'entreprise.
 %
-
-
-
-
-
-
-Il existe plusieurs formes de parallélisme et diverses manières de les exploiter.
+Ce type de simulation se base des modèles physiques représentés sous la forme d'équation.
 %
-Les solutions
+L'algèbre linéaire permet de résoudre ces équations.
 %
-La composabilité des diverses solutions peut aussi poser problème.
+Mais ces résolutions sont coûteuses en temps de calcul.
 %
-Par exemple une solution comme PaRSEC permet d'exprimer du parallélisme de tâche en mémoire distribuée mais ne permet pas d'exprimer facilement du parallélisme de boucle.
+C'est pourquoi certaines techniques comme les méthodes itératives ont été inventées.
 %
-Dans cet exemple, nous pouvons vouloir utiliser en plus de PaRSEC un autre runtime qui s'occupera du parallélisme de boucle.
-%
+Ces méthodes fournissent rapidement une solution acceptable à nos problèmes.
 
 
-
-Lorsque nous souhaitons paralléliser
+Pour obtenir de plus en plus de puissance de calcul, l'architecture des ordinateurs s'est complexifiée.
+%
+Ainsi de nombreux paradigmes de parallélisation sont apparut.
+%
+Parmi ces paradigmes, la programmation à base de graphe de tâches offre le plus de flexibilité.
 
 
 
 Les efforts entrepris pour la programmation hybride CPU/CPU ont permit l'émergence de nouveaux runtimes.
 %
 Ces runtimes prennent en considération de nouveaux paramètres tel que le poids des tâches de calcul.
+%
+Ce type de parallélisation est souvent utilisé en algèbre linéaire dense.
+%
+Les méthodes de parallélisation actuels peuvent aussi s'appliquer à des noyaux d'algèbre linaire creuse mais la granularité des tâches de calcul ne permet d'obtenir une parallélisation efficace.
 
 
-Toutes ces solutions aident le programmeur à écrire un programme parallèle efficace.
+
+
+Toutes ces solutions donc aident le programmeur à écrire un programme parallèle efficace.
 %
 Mais il est toujours du devoir du programmeur de choisir un grain de calcul adapté au type d'ordonnancement choisi.
 %
@@ -36,5 +38,3 @@ Dans le chapitre suivant, nous allons nous consacrer à étudier ce problème et
 
 
 
-
-Algèbre linéaire dense utilise déjà des runtimes.

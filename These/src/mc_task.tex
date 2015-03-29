@@ -1,13 +1,48 @@
 \subsection{Parallélisme à base de tâches}
+La programmation à base de tâches consiste à diviser un problème en plusieurs morceaux.
+%
+Ces morceaux sont appelés tâches et le calcul de tous ces morceaux doit donner le même résultat que la résolution du problème non diviser.
+%
+Ces tâches sont le plus souvent dépendantes les unes des autres, le résultat du calcul d'une tâche $T1$ peut être nécessaire au calcul d'une tâche $T2$.
+%
+Dans ce cas, $T2$ dépend de $T1$, $T2$ est donc un successeur de $T1$ et $T1$ est un prédécesseur de $T2$.
+%
+Une tâche ayant des prédécesseurs ne pourras commencer son calcul que lorsque toutes les taches prédécesseurs ont complètement terminées leurs calculs.
+%
+Une fois toute ces dépendances explicités, nous obtenons un graphe de tâches.
+%
+Ce graphe doit être direct et acyclique.
+%
+La propriété directe donneras l'ordre d'exécution des tâches.
+%
+La propriété acyclique est nécessaire pour éviter des inter-blocages, si une tâche $T1$ dépend d'une tâche $T2$ alors indirectement elle dépend aussi des tâches dont $T2$ dépend.
+%
+Or, dans un cycle, cela signifie que $T1$ dépendra indirectement de $T1$.
+
+
+
 Pour représenter le parallélisme à base de tâches, nous utilisons des graphes orientés acycliques, ou DAG\footnote{Directed Acyclic Graph}.
 %
 Dans ce modèle, les n{\oe}uds du graphe représentent une action à effectuer et les arêtes représentent l'ordre séquentiel entre deux actions.
 %
 Ainsi, nous pouvons représenter le parallélisme sous une forme abstraite indépendamment des ressources matérielles disponibles.
 %
-Il existe de nombreux travaux appliquant ce principe et permettant ainsi de paralléliser efficacement des codes de calcul~\cite{BBAC2014,LSAT2013,LY2012,ABGL2013}.
+Cette méthode de parallélisation a été appliquée à de nombreux travaux et permet ainsi de paralléliser efficacement des codes de calcul~\cite{BBAC2014,LSAT2013,LY2012,ABGL2013}.
+
+
+
+Les tâches de calcul peuvent être vues comme des fonctions avec des données en entrées et des données en sortie.
 %
-La démocratisation des processeurs multi-coeurs a engendrée l'apparition de cadriciels à base de tâches~\cite{taskscomparison} comme illustré par des outils tel que Intel TBB~\cite{Intel_TBB} et que le support des tâches dans OpenMP~3.0~\cite{openmptasks} pour du parallélisme multi-coeur, ou StarSs/OmpSs~\cite{OMPSs} ainsi que StarPU~\cite{starpu} et X-Kaapi~\cite{xkaapi} pour le support de plateformes hétérogènes.
+Le processus de distribution des tâches sur les différents coeurs de calcul est appelé ordonnancement.
+%
+Le degré de division du problème initial en tâche est appelé granularité.
+%
+Le rapport entre le coût d'ordonnancement d'une tâche et le temps de calcul de la tâche définira si nous avons une granularité fine ou grossière.
+%
+La démocratisation des processeurs multi-coeurs a engendrée l'apparition de cadriciels à base de tâches~\cite{taskscomparison} qui intègre un moteur d'exécution capable d'abstraire la machine.
+
+ comme illustré par des outils tel que Intel TBB~\cite{Intel_TBB}
+
 %
 Dans ces modèles, la granularité correspond au nombre d'instructions processeur contenues dans la tâche.
 %

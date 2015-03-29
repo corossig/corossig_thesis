@@ -1,5 +1,5 @@
 \subsection{Partie GMRES}
-L'algorithme GMRES est utilisé pour résoudre de grands systèmes linéaires creux.
+L'algorithme GMRES est une méthode itérative utilisé pour résoudre de grands systèmes linéaires creux.
 %
 La plupart des opérations sont des opérations de type BLAS1 (axpy, dot product...) et sont facilement parallélisables\cite{para_blas}.
 %
@@ -35,7 +35,7 @@ En changeant la numérotation des cellules, nous pouvons changer le graphe de t�
 %
 Par exemple, lorsque nous factorisons une matrice nous devons procéder ligne par ligne.
 %
-Les dépendances de factorisation entre les lignes de la matrice ne vont donc que dans un sens, de la plus petite vers la plus grande.
+Les dépendances de factorisation entre les lignes de la matrice ne vont donc que dans un sens, de l'indice de ligne le plus faible vers un indice supérieur.
 %
 Une numérotation rouge-noire consiste à colorier le graphe représentant notre réservoir de façon à n'avoir aucune connexion entre deux cellules d'une même couleur.
 %

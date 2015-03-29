@@ -321,7 +321,6 @@ M. Jean-Fran\c{c}ois \textsc{M\'EHAUT} & Professeur des universit\'es, LIG Greno
 M. Jean-Yves \textsc{L'EXCELLENT} & Professeur des universit\'es, LIP Lyon & Rapporteur \\
 M. Fran\c{c}ois \textsc{BODIN} & Professeur des universit\'es, Irisa Rennes & Examinateur \\
 M. George \textsc{BOSILCA} & Directeur de recherche, ICL Knoxville (USA) & Examinateur \\
-M. Mathieu \textsc{FAVERGE} & Ma\^itre de conf\'erences, LaBRI Bordeaux & Examinateur \\
 \end{tabular}
 }
 

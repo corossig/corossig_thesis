@@ -1,5 +1,7 @@
 \subsection{Passage de messages}
-Certaines machines ne fonctionnent pas avec une mémoire globale, chaque noeud de calcul a une mémoire locale et il ne peut pas accéder directement à la mémoire des autres noeuds distants, ces machines sont dites à mémoire distribuée.
+Certaines machines ne fonctionnent pas avec une mémoire globale mais avec une mémoire distribuée.
+% 
+Chaque noeud de calcul a une mémoire locale et ne peut pas accéder directement à la mémoire des autres noeuds distants.
 %
 Avec le paradigme de passage de messages, chaque processus a son propre espace mémoire virtuel et communique avec les autres processus par le biais d'envoi/réception de messages.
 %
@@ -7,12 +9,12 @@ Ces communications se font à l'aide d'une interface de programmation qui fourni
 %
 L'interface la plus connue et la plus utilisée actuellement est MPI\footnote{Message Passing Interface}.
 %
-Elle permet de faire communiquer deux processus ensemble sans se soucier du réseau utilisé ou même de la différence d'encodage des entiers ({\em little endian}/{\em big endian}) entre deux architectures différentes.
+Elle permet de faire communiquer deux processus ensemble sans se soucier du réseau utilisé ni même de la différence d'encodage des entiers ({\em little endian}/{\em big endian}) entre deux architectures différentes.
 
 
 L'un des avantages majeur de ce paradigme est qu'il permet d'utiliser un ensemble très varié de machine.
 %
-Il fonctionne aussi en mémoire partagée qu'en mémoire distribuée.
+Il fonctionne aussi bien en mémoire partagée qu'en mémoire distribuée.
 %
 Son utilisation en mémoire partagée permet de n'utiliser qu'un seul type de parallélisme dans un programme.
 %
@@ -22,16 +24,16 @@ Mais il ne s'agit pas toujours de l'implémentation la plus efficace pour parall
 %
 De plus, certains algorithmes ne peuvent pas être écrits efficacement avec ce paradigme.
 %
-Par exemple, dans notre cas la factorisation d'une matrice creuse se parallélise très mal.
+Par exemple, dans notre cas la factorisation d'une matrice creuse se parallélise très mal en mémoire distribuée.
 %
-Nous ne pouvons pas extraire du parallélisme qu'entre les factorisations des lignes de la matrices.
+Nous ne pouvons extraire du parallélisme qu'entre les factorisations de ligne de la matrice.
 %
 Or ce niveau de granularité du calcul ne donne pas de bonnes performances avec un paradigme par passage de messages.
 %
 Nous sommes donc obligés de modifier les méthodes de factorisation pour être capable d'obtenir de la performance.
 %
-La décomposition en sous-domaines des cellules du réservoir permet d'effectuer en parallèle une factorisation sur chaque domaine.
+La méthode de Jacobi par blocs permet d'effectuer en parallèle une factorisation sur chaque bloc au détriment de la convergence de la méthode itérative.
 %
 C'est donc cette méthode qui est utilisée pour une parallélisation par passage de messages.
 %
-Cette méthode a l'inconvénient d'ignorer de nombreuses connexions entre les cellules du réservoir fournis donc un résultat de moins bonne qualité qu'une méthode sans décomposition de domaine.
+Cette méthode a l'inconvénient d'ignorer de nombreuses connexions entre les cellules du réservoir fournis donc un préconditionnement de moins bonne qualité qu'une factorisation ILU sur la matrice complète.

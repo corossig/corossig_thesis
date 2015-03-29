@@ -3,7 +3,7 @@ Le parallélisme de boucle est un paradigme qui peut être utilisé sur des mach
 %
 Il s'agit de traiter en parallèle toutes les itérations d'une boucle en les distribuant équitablement sur tous les coeurs de calcul disponibles.
 %
-Il faut bien sûr que ces itérations soit indépendantes, c'est à dire qu'avec un nombre infini de coeur de calcul, on pourrait traiter une itération par coeur simultanément.
+Il faut bien sûr que ces itérations soit indépendantes, c'est à dire qu'avec un nombre infini de coeur de calcul, on peut traiter une itération par coeur simultanément.
 %
 Ce paradigme fonctionne de la manière suivante : un thread est créé par coeur de calcul et chaque thread doit s'occuper de traiter une partie des itérations de la boucle.
 %
@@ -16,21 +16,21 @@ L'interface de programmation qui a le plus démocratisé ce paradigme est OpenMP
 %
 Cette interface utilise les directives de compilation en C qui ont l'avantage d'être simple à utiliser et elles peuvent se désactiver facilement pour retrouver un code séquentiel.
 %
-En ajoutant la fameuse directive ``\#pragma omp parallel for'' juste au-dessus d'une boucle for, on obtient facilement un programme multi-threadé, la description du parallélisme est très simple.
+En ajoutant la fameuse directive ``\#pragma omp parallel for'' juste au-dessus d'une boucle for, on obtient facilement un programme multi-threadé avec une description du parallélisme très simple.
 %
 Les performances obtenues avec ce paradigme sont souvent suffisantes pour un grand nombre de logiciel et le ratio entre le temps de développement et le gain en temps d'exécution est imbattable.
 %
-Malheureusement, il peut arriver qu'il y ait des dépendances de données entre deux itérations, dans ce cas, ce paradigme de parallélisation donnera un résultat faux et il faudra utiliser un autre paradigme.
+Pour notre cas nous pouvons l'utiliser pour le produit matrice vecteur et le produit scalaire.
+
+
+Malheureusement, il peut arriver qu'il y ait des dépendances de données entre deux itérations.
+%
+Dans ce cas, ce paradigme de parallélisation ne fonctionne plus et donnera un résultat faux si nous l'utilisons.
+%
+Il faut donc utiliser un autre paradigme de parallélisation.
 %
 C'est ce qui arrive dans le cas d'une factorisation ILU.
 %
-La version séquentielle du code est composée d'une boucle sur les lignes de la matrice et chaque itération factorise une ligne dans l'ordre ascendant.
+La version séquentielle du code est composée d'une boucle for sur les lignes de la matrice et chaque itération factorise une ligne dans l'ordre ascendant.
 %
 Mais ces itérations ne sont pas indépendantes, il est nécessaire de factoriser certaines lignes avant d'autres.
-%
-Par contre, le produit matrice vecteur creux utilisé dans l'algorithme GMRES est composé d'une boucle sur les lignes de la matrice et toutes les itérations sont indépendantes.
-%
-Nous utiliserons donc du parallélisme de boucle dans ce cas-là.
-
-
-%%% TODO : vérifier exemple SpMV

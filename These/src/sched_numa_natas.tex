@@ -54,7 +54,7 @@ Comme le graphe sera déroulé de haut en bas lors de son exécution, il parait 
 %
 En supposant que les tâches produisent des données et que ces données sont passées en paramètre aux tâches successeurs dans le graphe, on peut essayer d'optimiser le placement NUMA.
 %
-Dans un premier temps, on va équilibrer la distribution des tâches sur les bancs NUMA en attribuant une affinité NUMA aux tâches.
+Dans un premier temps, on va équilibrer la distribution des tâches sur les bancs NUMA en attribuant une affinité NUMA aux tâches (Fig.~\ref{fig:numa_distrib_example}).
 %
 Cette affinité sera choisie en fonction de la hauteur de la tâche dans le graphe et des affinités NUMA de ses prédécesseurs.
 %
@@ -63,7 +63,7 @@ Le but étant d'avoir à hauteur fixée, un nombre égale de tâche par banc NUM
 
 
 %   (-_-)   %
-\begin{figure}
+\begin{figure}[!h]
   \centering
   \includegraphics[width=\textwidth]{numa_distrib_example}
   \caption{Exemple de l'algorithme de distribution des tâches en action, la couleur des tâches détermine leurs affinités NUMA. Les tâches en blanches ne sont pas encore traitées.}

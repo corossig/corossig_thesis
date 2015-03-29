@@ -1,13 +1,13 @@
 \subsection{First touch}
 La politique d'allocation mémoire par défaut sous Linux s'appelle {\em First Touch}.
 %
-La traduction littéral serait le {\em premier toucher}, ce nom se réfère au fait qu'avec cette allocation le noyau associe une nouvelle page physique à une page virtuelle qu'à partir de la première utilisation de cette page.
+La traduction littérale serait le {\em premier toucher}, ce nom se réfère au fait qu'avec cette allocation le noyau associe une nouvelle page physique à une page virtuelle qu'à partir de la première utilisation de cette page.
 %
-La page physique sera choisi avec comme priorité de prendre une page dans la mémoire la plus proche du thread qui souhaite utiliser cette page.
+La page physique sera choisie avec comme priorité de prendre une page dans la mémoire la plus proche du thread qui souhaite utiliser cette page.
 %
 L'idée derrière cette allocation n'est pas mauvaise, dans le cas d'un processus mono-thread dont l'affinité processeur est fixée à un banc mémoire, la localité mémoire sera toujours optimale.
 %
-Dans le cas d'un processus multi-threads dont les threads ont une affinité fixe, s'ils allouent eux-mêmes leurs mémoires et ne font quasiment aucun partage entre eux, cette allocation fonctionne toujours.
+Dans le cas d'un processus multi-threads dont les threads ont une affinité fixe, s'ils allouent eux-mêmes leurs mémoires et ne font presque aucun partage entre eux, cette allocation fonctionne toujours.
 %
 Mais tous les programmes ne sont pas écrits pour fonctionner de cette façon.
 %
@@ -23,7 +23,7 @@ Il y a aussi le cas où les processus ont une affinité processeur leurs permett
 %
 L'allocation des pages mémoires peut se faire sur un banc NUMA, puis le noyau décide de changer le processus de banc NUMA, et tous les calculs sont faits avec une mauvaise localité mémoire.
 %
-De plus, si le thread de calcul change souvent de coeur de calcul, l'utilisation des caches de faibles niveaux (L1 et L2) ne sera pas optimal.
+De plus, si le thread de calcul change souvent de coeur de calcul, l'utilisation des caches de faibles niveaux (L1 et L2) ne sera pas optimale.
 %
 Il est donc important de toujours fixer l'affinité processeur d'un thread à un coeur de calcul.
 %

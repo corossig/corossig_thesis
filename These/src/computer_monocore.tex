@@ -1,18 +1,18 @@
-\subsection{Processeurs mono-coeur}
+\subsection{Processeurs monocoeur}
 Pour être capable de simuler de grands problèmes physiques, nous avons besoin de beaucoup de puissance de calcul.
 %
 Cette puissance se mesure en FLOPS\footnote{FLoating-point Operations Per Second}, il s'agit du nombre d'opérations par seconde qu'un ordinateur peut effectuer sur des nombres à virgules flottantes.
 %
-Même les processeurs mono-coeur peuvent faire des opérations en parallèle.
+Même les processeurs monocoeur peuvent faire des opérations en parallèle.
 %
 Le parallélisme au niveau instruction en est un bon exemple, les pipelines d'instructions permettent de paralléliser les différentes étapes liées au traitement d'une exécution.
 %
 Dans l'idéal, le processeur utilisant un pipeline d'instruction pourra exécuter une opération par cycle, donc un processeur à 4~GHz aura une puissance de calcul de 4~GFLOPS si les opérations flottantes sont faites en 1 cycle.
 
 
-Par la suite, les processeurs ont gagnés des instructions permettant d'effectuer une même opération sur des données différentes, aussi appelées instructions SIMD dans la taxonomie de Flynn.
+Par la suite, les processeurs ont gagné des instructions permettant d'effectuer une même opération sur des données différentes, aussi appelées instructions SIMD dans la taxonomie de Flynn.
 %
-Ces processeurs dits vectoriel peuvent donc avoir une puissance de calcul supérieur, si une instruction est capable d'effectuer 4 opérations à la fois et qu'il tourne à 4~GHz, alors il aura une puissance de calcul de 16~GFLOPS.
+Ces processeurs, dits vectoriels, peuvent donc avoir une puissance de calcul supérieure, si une instruction est capable d'effectuer 4 opérations à la fois et qu'il tourne à 4~GHz, alors il aura une puissance de calcul de 16~GFLOPS.
 %
 Il s'agit ici d'une puissance théorique, tous les codes de calculs n'ont pas la possibilité d'exploiter les instructions vectorielles.
 %

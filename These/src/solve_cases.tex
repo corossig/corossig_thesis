@@ -4,28 +4,57 @@ Pour être en mesure de tester notre méthode de parallélisation en mémoire pa
 Nous allons essayer de paralléliser la partie GMRES préconditionné du code.
 %
 Dans le but d'évaluer le gain de performance, nous avons choisi des systèmes linéaires à résoudre avec le solveur linéaire.
+
+
+Ces systèmes linéaires sont représentés sous la forme d'une matrice et d'un vecteur second membre.
 %
-Nous allons utiliser le cas test SPE10, ce cas est basé sur les données prises du second modèle du 10ème cas test SPE\cite{SPE10}.
+La structure des matrices est dépendante du problème simulé.
 %
-C'est un réservoir de 1~122~000 de cellules, organisées dans une grille 3D cartésienne de taille 60 x 220 x 85, il s'agit de schéma de discrétisation en 7 points et c'est un problème de référence dans l'industrie du pétrole.
+Nous utilisons un maillage structuré avec un schéma de discrétisation en 7 points (e.g., volume fini).
 %
-Les autres cas tests seront générés par un programme développé en interne, et il s'agit aussi d'un schéma de discrétisation en 7 points (e.g., volume fini).
+En gardant une numérotation naturelle, nos matrices aurons donc une structure composée de sept diagonales.
 %
-Il génère des cubes 3D cartésiens de taille arbitraire.
+En fonction de ce que nous voulons simuler les entrées de la matrice pourront être scalaires ou composé de petits blocs.
+%
+Si nous ne simulons que la pression, nous aurons des entrées scalaires.
+%
+Les simulations de type {\em black-oil} sont les plus utilisées en simulation de réservoir.
+%
+Il s'agit de simuler 3 variables primaires, la concentration en huile, en gaz et en eau de chaque cellules.
+%
+Il arrive aussi que l'on souhaite simuler plus précisément les différents types d'huiles contenues dans les réservoirs.
+%
+Dans ce cas nous utiliserons un modèle compositionnel dans lequel chaque variable primaire correspondra à la saturation d'un type d'hydrocarbure.
+%
+Pour les cas black-oil et les cas compositionnels, les entrées de la matrice seront de petits bloc dense de taille $npri*npri$ où $npri$ est les nombres de variables primaires.
+
+
+
+Pour évaluer notre code, nous allons utiliser le cas test SPE10 qui est basé sur les données prises du second modèle du 10ème cas test SPE\cite{SPE10}.
+%
+C'est un réservoir de 1~122~000 de cellules, organisées dans une grille 3D cartésienne de taille 60~x~220~x~85.
+%
+Il s'agit d'un modèle black-oil, donc à 3 variables primaires, et c'est un problème de référence dans l'industrie pétrolière.
+%
+Les autres cas tests seront générés par un programme développé en interne, nous utiliserons un cas pression, un cas black-oil et un cas compositionnel à 8 composants.
+%
+Ce programme génère des cubes 3D cartésiens de taille arbitraire.
 %
 Ces cas générés nous permettent de tester différentes combinaisons de tailles dans le but d'évaluer le passage à l'échelle de nos algorithmes.
 
 
 La partie GMRES du code que nous souhaitons paralléliser est composée de plusieurs noyaux d'algèbre linéaire creux.
 %
-Il y a le SpMV, la factorisation ILU et les résolutions triangulaires.
+Il y a la factorisation ILU et les résolutions triangulaires, le produit matrice vecteur creux et le produit scalaire.
 %
 Le parallélisme exploitable dans ces noyaux est différent, il peut être plus ou moins difficile à exploiter.
 %
-Dans le cas du SpMV, la multiplication de chaque ligne de la matrice est indépendante, le parallélisme s'exploite facilement.
+Dans le cas du produit matrice vecteur creux, la multiplication de chaque ligne de la matrice est indépendante, le parallélisme s'exploite facilement.
+%
+De même pour le produit scalaire, chaque élément du vecteur peut être traité indépendemment.
 %
 Pour la factorisation ILU c'est différent, certaines lignes doivent être factorisées avant d'autres, le parallélisme est donc plus dur à exploiter.
 %
 Les résolutions triangulaires se parallélisent de la même façon que la factorisation ILU.
 %
-Dans la suite de la thèse, nous expliquerons comment exploiter efficacement le parallélisme dans ces trois cas.
+Dans la suite de la thèse, nous expliquerons comment exploiter efficacement le parallélisme dans ces quatre cas.
