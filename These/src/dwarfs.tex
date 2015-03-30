@@ -1,4 +1,4 @@
-\subsection{Les 13 Dwarfs de berkeley}
+\subsection{Les 13 nains de berkeley}
 Le choix des opérateurs dans Taggre se fait à l'appréciation du programmeur.
 %
 La collection des {\em 13 nains de Berkeley}\cite{dwarfs} est une méthode de classification des problèmes en fonction de leurs motifs de calculs et de communications.
@@ -12,18 +12,18 @@ Certaines classes de problèmes ne peuvent pas se paralléliser avec du parallé
 %
 Les problèmes rencontrés en algèbre linéaire dense sont souvent réguliers et le programmeur peut facilement choisir une granularité.
 %
-La classe de problème {\em structured grids} peuvent être paralléliser avec du parallélisme à base de graphe de tâches, mais il ne s'agit pas du meilleur paradigme de parallélisation pour cette classe.
+La classe de problème {\em structured grids} peut être parallélisée avec du parallélisme à base de graphe de tâches, mais il ne s'agit pas du meilleur paradigme de parallélisation pour cette classe.
 %
 La même réflexion peut être faite pour la classe de problème {\em unstructured grids}.
 
 
 La classe de problème {\em combinational logic} s'apparente à du parallélisme d'instructions.
 %
-Cette granularité est trop faible pour être traitée par un ordonnanceur logiciel.
+Cette granularité est trop faible pour être traitée par un ordonnanceur de tâches logiciel.
 
 Il ne reste donc plus que deux classes de problème pouvant utiliser Taggre, l'algèbre linéaire creuse et les méthodes spectrales.
 %
-L'algèbre linéaire creuse comporte un ensemble très vaste d'algorithmes qui ne se parallélisent pas tus de la même manière.
+L'algèbre linéaire creuse comporte un ensemble très vaste d'algorithmes qui ne se parallélisent pas tous de la même manière.
 %
 Dans ce manuscrit, nous étudierons la parallélisation du produit matrice vecteur creux et de la factorisation ILU.
 
@@ -40,7 +40,12 @@ Pour évaluer le gain lié à l'agrégation, nous allons utiliser le simulateur 
 %
 La hauteur du graphe sera le logarithme en base 2 du nombre de tâches par niveau.
 %
-La table~\ref{tab:spectral}
+La table~\ref{tab:spectral} nous montre les gains obtenus en utilisant différents opérateurs d'agrégation.
+%
+Les opérateurs D et F offrent presque les mêmes performances.
+%
+Si les paramètres du simulateur sont corrects (très petites tâches) alors l'agrégation permettra de diviser le temps de calcul par 6.
+
 
 %   (-_-)   %
 \begin{figure}
@@ -57,7 +62,7 @@ La table~\ref{tab:spectral}
    par niveau & \O & F(6) & F(12) & F(24) & D(8) & D(16) & D(32) & D(64) \\
     \hline
    32768 & 262146 & 108246 & 51714 & 39487 & 70425 & 55788 & 40980 & 46409 \\
-   1024  & 1690 & 2162 & 937 & 903 & 1035 & 965 & 899 & 1033 \\
+   1024  & 1690   & 2162   & 937   & 903   & 1035  & 965   & 899   & 1033 \\
     \hline
   \end{tabular}
   \captionof{table}{Résultats du simulateur d'exécution de tâches sur un graphe typique des méthodes spectrales.}
@@ -82,3 +87,4 @@ La table~\ref{tab:spectral}
 %% D 32 899
 %% D 64 1033
 %\subsubsection{Les arbres}
+

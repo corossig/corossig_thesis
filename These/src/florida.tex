@@ -57,6 +57,15 @@ Nous testerons différents opérateurs grâce à notre simulateur.
 \end{center}
 
 
+Les premiers résultats concernent la matrice Pajek/EPA, ce graphe représente les liens de pages vers {\em www.epa.gov}.
+%
+La matrice est plutôt petite (environ 5000 lignes), nous n'aurons donc pas beaucoup de tâches.
+%
+Nous avons choisi pour le simulateur de tâches des valeurs représentant des tâches plutôt grosses (50 fois le coût d'ordonnancement) et qui ne bénéficie presque pas des effets cache.
+%
+L'agrégation ne permet qu'un gain de 30\% dans les meilleurs cas (Table~\ref{tab:epa}).
+%
+Aucun opérateur d'agrégation ne se démarque des autres.
 
 %   (-_-)   %
 \begin{center}
@@ -71,6 +80,19 @@ Nous testerons différents opérateurs grâce à notre simulateur.
   \captionof{table}{Résultats du simulateur d'exécution de tâches sur Pajek/EPA sur 12 coeurs de calculs.}
   \label{tab:epa}
 \end{center}
+
+
+Les résultats suivants concernent un graphe représentant les intersections de routes de Pennsylvanie (SNAP/roadNet-PA).
+%
+La matrice est assez grande, nous pourrons agréger des lignes ensemble.
+%
+La granularité des tâches que nous avons choisie est petite, l'ordonnanceur met autant de temps à ordonnancer la tâche que la tâche met à s'exécuter.
+%
+De plus, les effets cache peuvent améliorer le temps de calcul.
+%
+L'opérateur D se démarque des autres opérateurs en divisant par deux le temps de calcul (Table~\ref{tab:roadnet}).
+%
+L'opérateur F n'a pas fourni une bonne agrégation à cause des effets cache.
 
 
 %   (-_-)   %
@@ -88,6 +110,14 @@ Nous testerons différents opérateurs grâce à notre simulateur.
 \end{center}
 
 
+Le troisième cas test représente les liens entre les pages du site web de stanford (Gleich/wb-cs-stanford).
+%
+Il s'agit d'une petite matrice d'environ 10000 lignes.
+%
+Les tâches ont une granularité grossière et peuvent bénéficier d'améliorations des effets cache.
+%
+Tous les opérateurs d'agrégations donnent environ les mêmes résultats (Table.~\ref{tab:stanford}).
+
 
 %   (-_-)   %
 \begin{center}
@@ -104,6 +134,15 @@ Nous testerons différents opérateurs grâce à notre simulateur.
 \end{center}
 
 
+Le dernier cas test est une matrice de connexions de site web (Williams/webbase-1M).
+%
+La matrice est grande, nous avons choisi comme paramètre de tâche, une granularité fine avec un très petit gain sur les effets cache.
+%
+Les gains liés à l'agrégation sont faibles (35\%) et les opérateurs D et F donnent les mêmes performances.
+%
+L'opérateur C n'a pas été très utile.
+
+
 %   (-_-)   %
 \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
@@ -117,3 +156,4 @@ Nous testerons différents opérateurs grâce à notre simulateur.
   \captionof{table}{Résultats du simulateur d'exécution de tâches sur Williams/webbase-1M sur 12 coeurs de calculs.}
   \label{tab:webbase}
 \end{center}
+

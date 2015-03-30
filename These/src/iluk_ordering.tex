@@ -1,5 +1,5 @@
 \subsection{Factorisation ILU(k) avec renumérotation des cellules}
-Lorsque nous renumérotons les cellules, nous obtenons un graphe de tâches différents.
+Lorsque nous renumérotons les cellules, nous obtenons un graphe de tâches différent.
 %
 Une numérotation rouge-noir donne un graphe très large avec seulement 2 niveaux de hauteur.
 %
@@ -9,7 +9,7 @@ Ce graphe aura la forme d'un arbre.
 %
 De plus, augmenter le niveau de remplissage de l'algorithme ILU(k) créera de nouvelles connexions dans le graphe.
 %
-Nous allons donc utiliser notre simulateur avec un numérotation nested dissection des matrices.
+Nous allons donc utiliser notre simulateur avec une numérotation nested dissection des matrices.
 %
 Nous définissons les paramètres 0,6 pour les effets caches et 2 pour le coût d'ordonnancement.
 %
@@ -17,9 +17,9 @@ Donc le temps d'exécution d'une tâche est 2 fois moins long que le temps d'ord
 %
 En regardant le graphe de tâches (Fig.~\ref{fig:ilu_ordering_F}), on s'aperçoit que le graphe est plus large que haut.
 %
-L'opérateur F devrait donnait de très bon résultats sur ce graphe.
+L'opérateur F devrait donnait de très bons résultats sur ce graphe.
 %
-Mais comme les effets caches sont important, il est possible que l'opérateur D puisse faire aussi bien.
+Mais comme les effets cache sont importants, il est possible que l'opérateur D puisse faire aussi bien.
 %
 Lorsque nous regardons les résultats (Table.~\ref{tab:ilu0_nested_0.6_2}), l'opérateur F donne les meilleurs résultats.
 %
@@ -144,3 +144,4 @@ L'opérateur F sera à favoriser sur des graphes très large et peu haut.
 Au contraire, pour des graphes très haut et peu large il faudra privilégier l'opérateur C.
 %
 L'opérateur D pourra être utilisé dans la plupart des cas même s'il ne fournit pas toujours les performances optimales.
+
