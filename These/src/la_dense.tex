@@ -35,7 +35,7 @@ D'autres implémentations utilisent les instructions SIMD(SSE, AVX ...) des proc
 %
 Des implémentations GPGPU\footnote{Genenal Purpose Graphical Processing Unit}~\cite{nvidia_cublas} existent aussi, de même que des implémentations en mémoire distribuée~\cite{dplasma}.
 %
-La plupart de ces optimisations peuvent exister parce que le motif des accès mémoires des opérations du type BLAS est déterministe et que certaines opérations peuvent être réordonnées sans impacter le résultat final.
+La plupart de ces optimisations peuvent exister parce que le motif des accès mémoire des opérations du type BLAS est déterministe et que certaines opérations peuvent être réordonnées sans impacter le résultat final.
 
 Retournons à la matrice de l'équation~\eqref{eq:ax_b}, nous pouvons voir que cette matrice contient énormément de valeurs nulles et que ces valeurs n'ont aucun impact sur le calcul.
 %

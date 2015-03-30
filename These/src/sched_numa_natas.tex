@@ -23,38 +23,52 @@ Nous limitons donc les processeurs capables de faire fonctionner NATaS à ceux a
 %
 Cette structure ne nous permet pas d'obtenir les mêmes performances que l'utilisation d'une queue par thread, mais elle a l'avantage de mieux fonctionner pour l'équilibrage de charge à l'intérieur d'un banc NUMA.
 
-NATaS fournit aussi une api permettant de gérer les allocations mémoires et leurs placements.
+
+
+NATaS fournit aussi une API permettant de gérer les allocations mémoires et leurs placements.
 %
 Il permet de faire différents types d'allocations tels que :
 \begin{itemize}
-  \item distribuer régulièrement la mémoire;
+  \item distribuer régulièrement la mémoire en mode bloc;
   \item entrelacer les pages mémoires;
   \item spécifier l'emplacement mémoire.
 \end{itemize}
 %
-Ces allocations font miroir au différent type d'ordonnancements (first touch, interleave and bind).
+Ces allocations font miroir aux différentes politiques de gestion mémoires (first touch, interleave et bind).
 %
 Dans le cas d'un parallélisme de boucle avec une distribution statique, on distribuera la mémoire régulièrement.
 %
-Dans le cas d'un graphe de tâche, le programmeur donnera la position souhaitée des tâches.
+Cet espace mémoire sera découper en autant de bloc qu'il y a de bancs NUMA sur la machine.
 %
-Pour cela, il lui suffira de simuler l'exécution du code, de désactiver le vol de tâches et d'appeler la fonction d'allocation ou de migration des pages dans chaque tâche.
-%
-Nous obtiendrons ainsi une mémoire équitablement distribuée et des accès mémoire optimisés.
+Puis chaque bloc sera placé sur un banc NUMA.
+
+
+
 
 NATaS s'interface avec Taggre pour améliorer les performances sur des machines NUMA.
 %
 La connaissance complète du graphe de tâche permet des améliorations notables sur la distribution mémoire.
 %
+Dans le cas d'un graphe de tâche, le programmeur indiqueras la mémoire utilisée dans chaque tâche.
+%
+Dans un premier temps, on va équilibrer la distribution des tâches sur les bancs NUMA en attribuant une affinité NUMA aux tâches (Fig.~\ref{fig:numa_distrib_example}).
+%
 Comme le graphe sera déroulé de haut en bas lors de son exécution, il parait naturel de distribuer les tâches par hauteur.
 %
 En supposant que les tâches produisent des données et que ces données sont passées en paramètre aux tâches successeurs dans le graphe, on peut essayer d'optimiser le placement NUMA.
 %
-Dans un premier temps, on va équilibrer la distribution des tâches sur les bancs NUMA en attribuant une affinité NUMA aux tâches (Fig.~\ref{fig:numa_distrib_example}).
-%
 Cette affinité sera choisie en fonction de la hauteur de la tâche dans le graphe et des affinités NUMA de ses prédécesseurs.
 %
 Le but étant d'avoir à hauteur fixée, un nombre égale de tâche par banc NUMA tout en minimisant les accès en lecture distante.
+%
+Une fois l'affinité NUMA de toutes les tâches définies, il ne nous reste plus qu'à connaître les données utilisées.
+%
+Donc dans un deuxième temps, le programmeur donnera la position souhaitée des tâches.
+%
+Pour cela, il lui suffira de simuler l'exécution du code, de désactiver le vol de tâches et d'appeler la fonction d'enregistrement mémoire.
+%
+Nous obtiendrons ainsi une mémoire équitablement distribuée et des accès mémoire optimisés.
+
 
 %   (-_-)   %
 \begin{figure}[!h]

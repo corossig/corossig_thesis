@@ -46,12 +46,74 @@ Nous testerons différents opérateurs grâce à notre simulateur.
     Nom de la & Nombre de       & Nombre de & Paramètre des & Paramètre de\\
     matrice   & lignes/colonnes & non-zéros & effets cache  & granularité \\
     \hline
-    Pajek/EPA             & 4~772     & 8~965     & 0,95 & 0,02\\
-    SNAP/roadNet-PA       & 1~090~920 & 3~083~796 & 0,70 & 1\\
-    Gleich/wb-cs-stanford & 9~914     & 36~854    & 0,50 & 0,001\\
-    Williams/webbase-1M   & 1~000~005 & 3~105~536 & 0,98 & 0,5\\
+    Pajek/EPA             & 4~772     & 8~965     & 0,95 & 0,02  \\
+    SNAP/roadNet-PA       & 1~090~920 & 3~083~796 & 0,70 & 1     \\
+    Gleich/wb-cs-stanford & 9~914     & 36~854    & 0,50 & 0,001 \\
+    Williams/webbase-1M   & 1~000~005 & 3~105~536 & 0,98 & 0,5   \\
     \hline
   \end{tabular}
   \captionof{table}{Descriptions des matrices utilisées.}
   \label{tab:florida}
+\end{center}
+
+
+
+%   (-_-)   %
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    \multicolumn{11}{|c|}{Types d'agrégations}\\
+    \O & D(2) & D(4) & D(8) & D(16) & D(32) & F(24) & F(36) & F(42) & F(64) & C \\
+    \hline
+    598 & 403 & 400 & 428 & 435 & 523 & 407 & 392 & 392 & 392 & 406 \\
+    \hline
+  \end{tabular}
+  \captionof{table}{Résultats du simulateur d'exécution de tâches sur Pajek/EPA sur 12 coeurs de calculs.}
+  \label{tab:epa}
+\end{center}
+
+
+%   (-_-)   %
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    \multicolumn{11}{|c|}{Types d'agrégations}\\
+    \O & D(16) & D(64) & D(256) & D(1500) & D(2048) & F(24) & F(36) & F(42) & F(64) & C \\
+    \hline
+    136370 & 84244 & 75919 & 72145 & 69359 & 69607 & 92211 & 80529 & 80179 & 80190 & 181826 \\
+    \hline
+  \end{tabular}
+  \captionof{table}{Résultats du simulateur d'exécution de tâches sur SNAP/roadNet-PA sur 12 coeurs de calculs.}
+  \label{tab:roadnet}
+\end{center}
+
+
+
+%   (-_-)   %
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    \multicolumn{11}{|c|}{Types d'agrégations}\\
+    \O & D(2) & D(4) & D(8) & D(16) & D(32) & F(24) & F(36) & F(42) & F(64) & C \\
+    \hline
+    1267 & 765 & 729 & 733 & 753 & 923 & 739 & 736 & 736 & 737 & 722 \\
+    \hline
+  \end{tabular}
+  \captionof{table}{Résultats du simulateur d'exécution de tâches sur Gleich/wb-cs-stanford sur 12 coeurs de calculs.}
+  \label{tab:stanford}
+\end{center}
+
+
+%   (-_-)   %
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    \multicolumn{11}{|c|}{Types d'agrégations}\\
+    \O & D(16) & D(64) & D(256) & D(1500) & D(2048) & F(24) & F(36) & F(42) & F(64) & C \\
+    \hline
+    125512 & 84898 & 82837 & 82913 & 86024 & 88551 & 82453 & 82490 & 89461 & 87427 & 124889 \\
+    \hline
+  \end{tabular}
+  \captionof{table}{Résultats du simulateur d'exécution de tâches sur Williams/webbase-1M sur 12 coeurs de calculs.}
+  \label{tab:webbase}
 \end{center}

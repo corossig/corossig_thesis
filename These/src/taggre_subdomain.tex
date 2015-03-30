@@ -44,9 +44,9 @@ Cette bande passante distante est le résultat des effets NUMA.
 %
 Dans le cas des processus MPI utilisée par la méthode Jacobi par blocs, chaque processus a son propre espace mémoire et la localité des données est assurée sous réserve d'un placement statique et optimal des processus.
 %
-Mais dans le cas des threads, l'espace mémoire est partagé entre deux bancs mémoires et si les accès mémoires ne sont pas optimisés, il y aura des transferts entre les bancs NUMA.
+Mais dans le cas des threads, l'espace mémoire est partagé entre deux bancs mémoires et si les accès mémoire ne sont pas optimisés, il y aura des transferts entre les bancs NUMA.
 %
-Ces transferts auront pour effet d'augmenter la latence des accès mémoires et de réduire le nombre de cycles d'horloge par instruction (CPI\footnote{Clock Per Instruction}), ici on a un CPI de 0,75 pour la version MPI contre 1,08 pour la version threadée.
+Ces transferts auront pour effet d'augmenter la latence des accès mémoire et de réduire le nombre de cycles d'horloge par instruction (CPI\footnote{Clock Per Instruction}), ici on a un CPI de 0,75 pour la version MPI contre 1,08 pour la version threadée.
 %
 L'explication de la différence de performance entre ces deux versions se situe au niveau de la mémoire, on est limité par la bande passante.
 %% +-----------------------------+----------+----------+MPI12

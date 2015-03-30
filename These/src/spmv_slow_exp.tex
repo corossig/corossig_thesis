@@ -1,4 +1,4 @@
-\subsection{Limitations mémoires}
+\subsection{Limitations mémoire}
 Pour comprendre les résultats précédents, nous devons étudier brièvement l'architecture des ordinateurs.
 %
 Les performances d'un ordinateur dépendent essentiellement de deux choses : le processeur et la mémoire.
@@ -11,15 +11,15 @@ Cette pénalité est la somme de deux contraintes :
         \item la bande passante : le nombre maximum d'octets par seconde que le bus peut envoyer/recevoir
 \end{itemize}
 %
-De nos jours, les ordinateurs ont différents types de mémoires.
+De nos jours, les ordinateurs ont différents types de mémoire.
 %
 Il y a la mémoire cache, très proche des unités de calcul, elle a une faible latence (quelques cycles), mais sa taille est limitée à quelques Mo.
 %
 Ensuite, il y a la mémoire RAM avec une latence de quelques centaines de cycles, mais avec une taille de plusieurs Go.
 %
-Si nous regardons la structure mémoire de deux bancs NUMA de la figure~\ref{fig:numa_architecture}, on s'aperçoit que la distance physique des coeurs de calcul et de la mémoire est liée à la latence des accès mémoires.
+Si nous regardons la structure mémoire de deux bancs NUMA de la figure~\ref{fig:numa_architecture}, on s'aperçoit que la distance physique des coeurs de calcul et de la mémoire est liée à la latence des accès mémoire.
 %
-Pour limiter le plus possible les pénalités mémoires, il est nécessaire que tous les coeurs de calcul utilisent la mémoire qui est la plus proche.
+Pour limiter le plus possible les pénalités mémoire, il est nécessaire que tous les coeurs de calcul utilisent la mémoire qui est la plus proche.
 %
 Par exemple, sur une machine à deux bancs NUMA, les accès à la mémoire du banc NUMA 1 depuis les coeurs du banc NUMA 0 coûteront plus cher que les accès à la mémoire du banc NUMA 0.
 %   (-_-)   %

@@ -1,5 +1,5 @@
 \subsection{Multiplication matrice vecteur creuse}
-La multiplication d'une matrice creuse par un vecteur est une opération dont le ratio nombre d'opérations par le nombre d'octets lus est petit.
+La multiplication d'une matrice creuse par un vecteur est une opération dont le rapport nombre d'opérations par le nombre d'octets lus est petit.
 %
 Dans le cas d'une matrice scalaire, ce ratio vaut environ $1/10$ en double précision.
 %
@@ -13,19 +13,21 @@ Nous devons donc lire ce bloc (9*8 Octets), lire l'indice de colonne (4 Octets) 
 %
 Pour chaque valeur du bloc nous avons 2 opérations à faire (2*9), nous avons donc un ratio de $18/100$ soit environ $1/5,5$.
 %
-Avec huit variables primaires, le ratio monte à environ de $1/4,5$.
+Avec huit variables primaires, le ratio monte à environ $1/4,5$.
 
 Le {\em roofline model} est un modèle de performance permettant de connaître la puissance de calcul maximale pouvant être atteinte par un algorithme sur une machine.
 %
-Ce modèle se construit de la façon suivante, dans un premier temps nous allons mesurer la bande passante maximale de la machine.
+Ce modèle se construit de la façon suivante.
+%
+Dans un premier temps nous allons mesurer la bande passante maximale de la machine.
 %
 Pour cela nous avons utilisé le benchmark STREAM, sur Rostand, nous obtenons une bande passante de 21~Go/s.
 %
 Puis, dans un second temps, nous allons calculer la capacité de calcul maximale de la machine.
 %
-Pour calculer cette capacité, il faut multiplier le nombre de coeurs de calcul par le nombre maximal d'opérations faites dans une instruction et multiplier le tout pas la fréquence d'horloge.
+Pour calculer cette capacité, il faut multiplier le nombre de coeurs de calcul par le nombre maximal d'opérations faites dans une instruction et multiplier le tout par la fréquence d'horloge.
 %
-Chaque noeud de Rostand étant composé de 12 coeurs cadencés à 2,80~GHz et du jeu d'instructions SSE~4.2 permettant d'effectuer 4 opérations flottantes en simple précision à la fois, ce qui donne 134,4~GFlops.
+Chaque noeud de Rostand étant composé de 12 coeurs cadencés à 2,80~GHz et du jeu d'instructions SSE~4.2 permettant d'effectuer 4 opérations flottantes en simple précision à la fois, cela donne 134,4~GFlops.
 %
 Le nombre d'opérations simultanées en double précision est divisé par 2, donc on peut avoir au maximum 67,2~GFlops et si nous n'utilisons pas le jeu d'instructions vectorielles, nous pouvons obtenir au maximum 33,6~GFlops (Fig.~\ref{fig:roofline_rostand}).
 
@@ -37,7 +39,7 @@ Ces trois points nous indiquent que les performances du SpMV seront limitées pa
 %
 L'utilisation du jeu d'instructions vectorielles aura donc très peu d'impact sur nos performances.
 %
-Nous devons nous concentrer sur les accès mémoires et surtout dans notre cas, sur les effets NUMA.
+Nous devons nous concentrer sur les accès mémoire et surtout dans notre cas, sur les effets NUMA.
 
 Le SpMV présente du parallélisme de boucle sur les lignes de la matrice.
 %

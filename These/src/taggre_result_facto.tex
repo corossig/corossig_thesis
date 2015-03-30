@@ -68,7 +68,7 @@ Avec 1 variable primaire, le temps de factorisation est divisé par 2.
 %
 Dans le cas où le nombre de variables primaires est élevé, il n'y a pas beaucoup d'amélioration (6~\%).
 %
-Ici, cet opérateur ne permet pas d'optimiser les accès mémoires caches, seul le surcoût d'ordonnancement est réduit.
+Ici, cet opérateur ne permet pas d'optimiser les accès mémoire caches, seul le surcoût d'ordonnancement est réduit.
 
 %   (-_-)   %
 \begin{figure}[!h]
@@ -109,11 +109,11 @@ Il a l'avantage de réduire grandement le nombre de tâches comme l'opérateur F
 %
 Par contre, il se pourrait que le parallélisme en pâtisse.
 %
-Comme le montre les résultats de la figure~\ref{fig:res_facto_c}, tous les cas tests sont améliorés.
+Comme le montrent les résultats de la figure~\ref{fig:res_facto_c}, tous les cas tests sont améliorés.
 %
 Il y a bien deux grandes améliorations : la réduction du nombre de tâches et une meilleure réutilisation des caches.
 %
-Comme pour tous les opérateurs, il y a une réduction du nombre de tâches, mais dans ce cas la réduction est bien plus importante.
+Comme pour tous les opérateurs, le nombre de tâches a été réduit, mais dans ce cas la réduction est bien plus importante.
 %
 Par contre, l'amélioration des effets caches est bien meilleure que dans les autres opérateurs.
 %

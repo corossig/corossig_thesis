@@ -1,9 +1,21 @@
 \subsection{Factorisation et résolution triangulaire}
-La factorisation ainsi que la résolution triangulaire utilisent le même graphe de tâches.
+La parallélisme de la factorisation ILU et de la résolution triangulaire est le même.
 %
-Les pages mémoires utilisées composants la matrice sont distribuée en respectant l'affinité mémoire des tâches associées.
+La résolution triangulaire peut donc réutiliser le graphe grossier calculé pour la factorisation.
+%
+La fonction exécutée à l'intérieur des tâches sera différente, dans un cas il s'agira de factoriser une ou plusieurs lignes de la matrices, et dans l'autre cas il s'agira de résoudre une ou plusieurs équations linéaire à une inconnue.
+
+
+
+Les pages mémoires composant la matrice sont distribuées en respectant l'affinité mémoire des tâches associées.
 %
 Cette affinité est fournie par Taggre et correspond à une distribution à peu près équitable des pages mémoires au fil du déroulement du graphe.
+%
+Le même mécanisme qui sert à utiliser un seul graphe de tâches pour la factorisation et la résolution triangulaire est utilisé ici pour choisir les pages mémoires à déplacer.
+%
+Pour cela, le programmeur doit créer une fonction qui enregistre auprès de Taggre les données utilisées, cette fonction sera celle exécutée par toutes les tâches du graphe.
+%
+Puis Taggre s'occupera d'optimaliser le placement des pages mémoires en effectuant les appels systèmes correspondants.
 %
 Malheureusement, nous ne pouvons pas distribuer toutes les pages de manière optimale, car il arrive que certaines pages soient utilisées par plusieurs tâches ayant des affinités mémoires différentes.
 %

@@ -1,7 +1,7 @@
 \subsection{Interleaved memory}
 First touch n'étant pas parfait, il est nécessaire d'avoir d'autres politiques d'allocation.
 %
-La politique {\em Interleaved memory} distribue uniformément les pages mémoires sur tous les bancs mémoires en mode tourniquet.
+La politique {\em Interleaved memory} distribue uniformément les pages mémoire sur tous les bancs mémoire en mode tourniquet.
 %
 Cette distribution est faite par le noyau du système d'exploitation au moment où une page mémoire est utilisée pour la première fois par le programme.
 %
@@ -9,7 +9,7 @@ Sur un système d'exploitation utilisant Linux comme noyau, il suffit d'utiliser
 %
 En plus d'avoir très peu d'impact sur le code source d'une application, la politique d'entrelacement mémoire montre des atténuations des effets NUMA dans le cas général.
 %
-En moyenne, il n'y a pas d'amélioration de la latence, mais la bande passante est améliorée grâce à l'utilisation simultanée de tous les liens mémoires par rapport à une initialisation séquentielle avec une politique first touch.
+En moyenne, il n'y a pas d'amélioration de la latence, mais la bande passante est améliorée grâce à l'utilisation simultanée de tous les liens mémoire par rapport à une initialisation séquentielle avec une politique first touch.
 %
 Ainsi, il est généralement intéressant d'expérimenter cette politique, avant d'étudier la question des optimisations NUMA.
 %

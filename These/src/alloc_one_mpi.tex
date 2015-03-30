@@ -1,11 +1,15 @@
 \subsection{Un processus MPI par banc NUMA}
-Une bonne façon de traiter les effets NUMA est de la cacher.
+Les problèmes rencontrés sur les machines NUMA proviennent essentiellement de la mémoire partagée.
 %
-En utilisant un processus MPI par banc NUMA et une politique d'allocation first touch ou bind, on se retrouve toujours avec des accès mémoires du banc mémoire le plus proche.
+Lorsque deux threads partagent un espace mémoire et que ces deux threads s'exécutent sur des bancs NUMA différents, il y aura potentiellement des accès mémoire non performants.
+%
+Nous pouvons donc résoudre le problème des effets NUMA en utilisant plusieurs processus.
+%
+En utilisant un processus MPI par banc NUMA et une politique d'allocation first touch ou bind, on se retrouve toujours avec des accès mémoire du banc mémoire le plus proche.
 %
 Mais la problématique reste similaire à la problématique du choix entre la parallélisation en mémoire distribuée et la parallélisation en mémoire partagée, ce n'est pas toujours possible ou performant.
 %
-Dans le cas où les algorithmes en mémoire distribuée ne passeraient pas à l'échelle, il est nécessaire de noter que l'utilisation de cette solution multipliera par le nombre de bancs NUMA le nombre de processus MPI.
+Dans le cas où les algorithmes en mémoire distribuée ne passeraient pas à l'échelle, il est nécessaire de noter que l'utilisation de cette solution multipliera le nombre de processus MPI par le nombre de bancs NUMA.
 %
 Notre application utilise déjà du parallélisme en mémoire distribuée, il n'y aura donc pas de modification à effectuer pour cette solution.
 %

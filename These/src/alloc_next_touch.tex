@@ -8,7 +8,7 @@ C'est pour cela que la politique d'allocation {\em Next touch} a été créée.
 %
 Le programmeur choisit un ensemble de pages mémoires qu'il pense mal placées et définit une politique d'allocation next touch sur ces pages.
 %
-Lors du prochain accès mémoire à l'une de ces pages, le noyau s'occupera, si besoin, de déplacer la page mémoire vers le banc NUMA le plus proche.
+Lors du prochain accès mémoire à l'une de ces pages, le noyau s'occupera, si besoin, de déplacer la page mémoire vers le banc NUMA le plus proche du processeur faisant cet accès.
 %
 Ainsi nous pouvons obtenir une amélioration de la localité mémoire sans avoir à récrire certaines parties du code.
 %
