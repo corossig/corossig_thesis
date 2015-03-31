@@ -3,20 +3,22 @@ La partie résolution de système linéaire creux représente souvent la partie 
 %
 Il est donc essentiel de paralléliser cette partie du code.
 %
-Les noyaux de calcul les plus coûteux utilisés dans les méthodes itératives préconditionnées par une méthode ILU sont :
+Les noyaux de calcul les plus coûteux utilisés dans les méthodes de Krylov préconditionnées par une méthode ILU sont :
 \begin{itemize}
   \item la factorisation ILU;
   \item les résolutions triangulaires;
   \item le produit matrice vecteur creux;
   \item le produit scalaire.
 \end{itemize}
+
+
 La parallélisation des méthodes de Krylov revient à paralléliser les noyaux de calcul cités précédemment.
 %
 L'une des méthodes de précondionnement parallèles les plus courantes est la méthode de Jacobi par blocs.
 %
 Dans cette méthode, nous découpons des blocs dans la matrice et nous appliquons notre préconditionneur sur chaque bloc.
 %
-Ces blocs proviennent d'un partitionnement du graphe d'adjacence (Fig.~\ref{fig:domain}) de la matrice à l'aide d'un logiciel de partitionnement, tel que Scotch ou Metis, avec pour objectif un bon équilibrage de charge.
+Ces blocs proviennent d'un partitionnement du graphe d'adjacence de la matrice à l'aide d'un logiciel de partitionnement, tel que Scotch ou Metis, avec pour objectif un bon équilibrage de charge (Fig.~\ref{fig:domain}).
 %
 La matrice est ensuite réordonnée pour que la numérotation des cellules à l'intérieur d'un domaine soit contiguë.
 %
@@ -41,6 +43,9 @@ Sur la figure~\ref{fig:domain_jacobi}, les entrées de la matrice en dehors des 
     \caption{Exemple d'une décomposition de domaine appliquée à une méthode de Jacobi par blocs.}
     \label{fig:jacobi}
 \end{figure}
+
+
+
 Les deux autres noyaux de calcul (le produit matrice vecteur creux et le produit scalaire) peuvent être parallélisés facilement.
 %
 Dans le cas du produit matrice vecteur creux, chaque coeur de calcul s'occupera de multiplier un ensemble de lignes de la matrice.
@@ -48,6 +53,7 @@ Dans le cas du produit matrice vecteur creux, chaque coeur de calcul s'occupera 
 Cet ensemble peut provenir de la décomposition de domaine faite pour la méthode Jacobi par bloc, mais ce n'est pas obligatoire.
 %
 Pour le produit scalaire, chaque coeur de calcul s'occupera de multiplier un ensemble d'éléments des deux vecteurs.
+
 
 La méthode de Jacobi par blocs n'affecte donc que la partie préconditionneur des méthodes itératives.
 %

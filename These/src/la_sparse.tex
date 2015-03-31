@@ -6,18 +6,39 @@ C'est en partie dû à la façon de stocker la matrice creuse.
 En effet, pour avoir un stockage efficace, seuls les coefficients non nuls de la matrice creuse sont stockés.
 %
 Le motif des valeurs non nulles de la matrice est défini par le problème que nous souhaitons résoudre.
-%
-Le format le plus générique pour stocker des matrices creuses s'appelle COO\footnote{COOrdinate list} (Fig.~\ref{fig:COO}).
+
+
+Le format le plus générique pour stocker des matrices creuses s'appelle COO\footnote{COOrdinate list}.
 %
 Dans ce format, chaque valeur non nulle est stockée avec ses coordonnées 2D dans la matrice.
 %
-Un autre format, lui aussi générique, est souvent utilisé, il s'agit du format CSR\footnote{Compress Sparse Row} (Fig.~\ref{fig:CSR}).
+Ce format est souvent implémenté sous la forme de trois tableaux (Fig.~\ref{fig:COO}).
 %
-Les éléments non nuls sont triés par ligne puis le tableau {\em PTR} du format de stockage nous permet de retrouver la ligne d'un élément.
+Chaque tableau s'occupera d'un propriété des éléments non nuls (valeur, colonne et ligne).
 %
-Ce tableau peut être vu comme une compression du tableau indiçant les lignes de la matrice.
+Toutes les matrices peuvent donc être représentées dans ce format.
+%
+Il peut être utile d'utiliser ce format lorsque nous souhaitons utiliser des algorithmes qui changent des valeurs nulles de la matrice en valeurs non nulles.
+%
+Mais ce format à l'inconvénient de ne pas imposer d'ordre sur les éléments de la matrice.
+%
+Il est donc difficile d'écrire un programme optimisé utilisant ce format.
+
+
+\`A la place, un autre format est souvent utilisé, il s'agit du format CSR\footnote{Compress Sparse Row}.
+%
+Ce format permet lui aussi de stocker toutes sortes de matrices.
+%
+Il impose que les éléments non nuls soient rangés par ligne.
+%
+Il est aussi composé de trois tableaux et reprend deux des trois tableaux du format COO (valeur et colonne).
+%
+Le troisième tableau correspond aux indices de début et de fin de chaque dans les deux autres tableaux (Fig.~\ref{fig:CSR}).
+%
+Ce troisième tableau peut être vu comme une compression du tableau indiçant les lignes de la matrice.
 %
 D'autres formats moins génériques existent, mais nous n'en parlerons pas ici.
+
 \begin{figure}[!h]
      \begin{center}
         \subfigure[Exemple de matrice creuse]{%
@@ -35,11 +56,13 @@ D'autres formats moins génériques existent, mais nous n'en parlerons pas ici.
     \caption{Comparaison entre les formats de stockage de matrices creuses COO et CSR.}
     \label{fig:matrix_storage}
 \end{figure}
+
+
 Le choix du format de stockage va avoir beaucoup d'effet sur les performances d'une application.
 %
 Avec la plupart des formats, nous aurons au moins deux accès mémoire pour obtenir les coordonnées 2D d'un coefficient non nul alors qu'avec l'algèbre linéaire dense nous pouvons calculer ces coordonnées à partir de la position dans la matrice.
 %
-Une partie non négligeable de la bande passante mémoire est utilisée juste pour la lecture des coordonnées 2D.
+Une partie non négligeable de la bande passante mémoire est donc utilisée juste pour la lecture des coordonnées 2D.
 %
 Les propriétés creuse et irrégulière de ces matrices impliquent aussi une mauvaise efficacité mémoire des noyaux d'algèbre linéaire creux à cause d'une mauvaise réutilisation du cache.
 %
@@ -47,13 +70,14 @@ La plupart des optimisations faites en algèbre linéaire dense ne peuvent pas �
 %
 Mais l'algèbre linéaire creuse nous permet de résoudre des problèmes bien plus grands que ceux qui utilisent l'algèbre linéaire dense.
 %
-Ceci est dû au fait qu'avec une taille de matrice équivalente, l'algèbre linéaire creuse utilise vraiment moins de mémoire que l'algèbre linéaire dense.
+Ceci est dû au fait qu'à ordre de matrice équivalente, une matrice creuse utilise vraiment moins de mémoire qu'une matrice dense.
+
 
 Pour la simulation de réservoir, chaque entrée de nos matrices est composée d'un petit petit bloc dense dont la taille dépend du nombre de variables primaires utilisées par la simulation.
 %
-Nous reviendrons sur la définition de ces variables primaires plus loin dans ce document.
+Nous reviendrons sur la définition de ces variables primaires plus loin dans ce document, disons qu'il s'agit du nombre de variables physiques simulées.
 %
-Ces blocs permettent d'obtenir une meilleure réusabilité des caches lors des opérations élémentaires.
+Ces blocs permettent d'obtenir une meilleure réusabilité des caches lors des opérations élémentaires (addition, multiplication ...).
 %
 Pour prendre en compte ces blocs et ainsi optimiser nos calculs, nous utilisons une version modifiée du CSR, le Block CSR ou BCSR.
 %
@@ -64,16 +88,17 @@ Au lieu de stocker des scalaires, nous stockons des blocs denses.
 Ces blocs sont eux-mêmes stockés au format {\em column major}, ce qui signifie qu'en mémoire deux éléments consécutifs appartiennent à la même colonne.
 %
 Exception faite du dernier élément de la colonne dont l'élément consécutif est le premier élément de la colonne suivante.
-%
+
+
 Nous avons effectué une comparaison des différents formats de stockage des matrices appliqué au réservoir dans le cadre de l'utilisation d'un GPU, les résultats sont disponibles dans l'article~\cite{Renpar}.
 %
 Le format BCSR est un bon compromis entre flexibilité et performance.
 
 Résoudre des problèmes linéaires creux est aussi très différent de résoudre des problèmes denses.
 %
-Nous ne pouvons pas utiliser une inversion directe de matrice, ou la technique de l'élimination de Gauss parce que nous obtiendrions une matrice quasi-dense.
+Nous ne pouvons pas utiliser une inversion directe de matrice, ou la technique de l'élimination de Gauss parce que nous obtiendrions une matrice dense.
 %
-Or une matrice quasi-dense avec de grandes dimensions ne pourrait pas tenir en mémoire et même si c'était le cas, le nombre de calculs serait trop important.
+Or une matrice dense avec de grandes dimensions ne pourrait pas tenir en mémoire et même si c'était le cas, le nombre de calculs serait trop important.
 %
 Donc des méthodes différentes ont été inventées pour être capable de résoudre ces problèmes, beaucoup sont basées sur des méthodes itératives.
 %

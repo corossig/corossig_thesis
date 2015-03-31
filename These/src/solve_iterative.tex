@@ -1,11 +1,11 @@
 \subsection{Méthode itérative}
 Une autre approche souvent utilisée pour résoudre de grands systèmes d'équations linéaires creux consiste à utiliser des méthodes de résolution itérative~\cite{Saad96IMSLS}.
 %
-On appelle méthode itérative une méthode qui permet de résoudre un problème en partant d'une solution initial $x^0$ et qui à chaque itération donne une nouvelle solution $x^i$.
+On appelle méthode itérative une méthode qui permet de résoudre un problème en partant d'une solution initial $x_0$ et qui à chaque itération donne une nouvelle solution $x_i$.
 %
-Cette nouvelle solution $x^i$ étant plus proche de la solution exacte du problème que la solution précédente $x^{i-1}$.
+Cette nouvelle solution $x_i$ étant plus proche de la solution exacte du problème que la solution précédente $x_{i-1}$.
 %
-La méthode s'arrête lorsque $x^i$ est suffisamment proche de la solution exacte selon un critère entré en paramètre.
+La méthode s'arrête lorsque $x_i$ est suffisamment proche de la solution exacte selon un critère entré en paramètre.
 %
 Parmi ces méthodes on peut citer la méthode Jacobi, Gauss-Seidel ou encore SOR, ce sont des méthodes itératives dites stationnaires.
 %
@@ -67,6 +67,7 @@ Un cas idéal serait d'avoir $M=A$, dans ce cas là on obtient la matrice identi
 %
 Or, calculer $A^{-1}$ est très coûteux, à la fois en terme de calcul que de mémoire.
 
+
 La factorisation directe LU peut être considérée comme un très bon préconditionneur.
 %
 En multipliant chaque membre de l'équation par $A^{-1}$ qui correspond à une résolution triangulaire avec $L$ et $U$, nous obtenons l'équation $A^{-1}Ax=A^{-1}b$ qui est équivalente à $x=A^{-1}b$.
@@ -86,13 +87,14 @@ La deuxième correspond à la {\em résolution triangulaire} effectuée avec les
 Pour maintenir un espace mémoire raisonnable, on peut choisir de limiter le niveau de remplissage, deux solutions existent :
 \begin{itemize}
   \item Soit en fixant une valeur seuil à partir de laquelle le remplissage est accepté, il s'agit de l'algorithme ILUt;
-  \item Soit en choisissant un niveau d'interaction maximal entre les lignes de la matrice, il s'agit de l'algorithme ILU(k).
+  \item Soit en choisissant un niveau d'interaction maximal entre les lignes de la matrice, il s'agit de l'algorithme ILU(k) (Fig.~\ref{fig:iluk_filling}).
 \end{itemize}
+
 %   (-_-)   %
 \begin{figure}[!h]
   \centering
   \includegraphics[width=\textwidth]{iluk_filling}
-  \caption{Remplissage d'une matrice lors d'une factorisation ILU(k). Avec $k=3$ nous obtenons une matrice dense. Le niveau 2 n'est pas représenté pour ne pas surcharger la figure.}
+  \caption{Remplissage d'une matrice lors d'une factorisation ILU(k). Avec $k=2$ nous obtenons déjà le plus haut niveau de remplissage.}
   \label{fig:iluk_filling}
 \end{figure}
 
@@ -104,13 +106,11 @@ La factorisation ILU(k) peut être faite en deux étapes :
 %
 La factorisation symbolique va utiliser le graphe d'adjacence de la matrice.
 %
-Pour chaque ligne $i$ de la matrice, si un élément non-nul est présent dans la colonne $j$, alors il y a une relation de niveau 0 entre les éléments $i$ et $j$.
+S'il existe un chemin entre $i$ et $j$ tel que tout les indices du chemin soient inférieurs au minimum entre $i$ et $j$, alors une arête entre $i$ et $j$ apparaîtra.
 %
-Les relations de niveau $n$ sont construites à partir des relations de niveau $n-1$.
+La longueur de ce chemin déterminera le niveau de remplissage.
 %
-Pour chaque élément $i$, les relations de niveau $n$ correspondent aux relations de niveau 0 ses relations $n-1$.
-%
-Par exemple, sur la figure~\ref{fig:iluk_filling}, ``1'' a une relation de niveau 1 avec ``3'' donc ``1'' aura une relation de niveau 2 avec ``4',' car ``3'' a une relation de niveau 0 avec ``4''.
+Par exemple, sur la figure~\ref{fig:iluk_filling}, ``5'' aura une relation de niveau 2 avec ``4'' car le chemin 4-3-2-5 existe et ``3'' et ``2'' sont inférieurs à ``4'' et ``5''.
 
 %   (-_-)   %
 \begin{figure}[!h]
@@ -143,6 +143,8 @@ Par exemple, sur la figure~\ref{fig:iluk_filling}, ``1'' a une relation de nivea
   \caption{Factorisation symbolique ILU(k)}
   \label{algo:iluk_symbolic}
 \end{algorithm}
+
+
 L'algorithme ILUt a l'inconvénient d'avoir un motif de remplissage qui dépend des coefficients de la matrice.
 %
 Nous ne pouvons donc pas prévoir à l'avance l'espace nécessaire au stockage des matrices L et U.
@@ -154,6 +156,8 @@ Il est donc possible de connaître la structure des matrices L et U à l'avance.
 Pour la simulation de réservoir, nous utilisons l'algorithme ILU(k).
 %
 L'algorithme~\ref{algo:gmres_precond} représente un GMRES préconditionné avec une méthode ILU.
+
+
 \begin{algorithm}
   \caption{GMRES préconditionné par une méthode ILU. Les parties surlignées correspondent au préconditionnement.}
   \label{algo:gmres_precond}
