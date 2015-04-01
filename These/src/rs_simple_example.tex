@@ -1,8 +1,9 @@
 \subsection{Simulation d'un exemple physique simple}
 Prenons un exemple physique simple pour avoir une idée de comment l'algèbre linéaire peut être utilisée dans une simulation.
 %
-Cet exemple est trivial et peut être résolu directement sans utiliser l'algèbre linéaire, mais il permet de comprendre facilement l'utilisation de l'algèbre linéaire dans un code de simulation numérique.
-%
+L'exemple présenté est trivial et peut être résolu directement sans utiliser l'algèbre linéaire, mais il permet de comprendre facilement l'utilisation de l'algèbre linéaire dans un code de simulation numérique.
+
+
 Nous souhaitons simuler une colonne remplie d'huile.
 %
 Nous connaissons la densité de l'huile contenue dans la colonne : $\rho = 0.9192~kg/m^3$.
@@ -31,7 +32,7 @@ P(z_0+h) = P(z_0) + h \frac{\mathrm d P}{\mathrm d z} (z_0) + o(h^2)
   \caption{Schéma de la colonne d'huile, il s'agit d'une discrétisation en $n$ cellules et le centre de chaque cellule est séparé d'une distance $\Delta{z}$.}
   \label{fig:oil_schema}
 \end{figure}
-%
+
 On discrétise le problème en $n$ cellules avec la méthode des différences finies (Fig.~\ref{fig:oil_schema}) : considérons $Z_i$ l'approximation de $z$ sur la cellule $i$, $i$ allant de $0$ à $n-1$.
 %
 Chaque cellule est séparée d'une distance $h$ appelée $\Delta{z}$ :
