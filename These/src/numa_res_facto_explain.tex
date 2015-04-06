@@ -1,33 +1,75 @@
 \subsubsection{Mémoire distribuée}
-En mémoire distribuée, nous n'effectuons pas les mêmes calculs qu'en mémoire partagée, mais les accélérations obtenues nous donneront une approximation des performances que nous pourrons obtenir.
+En mémoire distribuée, nous utilisons une méthode de Jacobi par blocs pour obtenir du parallélisme.
 %
-Sur la machine Rostand, la factorisation atteint une accélération de 11,8 et la résolution triangulaire une accélération de 3,5.
+Chaque processus factorise un bloc de la matrice en parallèle.
 %
-Sur la machine Manumanu, cette accélération monte à 93 pour la factorisation (Fig.~\ref{fig:res_facto_mpi_manu}) et à 73 pour la résolution triangulaire (Fig.~\ref{fig:res_trsv_mpi_manu}).
+Nous n'effectuons donc pas le même calcul que lors d'une factorisation en mémoire partagée.
+%
+Il y a un peu plus de calcul à faire en mémoire partagée, ces calculs correspondent aux éléments en dehors des blocs qui sont ignorés avec la méthode de Jacobi par blocs.
+%
+Par contre, cette méthode nous permettra d'évaluer une borne maximale de performances que nous pourront obtenir en mémoire partagée.
+%
+En effet, les types d'opérations sont les mêmes, seul l'ordre de traitement des lignes de la matrice change avec l'ajout de dépendances entre chaque ligne.
+
+
+Sur la machine Rostand, la factorisation atteint une accélération de 9,9 et la résolution triangulaire une accélération de 3,7 sur 12 coeurs de calcul.
+%
+La factorisation est moins limitée par la bande passante mémoire que la résolution triangulaire.
+%
+Sur la machine Manumanu, cette accélération monte à 93 pour la factorisation (Fig.~\ref{fig:res_facto_mpi_manu}) et à 73 pour la résolution triangulaire (Fig.~\ref{fig:res_trsv_mpi_manu}) pour 160 coeurs de calcul.
+%
+Si nous n'utilisons que deux processeurs de 8 coeurs de calcul chacun sur Manumanu, nous obtenons des accélération de 15,18 pour la factorisation et 7,2 pour la résolution triangulaire.
+%
+Nous pouvons donc voir que la résolution triangulaire passe mieux à l'échelle que la factorisation.
+
 
 \subsubsection{First touch}
-Les résultats de la factorisation et de la résolution triangulaire avec une allocation first touch sur la machine  sont exposés dans le chapitre précédent.
+Nous allons maintenant tester la politique d'allocation first touch sur la factorisation et sur la résolution triangulaire.
 %
-Les résultats ne sont pas aussi bons que ceux que nous pourrions obtenir avec une meilleure gestion de la mémoire.
+Les matrices et les vecteurs seront donc alloués sur un seul banc NUMA, celui du thread qui a exécuté le code d'initialisation.
 %
-Pour rappel, nous obtenions au mieux une accélération de 8,7 sur coeurs pour la factorisation et une accélération de 2,8 pour la résolution triangulaire.
+Tous les accès mémoire passeront ensuite par ce banc NUMA, nous n'utiliserons donc qu'une partie de la bande passante mémoire de la machine.
+%
+Nous avons aussi utilisé Taggre pour grossir le grain de calcul.
 
-Sur la machine Manumanu, nous obtenons le même type d'accélération que pour le SpMV.
+
+Sur la machine Rostand, nous obtenons au mieux une accélération de 8,7 (Fig.~\ref{fig:res_facto_ft_rostand}) sur 12 coeurs pour la factorisation et une accélération de 2,8 pour la résolution triangulaire (Fig.~\ref{fig:res_trsv_ft_rostand}).
+%
+Nous obtenons donc des performances en dessous des performances obtenues en mémoire distribuée.
+%
+Il faut aussi prendre en compte que l'utilisation de plusieurs threads implique une gestion des dépendances entre les tâches de calcul.
+
+
+Sur la machine Manumanu, nous obtenons le même type d'accélération que pour le produit matrice vecteur creux.
 %
 Tant que nous utilisons moins de 2 bancs NUMA, nous obtenons une accélération de 10 pour la factorisation (Fig.~\ref{fig:res_facto_ft_manu}) et une accélération de 6,2 pour la résolution triangulaire (Fig.~\ref{fig:res_trsv_ft_manu}).
+%
+Au delà de 16 threads, les performances chutent, les temps de latence des accès mémoires deviennent trop grands.
+
 
 \subsubsection{Interleave}
 Pour essayer de diminuer les effets NUMA, nous activons la politique d'allocation mémoire interleave.
 %
 Les pages mémoires sont donc distribuées uniformément entre chaque banc NUMA.
 %
+Nous pouvons donc utiliser plus de bande passante qu'avec l'allocation first touch précédente.
+
+
 Sur Rostand, la factorisation donne des résultats légèrement moins bons qu'avec une politique d'allocation first touch (Fig.~\ref{fig:res_facto_inter_rostand})
 %
 Par contre, nous obtenons une amélioration entre 3~\% et 30~\% de la résolution triangulaire pour un nombre faible de variables primaires (Fig.~\ref{fig:res_trsv_inter_rostand}).
+%
+Même si nous avons la possibilité d'utiliser plus de bande passante mémoire, ce n'est pas pour cela qu'elle sera mieux utilisée.
+%
+En moyenne, la moitié des accès mémoire auront toujours une latence plus élevée.
+
+
 
 Sur Manumanu, la factorisation se comporte de la même façon que sur Rostand (Fig.~\ref{fig:res_facto_inter_manu}).
 %
 De même, l'accélération maximale de la résolution triangulaire est meilleure avec une politique d'allocation interleave (Fig.~\ref{fig:res_trsv_inter_manu}).
+%
+Comme pour la politique first touch, après 16 threads, les performances chutent.
 
 
 \subsubsection{NATaS}
@@ -35,8 +77,31 @@ De même, l'accélération maximale de la résolution triangulaire est meilleure
 %
 Cette affinité a été définie par Taggre de telle sorte à équilibrer la charge sur les différents bancs NUMA.
 %
+Donc, nous limitons le nombre d'accès aux bancs NUMA distants.
+%
+La granularité de placement mémoire étant d'une page, il n'est pas possible d'allouer toutes les données correctement.
+%
+Certaines données seront donc à cheval sur deux bancs NUMA différents.
+%
+De plus, dans le cas de la résolution triangulaire, les vecteurs seront eux aussi à cheval sur plusieurs bancs NUMA.
+
+
+
 NATaS offre de meilleures performances sur Rostand par rapport à la politique d'allocation interleave.
 %
-La factorisation est 40\% plus rapide avec 8 variables primaires et la résolution triangulaire est 23\% plus rapide.
+La factorisation est 40\% plus rapide avec 8 variables primaires (Fig.~\ref{fig:res_facto_nas_rostand}) et la résolution triangulaire est 23\% plus rapide (Fig.~\ref{fig:res_trsv_nas_rostand}).
 %
 Avec 1 variable primaire, nous n'obtenons pas de gain sur la résolution triangulaire.
+
+
+Sur Manamanu, les résultats sont meilleurs qu'avec les précédentes allocations (Fig.~\ref{fig:res_facto_nas_manu} et \ref{fig:res_trsv_nas_manu}).
+%
+Par contre, au delà de deux processeurs, les performances s'effondrent aussi.
+%
+Cette fois l'ordonnanceur en est la cause, les données sont bien réparties et chaque thread accède à des données locales.
+%
+Seul l'ordonnanceur accèdes à des données distantes pour des besoins de synchronisation.
+%
+Ces accès ne sont pas gênant dans un cas où la variation de latence est faible tel que deux processeurs dans un même groupe.
+%
+Mais cette variation devient gênante dès que la variation du temps de latence est plus grande.
