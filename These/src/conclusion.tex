@@ -1,17 +1,17 @@
 \section{Conclusion}
 La simulation de réservoir permet aux compagnies pétrolières d'optimiser le placement des puits lors de l'exploitation d'un champ pétrolier.
 %
-La résolution des équations physiques peut prendre jusqu'à 80\% du temps de simulation.
+La résolution des systèmes d'équations linéaires creux peut représenter jusqu'à 80\% du temps de simulation.
 %
 Nous nous sommes donc concentrés à améliorer cette partie en commençant par la factorisation ILU, un des préconditionneurs du GMRES.
 %
 La parallélisation de la factorisation ILU(k) s'exprime facilement sous la forme d'un graphe de tâches, mais la granularité des tâches ne permet pas d'obtenir de bonnes performances.
 %
-La plupart des ordonnanceurs actuels mettent plus de temps à ordonnancer une tâche que la tâche met à exécuter son code.
+La plupart des ordonnanceurs actuels mettent plus de temps à ordonnancer une tâche que la tâche ne met à exécuter son code.
 %
 Pour pouvoir modifier facilement cette granularité, nous avons élaboré un nouveau cadriciel que nous avons appelé Taggre.
 %
-Ce cadriciel prend en entrée un graphe de tâches à grain très fin et utilise des algorithmes pour créer de nouveaux groupes de tâches.
+Ce cadriciel prend en entrée un graphe de tâches à grain très fin et utilise des algorithmes pour grossir le grain de tâche en créant des groupes de tâches.
 %
 Pour cela, il utilise des opérateurs d'agrégations que nous avons définies dans le chapitre 2.
 %
@@ -21,11 +21,16 @@ En combinant ces opérateurs, nous pouvons obtenir un nouveau graphe à grain gr
 %
 Ce graphe pourra être ensuite utilisé par un ordonnanceur de tâches.
 
+
 Cette méthode d'agrégation de tâches est générique.
 %
 Dans le cadre de cette thèse, nous l'avons appliqué à la factorisation ILU(k) ainsi qu'aux résolutions triangulaires associées.
 %
+Nous l'avons aussi expérimenté sur des graphes un peu plus généraux grâce à un simulateur d'exécution de tâches.
+%
 Mais cette méthode pourrait aussi s'appliquer à d'autres noyaux d'algèbre linéaire creuse ainsi qu'à d'autres genres de problèmes représentant le parallélisme sous la forme d'un graphe de tâche.
+
+
 
 Nous nous sommes ensuite concentrés sur l'optimisation des accès mémoire.
 %
@@ -35,11 +40,12 @@ Nos algorithmes étant limités par la bande passante mémoire, l'amélioration 
 %
 Malheureusement, cet ordonnanceur a été développé avec pour objectif de fonctionner sur des machines avec 2 bancs NUMA.
 %
-L'utilisation d'une machine ayant plus de bancs NUMA a montré les limites de cet ordonnanceur.
+L'utilisation d'une machine ayant plus de bancs NUMA a montrée les limites de cet ordonnanceur.
 %
 Malgré ces limites, les résultats obtenus restent meilleurs que ceux obtenus avec un ordonnanceur classique.
 %
 Les résultats de ces travaux ont été présentés au workshop PDSEC de la conférence IPDPS2013.
+
 
 Durant cette thèse, nous avons aussi eu l'occasion d'essayer notre code de calcul sur un coprocesseur Intel Xeon Phi.
 %

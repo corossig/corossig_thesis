@@ -1,17 +1,17 @@
 \subsubsection{Collection de matrices creuses de l'université de Floride}
-L'application de Taggre aux problèmes des 13 nains de Berkeley n'étant pas probante, nous proposons s'appliquer sur des matrices non issues de la simulation de réservoir.
+L'application de Taggre aux problèmes des 13 nains de Berkeley n'étant pas probante, nous proposons plutôt de l'appliquer à des matrices non issues de la simulation de réservoir.
 %
 La collection de matrices creuses de l'université de Floride est un ensemble de matrices provenant de diverses simulations.
 %
 Parmi toutes ces matrices, nous en avons choisi quatre ayant des motifs différents de ceux que nous pouvons retrouver en simulation de réservoir.
 %
-Nous ne nous intéressons pas aux propriétés physiques de ces simulations, mais seulement aux connexions des noeuds du graphe.
+Nous ne nous intéressons pas aux propriétés physiques de ces simulations, mais seulement aux connexions des noeuds dans le graphe.
 %
 C'est pourquoi nous allons choisir des paramètres arbitraires par rapport aux poids des tâches.
 %
 Ces paramètres auront une incidence sur le choix des opérateurs d'agrégations.
 %
-Nous testerons différents opérateurs grâce à notre simulateur.
+Nous testerons ces différents opérateurs grâce à notre simulateur.
 
 
 \begin{figure}[!h]
@@ -59,7 +59,7 @@ Nous testerons différents opérateurs grâce à notre simulateur.
 
 Les premiers résultats concernent la matrice Pajek/EPA, ce graphe représente les liens de pages vers {\em www.epa.gov}.
 %
-La matrice est plutôt petite (environ 5000 lignes), nous n'aurons donc pas beaucoup de tâches.
+Le graphe est plutôt petit (environ 5000 noeuds), nous n'aurons donc pas beaucoup de tâches.
 %
 Nous avons choisi pour le simulateur de tâches des valeurs représentant des tâches plutôt grosses (50 fois le coût d'ordonnancement) et qui ne bénéficie presque pas des effets cache.
 %
@@ -84,7 +84,7 @@ Aucun opérateur d'agrégation ne se démarque des autres.
 
 Les résultats suivants concernent un graphe représentant les intersections de routes de Pennsylvanie (SNAP/roadNet-PA).
 %
-La matrice est assez grande, nous pourrons agréger des lignes ensemble.
+Le graphe est assez grand, nous pourrons agréger des noeuds ensemble.
 %
 La granularité des tâches que nous avons choisie est petite, l'ordonnanceur met autant de temps à ordonnancer la tâche que la tâche met à s'exécuter.
 %
@@ -112,7 +112,7 @@ L'opérateur F n'a pas fourni une bonne agrégation à cause des effets cache.
 
 Le troisième cas test représente les liens entre les pages du site web de stanford (Gleich/wb-cs-stanford).
 %
-Il s'agit d'une petite matrice d'environ 10000 lignes.
+Il s'agit d'un petit graphe d'environ 10000 noeuds.
 %
 Les tâches ont une granularité grossière et peuvent bénéficier d'améliorations des effets cache.
 %

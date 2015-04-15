@@ -6,3 +6,47 @@ Le choix des opérateurs se fait à l'appréciation du programmeur.
 Ce choix dépendra essentiellement de la forme du graphe de tâches ainsi que des propriétés des tâches.
 %
 Parmi ces propriétés, la granularité des tâches est importante,
+%
+Si la granularité des tâches est vraiment trop fine, il faudra privilégier des opérateurs qui créent des gros groupes de tâches.
+%
+Par contre pour une granularité moins fine, nous pouvons utiliser des opérateurs qui favorisent les interactions entre les tâches.
+%
+Nous proposons deux solutions pour rendre ce choix automatique avec chacun des avantages et des défauts.
+
+
+La première solution est {\em l'auto-tuning}, elle consiste à parcourir l'espace des possibilités d'agrégations et à choisir la meilleure.
+%
+Le principal problème vient de la taille de l'espace à parcourir.
+%
+Pour réduire cette taille, nous pouvons utiliser des techniques d'optimisation pour éviter de tester des cas trop absurdes.
+%
+Nous pouvons aussi utiliser le simulateur d'exécution des tâches pour avoir une approximation du temps de calcul.
+%
+Mais cette approximation n'est pas aussi fiable qu'une vrai exécution car nous ne prenons pas en compte tous les paramètres.
+
+
+La deuxième solution consiste à faire une analyse statique des tâches ainsi que du graphe de tâches.
+%
+Cette analyse est très complexe à mettre en oeuvre et les critères d'évaluation des graphes sont à définir.
+%
+Par contre, une fois tout le travail d'analyse effectué, le choix des opérateurs est rapide.
+
+
+L'ordonnanceur de tâches que nous avons écrit peut aussi être amélioré.
+%
+Il n'a qu'une seule fonctionnalité, la gestion de l'affinité NUMA.
+%
+Des stratégies d'ordonnancement plus intelligentes pourrait être implémenter pour améliorer ces performances.
+%
+De plus, les structures de données actuelles ne permettent pas de l'utiliser efficacement sur plus de 3 bancs NUMA.
+
+
+
+Les architectures actuelles tendent à avoir de plus en plus de coeurs de calcul par processeur.
+%
+Le Xeon Phi nous offre une vision de ces futures processeurs et des moyens de programmation à notre disposition.
+%
+Malheureusement la version actuelle ne propose pas de bonnes performances séquentielles.
+%
+Il est nécessaire d'attendre la prochaine version qui aura une exécution dans le désordre (out-of-order) et une meilleure fréquence d'horloge.
+

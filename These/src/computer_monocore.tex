@@ -3,13 +3,53 @@ Pour être capables de simuler de grands problèmes physiques, nous avons besoin
 %
 Cette puissance se mesure en FLOPS\footnote{FLoating-point Operations Per Second}, il s'agit du nombre d'opérations par seconde qu'un ordinateur peut effectuer sur des nombres à virgules flottantes.
 %
-Même les processeurs monocoeur peuvent faire des opérations en parallèle.
+Elle dépendra de différents critères comme de la fréquence d'horloge du processeur, du jeu d'instructions utilisé ou du nombre d'unités de calcul.
+
+
+Même les processeurs monocoeur, c'est à dire composés d'un seul coeur de calcul, peuvent faire des opérations en parallèle.
 %
-Le parallélisme au niveau des instructions en est un bon exemple, les pipelines d'instructions permettent de paralléliser les différentes étapes liées au traitement d'une exécution.
+Le parallélisme au niveau des instructions en est un bon exemple, les pipelines d'instructions permettent de paralléliser les différentes étapes liées au traitement d'une instruction.
+%
+Ces étapes diffèrent selon l'architecture du processeur.
+%
+En simplifiant, ces étapes peuvent être :
+\begin{itemize}
+  \item {\em Fetch}, récupération de l'instruction depuis la mémoire;
+  \item {\em Decode}, décodage de l'instruction pour choisir les unités arithmétique et les registres à utiliser;
+  \item {\em Execute}, effectue l'opération désigné par l'instruction;
+  \item {\em Write-back}, écriture du résultat en mémoire si besoin.
+\end{itemize}
+%
+Avec ce modèle simplifié, le processeur peut exécuter jusqu'à 4 instructions simultanément (Fig.~\ref{fig:pipeline}).
+%
+Deux problèmes se posent : dans le cas où l'instruction est un saut conditionnel, l'étape fetch ne peut être connu qu'au moment du write-back, le pipeline est donc vidé.
+%
+Pour limiter l'impact de problème, le processeur pourra supposer un branchement et vider le pipeline seulement s'il a fait une erreur.
+%
+Le deuxième problème est lié à l'étape execute, certaines opérations peuvent durer plus d'un cycle (multiplication, division, calcul flottant ...).
+%
+Dans ce cas le pipeline est figé le temps que l'étape execute finisse, les instructions sont donc exécutées dans l'ordre ({\em in-order}).
+%
+Les processeurs modernes résolvent ce problème en autorisant l'exécution des instructions dans le désordre ({\em out-of-order}).
+%
+Si deux instructions consécutives n'utilisent pas les mêmes unités arithmétique, alors il est possible de les exécuter simultanément.
+%
+Comme par exemple dans le cas d'une multiplication flottante suivi d'une addition entière.
 %
 Dans l'idéal, le processeur utilisant un pipeline d'instruction pourra exécuter une opération par cycle, donc un processeur à 4~GHz aura une puissance de calcul de 4~GFLOPS si les opérations flottantes sont faites en 1 cycle.
 
-Par la suite, les processeurs ont gagné des instructions permettant d'effectuer une même opération sur des données différentes, aussi appelées instructions SIMD dans la taxonomie de Flynn.
+
+%   (-_-)   %
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=\textwidth]{pipeline}
+  \caption{Exemple d'un pipeline mettant 6 cycles d'horloges à exécuter 4 instructions}
+  \label{fig:pipeline}
+\end{figure}
+
+
+
+Par la suite, les processeurs ont gagnés des instructions permettant d'effectuer une même opération sur des vecteurs de données, aussi appelées instructions SIMD dans la taxonomie de Flynn.
 %
 Ces processeurs, dits vectoriels, peuvent donc avoir une puissance de calcul supérieure, si une instruction est capable d'effectuer 4 opérations à la fois et qu'il tourne à 4~GHz, alors il aura une puissance de calcul de 16~GFLOPS.
 %

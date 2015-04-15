@@ -7,15 +7,21 @@ Il existe différents moyens d'inter-connecter les processeurs, on peut connecte
 %
 Il est aussi possible de limiter le nombre de connexions par processeur tout en optimisant le nombre maximum de sauts, comme fait dans les grappes de calcul.
 
+
+
+Chaque saut aura pour effet d'augmenter le temps de latence de l'accès mémoire.
+%
 La distance entre chaque banc NUMA est fournie par le constructeur de la machine sous la forme d'une matrice de distance.
 %
-Nous pouvons utiliser cette matrice pour retrouver la topologie des noeuds NUMA de la machine.
+Il existe souvent une correspondance entre la distance fournie par le constructeur et la latence mesurée.
 %
-La puissance théorique est la même que pour une machine SMP, mais en pratique nous obtenons de meilleures performances.
+Nous pouvons donc utiliser cette matrice pour retrouver la topologie des noeuds NUMA de la machine.
+%
+La puissance théorique est la même que pour une machine SMP, mais en pratique nous obtenons de meilleures performances grâce la distribution des bancs mémoires.
 %
 En contrepartie, pour obtenir ces performances, il est nécessaire d'avoir une bonne gestion de la mémoire.
 %
-Cette gestion peut-être faite par le noyau du système d'exploitation puis affinée par le programme lui-même.
+Cette gestion peut-être faite par le noyau du système d'exploitation dans un premier temps puis affinée par le programme lui-même.
 %
 La plupart des machines NUMA sont ccNUMA\footnote{cache coherent NUMA}, c'est-à-dire que les caches de données sont cohérents entre chaque processeur.
 %
