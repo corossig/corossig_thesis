@@ -38,7 +38,7 @@ Ces allocations font miroir aux différentes politiques de gestion mémoires (fi
 %
 Dans le cas d'un parallélisme de boucle avec une distribution statique, on distribuera la mémoire régulièrement.
 %
-Cet espace mémoire sera découper en autant de bloc qu'il y a de bancs NUMA sur la machine.
+Cet espace mémoire sera découpé en autant de blocs qu'il y a de bancs NUMA sur la machine.
 %
 Puis chaque bloc sera placé sur un banc NUMA.
 
@@ -49,7 +49,7 @@ NATaS s'interface avec Taggre pour améliorer les performances sur des machines 
 %
 La connaissance complète du graphe de tâche permet des améliorations notables sur la distribution mémoire.
 %
-Dans le cas d'un graphe de tâche, le programmeur indiqueras la mémoire utilisée dans chaque tâche.
+Dans le cas d'un graphe de tâche, le programmeur indiquera la mémoire utilisée dans chaque tâche.
 %
 Dans un premier temps, on va équilibrer la distribution des tâches sur les bancs NUMA en attribuant une affinité NUMA aux tâches (Fig.~\ref{fig:numa_distrib_example}).
 %

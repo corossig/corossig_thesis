@@ -15,9 +15,9 @@ Ces étapes diffèrent selon l'architecture du processeur.
 En simplifiant, ces étapes peuvent être :
 \begin{itemize}
   \item {\em Fetch}, récupération de l'instruction depuis la mémoire;
-  \item {\em Decode}, décodage de l'instruction pour choisir les unités arithmétique et les registres à utiliser;
-  \item {\em Execute}, effectue l'opération désigné par l'instruction;
-  \item {\em Write-back}, écriture du résultat en mémoire si besoin.
+  \item {\em Decode}, décodage de l'instruction pour choisir les unités arithmétiques et les registres à utiliser;
+  \item {\em Execute}, effectue l'opération désignée par l'instruction;
+  \item {\em Write-back}, écriture du résultat en mémoire si besoin est.
 \end{itemize}
 %
 Avec ce modèle simplifié, le processeur peut exécuter jusqu'à 4 instructions simultanément (Fig.~\ref{fig:pipeline}).
@@ -32,7 +32,7 @@ Dans ce cas le pipeline est figé le temps que l'étape execute finisse, les ins
 %
 Les processeurs modernes résolvent ce problème en autorisant l'exécution des instructions dans le désordre ({\em out-of-order}).
 %
-Si deux instructions consécutives n'utilisent pas les mêmes unités arithmétique, alors il est possible de les exécuter simultanément.
+Si deux instructions consécutives n'utilisent pas les mêmes unités arithmétiques, alors il est possible de les exécuter simultanément.
 %
 Comme par exemple dans le cas d'une multiplication flottante suivi d'une addition entière.
 %
@@ -49,7 +49,7 @@ Dans l'idéal, le processeur utilisant un pipeline d'instruction pourra exécute
 
 
 
-Par la suite, les processeurs ont gagnés des instructions permettant d'effectuer une même opération sur des vecteurs de données, aussi appelées instructions SIMD dans la taxonomie de Flynn.
+Par la suite, les processeurs ont gagné des instructions permettant d'effectuer une même opération sur des vecteurs de données, aussi appelées instructions SIMD dans la taxonomie de Flynn.
 %
 Ces processeurs, dits vectoriels, peuvent donc avoir une puissance de calcul supérieure, si une instruction est capable d'effectuer 4 opérations à la fois et qu'il tourne à 4~GHz, alors il aura une puissance de calcul de 16~GFLOPS.
 %

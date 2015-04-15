@@ -33,13 +33,13 @@ Sur Linux, ces politiques peuvent être choisies avec l'appel système {\em mbin
 %
 La version 3.13 de Linux apporte un nouveau mécanisme de gestion de la mémoire sur les machines NUMA, il s'agit d'AutoNUMA.
 %
-Ce mécanisme a pour but d'optimiser le placement des pages NUMA tout long de l'exécution d'un processus (Voir section~\ref{sec:autonuma}).
+Ce mécanisme a pour but d'optimiser le placement des pages NUMA tout long de l'exécution d'un processus (voir section~\ref{sec:autonuma}).
 
 D'autres systèmes d'exploitation peuvent avoir leurs propres ensembles de politiques d'allocations NUMA.
 %
 Solaris, par exemple, fournit aussi la politique {\em next-touch}~\cite{next_touch}.
 %
-Avec cette politique, les pages mémoire physiques seront déplacées près du prochain coeur de calcul qui y accédera (Voir section~\ref{sec:next_touch}).
+Avec cette politique, les pages mémoire physiques seront déplacées près du prochain coeur de calcul qui y accédera (voir section~\ref{sec:next_touch}).
 %
 De nombreuses bibliothèques proposent des interfaces de programmation permettant d'abstraire le placement des pages lors d'une allocation mémoire.
 %

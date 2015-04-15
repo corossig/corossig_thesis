@@ -7,15 +7,15 @@ Chaque coeur a son propre pipeline d'instructions, ses registres et ses unités 
 %
 Les coeurs partagent un ou plusieurs niveaux de cache entre eux ainsi que le bus d'accès à la mémoire.
 %
-Ces caches sont le plus souvent cohérents entre eux, c'est à dire que pour chaque coeur de calcul l'accès à une variable en mémoire retourneras toujours le dernier résultat connu par tous les coeurs de calcul.
+Ces caches sont le plus souvent cohérents entre eux, c'est à dire que pour chaque coeur de calcul l'accès à une variable en mémoire retournera toujours le dernier résultat connu par tous les coeurs de calcul.
 %
 La cohérence est assurée par un protocole de cohérence de type MOESI\footnote{MOESI est l'acronyme de Modified, Owned, Exclusive, Shared et Invalid qui correspond aux différents états d'une ligne de cache.}.
 %
-Les caches partagés entre différents coeurs permettront réduire la complexité du mécanisme de cohérence des caches et aussi de bénéficier des données déjà pré-chargée par un autre coeur de calcul.
+Les caches partagés entre différents coeurs permettront réduire la complexité du mécanisme de cohérence des caches et aussi de bénéficier des données déjà pré-chargées par un autre coeur de calcul.
 %
 Par contre, la taille du cache est donc partagée entre plusieurs coeurs de calcul et si un coeur demande souvent de nouvelles lignes de cache, le cache deviendra inutilisable et le deuxième coeur aura des problèmes de latence mémoire.
 %
-Les caches de plus bas niveaux (L1 et parfois L2) sont souvent dédiés à un coeur de calcul, l'espace mémoire n'est donc plus partagée.
+Les caches de plus bas niveau (L1 et parfois L2) sont souvent dédiés à un coeur de calcul, l'espace mémoire n'est donc plus partagé.
 %
 Mais il peut y avoir des effets négatifs, si deux coeurs de calcul écrivent souvent dans la même ligne de cache, il y a un problème de faux partage et la ligne de cache fait souvent des aller-retour entre les caches dédiés.
 

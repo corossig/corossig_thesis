@@ -1,5 +1,5 @@
 \section{Perspectives}
-Les opérateurs d'agrégations ont été créé pour résoudre les problèmes rencontrés en simulation de réservoir.
+Les opérateurs d'agrégations ont été créés pour résoudre les problèmes rencontrés en simulation de réservoir.
 %
 Le choix des opérateurs se fait à l'appréciation du programmeur.
 %
@@ -7,7 +7,7 @@ Ce choix dépendra essentiellement de la forme du graphe de tâches ainsi que de
 %
 Parmi ces propriétés, la granularité des tâches est importante,
 %
-Si la granularité des tâches est vraiment trop fine, il faudra privilégier des opérateurs qui créent des gros groupes de tâches.
+Si la granularité des tâches est vraiment trop fine, il faudra privilégier des opérateurs qui créent de gros groupes de tâches.
 %
 Par contre pour une granularité moins fine, nous pouvons utiliser des opérateurs qui favorisent les interactions entre les tâches.
 %
@@ -22,7 +22,7 @@ Pour réduire cette taille, nous pouvons utiliser des techniques d'optimisation 
 %
 Nous pouvons aussi utiliser le simulateur d'exécution des tâches pour avoir une approximation du temps de calcul.
 %
-Mais cette approximation n'est pas aussi fiable qu'une vrai exécution car nous ne prenons pas en compte tous les paramètres.
+Mais cette approximation n'est pas aussi fiable qu'une vraie exécution car nous ne prenons pas en compte tous les paramètres.
 
 
 La deuxième solution consiste à faire une analyse statique des tâches ainsi que du graphe de tâches.
@@ -36,7 +36,7 @@ L'ordonnanceur de tâches que nous avons écrit peut aussi être amélioré.
 %
 Il n'a qu'une seule fonctionnalité, la gestion de l'affinité NUMA.
 %
-Des stratégies d'ordonnancement plus intelligentes pourrait être implémenter pour améliorer ces performances.
+Des stratégies d'ordonnancement plus intelligentes pourraient être implémentées pour améliorer ces performances.
 %
 De plus, les structures de données actuelles ne permettent pas de l'utiliser efficacement sur plus de 3 bancs NUMA.
 
@@ -44,7 +44,7 @@ De plus, les structures de données actuelles ne permettent pas de l'utiliser ef
 
 Les architectures actuelles tendent à avoir de plus en plus de coeurs de calcul par processeur.
 %
-Le Xeon Phi nous offre une vision de ces futures processeurs et des moyens de programmation à notre disposition.
+Le Xeon Phi nous offre une vision de ces futurs processeurs et des moyens de programmation à notre disposition.
 %
 Malheureusement la version actuelle ne propose pas de bonnes performances séquentielles.
 %

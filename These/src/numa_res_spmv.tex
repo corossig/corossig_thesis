@@ -33,7 +33,7 @@ Le nombre d'opérations simultanées en double précision est divisé par 2, don
 
 Une fois le roofline model construit, nous pouvons donc placer le produit matrice vecteur creux.
 %
-Les performances du SpMV dépendent du nombre de variables primaires, nous avons donc placé sur le roofline model trois SpMV en fonction du nombre de variables primaire utilisées.
+Les performances du SpMV dépendent du nombre de variables primaires, nous avons donc placé sur le roofline model trois SpMV en fonction du nombre de variables primaires utilisées.
 %
 Ces trois points nous indiquent que les performances du SpMV seront limitées par la bande passante mémoire.
 %
@@ -49,7 +49,7 @@ Nous pouvons multiplier indépendamment chaque ligne de la matrice par un vecteu
 \begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{roofline_rostand}
-  \caption{Roofline model de Rostand avec les différents produit matrice vecteur creux.}
+  \caption{Roofline model de Rostand avec les différents produits matrice vecteur creux.}
   \label{fig:roofline_rostand}
 \end{figure}
 
