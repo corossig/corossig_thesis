@@ -11,17 +11,13 @@ Une tâche ayant des prédécesseurs ne pourra commencer son calcul que lorsque 
 %
 Une fois toutes ces dépendances explicitées, nous obtenons un graphe de tâches.
 %
-Ce graphe doit être direct et acyclique.
+Ce graphe doit être orienté et acyclique.
 %
 La propriété directe donnera l'ordre d'exécution des tâches.
 %
 La propriété acyclique est nécessaire pour éviter des inter-blocages, si une tâche $T1$ dépend d'une tâche $T2$ alors indirectement elle dépend aussi des tâches dont $T2$ dépend.
 %
-Or, dans un cycle, cela signifie que $T1$ dépendra indirectement de $T1$.
-
-Pour représenter le parallélisme à base de tâches, nous utilisons des graphes orientés acycliques, ou DAG\footnote{Directed Acyclic Graph}.
-%
-Dans ce modèle, les n{\oe}uds du graphe représentent une action à effectuer et les arêtes représentent l'ordre séquentiel entre deux actions.
+Or, dans un cycle, cela signifie que $T1$ dépendra indirectement d'elle-même.
 %
 Ainsi, nous pouvons représenter le parallélisme sous une forme abstraite indépendamment des ressources matérielles disponibles.
 %

@@ -9,7 +9,9 @@ La fonction exécutée à l'intérieur des tâches sera différente, dans un cas
 
 Les pages mémoires composant la matrice sont distribuées en respectant l'affinité mémoire des tâches associées.
 %
-Cette affinité est fournie par Taggre et correspond à une distribution à peu près équitable des pages mémoires au fil du déroulement du graphe.
+Taggre a défini cette affinité en distribuant les tâches sur les bancs NUMA en équilibrant le nombre de pages par banc NUMA pour chaque hauteur du graphe.
+%
+Nous avons ainsi une distribution à peu près équitable des pages mémoires au fil du déroulement du graphe.
 %
 Le même mécanisme qui sert à utiliser un seul graphe de tâches pour la factorisation et la résolution triangulaire est utilisé ici pour choisir les pages mémoires à déplacer.
 %
@@ -29,7 +31,7 @@ Dans un tel cas, nous choisissons de placer la page mémoire sur le banc NUMA ay
 % Facto
 %%%%%%%%%%%%%%%%
 %   (-_-)   %
-\begin{figure}[!h]
+\begin{figure}[p]
      \begin{center}
         \subfigure[First touch.]{
           \label{fig:res_facto_ft_rostand}
@@ -52,7 +54,7 @@ Dans un tel cas, nous choisissons de placer la page mémoire sur le banc NUMA ay
 \end{figure}
 
 %   (-_-)   %
-\begin{figure}[!h]
+\begin{figure}[p]
      \begin{center}
         \subfigure[First touch.]{
           \label{fig:res_facto_ft_manu}
@@ -79,7 +81,7 @@ Dans un tel cas, nous choisissons de placer la page mémoire sur le banc NUMA ay
 %%%%%%%%%%%%%%%%
 
 %   (-_-)   %
-\begin{figure}[!h]
+\begin{figure}[p]
      \begin{center}
         \subfigure[First touch.]{
           \label{fig:res_trsv_ft_rostand}
@@ -102,7 +104,7 @@ Dans un tel cas, nous choisissons de placer la page mémoire sur le banc NUMA ay
 \end{figure}
 
 %   (-_-)   %
-\begin{figure}[!h]
+\begin{figure}[p]
      \begin{center}
         \subfigure[First touch.]{
           \label{fig:res_trsv_ft_manu}

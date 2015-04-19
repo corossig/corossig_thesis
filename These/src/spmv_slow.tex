@@ -24,9 +24,10 @@ Le constat est même pire que ça, on arrive difficilement à une accélération
 
 Pour comprendre ce qui se passe, nous allons utiliser les compteurs matériels de la machine.
 %
-Ces compteurs sont intégrés au processeur et on y accède via des registres spéciaux seulement disponibles en {\em Ring 0}.
+Ces compteurs sont intégrés au processeur et on y accède via des registres spéciaux seulement disponibles en espace noyau.
 %
 De nombreux logiciels proposent une interface d'accès à ces compteurs, mais certains nécessitent le chargement d'un module noyau.
+
 
 Linux propose un outil d'analyse de performance natif nommé {\em perf}.
 %
@@ -36,13 +37,17 @@ Nous devons choisir nous même les compteurs qui nous intéressent.
 %
 Malheureusement, la version du noyau Linux installé sur nos machines ne nous permet pas d'accéder à tous les compteurs.
 
+
+
 PAPI\footnote{Performance Application Programming Interface} est une interface de programmation qui fournit une abstraction pour l'accès aux compteurs matériels.
 %
 Cette bibliothèque utilise l'interface perfmon sous Linux, elle utilise donc le même module noyau que perf.
 %
 En plus de faciliter l'accès aux compteurs, elle propose comme fonctionnalité de simuler des accumulateurs de compteurs.
 %
-Mais la documentation de cette bibliothèque n'est pas assez claire pour nous.
+Mais son mode de fonctionnement dans un environnement multi-threadé n'est pas suffisamment documenté.
+
+
 
 Intel propose aussi un outil d'analyse de performances, il s'agit de Intel VTune.
 %
@@ -54,15 +59,21 @@ Cet outil est très complet, mais requiert l'achat d'une licence d'utilisation a
 %
 Nous n'avons donc pas pu utiliser cet outil.
 
-Nous avons préféré utiliser Likwid, un outil d'analyse de performance léger.
+
+
+Nous avons préféré utiliser Likwid, un outil d'analyse de performance léger qui simplifie l'accès aux compteurs matériels.
 %
-Le principal avantage de Likwid est qu'il contient des profils déjà configurés.
+Le principal avantage de Likwid est qu'il contient des profils déjà configurés calculant des métriques 
 %
-Par exemple, le profil {\em MEM} nous donnera directement les mesures de bande passante mémoire locale et distante.
+Par exemple, le profil {\em MEM} nous donnera directement les mesures de bande passante mémoire locale et distante en divisant le nombre d'accès mémoire par le temps de calcul.
+%
+Le nombre d'accès mémoire provient des compteurs {\em UNC\_QMC\_NORMAL\_READS\_ANY}, {\em UNC\_QMC\_WRITES\_FULL\_ANY}, {\em UNC\_QHL\_REQUESTS\_REMOTE\_READS} et {\em UNC\_QHL\_REQUESTS\_REMOTE\_WRITES}.
 %
 Il y a aussi la possibilité d'interagir avec Likwid depuis le code d'une application pour ne mesurer qu'une portion du code.
 %
 Nous utiliserons cette fonctionnalité pour ne mesurer que la routine qui nous intéresse.
+
+
 
 Pour mesurer les effets NUMA sur le SpMV, nous effectuons 100 SpMV et mesurer le nombre d'accès mémoire.
 %

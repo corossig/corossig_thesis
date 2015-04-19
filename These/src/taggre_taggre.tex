@@ -22,6 +22,8 @@ En partant de la représentation la plus fine sous forme de DAG du parallélisme
 La principale difficulté est de garder la propriété {\em acyclique} du graphe, car la présence d'un cycle introduirait un inter-blocage dans l'ordonnancement du graphe (Fig.~\ref{fig:agg_invalid}).
 %
 L'autre difficulté est de maintenir assez de parallélisme pour pouvoir être capable d'utiliser au mieux les capacités de la machine.
+
+
 \begin{figure}[!h]
      \begin{center}
         \subfigure[Agrégation invalide]{
@@ -37,11 +39,13 @@ L'autre difficulté est de maintenir assez de parallélisme pour pouvoir être c
     \caption{Exemple de deux agrégations, le résultat de \ref{fig:agg_invalid} ne peut pas être ordonnancé à cause du cycle. Le résultat de \ref{fig:agg_valid} peut être ordonnancé, mais il n'y a aucun parallélisme à exploiter.}
     \label{fig:agg_basic}
 \end{figure}
+
+
 En premier lieu, nous avons développé une nouvelle interface de programmation en C++, cette interface reprend de Intel TBB le concept d'un objet {\em Tâche} contenant la fonction à exécuter.
 %
 \`A cela, nous avons ajouté la description des dépendances dans cet objet.
 %
-Cette interface nous permet de décrire un graphe de tâche complet et de choisir parmi plusieurs ordonnanceurs celui qui ordonnancera le graphe.
+Cette interface nous permet de décrire un graphe de tâches complet et de choisir parmi plusieurs ordonnanceurs celui qui ordonnancera le graphe.
 %
 Avec cette interface, nous pouvons faire des modifications sur le graphe et le rendre plus grossier.
 %
@@ -58,10 +62,13 @@ Taggre s'occupera ensuite de faire le travail nécessaire pour rendre ce graphe 
   \label{fig:coarsening}
 \end{figure}
 
+
 \lstinputlisting[inputencoding=utf8/latin1,frame=single,float=t]{src/taggre.cpp}
+
+
 Dans un premier temps, le programmeur crée les noeuds du graphe, ces noeuds correspondent aux tâches fines du problème.
 %
-Pour chaque noeud créer, le programmeur reçoit un identifiant de noeud.
+Pour chaque noeud créé le programmeur reçoit un identifiant de noeud.
 %
 Puis le programmeur déclare les arêtes du graphe en utilisant les identifiants des noeuds.
 %

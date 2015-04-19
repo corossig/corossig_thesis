@@ -1,4 +1,31 @@
 \section{Perspectives}
+L'ordonnanceur de tâches que nous avons écrit peut aussi être amélioré.
+%
+Il n'a qu'une seule fonctionnalité, la gestion de l'affinité NUMA.
+%
+Des stratégies d'ordonnancement plus intelligentes pourraient être implémentées pour améliorer ces performances.
+%
+De plus, les structures de données actuelles ne permettent pas de l'utiliser efficacement sur plus de 3 bancs NUMA.
+
+
+Les architectures actuelles tendent à avoir de plus en plus de coeurs de calcul par processeur.
+%
+Le Xeon Phi nous offre une vision de ces futurs processeurs et des moyens de programmation à notre disposition.
+%
+Malheureusement la version actuelle ne propose pas de bonnes performances séquentielles.
+%
+La prochaine version aura une exécution dans le désordre (out-of-order) et une meilleure fréquence d'horloge qui devrait résoudre le problème des parties de code séquentielles.
+
+
+Capsules permet d'utiliser une parallélisation par graphe de tâches en définissant plusieurs grain de cacul.
+%
+Il pourrait être intéressant de coupler Taggre à Capsules.
+%
+Taggre s'occupera de définir plusieurs granularités avec une nouvelle granularité après chaque application d'un opérateur.
+%
+Capsules pourra ensuite utiliser ces différentes granularités pour ordonnancer efficacement le graphe de tâches.
+
+
 Les opérateurs d'agrégations ont été créés pour résoudre les problèmes rencontrés en simulation de réservoir.
 %
 Le choix des opérateurs se fait à l'appréciation du programmeur.
@@ -30,23 +57,3 @@ La deuxième solution consiste à faire une analyse statique des tâches ainsi q
 Cette analyse est très complexe à mettre en oeuvre et les critères d'évaluation des graphes sont à définir.
 %
 Par contre, une fois tout le travail d'analyse effectué, le choix des opérateurs est rapide.
-
-
-L'ordonnanceur de tâches que nous avons écrit peut aussi être amélioré.
-%
-Il n'a qu'une seule fonctionnalité, la gestion de l'affinité NUMA.
-%
-Des stratégies d'ordonnancement plus intelligentes pourraient être implémentées pour améliorer ces performances.
-%
-De plus, les structures de données actuelles ne permettent pas de l'utiliser efficacement sur plus de 3 bancs NUMA.
-
-
-
-Les architectures actuelles tendent à avoir de plus en plus de coeurs de calcul par processeur.
-%
-Le Xeon Phi nous offre une vision de ces futurs processeurs et des moyens de programmation à notre disposition.
-%
-Malheureusement la version actuelle ne propose pas de bonnes performances séquentielles.
-%
-Il est nécessaire d'attendre la prochaine version qui aura une exécution dans le désordre (out-of-order) et une meilleure fréquence d'horloge.
-

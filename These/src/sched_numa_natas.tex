@@ -43,13 +43,11 @@ Cet espace mémoire sera découpé en autant de blocs qu'il y a de bancs NUMA su
 Puis chaque bloc sera placé sur un banc NUMA.
 
 
-
-
-NATaS s'interface avec Taggre pour améliorer les performances sur des machines NUMA.
+Taggre utilisera l'interface de NATaS pour améliorer les performances sur des machines NUMA.
 %
-La connaissance complète du graphe de tâche permet des améliorations notables sur la distribution mémoire.
+Il fournira au programmeur une interface simplifié permettant de déplacer la mémoire juste en déclarant pour chaque tâche la mémoire utilisée dans celle-ci.
 %
-Dans le cas d'un graphe de tâche, le programmeur indiquera la mémoire utilisée dans chaque tâche.
+La connaissance complète du graphe de tâches permet des améliorations notables sur la distribution mémoire.
 %
 Dans un premier temps, on va équilibrer la distribution des tâches sur les bancs NUMA en attribuant une affinité NUMA aux tâches (Fig.~\ref{fig:numa_distrib_example}).
 %
@@ -68,6 +66,9 @@ Donc dans un deuxième temps, le programmeur donnera la position souhaitée des 
 Pour cela, il lui suffira de simuler l'exécution du code, de désactiver le vol de tâches et d'appeler la fonction d'enregistrement mémoire.
 %
 Nous obtiendrons ainsi une mémoire équitablement distribuée et des accès mémoire optimisés.
+
+
+\lstinputlisting[inputencoding=utf8/latin1,caption=Exemple de code permettant d\'eplacer la m\'emoire sur une machine NUMA avec Taggre,frame=single,float=t]{src/natas.cpp}
 
 
 %   (-_-)   %
