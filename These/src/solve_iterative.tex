@@ -1,11 +1,11 @@
 \subsection{Méthode itérative}
 Une autre approche souvent utilisée pour résoudre de grands systèmes d'équations linéaires creux consiste à utiliser des méthodes de résolution itérative~\cite{Saad96IMSLS}.
 %
-On appelle méthode itérative une méthode qui permet de résoudre un problème en partant d'une solution initial $x_0$ et qui à chaque itération donne une nouvelle solution $x_i$.
+On appelle méthode itérative une méthode qui permet de résoudre un problème en partant d'une solution initiale $x_0$ et qui à chaque itération donne une nouvelle solution $x_i$.
 %
 Cette nouvelle solution $x_i$ étant plus proche de la solution exacte du problème que la solution précédente $x_{i-1}$.
 %
-La méthode s'arrête lorsque $x_i$ est suffisamment proche de la solution exacte selon un critère entré en paramètre.
+La méthode s'arrête lorsque $x_i$ est suffisamment proche de la solution exacte selon un critère de convergence choisi.
 %
 Parmi ces méthodes on peut citer la méthode Jacobi, Gauss-Seidel ou encore SOR, ce sont des méthodes itératives dites stationnaires.
 %
@@ -65,26 +65,27 @@ Il faut choisir une matrice $M^{-1}$ tel que $M^{-1}A$ soit mieux conditionnées
 %
 Un cas idéal serait d'avoir $M=A$, dans ce cas là on obtient la matrice identité qui se trouve très bien conditionnée.
 %
-Or, calculer $A^{-1}$ est très coûteux, à la fois en terme de calcul que de mémoire.
+Or, calculer $A^{-1}$ est très coûteux, à la fois en termes de calcul que de mémoire.
 
 
-La factorisation directe LU peut être considérée comme un très bon préconditionneur.
+
+La factorisation LU permet de calculer directement $x=U^{-1}.L^{-1}.b=A^{-1}b$ mais comme nous l'avons vu, cette opération est très cher en calculs et en mémoire.
 %
-En multipliant chaque membre de l'équation par $A^{-1}$ qui correspond à une résolution triangulaire avec $L$ et $U$, nous obtenons l'équation $A^{-1}Ax=A^{-1}b$ qui est équivalente à $x=A^{-1}b$.
+Néanmoins, une factorisation approchée de $A$ telle que $||A-LU||$ est relativement petite et peut jouer le rôle de préconditionneur dans une méthode de Krylov.
 %
-Par contre, le résultat de la factorisation LU exacte de la matrice creuse $A$ ne pourrait plus être considéré comme creux.
+Ainsi, les factorisations ILU\footnote{Incomplete LU}\cite{Saad96IMSLS} sont des choix très populaires de préconditionneurs algébriques.
+%
+Les principales techniques de factorisation ILU visent à calculer une factorisation LU qui ne tienty pas compte de certains coefficients de remplissage dans la matrice afin de limiter le coût tout en essayant de minimiser $||A-LU||$.
 %
 En effet, au cours de la factorisation, de nombreux termes de remplissage apparaîtront et l'espace mémoire nécessaire au stockage de ces nouveaux termes deviendrait gigantesque.
 %
 Mais nous ne sommes pas obligés de connaître parfaitement $A^{-1}$ pour obtenir un bon préconditionnement.
 %
-C'est pourquoi nous utilisons la factorisation ILU\footnote{Incomplete LU}, une approximation de la factorisation LU qui se trouve être aussi un bon préconditionneur pour nos matrices.
-%
 Cette méthode est composée de deux opérations, la première correspond à la {\em factorisation} de la matrice en deux sous matrices, elle est faite juste avant le GMRES.
 %
 La deuxième correspond à la {\em résolution triangulaire} effectuée avec les deux sous matrices, elle est effectuée à chaque itération du GMRES.
 %
-Pour maintenir un espace mémoire raisonnable, on peut choisir de limiter le niveau de remplissage, deux solutions existent :
+Pour maintenir un espace mémoire raisonnable, on peut choisir de limiter le niveau de remplissage, les deux méthodes les plus fréquemment utilisées sont :
 \begin{itemize}
   \item Soit en fixant une valeur seuil à partir de laquelle le remplissage est accepté, il s'agit de l'algorithme ILUt;
   \item Soit en choisissant un niveau d'interaction maximal entre les lignes de la matrice, il s'agit de l'algorithme ILU(k) (Fig.~\ref{fig:iluk_filling}).

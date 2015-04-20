@@ -3,9 +3,13 @@ Résoudre un système d'équations linéaire équivaut à résoudre un problème
 %
 Dans l'exemple de la simulation de colonne d'huile, nous avons une matrice triangulaire pour $A$, la solution peut donc être trouvée directement en résolvant chaque équation une à une en démarrant par $P(X_0) = 1000$.
 %
-Mais ce n'est pas toujours aussi facile.
+Mais ce n'est pas toujours aussi simple.
 %
-Dans des cas plus difficiles, d'autres méthodes doivent être utilisées comme l'élimination de Gauss-Jordan, l'élimination de variables ou bien la décomposition LU.
+Dans des cas plus difficiles, d'autres méthodes doivent être utilisées pour se ramener à la résolution de systèmes triangulaires comme l'élimination de Gauss-Jordan, l'élimination de variables ou bien la décomposition LU.
+%
+Lorsque ces systèmes peuvent être résolus de manière approchés, on pourra aussi utiliser une méthode itérative plus économique en mémoire et en nombre d'opérations.
+%
+Nous donnerons dans \ref{sec:solve_sparse} plus de détail sur ces méthodes.
 %
 Nous reviendrons plus tard sur l'une de ces méthodes : la décomposition LU.
 %

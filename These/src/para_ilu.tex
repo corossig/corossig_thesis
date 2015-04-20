@@ -1,4 +1,4 @@
-\subsection{Partie préconditionneur}
+\subsection{Partie préconditionneur ILU}
 La factorisation LU en algèbre linéaire dense est une méthode pour factoriser une matrice $A$ en deux matrices $L$ et $U$.
 %
 $L$ est une matrice triangulaire inférieure, toutes les valeurs au-dessus de la diagonale sont nulles.
@@ -15,7 +15,7 @@ Il suffit de résoudre chaque équation ligne par ligne en commençant par la li
 %
 Ensuite, il faut résoudre la ligne avec deux valeurs non nulles dont une des inconnues provient de la solution précédente, et ainsi de suite jusqu'à la dernière ligne.
 %
-Il existe du parallélisme à exploiter dans cet algorithme, à chaque fois qu'une inconnue est trouvée, on peut la retirer de chacune des lignes restantes à traiter~\cite{plasma_lu}.
+Il existe du parallélisme à exploiter dans cet algorithme, à chaque fois qu'une inconnue est trouvée, on peut la retirer de chacune des lignes restantes à traiter~\cite{plasma_lu} (voir Algo.~\ref{algo:lu}).
 
 En algèbre linéaire creuse, la transformation des éléments nuls de la matrice creuse en éléments non nuls est appelée remplissage.
 %
@@ -29,7 +29,7 @@ En contrepartie, le résultat de la factorisation obtenu est approximatif et fou
 %
 L'algorithme ILU est similaire à l'algorithme LU, mais le remplissage est limité par des conditions définies par l'algorithme.
 %
-Ces conditions peuvent être de deux formes : soit en limitant le remplissage avec une valeur seuil (ILUT\cite{saad1994ilut}), soit en limitant le niveau d'interaction entre les lignes de la matrice (ILU(k)).
+Ces conditions sont principalement de deux formes : soit en limitant le remplissage avec une valeur seuil (ILUT\cite{saad1994ilut}), soit en limitant le niveau d'interaction entre les lignes de la matrice (ILU(k)).
 %
 Dans le cas ILU(k), le paramètre k sert à limiter le niveau d'interaction entre les lignes.
 %
@@ -46,9 +46,9 @@ En effet, pour factoriser la ligne $i$, nous devons factoriser toutes les lignes
 %
 Cette dépendance de donnée provient de la ligne~\ref{algo:ilu0:dep} de l'algorithme~\ref{algo:ilu0}.
 %
-C'est cette dépendance qui nous empêche que d'utiliser du parallélisme de boucle pour paralléliser la méthode ILU.
+C'est cette dépendance qui nous empêche d'utiliser du parallélisme de boucle pour paralléliser la méthode ILU.
 %
-Donc, à partir du motif des valeurs non-nulles de la matrice, nous pouvons facilement construire le graphe de tâche:
+Donc, à partir du motif des valeurs non-nulles de la matrice, nous pouvons facilement construire le graphe de tâches :
 %
 la tâche $i$ corresponds à la ligne $i$ de la matrice (ligne \ref{algo:ilu0:task_begin} à \ref{algo:ilu0:task_end} de l'algorithme~\ref{algo:ilu0}), la liste des tâches prédécesseurs de la tâche $i$ est donnée par l'index de colonne des valeurs non-nulles avant la diagonale dans la ligne $i$ (ligne~\ref{algo:ilu0:dep}) et la liste des tâches successeurs de la tâche $i$ est donnée par l'index de ligne des valeurs non-nulles au-dessous de la diagonale de la colonne $i$ (Fig.~\ref{fig:example_2_matrix}).
 \begin{figure}[!h]
@@ -93,9 +93,9 @@ En fait, la plupart des runtimes mettront plus de temps à ordonnancer la tâche
 
 Les problèmes rencontrés pour paralléliser la factorisation incomplète d'une matrice creuse, ainsi que les résolutions triangulaires associées, sont des problèmes qui représentent bien la difficulté que l'on peut rencontrer avec une parallélisation à grain fin.
 %
-La description à grain fin de ces algorithmes est naturelle, mais en pratique, une simple parallélisation utilisant des ordonnanceurs répandus, tels que Intel TBB ou OpenMP, ne donnera pas de bonnes performances à cause du faible coût de calcul d'une tâche.
+La description à grain fin de ces algorithmes est naturelle, mais en pratique, une simple parallélisation utilisant des ordonnanceurs répandus, tels que Intel TBB ou OpenMP, ne donnera pas de bonnes performances à cause du faible coût de calcul d'une tâche par rapport au surcoût pris par l'ordonnanceur.
 %
-Chaque ordonnanceur aura son propre algorithme de distribution des tâches qui prendra différents paramètres en compte.
+En effet, chaque ordonnanceur aura son propre algorithme de distribution des tâches qui prendra différents paramètres en compte.
 %
 Mais l'évaluation de cet algorithme coûte du temps et si ce temps est du même ordre de grandeur (ou plus grand) que le temps de calcul d'une tâche, l'ordonnanceur sera perçu comme une charge non désirée.
 %
@@ -111,9 +111,9 @@ Mais pour atteindre cette durée, les tâches doivent devenir plus grosses, nous
 %
 Mais le choix de ces lignes n'est pas trivial, il faut limiter l'impact sur le parallélisme et ne pas changer le résultat final.
 %
-Si trop de lignes à factoriser se retrouvent dans une seule tâche, de nombreuses tâches devront attendre que cette tâche finisse avant de pouvoir être exécutée même si les lignes dont elles dépendent sont déjà factorisées, nous avons donc détruit du parallélisme.
+Si trop de lignes à factoriser se retrouvent dans une seule tâche, de nombreuses tâches devront attendre que cette tâche finisse avant de pouvoir être exécutée même si les lignes dont elles dépendent sont déjà factorisées, nous avons donc détruit du parallélisme en augmentant les nombre de contraintes entre les tâches.
 %
-Un intergiciel a été développé dans cette thèse pour résoudre ce problème de manière transparente pour le programmeur.
+Un intergiciel a été développé dans cette thèse pour résoudre ce problème en trouvant un bon compromis entre la granularité et le parallélisme de manière transparente pour le programmeur.
 
 De plus, l'ordre de factorisation des lignes de la matrice aura une influence sur les performances.
 %
@@ -146,9 +146,9 @@ Il est donc primordial d'agréger des tâches qui factorisent des lignes conséc
 \end{center}
 
 
-Il existe des travaux de recherche dont le but est aussi d'exploiter le parallélisme de l'algorithme ILU :
+Il est aussi possible d'exploiter le parallélisme de l'algorithme ILU :
 %
-En changeant la numérotation des cellules, on peut modifier la structure de la matrice ce qui aura pour effet de changer la factorisation.
+en agissant sur l'ordre d'élimination des inconnues (boucle extérieur de l'Algo.~\ref{algo:lu}, on peut modifier la structure de la matrice ce qui aura pour effet de changer la factorisation.
 %
 Une renumérotation rouge-noir permet de factoriser parallèlement la moitié des lignes de la matrice dans un premier temps, puis la seconde moitié des lignes dans un second temps.
 %

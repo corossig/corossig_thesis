@@ -33,7 +33,7 @@ Il impose que les éléments non nuls soient rangés par ligne.
 %
 Il est aussi composé de trois tableaux et reprend deux des trois tableaux du format COO (valeur et colonne).
 %
-Le troisième tableau correspond aux indices de début et de fin de chaque dans les deux autres tableaux (Fig.~\ref{fig:CSR}).
+Le troisième tableau correspond aux indices de début et de fin de chaque ligne dans les deux autres tableaux (Fig.~\ref{fig:CSR}).
 %
 Ce troisième tableau peut être vu comme une compression du tableau indiçant les lignes de la matrice.
 %
@@ -73,9 +73,9 @@ Mais l'algèbre linéaire creuse nous permet de résoudre des problèmes bien pl
 Ceci est dû au fait qu'à ordre de matrice équivalente, une matrice creuse utilise vraiment moins de mémoire qu'une matrice dense.
 
 
-Pour la simulation de réservoir, chaque entrée de nos matrices est composée d'un petit petit bloc dense dont la taille dépend du nombre de variables primaires utilisées par la simulation.
+Pour la simulation de réservoir, chaque entrée de nos matrices est composée d'un petit bloc dense dont la taille dépend du nombre de variables primaires utilisées par la simulation.
 %
-Nous reviendrons sur la définition de ces variables primaires plus loin dans ce document, disons qu'il s'agit du nombre de variables physiques simulées.
+Nous reviendrons sur la définition de ces variables primaires plus loin dans ce document, disons qu'il s'agit du nombre de variables physiques simulées par cellule.
 %
 Ces blocs permettent d'obtenir une meilleure réutilisation des caches lors des opérations élémentaires (addition, multiplication ...).
 %
@@ -96,7 +96,9 @@ Le format BCSR est un bon compromis entre flexibilité et performance.
 
 Résoudre des problèmes linéaires creux est aussi très différent de résoudre des problèmes denses.
 %
-Nous ne pouvons pas utiliser une inversion directe de matrice, ou la technique de l'élimination de Gauss parce que nous obtiendrions une matrice dense.
+Nous ne pouvons pas utiliser une inversion directe de matrice, ou la technique de l'élimination de Gauss car la complexité en temps et en mémoire de ces méthodes est rédhibitoire pour nos applications.
+%
+De plus, nos problèmes ne nécessitent qu'une résolution approchée de la solution à chaque itération de l'algorithme de Newton.
 %
 Or une matrice dense avec de grandes dimensions ne pourrait pas tenir en mémoire et même si c'était le cas, le nombre de calculs serait trop important.
 %

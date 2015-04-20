@@ -18,7 +18,7 @@ L'une des méthodes de précondionnement parallèles les plus courantes est la m
 %
 Dans cette méthode, nous découpons des blocs dans la matrice et nous appliquons notre préconditionneur sur chaque bloc.
 %
-Ces blocs proviennent d'un partitionnement du graphe d'adjacence de la matrice à l'aide d'un logiciel de partitionnement, tel que Scotch ou Metis, avec pour objectif un bon équilibrage de charge (Fig.~\ref{fig:domain}).
+Ces blocs proviennent d'un partitionnement du graphe d'adjacence de la matrice à l'aide d'un logiciel de partitionnement, tel que Scotch\cite{scotch} ou Metis\cite{metis}, avec pour objectif un bon équilibrage de charge (Fig.~\ref{fig:domain}).
 %
 La matrice est ensuite réordonnée pour que la numérotation des cellules à l'intérieur d'un domaine soit contiguë.
 %
@@ -26,7 +26,7 @@ Ces domaines formeront des blocs dans la matrice sur lesquels nous appliquerons 
 %
 Avec autant de blocs que de coeurs de calcul, nous pouvons factoriser tous les blocs parallèlement.
 %
-Cette méthode ignore donc les interactions inter-domaine et fournit donc un bon préconditionnement.
+Cette méthode ignore donc les interactions entre domaines et fournit donc un préconditionneur naturellement parallélisable.
 %
 Sur la figure~\ref{fig:domain_jacobi}, les entrées de la matrice en dehors des blocs ne seront pas utilisées par la factorisation ILU ni par les résolutions triangulaires.
 \begin{figure}[!h]
@@ -61,7 +61,7 @@ Le nombre de blocs aura un impact sur la convergence de la méthode itérative u
 %
 Cet impact n'est pas facilement prédictible et dépendra du problème étudié.
 %
-Il est donc quasiment impossible de connaître le nombre de blocs optimal nécessaire pour avoir un bon rapport parallélisme sur nombre d'itérations.
+Il est donc quasiment impossible de connaître le nombre optimal de blocs nécessaire pour avoir un bon rapport parallélisme sur nombre d'itérations.
 %
 C'est pourquoi nous allons essayer de réduire au minimum le nombre de blocs pour toujours obtenir les meilleures performances.
 %
@@ -74,3 +74,11 @@ Nous aurons donc du parallélisme sur deux niveaux :
 \end{itemize}
 %
 Notre but étant d'affecter le moins possible la qualité du préconditionneur.
+%
+D'une manière plus générale, le travail présenté dans le reste du document est destiné à pouvoir exploiter du parallélisme à grain fin dans les routines d'algèbre linéaire fondamentales pour l'implémentation des solveurs linéaires creux.
+%
+Ainsi nous nous intéressons plus particulièrement aux factorisations ILU et aussi aux opérations usuelles trouvés dans les méthodes itératives et les préconditionneurs (produit matrice vecteur, produit scalaire, résolution d'un système linéaire triangulaire creux ...).
+%
+Le but de ce travail n'est donc pas de proposer une nouvelle méthode de résolution des systèmes linéaire creux mais de permettre à un développeur d'implémenter des méthodes en exploitant au mieux les architectures multicoeurs.
+%
+Le bon compromis entre le parallélisme lié aux paramètres de la méthode (par exemple le nombre de domaines dans la méthode Jacobi par blocs) et le parallélisme direct des routines d'algèbres linéaires utilisées par la méthode restera toujours dépendant de l'application et de la méthode utilisée.
