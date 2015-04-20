@@ -1,4 +1,4 @@
-\subsection{Vue d'ensemble}
+%\subsection{Vue d'ensemble}
 Un moteur d'exécution, ou {\em runtime}, est un morceau de logiciel utilisé par d'autres logiciels pour abstraire des parties du système.
 %
 L'idée principale est {\em compiler une fois, exécuter partout}.
@@ -50,7 +50,7 @@ Une idée est alors apparue pour rendre cette distribution plus flexible : le vo
 %
 Dès qu'une ressource de calcul n'a plus de travail, elle essaye de voler du travail à une autre ressource.
 %
-Le langage Cilk~\cite{Cilk}, apparu en 1994 et toujours développé sous le nom Cilk++~\cite{Cilk++}, permet de faire du vol de travail.
+Le langage Cilk~\cite{Cilk}, apparu en 1994 et toujours développé sous le nom Intel Cilk Plus~\cite{Cilk++}, permet de faire du vol de travail.
 %
 Les tâches sont décrites par le programmeur avec des mots clés additionnels au langage C, par exemple le mot-clé {\em spawn} placé avant l'appel d'une fonction permet à Cilk de comprendre qu'il doit créer une nouvelle tâche et qu'il doit l'ordonnancer.
 %
@@ -105,6 +105,8 @@ OpenCL est une spécification du Khronos Group et a pour but de fournir une inte
 %
 Ces accélérateurs peuvent être des GPUs, mais de manière générale il s'agit de co-processeurs déportés.
 
+
+
 StarPU~\cite{starpu}, développé chez Inria permet de décrire plusieurs versions d'une routine à la fois pour le CPU et le GPU.
 %
 Ces morceaux de codes spécifiques à une architecture sont appelés {\em codelets}.
@@ -127,6 +129,8 @@ StarPU intègre aussi plusieurs politiques d'ordonnancement permettant de s'adap
 %
 L'équipe de développement met aussi en avant la possibilité d'écrire son propre ordonnanceur et de l'intégrer à StarPU.
 
+
+
 X-KAAPI~\cite{xkaapi} est aussi développé chez Inria et permet de programmer des applications qui auront du code qui sera exécuté à la fois sur CPU et sur GPU.
 %
 Il se différencie de StarPU par son système de vol de tâches dynamique.
@@ -145,6 +149,8 @@ Ainsi lorsque la victime découvrira qu'une tâche a été volée, elle devra v�
 %
 Ce système permet de réduire le surcoût d'ordonnancement, avec un bon partitionnement, le vol de tâche est plus rare et beaucoup de temps a été économisé sur la gestion des dépendances.
 
+
+
 OmpSs~\cite{OMPSs} est un runtime qui permet, tout comme StarPU et X-KAAPI, d'écrire du code à la fois pour le CPU et pour le GPU puis de laisser le runtime choisir parmi toutes les versions d'une fonction.
 %
 La différence entre ces deux runtimes provient surtout de la description du parallélisme.
@@ -157,7 +163,9 @@ OmpSs pourra ensuite déduire les dépendances entre les tâches depuis les info
 %
 Il n'y a pas non plus d'écriture automatisée de code, le programmeur doit toujours écrire le code spécifique à chaque architecture précédé d'informations concernant la fonction implémentée ainsi que l'architecture cible.
 
-HMPP~\cite{hmpp} est un runtime, développé par CAPS, adressant le problème de la programmation hybride CPU/GPU.
+
+
+HMPP~\cite{hmpp} est un runtime, développé par CAPS entreprise, adressant le problème de la programmation hybride CPU/GPU.
 %
 Il s'utilise avec des annotations de code de la même manière qu'OpenMP et qu'OmpSs.
 %
@@ -170,6 +178,8 @@ Les transferts mémoires entre la mémoire centrale et la mémoire du GPU peuven
 \end{itemize}
 %
 
+
+
 OpenACC~\cite{OpenACC} est un standard de programmation développé par un consortium de société dans le but de simplifier la programmation parallèle hybride CPU/GPU.
 %
 Les spécificités de ce standard ressemblent en de nombreux points à HMPP (annotations, gestion mémoire ...).
@@ -178,9 +188,13 @@ Son principal avantage est qu'il est soutenu par plusieurs sociétés là où HM
 %
 OpenMP ajoute dans version 4 le support de la programmation hybride, son fonctionnement est identique à OpenACC, seuls les mots-clé changent.
 
+
+
 PaRSEC~\cite{PaRSEC} est un runtime développé à l'ICL permettant de travailler directement en mémoire distribuée.
 %
 Le parallélisme dans PaRSEC doit être décrit dans un langage spécifique, le JDF.
+%
+Dans ce langage, le graphe est représenté sous une forme condensée, il n'y a pas besoin d'énumérer toute les tâches, il suffit de fournir 
 %
 L'ensemble des tâches du programme est décrit dans ce langage et ce n'est que la distribution des données en mémoire distribuée qui déterminera le processus qui exécutera la tâche.
 %

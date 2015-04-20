@@ -36,6 +36,9 @@ Cet outil se présente sous la forme d'un exécutable qui se lance juste avant n
 Nous devons choisir nous même les compteurs qui nous intéressent.
 %
 Malheureusement, la version du noyau Linux installé sur nos machines ne nous permet pas d'accéder à tous les compteurs.
+%
+Il manque essentiellement les compteurs de type {\em uncore} qui permettent de mesurer le nombre de requêtes mémoire faites à un banc NUMA distant.
+
 
 
 
@@ -57,7 +60,7 @@ L'exécution du code échantillonnée avec les valeurs des compteurs matériels 
 %
 Cet outil est très complet, mais requiert l'achat d'une licence d'utilisation ainsi que l'ajout d'un module noyau.
 %
-Nous n'avons donc pas pu utiliser cet outil.
+Nous n'avons donc pas pu utiliser cet outil car les administrateurs de notre grappe de serveur ont refusés d'installer le module noyau.
 
 
 
@@ -75,7 +78,7 @@ Nous utiliserons cette fonctionnalité pour ne mesurer que la routine qui nous i
 
 
 
-Pour mesurer les effets NUMA sur le SpMV, nous effectuons 100 SpMV et mesurer le nombre d'accès mémoire.
+Pour mesurer les effets NUMA sur le SpMV, nous effectuons 100 SpMV et mesurerons le nombre d'accès mémoire.
 %
 Si l'on regarde les compteurs matériels (Table~\ref{tab:numa_spmv}), on s'aperçoit que la moitié de la bande passante en lecture de chaque banc NUMA est utilisée par des accès distants.
 %

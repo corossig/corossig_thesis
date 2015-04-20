@@ -24,7 +24,7 @@ Nous ne faisons pas varier la taille du cube, car les résultats obtenus avec de
 \subsubsection{Sans agrégation}
 Nous avons utilisé OpenMP pour tester la parallélisation à grain fin sans agrégation.
 %
-OpenMP n'ayant pas de gestion de dépendances entre les tâches, nous utiliserons un système de décrémentation atomique.
+OpenMP 3.0 n'ayant pas de gestion de dépendances entre les tâches, nous utiliserons un système de décrémentation atomique.
 %
 Comme le montrent les résultats de la figure~\ref{fig:res_facto_no_agg}, le nombre de variables primaires a une importance considérable sur les performances que nous obtenons.
 %
@@ -92,7 +92,9 @@ Les autres valeurs donnent des résultats légèrement moins bons, par exemple l
 %
 Comparé à l'opérateur F, il y a très peu d'amélioration quand le nombre de variables primaires est faible (Fig.~\ref{fig:res_facto_d8}).
 %
-Par contre, avec 8 variables primaires, on obtient un gain de performance qui est dû à une meilleure utilisation des caches, surtout du cache L2 avec une diminution de 10\% des défauts de cache.
+Par contre, avec 8 variables primaires, on obtient un gain de performance qui est dû à une meilleure utilisation des caches, surtout du cache L2 avec une diminution de 10\% des défauts de cache d'après les compteurs matériels du processeur (Tab.~\ref{tab:cache_miss}).
+
+
 %   (-_-)   %
 \begin{figure}[!h]
   \centering
@@ -105,7 +107,7 @@ Par contre, avec 8 variables primaires, on obtient un gain de performance qui es
 \subsubsection{Avec l'opérateur C}
 Les deux précédents opérateurs donnent déjà des résultats, mais nous pensons que le meilleur opérateur pour nos matrices reste l'opérateur C.
 %
-Il a l'avantage de réduire grandement le nombre de tâches comme l'opérateur F et il forme des groupes de tâches permettant une meilleure réusabilité des données en cache.
+Il a l'avantage de réduire grandement le nombre de tâches comme l'opérateur F et il forme des groupes de tâches permettant une meilleure réutilisation des données en cache.
 %
 Par contre, il se pourrait que le parallélisme en pâtisse.
 %
@@ -115,7 +117,7 @@ Il y a bien deux grandes améliorations : la réduction du nombre de tâches et 
 %
 Comme pour tous les opérateurs, le nombre de tâches a été réduit, mais dans ce cas la réduction est bien plus importante.
 %
-Par contre, l'amélioration des effets caches est bien meilleure que dans les autres opérateurs.
+Par contre, l'amélioration des effets caches est bien meilleure que dans les autres opérateurs, nous obtenons une diminution de 25\% des défauts de cache des niveaux 1 et 2 par rapport à l'opérateur F.
 %
 Cette amélioration est inexistante dans le cas de l'opérateur F, les tâches agrégées n'avaient pas une bonne réutilisabilité des données en cache.
 %
@@ -137,9 +139,13 @@ Il est aussi possible de combiner plusieurs opérateurs, sur la figure~\ref{fig:
 %
 On observe un très léger gain de performance quand on a une seule variable primaire, mais dans les autres cas on observe le contraire.
 %
+Le premier opérateur améliore déjà les effets cache et augmente suffisamment la taille des tâches pour obtenir de bonnes performances, il n'y a donc presque plus d'améliorations possibles.
+%
 Malgré ces optimisations, nous n'atteignons pas une accélération parfaite, avec au mieux une accélération de 8,7 pour 12 coeurs.
 %
 Ce souci de performance est lié à l'architecture mémoire de la machine, nous donnerons plus d'explication dans la partie suivante de la thèse.
+
+
 %   (-_-)   %
 \begin{figure}[!h]
   \centering
@@ -164,6 +170,21 @@ Ce souci de performance est lié à l'architecture mémoire de la machine, nous 
   \end{tabular}
   \captionof{table}{Récapitulatif des résultats de la factorisation sur 12 coeurs de calcul suivant les opérateurs appliqués.}
   \label{tab:facto_res}
+\end{center}
+
+%   (-_-)   %
+\begin{center}
+  \begin{tabular}{|r|c|c|c|}
+    \hline
+                & Cache L1 & Cache L2 & Cache L3 \\
+    \hline
+    Opérateur F &   0.009  &  1.102   &  0.096 \\
+    Opérateur D &   0.009  &  0.966   &  0.092 \\
+    Opérateur C &   0.007  &  0.873   &  0.091 \\
+    \hline
+  \end{tabular}
+  \captionof{table}{Ratio du nombre de requêtes caches qui ont échouées par rapport au nombre de requêtes qui ont été faites. Résultats des compteurs matériels obtenues avec Likwid.}
+  \label{tab:cache_miss}
 \end{center}
 
 \subsubsection{Résultats de la résolution triangulaire}
@@ -196,6 +217,9 @@ Mais si nous augmentons encore la granularité, il n'y aura plus assez de parall
   \caption{Performance de la résolution triangulaire sur 12 coeurs avec Taggre CD(2).}
   \label{fig:res_trsv_cd2}
 \end{figure}
+
+
+
 
 %% +---------------------------+-------------+-------------+-------------+------------+
 %% |          Metric           |     Sum     |     Max     |     Min     |    Avg     |

@@ -7,7 +7,7 @@ Cette méthode de préconditionnement induit une factorisation et une résolutio
 %
 Elle n'est évidemment pas équivalente numériquement à effectuer une factorisation ILU de toute la matrice.
 %
-Plus on utilise de coeur, plus ce préconditionneur est inefficace numériquement\cite{domain_decomp}.
+Plus on utilise de coeurs, plus ce préconditionneur est inefficace numériquement\cite{domain_decomp}.
 %
 Mais l'intérêt cette évaluation est que l'accélération obtenue donne une borne supérieure de l'accélération de la factorisation ILU sur la matrice complète.
 %
@@ -37,6 +37,8 @@ Notre solution d'agrégation n'est pas optimale, mais cette différence d'accél
 \end{figure}
 
 Il est nécessaire de regarder du côté de la bande passante mémoire pour trouver des explications.
+%
+Nous allons maintenant mesurer cette bande passante à l'aide des compteurs matériels.
 %
 La bande passante utilisée par la méthode Jacobi par bloc est au mieux de 16~Go/s, avec les threads nous utilisons 12~Go/s de bande passante locale dont 5~Go/s de bande passante distante.
 %

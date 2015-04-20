@@ -7,7 +7,7 @@ Dans notre cas l'agrégation est faite au début du programme et reste valide ta
 %
 Le temps passé à appliquer les opérateurs d'agrégation va dépendre du nombre de tâches, des opérateurs et de l'ordre des opérateurs.
 %
-L'opérateur C mettra 150~$\mu{s}$ à traiter une tâche, l'opérateur F mettra 190~$\mu{s}$ et l'opérateur D mettra 250~$\mu{s}$.
+L'opérateur C mettra 1,5~$\mu{s}$ à traiter une tâche, l'opérateur F mettra 1,9~$\mu{s}$ et l'opérateur D mettra 2,5~$\mu{s}$.
 %
 Par exemple pour la matrice SPE10 il faut 1,67~s pour appliquer l'opérateur C, 2,94~s pour appliquer l'opérateur D(8) et 2.19s pour appliquer CD(2).
 %
@@ -18,7 +18,7 @@ Les 10 résolutions triangulaires peuvent être faites dans une résolution du G
 \begin{center}
   \begin{tabular}{ | r | c || c | c | c | }
     \hline
-    Matrice & Agrégation & Temps agrégation & Gain factorisation & Gain résolution \\
+    Matrice & Agrégation & Temps agrégation (s) & Gain factorisation (s) & Gain résolution (s)\\
     \hline
     \hline
     SPE10   &      C     & 1,67          & 0,188          & 0,171 \\
