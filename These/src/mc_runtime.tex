@@ -104,6 +104,10 @@ CUDA est développé par NVidia et ne permet de programmer que des GPU NVidia.
 OpenCL est une spécification du Khronos Group et a pour but de fournir une interface de programmation standard pour programmer toutes sortes d'accélérateurs.
 %
 Ces accélérateurs peuvent être des GPUs, mais de manière générale il s'agit de co-processeurs déportés.
+%
+Même si un calcul peut être fait plus rapidement sur le GPU que sur le CPU, il n'est pas toujours plus performant de le faire sur le GPU.
+%
+En effet, il faut aussi prendre en compte le surcoût des transferts mémoires.
 
 
 
@@ -194,9 +198,9 @@ PaRSEC~\cite{PaRSEC} est un runtime développé à l'ICL permettant de travaille
 %
 Le parallélisme dans PaRSEC doit être décrit dans un langage spécifique, le JDF.
 %
-Dans ce langage, le graphe est représenté sous une forme condensée, il n'y a pas besoin d'énumérer toute les tâches, il suffit de fournir 
+Dans ce langage, le graphe est représenté sous une forme condensée, il n'y a pas besoin d'énumérer toute les tâches, il suffit de décrire les boucles de nos algorithmes dans lesquelles chaque itération correspondra à une tâche.
 %
-L'ensemble des tâches du programme est décrit dans ce langage et ce n'est que la distribution des données en mémoire distribuée qui déterminera le processus qui exécutera la tâche.
+Donc, l'ensemble des tâches du programme sont décrites dans ce langage et ce n'est que la distribution des données en mémoire distribuée qui déterminera le processus qui exécutera la tâche.
 %
 PaRSEC s'occupe automatiquement des communications entre processus permettant de maintenir une cohérence entre les données.
 %

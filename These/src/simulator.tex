@@ -17,8 +17,10 @@ L'heure suivante de terminaison de la tâche sera calculée de la façon suivant
 
 Dans un but de valider les prochains résultats, il est important de tester la validité des résultats fournis par notre simulateur de tâches sur des problèmes dont on connaît les paramètres ainsi que le temps d'exécution obtenu avec diverses agrégations.
 %
-Dans le cas d'une factorisation d'un cube avec 3 variables primaires, les paramètres valent 1,5 pour le surcoût d'ordonnancement d'une tâche et 0,7 pour le gain lié aux effets caches.
+Nous avons décidé de normaliser le coût d'une tâche à la valeur 1 et d'effectuer les calculs relativement à cette valeur.
 %
-Ça signifie que l'ordonnanceur met 1,5 fois plus de temps à ordonnancer une tâche que la tâche ne met à factoriser une ligne.
+Dans le cas d'une factorisation d'un cube avec 3 variables primaires, les paramètres du simulateur valent 1,5 pour le surcoût d'ordonnancement d'une tâche et 0,7 pour le gain lié aux effets caches.
+%
+Ça signifie que l'ordonnanceur met 1,5 fois plus de temps à ordonnancer une tâche fine que cette tâche ne met à factoriser une ligne.
 %
 Ça signifie aussi que lors de la factorisation de deux lignes consécutives, la factorisation de la deuxième ligne sera 30\% plus rapide.

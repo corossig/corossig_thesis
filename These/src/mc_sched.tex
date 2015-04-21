@@ -1,13 +1,17 @@
-\section{Politiques d'ordonnancement}
+\section{Exemples d'ordonnanceurs}
 La politique d'ordonnancement aura un impact conséquent sur les performances d'un code.
 %
 Chaque politique aura un surcoût différent en fonction de sa complexité algorithmique ainsi que des paramètres qu'il prend en compte.
+
+
 
 Un ordonnanceur type tourniquet distribuera les tâches de manière uniforme sur les différents coeurs de calcul.
 %
 La complexité algorithmique est donc minimale, mais aucune métrique n'est prise en charge.
 %
 Nous aurons donc un ordonnancement rapide avec un surcoût très faible, mais de très mauvaise qualité.
+
+
 
 Parmi les ordonnanceurs simples, nous pouvons aussi parler de la queue partagée.
 %
@@ -28,6 +32,8 @@ Plusieurs cas peuvent conduire à un déséquilibre de charge :
   \item si les dernières tâches à ordonnancer ont des coûts très différents;
   \item si une tâche qui débloque beaucoup de parallélisme est exécutée très tard.
 \end{itemize}
+
+
 
 L'algorithme d'ordonnancement HEFT est un algorithme performant et à faible complexité\cite{heft2}.
 %

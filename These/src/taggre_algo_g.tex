@@ -11,13 +11,19 @@ Si seule la largeur est privilégiée, nous nous rapprochons de l'opérateur F.
 %
 Mais ces deux algorithmes ne sont pas équivalents, la taille des tâches de l'opérateur F n'est pas fixe, elle dépend du nombre de tâches à une hauteur donnée alors que l'opérateur G crée des tâches de taille fixe.
 %
-En privilégiant les tâches de type continuation, nous retrouvons l'opérateur C.
+En privilégiant les tâches qui permettent de réutiliser le cache, nous retrouvons l'opérateur C.
 %
 Cette sélection se fait à l'aide de la fonction de tri dans l'algorithme~\ref{algo:algo_G}.
 %
 Malheureusement cette fonction de tri n'est pas facilement définissable, elle dépendra du problème à résoudre.
 %
-Nous n'avons donc pas implémenté directement cet algorithme mais nous avons préféré créer un opérateur qui définit une fonction de tri.
+Il est difficile de trouver les tâches qui favorisent les effets cache entre elles et il est tout aussi difficile d'exprimer cette relation.
+%
+De plus, il aurait fallu donner toutes les informations du graphe de tâches au programmeur pour qu'il puisse construire cette fonction efficacement.
+%
+Taggre a été écrit pour simplifier la programmation par graphe de tâches, nous souhaitons donc que son utilisation reste aussi simple que possible.
+%
+C'est pourquoi, nous n'avons pas implémenté directement cet algorithme mais à la place, nous avons préféré créer un autre opérateur qui définit une fonction de tri.
 
 
 \begin{algorithm}
