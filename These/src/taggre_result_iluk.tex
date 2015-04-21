@@ -1,0 +1,44 @@
+\subsection{Application à la factorisation ILU(k)}
+\label{sec:res_iluk}
+Nous souhaitons maintenant appliquer notre méthode d'agrégation à des factorisations ILU(k) avec $k$ supérieur à 0.
+%
+Plus le paramètre $k$ est grand, plus il y aura de remplissage dans la matrice.
+%
+Ce remplissage aura deux incidences majeurs sur le graphe de tâches :
+\begin{itemize}
+  \item des dépendances supplémentaires entre les tâches, donc moins de parallélisme à exploiter;
+  \item des éléments supplémentaires à traiter dans les tâches, donc une meilleure granularité.
+\end{itemize}
+
+
+Nous pouvons remarquer que sans utiliser d'agrégation, les factorisations ILU(1) et ILU(2) offrent de meilleures accélérations que la factorisation ILU(0) (Table.~\ref{tab:iluk_facto}).
+%
+En effet, les tâches étant plus grosses, le surcoût de l'ordonnanceur est moins important.
+%
+En utilisant un opérateur C, nous obtenons quasiment toujours les meilleurs performances.
+%
+Seul le cas d'une factorisation ILU(2) avec 8 variables primaires donne une performance légèrement meilleure avec l'opérateur D.
+%
+Dans ce cas, l'opérateur C n'a pas laisser suffisamment de parallélisme pour que l'ordonnanceur puisse faire efficacement son travail.
+%
+L'opérateur F donne aussi de très bons résultats montrant que dans le cas des factorisation ILU(1) et ILU(2) les effets caches entre les tâches sont moins important que dans le cas d'une factorisation ILU(0)
+
+%   (-_-)   %
+\begin{center}
+  \begin{tabular}{|c|r|c|c|c|c|}
+    \hline
+       &   & \multicolumn{4}{|c|}{Types d'agrégations}\\
+       &                & \O   &  C   & D(12) & F(36) \\
+    \hline
+       & Cube 80 Npri 1 & 2,36 & 5,95 & 3,98  & 3,64\\
+ILU(1) & Cube 80 Npri 3 & 3,75 & 7,50 & 5,24  & 4,36\\
+       & Cube 80 Npri 8 & 7,60 & 9,63 & 8,85  & 7,51\\
+    \hline
+       & Cube 80 Npri 1 & 3,73 & 7,11 & 5,91  & 5,23\\
+ILU(2) & Cube 80 Npri 3 & 5,32 & 8,49 & 7,33  & 5,84\\
+       & Cube 80 Npri 8 & 8,26 & 9,59 & 9,72  & 8,28\\
+    \hline
+  \end{tabular}
+  \captionof{table}{Accélération de la factorisation ILU(k) sur 12 coeurs.}
+  \label{tab:iluk_facto}
+\end{center}

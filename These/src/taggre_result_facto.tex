@@ -1,5 +1,5 @@
 \subsection{Amélioration de la factorisation et de la résolution triangulaire}
-Dans un premier temps, nous allons nous consacrer à l'amélioration de la parallélisation de la factorisation ILU(k).
+Dans un premier temps, nous allons nous consacrer à l'amélioration de la parallélisation de la factorisation ILU(0) puis dans \ref{sec:res_iluk} nous évaluerons les gains observés sur des factorisations de type ILU(1) et ILU(2).
 %
 Chaque tâche du graphe de tâches représente la factorisation d'une ligne de la matrice.
 %
@@ -42,7 +42,7 @@ Au final, avec l'utilisation des 12 coeurs de calcul de la machine, nous obtenon
 \begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{res_facto_no_agg}
-  \caption{Performance de la factorisation sur 12 coeurs sans utiliser Taggre.}
+  \caption{Performance de la factorisation ILU(0) sur 12 coeurs sans utiliser Taggre.}
   \label{fig:res_facto_no_agg}
 \end{figure}
 
@@ -74,7 +74,7 @@ Ici, cet opérateur ne permet pas d'optimiser les accès mémoire caches, seul l
 \begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{res_facto_f36}
-  \caption{Performance de la factorisation sur 12 coeurs avec Taggre F(36).}
+  \caption{Performance de la factorisation ILU(0) sur 12 coeurs avec Taggre F(36).}
   \label{fig:res_facto_f36}
 \end{figure}
 
@@ -92,14 +92,16 @@ Les autres valeurs donnent des résultats légèrement moins bons, par exemple l
 %
 Comparé à l'opérateur F, il y a très peu d'amélioration quand le nombre de variables primaires est faible (Fig.~\ref{fig:res_facto_d8}).
 %
-Par contre, avec 8 variables primaires, on obtient un gain de performance qui est dû à une meilleure utilisation des caches, surtout du cache L2 avec une diminution de 10\% des défauts de cache d'après les compteurs matériels du processeur (Tab.~\ref{tab:cache_miss}).
+Par contre, avec 8 variables primaires, on obtient un gain de performance qui est dû à une meilleure utilisation des caches, surtout du cache L2 avec une diminution de 10\% des défauts de cache (Tab.~\ref{tab:cache_miss}) d'après les compteurs matériels du processeur.
+%
+L'accès à ces compteurs est explicité dans la partie \ref{sec:compteur}.
 
 
 %   (-_-)   %
 \begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{res_facto_d8}
-  \caption{Performance de la factorisation sur 12 coeurs avec Taggre D(8).}
+  \caption{Performance de la factorisation ILU(0) sur 12 coeurs avec Taggre D(8).}
   \label{fig:res_facto_d8}
 \end{figure}
 
@@ -130,7 +132,7 @@ L'opérateur C offre donc le meilleur des deux opérateurs, il produit peu de t�
 \begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{res_facto_c}
-  \caption{Performance de la factorisation sur 12 coeurs avec Taggre C.}
+  \caption{Performance de la factorisation ILU(0) sur 12 coeurs avec Taggre C.}
   \label{fig:res_facto_c}
 \end{figure}
 
@@ -150,7 +152,7 @@ Ce souci de performance est lié à l'architecture mémoire de la machine, nous 
 \begin{figure}[!h]
   \centering
   \includegraphics[width=0.7\textwidth]{res_facto_cd2}
-  \caption{Performance de la factorisation sur 12 coeurs avec Taggre CD(2).}
+  \caption{Performance de la factorisation ILU(0) sur 12 coeurs avec Taggre CD(2).}
   \label{fig:res_facto_cd2}
 \end{figure}
 \subsubsection{En résumé}
@@ -168,7 +170,7 @@ Ce souci de performance est lié à l'architecture mémoire de la machine, nous 
     SPE10 Npri 3   & 2,32 & 3,52 & 3.30 & 6.65 & 6.73 & 1094421 & 12896 & 136887 & 36281 & 18181 \\
     \hline
   \end{tabular}
-  \captionof{table}{Récapitulatif des résultats de la factorisation sur 12 coeurs de calcul suivant les opérateurs appliqués.}
+  \captionof{table}{Récapitulatif des résultats de la factorisation ILU(0) sur 12 coeurs de calcul suivant les opérateurs appliqués.}
   \label{tab:facto_res}
 \end{center}
 

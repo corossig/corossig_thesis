@@ -1,5 +1,5 @@
 \subsection{Méthode de Jacobi par blocs}
-Afin d'obtenir une évaluation de la borne maximale de l'accélération qu'il est possible d'obtenir sur une machine donnée, nous proposons de connaître l'accélération obtenue par une méthode de Jacobi par bloc et de la comparer à notre solution.
+Afin d'obtenir une évaluation de la borne maximale de l'accélération qu'il est possible d'obtenir sur une machine donnée, nous proposons de connaître l'accélération obtenue par une méthode de Jacobi par blocs et de la comparer à notre solution.
 %
 Dans cette méthode, nous considérons le cas où chaque coeur effectue la factorisation ILU d'un sous bloc diagonal de la matrice.
 %
@@ -25,14 +25,14 @@ Notre solution d'agrégation n'est pas optimale, mais cette différence d'accél
 \begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{res_facto_mpi}
-  \caption{Performance de la factorisation sur 12 coeurs en utilisant la décomposition de domaine.}
+  \caption{Performance de la factorisation ILU(0) sur 12 coeurs en utilisant une méthode de Jacobi par blocs.}
   \label{fig:res_facto_mpi}
 \end{figure}
 %   (-_-)   %
 \begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{res_trsv_mpi}
-  \caption{Performance de la résolution triangulaire sur 12 coeurs en utilisant la décomposition de domaine.}
+  \caption{Performance de la résolution triangulaire sur 12 coeurs en utilisant une méthode de Jacobi par blocs.}
   \label{fig:res_trsv_mpi}
 \end{figure}
 
@@ -40,7 +40,7 @@ Il est nécessaire de regarder du côté de la bande passante mémoire pour trou
 %
 Nous allons maintenant mesurer cette bande passante à l'aide des compteurs matériels.
 %
-La bande passante utilisée par la méthode Jacobi par bloc est au mieux de 16~Go/s, avec les threads nous utilisons 12~Go/s de bande passante locale dont 5~Go/s de bande passante distante.
+La bande passante utilisée par la méthode Jacobi par blocs est au mieux de 16~Go/s, avec les threads nous utilisons 12~Go/s de bande passante locale dont 5~Go/s de bande passante distante.
 %
 Cette bande passante distante est le résultat des effets NUMA.
 %
