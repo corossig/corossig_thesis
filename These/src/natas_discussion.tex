@@ -69,3 +69,7 @@ Sa structure interne n'est pas assez distribuée, l'utilisation de compteurs glo
 Malgré une implémentation sous-optimale, NATaS offre de meilleures performances que les ordonnanceurs habituels.
 %
 Il est donc essentiel d'optimiser les accès mémoire des applications limitées par la bande passante mémoire sur la machine NUMA.
+%
+Le modèle de placement guidé des pages mémoires proposé par notre approche Taggre et NATaS offre de bonnes améliorations sur une application limitée par la bande passante mémoire.
+%
+Par contre, l'extension à des architectures massivement multi-coeurs et NUMA demanderait des algorithmes de placement parallèles qui passent à l'échelle pour NATaS.

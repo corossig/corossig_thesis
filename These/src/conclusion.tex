@@ -1,9 +1,21 @@
 \section{Conclusion}
-La simulation de réservoir permet aux compagnies pétrolières d'optimiser le placement des puits lors de l'exploitation d'un champ pétrolier.
+%La simulation de réservoir permet aux compagnies pétrolières d'optimiser le placement des puits lors de l'exploitation d'un champ pétrolier.
 %
-La résolution des systèmes d'équations linéaires creux peut représenter jusqu'à 80\% du temps de simulation.
+%La résolution des systèmes d'équations linéaires creux peut représenter jusqu'à 80\% du temps de simulation.
 %
-Nous nous sommes donc concentrés à améliorer cette partie en commençant par la factorisation ILU, un des préconditionneurs du GMRES.
+La parallélisation des méthodes de résolution de grands systèmes linéaires creux est cruciale pour réduire les temps de calcul de nombreuses applications scientifiques.
+%
+En particulier en simulation de réservoir, cette étape consomme plus de 80\% du temps de calcul.
+%
+Dans cette thèse, nous avons proposé des bibliothèques de parallélisation à grain fin pour les algorithmes élémentaires d'algèbre linéaire creuse qui sont utilisés dans les méthodes de résolution itératives.
+%
+Notre but était de proposer un cadre de programmation qui étend le modèle de programmation proposé par Intel TBB ou OpenMP à des algorithmes où le coût de calcul d'une tâche est faible et où la bande passante limite la performance.
+%
+Nous avons proposé une approche transparente pour le développeur qui permet de prendre en compte des phénomènes complexes tels que la granularité des tâches où le placement des pages mémoires.
+%
+Pour évaluer notre approche, nous nous sommes concentrés sur les algorithmes qui sont représentatifs des méthodes itératives.
+%
+Ainsi, nous nous sommes donc concentrés à améliorer cette partie en commençant par la factorisation ILU, un des préconditionneurs du GMRES.
 %
 La parallélisation de la factorisation ILU(k) s'exprime facilement sous la forme d'un graphe de tâches, mais la granularité des tâches ne permet pas d'obtenir de bonnes performances.
 %

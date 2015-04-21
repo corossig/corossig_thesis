@@ -65,7 +65,7 @@ Dans le mode natif, le code du simulateur de réservoir doit aussi tourner sur l
 %
 Or les parties séquentielles du code s'exécutent environ 10 fois moins vite que sur un processeur classique.
 %
-Donc les accélérations que nous obtenons sur les noyaux de calcul parallèle seront perdues à cause des parties séquentielle du code.
+Donc les accélérations que nous obtenons sur les noyaux de calcul parallèle seront perdues à cause des parties séquentielles du code.
 
 
 Quant au mode déporté, pour pouvoir exécuter les noyaux de calcul sur le Xeon Phi, nous devons transférer les données qui seront utilisées et/ou produites.
@@ -76,6 +76,6 @@ Or, ces transferts coûtent du temps et ce temps cumulé à l'exécution du noya
 %
 De plus, ce mode ajoute de la complexité au code qui doit maintenant avoir un support des transferts mémoires.
 %
-Cette complexité peut bien entendu être masqué par un runtime à base de tâches qui s'occupera des transferts mémoire à notre place.
+Cette complexité peut bien entendu être masquée par un runtime à base de tâches qui s'occupera des transferts mémoire à notre place.
 %
 Mais le travail nécessaire reste trop important par rapport aux gains obtenus.

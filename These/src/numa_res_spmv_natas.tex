@@ -22,7 +22,7 @@ Or, nous avons vérifié l'emplacement physique des pages mémoires de la matric
 %
 Les accès à la mémoire distante proviennent donc de l'ordonnanceur de tâches.
 %
-C'est en grande partie de l'architecture logicielle de NATaS qui en sont la cause.
+C'est en grande partie l'architecture logicielle de NATaS qui en est la cause.
 %
 Nous effectuons trop d'accès à un ensemble de variables partagées par tous les threads.
 %
@@ -34,7 +34,7 @@ Actuellement, lorsqu'un thread tombe à court de tâche, il parcourt les structu
 %
 Pour améliorer considérablement les performances, il faudrait construire un ordonnanceur utilisant moins de variables partagées.
 %
-Mais ce type d'ordonnanceur est dur à écrire, nos machines de calculs étant essentiellement composées de 2 bancs NUMA, il n'y a aucune volonté de notre côté pour écrire ce type d'ordonnanceur.
+Ce type d'ordonnanceur étant difficile à écrire et nos machines de calculs étant essentiellement composées de 2 bancs NUMA, nous ne nous sommes pas intéressé à ce type d'ordonnanceur.
 %
 L'utilisation de 2 bancs NUMA sur Manumanu nous donne une accélération de 10, tout comme la version en mémoire distribuée.
 %
