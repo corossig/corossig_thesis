@@ -1,4 +1,6 @@
 \section{Perspectives}
+Taggre sera utilisé pour paralléliser efficacement de nouvelles routines d'algèbre linaire creuse qui seront utilisé dans le simulateur de réservoir.
+%
 L'ordonnanceur de tâches que nous avons écrit peut aussi être amélioré.
 %
 Il n'a qu'une seule fonctionnalité, la gestion de l'affinité NUMA.
@@ -57,3 +59,18 @@ La deuxième solution consiste à faire une analyse statique des tâches ainsi q
 Cette analyse est très complexe à mettre en oeuvre et les critères d'évaluation des graphes sont à définir.
 %
 Par contre, une fois tout le travail d'analyse effectué, le choix des opérateurs est rapide.
+
+
+Le problème de définition de la fonction de tri de l'opérateur généralisé se pose toujours.
+%
+Deux solutions peuvent être développées :
+\begin{itemize}
+  \item la création de greffons pour Taggre permettant d'écrire du code C++ et de l'intégrer directement;
+  \item la création d'un langage permettant de décrire les tâches qui sera interprété à l'exécution.
+\end{itemize}
+%
+La première méthode a l'avantage d'être simple à mettre en oeuvre mais elle peut être difficile à utiliser.
+%
+La deuxième méthode est plus complète mais elle a l'inconvénient de demander beaucoup de travail au niveau de l'implémentation.
+
+

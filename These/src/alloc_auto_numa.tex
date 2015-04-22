@@ -22,7 +22,7 @@ Une fois arrivé au bout de l'espace d'adressage, le scanner recommence au débu
 %
 La variable scan\_delay change de valeur en fonction du nombre de pages déplacées.
 %
-Elle diminue quand il y a beaucoup de fautes NUMA et augmente quand les pages sont bien placées.
+Elle diminue quand il y a beaucoup de fautes NUMA et augmente quand les pages sont bien placées, c'est pour le surcoût de cette méthode est difficilement calculable.
 %
 Ainsi, une application dont les threads accèdent toujours à la même mémoire aura automatiquement un bon placement mémoire.
 
