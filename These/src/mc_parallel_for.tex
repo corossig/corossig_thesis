@@ -3,23 +3,23 @@ Le parallélisme de boucle est un paradigme qui peut être utilisé sur des mach
 %
 Il s'agit de traiter en parallèle toutes les itérations d'une boucle en les distribuant équitablement sur tous les coeurs de calcul disponibles.
 %
-Il faut bien sûr que ces itérations soient indépendantes, c'est-à-dire qu'avec un nombre infini de coeurs de calcul, on peut traiter une itération par coeur simultanément.
+Il faut bien sûr que ces itérations soient indépendantes, c'est-à-dire qu'avec un nombre infini de coeurs de calcul, on puisse traiter une itération par coeur simultanément.
 %
 Ce paradigme fonctionne de la manière suivante : un thread est créé par coeur de calcul et chaque thread doit s'occuper de traiter une partie des itérations de la boucle.
 %
-Puis tous les threads se synchronisent sur une barrière implicite à la fin de la boucle.
+Puis tous les threads se synchronisent à la fin de la boucle sur une barrière implicite.
 %
 Cette méthode est aussi appelée {\em fork and join}.
 
 L'interface de programmation qui a le plus démocratisé ce paradigme est OpenMP.
 %
-Cette interface utilise les directives de compilation en C qui ont l'avantage d'être simples à utiliser et elles peuvent se désactiver facilement pour retrouver un code séquentiel.
+Cette interface utilise les directives de compilation en C qui ont l'avantage d'être simples à utiliser et qui peuvent être facilement désactiver pour retrouver un code séquentiel.
 %
 En ajoutant la fameuse directive ``\#pragma omp parallel for'' juste au-dessus d'une boucle for, on obtient facilement un programme multi-threadé avec une description du parallélisme très simple.
 %
 Les performances obtenues avec ce paradigme sont souvent suffisantes pour un grand nombre de logiciels et le ratio entre le temps de développement et le gain en temps d'exécution est imbattable.
 %
-Pour notre cas nous pouvons l'utiliser pour le produit matrice vecteur et le produit scalaire.
+Pour notre cas nous pouvons l'utiliser pour le produit matrice vecteur et pour le produit scalaire.
 
 Malheureusement, il peut arriver qu'il y ait des dépendances de données entre deux itérations.
 %

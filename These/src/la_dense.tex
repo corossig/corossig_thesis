@@ -1,5 +1,5 @@
 \subsection{Algèbre linéaire dense}
-Résoudre un système d'équations linéaire équivaut à résoudre un problème du type $Ax=b$ dans lequel $A$ est une matrice, $b$ est le vecteur second membre donné du système et $x$ est le vecteur que nous cherchons.
+Résoudre un système d'équations linéaires équivaut à résoudre un problème du type $Ax=b$ dans lequel $A$ est une matrice, $b$ est le vecteur second membre donné du système et $x$ est le vecteur que nous cherchons.
 %
 Dans l'exemple de la simulation de colonne d'huile, nous avons une matrice triangulaire pour $A$, la solution peut donc être trouvée directement en résolvant chaque équation une à une en démarrant par $P(X_0) = 1000$.
 %
@@ -27,7 +27,7 @@ Ces opérations sont classées en 3 niveaux :
   \item Niveau 3 : ce sont les opérations matrice-matrice (multiplier une matrice par une autre matrice ...).
 \end{itemize}
 %
-Le niveau des BLAS est directement lié à leur complexité en nombre d'opérations.
+Le niveau d'un BLAS est directement lié à sa complexité en nombre d'opérations.
 %
 Les BLAS de niveau 1 sont limités par la bande passante mémoire, il n'y a aucune réutilisation des données.
 %
@@ -51,7 +51,7 @@ La plupart de ces optimisations peuvent exister parce que le motif des accès m�
 Nous reviendrons sur certaines des notions utilisés ici dans les sections traitants de l'architecture des ordinateurs.
 
 
-Retournons à la matrice de l'équation~\eqref{eq:ax_b}, nous pouvons voir que cette matrice contient énormément de valeurs nulles et que ces valeurs n'ont aucun impact sur le calcul.
+Retournons à la matrice de l'équation~\eqref{eq:ax_b}, nous pouvons voir que cette matrice contient un grand nombre de valeurs nulles et que ces valeurs n'ont aucun impact sur le calcul.
 %
 Nous pouvons différencier les matrices composées de beaucoup de valeurs nulles, des matrices composées d'une majorité de valeurs non nulles.
 %

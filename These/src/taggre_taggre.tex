@@ -15,9 +15,10 @@ Dans le cas d'un cube 3D avec une numérotation naturelle, nous pouvons changer 
 %
 Malheureusement, cette méthode ne fonctionne qu'avec une seule numérotation et nous impose de connaître la taille du cube.
 %
-Nous avons donc cherché une méthode pouvant s'appliquer à n'importe quel DAG.
+Nous avons donc cherché une méthode pouvant s'appliquer à n'importe quel graphe de tâches.
 
-En partant de la représentation la plus fine sous forme de DAG du parallélisme, nous avons besoin de calculer un nouveau DAG plus grossier avec moins de tâches.
+
+En partant de la représentation la plus fine sous forme de graphe de tâches du parallélisme, nous avons besoin de calculer un nouveau graphe plus grossier avec moins de tâches.
 %
 La principale difficulté est de garder la propriété {\em acyclique} du graphe, car la présence d'un cycle introduirait un inter-blocage dans l'ordonnancement du graphe (Fig.~\ref{fig:agg_invalid}).
 %
@@ -51,7 +52,7 @@ Avec cette interface, nous pouvons faire des modifications sur le graphe et le r
 %
 Nous avons appelé cette interface Taggre.
 %
-Grâce à l'utilisation d'heuristiques décrites plus loin dans la thèse, un programme parallèle peut continuer de décrire son parallélisme de façon naturelle, sans se soucier de la granularité.
+Grâce à l'utilisation d'heuristiques décrites plus loin dans le manuscrit, un programme parallèle peut continuer de décrire son parallélisme de façon naturelle, sans se soucier de la granularité.
 %
 Taggre s'occupera ensuite de faire le travail nécessaire pour rendre ce graphe assez grossier pour qu'un ordonnanceur puisse l'ordonnancer efficacement (Fig.~\ref{fig:coarsening}).
 %   (-_-)   %
@@ -63,7 +64,8 @@ Taggre s'occupera ensuite de faire le travail nécessaire pour rendre ce graphe 
 \end{figure}
 
 
-\lstinputlisting[inputencoding=utf8/latin1,frame=single,float=t]{src/taggre.cpp}
+\lstinputlisting[inputencoding=utf8/latin1,frame=single,float=t,caption=Exemple d'utilisation de Taggre,label=taggrecpp]{src/taggre.cpp}
+
 
 
 Dans un premier temps, le programmeur crée les noeuds du graphe, ces noeuds correspondent aux tâches fines du problème.
@@ -84,4 +86,4 @@ Cette fonction connaîtra les tâches fines associées à la tâche grossière e
 %
 Finalement, le programmeur exécutera toutes les tâches du graphe avec la méthode {\em run}.
 %
-Il a aussi la possibilité d'utiliser une fonction générique avec la méthode {\em run\_function}.
+Il a aussi la possibilité d'utiliser une fonction générique avec la méthode {\em run\_function} (voir Listing~\ref{taggrecpp}).

@@ -12,18 +12,21 @@ Pour résoudre le système d'équations non-linéaires nous utilisons la méthod
 Cette méthode est itérative, nous démarrons avec une valeur initiale $X_0$ suffisamment proche de la solution $X_n$ qui satisfait $F(X_n) = 0$.
 %
 La méthode NewtonRaphson nous garantit que chaque itération nous rapproche du minimum local sous condition que le hessien soit défini positif.
+
 %   (-_-)   %
 \begin{figure}[!h]
   \centering
   \includegraphics[width=0.8\textwidth]{newton}
-  \caption{Exemple de deux étapes de Newton in une dimension.
+  \caption{Exemple de deux étapes de Newton en une dimension.
     Chaque tangente correspond à une équation linéaire à résoudre.
     Nous recherchons $X_n$ et nous démarrons au point $X_0$.}
 \label{fig:newton}
 \end{figure}
+
+
 L'exemple de la figure~\ref{fig:newton} n'est que dans une seule dimension, mais la même approche peut être utilisée quand on travaille avec un nombre arbitraire de dimensions.
 %
-Les équations linéaires de la simulation de réservoir peuvent être représentées sous la forme d'une matrice creuse très grande.
+Les équations linéaires de la simulation de réservoir peuvent être représentées sous la forme d'une matrice creuse très grande, nous reviendront sur la définition de creuse plus loin dans ce manuscrit.
 %
 Dans cette matrice, chaque ligne représente les interactions des éléments d'une cellule avec les éléments de son voisinage direct.
 %

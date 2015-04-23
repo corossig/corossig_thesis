@@ -17,7 +17,7 @@ Par contre, la taille du cache est donc partagée entre plusieurs coeurs de calc
 %
 Les caches de plus bas niveau (L1 et parfois L2) sont souvent dédiés à un coeur de calcul, l'espace mémoire n'est donc plus partagé.
 %
-Mais il peut y avoir des effets négatifs, si deux coeurs de calcul écrivent souvent dans la même ligne de cache, il y a un problème de faux partage et la ligne de cache fait souvent des aller-retour entre les caches dédiés.
+Mais il peut y avoir des effets négatifs, si deux coeurs de calcul écrivent souvent dans la même ligne de cache, il y a un problème de faux partage et la ligne de cache fera souvent des aller-retour entre les caches dédiés.
 
 
 

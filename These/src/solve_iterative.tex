@@ -7,11 +7,11 @@ Cette nouvelle solution $x_i$ étant plus proche de la solution exacte du probl�
 %
 La méthode s'arrête lorsque $x_i$ est suffisamment proche de la solution exacte selon un critère de convergence choisi.
 %
-Parmi ces méthodes on peut citer la méthode Jacobi, Gauss-Seidel ou encore SOR, ce sont des méthodes itératives dites stationnaires.
+Parmi ces méthodes nous pouvons citer la méthode Jacobi, Gauss-Seidel ou encore SOR, ce sont des méthodes itératives dites stationnaires.
 %
 Mais ces méthodes ne sont pas génériques, leur convergence dépend de certaines propriétés de la matrice.
 %
-Utilisées telles quelles, ces méthodes ne convergent pas rapidement dans de nombreux cas concrets.
+Dans de nombreux cas concret, ces méthodes ne convergent pas rapidement si elles sont utilisées telles quelles.
 
 
 La méthode du gradient conjugué est une méthode qui s'applique seulement à des matrices carrées symétriques définies positives.
@@ -24,9 +24,9 @@ Puis cette méthode a été étendue aux matrices non-symétriques sous le nom d
 %
 Le gradient biconjugué est une méthode par projection dans un espace de Krylov.
 %
-Le GMRES est aussi une méthode de Krylov, elle fonctionne avec n'importe quelle matrice qui est inversible.
+Le GMRES est aussi une méthode de Krylov et il fonctionne avec n'importe quelle matrice inversible.
 %
-Chaque itération du GMRES (Algo.~\ref{algo:gmres}) est composé d'un produit matrice vecteur creux (SpMV\footnote{Sparse Matrix Vector multiply}) ainsi que plusieurs produits scalaires (DOT).
+Chaque itération du GMRES (Algo.~\ref{algo:gmres}) est composé d'un produit matrice vecteur creux (SpMV\footnote{Sparse Matrix Vector multiply}) ainsi que de plusieurs produits scalaires (DOT).
 
 \begin{algorithm}
   \caption{GMRES avec une orthogonalisation Householder, nous avons surligné le produit matrice-vecteur creux ainsi que les produits scalaires.}
@@ -53,17 +53,17 @@ Chaque itération du GMRES (Algo.~\ref{algo:gmres}) est composé d'un produit ma
   Calculer $y_m$ le minimiseur de $||\beta{}e_1 - \overset{-}{H}_my||_2$ et $x_m := x_0 + V_my_m$
 \end{algorithm}
 
-La convergence (i.e. nombre d'itération pour atteindre une précision donnée) des méthodes itératives dépend du nombre de conditionnement de la matrice $||A||_p.||A^{-1}||_p$ où $||A||_p$ est une norme multiplicative.
+La convergence (i.e. nombre d'itérations pour atteindre une précision donnée) des méthodes itératives dépend du nombre de conditionnement de la matrice $||A||_p.||A^{-1}||_p$ où $||A||_p$ est une norme multiplicative.
 %
 Plus ce nombre est grand, plus le nombre d'itérations est grand.
 %
-Comme les matrices utilisées dans la simulation de réservoir ne sont pas bien conditionnées, l'algorithme du GMRES converge après beaucoup d'itérations.
+Comme les matrices utilisées dans la simulation de réservoir ne sont pas bien conditionnées, l'algorithme du GMRES ne converge qu'après beaucoup d'itérations.
 %
 Dans ce cas, nous pouvons préconditionner la matrice pour faire en sorte que le GMRES converge avec moins d'itérations.
 %
 Il faut choisir une matrice $M^{-1}$ tel que $M^{-1}A$ soit mieux conditionnées que $A$ (i.e. $||M^{-1}A||_p.||A^{-1}M||_p < ||A||_p.||A^{-1}||_p$).
 %
-Un cas idéal serait d'avoir $M=A$, dans ce cas là on obtient la matrice identité qui se trouve très bien conditionnée.
+Un cas idéal serait d'avoir $M=A$, dans ce cas là on obtient la matrice identité qui se trouve être très bien conditionnée.
 %
 Or, calculer $A^{-1}$ est très coûteux, à la fois en termes de calcul que de mémoire.
 
@@ -71,21 +71,21 @@ Or, calculer $A^{-1}$ est très coûteux, à la fois en termes de calcul que de 
 
 La factorisation LU permet de calculer directement $x=U^{-1}.L^{-1}.b=A^{-1}b$ mais comme nous l'avons vu, cette opération est très cher en calculs et en mémoire.
 %
-Néanmoins, une factorisation approchée de $A$ telle que $||A-LU||$ est relativement petite et peut jouer le rôle de préconditionneur dans une méthode de Krylov.
+Néanmoins, une factorisation approchée de $A$, telle que $||A-LU||$ est relativement petite, peut jouer le rôle de préconditionneur dans une méthode de Krylov.
 %
 Ainsi, les factorisations ILU\footnote{Incomplete LU}\cite{Saad96IMSLS} sont des choix très populaires de préconditionneurs algébriques.
 %
-Les principales techniques de factorisation ILU visent à calculer une factorisation LU qui ne tienty pas compte de certains coefficients de remplissage dans la matrice afin de limiter le coût tout en essayant de minimiser $||A-LU||$.
+Les principales techniques de factorisation ILU visent à calculer une factorisation LU qui ne tient pas compte de certains coefficients de remplissage dans la matrice afin de limiter le coût tout en essayant de minimiser $||A-LU||$.
 %
 En effet, au cours de la factorisation, de nombreux termes de remplissage apparaîtront et l'espace mémoire nécessaire au stockage de ces nouveaux termes deviendrait gigantesque.
 %
 Mais nous ne sommes pas obligés de connaître parfaitement $A^{-1}$ pour obtenir un bon préconditionnement.
 %
-Cette méthode est composée de deux opérations, la première correspond à la {\em factorisation} de la matrice en deux sous matrices, elle est faite juste avant le GMRES.
+La méthode par précondionnement ILU est composée de deux opérations, la première correspond à la {\em factorisation} de la matrice en deux sous matrices, elle est faite juste avant le GMRES.
 %
 La deuxième correspond à la {\em résolution triangulaire} effectuée avec les deux sous matrices, elle est effectuée à chaque itération du GMRES.
 %
-Pour maintenir un espace mémoire raisonnable, on peut choisir de limiter le niveau de remplissage, les deux méthodes les plus fréquemment utilisées sont :
+Pour maintenir un espace mémoire raisonnable, on peut choisir de limiter le niveau de remplissage, les deux algorithmes les plus fréquemment utilisées sont :
 \begin{itemize}
   \item Soit en fixant une valeur seuil à partir de laquelle le remplissage est accepté, il s'agit de l'algorithme ILUt;
   \item Soit en choisissant un niveau d'interaction maximal entre les lignes de la matrice, il s'agit de l'algorithme ILU(k) (Fig.~\ref{fig:iluk_filling}).
@@ -105,13 +105,13 @@ La factorisation ILU(k) peut être faite en deux étapes :
   \item puis la factorisation réelle en utilisant ce motif.
 \end{itemize}
 %
-La factorisation symbolique va utiliser le graphe d'adjacence de la matrice.
+La factorisation symbolique (Algo.~\ref{algo:iluk_symbolic}) va utiliser le graphe d'adjacence de la matrice.
 %
-S'il existe un chemin entre $i$ et $j$ tel que tout les indices du chemin soient inférieurs au minimum entre $i$ et $j$, alors une arête entre $i$ et $j$ apparaîtra.
+S'il existe un chemin entre deux noeuds d'indices $i$ et $j$ tel que tous les indices du chemin soient inférieurs au minimum entre $i$ et $j$, alors une arête entre les noeuds $i$ et $j$ apparaîtra.
 %
 La longueur de ce chemin déterminera le niveau de remplissage.
 %
-Par exemple, sur la figure~\ref{fig:iluk_filling}, ``5'' aura une relation de niveau 2 avec ``4'' car le chemin 4-3-2-5 existe et ``3'' et ``2'' sont inférieurs à ``4'' et ``5''.
+Par exemple, sur la figure~\ref{fig:iluk_filling}, le noeud d'indice ``5'' aura une relation de niveau 2 avec le noeud d'indice ``4'' car le chemin 4-3-2-5 existe et les indices ``3'' et ``2'' sont inférieurs à ``4'' et ``5''.
 
 %   (-_-)   %
 \begin{figure}[!h]
@@ -123,6 +123,7 @@ Par exemple, sur la figure~\ref{fig:iluk_filling}, ``5'' aura une relation de ni
 
 
 \begin{algorithm}
+  \label{algo:iluk_symbolic}
   \KwData{$A$ : La matrice à factoriser.\\
     $k$ : le niveau maximal de remplissage.}
   \For{chaque entrée $A_{ij}$ de $A$} {
@@ -142,13 +143,12 @@ Par exemple, sur la figure~\ref{fig:iluk_filling}, ``5'' aura une relation de ni
     }
   }
   \caption{Factorisation symbolique ILU(k)}
-  \label{algo:iluk_symbolic}
 \end{algorithm}
 
 
 L'algorithme ILUt a l'inconvénient d'avoir un motif de remplissage qui dépend des coefficients de la matrice.
 %
-Nous ne pouvons donc pas prévoir à l'avance l'espace nécessaire au stockage des matrices L et U.
+Nous ne pouvons donc pas prévoir à l'avance l'espace nécessaire au stockage des matrices L et U et le stockage de ces matrices devient complexe.
 %
 Par contre, l'algorithme ILU(k) permet de connaître en avance le motif de remplissage de la matrice (Fig.~\ref{fig:iluk_filling}).
 %

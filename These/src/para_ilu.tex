@@ -103,7 +103,7 @@ On appelle cela le problème de granularité.
 %
 Un ordonnanceur mettra de l'ordre de la centaine de nanosecondes à ordonnancer une tâche.
 %
-Pour que ce temps devienne négligeable, il faudrait que ce ne temps ne représente pas plus de 0,1~\% du temps de calcul d'une tâche.
+Pour que ce temps devienne négligeable, il faudrait qu'il ne représente pas plus de 0,1~\% du temps de calcul d'une tâche.
 %
 Les tâches doivent donc durer de l'ordre de la centaine de microsecondes.
 %
@@ -148,7 +148,7 @@ Il est donc primordial d'agréger des tâches qui factorisent des lignes conséc
 
 Il est aussi possible d'exploiter le parallélisme de l'algorithme ILU :
 %
-en agissant sur l'ordre d'élimination des inconnues (boucle extérieur de l'Algo.~\ref{algo:lu}, on peut modifier la structure de la matrice ce qui aura pour effet de changer la factorisation.
+en agissant sur l'ordre d'élimination des inconnues (boucle extérieur de l'algorithme~\ref{algo:lu}, on peut modifier la structure de la matrice ce qui aura pour effet de changer la factorisation.
 %
 Une renumérotation rouge-noir permet de factoriser parallèlement la moitié des lignes de la matrice dans un premier temps, puis la seconde moitié des lignes dans un second temps.
 %
