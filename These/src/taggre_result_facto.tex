@@ -30,13 +30,13 @@ Comme le montrent les résultats de la figure~\ref{fig:res_facto_no_agg}, le nom
 %
 L'utilisation de 2 threads n'est viable que dans le cas où nous utilisons 8 variables primaires.
 %
-Dans les autres cas, même en utilisant 4 threads, nous perdons du temps.
+Dans les autres cas, en utilisant de 2 à 4 threads, nous perdons du temps.
 %
 Ici, le nombre de variables primaires va définir le nombre d'opérations faites par ligne de la matrice, donc plus ce nombre est grand, plus il y aura de travail à faire.
 %
 Ces résultats confirment notre problème de granularité.
 %
-Au final, avec l'utilisation des 12 coeurs de calcul de la machine, nous obtenons des accélérations plutôt décevantes, par exemple, pour les cas à 3 variables primaires, le code tourne environ 2,5 fois plus vite que la version séquentielle, mais il utilise 12 fois plus de puissance de calcul.
+Au final, avec l'utilisation des 12 coeurs de calcul de la machine, nous obtenons des accélérations plutôt décevantes, par exemple, pour les cas à 3 variables primaires, le code tourne environ 2,5 fois plus vite que la version séquentielle, mais utilise 12 fois plus de puissance de calcul.
 
 %   (-_-)   %
 \begin{figure}[!h]
@@ -86,10 +86,11 @@ Cet opérateur va essayer de créer des groupes de 8 tâches assez proches dans 
 %
 Nous allons donc diviser par 8 le nombre de tâches, passant ainsi de 512000 tâches à 64000 tâches.
 %
-Ce qui peut paraître peu mais cette valeur a été choisie empiriquement parmi un ensemble de valeurs.
+Ce qui peut paraître peu, mais cette valeur a été choisie empiriquement parmi un ensemble de tests avec différentes valeurs.
 %
 Les autres valeurs donnent des résultats légèrement moins bons, par exemple le paramètre 4 offre une accélération de 3,35, tandis que le paramètre 12 offre 3,55 et finalement le paramètre 8 offre une accélération de 3,72.
-%
+
+
 Comparé à l'opérateur F, il y a très peu d'amélioration quand le nombre de variables primaires est faible (Fig.~\ref{fig:res_facto_d8}).
 %
 Par contre, avec 8 variables primaires, on obtient un gain de performance qui est dû à une meilleure utilisation des caches, surtout du cache L2 avec une diminution de 10\% des défauts de cache (Tab.~\ref{tab:cache_miss}) d'après les compteurs matériels du processeur.
@@ -107,19 +108,20 @@ L'accès à ces compteurs est explicité dans la partie \ref{sec:compteur}.
 
 
 \subsubsection{Avec l'opérateur C}
-Les deux précédents opérateurs donnent déjà des résultats, mais nous pensons que le meilleur opérateur pour nos matrices reste l'opérateur C.
+Les deux précédents opérateurs donnent déjà de meilleurs résultats que la version sans agrégation, mais nous pensons que le meilleur opérateur pour nos matrices est l'opérateur C.
 %
 Il a l'avantage de réduire grandement le nombre de tâches comme l'opérateur F et il forme des groupes de tâches permettant une meilleure réutilisation des données en cache.
 %
 Par contre, il se pourrait que le parallélisme en pâtisse.
-%
+
+
 Comme le montrent les résultats de la figure~\ref{fig:res_facto_c}, tous les cas tests sont améliorés.
 %
 Il y a bien deux grandes améliorations : la réduction du nombre de tâches et une meilleure réutilisation des caches.
 %
 Comme pour tous les opérateurs, le nombre de tâches a été réduit, mais dans ce cas la réduction est bien plus importante.
 %
-Par contre, l'amélioration des effets caches est bien meilleure que dans les autres opérateurs, nous obtenons une diminution de 25\% des défauts de cache des niveaux 1 et 2 par rapport à l'opérateur F.
+Par contre, l'amélioration des effets de cache est bien meilleure que dans les autres opérateurs, nous obtenons une diminution de 25\% des défauts de cache des niveaux 1 et 2 par rapport à l'opérateur F.
 %
 Cette amélioration est inexistante dans le cas de l'opérateur F, les tâches agrégées n'avaient pas une bonne réutilisabilité des données en cache.
 %
@@ -139,9 +141,9 @@ L'opérateur C offre donc le meilleur des deux opérateurs, il produit peu de t�
 \subsubsection{Avec plusieurs opérateurs}
 Il est aussi possible de combiner plusieurs opérateurs, sur la figure~\ref{fig:res_facto_cd2} nous avons combiné l'opérateur C avec l'opérateur D(2).
 %
-On observe un très léger gain de performance quand on a une seule variable primaire, mais dans les autres cas on observe le contraire.
+On observe une très légère perte de performance quand on a 8 variables primaires, mais dans les autres cas on observe le contraire.
 %
-Le premier opérateur améliore déjà les effets cache et augmente suffisamment la taille des tâches pour obtenir de bonnes performances, il n'y a donc presque plus d'améliorations possibles.
+Le premier opérateur améliore déjà les effets de cache et augmente suffisamment la taille des tâches pour obtenir de bonnes performances, il n'y a donc presque plus d'améliorations possibles.
 %
 Malgré ces optimisations, nous n'atteignons pas une accélération parfaite, avec au mieux une accélération de 8,7 pour 12 coeurs.
 %
@@ -206,7 +208,7 @@ Encore une fois, il s'agit d'un problème de granularité, le graphe à ordonnan
   \label{fig:res_trsv_no_agg}
 \end{figure}
 
-Si nous regardons les résultats avec la meilleure agrégation que nous ayons, l'agrégation CD(2), on obtient des résultats légèrement meilleurs, mais on n'est encore loin de l'accélération parfaite (Fig.~\ref{fig:res_trsv_cd2}).
+Si nous regardons les résultats avec la meilleure agrégation que nous ayons, l'agrégation CD(2), on obtient des résultats légèrement meilleurs, mais nous sommes encore loin de l'accélération parfaite (Fig.~\ref{fig:res_trsv_cd2}).
 %
 On arrive ici aux limites de notre méthode, la granularité n'est pas encore suffisante pour permettre d'obtenir de très bonnes performances.
 %

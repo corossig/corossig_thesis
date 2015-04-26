@@ -8,9 +8,9 @@ Notre implémentation du SpMV est optimisée pour prendre en compte la structure
 %
 Nos matrices sont stockées au format BCSR, les éléments contenus dans les petits blocs denses sont contigus en mémoire.
 %
-Cela nous permet d'optimiser les effets caches et nous pouvons aussi utiliser le jeu d'instructions vectorielles de nos processeurs.
+Cela nous permet d'optimiser les effets de cache et nous pouvons aussi utiliser le jeu d'instructions vectorielles de nos processeurs.
 
-Malgré les optimisations des effets caches, le SpMV est toujours limité par la bande passante mémoire.
+Malgré les optimisations des effets de cache, le SpMV est toujours limité par la bande passante mémoire.
 %
 Les courbes d'accélération du SpMV nous montrent que le gain de performance n'est pas linéaire avec le nombre de coeurs (Fig.~\ref{fig:res_spmv_omp_rostand}).
 %

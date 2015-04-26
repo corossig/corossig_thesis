@@ -1,7 +1,7 @@
 \subsection{Méthode de Jacobi par blocs}
 Afin d'obtenir une évaluation de la borne maximale de l'accélération qu'il est possible d'obtenir sur une machine donnée, nous proposons de connaître l'accélération obtenue par une méthode de Jacobi par blocs et de la comparer à notre solution.
 %
-Dans cette méthode, nous considérons le cas où chaque coeur effectue la factorisation ILU d'un sous bloc diagonal de la matrice.
+Dans cette méthode, nous considérons le cas où chaque coeur effectue la factorisation ILU(0) d'un sous bloc diagonal de la matrice.
 %
 Cette méthode de préconditionnement induit une factorisation et une résolution triangulaire totalement indépendante sur chaque coeur.
 %
@@ -12,8 +12,11 @@ Plus on utilise de coeurs, plus ce préconditionneur est inefficace numériqueme
 Mais l'intérêt cette évaluation est que l'accélération obtenue donne une borne supérieure de l'accélération de la factorisation ILU sur la matrice complète.
 %
 Cette borne existe puisqu’individuellement chaque coeur utilise une factorisation dont la bande passante mémoire est approximativement égale à celle de l'algorithme ILU globale.
+
+
+Malgré un parallélisme idéal, nous n'obtenons pas une accélération parfaite pour la factorisation ILU(0) (Fig.~\ref{fig:res_facto_mpi}).
 %
-Malgré un parallélisme idéal, nous n'obtenons pas une accélération parfaite (Fig.~\ref{fig:res_facto_mpi}).
+De plus, les performances de la résolution triangulaire sont basses malgré une parallélisme total (Fig.~\ref{fig:res_trsv_mpi}).
 %
 C'est un problème que l'on rencontre souvent dans les codes d'algèbre linéaire creuse.
 %
@@ -40,7 +43,7 @@ Il est nécessaire de regarder du côté de la bande passante mémoire pour trou
 %
 Nous allons maintenant mesurer cette bande passante à l'aide des compteurs matériels.
 %
-La bande passante utilisée par la méthode Jacobi par blocs est au mieux de 16~Go/s, avec les threads nous utilisons 12~Go/s de bande passante locale dont 5~Go/s de bande passante distante.
+La bande passante utilisée lors de la factorisation parallélisé par une méthode de Jacobi par blocs est au mieux de 16~Go/s, avec les threads nous utilisons 12~Go/s de bande passante locale dont 5~Go/s de bande passante distante.
 %
 Cette bande passante distante est le résultat des effets NUMA.
 %
@@ -48,7 +51,7 @@ Dans le cas des processus MPI utilisée par la méthode Jacobi par blocs, chaque
 %
 Mais dans le cas des threads, l'espace mémoire est partagé entre deux bancs mémoires et si les accès mémoire ne sont pas optimisés, il y aura des transferts entre les bancs NUMA.
 %
-Ces transferts auront pour effet d'augmenter la latence des accès mémoire et de réduire le nombre de cycles d'horloge par instruction (CPI\footnote{Clock Per Instruction}), ici on a un CPI de 0,75 pour la version MPI contre 1,08 pour la version threadée.
+Ces transferts auront pour effet d'augmenter la latence des accès mémoire et de réduire le nombre de cycles d'horloge par instruction (CPI\footnote{Clock Per Instruction}), ici on a un CPI de 0,75 pour la version MPI contre 1,08 pour la version threadée (résultats obtenus avec les compteurs matériel).
 %
 L'explication de la différence de performance entre ces deux versions se situe au niveau de la mémoire, on est limité par la bande passante.
 %% +-----------------------------+----------+----------+MPI12

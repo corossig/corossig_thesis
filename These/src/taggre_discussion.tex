@@ -11,7 +11,7 @@ Ce choix se fait suivant trois différents critères :
 \begin{itemize}
   \item la forme du graphe de tâches;
   \item le rapport entre surcoût d'ordonnancement et coût de la tâche;
-  \item l'amélioration des effets cache suivant l'ordre d'ordonnancement des tâches.
+  \item l'amélioration des effets de cache suivant l'ordre d'ordonnancement des tâches.
 \end{itemize}
 %
 Un graphe plus large que haut permettra de sacrifier un peu de parallélisme pour grossir le grain de calcul.
@@ -28,7 +28,7 @@ L'utilisation du simulateur de tâches pourrait être étendue pour permettre de
 %
 Mais l'espace des possibilités à tester est considérable, le temps nécessaire à tester toutes les possibilités serait trop grand.
 %
-Par contre, nous pouvons imaginer une heuristique qui en fonction des propriétés du graphe, de la granularité du calcul et des effets cache liés à l'ordre d'ordonnancement des tâches propose un opérateur à appliquer.
+Par contre, nous pouvons imaginer une heuristique qui en fonction des propriétés du graphe, de la granularité du calcul et des effets de cache liés à l'ordre d'ordonnancement des tâches propose un opérateur à appliquer.
 %
 Le simulateur pourra ensuite tester cette possibilité et donner une estimation du gain théorique.
 

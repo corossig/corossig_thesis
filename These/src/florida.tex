@@ -7,7 +7,7 @@ Parmi toutes ces matrices, nous en avons choisi quatre ayant des motifs différe
 %
 Nous ne nous intéressons pas aux propriétés physiques de ces simulations, mais seulement aux connexions des noeuds dans le graphe.
 %
-C'est pourquoi nous allons choisir des paramètres arbitraires par rapport aux poids des tâches.
+C'est pourquoi nous allons choisir des paramètres de simulation arbitraires pour le poids des tâches et pour les effets de cache.
 %
 Ces paramètres auront une incidence sur le choix des opérateurs d'agrégations.
 %
@@ -43,8 +43,8 @@ Nous testerons ces différents opérateurs grâce à notre simulateur.
 \begin{center}
   \begin{tabular}{|r|c|c|c|c|}
     \hline
-    Nom de la & Nombre de       & Nombre de & Paramètre des & Paramètre de\\
-    matrice   & lignes/colonnes & non-zéros & effets cache  & granularité \\
+    Nom de la & Nombre de       & Nombre de & Paramètre des   & Paramètre de\\
+    matrice   & lignes/colonnes & non-zéros & effets de cache & granularité \\
     \hline
     Pajek/EPA             & 4~772     & 8~965     & 0,95 & 0,02  \\
     SNAP/roadNet-PA       & 1~090~920 & 3~083~796 & 0,70 & 1     \\
@@ -61,7 +61,7 @@ Les premiers résultats concernent la matrice Pajek/EPA, ce graphe représente l
 %
 Le graphe est plutôt petit (environ 5000 noeuds), nous n'aurons donc pas beaucoup de tâches.
 %
-Nous avons choisi pour le simulateur de tâches des valeurs représentant des tâches plutôt grosses (50 fois le coût d'ordonnancement) et qui ne bénéficie presque pas des effets cache.
+Nous avons choisi pour le simulateur de tâches des valeurs représentant des tâches plutôt grosses (50 fois le coût d'ordonnancement) et qui ne bénéficie presque pas des effets de cache.
 %
 L'agrégation ne permet qu'un gain de 30\% dans les meilleurs cas (Table~\ref{tab:epa}).
 %
@@ -88,11 +88,11 @@ Le graphe est assez grand, nous pourrons agréger des noeuds ensemble.
 %
 La granularité des tâches que nous avons choisie est petite, l'ordonnanceur met autant de temps à ordonnancer la tâche que la tâche met à s'exécuter.
 %
-De plus, les effets cache peuvent améliorer le temps de calcul.
+De plus, les effets de cache peuvent améliorer le temps de calcul.
 %
 L'opérateur D se démarque des autres opérateurs en divisant par deux le temps de calcul (Table~\ref{tab:roadnet}).
 %
-L'opérateur F n'a pas fourni une bonne agrégation à cause des effets cache.
+L'opérateur F n'a pas fourni une bonne agrégation à cause des effets de cache.
 
 
 %   (-_-)   %
@@ -114,7 +114,7 @@ Le troisième cas test représente les liens entre les pages du site web de stan
 %
 Il s'agit d'un petit graphe d'environ 10000 noeuds.
 %
-Les tâches ont une granularité grossière et peuvent bénéficier d'améliorations des effets cache.
+Les tâches ont une granularité grossière et peuvent bénéficier d'améliorations des effets de cache.
 %
 Tous les opérateurs d'agrégations donnent environ les mêmes résultats (Table.~\ref{tab:stanford}).
 
@@ -136,7 +136,7 @@ Tous les opérateurs d'agrégations donnent environ les mêmes résultats (Table
 
 Le dernier cas test est une matrice de connexions de site web (Williams/webbase-1M).
 %
-La matrice est grande, nous avons choisi comme paramètre de tâche, une granularité fine avec un très petit gain sur les effets cache.
+La matrice est grande, nous avons choisi comme paramètre de tâche, une granularité fine avec un très petit gain sur les effets de cache.
 %
 Les gains liés à l'agrégation sont faibles (35\%) et les opérateurs D et F donnent les mêmes performances.
 %

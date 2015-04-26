@@ -11,7 +11,7 @@ De plus, augmenter le niveau de remplissage de l'algorithme ILU(k) créera de no
 %
 Nous allons donc utiliser notre simulateur avec une numérotation nested dissection des matrices.
 %
-Nous définissons les paramètres 0,6 pour les effets caches et 2 pour le coût d'ordonnancement.
+Nous définissons les paramètres 0,6 pour les effets de cache et 2 pour le coût d'ordonnancement.
 %
 Donc le temps d'exécution d'une tâche est 2 fois moins long que le temps d'ordonnancement.
 %
@@ -19,7 +19,7 @@ En regardant le graphe de tâches (Fig.~\ref{fig:ilu_ordering_F}), on s'aperçoi
 %
 L'opérateur F devrait donnait de très bons résultats sur ce graphe.
 %
-Mais comme les effets cache sont importants, il est possible que l'opérateur D puisse faire aussi bien.
+Mais comme les effets de cache sont importants, il est possible que l'opérateur D puisse faire aussi bien.
 %
 Lorsque nous regardons les résultats (Table.~\ref{tab:ilu0_nested_0.6_2}), l'opérateur F donne les meilleurs résultats.
 %
@@ -54,7 +54,7 @@ L'opérateur C n'est pas du tout efficace car le graphe n'est pas assez haut.
 
 Supposons dans un deuxième temps que les tâches soient plus grosses et que le paramètre cache soit moins important.
 %
-Nous travaillerons donc avec les valeurs 0,8 pour les effets caches et 0,5 pour le coût d'ordonnancement.
+Nous travaillerons donc avec les valeurs 0,8 pour les effets de cache et 0,5 pour le coût d'ordonnancement.
 %
 Ordonnancer une tâche ne coûte plus que la moitié du temps de l'exécution de la tâche.
 %
@@ -86,7 +86,7 @@ Le nombre de tâches par niveau dans le graphe n'est pas uniforme.
 %
 Nous allons donc réessayer les différents d'opérateurs d'agrégation sur ce nouveau graphe.
 %
-Nous réutilisons les paramètres du simulateur cité plus haut (0,6 pour les effets cache et 2 pour l'ordonnancement).
+Nous réutilisons les paramètres du simulateur cité plus haut (0,6 pour les effets de cache et 2 pour l'ordonnancement).
 %
 Les résultats de la table~\ref{tab:ilu2_nested_0.6_2} nous montrent que l'opérateur F est toujours le plus efficace.
 %
@@ -117,7 +117,7 @@ Par contre, la différence avec l'opérateur D est réduite.
 \end{figure}
 
 
-Changeons une dernière fois les paramètres du simulateur pour augmenter le grain de calcul (0,8 pour les effets caches et 0,5 pour le coût d'ordonnancement).
+Changeons une dernière fois les paramètres du simulateur pour augmenter le grain de calcul (0,8 pour les effets de cache et 0,5 pour le coût d'ordonnancement).
 %
 Les résultats (Table.~\ref{tab:ilu2_nested_0.8_0.5}) montrent un très léger avantage pour l'opérateur F.
 
@@ -137,7 +137,7 @@ Les résultats (Table.~\ref{tab:ilu2_nested_0.8_0.5}) montrent un très léger a
 \end{center}
 
 
-Comme nous avons pu le voir, le choix des opérateurs dépend fortement de la structure du graphe de tâche.
+Comme nous avons pu le voir, le choix des opérateurs dépend fortement de la structure du graphe de tâches.
 %
 L'opérateur F sera à favoriser sur des graphes très large et peu haut.
 %
