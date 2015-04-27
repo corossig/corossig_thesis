@@ -1,13 +1,13 @@
 \subsection{Les 13 nains de berkeley}
-Le choix des opérateurs dans Taggre se fait à l'appréciation du programmeur.
-%
 La collection des {\em 13 nains de Berkeley}\cite{dwarfs} est une méthode de classification des problèmes en fonction de leurs motifs de calculs et de communications.
 %
 Il est intéressant de voir si Taggre peut répondre aux 13 problèmes et si c'est le cas quelle serait la stratégie d'agrégation à utiliser.
 %
+En effet, le choix des opérateurs dans Taggre se fait à l'appréciation du programmeur.
+%
 Malheureusement, tous les problèmes ne se prêtent pas à cet exercice.
 %
-Certaines classes de problèmes ne peuvent pas se paralléliser avec du parallélisme à base de graphes de tâches, ou ne présentent aucun intérêt à être paralléliser de cette façon (MapReduce, Graph Traversal, Dynamic Programming, Backtrack and Branch-and-Bound, Graphical Models et Finite State Machines)
+Certaines classes de problèmes ne peuvent pas se paralléliser avec du parallélisme à base de graphes de tâches, ou ne présentent aucun intérêt à être paralléliser de cette façon (MapReduce, Graph Traversal, Dynamic Programming, Backtrack and Branch-and-Bound, Graphical Models et Finite State Machines).
 %
 Les problèmes rencontrés en algèbre linéaire dense sont souvent réguliers et le programmeur peut facilement choisir une granularité.
 %
@@ -40,7 +40,7 @@ L'une d'entre elles consiste à diviser l'espace en plusieurs sous-espaces et de
 %
 Des travaux de recherche se sont concentrés à traiter ce problème avec des graphes de tâches\cite{scalfmm}, et comme le graphe est un arbre, ils ont eux-même fait de l'agrégation de noeuds pour obtenir une bonne granularité.
 %
-Taggre n'est donc pas utile dans ce cas, le problème de granularité est déjà traiter par le programmeur.
+Taggre n'est donc pas utile dans ce cas, le problème de granularité étant déjà traiter par le programmeur.
 
 
 \subsubsection{Méthodes spectrales}

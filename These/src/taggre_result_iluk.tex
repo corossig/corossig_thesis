@@ -24,6 +24,7 @@ Dans ce cas, l'opérateur C n'a pas laisser suffisamment de parallélisme pour q
 L'opérateur F donne aussi de très bons résultats montrant que dans le cas des factorisation ILU(1) et ILU(2) les effets de cache entre les tâches sont moins important que dans le cas d'une factorisation ILU(0)
 
 %   (-_-)   %
+\begin{table}[h!]
 \begin{center}
   \begin{tabular}{|c|r|c|c|c|c|}
     \hline
@@ -39,6 +40,7 @@ ILU(2) & Cube 80 Npri 3 & 5,32 & 8,49 & 7,33  & 5,84\\
        & Cube 80 Npri 8 & 8,26 & 9,59 & 9,72  & 8,28\\
     \hline
   \end{tabular}
-  \captionof{table}{Accélération de la factorisation ILU(k) sur 12 coeurs.}
+  \caption{Accélération de la factorisation ILU(k) sur 12 coeurs.}
   \label{tab:iluk_facto}
 \end{center}
+\end{table}

@@ -5,7 +5,7 @@ Lorsque deux threads partagent un espace mémoire et que ces deux threads s'exé
 %
 Nous pouvons donc résoudre le problème des effets NUMA en utilisant plusieurs processus.
 %
-En utilisant un processus MPI par banc NUMA et une politique d'allocation first touch ou bind, on se retrouve toujours avec des accès mémoire du banc mémoire le plus proche.
+En utilisant un processus MPI par banc NUMA et une politique d'allocation first touch ou bind, on se retrouve toujours avec des accès mémoire sur le banc mémoire le plus proche.
 %
 Mais la problématique reste similaire à la problématique du choix entre la parallélisation en mémoire distribuée et la parallélisation en mémoire partagée, ce n'est pas toujours possible ou performant.
 %

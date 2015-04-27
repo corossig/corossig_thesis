@@ -9,7 +9,7 @@ Si la file est vide, on passe à l'heure de terminaison suivante.
 %
 Le poids d'une tâche grossière dépend des tâches fines qui la compose.
 %
-Si l'exécution de deux tâches fines est soumise à une amélioration des effets de cache, alors le poids de la deuxième tâche sera multiplié par un coefficient symbolisant les améliorations des effets de cache.
+Si l'exécution de deux tâches fines est soumise à une amélioration des effets de cache, alors le poids de la deuxième tâche sera multiplié par un coefficient représentant les améliorations des effets de cache.
 %
 L'heure suivante de terminaison de la tâche sera calculée de la façon suivante : $H = H + T_{ordonnancement} + P_{tache\_grossiere}$
 
@@ -21,6 +21,6 @@ Nous avons décidé de normaliser le coût d'une tâche à la valeur 1 et d'effe
 %
 Dans le cas d'une factorisation d'un cube avec 3 variables primaires, les paramètres du simulateur valent 1,5 pour le surcoût d'ordonnancement d'une tâche et 0,7 pour le gain lié aux effets de cache.
 %
-Ça signifie que l'ordonnanceur met 1,5 fois plus de temps à ordonnancer une tâche fine que cette tâche ne met à factoriser une ligne.
+Ça signifie que l'ordonnanceur met 1,5 fois plus de temps à ordonnancer une tâche de poids 1 que cette tâche ne met à factoriser une ligne.
 %
 Ça signifie aussi que lors de la factorisation de deux lignes consécutives, la factorisation de la deuxième ligne sera 30\% plus rapide.

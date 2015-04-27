@@ -1,4 +1,8 @@
 \subsubsection{Mémoire distribuée}
+Le SpMV présente du parallélisme de boucle sur les lignes de la matrice.
+%
+Nous pouvons multiplier indépendamment chaque ligne de la matrice par un vecteur et stocker directement le résultat dans un autre vecteur.
+%
 Pour paralléliser un produit matrice vecteur creux en mémoire distribuée, il faut tout d'abord distribuer la matrice sur tous les processus.
 %
 Chaque processus devra s'occuper d'un ensemble de lignes de la matrice.
@@ -54,7 +58,7 @@ Il faut aussi prendre en compte une bande passante mémoire plus élevée sur le
 %
 Nous avons choisi d'allouer les processus MPI en mode compact, c'est-à-dire qu'ils sont distribués de façon à utiliser un minimum de noeuds NUMA.
 %
-Nous pourrons ainsi voir les différents paliers tous les 8 coeurs qui correspondent à l'ajout de bande passante mémoire d'un nouveau processeur.
+Nous devrions ainsi voir les différents paliers tous les 8 coeurs qui correspondent à l'ajout de bande passante mémoire d'un nouveau processeur.
 %
 Ces paliers sont difficilement visibles sur la courbe des résultats (Fig.~\ref{fig:res_spmv_mpi_manu}).
 %

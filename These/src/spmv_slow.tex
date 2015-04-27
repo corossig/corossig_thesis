@@ -6,7 +6,7 @@ L'opération la plus coûteuse est le produit d'une matrice par un vecteur (SpMV
 %
 Notre implémentation du SpMV est optimisée pour prendre en compte la structure bloc des entrées de la matrice quand le nombre de variables primaires est supérieur à 1.
 %
-Nos matrices sont stockées au format BCSR, les éléments contenus dans les petits blocs denses sont contigus en mémoire.
+Nos matrices sont stockées au format BCSR, les éléments contenus dans les petits blocs denses sont donc contigus en mémoire.
 %
 Cela nous permet d'optimiser les effets de cache et nous pouvons aussi utiliser le jeu d'instructions vectorielles de nos processeurs.
 
@@ -43,13 +43,13 @@ Il manque essentiellement les compteurs de type {\em uncore} qui permettent de m
 
 
 
-PAPI\footnote{Performance Application Programming Interface} est une interface de programmation qui fournit une abstraction pour l'accès aux compteurs matériels.
+PAPI\footnote{Performance Application Programming Interface} fournit une interface de programmation qui fournit une abstraction pour l'accès aux compteurs matériels.
 %
 Cette bibliothèque utilise l'interface perfmon sous Linux, elle utilise donc le même module noyau que perf.
 %
 En plus de faciliter l'accès aux compteurs, elle propose comme fonctionnalité de simuler des accumulateurs de compteurs.
 %
-Mais son mode de fonctionnement dans un environnement multi-threadé n'est pas suffisamment documenté.
+Mais son mode de fonctionnement dans un environnement multi-threadé n'est pas suffisamment documenté, nous avons donc cherché un autre outil.
 
 
 
@@ -61,13 +61,13 @@ L'exécution du code échantillonnée avec les valeurs des compteurs matériels 
 %
 Cet outil est très complet, mais requiert l'achat d'une licence d'utilisation ainsi que l'ajout d'un module noyau.
 %
-Nous n'avons donc pas pu utiliser cet outil car les administrateurs de notre grappe de serveur ont refusés d'installer le module noyau.
+Nous n'avons donc pas pu utiliser cet outil car les administrateurs de notre grappe de serveur ne souhaitent pas installer le module noyau.
 
 
 
 Nous avons préféré utiliser Likwid, un outil d'analyse de performance léger qui simplifie l'accès aux compteurs matériels.
 %
-Le principal avantage de Likwid est qu'il contient des profils déjà configurés calculant des métriques 
+Le principal avantage de Likwid est qu'il contient des profils déjà configurés calculant des métriques utiles.
 %
 Par exemple, le profil {\em MEM} nous donnera directement les mesures de bande passante mémoire locale et distante en divisant le nombre d'accès mémoire par le temps de calcul.
 %
@@ -75,13 +75,13 @@ Le nombre d'accès mémoire provient des compteurs {\em UNC\_QMC\_NORMAL\_READS\
 %
 Il y a aussi la possibilité d'interagir avec Likwid depuis le code d'une application pour ne mesurer qu'une portion du code.
 %
-Nous utiliserons cette fonctionnalité pour ne mesurer que la routine qui nous intéresse.
+Nous utiliserons cette fonctionnalité pour ne mesurer que les routines qui nous intéresse.
 
 
 
 Pour mesurer les effets NUMA sur le SpMV, nous effectuons 100 SpMV et mesurerons le nombre d'accès mémoire.
 %
-Si l'on regarde les compteurs matériels (Table~\ref{tab:numa_spmv}), on s'aperçoit que la moitié de la bande passante en lecture de chaque banc NUMA est utilisée par des accès distants.
+Si l'on regarde la valeur des compteurs matériels dans la table~\ref{tab:numa_spmv}, on s'aperçoit que la moitié de la bande passante en lecture de chaque banc NUMA est utilisée par des accès distants.
 %
 Donc environ la moitié des lectures mémoires sont faites avec une plus grande latence.
 %

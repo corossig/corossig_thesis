@@ -17,11 +17,11 @@ Avec huit variables primaires, le ratio monte à environ $1/4,5$.
 
 Le {\em roofline model} est un modèle de performance permettant de connaître la puissance de calcul maximale pouvant être atteinte par un algorithme sur une machine.
 %
-Ce modèle se construit de la façon suivante.
+Ce modèle se construit de la façon suivante : dans un premier temps nous allons mesurer la bande passante maximale de la machine.
 %
-Dans un premier temps nous allons mesurer la bande passante maximale de la machine.
+Pour cela nous avons utilisé le benchmark STREAM.
 %
-Pour cela nous avons utilisé le benchmark STREAM, sur Rostand, nous obtenons une bande passante de 21~Go/s.
+Sur Rostand, nous obtenons une bande passante de 21~Go/s en prenant en compte les 2 bancs NUMA.
 %
 Puis, dans un second temps, nous allons calculer la capacité de calcul maximale de la machine.
 %
@@ -41,9 +41,6 @@ L'utilisation du jeu d'instructions vectorielles aura donc très peu d'impact su
 %
 Nous devons nous concentrer sur les accès mémoire et surtout dans notre cas, sur les effets NUMA.
 
-Le SpMV présente du parallélisme de boucle sur les lignes de la matrice.
-%
-Nous pouvons multiplier indépendamment chaque ligne de la matrice par un vecteur et stocker directement le résultat dans un autre vecteur.
 
 %   (-_-)   %
 \begin{figure}

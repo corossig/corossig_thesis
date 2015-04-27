@@ -1,5 +1,5 @@
 \subsection{Cas d'étude}
-Pour être en mesure de tester notre méthode de parallélisation en mémoire partagée, nous utilisons un code de solveur linéaire développé chez Total.
+Pour être en mesure de tester notre méthode de parallélisation, nous utilisons un code de solveur linéaire développé chez Total.
 %
 Nous allons essayer de paralléliser la partie GMRES préconditionné du code.
 %
@@ -20,13 +20,13 @@ Si nous utilisons un schéma IMPES (implicite en pression et explicite en satura
 %
 Les simulations de type {\em black-oil} sont les plus utilisées en simulation de réservoir.
 %
-Il s'agit de simuler 3 variables primaires, la concentration en huile, en gaz et en eau de chaque cellule.
+Il s'agit de simuler 3 variables primaires, la concentration en huile, en gaz et en eau de chaque cellule du réservoir.
 %
 Il arrive aussi que l'on souhaite simuler plus précisément les différents types d'huiles contenues dans les réservoirs.
 %
 Dans ce cas, nous utiliserons un modèle compositionnel dans lequel chaque variable primaire correspondra à la saturation d'un type d'hydrocarbure.
 %
-Pour les cas black-oil et les cas compositionnels, les entrées de la matrice seront de petits blocs denses de taille $npri*npri$ où $npri$ est les nombres de variables primaires.
+Pour les cas black-oil et les cas compositionnels, les entrées de la matrice seront de petits blocs denses de taille $npri*npri$ où $npri$ est le nombre de variables primaires.
 
 Pour évaluer notre code, nous allons utiliser le cas test SPE10 qui est basé sur les données prises du second modèle du 10ème cas test SPE\cite{SPE10}.
 %
@@ -34,7 +34,7 @@ C'est un réservoir de 1~122~000 de cellules, organisées dans une grille 3D car
 %
 Il s'agit d'un modèle black-oil, donc à 3 variables primaires, et c'est un problème de référence dans l'industrie pétrolière.
 %
-Les autres cas tests seront générés par un programme développé en interne, nous utiliserons un cas pression, un cas black-oil et un cas compositionnel à 8 composants.
+Les autres cas tests seront générés par un programme développé en interne chez Total, nous utiliserons un cas pression, un cas black-oil et un cas compositionnel à 8 composants.
 %
 Ce programme génère des cubes 3D cartésiens de taille arbitraire.
 %

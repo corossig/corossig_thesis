@@ -13,7 +13,7 @@ Mais tous les programmes ne sont pas écrits pour fonctionner de cette façon.
 %
 Imaginons un programme qui soit écrit pour avoir une phase d'initialisation séquentielle, avec toutes les allocations dont il aura besoin dans cette phase, alors toute la mémoire physique sera allouée sur un seul banc NUMA.
 %
-Comme toutes les données se retrouvent exclusivement sur un seul banc NUMA, tous les threads devront se partager la bande passante mémoire de ce banc alors que les bandes passante des autres bancs NUMA seront utilisées.
+Comme toutes les données se retrouvent exclusivement sur un seul banc NUMA, tous les threads devront se partager la bande passante mémoire de ce banc alors que les bandes passantes des autres bancs NUMA seront utilisées.
 
 
 Il existe d'autres cas où ce type d'allocation ne permet pas d'obtenir le maximum de bande passante mémoire de la machine.

@@ -7,7 +7,7 @@ La politique d'allocation interleaved limite ce problème, on est sûr que tous 
 %
 Malgré cela, on obtient un gain important de performance dans certains cas tels que le produit matrice vecteur creux et la résolution triangulaire.
 %
-Les politiques d'allocations du type next-touch et autoNUMA résolvent une bonne partie du problème en améliorant la localité mémoire.
+Les politiques d'allocations du type next-touch et AutoNUMA résolvent une bonne partie du problème en améliorant la localité mémoire.
 %
 Mais ces politiques ne nous permettent pas d'avoir un contrôle fin de l'accès aux données d'un thread.
 
@@ -25,7 +25,7 @@ Les gains que nous observons avec l'utilisation de plusieurs bancs NUMA sont bie
 
 Malgré les bonnes performances que nous offre NATaS, on pourrait se demander s'il s'agit de la meilleure solution.
 %
-En effet, le placement des tâches n'est pas optimal, de même que l'équilibrage de charge.
+En effet, le placement des tâches n'est pas entièrement optimal, de même que l'équilibrage de charge.
 %
 Avec les algorithmes actuels, il est impossible de supprimer complètement les accès distants, nous ne pouvons que les limiter.
 %
@@ -36,6 +36,7 @@ Mais cette suppression se ferait au prix d'un algorithme moins efficace.
 Donc une meilleure solution pourrait être d'améliorer les ordonnanceurs existants en leur ajoutant une meilleure prise en charge des architectures NUMA.
 
 %   (-_-)   %
+\begin{table}[h!]
 \begin{center}
   \begin{tabular}{|r|r|c|c|c|}
     \hline
@@ -58,13 +59,14 @@ TRSV &   Interleave  & 1.84 & 2.18 & 2.83 \\
 &        MPI         & 3.21 & 3.26 & 3.70 \\
     \hline
   \end{tabular}
-  \captionof{table}{Accélérations obtenues en fonction de la politique d'allocation mémoire. La version MPI ne fait pas exactement le même calcul, elle permet juste d'obtenir une indication sur l'accélération maximale que nous pouvons atteindre.}
+  \caption{Accélérations obtenues en fonction de la politique d'allocation mémoire. La version MPI ne fait pas exactement le même calcul, elle permet juste d'obtenir une indication sur l'accélération maximale que nous pouvons atteindre.}
   \label{tab:rostand_sum}
 \end{center}
+\end{table}
 
 Sur une machine avec beaucoup de bancs NUMA, l'ordonnanceur NATaS ne passe pas à l'échelle.
 %
-Sa structure interne n'est pas assez distribuée, l'utilisation de compteurs globaux de tâches est loin d'être optimal.
+Sa structure interne n'est pas assez distribuée, l'utilisation de compteurs globaux de tâches est loin d'être idéal.
 %
 Malgré une implémentation sous-optimale, NATaS offre de meilleures performances que les ordonnanceurs habituels.
 %

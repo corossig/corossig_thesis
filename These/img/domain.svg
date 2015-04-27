@@ -25,16 +25,16 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="182.90197"
-     inkscape:cy="37.714022"
+     inkscape:cx="427.6739"
+     inkscape:cy="36.703869"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:window-width="2560"
-     inkscape:window-height="1569"
-     inkscape:window-x="2560"
+     inkscape:window-width="1280"
+     inkscape:window-height="993"
+     inkscape:window-x="1920"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
      fit-margin-top="0"
@@ -356,109 +356,105 @@
        cx="219.66019"
        style="fill:#ffe680;fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0"
        id="path3109" />
-    <g
-       id="g4392"
-       transform="translate(0,-34)">
-      <circle
-         id="path3057-2"
-         style="fill:#2c89a0;fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0"
-         cx="570.87891"
-         cy="169.71858"
-         r="18.182745" />
-      <circle
-         r="18.182745"
-         cy="217.83965"
-         cx="570.87891"
-         style="fill:#abc837;fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0"
-         id="circle3627" />
-      <text
-         sodipodi:linespacing="125%"
-         id="text4481"
-         y="173.81941"
+    <circle
+       r="18.182745"
+       cy="135.71858"
+       cx="570.87891"
+       style="fill:#2c89a0;fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0"
+       id="path3057-2" />
+    <circle
+       id="circle3627"
+       style="fill:#abc837;fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0"
+       cx="570.87891"
+       cy="183.83965"
+       r="18.182745" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:11px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="625.5014"
+       y="139.81941"
+       id="text4481"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4483"
          x="625.5014"
-         style="font-style:normal;font-weight:normal;font-size:11px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           y="173.81941"
-           x="625.5014"
-           id="tspan4483"
-           sodipodi:role="line">Cellules du domaine 1</tspan></text>
-      <text
-         sodipodi:linespacing="125%"
-         id="text4485"
-         y="221.94048"
+         y="139.81941">Cellules du domaine 1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:11px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="625.5014"
+       y="187.94048"
+       id="text4485"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4487"
          x="625.5014"
-         style="font-style:normal;font-weight:normal;font-size:11px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           y="221.94048"
-           x="625.5014"
-           id="tspan4487"
-           sodipodi:role="line">Cellules du domaine 2</tspan></text>
-      <text
-         sodipodi:linespacing="125%"
-         id="text4489"
-         y="366.30365"
+         y="187.94048">Cellules du domaine 2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:11px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="625.03949"
+       y="332.30365"
+       id="text4489"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4491"
          x="625.03949"
-         style="font-style:normal;font-weight:normal;font-size:11px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           y="366.30365"
-           x="625.03949"
-           id="tspan4491"
-           sodipodi:role="line">Interactions intra-domaine</tspan></text>
-      <text
-         sodipodi:linespacing="125%"
-         id="text4493"
-         y="414.42471"
+         y="332.30365">Interactions intra-domaine</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:11px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="625.03949"
+       y="380.42471"
+       id="text4493"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4495"
          x="625.03949"
-         style="font-style:normal;font-weight:normal;font-size:11px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           y="414.42471"
-           x="625.03949"
-           id="tspan4495"
-           sodipodi:role="line">Interactions inter-domaine</tspan></text>
-      <circle
-         r="18.182745"
-         cy="314.08179"
-         cx="570.87891"
-         id="circle4352"
-         style="fill:#ffe680;fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0" />
-      <circle
-         r="18.182745"
-         cy="265.96072"
-         cx="570.87891"
-         style="fill:#a02c2c;fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0"
-         id="circle4354" />
-      <path
-         style="fill:none;stroke:#000000;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="m 544.28748,362.20283 53.18285,0"
-         id="path3665"
-         inkscape:connector-curvature="0" />
-      <path
-         inkscape:connector-curvature="0"
-         id="path4479"
-         d="m 544.28748,410.32388 53.18285,0"
-         style="fill:none;stroke:#ff8080;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:11px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         y="380.42471">Interactions inter-domaine</tspan></text>
+    <circle
+       style="fill:#a02c2c;fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0"
+       id="circle4352"
+       cx="570.87891"
+       cy="280.08179"
+       r="18.182745" />
+    <circle
+       id="circle4354"
+       style="fill:#ffe680;fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0"
+       cx="570.87891"
+       cy="231.96072"
+       r="18.182745" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path3665"
+       d="m 544.28748,328.20283 53.18285,0"
+       style="fill:none;stroke:#000000;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       style="fill:none;stroke:#ff8080;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 544.28748,376.32388 53.18285,0"
+       id="path4479"
+       inkscape:connector-curvature="0" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text4380"
+       y="236.06155"
+       x="625.5014"
+       style="font-style:normal;font-weight:normal;font-size:11px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="236.06155"
          x="625.5014"
-         y="270.06155"
-         id="text4380"
-         sodipodi:linespacing="125%"><tspan
-           sodipodi:role="line"
-           id="tspan4382"
-           x="625.5014"
-           y="270.06155">Cellules du domaine 3</tspan></text>
-      <text
-         sodipodi:linespacing="125%"
-         id="text4384"
-         y="318.18262"
+         id="tspan4382"
+         sodipodi:role="line">Cellules du domaine 3</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:11px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="625.5014"
+       y="284.18262"
+       id="text4384"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4386"
          x="625.5014"
-         style="font-style:normal;font-weight:normal;font-size:11px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           y="318.18262"
-           x="625.5014"
-           id="tspan4386"
-           sodipodi:role="line">Cellules du domaine 4</tspan></text>
-    </g>
+         y="284.18262">Cellules du domaine 4</tspan></text>
   </g>
 </svg>

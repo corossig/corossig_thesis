@@ -1,6 +1,6 @@
 \subsection{AutoNUMA}
 \label{sec:autonuma}
-Linux n'a pas adopté la politique d'allocation Next touch.
+Linux n'a pas adopté la politique d'allocation next touch.
 %
 \`A la place, les développeurs de Linux ont choisi d'implémenter un autre mécanisme pour améliorer la localité NUMA : {\em AutoNUMA}.
 %
@@ -22,13 +22,13 @@ Une fois arrivé au bout de l'espace d'adressage, le scanner recommence au débu
 %
 La variable scan\_delay change de valeur en fonction du nombre de pages déplacées.
 %
-Elle diminue quand il y a beaucoup de fautes NUMA et augmente quand les pages sont bien placées, c'est pour le surcoût de cette méthode est difficilement calculable.
+Elle diminue quand il y a beaucoup de fautes NUMA et augmente quand les pages sont bien placées, c'est pourquoi le surcoût de cette méthode est difficilement calculable.
 %
 Ainsi, une application dont les threads accèdent toujours à la même mémoire aura automatiquement un bon placement mémoire.
 
 Ce mécanisme comporte plusieurs défauts.
 %
-Sa configuration est globale au système, on ne peut pas l'activer que pour un processus particulier.
+Sa configuration est globale au système, on ne peut pas l'activer seulement pour un processus particulier.
 %
 Les paramètres ne peuvent être définis que par l'administrateur de la machine.
 %

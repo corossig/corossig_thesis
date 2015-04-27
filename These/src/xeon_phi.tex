@@ -14,7 +14,7 @@ Un changement de contexte est effectué à chaque cycle.
 %
 L'utilisation de plusieurs threads par coeur à l'avantage de pouvoir masquer les temps d'attentes mémoire.
 %
-En parlant de mémoire, celle du Xeon Phi est en anneau et utilise l'interconnect (Fig.~\ref{fig:interconnect}).
+En parlant de mémoire, celle du Xeon Phi est en anneau et utilise l'Interconnect (Fig.~\ref{fig:interconnect}).
 
 %   (-_-)   %
 \begin{figure}[t!]
@@ -28,7 +28,9 @@ En parlant de mémoire, celle du Xeon Phi est en anneau et utilise l'interconnec
 Cette mémoire nous fournit de très bon débit mémoire comparé à la mémoire de la carte mère hôte.
 %
 Pour cette raison, il peut être intéressant de tester nos noyaux d'algèbre linéaire creuse sur cet accélérateur.
-%
+
+
+
 L'accélération maximale est de 120 par rapport à un coeur du Xeon Phi (Fig.~\ref{fig:res_spmv_xeon_phi}).
 %
 Mais il faut rappeler que ces coeurs ne sont pas faits pour exécuter du code séquentiel.

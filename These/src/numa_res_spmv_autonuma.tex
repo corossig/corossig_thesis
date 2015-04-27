@@ -3,7 +3,7 @@ Les noyaux Linux récents proposent un équilibrage de charge automatique des pa
 %
 Malheureusement, nous ne pouvons pas utiliser les grappes de serveurs à notre disposition pour tester cette fonctionnalité.
 %
-La version de Linux disponible sur ces machines n'est pas assez récente, la fonctionnalité autoNUMA n'est apparue que dans la version 3.13 du noyau.
+La version de Linux disponible sur ces machines n'est pas assez récente, la fonctionnalité AutoNUMA n'est apparue que dans la version 3.13 du noyau.
 %
 \`A la place, nous allons utiliser une machine de bureau contenant deux processeurs Intel Xeon X5660, chaque banc NUMA dispose de 6 coeurs de calculs et de 24~Go de mémoire vive.
 %
@@ -15,7 +15,7 @@ Nous allons chercher l'accélération maximale que nous pouvons atteindre avec c
 %
 Il ne nous est donc pas utile de faire varier le nombre de coeurs de calcul, nous utiliserons les 12 coeurs de calcul de la machine.
 %
-Nous allons donc faire varier le nombre de SpMV pour faire varier le temps d'exécution du programme et laisser au noyau assez de temps pour déplacer les pages.
+Nous allons plutôt faire varier le nombre de SpMV pour faire varier le temps d'exécution du programme et laisser au noyau assez de temps pour déplacer les pages.
 
 %   (-_-)   %
 \begin{figure}
@@ -33,6 +33,8 @@ Vers 384 répétitions, soit environ 1 minute, nous obtenons la performance crê
 %
 Il est nécessaire de rappeler que l'allocation interleave donnait de bonnes performances avec l'utilisation de 2 bancs NUMA.
 %
-Mais sur Manumanu, en utilisant plus de 2 bancs NUMA, les performances ne sont pas bonnes.
+Les meilleurs résultats sont obtenus avec NATaS.
 %
-Il serait intéressant de tester la méthode AutoNUMA sur Manumanu, mais nous ne pouvons malheureusement pas changer le noyau utilisé.
+Il serait aussi intéressant de tester la méthode AutoNUMA sur Manumanu en utilisant plus de 2 bancs NUMA, nous pourrions savoir si les résultats sont meilleurs qu'avec NATaS.
+%
+Malheureusement, nous nous ne pouvons pas changer le noyau utilisé sur cette machine.

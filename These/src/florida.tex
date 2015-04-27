@@ -40,6 +40,7 @@ Nous testerons ces différents opérateurs grâce à notre simulateur.
 \end{figure}
 
 %   (-_-)   %
+\begin{table}[h!]
 \begin{center}
   \begin{tabular}{|r|c|c|c|c|}
     \hline
@@ -55,6 +56,7 @@ Nous testerons ces différents opérateurs grâce à notre simulateur.
   \captionof{table}{Descriptions des matrices utilisées.}
   \label{tab:florida}
 \end{center}
+\end{table}
 
 
 Les premiers résultats concernent la matrice Pajek/EPA, ce graphe représente les liens de pages vers {\em www.epa.gov}.
@@ -68,18 +70,20 @@ L'agrégation ne permet qu'un gain de 30\% dans les meilleurs cas (Table~\ref{ta
 Aucun opérateur d'agrégation ne se démarque des autres.
 
 %   (-_-)   %
-\begin{center}
-  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
-    \hline
-    \multicolumn{11}{|c|}{Types d'agrégations}\\
-    \O & D(2) & D(4) & D(8) & D(16) & D(32) & F(24) & F(36) & F(42) & F(64) & C \\
-    \hline
-    598 & 403 & 400 & 428 & 435 & 523 & 407 & 392 & 392 & 392 & 406 \\
-    \hline
-  \end{tabular}
-  \captionof{table}{Résultats du simulateur d'exécution de tâches sur Pajek/EPA sur 12 coeurs de calculs.}
-  \label{tab:epa}
-\end{center}
+\begin{table}[h!]
+  \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+      \hline
+      \multicolumn{11}{|c|}{Types d'agrégations}\\
+      \O & D(2) & D(4) & D(8) & D(16) & D(32) & F(24) & F(36) & F(42) & F(64) & C \\
+      \hline
+      598 & 403 & 400 & 428 & 435 & 523 & 407 & 392 & 392 & 392 & 406 \\
+      \hline
+    \end{tabular}
+    \caption{Résultats du simulateur d'exécution de tâches sur Pajek/EPA sur 12 coeurs de calculs.}
+    \label{tab:epa}
+  \end{center}
+\end{table}
 
 
 Les résultats suivants concernent un graphe représentant les intersections de routes de Pennsylvanie (SNAP/roadNet-PA).
@@ -96,6 +100,7 @@ L'opérateur F n'a pas fourni une bonne agrégation à cause des effets de cache
 
 
 %   (-_-)   %
+\begin{table}[h!]
 \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
     \hline
@@ -105,9 +110,10 @@ L'opérateur F n'a pas fourni une bonne agrégation à cause des effets de cache
     136370 & 84244 & 75919 & 72145 & 69359 & 69607 & 92211 & 80529 & 80179 & 80190 & 181826 \\
     \hline
   \end{tabular}
-  \captionof{table}{Résultats du simulateur d'exécution de tâches sur SNAP/roadNet-PA sur 12 coeurs de calculs.}
+  \caption{Résultats du simulateur d'exécution de tâches sur SNAP/roadNet-PA sur 12 coeurs de calculs.}
   \label{tab:roadnet}
 \end{center}
+\end{table}
 
 
 Le troisième cas test représente les liens entre les pages du site web de stanford (Gleich/wb-cs-stanford).
