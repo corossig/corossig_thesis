@@ -11,7 +11,7 @@ Parmi ces méthodes nous pouvons citer la méthode Jacobi, Gauss-Seidel ou encor
 %
 Mais ces méthodes ne sont pas génériques, leur convergence dépend de certaines propriétés de la matrice.
 %
-Dans de nombreux cas concret, ces méthodes ne convergent pas rapidement si elles sont utilisées telles quelles.
+Dans de nombreux cas concrets, ces méthodes ne convergent pas rapidement si elles sont utilisées telles quelles.
 
 
 La méthode du gradient conjugué est une méthode qui s'applique seulement à des matrices carrées symétriques définies positives.
@@ -63,13 +63,13 @@ Dans ce cas, nous pouvons préconditionner la matrice pour faire en sorte que le
 %
 Il faut choisir une matrice $M^{-1}$ tel que $M^{-1}A$ soit mieux conditionnées que $A$ (i.e. $||M^{-1}A||_p.||A^{-1}M||_p < ||A||_p.||A^{-1}||_p$).
 %
-Un cas idéal serait d'avoir $M=A$, dans ce cas là on obtient la matrice identité qui se trouve être très bien conditionnée.
+Un cas idéal serait d'avoir $M=A$, dans ce cas-là on obtient la matrice identité qui se trouve être très bien conditionnée.
 %
 Or, calculer $A^{-1}$ est très coûteux, à la fois en termes de calcul que de mémoire.
 
 
 
-La factorisation LU permet de calculer directement $x=U^{-1}.L^{-1}.b=A^{-1}b$ mais comme nous l'avons vu, cette opération est très cher en calculs et en mémoire.
+La factorisation LU permet de calculer directement $x=U^{-1}.L^{-1}.b=A^{-1}b$ mais comme nous l'avons vu, cette opération est très chère en calculs et en mémoire.
 %
 Néanmoins, une factorisation approchée de $A$, telle que $||A-LU||$ est relativement petite, peut jouer le rôle de préconditionneur dans une méthode de Krylov.
 %
@@ -85,7 +85,7 @@ La méthode par précondionnement ILU est composée de deux opérations, la prem
 %
 La deuxième correspond à la {\em résolution triangulaire} effectuée avec les deux sous matrices, elle est effectuée à chaque itération du GMRES.
 %
-Pour maintenir un espace mémoire raisonnable, on peut choisir de limiter le niveau de remplissage, les deux algorithmes les plus fréquemment utilisées sont :
+Pour maintenir un espace mémoire raisonnable, on peut choisir de limiter le niveau de remplissage, les deux algorithmes les plus fréquemment utilisés sont :
 \begin{itemize}
   \item Soit en fixant une valeur seuil à partir de laquelle le remplissage est accepté, il s'agit de l'algorithme ILUt;
   \item Soit en choisissant un niveau d'interaction maximal entre les lignes de la matrice, il s'agit de l'algorithme ILU(k) (Fig.~\ref{fig:iluk_filling}).

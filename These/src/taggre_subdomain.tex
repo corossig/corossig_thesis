@@ -15,8 +15,8 @@ Cette borne existe puisqu’individuellement chaque coeur utilise une factorisat
 
 
 Malgré un parallélisme idéal, nous n'obtenons pas une accélération parfaite pour la factorisation ILU(0) (Fig.~\ref{fig:res_facto_mpi}).
-%
-De plus, les performances de la résolution triangulaire sont basses malgré une parallélisme total (Fig.~\ref{fig:res_trsv_mpi}).
+%0
+De plus, les performances de la résolution triangulaire sont basses malgré un parallélisme total (Fig.~\ref{fig:res_trsv_mpi}).
 %
 C'est un problème que l'on rencontre souvent dans les codes d'algèbre linéaire creuse.
 %
@@ -43,7 +43,7 @@ Il est nécessaire de regarder du côté de la bande passante mémoire pour trou
 %
 Nous allons maintenant mesurer cette bande passante à l'aide des compteurs matériels.
 %
-La bande passante utilisée lors de la factorisation parallélisé par une méthode de Jacobi par blocs est au mieux de 16~Go/s, avec les threads nous utilisons 12~Go/s de bande passante locale dont 5~Go/s de bande passante distante.
+La bande passante utilisée lors de la factorisation parallélisée par une méthode de Jacobi par blocs est au mieux de 16~Go/s, avec les threads nous utilisons 12~Go/s de bande passante locale dont 5~Go/s de bande passante distante.
 %
 Cette bande passante distante est le résultat des effets NUMA.
 %
@@ -51,7 +51,7 @@ Dans le cas des processus MPI utilisée par la méthode Jacobi par blocs, chaque
 %
 Mais dans le cas des threads, l'espace mémoire est partagé entre deux bancs mémoires et si les accès mémoire ne sont pas optimisés, il y aura des transferts entre les bancs NUMA.
 %
-Ces transferts auront pour effet d'augmenter la latence des accès mémoire et de réduire le nombre de cycles d'horloge par instruction (CPI\footnote{Clock Per Instruction}), ici on a un CPI de 0,75 pour la version MPI contre 1,08 pour la version threadée (résultats obtenus avec les compteurs matériel).
+Ces transferts auront pour effet d'augmenter la latence des accès mémoire et de réduire le nombre de cycles d'horloge par instruction (CPI\footnote{Clock Per Instruction}), ici on a un CPI de 0,75 pour la version MPI contre 1,08 pour la version threadée (résultats obtenus avec les compteurs matériels).
 %
 L'explication de la différence de performance entre ces deux versions se situe au niveau de la mémoire, on est limité par la bande passante.
 %% +-----------------------------+----------+----------+MPI12

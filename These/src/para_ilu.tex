@@ -111,7 +111,7 @@ Mais pour atteindre cette durée, les tâches doivent devenir plus grosses, nous
 %
 Mais le choix de ces lignes n'est pas trivial, il faut limiter l'impact sur le parallélisme et ne pas changer le résultat final.
 %
-Si trop de lignes à factoriser se retrouvent dans une seule tâche, de nombreuses tâches devront attendre que cette tâche finisse avant de pouvoir être exécutée même si les lignes dont elles dépendent sont déjà factorisées, nous avons donc détruit du parallélisme en augmentant les nombre de contraintes entre les tâches.
+Si trop de lignes à factoriser se retrouvent dans une seule tâche, de nombreuses tâches devront attendre que cette tâche finisse avant de pouvoir être exécutée même si les lignes dont elles dépendent sont déjà factorisées, nous avons donc détruit du parallélisme en augmentant le nombre de contraintes entre les tâches.
 %
 Un intergiciel a été développé dans cette thèse pour résoudre ce problème en trouvant un bon compromis entre la granularité et le parallélisme de manière transparente pour le programmeur.
 
@@ -148,7 +148,7 @@ Il est donc primordial d'agréger des tâches qui factorisent des lignes conséc
 
 Il est aussi possible d'exploiter le parallélisme de l'algorithme ILU :
 %
-en agissant sur l'ordre d'élimination des inconnues (boucle extérieur de l'algorithme~\ref{algo:lu}, on peut modifier la structure de la matrice ce qui aura pour effet de changer la factorisation.
+en agissant sur l'ordre d'élimination des inconnues (boucle extérieure de l'algorithme~\ref{algo:lu}, on peut modifier la structure de la matrice ce qui aura pour effet de changer la factorisation.
 %
 Une renumérotation rouge-noir permet de factoriser parallèlement la moitié des lignes de la matrice dans un premier temps, puis la seconde moitié des lignes dans un second temps.
 %

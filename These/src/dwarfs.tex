@@ -1,4 +1,4 @@
-\subsection{Les 13 nains de berkeley}
+\subsection{Les 13 nains de Berkeley}
 La collection des {\em 13 nains de Berkeley}\cite{dwarfs} est une méthode de classification des problèmes en fonction de leurs motifs de calculs et de communications.
 %
 Il est intéressant de voir si Taggre peut répondre aux 13 problèmes et si c'est le cas quelle serait la stratégie d'agrégation à utiliser.
@@ -7,7 +7,7 @@ En effet, le choix des opérateurs dans Taggre se fait à l'appréciation du pro
 %
 Malheureusement, tous les problèmes ne se prêtent pas à cet exercice.
 %
-Certaines classes de problèmes ne peuvent pas se paralléliser avec du parallélisme à base de graphes de tâches, ou ne présentent aucun intérêt à être paralléliser de cette façon (MapReduce, Graph Traversal, Dynamic Programming, Backtrack and Branch-and-Bound, Graphical Models et Finite State Machines).
+Certaines classes de problèmes ne peuvent pas se paralléliser avec du parallélisme à base de graphes de tâches, ou ne présentent aucun intérêt à être parallélisées de cette façon (MapReduce, Graph Traversal, Dynamic Programming, Backtrack and Branch-and-Bound, Graphical Models et Finite State Machines).
 %
 Les problèmes rencontrés en algèbre linéaire dense sont souvent réguliers et le programmeur peut facilement choisir une granularité.
 %
@@ -30,17 +30,17 @@ Dans ce manuscrit, nous étudierons la parallélisation du produit matrice vecte
 \subsubsection{Méthodes N-Body}
 Les méthodes N-Body consistent à simuler les interactions entre particules dans un espace au cours du temps.
 %
-Chaque particule aura un état particulier (masse, position, vitesse ...) et chaque interaction aura pour effet de changer cette état.
+Chaque particule aura un état particulier (masse, position, vitesse ...) et chaque interaction aura pour effet de changer cet état.
 %
 Pour chaque pas de temps, il faut mettre à jour chaque particule en fonction de l'état des autres particules.
 %
 Le calcul exact étant trop coûteux (complexité en O($n^2$)), il existe des heuristiques.
 %
-L'une d'entre elles consiste à diviser l'espace en plusieurs sous-espaces et de seulement simuler exactement les interactions des particules du même sous-espace et faire une approximation des particules pour les interactions avec celles d'un autre sous espace.
+L'une d'entre elles consiste à diviser l'espace en plusieurs sous-espaces et de seulement simuler exactement les interactions des particules du même sous-espace et faire une approximation des particules pour les interactions avec celles d'un autre sous-espace.
 %
-Des travaux de recherche se sont concentrés à traiter ce problème avec des graphes de tâches\cite{scalfmm}, et comme le graphe est un arbre, ils ont eux-même fait de l'agrégation de noeuds pour obtenir une bonne granularité.
+Des travaux de recherche se sont concentrés à traiter ce problème avec des graphes de tâches\cite{scalfmm}, et comme le graphe est un arbre, ils ont eux-mêmes fait de l'agrégation de noeuds pour obtenir une bonne granularité.
 %
-Taggre n'est donc pas utile dans ce cas, le problème de granularité étant déjà traiter par le programmeur.
+Taggre n'est donc pas utile dans ce cas, le problème de granularité étant déjà traité par le programmeur.
 
 
 \subsubsection{Méthodes spectrales}

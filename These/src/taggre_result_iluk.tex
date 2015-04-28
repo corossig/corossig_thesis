@@ -4,7 +4,7 @@ Nous souhaitons maintenant appliquer notre méthode d'agrégation à des factori
 %
 Plus le paramètre $k$ est grand, plus il y aura de remplissage dans la matrice.
 %
-Ce remplissage aura deux incidences majeurs sur le graphe de tâches :
+Ce remplissage aura deux incidences majeures sur le graphe de tâches :
 \begin{itemize}
   \item des dépendances supplémentaires entre les tâches, donc moins de parallélisme à exploiter;
   \item des éléments supplémentaires à traiter dans les tâches, donc une meilleure granularité.
@@ -15,13 +15,13 @@ Nous pouvons remarquer que sans utiliser d'agrégation, les factorisations ILU(1
 %
 En effet, les tâches étant plus grosses, le surcoût de l'ordonnanceur est moins important.
 %
-En utilisant un opérateur C, nous obtenons quasiment toujours les meilleurs performances.
+En utilisant un opérateur C, nous obtenons quasiment toujours les meilleures performances.
 %
 Seul le cas d'une factorisation ILU(2) avec 8 variables primaires donne une performance légèrement meilleure avec l'opérateur D.
 %
-Dans ce cas, l'opérateur C n'a pas laisser suffisamment de parallélisme pour que l'ordonnanceur puisse faire efficacement son travail.
+Dans ce cas, l'opérateur C n'a pas laissé suffisamment de parallélisme pour que l'ordonnanceur puisse faire efficacement son travail.
 %
-L'opérateur F donne aussi de très bons résultats montrant que dans le cas des factorisation ILU(1) et ILU(2) les effets de cache entre les tâches sont moins important que dans le cas d'une factorisation ILU(0)
+L'opérateur F donne aussi de très bons résultats montrant que dans le cas des factorisations ILU(1) et ILU(2) les effets de cache entre les tâches sont moins importants que dans le cas d'une factorisation ILU(0)
 
 %   (-_-)   %
 \begin{table}[h!]
