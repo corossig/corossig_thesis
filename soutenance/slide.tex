@@ -1,0 +1,864 @@
+\PassOptionsToPackage{pdfpagelabels=false}{hyperref}
+
+\documentclass{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{tikz}
+\usepackage{algorithm, algorithmic}
+\usepackage{appendixnumberbeamer}
+%\usepackage[pdftex]{graphics}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{img/}}
+\DeclareGraphicsExtensions{.pdf,.png}
+
+%\usetheme{Boadilla}
+%\usetheme{Goettingen}
+%\usetheme{Szeged}
+\usetheme{total}
+%\usecolortheme{Goettingen}
+
+\usepackage{color}
+\usepackage{listingsutf8}
+%\usepackage{listings}
+\usepackage{caption}
+\usepackage{subfigure}
+
+\definecolor{cppred}{rgb}{0.6,0,0} % for strings
+\definecolor{cppgreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{cpppurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{cppblue}{rgb}{0.25,0.35,0.75} % javadoc
+
+\newcommand{\backupbegin}{
+   \newcounter{finalframe}
+   \setcounter{finalframe}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+   \setcounter{framenumber}{\value{finalframe}}
+}
+
+
+\lstset{
+  language=C++,
+  numbers=left,
+  numberstyle=\footnotesize,
+  stepnumber=1,
+  backgroundcolor=\color{white},
+  identifierstyle=\color{cpppurple},
+  keywordstyle=\bfseries,
+  stringstyle=\color{cppred},
+  commentstyle=\color{cppgreen},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  frame=single,
+  tabsize=2,
+  captionpos=b,
+  breaklines=true,
+  breakatwhitespace=false,
+  escapeinside={\%*}{*)}
+}
+
+
+\title[Modèle de programmation à grain fin]{\huge{Un modèle de programmation à grain fin pour la parallélisation de solveurs linéaire creux}}
+\author[Corentin Rossignon]{Corentin Rossignon encadré par \\Olivier Aumage, Pascal H\'{e}non, Raymond Namyst, Samuel Thibault}
+\institute[Total, Inria]{Total S.A., Inria Bordeaux, LaBRI, Universit{é} Bordeaux I}
+
+\date{17 Juillet 2015}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\defbeamertemplate*{title page}{customized}[1][]
+{
+\begin{center}
+  \usebeamercolor[fg]{titlelike}
+  \usebeamerfont*{frametitle}
+  \inserttitle\par
+\end{center}
+
+\begin{center}
+  \usebeamerfont{subtitle}\insertsubtitle\par
+  \bigskip
+  \usebeamerfont{author}\insertauthor\par
+  \medskip
+  \usebeamerfont{institute}\insertinstitute\par
+  \bigskip
+  \usebeamerfont{date}\insertdate
+  \bigskip
+
+  \includegraphics[width=0.20\paperwidth]{TOTAL_SA}%
+   \hspace*{0.05\paperwidth}~%
+  \includegraphics[width=0.20\paperwidth]{inria}%
+   \hspace*{0.05\paperwidth}~%
+  \includegraphics[width=0.10\paperwidth]{labri}%
+   \hspace*{0.05\paperwidth}~%
+  \includegraphics[width=0.12\paperwidth]{bordeaux}
+\end{center}
+}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents
+\end{frame}
+
+%=========================================================
+\section[Problème granularité]{Un problème de granularité}
+%=========================================================
+%-------------------------------
+\begin{frame}
+  \frametitle{\'{E}volution des ordinateurs}
+
+  Différentes techniques pour améliorer la puissance :
+  \begin{itemize}
+    \item Augmenter la fréquence du processeur
+    \item Exécution des instructions grâce à un pipeline
+    \item Multiplication des coeurs de calcul
+    \item Multiplication des noeuds de calcul
+  \end{itemize}
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Vue hiérarchique d'une grappe de serveur}
+
+  \centerline{\includegraphics[width=\linewidth]{cluster}}
+\end{frame}
+
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Types de parallélisme}
+
+  Différents types de parallélisme à notre disposition :
+  \begin{itemize}
+    \item Multi-tâches
+    \item Multi-réalisations
+    \item Multi-processus
+    \item Multi-threads
+  \end{itemize}
+
+  Ce choix dépendra du problème à traiter et de l'architecture de la machine.
+\end{frame}
+
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Programmation parallèle - Mémoire distribuée}
+  Exemple : MPI
+  \bigskip
+
+  Avantages :
+  \begin{itemize}
+    \item Permet l'utilisation de plusieurs noeuds de calcul
+    \item Utilisation de machines hétérogènes
+  \end{itemize}
+
+  Inconvénients :
+  \begin{itemize}
+    \item Certains algorithmes ne peuvent pas être paralléliser
+  \end{itemize}
+\end{frame}
+
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Programmation parallèle - Parallélisme de boucle}
+  Exemple : OpenMP
+  \bigskip
+
+  Avantages :
+  \begin{itemize}
+    \item Peu coûteux en temps de développement
+    \item Utilisation de la mémoire partagée
+  \end{itemize}
+
+  Inconvénients :
+  \begin{itemize}
+    \item Limitations dans la description du parallélisme
+  \end{itemize}
+\end{frame}
+
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Programmation parallèle - Tâches}
+  Exemple : Cilk, Intel TBB, OpenMP3
+  \bigskip
+
+  Avantages :
+  \begin{itemize}
+    \item Description exhaustif du parallélisme
+    \item Utilisation de la mémoire partagée
+    \item Possibilité de l'utiliser en mémoire distribuée
+  \end{itemize}
+
+  Inconvénients :
+  \begin{itemize}
+    \item Complexe à utiliser (par rapport au parallélisme de boucle)
+  \end{itemize}
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Programmation par graphe de tâches}
+
+  Principes de la programmation par graphe de tâches :
+  \begin{itemize}
+    \item Une tâche correspond à une portion de code
+    \item Les tâches sont relié entre elles par des dépendances
+    \item Besoin d'un ordonnanceur (efficace) de tâches
+  \end{itemize}
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}[fragile]
+  \frametitle{Exemple de graphe de tâches}
+
+
+\begin{lstlisting}
+a = fun1(0);
+b = fun2(a);
+c = fun3(a);
+d = fun4(b, c);
+\end{lstlisting}
+
+  \centerline{\includegraphics[width=0.25\linewidth]{agg_exemple}}
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Utilisation des graphes de tâches}
+
+  \centerline{\includegraphics[width=\linewidth]{runtime}}
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Cadriciels à base de graphes de tâches}
+  Description des tâches différentes mais même paradigme.
+  \bigskip
+
+  \begin{itemize}
+    \item StarPU : utilisation de ressources hétérogènes (CPU+GPU)
+    \item X-Kaapi : ordonnanceur efficace
+    \item Intel TBB : Intel et C++
+    \item PaRSEC : mémoire distribuée
+  \end{itemize}
+\end{frame}
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Propriétés des graphes de tâches}
+
+
+  \centerline{\includegraphics[width=0.8\linewidth]{graphe_exemple}}
+
+
+  Largeur du graphe $\approx$ Parallélisme
+
+
+  Hauteur du graphe $\approx$ Temps d'exécution avec un parallélisme infini
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Factorisation ILU(0)}
+
+  \begin{itemize}
+    \item Préconditionneur pour GMRES
+  \end{itemize}
+
+\begin{algorithm}[H]
+\begin{algorithmic}[1]
+  \STATE $M$ : matrice de dimension $n$
+  \FOR{$i = 2$ \TO $n$}
+  \STATE{\FOR{$k = 1$ \TO $i - 1$ \AND $M_{ik} != 0$}
+    \STATE{$M_{ik} = M_{ik} / M_{kk}$
+      \FOR{$j = k + 1$ \TO $n$ \AND $M_{ij} != 0$}
+      \STATE{$M_{ij} = M_{ij} - M_{ik}M_{kj}$}
+      \ENDFOR}
+    \ENDFOR}
+  \ENDFOR
+\end{algorithmic}
+\end{algorithm}
+
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Factorisation ILU(0) - Graphe de tâches}
+
+  \begin{itemize}
+    \item Factorisation d'une ligne de la matrice par tâche
+    \item Description naturelle du parallélisme
+  \end{itemize}
+
+  \centerline{\includegraphics[width=\linewidth]{G1}}
+\end{frame}
+
+
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Factorisation ILU(0) - Premiers résultats}
+
+  \begin{itemize}
+        \item Plus d'un million de tâches
+        \item 1 tâche dure en moyenne $100\,ns$
+        \item La gestion d'une tâche coûte environ $500\,ns$
+  \end{itemize}
+
+  \begin{alertblock}{Problème}
+    ILU(0) est seulement 2 fois plus rapide sur 12 coeurs que la version séquentielle.
+  \end{alertblock}
+
+  \pause
+
+  Sans un parallélisme de tâche sur 1 coeur :
+  \begin{itemize}
+     \item $Temps\_total = 1,000,000 * 100 = 1,000,000,000\,ns = 1\,s$
+  \end{itemize}
+
+  \pause
+
+  Avec un parallélisme de tâche sur 1 coeur :
+  \begin{itemize}
+     \item $Temps\_total = 1,000,000 * (100 + 500) = 6,000,000,000\,ns = 6\,s$
+  \end{itemize}
+
+  \pause
+
+  Avec un parallélisme parfait sur 6 coeurs :
+  \begin{itemize}
+     \item $Temps\_total = (1,000,000 / 6) * (100 + 500) = 1,000,000,000\,ns = 1\,s$
+  \end{itemize}
+\end{frame}
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Effet de bord de la parallélisation par graphe de tâches}
+
+  De plus :
+  \begin{itemize}
+    \item L'ordre de factorisation des lignes de la matrice impact les performances
+    \item Les tâches ont des affinités entre elles (effet de cache)
+  \end{itemize}
+
+\end{frame}
+
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Granularité des tâches de calcul}
+
+  Avec un parallélisme parfait :
+  $Temps\_total = \frac{\sum Temps\_tache + nombre\_de\_taches * surcout}{nombre\_de\_coeurs}$
+
+  \pause
+
+  \begin{itemize}
+  \item<2-> La granularité dépend du rapport entre le surcout d'ordonnancement et le temps d'exécution des tâches.
+  \item<3-> On souhaite avoir un surcout plusieurs fois plus petit que le temps d'exécution des tâches.
+  \item<4-> Or, dans notre cas, ce surcout est plus grand.
+  \end{itemize}
+
+  \pause
+  \pause
+  \pause
+
+  \begin{block}{Solution}
+    Diminuer le nombre de tâche.
+  \end{block}
+
+
+\end{frame}
+
+%=========================================================
+\section[Modifications graphe]{Modifications du graphe de tâches}
+%=========================================================
+%-------------------------------
+\begin{frame}
+  \frametitle{Diminuer le nombre de tâches}
+
+  \centerline{\includegraphics[width=\linewidth]{overhead}}
+
+
+  \begin{itemize}
+    \item<1-> Exécuter le travail de plusieurs tâches dans une tâche.
+    \item<2-> Changement des propriétés du graphe :
+      \begin{itemize}
+        \item<2-> Graphe acyclique
+        \item<2-> Largeur du graphe
+        \item<2-> Hauteur du graphe
+        \item<2-> Affinités entre les tâches
+      \end{itemize}
+  \end{itemize}
+
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}[fragile]
+  \frametitle{Problème du cycle}
+
+\begin{lstlisting}
+a = fun1(0);
+b = fun2(a);
+c = fun3(a);
+d = fun4(b, c);
+\end{lstlisting}
+
+  \centerline{\includegraphics[width=0.8\linewidth]{agg_invalid}}
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Largeur et hauteur du graphe}
+
+  \begin{itemize}
+    \item Ne pas trop diminuer la largeur
+  \end{itemize}
+
+  \centerline{\includegraphics[width=0.6\linewidth]{agg_hl}}
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Taggre}
+
+  \centerline{\includegraphics[width=0.55\linewidth]{coarsening}}
+
+  \begin{itemize}
+    \item \'Etape supplémentaire entre la description du graphe de tâches et l'exécution de celui-ci
+    \item Permet d'augmenter la granularité en groupant dans tâches entre elles
+  \end{itemize}
+
+  \begin{block}{Grossissement des tâches}
+    \`A partir d'un graphe à grain fin, on calcul un graphe plus grossier en appliquant
+    des algorithmes de grossissement.
+  \end{block}
+\end{frame}
+
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Séquentiel (S)}
+
+  \centerline{\includegraphics[width=0.80\linewidth]{algo_S}}
+
+  \begin{block}{Objectif}
+    Réduire la hauteur du graphe sans impacter le parallélisme.
+  \end{block}
+\end{frame}
+
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Front (F)}
+
+  \centerline{\includegraphics[width=0.80\linewidth]{algo_F2}}
+
+  \begin{block}{Objectif}
+    Réduire le parallélisme superflu.
+  \end{block}
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Cube (C)}
+
+  \centerline{\includegraphics[width=0.80\linewidth]{algo_3}}
+
+  \begin{block}{Objectif}
+    Favoriser les effets de cache sur les modèles structurés.
+  \end{block}
+\end{frame}
+
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Dezoom (D)}
+
+  \centerline{\includegraphics[width=0.80\linewidth]{algo_D4}}
+
+  \begin{block}{Objectif}
+    Créer des groupes de tâches spatialement proches.
+  \end{block}
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Dezoom (D)}
+
+  \begin{itemize}
+    \item Simuler l'exécution pour éviter les cycles.
+    \item Utilisation d'une fonction d'évaluation pour connaître la prochaine tâche à agréger :
+    \begin{itemize}
+      \item Prise en compte de la distance aux autres tâches
+      \item Prise en compte du nombre de dépendances
+      \item Possibilité de privilégier la hauteur ou la largeur
+    \end{itemize}
+  \end{itemize}
+
+  \centerline{\includegraphics[width=0.35\linewidth]{algo_D_ongoing}}
+
+\end{frame}
+
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Synthèse autour de Taggre}
+
+  \begin{itemize}
+    \item Le programmeur doit choisir les algorithmes à appliqués
+    \item Possibilité de chaîner les algorithmes
+    \item Le choix des paramètres des algorithmes n'est pas difficile :
+      \begin{itemize}
+        \item D dépend de la granularité du problème
+        \item F dépend du nombre de coeurs de la machine
+      \end{itemize}
+    \item F s'utilisera toujours en dernier
+    \item C s'utilisera en premier si le cas le permet
+    \item \'Etape plus simple que de réécrire le programme avec une granularité différente
+    \item Possibilité de sauvegarder les agrégations
+  \end{itemize}
+
+\end{frame}
+
+
+%=========================================================
+\section{Application à ILU(0)}
+%=========================================================
+%-------------------------------
+\begin{frame}[fragile,allowframebreaks]
+  \frametitle{Exemple de code}
+
+ \begin{lstlisting}
+/* Creer l'objet graphe */
+Schema schema("Graph_Name");
+
+/* Creer les taches */
+vector<int> my_tasks;
+for (int i = 0; i < nb_rows; i++)
+ my_tasks.push_back(schema.new_task(1, i));
+
+/* Declarer les dependances */
+for (int i = 0; i < nb_rows; i++)
+ for (int j = 0; j < diag[i]; j++)
+  schema.declare_dependency(my_tasks[j],my_tasks[i])
+ \end{lstlisting}
+
+
+\framebreak
+
+ \begin{lstlisting}
+/* Grossissement du graphe */
+schema.coarse("CF(4)");
+
+/* Creer les taches utilisateurs */
+schema.setup([](int n, int *ids, int *weights,
+                int *affinities, void **tasks_info) -> Task* {
+  return new my_class(n, affinities);
+});
+ \end{lstlisting}
+\framebreak
+
+ \begin{lstlisting}
+
+/* Utilisation de la methode execute de chaque tache */
+schema.run();
+
+/* Utilisation d'une autre fonction */
+schema.run([&](Task *t)
+  {
+    compute((my_class*)t);
+  });
+ \end{lstlisting}
+
+\end{frame}
+
+%-------------------------------
+\begin{frame}
+  \frametitle{}
+  \centerline{\includegraphics[width=0.9\linewidth]{G_agg}}
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Résultat - ILU(0)}
+  \centerline{\includegraphics[width=0.8\linewidth]{res_ilu0}}
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Résultat - ILU(k) réordonné}
+  \centerline{\includegraphics[width=0.8\linewidth]{res_iluk}}
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Problèmes restants}
+
+  Surcout d'agrégation :
+  \begin{itemize}
+    \item L'étape d'agrégation coûte du temps
+    \item Possibilité de l'amortir en utilisant plusieurs fois le graphe ($\approx$10)
+    \item En algèbre linéaire creuse, ce graphe est réutilisé plusieurs fois
+  \end{itemize}
+
+  Mémoire :
+  \begin{itemize}
+    \item Algorithme limité par la bande passante mémoire
+    \item Utilisation incomplète de la bande passante mémoire du noeud de calcul
+  \end{itemize}
+\end{frame}
+
+%=========================================================
+\section[NUMA]{Architecture NUMA}
+%=========================================================
+%-------------------------------
+\begin{frame}
+  \frametitle{Produit matrice-vecteur creux}
+  \centerline{\includegraphics[width=\linewidth]{spmv}}
+
+  \begin{itemize}
+    \item Parallélisme de boucle
+    \item Accélération de 2 sur 12 coeurs de calcul
+    \item Peu de réutilisation des caches
+    \item Limitation liée à la mémoire
+  \end{itemize}
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Le modèle roofline}
+  \centerline{\includegraphics[width=0.8\linewidth]{roofline_rostand}}
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Machine NUMA}
+  \centerline{\includegraphics[width=0.8\linewidth]{numa}}
+
+  \begin{itemize}
+    \item Meilleur passage à l'échelle que SMP
+    \item Gestion plus difficile des allocations mémoire
+  \end{itemize}
+
+\end{frame}
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Gestion mémoire virtuelle}
+  \centerline{\includegraphics[width=0.8\linewidth]{virtual}}
+
+  \begin{itemize}
+    \item Les processus ne voient qu'un espace d'adressage virtuel
+    \item Le noyau s'occupe d'assigner une adresse physique à une adresse virtuelle
+    \item Migration physique transparente
+  \end{itemize}
+\end{frame}
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Stratégies d'allocation mémoire}
+
+  \begin{block}{First touch}
+    Allocation de la mémoire au plus proche du coeur qui l'utilise en premier
+  \end{block}
+
+  \pause
+
+  \begin{block}{Interleave}
+    Allocation en mode tourniquet
+  \end{block}
+
+  \pause
+
+  \begin{block}{Bind}
+    Le programmeur choisi l'emplacement des données
+  \end{block}
+
+  \pause
+
+  \begin{block}{AutoNUMA (Linux 3.13+)}
+    \'Equilibrage automatique pendant l'exécution du programme
+  \end{block}
+
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Couplage à un ordonnanceur de tâches}
+
+  \begin{itemize}
+    \item Liée des données aux tâches
+    \item Exécuter les tâches sur coeur proche des données
+    \item Migration physique des données
+  \end{itemize}
+
+  \pause
+
+  \begin{alertblock}{Ordonnanceur NUMA}
+    Peu d'ordonnanceurs disponibles (PaRSEC, StarSs ...). Ils ne répondent pas à notre besoin.
+  \end{alertblock}
+
+\end{frame}
+
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{NATaS}
+
+  \begin{itemize}
+    \item Possibilité de choisir l'affinité NUMA d'une tâche
+    \item Ordonnanceur très simple
+    \item Une structure de donnée par banc NUMA
+  \end{itemize}
+
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Couplage à Taggre}
+
+  \begin{itemize}
+    \item Possibilité de choisir l'affinité NUMA d'une tâche
+    \item Ordonnanceur très simple
+    \item Une structure de donnée par banc NUMA
+  \end{itemize}
+
+\end{frame}
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Exemple de distribution d'un graphe}
+
+  \centerline{\includegraphics[width=0.35\linewidth]{numa_dist}}
+
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Résultats du produit matrice-vecteur creux}
+
+  \centerline{\includegraphics[width=0.8\linewidth]{res_ilu_spmv}}
+
+\end{frame}
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Résultats de la factorisation ILU(0)}
+
+  \centerline{\includegraphics[width=0.8\linewidth]{res_ilu_nas}}
+
+\end{frame}
+
+
+%=========================================================
+\section{Conclusion et perspectives}
+%=========================================================
+%-------------------------------
+\begin{frame}
+  \frametitle{Conclusion et perspectives}
+         Conclusion :
+    \begin{itemize}
+      \item<1-> Nouvelle méthode générique pour grossir le grain d'un graphe
+      \item<1-> Amélioration de la parallélisation de ILU(0)
+      \item<1-> Meilleur utilisation de la bande passant mémoire
+    \end{itemize}
+    \pause
+
+         \bigskip
+         \bigskip
+
+    Perspectives :
+    \begin{itemize}
+      \item<2-> Automatiser les paramètres des opérateurs d'agrégation
+      \item<2-> Améliorer l'ordonnanceur NUMA
+    \end{itemize}
+\end{frame}
+
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Questions}
+  \begin{center}
+    Merci de votre attention
+
+
+         \bigskip
+         \bigskip
+
+
+   Avez-vous des questions ?
+  \end{center}
+\end{frame}
+
+
+%=========================================================
+%=========================================================
+\backupbegin
+%-------------------------------
+\begin{frame}
+  \frametitle{Simulation de réservoir}
+
+  \begin{itemize}
+    \item Simulation d'écoulement de fluide en milieu poreux
+    \item Jusqu'à 80\% du temps de calcul passé dans le solveur linéaire
+  \end{itemize}
+
+  \centerline{\includegraphics[width=0.9\linewidth]{reservoir}}
+\end{frame}
+\backupend
+
+
+
+\end{document}

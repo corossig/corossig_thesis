@@ -1,0 +1,1918 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1257.5823"
+   height="517.07526"
+   viewBox="0 0 1257.5822 517.07527"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="res_trsv.svg">
+  <metadata
+     id="metadata349">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Gnuplot</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs347">
+    <defs
+       id="defs11">
+      <circle
+         style="stroke-width:0.5"
+         cy="0"
+         cx="0"
+         r="0.5"
+         id="gpDot" />
+      <path
+         style="stroke:currentColor;stroke-width:0.167"
+         inkscape:connector-curvature="0"
+         d="M -1,0 1,0 M 0,-1 0,1"
+         id="gpPt0" />
+      <path
+         style="stroke:currentColor;stroke-width:0.167"
+         inkscape:connector-curvature="0"
+         d="M -1,-1 1,1 M 1,-1 -1,1"
+         id="gpPt1" />
+      <path
+         style="stroke:currentColor;stroke-width:0.167"
+         inkscape:connector-curvature="0"
+         d="M -1,0 1,0 M 0,-1 0,1 m -1,-2 2,2 m -2,0 2,-2"
+         id="gpPt2" />
+      <rect
+         style="stroke:currentColor;stroke-width:0.167"
+         height="2"
+         width="2"
+         y="-1"
+         x="-1"
+         id="gpPt3" />
+      <rect
+         style="fill:currentColor;stroke:currentColor;stroke-width:0.167"
+         height="2"
+         width="2"
+         y="-1"
+         x="-1"
+         id="gpPt4" />
+      <circle
+         style="stroke:currentColor;stroke-width:0.167"
+         r="1"
+         cy="0"
+         cx="0"
+         id="gpPt5" />
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         style="fill:currentColor;stroke:none"
+         id="gpPt6"
+         xlink:href="#gpPt5" />
+      <path
+         style="stroke:currentColor;stroke-width:0.167"
+         inkscape:connector-curvature="0"
+         d="m 0,-1.33 -1.33,2 2.66,0 z"
+         id="gpPt7" />
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         style="fill:currentColor;stroke:none"
+         id="gpPt8"
+         xlink:href="#gpPt7" />
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         style="stroke:currentColor"
+         transform="scale(-1,-1)"
+         id="gpPt9"
+         xlink:href="#gpPt7" />
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         style="fill:currentColor;stroke:none"
+         id="gpPt10"
+         xlink:href="#gpPt9" />
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         style="stroke:currentColor"
+         transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)"
+         id="gpPt11"
+         xlink:href="#gpPt3" />
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         style="fill:currentColor;stroke:none"
+         id="gpPt12"
+         xlink:href="#gpPt11" />
+      <path
+         style="stroke:currentColor;stroke-width:0.167"
+         inkscape:connector-curvature="0"
+         d="M 0,1.33 1.265,0.411 0.782,-1.067 -0.782,-1.076 -1.265,0.411 Z"
+         id="gpPt13" />
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         style="fill:currentColor;stroke:none"
+         id="gpPt14"
+         xlink:href="#gpPt13" />
+      <filter
+         width="1"
+         height="1"
+         y="0"
+         x="0"
+         filterUnits="objectBoundingBox"
+         id="textbox">
+        <feFlood
+           id="feFlood30"
+           result="bgnd"
+           flood-opacity="1"
+           flood-color="white" />
+        <feComposite
+           id="feComposite32"
+           operator="atop"
+           in2="bgnd"
+           in="SourceGraphic" />
+      </filter>
+      <filter
+         width="1"
+         height="1"
+         y="0"
+         x="0"
+         filterUnits="objectBoundingBox"
+         id="greybox">
+        <feFlood
+           id="feFlood35"
+           result="grey"
+           flood-opacity="1"
+           flood-color="lightgrey" />
+        <feComposite
+           id="feComposite37"
+           operator="atop"
+           in2="grey"
+           in="SourceGraphic" />
+      </filter>
+    </defs>
+    <defs
+       id="defs11-0">
+      <circle
+         r="0.5"
+         id="gpDot-7"
+         cx="0"
+         cy="0"
+         style="stroke-width:0.5" />
+      <path
+         d="M -1,0 1,0 M 0,-1 0,1"
+         id="gpPt0-4"
+         inkscape:connector-curvature="0"
+         style="stroke:currentColor;stroke-width:0.167" />
+      <path
+         d="M -1,-1 1,1 M 1,-1 -1,1"
+         id="gpPt1-0"
+         inkscape:connector-curvature="0"
+         style="stroke:currentColor;stroke-width:0.167" />
+      <path
+         d="M -1,0 1,0 M 0,-1 0,1 m -1,-2 2,2 m -2,0 2,-2"
+         id="gpPt2-6"
+         inkscape:connector-curvature="0"
+         style="stroke:currentColor;stroke-width:0.167" />
+      <rect
+         height="2"
+         width="2"
+         y="-1"
+         x="-1"
+         id="gpPt3-1"
+         style="stroke:currentColor;stroke-width:0.167" />
+      <rect
+         height="2"
+         width="2"
+         y="-1"
+         x="-1"
+         id="gpPt4-2"
+         style="fill:currentColor;stroke:currentColor;stroke-width:0.167" />
+      <circle
+         r="1"
+         cy="0"
+         cx="0"
+         id="gpPt5-8"
+         style="stroke:currentColor;stroke-width:0.167" />
+      <use
+         id="gpPt6-2"
+         xlink:href="#gpPt5-8"
+         style="fill:currentColor;stroke:none"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <path
+         d="m 0,-1.33 -1.33,2 2.66,0 z"
+         id="gpPt7-2"
+         inkscape:connector-curvature="0"
+         style="stroke:currentColor;stroke-width:0.167" />
+      <use
+         id="gpPt8-0"
+         xlink:href="#gpPt7-2"
+         style="fill:currentColor;stroke:none"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         transform="scale(-1,-1)"
+         id="gpPt9-5"
+         xlink:href="#gpPt7-2"
+         style="stroke:currentColor"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         id="gpPt10-5"
+         xlink:href="#gpPt9-5"
+         style="fill:currentColor;stroke:none"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)"
+         id="gpPt11-8"
+         xlink:href="#gpPt3-1"
+         style="stroke:currentColor"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         id="gpPt12-3"
+         xlink:href="#gpPt11-8"
+         style="fill:currentColor;stroke:none"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <path
+         d="M 0,1.33 1.265,0.411 0.782,-1.067 -0.782,-1.076 -1.265,0.411 Z"
+         id="gpPt13-4"
+         inkscape:connector-curvature="0"
+         style="stroke:currentColor;stroke-width:0.167" />
+      <use
+         id="gpPt14-2"
+         xlink:href="#gpPt13-4"
+         style="fill:currentColor;stroke:none"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <filter
+         width="1"
+         height="1"
+         y="0"
+         x="0"
+         filterUnits="objectBoundingBox"
+         id="textbox-4">
+        <feFlood
+           id="feFlood30-1"
+           result="bgnd"
+           flood-opacity="1"
+           flood-color="white" />
+        <feComposite
+           id="feComposite32-8"
+           operator="atop"
+           in2="bgnd"
+           in="SourceGraphic" />
+      </filter>
+      <filter
+         width="1"
+         height="1"
+         y="0"
+         x="0"
+         filterUnits="objectBoundingBox"
+         id="greybox-1">
+        <feFlood
+           id="feFlood35-1"
+           result="grey"
+           flood-opacity="1"
+           flood-color="lightgrey" />
+        <feComposite
+           id="feComposite37-1"
+           operator="atop"
+           in2="grey"
+           in="SourceGraphic" />
+      </filter>
+    </defs>
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2560"
+     inkscape:window-height="1497"
+     id="namedview345"
+     showgrid="false"
+     inkscape:zoom="0.944"
+     inkscape:cx="600.16724"
+     inkscape:cy="48.688957"
+     inkscape:window-x="0"
+     inkscape:window-y="39"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <title
+     id="title4">Gnuplot</title>
+  <desc
+     id="desc6">Produced by GNUPLOT 5.0 patchlevel 0 </desc>
+  <g
+     id="g39-4"
+     style="color:#ffffff;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+     transform="translate(-35.44375,27.633076)" />
+  <g
+     id="g201-3"
+     style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+     transform="translate(-35.44375,27.633076)" />
+  <g
+     id="g223-0"
+     style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+     transform="translate(-35.44375,27.633076)" />
+  <g
+     id="g333-3"
+     style="color:#ffffff;fill:none;stroke:#e69f00;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter"
+     transform="translate(-35.44375,27.633076)" />
+  <g
+     id="g335-2"
+     style="color:#000000;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter"
+     transform="translate(-35.44375,27.633076)" />
+  <g
+     id="g337-2"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+     transform="translate(-35.44375,27.633076)" />
+  <g
+     id="g343-1"
+     style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+     transform="translate(-35.44375,27.633076)" />
+  <g
+     id="g5687"
+     transform="translate(-35.44375,0.39550781)">
+    <g
+       transform="translate(0,27.237568)"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       id="g41-0">
+      <path
+         style="stroke:#000000"
+         inkscape:connector-curvature="0"
+         d="m 96.8,423.2 12,0 m 557.5,0 -12,0"
+         id="path43-0" />
+      <g
+         style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none"
+         transform="translate(85.6,429.2)"
+         font-size="16.00"
+         id="g45-3">
+        <text
+           id="text47-1">
+          <tspan
+             style="font-family:Verdana"
+             id="tspan49-5">0</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(0,27.237568)"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       id="g51-1">
+      <path
+         style="stroke:#000000"
+         inkscape:connector-curvature="0"
+         d="m 96.8,373.1 12,0 m 557.5,0 -12,0"
+         id="path53-1" />
+      <g
+         style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none"
+         transform="translate(85.6,379.1)"
+         font-size="16.00"
+         id="g55-6">
+        <text
+           id="text57-9">
+          <tspan
+             style="font-family:Verdana"
+             id="tspan59-5">0.5</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(0,27.237568)"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       id="g61-8">
+      <path
+         style="stroke:#000000"
+         inkscape:connector-curvature="0"
+         d="m 96.8,323 12,0 m 557.5,0 -12,0"
+         id="path63-5" />
+      <g
+         style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none"
+         transform="translate(85.6,329)"
+         font-size="16.00"
+         id="g65-8">
+        <text
+           id="text67-0">
+          <tspan
+             style="font-family:Verdana"
+             id="tspan69-5">1</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(0,27.237568)"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       id="g71-0">
+      <path
+         style="stroke:#000000"
+         inkscape:connector-curvature="0"
+         d="m 96.8,272.9 12,0 m 557.5,0 -12,0"
+         id="path73-2" />
+      <g
+         style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none"
+         transform="translate(85.6,278.9)"
+         font-size="16.00"
+         id="g75-7">
+        <text
+           id="text77-6">
+          <tspan
+             style="font-family:Verdana"
+             id="tspan79-9">1.5</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(0,27.237568)"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       id="g81-8">
+      <path
+         style="stroke:#000000"
+         inkscape:connector-curvature="0"
+         d="m 96.8,222.8 12,0 m 557.5,0 -12,0"
+         id="path83-9" />
+      <g
+         style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none"
+         transform="translate(85.6,228.8)"
+         font-size="16.00"
+         id="g85-5">
+        <text
+           id="text87-0">
+          <tspan
+             style="font-family:Verdana"
+             id="tspan89-6">2</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(0,27.237568)"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       id="g91-7">
+      <path
+         style="stroke:#000000"
+         inkscape:connector-curvature="0"
+         d="m 96.8,172.8 12,0 m 557.5,0 -12,0"
+         id="path93-0" />
+      <g
+         style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none"
+         transform="translate(85.6,178.8)"
+         font-size="16.00"
+         id="g95-7">
+        <text
+           id="text97-8">
+          <tspan
+             style="font-family:Verdana"
+             id="tspan99-3">2.5</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(0,27.237568)"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       id="g101-2">
+      <path
+         style="stroke:#000000"
+         inkscape:connector-curvature="0"
+         d="m 96.8,122.7 12,0 m 557.5,0 -12,0"
+         id="path103-8" />
+      <g
+         style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none"
+         transform="translate(85.6,128.7)"
+         font-size="16.00"
+         id="g105-5">
+        <text
+           id="text107-5">
+          <tspan
+             style="font-family:Verdana"
+             id="tspan109-0">3</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(0,27.237568)"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       id="g111-1">
+      <path
+         style="stroke:#000000"
+         inkscape:connector-curvature="0"
+         d="m 96.8,72.6 12,0 m 557.5,0 -12,0"
+         id="path113-8" />
+      <g
+         style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none"
+         transform="translate(85.6,78.6)"
+         font-size="16.00"
+         id="g115-1">
+        <text
+           id="text117-9">
+          <tspan
+             style="font-family:Verdana"
+             id="tspan119-9">3.5</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(0,27.237568)"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       id="g121-9">
+      <path
+         style="stroke:#000000"
+         inkscape:connector-curvature="0"
+         d="m 96.8,22.5 12,0 m 557.5,0 -12,0"
+         id="path123-7" />
+      <g
+         style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none"
+         transform="translate(85.6,28.5)"
+         font-size="16.00"
+         id="g125-6">
+        <text
+           id="text127-7">
+          <tspan
+             style="font-family:Verdana"
+             id="tspan129-8">4</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(0,27.237568)"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       id="g131-4">
+      <path
+         style="stroke:#000000"
+         inkscape:connector-curvature="0"
+         d="m 96.8,423.2 0,-12 m 0,-388.7 0,12"
+         id="path133-8" />
+      <g
+         style="font-size:16px;font-family:Verdana;text-anchor:middle;fill:#000000;stroke:none"
+         transform="translate(96.8,453.2)"
+         font-size="16.00"
+         id="g135-2">
+        <text
+           id="text137-1">
+          <tspan
+             style="font-family:Verdana"
+             id="tspan139-6">0</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(0,27.237568)"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       id="g141-2">
+      <path
+         style="stroke:#000000"
+         inkscape:connector-curvature="0"
+         d="m 191.7,423.2 0,-12 m 0,-388.7 0,12"
+         id="path143-1" />
+      <g
+         style="font-size:16px;font-family:Verdana;text-anchor:middle;fill:#000000;stroke:none"
+         transform="translate(191.7,453.2)"
+         font-size="16.00"
+         id="g145-7">
+        <text
+           id="text147-7">
+          <tspan
+             style="font-family:Verdana"
+             id="tspan149-4">2</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(0,27.237568)"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       id="g151-3">
+      <path
+         style="stroke:#000000"
+         inkscape:connector-curvature="0"
+         d="m 286.6,423.2 0,-12 m 0,-388.7 0,12"
+         id="path153-6" />
+      <g
+         style="font-size:16px;font-family:Verdana;text-anchor:middle;fill:#000000;stroke:none"
+         transform="translate(286.6,453.2)"
+         font-size="16.00"
+         id="g155-4">
+        <text
+           id="text157-3">
+          <tspan
+             style="font-family:Verdana"
+             id="tspan159-5">4</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(0,27.237568)"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       id="g161-8">
+      <path
+         style="stroke:#000000"
+         inkscape:connector-curvature="0"
+         d="m 381.6,423.2 0,-12 m 0,-388.7 0,12"
+         id="path163-5" />
+      <g
+         style="font-size:16px;font-family:Verdana;text-anchor:middle;fill:#000000;stroke:none"
+         transform="translate(381.6,453.2)"
+         font-size="16.00"
+         id="g165-3">
+        <text
+           id="text167-5">
+          <tspan
+             style="font-family:Verdana"
+             id="tspan169-2">6</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(0,27.237568)"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       id="g171-5">
+      <path
+         style="stroke:#000000"
+         inkscape:connector-curvature="0"
+         d="m 476.5,423.2 0,-12 m 0,-388.7 0,12"
+         id="path173-6" />
+      <g
+         style="font-size:16px;font-family:Verdana;text-anchor:middle;fill:#000000;stroke:none"
+         transform="translate(476.5,453.2)"
+         font-size="16.00"
+         id="g175-2">
+        <text
+           id="text177-9">
+          <tspan
+             style="font-family:Verdana"
+             id="tspan179-5">8</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(0,27.237568)"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       id="g181-2">
+      <path
+         style="stroke:#000000"
+         inkscape:connector-curvature="0"
+         d="m 571.4,423.2 0,-12 m 0,-388.7 0,12"
+         id="path183-0" />
+      <g
+         style="font-size:16px;font-family:Verdana;text-anchor:middle;fill:#000000;stroke:none"
+         transform="translate(571.4,453.2)"
+         font-size="16.00"
+         id="g185-5">
+        <text
+           id="text187-0">
+          <tspan
+             style="font-family:Verdana"
+             id="tspan189-7">10</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(0,27.237568)"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       id="g191-3">
+      <path
+         style="stroke:#000000"
+         inkscape:connector-curvature="0"
+         d="m 666.3,423.2 0,-12 m 0,-388.7 0,12"
+         id="path193-4" />
+      <g
+         style="font-size:16px;font-family:Verdana;text-anchor:middle;fill:#000000;stroke:none"
+         transform="translate(666.3,453.2)"
+         font-size="16.00"
+         id="g195-7">
+        <text
+           id="text197-5">
+          <tspan
+             style="font-family:Verdana"
+             id="tspan199-8">12</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(0,27.237568)"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       id="g203-9">
+      <path
+         style="stroke:#000000"
+         inkscape:connector-curvature="0"
+         d="m 96.8,22.5 0,400.7 569.5,0 0,-400.7 -569.5,0 z"
+         id="path205-9" />
+    </g>
+    <g
+       transform="translate(24,27.237568)"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       id="g207-1">
+      <g
+         style="font-size:16px;font-family:Verdana;text-anchor:middle;fill:#000000;stroke:none"
+         transform="matrix(0,-1,1,0,23.6,222.9)"
+         font-size="16.00"
+         id="g209-9">
+        <text
+           id="text211-3">
+          <tspan
+             style="font-family:Verdana"
+             id="tspan213-4">Speedup</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(0,27.237568)"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       id="g215-5">
+      <g
+         style="font-size:16px;font-family:Verdana;text-anchor:middle;fill:#000000;stroke:none"
+         transform="translate(381.5,489.2)"
+         font-size="16.00"
+         id="g217-0">
+        <text
+           id="text219-9">
+          <tspan
+             style="font-family:Verdana"
+             id="tspan221-2">Number ofthreads</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(0,27.237568)"
+       id="gnuplot_plot_1-6">
+      <title
+         id="title226-8">SPE10 Npri 3</title>
+      <g
+         style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+         id="g228-5">
+        <g
+           style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none"
+           transform="translate(264.8,52.5)"
+           font-size="16.00"
+           id="g230-8">
+          <text
+             id="text232-3">
+            <tspan
+               style="font-family:Verdana"
+               id="tspan234-2">SPE10 Npri 3</tspan>
+          </text>
+        </g>
+      </g>
+      <g
+         style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+         id="g236-3">
+        <path
+           style="stroke:#9400d3"
+           inkscape:connector-curvature="0"
+           d="m 276,46.5 56.8,0 M 144.3,323 l 47.4,88.7 47.5,-4.7 142.4,-13.2 284.7,-15.9"
+           id="path238-4" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#9400d3"
+           xlink:href="#gpPt0-4"
+           transform="matrix(6,0,0,6,144.3,323)"
+           id="use240-9" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#9400d3"
+           xlink:href="#gpPt0-4"
+           transform="matrix(6,0,0,6,191.7,411.7)"
+           id="use242-7" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#9400d3"
+           xlink:href="#gpPt0-4"
+           transform="matrix(6,0,0,6,239.2,407)"
+           id="use244-4" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#9400d3"
+           xlink:href="#gpPt0-4"
+           transform="matrix(6,0,0,6,381.6,393.8)"
+           id="use246-4" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#9400d3"
+           xlink:href="#gpPt0-4"
+           transform="matrix(6,0,0,6,666.3,377.9)"
+           id="use248-7" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#9400d3"
+           xlink:href="#gpPt0-4"
+           transform="matrix(6,0,0,6,304.4,46.5)"
+           id="use250-2" />
+      </g>
+    </g>
+    <g
+       transform="translate(0,27.237568)"
+       id="gnuplot_plot_2-9">
+      <title
+         id="title253-4">Cube 80 Npri 1</title>
+      <g
+         style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+         id="g255-1">
+        <g
+           style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none"
+           transform="translate(264.8,76.5)"
+           font-size="16.00"
+           id="g257-7">
+          <text
+             id="text259-2">
+            <tspan
+               style="font-family:Verdana"
+               id="tspan261-5">Cube 80 Npri 1</tspan>
+          </text>
+        </g>
+      </g>
+      <g
+         style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+         id="g263-6">
+        <path
+           style="stroke:#009e73"
+           inkscape:connector-curvature="0"
+           d="m 276,70.5 56.8,0 M 144.3,323 l 47.4,95.2 47.5,-2.1 142.4,-5 284.7,-7.2"
+           id="path265-3" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#009e73"
+           xlink:href="#gpPt1-0"
+           transform="matrix(6,0,0,6,144.3,323)"
+           id="use267-6" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#009e73"
+           xlink:href="#gpPt1-0"
+           transform="matrix(6,0,0,6,191.7,418.2)"
+           id="use269-7" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#009e73"
+           xlink:href="#gpPt1-0"
+           transform="matrix(6,0,0,6,239.2,416.1)"
+           id="use271-7" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#009e73"
+           xlink:href="#gpPt1-0"
+           transform="matrix(6,0,0,6,381.6,411.1)"
+           id="use273-2" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#009e73"
+           xlink:href="#gpPt1-0"
+           transform="matrix(6,0,0,6,666.3,403.9)"
+           id="use275-3" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#009e73"
+           xlink:href="#gpPt1-0"
+           transform="matrix(6,0,0,6,304.4,70.5)"
+           id="use277-9" />
+      </g>
+    </g>
+    <g
+       transform="translate(0,27.237568)"
+       id="gnuplot_plot_3-4">
+      <title
+         id="title280-5">Cube 80 Npri 3</title>
+      <g
+         style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+         id="g282-9">
+        <g
+           style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none"
+           transform="translate(264.8,100.5)"
+           font-size="16.00"
+           id="g284-0">
+          <text
+             id="text286-3">
+            <tspan
+               style="font-family:Verdana"
+               id="tspan288-4">Cube 80 Npri 3</tspan>
+          </text>
+        </g>
+      </g>
+      <g
+         style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+         id="g290-1">
+        <path
+           style="stroke:#56b4e9"
+           inkscape:connector-curvature="0"
+           d="m 276,94.5 56.8,0 M 144.3,323 l 47.4,87.4 47.5,-5 142.4,-14.4 284.7,-16.5"
+           id="path292-9" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#56b4e9"
+           xlink:href="#gpPt2-6"
+           transform="matrix(6,0,0,6,144.3,323)"
+           id="use294-8" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#56b4e9"
+           xlink:href="#gpPt2-6"
+           transform="matrix(6,0,0,6,191.7,410.4)"
+           id="use296-4" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#56b4e9"
+           xlink:href="#gpPt2-6"
+           transform="matrix(6,0,0,6,239.2,405.4)"
+           id="use298-5" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#56b4e9"
+           xlink:href="#gpPt2-6"
+           transform="matrix(6,0,0,6,381.6,391)"
+           id="use300-8" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#56b4e9"
+           xlink:href="#gpPt2-6"
+           transform="matrix(6,0,0,6,666.3,374.5)"
+           id="use302-3" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#56b4e9"
+           xlink:href="#gpPt2-6"
+           transform="matrix(6,0,0,6,304.4,94.5)"
+           id="use304-0" />
+      </g>
+    </g>
+    <g
+       transform="translate(0,27.237568)"
+       id="gnuplot_plot_4-4">
+      <title
+         id="title307-2">Cube 80 Npri 8</title>
+      <g
+         style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+         id="g309-4">
+        <g
+           style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none"
+           transform="translate(264.8,124.5)"
+           font-size="16.00"
+           id="g311-4">
+          <text
+             id="text313-6">
+            <tspan
+               style="font-family:Verdana"
+               id="tspan315-5">Cube 80 Npri 8</tspan>
+          </text>
+        </g>
+      </g>
+      <g
+         style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+         id="g317-3">
+        <path
+           style="stroke:#e69f00"
+           inkscape:connector-curvature="0"
+           d="m 276,118.5 56.8,0 M 144.3,323 l 47.4,54.8 47.5,-17.9 142.4,-41.5 284.7,-52.5"
+           id="path319-8" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#e69f00"
+           xlink:href="#gpPt3-1"
+           transform="matrix(6,0,0,6,144.3,323)"
+           id="use321-0" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#e69f00"
+           xlink:href="#gpPt3-1"
+           transform="matrix(6,0,0,6,191.7,377.8)"
+           id="use323-9" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#e69f00"
+           xlink:href="#gpPt3-1"
+           transform="matrix(6,0,0,6,239.2,359.9)"
+           id="use325-4" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#e69f00"
+           xlink:href="#gpPt3-1"
+           transform="matrix(6,0,0,6,381.6,318.4)"
+           id="use327-8" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#e69f00"
+           xlink:href="#gpPt3-1"
+           transform="matrix(6,0,0,6,666.3,265.9)"
+           id="use329-9" />
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="color:#e69f00"
+           xlink:href="#gpPt3-1"
+           transform="matrix(6,0,0,6,304.4,118.5)"
+           id="use331-1" />
+      </g>
+    </g>
+    <g
+       transform="translate(0,27.237568)"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+       id="g339-7">
+      <path
+         style="stroke:#000000"
+         inkscape:connector-curvature="0"
+         d="m 96.8,22.5 0,400.7 569.5,0 0,-400.7 -569.5,0 z"
+         id="path341-9" />
+    </g>
+    <text
+       sodipodi:linespacing="125%"
+       id="text4841"
+       y="24.990234"
+       x="350.0878"
+       style="font-style:normal;font-weight:normal;font-size:30px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="24.990234"
+         x="350.0878"
+         id="tspan4843"
+         sodipodi:role="line">OpenMP</tspan></text>
+  </g>
+  <g
+     style="color:#ffffff;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g39"
+     transform="translate(684.14942,27.633076)" />
+  <g
+     style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g201"
+     transform="translate(684.14942,27.633076)" />
+  <g
+     style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g223"
+     transform="translate(684.14942,27.633076)" />
+  <g
+     style="color:#ffffff;fill:none;stroke:#e69f00;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g333"
+     transform="translate(684.14942,27.633076)" />
+  <g
+     style="color:#000000;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g335"
+     transform="translate(684.14942,27.633076)" />
+  <g
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g337"
+     transform="translate(684.14942,27.633076)" />
+  <g
+     style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+     id="g343"
+     transform="translate(684.14942,27.633076)" />
+  <g
+     id="g5043"
+     transform="translate(-35.44375,0.39550781)">
+    <g
+       transform="translate(617.59317,27.237568)"
+       id="g41"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <path
+         d="m 96.8,423.2 12,0 m 557.5,0 -12,0"
+         id="path43"
+         inkscape:connector-curvature="0"
+         style="stroke:#000000" />
+      <g
+         transform="translate(85.6,429.2)"
+         font-size="16.00"
+         id="g45"
+         style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none">
+        <text
+           id="text47">
+          <tspan
+             id="tspan49"
+             style="font-family:Verdana">0</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(617.59317,27.237568)"
+       id="g51"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <path
+         d="m 96.8,373.1 12,0 m 557.5,0 -12,0"
+         id="path53"
+         inkscape:connector-curvature="0"
+         style="stroke:#000000" />
+      <g
+         transform="translate(85.6,379.1)"
+         font-size="16.00"
+         id="g55"
+         style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none">
+        <text
+           id="text57">
+          <tspan
+             id="tspan59"
+             style="font-family:Verdana">0.5</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(617.59317,27.237568)"
+       id="g61"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <path
+         d="m 96.8,323 12,0 m 557.5,0 -12,0"
+         id="path63"
+         inkscape:connector-curvature="0"
+         style="stroke:#000000" />
+      <g
+         transform="translate(85.6,329)"
+         font-size="16.00"
+         id="g65"
+         style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none">
+        <text
+           id="text67">
+          <tspan
+             id="tspan69"
+             style="font-family:Verdana">1</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(617.59317,27.237568)"
+       id="g71"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <path
+         d="m 96.8,272.9 12,0 m 557.5,0 -12,0"
+         id="path73"
+         inkscape:connector-curvature="0"
+         style="stroke:#000000" />
+      <g
+         transform="translate(85.6,278.9)"
+         font-size="16.00"
+         id="g75"
+         style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none">
+        <text
+           id="text77">
+          <tspan
+             id="tspan79"
+             style="font-family:Verdana">1.5</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(617.59317,27.237568)"
+       id="g81"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <path
+         d="m 96.8,222.8 12,0 m 557.5,0 -12,0"
+         id="path83"
+         inkscape:connector-curvature="0"
+         style="stroke:#000000" />
+      <g
+         transform="translate(85.6,228.8)"
+         font-size="16.00"
+         id="g85"
+         style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none">
+        <text
+           id="text87">
+          <tspan
+             id="tspan89"
+             style="font-family:Verdana">2</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(617.59317,27.237568)"
+       id="g91"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <path
+         d="m 96.8,172.8 12,0 m 557.5,0 -12,0"
+         id="path93"
+         inkscape:connector-curvature="0"
+         style="stroke:#000000" />
+      <g
+         transform="translate(85.6,178.8)"
+         font-size="16.00"
+         id="g95"
+         style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none">
+        <text
+           id="text97">
+          <tspan
+             id="tspan99"
+             style="font-family:Verdana">2.5</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(617.59317,27.237568)"
+       id="g101"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <path
+         d="m 96.8,122.7 12,0 m 557.5,0 -12,0"
+         id="path103"
+         inkscape:connector-curvature="0"
+         style="stroke:#000000" />
+      <g
+         transform="translate(85.6,128.7)"
+         font-size="16.00"
+         id="g105"
+         style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none">
+        <text
+           id="text107">
+          <tspan
+             id="tspan109"
+             style="font-family:Verdana">3</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(617.59317,27.237568)"
+       id="g111"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <path
+         d="m 96.8,72.6 12,0 m 557.5,0 -12,0"
+         id="path113"
+         inkscape:connector-curvature="0"
+         style="stroke:#000000" />
+      <g
+         transform="translate(85.6,78.6)"
+         font-size="16.00"
+         id="g115"
+         style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none">
+        <text
+           id="text117">
+          <tspan
+             id="tspan119"
+             style="font-family:Verdana">3.5</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(617.59317,27.237568)"
+       id="g121"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <path
+         d="m 96.8,22.5 12,0 m 557.5,0 -12,0"
+         id="path123"
+         inkscape:connector-curvature="0"
+         style="stroke:#000000" />
+      <g
+         transform="translate(85.6,28.5)"
+         font-size="16.00"
+         id="g125"
+         style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none">
+        <text
+           id="text127">
+          <tspan
+             id="tspan129"
+             style="font-family:Verdana">4</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(617.59317,27.237568)"
+       id="g131"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <path
+         d="m 96.8,423.2 0,-12 m 0,-388.7 0,12"
+         id="path133"
+         inkscape:connector-curvature="0"
+         style="stroke:#000000" />
+      <g
+         transform="translate(96.8,453.2)"
+         font-size="16.00"
+         id="g135"
+         style="font-size:16px;font-family:Verdana;text-anchor:middle;fill:#000000;stroke:none">
+        <text
+           id="text137">
+          <tspan
+             id="tspan139"
+             style="font-family:Verdana">0</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(617.59317,27.237568)"
+       id="g141"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <path
+         d="m 191.7,423.2 0,-12 m 0,-388.7 0,12"
+         id="path143"
+         inkscape:connector-curvature="0"
+         style="stroke:#000000" />
+      <g
+         transform="translate(191.7,453.2)"
+         font-size="16.00"
+         id="g145"
+         style="font-size:16px;font-family:Verdana;text-anchor:middle;fill:#000000;stroke:none">
+        <text
+           id="text147">
+          <tspan
+             id="tspan149"
+             style="font-family:Verdana">2</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(617.59317,27.237568)"
+       id="g151"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <path
+         d="m 286.6,423.2 0,-12 m 0,-388.7 0,12"
+         id="path153"
+         inkscape:connector-curvature="0"
+         style="stroke:#000000" />
+      <g
+         transform="translate(286.6,453.2)"
+         font-size="16.00"
+         id="g155"
+         style="font-size:16px;font-family:Verdana;text-anchor:middle;fill:#000000;stroke:none">
+        <text
+           id="text157">
+          <tspan
+             id="tspan159"
+             style="font-family:Verdana">4</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(617.59317,27.237568)"
+       id="g161"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <path
+         d="m 381.6,423.2 0,-12 m 0,-388.7 0,12"
+         id="path163"
+         inkscape:connector-curvature="0"
+         style="stroke:#000000" />
+      <g
+         transform="translate(381.6,453.2)"
+         font-size="16.00"
+         id="g165"
+         style="font-size:16px;font-family:Verdana;text-anchor:middle;fill:#000000;stroke:none">
+        <text
+           id="text167">
+          <tspan
+             id="tspan169"
+             style="font-family:Verdana">6</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(617.59317,27.237568)"
+       id="g171"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <path
+         d="m 476.5,423.2 0,-12 m 0,-388.7 0,12"
+         id="path173"
+         inkscape:connector-curvature="0"
+         style="stroke:#000000" />
+      <g
+         transform="translate(476.5,453.2)"
+         font-size="16.00"
+         id="g175"
+         style="font-size:16px;font-family:Verdana;text-anchor:middle;fill:#000000;stroke:none">
+        <text
+           id="text177">
+          <tspan
+             id="tspan179"
+             style="font-family:Verdana">8</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(617.59317,27.237568)"
+       id="g181"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <path
+         d="m 571.4,423.2 0,-12 m 0,-388.7 0,12"
+         id="path183"
+         inkscape:connector-curvature="0"
+         style="stroke:#000000" />
+      <g
+         transform="translate(571.4,453.2)"
+         font-size="16.00"
+         id="g185"
+         style="font-size:16px;font-family:Verdana;text-anchor:middle;fill:#000000;stroke:none">
+        <text
+           id="text187">
+          <tspan
+             id="tspan189"
+             style="font-family:Verdana">10</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(617.59317,27.237568)"
+       id="g191"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <path
+         d="m 666.3,423.2 0,-12 m 0,-388.7 0,12"
+         id="path193"
+         inkscape:connector-curvature="0"
+         style="stroke:#000000" />
+      <g
+         transform="translate(666.3,453.2)"
+         font-size="16.00"
+         id="g195"
+         style="font-size:16px;font-family:Verdana;text-anchor:middle;fill:#000000;stroke:none">
+        <text
+           id="text197">
+          <tspan
+             id="tspan199"
+             style="font-family:Verdana">12</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(617.59317,27.237568)"
+       id="g203"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <path
+         d="m 96.8,22.5 0,400.7 569.5,0 0,-400.7 -569.5,0 z"
+         id="path205"
+         inkscape:connector-curvature="0"
+         style="stroke:#000000" />
+    </g>
+    <g
+       transform="translate(617.59317,27.237568)"
+       id="g215"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <g
+         transform="translate(381.5,489.2)"
+         font-size="16.00"
+         id="g217"
+         style="font-size:16px;font-family:Verdana;text-anchor:middle;fill:#000000;stroke:none">
+        <text
+           id="text219">
+          <tspan
+             id="tspan221"
+             style="font-family:Verdana">Number of threads</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       transform="translate(617.59317,27.237568)"
+       id="gnuplot_plot_1">
+      <title
+         id="title226">SPE10 Npri 3</title>
+      <g
+         id="g228"
+         style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+        <g
+           transform="translate(264.8,52.5)"
+           font-size="16.00"
+           id="g230"
+           style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none">
+          <text
+             id="text232">
+            <tspan
+               id="tspan234"
+               style="font-family:Verdana">SPE10 Npri 3</tspan>
+          </text>
+        </g>
+      </g>
+      <g
+         id="g236"
+         style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+        <path
+           d="m 276,46.5 56.8,0 M 144.3,323 l 47.4,11.8 47.5,-22.4 142.4,-27.5 284.7,-39.3"
+           id="path238"
+           inkscape:connector-curvature="0"
+           style="stroke:#9400d3" />
+        <use
+           xlink:href="#gpPt0"
+           transform="matrix(6,0,0,6,144.3,323)"
+           id="use240"
+           style="color:#9400d3"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#gpPt0"
+           transform="matrix(6,0,0,6,191.7,334.8)"
+           id="use242"
+           style="color:#9400d3"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#gpPt0"
+           transform="matrix(6,0,0,6,239.2,312.4)"
+           id="use244"
+           style="color:#9400d3"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#gpPt0"
+           transform="matrix(6,0,0,6,381.6,284.9)"
+           id="use246"
+           style="color:#9400d3"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#gpPt0"
+           transform="matrix(6,0,0,6,666.3,245.6)"
+           id="use248"
+           style="color:#9400d3"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#gpPt0"
+           transform="matrix(6,0,0,6,304.4,46.5)"
+           id="use250"
+           style="color:#9400d3"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+      </g>
+    </g>
+    <g
+       transform="translate(617.59317,27.237568)"
+       id="gnuplot_plot_2">
+      <title
+         id="title253">Cube 80 Npri 1</title>
+      <g
+         id="g255"
+         style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+        <g
+           transform="translate(264.8,76.5)"
+           font-size="16.00"
+           id="g257"
+           style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none">
+          <text
+             id="text259">
+            <tspan
+               id="tspan261"
+               style="font-family:Verdana">Cube 80 Npri 1</tspan>
+          </text>
+        </g>
+      </g>
+      <g
+         id="g263"
+         style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+        <path
+           d="m 276,70.5 56.8,0 M 144.3,323 191.7,359.8 239.2,340 381.6,310.1 666.3,287.3"
+           id="path265"
+           inkscape:connector-curvature="0"
+           style="stroke:#009e73" />
+        <use
+           xlink:href="#gpPt1"
+           transform="matrix(6,0,0,6,144.3,323)"
+           id="use267"
+           style="color:#009e73"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#gpPt1"
+           transform="matrix(6,0,0,6,191.7,359.8)"
+           id="use269"
+           style="color:#009e73"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#gpPt1"
+           transform="matrix(6,0,0,6,239.2,340)"
+           id="use271"
+           style="color:#009e73"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#gpPt1"
+           transform="matrix(6,0,0,6,381.6,310.1)"
+           id="use273"
+           style="color:#009e73"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#gpPt1"
+           transform="matrix(6,0,0,6,666.3,287.3)"
+           id="use275"
+           style="color:#009e73"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#gpPt1"
+           transform="matrix(6,0,0,6,304.4,70.5)"
+           id="use277"
+           style="color:#009e73"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+      </g>
+    </g>
+    <g
+       transform="translate(617.59317,27.237568)"
+       id="gnuplot_plot_3">
+      <title
+         id="title280">Cube 80 Npri 3</title>
+      <g
+         id="g282"
+         style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+        <g
+           transform="translate(264.8,100.5)"
+           font-size="16.00"
+           id="g284"
+           style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none">
+          <text
+             id="text286">
+            <tspan
+               id="tspan288"
+               style="font-family:Verdana">Cube 80 Npri 3</tspan>
+          </text>
+        </g>
+      </g>
+      <g
+         id="g290"
+         style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+        <path
+           d="m 276,94.5 56.8,0 M 144.3,323 l 47.4,-3.5 47.5,-21 142.4,-20.1 284.7,-40.2"
+           id="path292"
+           inkscape:connector-curvature="0"
+           style="stroke:#56b4e9" />
+        <use
+           xlink:href="#gpPt2"
+           transform="matrix(6,0,0,6,144.3,323)"
+           id="use294"
+           style="color:#56b4e9"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#gpPt2"
+           transform="matrix(6,0,0,6,191.7,319.5)"
+           id="use296"
+           style="color:#56b4e9"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#gpPt2"
+           transform="matrix(6,0,0,6,239.2,298.5)"
+           id="use298"
+           style="color:#56b4e9"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#gpPt2"
+           transform="matrix(6,0,0,6,381.6,278.4)"
+           id="use300"
+           style="color:#56b4e9"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#gpPt2"
+           transform="matrix(6,0,0,6,666.3,238.2)"
+           id="use302"
+           style="color:#56b4e9"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#gpPt2"
+           transform="matrix(6,0,0,6,304.4,94.5)"
+           id="use304"
+           style="color:#56b4e9"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+      </g>
+    </g>
+    <g
+       transform="translate(617.59317,27.237568)"
+       id="gnuplot_plot_4">
+      <title
+         id="title307">Cube 80 Npri 8</title>
+      <g
+         id="g309"
+         style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+        <g
+           transform="translate(264.8,124.5)"
+           font-size="16.00"
+           id="g311"
+           style="font-size:16px;font-family:Verdana;text-anchor:end;fill:#000000;stroke:none">
+          <text
+             id="text313">
+            <tspan
+               id="tspan315"
+               style="font-family:Verdana">Cube 80 Npri 8</tspan>
+          </text>
+        </g>
+      </g>
+      <g
+         id="g317"
+         style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+        <path
+           d="m 276,118.5 56.8,0 M 144.3,323 l 47.4,-49.5 47.5,-30.6 142.4,-25.2 284.7,-79"
+           id="path319"
+           inkscape:connector-curvature="0"
+           style="stroke:#e69f00" />
+        <use
+           xlink:href="#gpPt3"
+           transform="matrix(6,0,0,6,144.3,323)"
+           id="use321"
+           style="color:#e69f00"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#gpPt3"
+           transform="matrix(6,0,0,6,191.7,273.5)"
+           id="use323"
+           style="color:#e69f00"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#gpPt3"
+           transform="matrix(6,0,0,6,239.2,242.9)"
+           id="use325"
+           style="color:#e69f00"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#gpPt3"
+           transform="matrix(6,0,0,6,381.6,217.7)"
+           id="use327"
+           style="color:#e69f00"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#gpPt3"
+           transform="matrix(6,0,0,6,666.3,138.7)"
+           id="use329"
+           style="color:#e69f00"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#gpPt3"
+           transform="matrix(6,0,0,6,304.4,118.5)"
+           id="use331"
+           style="color:#e69f00"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+      </g>
+    </g>
+    <g
+       transform="translate(617.59317,27.237568)"
+       id="g339"
+       style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+      <path
+         d="m 96.8,22.5 0,400.7 569.5,0 0,-400.7 -569.5,0 z"
+         id="path341"
+         inkscape:connector-curvature="0"
+         style="stroke:#000000" />
+    </g>
+    <text
+       sodipodi:linespacing="125%"
+       id="text4845"
+       y="21.870117"
+       x="967.68121"
+       style="font-style:normal;font-weight:normal;font-size:30px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="21.870117"
+         x="967.68121"
+         id="tspan4847"
+         sodipodi:role="line">Taggre + NATaS</tspan></text>
+  </g>
+</svg>

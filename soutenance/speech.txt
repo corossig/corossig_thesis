@@ -1,0 +1,59 @@
+* 4
+Au cours de l'histoire, il y a eu différentes techniques pour améliorer la puissance des ordinateurs.
+Augmentation de la fréquence jusqu'à atteindre une limitation technique.
+Utilisation de pipeline d'instructions pour continuer d'augmenter la fréquence.
+Début des année 2000, multiplication des coeurs de calcul par processeur.
+Parallélement à tout ça, les ordinateurs ont été connectés entre eux pour former des machines encore plus puissante.
+
+* 5
+Ces machines sont appelés cluster ou grappe de serveur.
+Elles sont composés de plusieurs ordinateurs reliés par un réseau faible latence/haut débit
+Ces ordinateurs peuvent contenir plusieurs processeurs qui seront eux-mêmes composés de plusieurs coeurs de calcul.
+Pour pouvoir utiliser ces machines efficacement ces machines, il faut utiliser en parallèle tous les coeurs de calcul.
+
+* 6
+Dans un premier temps temps, nous avons le multi-tâches, le cluster n'est pas dédié à un seul type d'application mais à plusieurs.
+Puis nous pouvons utiliser cette machine pour faire de la multi-réalisation, on fait varier les paramètres en entrée pour pouvoir analyser les differentes sorties.
+Ces deux types de parallélisme peuvent utiliser des programmes sequentiel.
+Mais pour aller plus vite, nous pouvons aussi paralléliser l'exécution du programme.
+Les techniques multi-processus consiste à distribuer le travail à réaliser sur plusieurs processus puis à les faire communiquer ensemble pour obtenir un résultat commun.
+Les techinques multi-threads ressemble aux techniques multi-processus mais permettent de tirer parti des avantages des processeurs multi-coeurs.
+Durant ma thèse, je me suis concentré sur la parallélisation multi-threads.
+Nous allons maintenant parler des différentes techniques de programmation parallèle avec leurs avantages et leurs inconvients.
+
+* 7
+La programmation en mémoire distribuée permet d'utiliser plusieurs noeuds de calcul de la machine.
+Mais tous les algorithmes ne sont pas toujours efficaces.
+
+* 8
+L'un des meilleurs rapport temps de développement / parallélisme
+Forte limitations de la descritption du parallèlisme.
+
+* 9
+
+* 10
+Un ordonnanceur de tâches qui choisira quel coeur de calcul exécutera le code de la tâche.
+Cet ordonnanceur doit être efficace pour permettre une distribution rapide des tâches.
+
+* 11
+
+* 12
+
+* 13
+
+* 14
+En regardant un graphe de tâche, on extraire de l'information sur la qualité du parallélisme exploitable.
+
+* 15
+Nous pouvons voir que l'algorithme est composé de trois boucles imbriqués.
+Mais nous ne pouvons pas utiliser de parallélisme de boucle car les itéractions ont des dépendances.
+Nous allons donc utiliser du parallélisme de taches avec comme tâche l'intérieur de la boucle.
+
+* 16
+
+* 17
+Avec un parallélisme parfait, c-a-d avec de quoi occupper tous les coeurs simultanement.
+
+* 18
+
+* 19

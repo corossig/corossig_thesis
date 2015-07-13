@@ -1,0 +1,44 @@
+\frametitle{Exemple de code}
+
+ \begin{lstlisting}
+/* Creer l'objet graphe */
+Schema schema("Graph_Name");
+
+/* Creer les taches */
+vector<int> my_tasks;
+for (int i = 0; i < nb_rows; i++)
+ my_tasks.push_back(schema.new_task(1, i));
+
+/* Declarer les dependances */
+for (int i = 0; i < nb_rows; i++)
+ for (int j = 0; j < diag[i]; j++)
+  schema.declare_dependency(my_tasks[j],my_tasks[i])
+ \end{lstlisting}
+
+
+\framebreak
+
+ \begin{lstlisting}
+/* Grossissement du graphe */
+schema.coarse("CF(4)");
+
+/* Creer les taches utilisateurs */
+schema.setup([](int n, int *ids, int *weights,
+                int *affinities, void **tasks_info) -> Task* {
+  return new my_class(n, affinities);
+});
+ \end{lstlisting}
+\framebreak
+
+ \begin{lstlisting}
+
+/* Utilisation de la methode execute de chaque tache */
+schema.run();
+
+/* Utilisation d'une autre fonction */
+schema.run([&](Task *t)
+  {
+    compute((my_class*)t);
+  });
+ \end{lstlisting}
+
