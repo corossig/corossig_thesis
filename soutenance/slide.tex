@@ -69,13 +69,6 @@
 
 \date{17 Juillet 2015}
 
-\AtBeginSection[]
-{
-  \begin{frame}<beamer>
-    \frametitle{Outline}
-    \tableofcontents[currentsection]
-  \end{frame}
-}
 
 \defbeamertemplate*{title page}{customized}[1][]
 {
@@ -111,12 +104,6 @@
   \titlepage
 \end{frame}
 
-
-\begin{frame}
-  \frametitle{Outline}
-  \tableofcontents
-\end{frame}
-
 %=========================================================
 \section[Problème granularité]{Un problème de granularité}
 %=========================================================
@@ -124,7 +111,7 @@
 \begin{frame}
   \frametitle{\'{E}volution des ordinateurs}
 
-  Différentes techniques pour améliorer la puissance :
+  Différentes techniques pour améliorer la puissance de calcul :
   \begin{itemize}
     \item Augmenter la fréquence du processeur
     \item Exécution des instructions grâce à un pipeline
@@ -142,22 +129,44 @@
 \end{frame}
 
 
+%-------------------------------
+\begin{frame}
+  \frametitle{Machine NUMA}
+  \centerline{\includegraphics[width=0.8\linewidth]{numa}}
+
+  \begin{itemize}
+    \item Séparation physique de la mémoire
+    \item Temps de latence des accès mémoire variable
+  \end{itemize}
+
+\end{frame}
+
 
 %-------------------------------
 \begin{frame}
-  \frametitle{Types de parallélisme}
+  \frametitle{Algèbre linéaire creuse}
 
-  Différents types de parallélisme à notre disposition :
   \begin{itemize}
-    \item Multi-tâches
-    \item Multi-réalisations
-    \item Multi-processus
-    \item Multi-threads
+    \item Problème du type $Ax=b$ avec $A$ une matrice creuse
+    \item Jusqu'à 80\% du temps de calcul pour les simulations numériques
+    \item 3 niveaux de parallélisme pour les solveurs itératifs :
+    \begin{itemize}
+      \item Gros grain, parallélisation MPI, modification de la méthode numérique
+      \item Grain fin (parallélisation du produit matrice-vecteur ...)
+      \item Niveau instructions (BLAS, AVX ...)
+    \end{itemize}
   \end{itemize}
 
-  Ce choix dépendra du problème à traiter et de l'architecture de la machine.
 \end{frame}
 
+%-------------------------------
+%-------------------------------
+  \begin{frame}<beamer>
+    \frametitle{Plan}
+    \tableofcontents
+  \end{frame}
+%-------------------------------
+%-------------------------------
 
 
 %-------------------------------
@@ -224,6 +233,8 @@
 \begin{frame}
   \frametitle{Programmation par graphe de tâches}
 
+  \centerline{\includegraphics[width=0.8\linewidth]{runtime}}
+
   Principes de la programmation par graphe de tâches :
   \begin{itemize}
     \item Une tâche correspond à une portion de code
@@ -251,23 +262,33 @@ d = fun4(b, c);
 
 %-------------------------------
 \begin{frame}
-  \frametitle{Utilisation des graphes de tâches}
+  \frametitle{Intergiciels à base de raphes de tâches - StarPU}
 
-  \centerline{\includegraphics[width=\linewidth]{runtime}}
+  \centerline{\includegraphics[width=0.7\linewidth]{starpu}}
+
+  Caractéristiques :
+  \begin{itemize}
+    \item Architectures hétérogènes (CPU+GPU)
+    \item Gestion transparente des transferts mémoire (DSM)
+    \item Stratégies d'ordonnancement (dmda, eager ...)
+    \item Description dynamique du graphe (insert-task)
+  \end{itemize}
+
 \end{frame}
 
 
 %-------------------------------
 \begin{frame}
-  \frametitle{Cadriciels à base de graphes de tâches}
-  Description des tâches différentes mais même paradigme.
-  \bigskip
+  \frametitle{Intergiciels à base de graphes de tâches - PaRSEC}
 
+  \centerline{\includegraphics[width=0.8\linewidth]{parsec}}
+
+  Caractéristiques :
   \begin{itemize}
-    \item StarPU : utilisation de ressources hétérogènes (CPU+GPU)
-    \item X-Kaapi : ordonnanceur efficace
-    \item Intel TBB : Intel et C++
-    \item PaRSEC : mémoire distribuée
+    \item Graphe de tâches paramétré (PTG)
+    \item Gestion de la mémoire distribuée
+    \item Utilisation du même graphe en mémoire distribuée et en mémoire partagée
+    \item Support des architectures NUMA
   \end{itemize}
 \end{frame}
 
@@ -372,6 +393,8 @@ d = fun4(b, c);
     \item Les tâches ont des affinités entre elles (effet de cache)
   \end{itemize}
 
+  \centerline{\includegraphics[width=0.2\linewidth]{agg_exemple}}
+
 \end{frame}
 
 
@@ -380,15 +403,18 @@ d = fun4(b, c);
 \begin{frame}
   \frametitle{Granularité des tâches de calcul}
 
-  Avec un parallélisme parfait :
-  $Temps\_total = \frac{\sum Temps\_tache + nombre\_de\_taches * surcout}{nombre\_de\_coeurs}$
+  Temps d'exécution d'un graphe de tâches :
+
+  \bigskip
+
+  $\frac{\sum Temps\_tache(tache\_precedente) + \sum Temps\_Repos + nombre\_de\_taches * surcout}{nombre\_de\_coeurs}$
 
   \pause
 
   \begin{itemize}
-  \item<2-> La granularité dépend du rapport entre le surcout d'ordonnancement et le temps d'exécution des tâches.
-  \item<3-> On souhaite avoir un surcout plusieurs fois plus petit que le temps d'exécution des tâches.
-  \item<4-> Or, dans notre cas, ce surcout est plus grand.
+  \item<2-> La granularité dépend du rapport entre le surcout d'ordonnancement et le temps d'exécution des tâches
+  \item<3-> On souhaite avoir un surcout plusieurs fois plus petit que le temps d'exécution des tâches
+  \item<4-> Or, dans notre cas, ce surcout est plus grand
   \end{itemize}
 
   \pause
@@ -396,7 +422,7 @@ d = fun4(b, c);
   \pause
 
   \begin{block}{Solution}
-    Diminuer le nombre de tâche.
+    Diminuer le nombre de tâche, conserver suffisament de parallélisme et exécuter les tâches dans le meilleur ordre possible.
   \end{block}
 
 
@@ -413,7 +439,7 @@ d = fun4(b, c);
 
 
   \begin{itemize}
-    \item<1-> Exécuter le travail de plusieurs tâches dans une tâche.
+    \item<1-> Exécuter le travail de plusieurs tâches dans une tâche
     \item<2-> Changement des propriétés du graphe :
       \begin{itemize}
         \item<2-> Graphe acyclique
@@ -466,8 +492,22 @@ d = fun4(b, c);
 
   \begin{block}{Grossissement des tâches}
     \`A partir d'un graphe à grain fin, on calcul un graphe plus grossier en appliquant
-    des algorithmes de grossissement.
+    des heuristiques de grossissement.
   \end{block}
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Taggre - Heuristique d'agrégation}
+
+  \centerline{\includegraphics[width=0.80\linewidth]{all_algo}}
+
+  \begin{itemize}
+    \item 4 heuristiques pour modifier le graphe
+    \item Certaines heuristiques prennent un paramètre en entrée
+    \item Chaque heuristique aura un avantage spécifique
+  \end{itemize}
 \end{frame}
 
 
@@ -490,6 +530,13 @@ d = fun4(b, c);
   \frametitle{Front (F)}
 
   \centerline{\includegraphics[width=0.80\linewidth]{algo_F2}}
+
+  \bigskip
+  \bigskip
+
+  Prend en paramètre la largeur du graphe souhaitée.
+
+  \bigskip
 
   \begin{block}{Objectif}
     Réduire le parallélisme superflu.
@@ -514,7 +561,13 @@ d = fun4(b, c);
 \begin{frame}
   \frametitle{Dezoom (D)}
 
-  \centerline{\includegraphics[width=0.80\linewidth]{algo_D4}}
+  \centerline{\includegraphics[width=0.75\linewidth]{algo_D4}}
+
+  \bigskip
+
+  Prend en paramètre le nombre de tâches par groupe de tâche.
+
+  \bigskip
 
   \begin{block}{Objectif}
     Créer des groupes de tâches spatialement proches.
@@ -623,14 +676,14 @@ schema.run([&](Task *t)
 
 %-------------------------------
 \begin{frame}
-  \frametitle{Résultat - ILU(0)}
+  \frametitle{Résultat - ILU(0) - 12 coeurs}
   \centerline{\includegraphics[width=0.8\linewidth]{res_ilu0}}
 \end{frame}
 
 
 %-------------------------------
 \begin{frame}
-  \frametitle{Résultat - ILU(k) réordonné}
+  \frametitle{Résultat - ILU(2) réordonné - 12 coeurs}
   \centerline{\includegraphics[width=0.8\linewidth]{res_iluk}}
 \end{frame}
 
@@ -760,17 +813,12 @@ schema.run([&](Task *t)
     \item Une structure de donnée par banc NUMA
   \end{itemize}
 
-\end{frame}
+  \pause
 
-
-%-------------------------------
-\begin{frame}
-  \frametitle{Couplage à Taggre}
-
+  Couplage à Taggre :
   \begin{itemize}
-    \item Possibilité de choisir l'affinité NUMA d'une tâche
-    \item Ordonnanceur très simple
-    \item Une structure de donnée par banc NUMA
+    \item Les tâches d'un graphe sont distribués par hauteur dans le graphe
+    \item Migration des données
   \end{itemize}
 
 \end{frame}
@@ -786,7 +834,7 @@ schema.run([&](Task *t)
 
 %-------------------------------
 \begin{frame}
-  \frametitle{Résultats du produit matrice-vecteur creux}
+  \frametitle{Résultats du produit matrice-vecteur creux - 12 coeurs}
 
   \centerline{\includegraphics[width=0.8\linewidth]{res_ilu_spmv}}
 
@@ -794,7 +842,7 @@ schema.run([&](Task *t)
 
 %-------------------------------
 \begin{frame}
-  \frametitle{Résultats de la factorisation ILU(0)}
+  \frametitle{Résultats de la factorisation ILU(0) - 12 coeurs}
 
   \centerline{\includegraphics[width=0.8\linewidth]{res_ilu_nas}}
 
@@ -810,8 +858,8 @@ schema.run([&](Task *t)
          Conclusion :
     \begin{itemize}
       \item<1-> Nouvelle méthode générique pour grossir le grain d'un graphe
-      \item<1-> Amélioration de la parallélisation de ILU(0)
-      \item<1-> Meilleur utilisation de la bande passant mémoire
+      \item<1-> Amélioration de la parallélisation de noyaux d'algèbre linéaire creuse (ILU, TRSV, SpMV ...)
+      \item<1-> Meilleur utilisation de la bande passante mémoire
     \end{itemize}
     \pause
 
@@ -821,8 +869,17 @@ schema.run([&](Task *t)
     Perspectives :
     \begin{itemize}
       \item<2-> Automatiser les paramètres des opérateurs d'agrégation
-      \item<2-> Améliorer l'ordonnanceur NUMA
+      \item<2-> \'Etendre NATaS pour les machines composées de nombreux bancs NUMA
+      \item<2-> Fusionner les graphes de tâches
     \end{itemize}
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Fusion des graphes de tâches}
+
+  \centerline{\includegraphics[width=\linewidth]{fusion}}
 \end{frame}
 
 
