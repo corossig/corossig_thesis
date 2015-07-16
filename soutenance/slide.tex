@@ -64,8 +64,8 @@
 
 
 \title[Modèle de programmation à grain fin]{\huge{Un modèle de programmation à grain fin pour la parallélisation de solveurs linéaire creux}}
-\author[Corentin Rossignon]{Corentin Rossignon encadré par \\Olivier Aumage, Pascal H\'{e}non, Raymond Namyst, Samuel Thibault}
-\institute[Total, Inria]{Total S.A., Inria Bordeaux, LaBRI, Universit{é} Bordeaux I}
+\author[Corentin Rossignon]{Corentin Rossignon \\Directeur de thèse : Raymond Namyst \\Co-encadré par Olivier Aumage, Pascal H\'{e}non, Samuel Thibault}
+\institute[Total, Inria]{Total S.A., Inria Bordeaux, LaBRI, Universit{é} Bordeaux}
 
 \date{17 Juillet 2015}
 
@@ -94,7 +94,7 @@
    \hspace*{0.05\paperwidth}~%
   \includegraphics[width=0.10\paperwidth]{labri}%
    \hspace*{0.05\paperwidth}~%
-  \includegraphics[width=0.12\paperwidth]{bordeaux}
+  \includegraphics[width=0.20\paperwidth]{bordeaux}
 \end{center}
 }
 
@@ -105,19 +105,54 @@
 \end{frame}
 
 %=========================================================
-\section[Problème granularité]{Un problème de granularité}
+\section{Parallélisme à grain très fin}
 %=========================================================
 %-------------------------------
 \begin{frame}
-  \frametitle{\'{E}volution des ordinateurs}
+  \frametitle{Simulation de réservoir}
 
-  Différentes techniques pour améliorer la puissance de calcul :
   \begin{itemize}
-    \item Augmenter la fréquence du processeur
-    \item Exécution des instructions grâce à un pipeline
-    \item Multiplication des coeurs de calcul
-    \item Multiplication des noeuds de calcul
+    \item Simulation d'écoulement de fluide en milieu poreux
+    \item Jusqu'à 80\% du temps de calcul passé dans le solveur linéaire creux
   \end{itemize}
+
+  \centerline{\includegraphics[width=0.9\linewidth]{reservoir}}
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Algèbre linéaire creuse}
+
+  \begin{itemize}
+    \item Problème du type $Ax=b$ avec $A$ une matrice creuse
+    \item 3 niveaux de parallélisme pour les solveurs itératifs :
+    \begin{itemize}
+      \item Gros grain, modification de la méthode numérique
+      \item Grain fin (parallélisation du produit matrice-vecteur ...)
+      \item Niveau instructions (BLAS, AVX ...)
+    \end{itemize}
+  \end{itemize}
+
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Factorisation ILU(k)}
+
+  \begin{itemize}
+    \item Préconditionneur pour GMRES
+    \item La paramètre $k$ modifie :
+      \begin{itemize}
+        \item Le remplissage de la matrice
+        \item La qualité du préconditionnement
+        \item Le nombre de calcul à effectuer
+      \end{itemize}
+  \end{itemize}
+
+  \centerline{\includegraphics[width=0.9\linewidth]{iluk_filling}}
+
 \end{frame}
 
 
@@ -142,31 +177,6 @@
 \end{frame}
 
 
-%-------------------------------
-\begin{frame}
-  \frametitle{Algèbre linéaire creuse}
-
-  \begin{itemize}
-    \item Problème du type $Ax=b$ avec $A$ une matrice creuse
-    \item Jusqu'à 80\% du temps de calcul pour les simulations numériques
-    \item 3 niveaux de parallélisme pour les solveurs itératifs :
-    \begin{itemize}
-      \item Gros grain, parallélisation MPI, modification de la méthode numérique
-      \item Grain fin (parallélisation du produit matrice-vecteur ...)
-      \item Niveau instructions (BLAS, AVX ...)
-    \end{itemize}
-  \end{itemize}
-
-\end{frame}
-
-%-------------------------------
-%-------------------------------
-  \begin{frame}<beamer>
-    \frametitle{Plan}
-    \tableofcontents
-  \end{frame}
-%-------------------------------
-%-------------------------------
 
 
 %-------------------------------
@@ -185,6 +195,9 @@
   \begin{itemize}
     \item Certains algorithmes ne peuvent pas être paralléliser
   \end{itemize}
+
+  \bigskip
+  Problème de passage à l'échelle de certains algorithmes que nous utilisons (AMG).
 \end{frame}
 
 
@@ -205,6 +218,9 @@
   \begin{itemize}
     \item Limitations dans la description du parallélisme
   \end{itemize}
+
+  \bigskip
+  Ne permet pas de décrire le parallélisme d'une factorisation ILU.
 \end{frame}
 
 
@@ -228,21 +244,14 @@
   \end{itemize}
 \end{frame}
 
-
 %-------------------------------
-\begin{frame}
-  \frametitle{Programmation par graphe de tâches}
-
-  \centerline{\includegraphics[width=0.8\linewidth]{runtime}}
-
-  Principes de la programmation par graphe de tâches :
-  \begin{itemize}
-    \item Une tâche correspond à une portion de code
-    \item Les tâches sont relié entre elles par des dépendances
-    \item Besoin d'un ordonnanceur (efficace) de tâches
-  \end{itemize}
-\end{frame}
-
+%-------------------------------
+  \begin{frame}<beamer>
+    \frametitle{Plan}
+    \tableofcontents
+  \end{frame}
+%-------------------------------
+%-------------------------------
 
 %-------------------------------
 \begin{frame}[fragile]
@@ -257,6 +266,21 @@ d = fun4(b, c);
 \end{lstlisting}
 
   \centerline{\includegraphics[width=0.25\linewidth]{agg_exemple}}
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Programmation par graphe de tâches}
+
+  \centerline{\includegraphics[width=0.8\linewidth]{runtime}}
+
+  Principes de la programmation par graphe de tâches :
+  \begin{itemize}
+    \item Une tâche correspond à une portion de code
+    \item Les tâches sont relié entre elles par des dépendances
+    \item Besoin d'un ordonnanceur (efficace) de tâches
+  \end{itemize}
 \end{frame}
 
 
@@ -360,27 +384,12 @@ d = fun4(b, c);
   \begin{alertblock}{Problème}
     ILU(0) est seulement 2 fois plus rapide sur 12 coeurs que la version séquentielle.
   \end{alertblock}
-
   \pause
+  Temps d'exécution d'un graphe de tâches :
 
-  Sans un parallélisme de tâche sur 1 coeur :
-  \begin{itemize}
-     \item $Temps\_total = 1,000,000 * 100 = 1,000,000,000\,ns = 1\,s$
-  \end{itemize}
+  \bigskip
 
-  \pause
-
-  Avec un parallélisme de tâche sur 1 coeur :
-  \begin{itemize}
-     \item $Temps\_total = 1,000,000 * (100 + 500) = 6,000,000,000\,ns = 6\,s$
-  \end{itemize}
-
-  \pause
-
-  Avec un parallélisme parfait sur 6 coeurs :
-  \begin{itemize}
-     \item $Temps\_total = (1,000,000 / 6) * (100 + 500) = 1,000,000,000\,ns = 1\,s$
-  \end{itemize}
+  $\frac{\sum Temps\_tache + \sum Temps\_Repos + nombre\_de\_taches * surcout}{nombre\_de\_coeurs}$
 \end{frame}
 
 %-------------------------------
@@ -393,7 +402,14 @@ d = fun4(b, c);
     \item Les tâches ont des affinités entre elles (effet de cache)
   \end{itemize}
 
-  \centerline{\includegraphics[width=0.2\linewidth]{agg_exemple}}
+  \centerline{\includegraphics[width=0.15\linewidth]{agg_exemple}}
+
+  Exemple pour ILU(0) sur une matrice d'un million de lignes :
+  \begin{itemize}
+    \item Factorisation des lignes avec un parcourt linéaire : 0,43~s
+    \item Factorisation des lignes avec un parcourt non-linéaire : 1,43~s
+  \end{itemize}
+
 
 \end{frame}
 
@@ -413,12 +429,10 @@ d = fun4(b, c);
 
   \begin{itemize}
   \item<2-> La granularité dépend du rapport entre le surcout d'ordonnancement et le temps d'exécution des tâches
-  \item<3-> On souhaite avoir un surcout plusieurs fois plus petit que le temps d'exécution des tâches
-  \item<4-> Or, dans notre cas, ce surcout est plus grand
+  \item<2-> On souhaite avoir un surcout plusieurs fois plus petit que le temps d'exécution des tâches
+  \item<2-> Or, dans notre cas, ce surcout est plus grand
   \end{itemize}
 
-  \pause
-  \pause
   \pause
 
   \begin{block}{Solution}
@@ -429,7 +443,7 @@ d = fun4(b, c);
 \end{frame}
 
 %=========================================================
-\section[Modifications graphe]{Modifications du graphe de tâches}
+\section{Heuristiques d'agrégation}
 %=========================================================
 %-------------------------------
 \begin{frame}
@@ -439,14 +453,8 @@ d = fun4(b, c);
 
 
   \begin{itemize}
-    \item<1-> Exécuter le travail de plusieurs tâches dans une tâche
-    \item<2-> Changement des propriétés du graphe :
-      \begin{itemize}
-        \item<2-> Graphe acyclique
-        \item<2-> Largeur du graphe
-        \item<2-> Hauteur du graphe
-        \item<2-> Affinités entre les tâches
-      \end{itemize}
+    \item Exécuter le travail de plusieurs tâches dans une tâche
+    \item Conserver assez de parallélisme
   \end{itemize}
 
 \end{frame}
@@ -478,6 +486,20 @@ d = fun4(b, c);
   \centerline{\includegraphics[width=0.6\linewidth]{agg_hl}}
 \end{frame}
 
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Agréger des tâches}
+
+  Changement des propriétés du graphe :
+  \begin{itemize}
+    \item Graphe acyclique
+    \item Largeur du graphe
+    \item Hauteur du graphe
+    \item Affinités entre les tâches
+  \end{itemize}
+
+\end{frame}
 
 %-------------------------------
 \begin{frame}
@@ -601,8 +623,8 @@ d = fun4(b, c);
 
   \begin{itemize}
     \item Le programmeur doit choisir les algorithmes à appliqués
-    \item Possibilité de chaîner les algorithmes
-    \item Le choix des paramètres des algorithmes n'est pas difficile :
+    \item Possibilité de chaîner les heuristiques
+    \item Le choix des paramètres des heuristiques n'est pas difficile :
       \begin{itemize}
         \item D dépend de la granularité du problème
         \item F dépend du nombre de coeurs de la machine
@@ -673,6 +695,27 @@ schema.run([&](Task *t)
   \centerline{\includegraphics[width=0.9\linewidth]{G_agg}}
 \end{frame}
 
+%-------------------------------
+\begin{frame}
+  \frametitle{Protocole de test}
+  Machine :
+  \begin{itemize}
+    \item 2 processeurs Intel Xeon X5660
+    \item 6 coeurs de calcul par processeur
+    \item 48~Go de mémoire vive
+    \item 2 bancs NUMA
+  \end{itemize}
+
+  Cas test :
+  \begin{itemize}
+    \item Matrice d'un million de lignes
+    \item 7 diagonales
+    \item Chaque entrée de la matrice est un bloc 3x3
+  \end{itemize}
+
+  Moyenne des 5 résultats médians sur 10 lancements.
+
+\end{frame}
 
 %-------------------------------
 \begin{frame}
@@ -683,7 +726,7 @@ schema.run([&](Task *t)
 
 %-------------------------------
 \begin{frame}
-  \frametitle{Résultat - ILU(2) réordonné - 12 coeurs}
+  \frametitle{Résultat - ILU(2) - 12 coeurs}
   \centerline{\includegraphics[width=0.8\linewidth]{res_iluk}}
 \end{frame}
 
@@ -694,20 +737,20 @@ schema.run([&](Task *t)
 
   Surcout d'agrégation :
   \begin{itemize}
-    \item L'étape d'agrégation coûte du temps
+    \item L'étape d'agrégation coûte du temps (environ 2~s pour notre cas test)
     \item Possibilité de l'amortir en utilisant plusieurs fois le graphe ($\approx$10)
     \item En algèbre linéaire creuse, ce graphe est réutilisé plusieurs fois
   \end{itemize}
 
   Mémoire :
   \begin{itemize}
-    \item Algorithme limité par la bande passante mémoire
-    \item Utilisation incomplète de la bande passante mémoire du noeud de calcul
+    \item Performances de l'algorithme ILU(k) limitées par la bande passante mémoire
+    \item Utilisation incomplète de la bande passante mémoire des machines NUMA
   \end{itemize}
 \end{frame}
 
 %=========================================================
-\section[NUMA]{Architecture NUMA}
+\section[Aspects NUMA]{Prise en compte des aspects NUMA dans la gestion des données}
 %=========================================================
 %-------------------------------
 \begin{frame}
@@ -736,7 +779,7 @@ schema.run([&](Task *t)
   \centerline{\includegraphics[width=0.8\linewidth]{numa}}
 
   \begin{itemize}
-    \item Meilleur passage à l'échelle que SMP
+    \item Réduction de la contention sur le controleur mémoire par rapport à SMP
     \item Gestion plus difficile des allocations mémoire
   \end{itemize}
 
@@ -756,28 +799,44 @@ schema.run([&](Task *t)
 
 %-------------------------------
 \begin{frame}
-  \frametitle{Stratégies d'allocation mémoire}
+  \frametitle{Stratégies d'allocation mémoire I}
 
   \begin{block}{First touch}
-    Allocation de la mémoire au plus proche du coeur qui l'utilise en premier
+    Allocation de la mémoire au plus proche du coeur qui l'utilise en premier.
   \end{block}
 
   \pause
 
   \begin{block}{Interleave}
-    Allocation en mode tourniquet
+    Allocation en mode tourniquet.
   \end{block}
 
   \pause
 
   \begin{block}{Bind}
-    Le programmeur choisi l'emplacement des données
+    Le programmeur choisi l'emplacement des données.
+  \end{block}
+\end{frame}
+
+
+%-------------------------------
+\begin{frame}
+  \frametitle{Stratégies d'allocation mémoire II}
+
+  \begin{block}{Next-touch}
+    Migration des données déjà allouées lors du prochain accès.
   \end{block}
 
   \pause
 
   \begin{block}{AutoNUMA (Linux 3.13+)}
-    \'Equilibrage automatique pendant l'exécution du programme
+    \'Equilibrage automatique pendant l'exécution du programme.
+  \end{block}
+
+  \pause
+
+  \begin{block}{Bibliothèques externes}
+    Bibliothèques fournissant des stratégies d'allocations et de migrations mémoire (MaMI, MAi ...)
   \end{block}
 
 \end{frame}
@@ -788,9 +847,9 @@ schema.run([&](Task *t)
   \frametitle{Couplage à un ordonnanceur de tâches}
 
   \begin{itemize}
-    \item Liée des données aux tâches
+    \item Lier des données aux tâches
     \item Exécuter les tâches sur coeur proche des données
-    \item Migration physique des données
+    \item Migration physique des données pour améliorer la répartition de charge
   \end{itemize}
 
   \pause
@@ -817,8 +876,8 @@ schema.run([&](Task *t)
 
   Couplage à Taggre :
   \begin{itemize}
-    \item Les tâches d'un graphe sont distribués par hauteur dans le graphe
-    \item Migration des données
+    \item Les tâches d'un graphe sont distribuées par hauteur dans le graphe
+    \item Migration des données pour faire correspondre à l'affinité NUMA des tâches
   \end{itemize}
 
 \end{frame}
@@ -827,7 +886,7 @@ schema.run([&](Task *t)
 \begin{frame}
   \frametitle{Exemple de distribution d'un graphe}
 
-  \centerline{\includegraphics[width=0.35\linewidth]{numa_dist}}
+  \centerline{\includegraphics[width=\linewidth]{numa_distrib_example}}
 
 \end{frame}
 
@@ -848,6 +907,14 @@ schema.run([&](Task *t)
 
 \end{frame}
 
+%-------------------------------
+\begin{frame}
+  \frametitle{Résultats de la factorisation ILU(0) - 160 coeurs - 20 bancs NUMA}
+
+  \centerline{\includegraphics[width=0.8\linewidth]{manumanu}}
+
+\end{frame}
+
 
 %=========================================================
 \section{Conclusion et perspectives}
@@ -857,9 +924,9 @@ schema.run([&](Task *t)
   \frametitle{Conclusion et perspectives}
          Conclusion :
     \begin{itemize}
-      \item<1-> Nouvelle méthode générique pour grossir le grain d'un graphe
+      \item<1-> Nouvel outils générique pour grossir le grain d'un graphe
       \item<1-> Amélioration de la parallélisation de noyaux d'algèbre linéaire creuse (ILU, TRSV, SpMV ...)
-      \item<1-> Meilleur utilisation de la bande passante mémoire
+      \item<1-> Meilleure utilisation de la bande passante mémoire
     \end{itemize}
     \pause
 
@@ -905,14 +972,10 @@ schema.run([&](Task *t)
 \backupbegin
 %-------------------------------
 \begin{frame}
-  \frametitle{Simulation de réservoir}
+  \frametitle{Résultats de la factorisation ILU(0) - AutoNUMA}
 
-  \begin{itemize}
-    \item Simulation d'écoulement de fluide en milieu poreux
-    \item Jusqu'à 80\% du temps de calcul passé dans le solveur linéaire
-  \end{itemize}
+  \centerline{\includegraphics[width=0.8\linewidth]{autonuma}}
 
-  \centerline{\includegraphics[width=0.9\linewidth]{reservoir}}
 \end{frame}
 \backupend
 
